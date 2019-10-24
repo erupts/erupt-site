@@ -1,0 +1,30 @@
+.ng-cloak {
+    display: none;
+}
+
+.title {
+    margin: 0;
+    color: #fff;
+    font-size: 4em;
+    line-height: 100px
+}
+
+body {
+    font-family: 'pingfang SC', 'helvetica neue', arial, 'hiragino sans gb', 'microsoft yahei ui', 'microsoft yahei', simsun, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.col-min-padding {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mask-a {
+    color: #fff;
+
+}
+
+.mask-a:hover, .mask-a:active, .mask-a:focus {
+    text-decoration: none;
+    color: #fff;
+}

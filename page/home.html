@@ -1,0 +1,29 @@
+<style>
+    .card {
+        padding: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        text-align: center;
+        cursor: pointer;
+        transition: all .5s;
+    }
+
+    .card:hover {
+        background: #09f;
+        color: #fff;
+    }
+</style>
+<div ng-controller="home" style="padding: 10px 0;">
+    <div style="border-left: 5px solid #09f;padding-left: 10px;">
+        <h3>特性</h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-4" ng-repeat="i in [1,2,3,4,5,6,7,8,9]">
+            <div class="card">
+                <h2>@...</h2> <br>
+                <h2>@Erupt</h2> <br>
+                <h2>@EruptField</h2> <br>
+            </div>
+        </div>
+    </div>
+</div>
