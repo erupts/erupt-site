@@ -6,7 +6,7 @@
     margin: 0;
     color: #fff;
     font-size: 4em;
-    line-height: 100px
+    padding: 15px 0;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.col-min-padding {
+.col-xs-space {
     padding-left: 8px;
     padding-right: 8px;
 }
