@@ -3,35 +3,67 @@
         padding: 15px;
         background: #333;
         margin-bottom: 15px;
-        border: 1px solid #ccc;
+        border: 2px solid #333;
         text-align: center;
         cursor: pointer;
         transition: all .5s;
+        box-sizing: border-box;
+    }
+
+    .card .txt {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #ff0;
+        margin: 0;
+        font-weight: 500;
+        font-family: Courier New, Menlo, Monaco, Consolas, monospace;
     }
 
     .card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 20px #aaa;
+        box-shadow: 0 6px 15px 4px #999;
+        border-left: 5px solid #FFEB3B;
+        border-right: 5px solid #FFEB3B;
+    }
+
+    .left-badge {
+        border-left: 5px solid #09f;
+        padding-left: 10px;
     }
 </style>
 <div ng-controller="home" style="padding: 10px 0;">
-    <div style="border-left: 5px solid #09f;padding-left: 10px;">
+    <h2 class="text-center">Erupt通用数据管理框架</h2>
+    <h3>
+        Erupt是使用java语言编写的一款通用数据管理框架，使后端开发人员仅仅只通过注解，就可以实现复杂的前端页面逻辑，拥有学习成本低，扩展性强等优点。
+    </h3>
+    <hr>
+    <div class="left-badge">
         <h3>@Erupt</h3>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-4 col-xs-space" ng-repeat="f in erupt">
+        <div class="col-xs-12 col-sm-6 col-sm-4 col-lg-3 col-xs-space" ng-repeat="f in erupt">
             <div class="card ">
-                <h2 style="color: #ff0;margin: 0;">{{f.annotation}}</h2>
+                <h2 class="txt">{{f.annotation}}</h2>
             </div>
         </div>
     </div>
-    <div style="border-left: 5px solid #09f;padding-left: 10px;">
-        <h3>@EruptField</h3>
+    <div class="left-badge">
+        <h3>EruptField.@Edit</h3>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-4 col-xs-space" ng-repeat="f in eruptField">
+        <div class="col-xs-12 col-sm-6 col-sm-4 col-lg-3 col-xs-space" ng-repeat="f in view">
             <div class="card ">
-                <h2 style="color: #ff0;margin: 0;">{{f.annotation}}</h2>
+                <h2 class="txt">{{f.annotation}}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="left-badge">
+        <h3>EruptField.@View</h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-4 col-lg-3 col-xs-space" ng-repeat="f in edit">
+            <div class="card ">
+                <h2 class="txt">{{f.annotation}}</h2>
             </div>
         </div>
     </div>

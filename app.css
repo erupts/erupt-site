@@ -1,3 +1,7 @@
+* {
+    font-family: Courier New, Menlo, Monaco, Consolas, monospace;
+}
+
 .ng-cloak {
     display: none;
 }
@@ -6,12 +10,8 @@
     margin: 0;
     color: #fff;
     font-size: 4em;
-    padding: 15px 0;
-}
-
-body {
-    font-family: 'pingfang SC', 'helvetica neue', arial, 'hiragino sans gb', 'microsoft yahei ui', 'microsoft yahei', simsun, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .col-xs-space {
@@ -27,4 +27,8 @@ body {
 .mask-a:hover, .mask-a:active, .mask-a:focus {
     text-decoration: none;
     color: #fff;
+}
+
+.coder {
+    font-family: Courier New, Menlo, Monaco, Consolas, monospace;
 }

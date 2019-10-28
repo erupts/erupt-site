@@ -4,16 +4,51 @@ app.controller("home", function ($scope) {
         {annotation: 'name'},
         {annotation: 'desc'},
         {annotation: 'loginUse'},
-        {annotation: '@rowOperation[]'},
-        {annotation: '@Filter'},
-        {annotation: '@orderBy'},
+        {annotation: 'rowOperation'},
+        {annotation: 'filter'},
+        {annotation: 'orderBy'},
         {annotation: 'dataProxy'},
-        {annotation: '@Tree'},
-        {annotation: '@param'},
-    ]
+        {annotation: 'tree'},
+        {annotation: 'param'},
+    ];
     $scope.eruptField = [
         {annotation: '@View'},
         {annotation: '@Edit'},
         {annotation: '@params'},
-    ]
+    ];
+
+    $scope.view = [
+        {annotation: 'title'},
+        {annotation: 'column'},
+        {annotation: 'viewType'},
+        {annotation: 'show'},
+        {annotation: 'sortable'},
+        {annotation: 'export'},
+        {annotation: 'className'},
+        {annotation: 'template'},
+    ];
+
+    $scope.edit = [
+        {annotation: 'title'},
+        {annotation: 'desc'},
+        {annotation: 'notNull'},
+        {annotation: 'show'},
+        {annotation: 'readOnly'},
+        {annotation: 'placeHolder'},
+        {annotation: 'search'},
+        {annotation: 'orderBy'},
+        {annotation: 'filter'},
+        {annotation: 'type'},
+        {annotation: 'inputType'},
+        {annotation: 'numberType'},
+        {annotation: 'boolType'},
+        {annotation: 'htmlType'},
+        {annotation: 'choiceType'},
+        {annotation: 'dateType'},
+        {annotation: 'sliderType'},
+        {annotation: 'attachmentType'},
+        {annotation: 'dependSwitchType'},
+        {annotation: 'referenceTreeType'},
+        {annotation: 'referenceTableType'},
+    ];
 });
