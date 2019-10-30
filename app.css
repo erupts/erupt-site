@@ -9,14 +9,44 @@
 .title {
     margin: 0;
     color: #fff;
-    font-size: 4em;
-    padding: 10px;
-    cursor: pointer;
+    font-size: 3em;
+    padding: 5px 10px;
+}
+
+body {
+    background: #333;
+}
+
+body > header {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #333;
+    box-shadow: 3px 0 10px #999
+}
+
+body > main {
+    min-height: 600px;
+    padding: 10px 60px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    background: #fff;
+}
+
+body > footer {
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #333;
 }
 
 .col-xs-space {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .mask-a {

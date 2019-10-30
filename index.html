@@ -6,23 +6,21 @@
     <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
 </head>
-<body>
-<div ng-app="app" class="ng-cloak">
-    <header style="background: #09f;box-shadow: 3px 0 10px #999">
-        <h1 class="title">
-            <img src="favicon.ico" alt="" style="width: 70px;">
-            <a href="" class="mask-a">erupt<span style="font-size: .4em">.xyz</span></a>
-        </h1>
-    </header>
-    <main ng-view style="min-height: 600px;padding: 10px;" class="container">
+<body ng-app="app" class="ng-cloak">
+<header>
+    <h1 class="title">
+        <img src="favicon.ico" alt="" style="width: 50px;">
+        <a href="" class="mask-a">erupt<span style="font-size: .4em">.xyz</span></a>
+    </h1>
+</header>
+<main ng-view>
 
-    </main>
-    <footer style="background: #333;">
-        <p style="text-align: center;padding: 10px 0;color: #fff;margin: 0;">
-            Copyright © 2019-{{year}} erupt.xyz All Rights Reserved. 备案号：京ICP备19044060号-1
-        </p>
-    </footer>
-</div>
+</main>
+<footer>
+    <p style="text-align: center;padding: 10px 0;color: #fff;margin: 0;">
+        Copyright © 2019-{{year}} erupt.xyz All Rights Reserved. 备案号：京ICP备19044060号-1
+    </p>
+</footer>
 <script src="https://cdn.bootcss.com/angular.js/1.7.8/angular.min.js"></script>
 <script src="https://cdn.bootcss.com/angular.js/1.7.8/angular-route.min.js"></script>
 <script src="assets/script.js"></script>
