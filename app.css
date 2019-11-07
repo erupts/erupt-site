@@ -14,7 +14,7 @@
 }
 
 body {
-    background: #333;
+    background-color: #333;
 }
 
 body > header {
@@ -29,7 +29,7 @@ body > header {
 
 body > main {
     min-height: 600px;
-    padding: 10px 60px;
+    padding: 10px 50px;
     margin-top: 60px;
     margin-bottom: 40px;
     background: #fff;
@@ -41,7 +41,15 @@ body > footer {
     left: 0;
     right: 0;
     bottom: 0;
+    padding: 6px;
     background: #333;
+}
+
+body > footer > p {
+    text-align: center;
+    padding: 4px 0;
+    color: #fff;
+    margin: 0;
 }
 
 .col-xs-space {

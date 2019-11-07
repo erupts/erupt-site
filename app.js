@@ -14,7 +14,7 @@ var app = angular.module('app', [
     app.service = $provide.service;
     app.constant = $provide.constant;
 }).config(function ($routeProvider) {
-    $routeProvider.when('/:name.html', {
+    $routeProvider.when('/:name', {
         templateUrl: function (attr) {
             toTemplate();
             return "page/" + attr.name + ".html";
@@ -34,7 +34,7 @@ var app = angular.module('app', [
                 return deferred.promise;
             }
         }
-    }).when('/:dir/:name.html', {
+    }).when('/:dir/:name', {
         templateUrl: function (attr) {
             toTemplate();
             return "page/" + attr.dir + "/" + attr.name + ".html";
@@ -54,6 +54,6 @@ var app = angular.module('app', [
             }
         }
     }).otherwise({
-        redirectTo: 'home.html'
+        redirectTo: '/home'
     });
 })
