@@ -53,7 +53,16 @@ var app = angular.module('app', [
                 return deferred.promise;
             }
         }
+    }).when('/', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/home.html";
+        }
     }).otherwise({
-        redirectTo: '/home'
+        redirectTo: '/'
     });
+
+    function resoleLoad() {
+
+    }
 })

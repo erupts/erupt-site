@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="erupt通用数据管理框架">
+    <meta content="erupt通用数据管理框架使用文档" name="description">
     <meta name="keyword" content="erupt,通用数据管理,数据管理框架,视图关系映射模型">
     <title>erupt</title>
     <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -16,17 +16,20 @@
     </h1>
 </header>
 <main>
-    <div ng-view class="container">
+    <div ng-view style="max-width: 1280px;margin: 0 auto">
 
     </div>
 </main>
 <footer>
     <!--<p>Author:YuePeng</p>-->
-    <p>Copyright © 2019-{{year}} erupt.xyz All Rights Reserved. ICP证：京ICP备19044060号-1</p>
+    <p>Copyright © 2019-{{year}} erupt.xyz 版权所有.
+        备案号：<a href="http://beian.miit.gov.cn" style="color: #fff" target="_blank">京ICP备19044060号</a>
+    </p>
 </footer>
 <script src="https://cdn.bootcss.com/angular.js/1.7.8/angular.min.js"></script>
 <script src="https://cdn.bootcss.com/angular.js/1.7.8/angular-route.min.js"></script>
 <script src="assets/script.js"></script>
 <script src="app.js"></script>
+<script src="page/home.js"></script>
 </body>
 </html>
