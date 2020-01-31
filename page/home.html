@@ -37,13 +37,32 @@
         margin-top: 0;
     }
 
+    .demo-btn {
+        border: 1px solid #ccc;
+        color: #000;
+        padding: 6px 40px;
+        font-size: 1.6em;
+        transition: 1s all;
+    }
+
+    .demo-btn:hover {
+        background: #333;
+        color: #ff0;
+    }
 </style>
 <div ng-controller="home">
     <div>
-        <h2 class="text-center">Erupt通用管理框架使用文档</h2>
+        <h2 class="text-center">Erupt通用数据管理框架使用文档</h2>
+        <h5 class="text-center">前端零代码，构建通用Admin管理后台，专注于业务逻辑</h5>
         <h3>
             Erupt是使用java语言编写的一款通用数据管理框架，使后端开发人员仅仅只通过注解，就可以实现复杂的前后端交互逻辑，拥有学习成本低，扩展性强等优点。
         </h3>
+        <hr>
+        <div style="text-align: center">
+            <a class="btn demo-btn" href="http://www.erupt.xyz:9999" target="_blank">
+                Demo
+            </a>
+        </div>
         <hr>
     </div>
     <div class="left-badge">
