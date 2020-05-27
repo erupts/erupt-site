@@ -1,38 +1,33 @@
 * {
     font-family: Courier New, Menlo, Monaco, Consolas, monospace;
-}
-
-.ng-cloak {
-    display: none;
-}
-
-.title {
+    /*Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif*/
     margin: 0;
-    color: #fff;
-    font-size: 3em;
-    padding: 5px 10px;
+    padding: 0;
 }
 
 body {
-    background-color: #333;
+    margin: 0;
+    background: #f8fafc;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 body > header {
     position: fixed;
-    z-index: 1;
+    z-index: 999;
     top: 0;
     left: 0;
     right: 0;
-    background: #FFEB3B;
-    box-shadow: 3px 0 10px #999
+    /*box-shadow: 3px 0 10px #999;*/
+    box-shadow: 0 0 18px rgba(0, 0, 0, .06);
+    background: rgba(255, 255, 255, 0.85);
 }
 
 body > main {
-    min-height: 600px;
-    padding: 10px 50px;
-    margin-top: 60px;
-    margin-bottom: 40px;
-    background: #fff;
+    background: #f8fafc;
+    min-height: calc(100vh - 45px);
+    margin-top: 45px;
+    margin-bottom: 45px;
+    padding: 20px 0;
 }
 
 body > footer {
@@ -41,15 +36,12 @@ body > footer {
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 6px;
     background: #333;
+    color: #fff;
 }
 
-body > footer > p {
-    text-align: center;
-    padding: 4px 0;
-    color: #fff;
-    margin: 0;
+.ng-cloak {
+    display: none;
 }
 
 .col-xs-space {
@@ -57,29 +49,16 @@ body > footer > p {
     padding-right: 8px;
 }
 
-.mask-a {
-    color: #fff;
-
+.logo-text {
+    font-weight: 600;
+    font-size: 24px;
+    vertical-align: middle;
+    margin-left: 6px;
+    letter-spacing: 3px;
+    /*font-size: 2em;vertical-align:middle;*/
 }
 
-.mask-a:hover, .mask-a:active, .mask-a:focus {
-    text-decoration: none;
-    color: #fff;
-}
 
 .coder {
     font-family: Courier New, Menlo, Monaco, Consolas, monospace;
-}
-
-.btn-demo {
-    border: 1px solid #ccc;
-    color: #000;
-    padding: 4px 40px;
-    font-size: .6em;
-    transition: 1s all;
-}
-
-.btn-demo:hover {
-    background: #333;
-    color: #ff0;
 }

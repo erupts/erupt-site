@@ -3,31 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta content="erupt通用数据管理框架使用文档" name="description">
-    <meta name="keyword" content="erupt,通用数据管理,数据管理框架,视图关系映射模型">
-    <title>erupt</title>
-    <link href="assets/bootstrp.min.css" rel="stylesheet">
+    <meta content="erupt,Java注解开发,Java视图关系映射模型,CURD终极解决方案" name="keyword">
+    <title>erupt通用数据管理框架</title>
+    <link href="assets/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
 </head>
 <body ng-app="app" class="ng-cloak">
 <header>
-    <h1 class="title">
-        <img src="favicon.ico" alt="" style="width: 50px;">
-        <a href="" class="mask-a" style="color: #000">erupt<span style="font-size: .4em">.xyz</span></a>
-
-        <!--        <a class="btn btn-demo" style="float: right" href="http://www.erupt.xyz:9999" target="_blank">-->
-        <!--            Demo-->
-        <!--        </a>-->
-    </h1>
+    <div class="container">
+        <div>
+            <img alt="" src="assets/logo.svg" style="width: 45px;"><span class="logo-text">erupt<span
+                style="font-size: .4em">.xyz</span></span>
+            <span class="float-right" style="line-height: 45px">
+                <a class="btn btn-sm btn-success align-self-center" href="https://www.yuque.com/yuepeng/erupt"
+                   target="_blank">使用文档</a>
+                <a class="btn btn-sm btn-warning align-self-center" href="http://www.erupt.xyz:9999"
+                   target="_blank">演示DEMO</a>
+            </span>
+        </div>
+    </div>
 </header>
 <main>
-    <div ng-view style="max-width: 1280px;margin: 0 auto">
+    <div class="container" ng-view style="padding: 16px 0">
 
     </div>
 </main>
 <footer>
-    <p>Copyright © 2019-{{year}} erupt.xyz 版权所有.
-        备案号：<a href="http://beian.miit.gov.cn" style="color: #fff" target="_blank">京ICP备19044060号</a>
-    </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <img alt="" src="assets/logo2.svg" style="width: 45px;"><span class="logo-text">erupt<span
+                    style="font-size: .4em">.xyz</span></span>
+            </div>
+            <div class="col-8 align-self-center">
+                <p class="text-right " style="margin-bottom: 0;font-size: .85em">
+                    <a href="http://beian.miit.gov.cn" style="color: #fff" target="_blank">京ICP备19044060号-1</a>
+                    <span style="color: rgba(255,255,255,0.7)">|</span>
+                    <span>Copyright © 2019-{{year}} erupt.xyz All rights reserved.</span>
+                </p>
+            </div>
+        </div>
+    </div>
 </footer>
 <script src="assets/angular.min.js"></script>
 <script src="assets/angular-route.min.js"></script>
