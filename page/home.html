@@ -1,68 +1,66 @@
 <style>
-    .card {
-        padding: 15px;
-        background: #333;
-        margin-bottom: 16px;
-        border: 2px solid #333;
+    .e-title {
+        padding-top: 180px;
+        color: #fff;
         text-align: center;
-        cursor: pointer;
-        transition: all .5s;
-        box-sizing: border-box;
+        animation: title 1s;
     }
 
-    .card .txt {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: #ff0;
-        margin: 0;
-        font-weight: 500;
-        font-family: Courier New, Menlo, Monaco, Consolas, monospace;
+    @keyframes title {
+        0% {
+            opacity: 0;
+            transform: scaleX(2);
+        }
     }
 
-    .card:hover {
-        box-shadow: 0 0 8px 2px rgba(90, 90, 90, 0.8);
-        border-left: 5px solid #FFEB3B;
-        border-right: 5px solid #FFEB3B;
+    .topic-banner {
+        background: #1784ff;
+        background: linear-gradient(180deg, #1784ff 0%, #36cbff 100%);
+        height: 400px;
+        width: 100%
     }
 
-    .demo-btn {
-        border: 1px solid #ccc;
-        color: #000;
-        padding: 6px 60px;
-        font-size: 1.6em;
-        transition: 1s all;
-        margin-bottom: 10px;
+    .ui-banner {
+        box-shadow: 0 6px 12px 0 rgba(26, 188, 156, 0.1);
+        background: #FDFDFD;
+        border: 1px solid #F2F2F2;
+        border-radius: 4px;
+        padding: 24px 40px;
+        position: relative;
+        margin-top: 135px;
+        animation: ui-banner 1s;
     }
 
-    .demo-btn:hover {
-        transform: translateY(-3px);
+    @keyframes ui-banner {
+        0% {
+            transform: rotateX(90deg);
+        }
     }
 </style>
-<div class="container" ng-controller="home">
-    <div>
-        <h2 class="text-center" style="margin: 10px 0">Erupt通用数据管理框架使用文档</h2>
-        <hr>
-        <div style="text-align: center">
-            <a class="btn demo-btn" href="http://www.erupt.xyz:9999" target="_blank">
-                演示Demo
-            </a>
-            <p class="text-center">用户名：guest 密码：guest</p>
-        </div>
-        <hr>
-    </div>
-
-    <!--    <div class="d-flex justify-content-center">-->
-    <!--        <div class="card" style="width: 72px">-->
-    <!--            <h2 class="txt">@</h2>-->
-    <!--        </div>-->
-    <!--    </div>-->
-
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-xs-space" ng-repeat="f in erupt">
-            <div class="card ">
-                <h2 class="txt">{{f.annotation}}</h2>
+<div>
+    <div class="topic-banner">
+        <div class="container">
+            <h1 class="e-title">
+                Erupt通用数据管理框架
+                <!--                Erupt Common data framework Admin-->
+            </h1>
+            <div class="ui-banner text-center" style="font-size: 1.3em">
+                <span class="text-primary">Java</span>
+                <span> + </span>
+                <span class="text-danger">@Erupt</span>
+                <span> + </span>
+                <span class="text-warning">DataSource</span>
+                <span> -> </span>
+                <span class="text-success">Admin View</span>
             </div>
         </div>
     </div>
+</div>
+
+<div class="container" ng-controller="home" style="margin-top: 60px;padding: 10px 0">
+    <!--    <div class="card">-->
+    <!--        <div class="card-body">-->
+    <!--            xxxxx-->
+    <!--        </div>-->
+    <!--    </div>-->
 </div>

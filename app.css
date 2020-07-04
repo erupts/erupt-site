@@ -20,14 +20,22 @@ body > header {
     /*box-shadow: 3px 0 10px #999;*/
     box-shadow: 0 0 18px rgba(0, 0, 0, .06);
     background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid #efe3e5;
+    animation: header-in 600ms;
 }
+
+@keyframes header-in {
+    0% {
+        transform: translateY(-50px);
+    }
+}
+
 
 body > main {
     background: #f8fafc;
     min-height: calc(100vh - 45px);
     margin-top: 45px;
     margin-bottom: 45px;
-    padding: 20px 0;
 }
 
 body > footer {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="erupt通用数据管理框架使用文档" name="description">
     <meta content="erupt,Java注解开发,Java视图关系映射模型,CURD终极解决方案" name="keyword">
-    <title>erupt通用数据管理框架</title>
+    <title>Erupt通用数据管理框架</title>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
 </head>
@@ -12,21 +12,26 @@
 <header>
     <div class="container">
         <div>
-            <img alt="" src="assets/logo.svg" style="width: 45px;"><span class="logo-text">erupt<span
-                style="font-size: .4em">.xyz</span></span>
+            <span>
+                <img alt="" src="assets/logo.svg" style="width: 45px;">
+                <span class="logo-text">
+                    erupt<span style="font-size: .4em">.xyz</span>
+                </span>
+            </span>
             <span class="float-right" style="line-height: 45px">
-                <a class="btn btn-sm btn-success align-self-center" href="https://www.yuque.com/yuepeng/erupt"
+<!--                href="#!/doc"-->
+                <a class="btn btn-sm align-self-center" href="#!/">Home</a>
+                <a class="btn btn-sm align-self-center" href="#">Extra</a>
+                <span style="border-right: 1px solid #ccc;height: 100%;margin: 0 .5rem"></span>
+                <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/yuepeng/erupt"
                    target="_blank">使用文档</a>
-                <a class="btn btn-sm btn-warning align-self-center" href="http://www.erupt.xyz:9999"
+                <a class="btn btn-sm align-self-center btn-link" href="http://www.erupt.xyz:9999"
                    target="_blank">演示DEMO</a>
             </span>
         </div>
     </div>
 </header>
-<main>
-    <div class="container" ng-view style="padding: 16px 0">
-
-    </div>
+<main ng-view>
 </main>
 <footer>
     <div class="container">

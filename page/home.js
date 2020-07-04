@@ -9,6 +9,12 @@ app.controller("home", function ($scope) {
         {annotation: '@EruptProperty'},
     ];
 
+    $scope.modules = [
+        {name: "bi"},
+        {name: "job"},
+        {name: "tpl"}
+    ]
+
 
     // $scope.erupt = [
     //     {annotation: 'primaryKeyCol'},
