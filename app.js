@@ -24,11 +24,25 @@ var app = angular.module('app', [
             toTemplate();
             return "page/doc/doc.html";
         }
+    }).when('/extra', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/extra.html";
+        }
     }).otherwise({
         redirectTo: '/'
     });
+})
 
-    function resoleLoad() {
-
-    }
+app.controller("extra", function ($scope) {
+    $scope.modules = [{
+        name: 'erupt-bi',
+        desc: '数据分析模块'
+    }, {
+        name: 'erupt-job',
+        desc: '任务调度模块'
+    }, {
+        name: 'erupt-tpl',
+        desc: '嵌入式模板模块'
+    }]
 })

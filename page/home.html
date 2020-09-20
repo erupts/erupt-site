@@ -33,25 +33,19 @@
         margin-bottom: 15px;
     }
 
-    /*.ui-banner .ui-banner-img {*/
-    /*    transition: opacity 1s;*/
-    /*    width: 100%;*/
-    /*    opacity: 0;*/
-    /*    display: none;*/
-    /*    margin-top: 10px;*/
-    /*}*/
-
-    /*.ui-banner:hover .ui-banner-img {*/
-    /*    opacity: 1;*/
-    /*    transition: opacity 1s;*/
-    /*    display: block;*/
-    /*}*/
-
     @keyframes ui-banner {
         0% {
             transform: rotateX(90deg);
         }
     }
+
+    /*.annotation{*/
+    /*    color: #FFEB3B;*/
+    /*}*/
+
+    /*.scope{*/
+    /*    color: #d97316;*/
+    /*}*/
 </style>
 <div>
     <div class="topic-banner">
@@ -71,14 +65,44 @@
                     <span> -> </span>
                     <span class="text-success">Admin Page</span>
                 </div>
-                <!--                <div class="ui-banner-img">-->
-                <!--                    <img src="./images/admin.png" style="width: 100%">-->
-                <!--                </div>-->
             </div>
         </div>
     </div>
 </div>
 
-<div class="container" ng-controller="home" style="margin-top: 90px;padding: 10px 0">
-
+<div class="container" ng-controller="home" style="margin-top: 70px;">
+    <div class="row">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                    java + erupt
+                </div>
+                <div class="card-body" style="background: #333;color: #fff">
+                    <p style="color: #FFEB3B;margin-bottom: 4px">@EruptField</p>
+                    <p style="margin-bottom: 0">
+                        <span style="color: #d97316">private</span>
+                        String
+                        <span style="color: #9f73ae">input;</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="card" style="cursor: pointer;">
+                <div class="card-header">
+                    ->
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    Admin Page
+                </div>
+                <div class="card-body">
+                    image
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

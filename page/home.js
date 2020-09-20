@@ -15,6 +15,12 @@ app.controller("home", function ($scope) {
         {name: "tpl"}
     ]
 
+    $scope.steps = [
+        {name: "java"},
+        {name: "erupt"},
+        {name: "java"}
+    ]
+
 
     // $scope.erupt = [
     //     {annotation: 'primaryKeyCol'},

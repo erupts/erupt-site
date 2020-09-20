@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta content="erupt通用数据管理框架使用文档" name="description">
-    <meta content="erupt,Java注解开发,Java视图关系映射模型,CURD终极解决方案" name="keyword">
-    <title>Erupt通用数据管理框架</title>
+    <meta content="注解框架,Java注解,Java视图关系映射模型,CURD终极解决方案,快速构建管理后台" name="keyword">
+    <title>erupt</title>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
 </head>
-<body ng-app="app" class="ng-cloak">
+<body class="ng-cloak" ng-app="app" ng-controller="index">
 <header>
     <div class="container">
         <div>
-            <span>
+            <span ng-click="goHome()" style="display: inline-block;cursor: pointer">
                 <img alt="" src="assets/logo.svg" style="width: 45px;">
                 <span class="logo-text">
                     erupt<span style="font-size: .4em">.xyz</span>
                 </span>
             </span>
             <span class="float-right" style="line-height: 45px">
-<!--                href="#!/doc"-->
-                <a class="btn btn-sm align-self-center" href="#">Home</a>
 
-                <a class="btn btn-sm align-self-center" href="#">Extra</a>
-                <a class="btn btn-sm align-self-center" href="#">Tpl</a>
-                <a class="btn btn-sm align-self-center" href="#">Job</a>
-                <a class="btn btn-sm align-self-center" href="#">BI</a>
+                <a class="btn btn-sm align-self-center" href="#!/extra">Extra</a>
+                 <span style="border-right: 1px solid #ccc;height: 100%;margin: 0 .5rem"></span>
                 <a class="btn btn-sm align-self-center" href="https://github.com/erupt-cyber/zeta-api" target="_blank">Zeta-API</a>
                 <span style="border-right: 1px solid #ccc;height: 100%;margin: 0 .5rem"></span>
                 <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/yuepeng/erupt"
                    target="_blank">使用文档</a>
-                <a class="btn btn-sm align-self-center btn-link" href="http://www.erupt.xyz:9999"
+                <a class="btn btn-sm align-self-center btn-link" href="https://www.erupt.xyz/demo"
                    target="_blank">演示DEMO</a>
             </span>
         </div>
@@ -57,8 +53,14 @@
 </footer>
 <script src="assets/angular.min.js"></script>
 <script src="assets/angular-route.min.js"></script>
-<script src="assets/script.js"></script>
 <script src="app.js"></script>
 <script src="page/home.js"></script>
+<script>
+    app.controller("index", function ($scope) {
+        $scope.goHome = function () {
+            location.href = "#";
+        }
+    });
+</script>
 </body>
 </html>

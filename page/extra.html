@@ -1,0 +1,31 @@
+<style>
+
+    .card:hover {
+        /*background: #333;*/
+        /*color: #fff;*/
+        transform: translateY(-8px);
+        transition: all .25s ease-in-out;
+        box-shadow: 0 25px 60px -20px rgba(155, 165, 163, .45);
+    }
+
+    .card:hover .title {
+        background: #333;
+        color: #fff;
+    }
+
+
+</style>
+<div class="container" ng-controller="extra">
+    <div class="row" style="padding-top: 26px">
+        <div class="col-6" ng-repeat="module in modules" style="margin-bottom: 36px">
+            <div class="card" style="cursor: pointer;">
+                <div class="card-header">
+                    {{module.name}}
+                </div>
+                <div class="card-body">
+                    {{module.desc}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
