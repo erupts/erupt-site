@@ -17,9 +17,9 @@ body > header {
     top: 0;
     left: 0;
     right: 0;
-    box-shadow: 0 0 18px rgba(0, 0, 0, .06);
     background: rgba(255, 255, 255, 0.93);
-    border-bottom: 1px solid #efe3e5;
+    /*border-bottom: 1px solid #efe3e5;*/
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .05);
     animation: header-in 600ms;
 }
 
@@ -35,6 +35,7 @@ body > main {
     min-height: calc(100vh - 45px);
     margin-top: 45px;
     margin-bottom: 45px;
+    border-radius: 0 0 6px 6px;
 }
 
 body > footer {
@@ -45,7 +46,15 @@ body > footer {
     bottom: 0;
     background: #333;
     color: #fff;
+    box-shadow: inset 0 30px 30px -15px rgba(33, 33, 33, 0.8);
 }
+
+body > footer::before {
+    content: "";
+    height: 10px;
+    display: block;
+}
+
 
 .ng-cloak {
     display: none;
@@ -68,4 +77,13 @@ body > footer {
 
 .coder {
     font-family: Courier New, Menlo, Monaco, Consolas, monospace;
+}
+
+
+.erupt-card {
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .14);
+    box-shadow: 0 3px 8px -6px rgba(0, 0, 0, .1);
+    border-radius: 8px;
 }

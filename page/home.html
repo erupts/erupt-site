@@ -1,108 +1,20 @@
-<style>
-    .e-title {
-        padding-top: 180px;
-        color: #fff;
-        text-align: center;
-        animation: title 1s;
-    }
-
-    @keyframes title {
-        0% {
-            opacity: 0;
-            transform: scaleX(2);
-        }
-    }
-
-    .topic-banner {
-        background: #1784ff;
-        background: linear-gradient(180deg, #1784ff 0%, #36cbff 100%);
-        height: 400px;
-        width: 100%
-    }
-
-    .ui-banner {
-        box-shadow: 0 6px 12px 0 rgba(26, 188, 156, 0.1);
-        background: #FDFDFD;
-        border: 1px solid #F2F2F2;
-        border-radius: 4px;
-        padding: 20px 10px;
-        position: relative;
-        margin-top: 105px;
-        z-index: 10;
-        animation: ui-banner 1s;
-        margin-bottom: 15px;
-    }
-
-    @keyframes ui-banner {
-        0% {
-            transform: rotateX(90deg);
-        }
-    }
-
-    /*.annotation{*/
-    /*    color: #FFEB3B;*/
-    /*}*/
-
-    /*.scope{*/
-    /*    color: #d97316;*/
-    /*}*/
-</style>
-<div>
-    <div class="topic-banner">
-        <div class="container">
-            <h1 class="e-title">
-                Erupt通用数据管理框架
-                <!--                Erupt Common data framework Admin-->
-            </h1>
-            <p style="color: #fff;text-align: center">零前端代码，快速构建admin数据管理后台。</p>
-            <div class="ui-banner text-center" style="font-size: 1.3em">
-                <div>
-                    <span class="text-primary">Java</span>
-                    <span> + </span>
-                    <span class="text-danger">Erupt</span>
-                    <span> + </span>
-                    <span class="text-warning">Data</span>
-                    <span> -> </span>
-                    <span class="text-success">Admin Page</span>
-                </div>
-            </div>
+<img alt="" ondragstart="return false;" src="https://api.ixiaowai.cn/gqapi/gqapi.php" style="width: 100%;">
+<div class="container" style="padding: 20px 0">
+    <h1 class="text-center">Erupt 通用数据管理框架</h1>
+    <div class="card erupt-card">
+        <div class="card-header">
+            核心注解
         </div>
-    </div>
-</div>
-
-<div class="container" ng-controller="home" style="margin-top: 70px;">
-    <div class="row">
-        <div class="col-3">
-            <div class="card">
-                <div class="card-header">
-                    java + erupt
-                </div>
-                <div class="card-body" style="background: #333;color: #fff">
-                    <p style="color: #FFEB3B;margin-bottom: 4px">@EruptField</p>
-                    <p style="margin-bottom: 0">
-                        <span style="color: #d97316">private</span>
-                        String
-                        <span style="color: #9f73ae">input;</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1">
-            <div class="card" style="cursor: pointer;">
-                <div class="card-header">
-                    ->
-                </div>
-            </div>
-        </div>
-        <div class="col-8">
-            <div class="card">
-                <div class="card-header">
-                    Admin Page
-                </div>
-                <div class="card-body">
-                    image
-                </div>
-            </div>
+        <div class="card-body">
+            <p>
+                <span class="badge badge-warning" style="font-size: 1.4em">@Erupt</span>
+            </p>
+            <p>
+                <span class="badge badge-success">@EruptField</span>
+                <span class="badge badge-warning">@EruptField</span>
+                <span class="badge badge-primary">@EruptField</span>
+                <span class="badge badge-danger">@EruptField</span>
+            </p>
         </div>
     </div>
 </div>
