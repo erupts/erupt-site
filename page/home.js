@@ -9,17 +9,35 @@ app.controller("home", function ($scope) {
         {annotation: '@EruptProperty'},
     ];
 
-    $scope.modules = [
-        {name: "bi"},
-        {name: "job"},
-        {name: "tpl"}
-    ]
 
     $scope.steps = [
         {name: "java"},
         {name: "erupt"},
         {name: "java"}
     ]
+
+    $scope.dbs = [
+        {name: "mysql"},
+        {name: "oracle"},
+        {name: "sql server"},
+        {name: "h2"},
+        {name: "db2"},
+        {name: "Postgresql"}
+    ]
+
+    document.onscroll = function () {
+        throttle(() => {
+            let top = $(document).scrollTop();
+            let threshold = 200;
+            if (top < threshold) {
+                $("#gallery img").css({top: -(top / 3)});
+                $("#erupt-content").css({background: "none"})
+            }
+            if (top > threshold * 1.2) {
+                $("#erupt-content").css({background: "#fff"})
+            }
+        }, 80)()
+    }
 
 
     // $scope.erupt = [

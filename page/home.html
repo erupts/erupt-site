@@ -1,20 +1,86 @@
-<img alt="" ondragstart="return false;" src="https://api.ixiaowai.cn/gqapi/gqapi.php" style="width: 100%;">
-<div class="container" style="padding: 20px 0">
-    <h1 class="text-center">Erupt 通用数据管理框架</h1>
-    <div class="card erupt-card">
-        <div class="card-header">
-            核心注解
+<style>
+    #erupt-content {
+        transition: all .6s;
+        border-radius: 8px 8px;
+        padding-bottom: 20px;
+    }
+
+    .kernel {
+        cursor: pointer;
+        transition: all .6s;
+        color: #f8fafc;
+        font-size: 8em;
+        /*font-family: Arial, Helvetica, sans-serif*/
+    }
+
+    .kernel:hover {
+        color: #ffc107 !important;
+        transform: scaleY(30);
+    }
+</style>
+<div ng-controller="home">
+    <div id="gallery"
+         style="position: fixed;left: 0;right: 0;top: 0;overflow: hidden;max-height: 360px;box-shadow: 0 2px 10px #333">
+        <img alt="" ondragstart="return false;" src="https://api.ixiaowai.cn/gqapi/gqapi.php"
+             style="width: 100%;position: relative">
+    </div>
+    <div style="padding-top: 10px;position: relative">
+        <div class="text-center" style="color: #fff">
+            <div class="text-center">
+                <span class="text-center kernel">@</span>
+            </div>
+            <h1>Erupt Framework</h1>
+            <h4>通用数据管理框架</h4>
         </div>
-        <div class="card-body">
-            <p>
-                <span class="badge badge-warning" style="font-size: 1.4em">@Erupt</span>
-            </p>
-            <p>
-                <span class="badge badge-success">@EruptField</span>
-                <span class="badge badge-warning">@EruptField</span>
-                <span class="badge badge-primary">@EruptField</span>
-                <span class="badge badge-danger">@EruptField</span>
-            </p>
+        <div id="erupt-content">
+            <div class="container" style="padding: 12px 0">
+
+                <div class="card erupt-card">
+                    <div class="card-header bg-warning">
+                        使用Erupt注解快速构建后台页面
+                    </div>
+                    <div class="card-body" style="background: #333;color: #fff;">
+                        <p style="color: #FFEB3B;margin-bottom: 4px">@EruptField</p>
+                        <p style="margin-bottom: 0">
+                            <span style="color: #d97316">private</span>
+                            String
+                            <span style="color: #9f73ae">input;</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card erupt-card" ng-repeat="i in [1]">
+                    <div class="card-header">
+                        核心注解
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            <span class="badge badge-warning" style="font-size: 1.4em">@Erupt</span>
+                        </p>
+                        <p>
+                            <span class="badge badge-success" style="font-size: 1.4em">@EruptField</span>
+                        </p>
+                        <p>
+                            <span class="badge badge-warning" style="font-size: 1.4em">@View</span>
+                        </p>
+                        <p>
+                            <span class="badge badge-danger" style="font-size: 1.4em">@Edit</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card erupt-card">
+                    <div class="card-header">
+                        数据库支持
+                    </div>
+                    <div class="card-body">
+                        <div class="col-3" ng-repeat="db in dbs">
+                            <span class="badge badge-warning"
+                                  style="font-size: 1.4em;margin-bottom: 26px">{{db.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
