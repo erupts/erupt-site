@@ -9,6 +9,17 @@ app.controller("home", function ($scope) {
         {annotation: '@EruptProperty'},
     ];
 
+    $scope.indicator = [{
+        name: "项目启动速度",
+        value: "低于10s"
+    }, {
+        name: "页面渲染速度",
+        value: "毫秒级渲染"
+    }, {
+        name: "页面渲染速度",
+        value: "毫秒级渲染"
+    }]
+
 
     $scope.steps = [
         {name: "java"},
@@ -64,7 +75,7 @@ app.controller("home", function ($scope) {
                 $("#erupt-content").css({background: "none"})
             }
             if (top > threshold * 1.2) {
-                $("#erupt-content").css({background: "#fff"})
+                $("#erupt-content").css({background: "#ededed"})
             }
         }, 80)()
     }

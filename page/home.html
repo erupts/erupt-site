@@ -1,9 +1,8 @@
 <style>
     #erupt-content {
         transition: all .6s;
-        border-radius: 8px;
+        border-radius: 6px;
         padding: 20px 0;
-        background: #ededed;
     }
 
     .kernel {
@@ -50,7 +49,7 @@
 </style>
 <div ng-controller="home">
     <div id="gallery"
-         style="position: fixed;left: 0;right: 0;top: 0;overflow: hidden;max-height: 360px;box-shadow: 0 2px 10px #333">
+         style="position: fixed;left: 0;right: 0;top: 0;overflow: hidden;max-height: 430px;box-shadow: 0 2px 10px #333">
         <img alt="" ondragstart="return false;" src="images/home.jpeg"
              style="width: 100%;position: relative">
     </div>
@@ -143,7 +142,7 @@ public class Student {
                         表单支持
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
-                        <div class="text-center col-lg-2 col-md-4  col-sm-6 card-item" ng-repeat="type in types">
+                        <div class="text-center col-lg-2 col-md-4 col-sm-6 card-item" ng-repeat="type in types">
                             <p>{{type.code}}</p>
                             <img ng-src="images/component/{{type.image}}" style="max-width: 33px;">
                             <p style="font-size: .8em;margin-bottom: 0;margin-top: 1rem">{{type.name}}</p>
