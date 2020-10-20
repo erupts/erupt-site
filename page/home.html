@@ -1,8 +1,9 @@
 <style>
     #erupt-content {
         transition: all .6s;
-        border-radius: 8px 8px;
-        padding-bottom: 20px;
+        border-radius: 8px;
+        padding: 20px 0;
+        background: #ededed;
     }
 
     .kernel {
@@ -17,66 +18,149 @@
         color: #ffc107 !important;
         transform: scaleY(30);
     }
+
+    .annotation {
+        color: #FFEB3B !important;
+    }
+
+    .java-annotation-value {
+        color: #678257;
+    }
+
+    .java-type {
+        color: #fff;
+    }
+
+    .java-scope {
+        color: #cc7832;
+    }
+
+    .card-item {
+        box-sizing: border-box;
+        cursor: pointer;
+        padding: 16px;
+        border-right: 1px solid #efefef;
+        border-bottom: 1px solid #efefef;
+    }
+
+    .card-item:hover {
+        transition: all .3s;
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, .06);
+    }
 </style>
 <div ng-controller="home">
     <div id="gallery"
          style="position: fixed;left: 0;right: 0;top: 0;overflow: hidden;max-height: 360px;box-shadow: 0 2px 10px #333">
-        <img alt="" ondragstart="return false;" src="https://api.ixiaowai.cn/gqapi/gqapi.php"
+        <img alt="" ondragstart="return false;" src="images/home.jpeg"
              style="width: 100%;position: relative">
     </div>
-    <div style="padding-top: 10px;position: relative">
+    <div style="position: relative">
         <div class="text-center" style="color: #fff">
-            <div class="text-center">
+            <div>
                 <span class="text-center kernel">@</span>
             </div>
             <h1>Erupt Framework</h1>
-            <h4>通用数据管理框架</h4>
+            <h4 style="margin-top: 16px">简单注解配置，轻松实现数据管理</h4>
+            <h5>&nbsp;</h5>
+            <!--            <h6>-->
+            <!--                能用来做什么，怎么用，有什么优点-->
+            <!--            </h6>-->
         </div>
         <div id="erupt-content">
-            <div class="container" style="padding: 12px 0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8">
+                        <pre id="code-demo" style="margin: 0;"><code class="prism language-java">import javax.persistence.*;
 
-                <div class="card erupt-card">
-                    <div class="card-header bg-warning">
-                        使用Erupt注解快速构建后台页面
+@Erupt(name = "学生管理")        //erupt类注解
+@Table(name = "t_student")    //表名
+@Entity                      //hibernate实体类标识
+public class Student {
+
+    @Id                                                 //主键标识
+    @GeneratedValue(strategy = GenerationType.AUTO)     //自增
+    @EruptField
+    private String id;
+
+    @EruptField(
+        views = @View(title = "姓名"),
+        edit = @Edit(title = "姓名")
+    )
+    private String name;
+
+    @EruptField(
+        views = @View(title = "年龄"),
+        edit = @Edit(title = "年龄")
+    )
+    private Integer age;
+
+    @EruptField(
+        views = @View(title = "性别"),
+        edit = @Edit(title = "性别",
+                     boolType = @BoolType(trueText = "男",
+                                          falseText = "女"))
+    )
+    private Boolean sex;
+}</code></pre>
                     </div>
-                    <div class="card-body" style="background: #333;color: #fff;">
-                        <p style="color: #FFEB3B;margin-bottom: 4px">@EruptField</p>
-                        <p style="margin-bottom: 0">
-                            <span style="color: #d97316">private</span>
-                            String
-                            <span style="color: #9f73ae">input;</span>
-                        </p>
+                    <div class="col-4">
+                        <table class="table table-hover table-bordered table-dark">
+                            <tr>
+                                <th colspan="3">数据库表</th>
+                            </tr>
+                            <tr>
+                                <th>name</th>
+                                <th>age</th>
+                                <th>sex</th>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>18</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Tom</td>
+                                <td>26</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Mary</td>
+                                <td>22</td>
+                                <td>0</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-
-                <div class="card erupt-card" ng-repeat="i in [1]">
+                <!--                <div class="row">-->
+                <!--                    <div class="col-3"  ng-repeat="e in erupt">-->
+                <!--                        <div class="card card-body ">-->
+                <!--                            <div>{{e.annotation}}</div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <div class="card">
                     <div class="card-header">
-                        核心注解
+                        表单支持
                     </div>
-                    <div class="card-body">
-                        <p>
-                            <span class="badge badge-warning" style="font-size: 1.4em">@Erupt</span>
-                        </p>
-                        <p>
-                            <span class="badge badge-success" style="font-size: 1.4em">@EruptField</span>
-                        </p>
-                        <p>
-                            <span class="badge badge-warning" style="font-size: 1.4em">@View</span>
-                        </p>
-                        <p>
-                            <span class="badge badge-danger" style="font-size: 1.4em">@Edit</span>
-                        </p>
+                    <div class="row" style="margin-left: 0;margin-right: 0">
+                        <div class="text-center col-lg-2 col-md-4  col-sm-6 card-item" ng-repeat="type in types">
+                            <p>{{type.code}}</p>
+                            <img ng-src="images/component/{{type.image}}" style="max-width: 33px;">
+                            <p style="font-size: .8em;margin-bottom: 0;margin-top: 1rem">{{type.name}}</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card erupt-card">
+                <div class="card">
                     <div class="card-header">
                         数据库支持
                     </div>
-                    <div class="card-body">
-                        <div class="col-3" ng-repeat="db in dbs">
-                            <span class="badge badge-warning"
-                                  style="font-size: 1.4em;margin-bottom: 26px">{{db.name}}</span>
+                    <div class="row" style="margin-left: 0;margin-right: 0">
+                        <div class="card-item col-3" ng-repeat="db in dbs">
+                            <div style="padding: 16px;text-align: center">
+                                <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
+                            </div>
+                            <p class="text-center">{{db.name}}</p>
                         </div>
                     </div>
                 </div>

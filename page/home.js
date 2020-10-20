@@ -17,20 +17,50 @@ app.controller("home", function ($scope) {
     ]
 
     $scope.dbs = [
-        {name: "mysql"},
-        {name: "oracle"},
-        {name: "sql server"},
-        {name: "h2"},
-        {name: "db2"},
-        {name: "Postgresql"}
+        {name: "MySQL", image: "mysql.svg"},
+        {name: "Oracle", image: "oracle.svg"},
+        {name: "SQL Server", image: "sqlServer.svg"},
+        {name: "postgreSQL", image: "postgreSQL.svg"},
+        {name: "H2", image: "h2.svg"},
+        {name: "DB2", image: "db2.svg"},
+        {name: "mongoDB", image: "mongoDB.svg"}
+    ]
+
+    $scope.types = [
+        {code: "INPUT", name: "文本输入框", image: "input.svg"},
+
+        {code: "TEXTAREA", name: "多行文本输入框", image: "textarea.svg"},
+        {code: "NUMBER", name: "数值输入框", image: "number.svg"},
+        {code: "SLIDER", name: "滑动输入条", image: "slider.svg"},
+        {code: "DATE", name: "时间选择器", image: "date.svg"},
+        {code: "BOOLEAN", name: "开关", image: "bool.svg"},
+        {code: "CHOICE", name: "选择器", image: "choice.svg"},
+        {code: "ATTACHMENT", name: "附件，图片", image: "attachment.svg"},
+        {code: "AUTO_COMPLETE", name: "自动完成", image: "autoComplete.svg"},
+
+        {code: "REFERENCE_TREE", name: "树选择器", image: "referenceTree.svg"},
+        {code: "REFERENCE_TABLE", name: "表格选择器", image: "referenceTable.svg"},
+
+        {code: "TAB_TREE", name: "一对多树选择器", image: "tabTree.svg"},
+        {code: "TAB_TABLE_REFER", name: "一对多表格选择器", image: "tabTableRefer.svg"},
+        {code: "TAB_TABLE_ADD", name: "一对多增加", image: "tabTableAdd.svg"},
+
+        {code: "HTML_EDITOR", name: "富文本编辑器", image: "htmlEditor.svg"},
+        {code: "CODE_EDITOR", name: "代码编辑器", image: "codeEditor.svg"},
+
+        {code: "TPL", name: "自定义HTML模板", image: "tpl.svg"},
+        {code: "MAP", name: "地图", image: "map.svg"},
+        {code: "DIVIDE", name: "分割线", image: "divide.svg"},
+        {code: "HIDDEN", name: "隐藏", image: "hidden.svg"},
+        {code: "EMPTY", name: "空（仍占据组件位置）", image: "empty.svg"},
     ]
 
     document.onscroll = function () {
         throttle(() => {
             let top = $(document).scrollTop();
             let threshold = 200;
-            if (top < threshold) {
-                $("#gallery img").css({top: -(top / 3)});
+            if (top < threshold + 100) {
+                $("#gallery img").css({top: -(top / 5)});
                 $("#erupt-content").css({background: "none"})
             }
             if (top > threshold * 1.2) {
@@ -38,6 +68,9 @@ app.controller("home", function ($scope) {
             }
         }, 80)()
     }
+
+    let codeEle = document.getElementById("code-demo");
+    Prism.highlightAllUnder(codeEle);
 
 
     // $scope.erupt = [
@@ -59,39 +92,6 @@ app.controller("home", function ($scope) {
     //     {annotation: '@Edit'},
     //     {annotation: '@params'},
     // ];
-    //
-    // $scope.view = [
-    //     {annotation: 'title'},
-    //     {annotation: 'column'},
-    //     {annotation: 'viewType'},
-    //     {annotation: 'show'},
-    //     {annotation: 'sortable'},
-    //     {annotation: 'export'},
-    //     {annotation: 'className'},
-    //     {annotation: 'template'},
-    // ];
-    //
-    // $scope.edit = [
-    //     {annotation: 'title'},
-    //     {annotation: 'desc'},
-    //     {annotation: 'notNull'},
-    //     {annotation: 'show'},
-    //     {annotation: 'readOnly'},
-    //     {annotation: 'placeHolder'},
-    //     {annotation: 'search'},
-    //     {annotation: 'orderBy'},
-    //     {annotation: 'filter'},
-    //     {annotation: 'type'},
-    //     {annotation: 'inputType'},
-    //     {annotation: 'numberType'},
-    //     {annotation: 'boolType'},
-    //     {annotation: 'htmlType'},
-    //     {annotation: 'choiceType'},
-    //     {annotation: 'dateType'},
-    //     {annotation: 'sliderType'},
-    //     {annotation: 'attachmentType'},
-    //     {annotation: 'dependSwitchType'},
-    //     {annotation: 'referenceTreeType'},
-    //     {annotation: 'referenceTableType'},
-    // ];
+
+
 });
