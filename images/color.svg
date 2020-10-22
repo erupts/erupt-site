@@ -1,0 +1,6 @@
+<svg width="100%" height="400">
+    <polygon id="green" points="0 0 1001 0 1001 370 0 320" fill="#1AA79A"></polygon>
+    <polygon id="orange" points="0 0 1001 0 1001 320 0 370" fill="#F87335"></polygon>
+    <polygon id="yellow" points="0 0 1001 0 1001 320 0 320" fill="#F8CD0B"></polygon>
+    <polygon id="black" points="0 0 1001 0 1001 260 0 320" fill="#313639"></polygon>
+</svg>

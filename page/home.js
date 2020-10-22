@@ -74,7 +74,7 @@ app.controller("home", function ($scope) {
                 $("#gallery img").css({top: -(top / 5)});
                 $("#erupt-content").css({background: "none"})
             }
-            if (top > threshold * 1.2) {
+            if (top > threshold * 1.6) {
                 $("#erupt-content").css({background: "#ededed"})
             }
         }, 80)()
