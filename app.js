@@ -6,6 +6,7 @@ var app = angular.module('app', [
     'ngRoute'
 ]).run(function ($rootScope) {
     $rootScope.year = new Date().getFullYear();
+    $rootScope.showHeader = true;
 }).config(function ($provide, $compileProvider, $controllerProvider, $filterProvider) {
     app.controller = $controllerProvider.register;
     app.directive = $compileProvider.directive;
@@ -24,10 +25,15 @@ var app = angular.module('app', [
             toTemplate();
             return "page/doc/doc.html";
         }
-    }).when('/extra', {
+    }).when('/module', {
         templateUrl: function (attr) {
             toTemplate();
-            return "page/extra.html";
+            return "page/module.html";
+        }
+    }).when('/contrast', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/contrast/contrast.html";
         }
     }).otherwise({
         redirectTo: '/'
@@ -44,5 +50,8 @@ app.controller("extra", function ($scope) {
     }, {
         name: 'erupt-tpl',
         desc: '嵌入式模板模块'
+    }, {
+        name: 'erupt-mongodb',
+        desc: '使用erupt管理mongodb数据'
     }]
 })

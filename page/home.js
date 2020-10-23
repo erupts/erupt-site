@@ -1,4 +1,4 @@
-app.controller("home", function ($scope) {
+app.controller("home", function ($scope, $rootScope, $timeout) {
     $scope.erupt = [
         {annotation: '@Erupt'},
         {annotation: '@EruptField'},
@@ -34,7 +34,8 @@ app.controller("home", function ($scope) {
         {name: "postgreSQL", image: "postgreSQL.svg"},
         {name: "H2", image: "h2.svg"},
         {name: "DB2", image: "db2.svg"},
-        {name: "mongoDB", image: "mongoDB.svg"}
+        {name: "mongoDB", image: "mongoDB.svg"},
+        {name: "敬请期待", image: "more.svg"}
     ]
 
     $scope.types = [
@@ -66,22 +67,47 @@ app.controller("home", function ($scope) {
         {code: "EMPTY", name: "空（仍占据组件位置）", image: "empty.svg"},
     ]
 
+
+    $rootScope.showHeader = false;
+
+    $scope.$on("$destroy", function () {
+        $rootScope.showHeader = true;
+    })
+
+
     document.onscroll = function () {
         throttle(() => {
             let top = $(document).scrollTop();
-            let threshold = 200;
-            if (top < threshold + 100) {
-                $("#gallery img").css({top: -(top / 5)});
-                $("#erupt-content").css({background: "none"})
+            $("#gallery img").css({top: -(top / 3)});
+
+            if (top > 120) {
+                if ($rootScope.showHeader !== true) {
+                    $scope.$apply(function () {
+                        $rootScope.showHeader = true;
+                    })
+                }
+            } else {
+                if ($rootScope.showHeader !== false) {
+                    $scope.$apply(function () {
+                        $rootScope.showHeader = false;
+                    })
+                    // $("#header").css("transform", "translateY(-50px)")
+                }
             }
-            if (top > threshold * 1.6) {
-                $("#erupt-content").css({background: "#ededed"})
-            }
+
+            // let threshold = 200;
+            // if (top < threshold + 100) {
+            //     $("#gallery img").css({top: -(top / 5)});
+            //     $("#erupt-content").css({background: "none"})
+            // }
+            // if (top > threshold * 1.6) {
+            //     // $("#erupt-content").css({background: "#ededed"})
+            // }
         }, 80)()
     }
 
-    let codeEle = document.getElementById("code-demo");
-    Prism.highlightAllUnder(codeEle);
+    // let codeEle = document.getElementById("code-demo");
+    // // Prism.highlightAllUnder(codeEle);
 
 
     // $scope.erupt = [

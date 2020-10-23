@@ -1,8 +1,9 @@
 <style>
-    #erupt-content {
+    #erupt-features {
         transition: all .6s;
         border-radius: 6px;
         padding: 20px 0;
+        position: relative;
     }
 
     .kernel {
@@ -18,22 +19,6 @@
         transform: scaleY(30);
     }
 
-    .annotation {
-        color: #FFEB3B !important;
-    }
-
-    .java-annotation-value {
-        color: #678257;
-    }
-
-    .java-type {
-        color: #fff;
-    }
-
-    .java-scope {
-        color: #cc7832;
-    }
-
     .card-item {
         box-sizing: border-box;
         cursor: pointer;
@@ -46,115 +31,52 @@
         transition: all .3s;
         box-shadow: inset 0 0 30px rgba(0, 0, 0, .06);
     }
+
+    #gallery {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        overflow: hidden;
+        /*max-height: 660px;*/
+    }
 </style>
 <div ng-controller="home">
-    <div id="gallery"
-         style="position: fixed;left: 0;right: 0;top: 0;overflow: hidden;max-height: 680px;box-shadow: 0 2px 10px #333">
-        <img alt="" ondragstart="return false;" src="images/home.jpeg"
-             style="width: 100%;position: relative">
+    <div id="gallery">
+        <img alt="" ondragstart="return false;" src="images/home.jpeg" style="width: 100%;position: relative">
     </div>
     <div style="position: relative">
-        <div style="position: absolute;
-            top: 440px;
-            left: 0;
-            right: 0;
-            height: 300px;
-            background: #fff;
-            transform: skewY(-4.5deg);">
-
-        </div>
-        <!--        <div style="width: 100%;position: absolute">-->
-        <!--            <svg width="100%" height="400">-->
-        <!--                <polygon id="green" points="0 0 1501 0 1501 370 0 320" fill="#1AA79A"></polygon>-->
-        <!--                <polygon id="orange" points="0 0 1501 0 1501 320 0 370" fill="#F87335"></polygon>-->
-        <!--                <polygon id="yellow" points="0 0 1501 0 1501 320 0 320" fill="#F8CD0B"></polygon>-->
-        <!--                <polygon id="black" points="0 0 1501 0 1501 260 0 320" fill="#313639"></polygon>-->
-        <!--            </svg>-->
-        <!--        </div>-->
         <div class="text-center" style="color: #fff">
             <div>
                 <span class="text-center kernel">@</span>
             </div>
             <h1>Erupt Framework</h1>
             <h4 style="margin-top: 16px">简单注解配置，轻松实现数据管理</h4>
-            <h5>&nbsp;</h5>
-            <!--            <h6>-->
-            <!--                能用来做什么，怎么用，有什么优点-->
-            <!--            </h6>-->
+            <br>
+            <p>
+                <a class="btn btn-primary" href="https://www.erupt.xyz/demo" target="_blank" type="button">演示demo</a>
+                &nbsp;&nbsp;
+                <a class="btn btn-success" href="#!/doc" type="button">使用文档</a>
+                &nbsp;&nbsp;
+                <a class="btn btn-danger" href="#!/contrast" type="button">代码示例</a>
+            </p>
+            <br>
+            <p>
+                <img alt=""
+                     src="https://img.shields.io/github/stars/erupts/erupt?style=social">
+            </p>
         </div>
-        <div id="erupt-content">
+        <div id="erupt-features" style="margin-top: 160px">
+            <!--            transform: skewY(-4.5deg);-->
+            <div style="position: absolute;
+            top: 160px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #f8fafc;">
+
+            </div>
             <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <pre id="code-demo" style="margin: 0;height: 800px;"><code class="prism language-java">import javax.persistence.*;
-
-@Erupt(name = "学生管理")        //erupt类注解
-@Table(name = "t_student")    //表名
-@Entity                      //hibernate实体类标识
-public class Student extends BaseModel {
-
-    @EruptField(
-        views = @View(title = "姓名"),
-        edit = @Edit(title = "姓名")
-    )
-    private String name;
-
-    @EruptField(
-        views = @View(title = "年龄"),
-        edit = @Edit(title = "年龄")
-    )
-    private Integer age;
-
-    @EruptField(
-        views = @View(title = "性别"),
-        edit = @Edit(title = "性别",
-                     boolType = @BoolType(trueText = "男",
-                                          falseText = "女"))
-    )
-    private Boolean sex;
-}</code></pre>
-                    </div>
-                    <div class="col-6">
-                        <div class="card">
-                            <div class="card-header">
-                                🚀 运行结果
-                            </div>
-                            <div>
-                                <!--                            filter: invert(1) hue-rotate(180deg)-->
-                                <iframe frameborder="0"
-                                        src="https://erupt.xyz/demo/#/fill/build/table/student"
-                                        style="width: 100%;height: 530px;"></iframe>
-                            </div>
-                        </div>
-                        <div style="border-radius: .3em;overflow: hidden">
-                            <table class="table table-hover table-bordered table-dark">
-                                <tr>
-                                    <th colspan="3">通过Jap生成数据库表</th>
-                                </tr>
-                                <tr>
-                                    <th>name</th>
-                                    <th>age</th>
-                                    <th>sex</th>
-                                </tr>
-                                <tr>
-                                    <td>John</td>
-                                    <td>18</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td>Tom</td>
-                                    <td>26</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td>Mary</td>
-                                    <td>22</td>
-                                    <td>0</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
                 <div class="card">
                     <div class="card-header">
                         表单支持
@@ -170,10 +92,10 @@ public class Student extends BaseModel {
 
                 <div class="card">
                     <div class="card-header">
-                        数据库支持
+                        数据源支持
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
-                        <div class="card-item col-3" ng-repeat="db in dbs">
+                        <div class="card-item col-lg-3  col-md-4 col-sm-6" ng-repeat="db in dbs">
                             <div style="padding: 16px;text-align: center">
                                 <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
                             </div>

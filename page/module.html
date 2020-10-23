@@ -1,0 +1,29 @@
+<style>
+
+</style>
+<div class="container" ng-controller="extra">
+    <div class="row" style="padding-top: 36px">
+        <div class="col-4" ng-repeat="module in modules">
+            <div class="card">
+                <img alt="Card image cap" class="card-img-top" src="images/admin.png">
+                <div class="card-body">
+                    <p class="card-text">{{module.name}}</p>
+                    <p class="card-text">{{module.desc}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <img alt="Card image cap" class="card-img-top" src="images/admin.png">
+                <div class="card-body">
+                    <p class="card-text">
+                        <a href="https://github.com/erupt-cyber/zeta-api" target="_blank">
+                            zeta-api
+                        </a>
+                    </p>
+                    <p class="card-text">使用xml标签快速创建http接口</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,26 +14,37 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-body > header {
+#header {
     position: fixed;
     z-index: 999;
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.93);
+    /*background: rgba(255, 255, 255, 0.93);*/
     border-bottom: 1px solid #efe3e5;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .05);
+    background: #fff;
+    transition: all 600ms;
     animation: header-in 600ms;
 }
+
+#header a {
+    color: #808695;
+}
+
 
 @keyframes header-in {
     0% {
         transform: translateY(-50px);
     }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 
-body > main {
+#main {
     background: #f8fafc;
     min-height: calc(100vh - 45px);
     margin-top: 45px;
@@ -41,7 +52,7 @@ body > main {
     border-radius: 0 0 6px 6px;
 }
 
-body > footer {
+#footer {
     position: fixed;
     z-index: -1;
     left: 0;
@@ -52,7 +63,7 @@ body > footer {
     box-shadow: inset 0 30px 30px -15px rgba(33, 33, 33, 0.8);
 }
 
-body > footer::before {
+#footer::before {
     content: "";
     height: 10px;
     display: block;
@@ -94,4 +105,9 @@ body > footer::before {
 
 .token.operator {
     background: none !important;
+}
+
+
+.annotation {
+    color: #FFEB3B !important;
 }
