@@ -37,6 +37,7 @@
         left: 0;
         right: 0;
         top: 0;
+        bottom: 45px;
         overflow: hidden;
         /*max-height: 660px;*/
     }
@@ -66,10 +67,10 @@
                      src="https://img.shields.io/github/stars/erupts/erupt?style=social">
             </p>
         </div>
-        <div id="erupt-features" style="margin-top: 160px">
+        <div id="erupt-features" style="margin-top: 60px">
             <!--            transform: skewY(-4.5deg);-->
             <div style="position: absolute;
-            top: 160px;
+            top: 120px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -79,13 +80,14 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header">
-                        表单支持
+                        表单支持（{{types.length}}类）
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
                         <div class="text-center col-lg-2 col-md-4 col-sm-6 card-item" ng-repeat="type in types">
-                            <p>{{type.code}}</p>
+                            <!--                            <p>{{type.code}}</p>-->
                             <img ng-src="images/component/{{type.image}}" style="max-width: 33px;">
-                            <p style="font-size: .8em;margin-bottom: 0;margin-top: 1rem">{{type.name}}</p>
+                            <p style="font-size: .8em;margin-bottom: 0;color: #666;
+                            margin-top: 18px;font-weight: 600">{{type.name}}</p>
                         </div>
                     </div>
                 </div>

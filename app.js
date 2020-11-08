@@ -1,3 +1,6 @@
+// var host = "https://www.erupt.xyz/demo"
+var host = "http://localhost:9999";
+
 function toTemplate() {
     window.scrollTo(0, 0);
 }
@@ -7,13 +10,6 @@ var app = angular.module('app', [
 ]).run(function ($rootScope) {
     $rootScope.year = new Date().getFullYear();
     $rootScope.showHeader = true;
-}).config(function ($provide, $compileProvider, $controllerProvider, $filterProvider) {
-    app.controller = $controllerProvider.register;
-    app.directive = $compileProvider.directive;
-    app.filter = $filterProvider.register;
-    app.factory = $provide.factory;
-    app.service = $provide.service;
-    app.constant = $provide.constant;
 }).config(function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: function (attr) {

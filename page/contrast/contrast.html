@@ -4,22 +4,40 @@
     }
 
     .gutter {
-        background: #FF5722;
+        background: #aaa;
     }
 
     .gutter-horizontal {
         cursor: ew-resize;
-
     }
 
+    #header {
+        z-index: -1;
+    }
+
+    #main {
+        border-top: 1px solid #efe3e5;
+    }
+
+    .menus li {
+        padding: 12px 20px;
+        cursor: pointer;
+        background: #fff;
+        border-bottom: 1px solid #efe3e5;
+        border-left: 5px solid #09f;
+    }
+
+    .menus li:hover {
+        transition: all .5s;
+        background: #efefef;
+    }
 </style>
 <div ng-controller="contrast">
     <div style="height: calc(100vh - 45px);display: flex">
-        <div id="select" style="width: 230px ">
-            <ul class="list-group">
-                <li class="list-group-item list-group-item-action">学生管理</li>
-                <li class="list-group-item list-group-item-action">代码管理</li>
-                <li class="list-group-item list-group-item-action">图床管理</li>
+        <div id="select" style="width: 226px ">
+            <ul class="menus">
+                <li>学生管理
+                </li>
             </ul>
         </div>
         <div style="width: calc(100vw - 230px);display: flex">
@@ -45,6 +63,12 @@ public class Student extends BaseModel {
     private Integer age;
 
     @EruptField(
+            views = @View(title = "出生日期"),
+            edit = @Edit(title = "出生日期")
+    )
+    private Date birthday;
+
+    @EruptField(
         views = @View(title = "性别"),
         edit = @Edit(title = "性别",
                      boolType = @BoolType(trueText = "男",
@@ -56,19 +80,8 @@ public class Student extends BaseModel {
             </div>
             <div class="split split-horizontal" id="view">
                 <iframe frameborder="0"
-                        src="https://erupt.xyz/demo/#/fill/build/table/student"
+                        src="https://www.erupt.xyz/demo/#/fill/build/table/student"
                         style="width: 100%;height: calc(100vh - 46px)"></iframe>
-                <!--            <div>-->
-                <!--                <div class="card-header">-->
-                <!--                    🚀 运行结果-->
-                <!--                </div>-->
-                <!--                <div>-->
-                <!--                    &lt;!&ndash;                            filter: invert(1) hue-rotate(180deg)&ndash;&gt;-->
-                <!--                    <iframe frameborder="0"-->
-                <!--                            src="https://erupt.xyz/demo/#/fill/build/table/student"-->
-                <!--                            style="width: 100%;height: calc(100vh - 46px)"></iframe>-->
-                <!--                </div>-->
-                <!--            </div>-->
             </div>
         </div>
     </div>

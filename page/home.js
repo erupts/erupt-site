@@ -45,14 +45,16 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {code: "NUMBER", name: "数值输入框", image: "number.svg"},
         {code: "SLIDER", name: "滑动输入条", image: "slider.svg"},
         {code: "DATE", name: "时间选择器", image: "date.svg"},
-        {code: "BOOLEAN", name: "开关", image: "bool.svg"},
-        {code: "CHOICE", name: "选择器", image: "choice.svg"},
-        {code: "ATTACHMENT", name: "附件，图片", image: "attachment.svg"},
+        {code: "BOOLEAN", name: "布尔开关", image: "bool.svg"},
+        {code: "CHOICE", name: "单选选择器", image: "choice.svg"},
+        {code: "TAGS", name: "标签选择器", image: "tags.svg"},
+        {code: "ATTACHMENT", name: "附件上传", image: "attachment.svg"},
         {code: "AUTO_COMPLETE", name: "自动完成", image: "autoComplete.svg"},
 
         {code: "REFERENCE_TREE", name: "树选择器", image: "referenceTree.svg"},
         {code: "REFERENCE_TABLE", name: "表格选择器", image: "referenceTable.svg"},
 
+        {code: "CHECKBOX", name: "多选框", image: "checkbox.svg"},
         {code: "TAB_TREE", name: "一对多树选择器", image: "tabTree.svg"},
         {code: "TAB_TABLE_REFER", name: "一对多表格选择器", image: "tabTableRefer.svg"},
         {code: "TAB_TABLE_ADD", name: "一对多增加", image: "tabTableAdd.svg"},
@@ -78,9 +80,9 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
     document.onscroll = function () {
         throttle(() => {
             let top = $(document).scrollTop();
-            $("#gallery img").css({top: -(top / 3)});
+            $("#gallery img").css({top: -(top / 5)});
 
-            if (top > 120) {
+            if (top > 100) {
                 if ($rootScope.showHeader !== true) {
                     $scope.$apply(function () {
                         $rootScope.showHeader = true;
@@ -91,7 +93,6 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
                     $scope.$apply(function () {
                         $rootScope.showHeader = false;
                     })
-                    // $("#header").css("transform", "translateY(-50px)")
                 }
             }
 
@@ -103,7 +104,7 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
             // if (top > threshold * 1.6) {
             //     // $("#erupt-content").css({background: "#ededed"})
             // }
-        }, 80)()
+        }, 50)()
     }
 
     // let codeEle = document.getElementById("code-demo");

@@ -2,49 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="erupt通用数据管理框架使用文档" name="description">
-    <meta content="注解框架,Java注解,Java视图关系映射模型,CURD终极解决方案,快速构建管理后台,@" name="keyword">
-    <title>erupt</title>
+    <meta content="Erupt Framework 通用数据管理框架" name="description">
+    <meta content="通用数据管理框架,注解框架,Java注解,Java视图关系映射模型,CURD终极解决方案,快速构建管理后台,@" name="keyword">
+    <title>Erupt Framework</title>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
+    <!--    <link href="assets/prism/prism.min.css" rel="stylesheet">-->
     <link href="assets/prism/prism-okaidia.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
 </head>
 <body class="ng-cloak" ng-app="app" ng-controller="index">
 <header id="header" ng-show="showHeader">
-    <div class="" style="padding: 0 22px">
-        <div>
-            <span ng-click="goHome()" style="display: inline-block;cursor: pointer">
-                <img alt="" src="assets/logo.svg" style="width: 45px;">
-                <span class="logo-text">
-                    erupt<span style="font-size: .4em">.xyz</span>
-                </span>
-            </span>
-            <span style="border-right: 1px solid #ccc;height: 100%;margin: 0 .5rem"></span>
-            <a class="btn btn-sm align-self-center" href="#!/contrast">
-                <img alt="" src="images/java.svg" style="width: 18px">
-                <span>代码示例</span>
-            </a>
-            <a class="btn btn-sm align-self-center" href="#!/module">
-                <img alt="" src="images/module.svg" style="width: 18px">
-                <span>扩展模块</span>
-            </a>
+    <div style="display: flex">
+        <div ng-click="goHome()" style="display: inline-block;cursor: pointer">
+            <img alt="" src="assets/logo.svg" style="width: 45px;">
+            <span class="logo-text">erupt<span style="font-size: .4em">.xyz</span></span>
+            <span style="border-right: 1px solid #ccc;height: 100%;margin: 0 .8rem"></span>
+        </div>
 
-            <span class="float-right" style="line-height: 45px">
-                <a class="btn btn-sm align-self-center btn-link" href="https://github.com/erupt-cyber/zeta-api"
-                   target="_blank">Zeta-API</a>
-                <span style="border-right: 1px solid #ccc;height: 100%;margin: 0 .5rem"></span>
-                <a class="btn btn-sm align-self-center btn-link" href="#!/doc">使用文档</a>
-                <a class="btn btn-sm align-self-center btn-link" href="https://www.erupt.xyz/demo"
-                   target="_blank">演示DEMO</a>
-            </span>
+        <div style="line-height: 45px;margin-left: auto">
+            <a class="btn btn-sm align-self-center btn-link" href="#!/contrast">
+                代码示例
+            </a>
+            <a class="btn btn-sm align-self-center btn-link" href="#!/module">
+                扩展模块
+            </a>
+            <a class="btn btn-sm align-self-center btn-link" href="#!/doc">使用文档</a>
+            <a class="btn btn-sm align-self-center btn-link" href="https://www.erupt.xyz/demo"
+               target="_blank">演示DEMO</a>
         </div>
     </div>
 </header>
 <main id="main" ng-view>
 </main>
 <footer id="footer">
-    <div class="container">
-        <div class="row">
+    <div>
+        <div class="row" style="margin-left: 0;margin-right: 0">
             <div class="col-md-4">
                 <img alt="" src="assets/logo2.svg" style="width: 45px;"><span class="logo-text">erupt<span
                     style="font-size: .4em">.xyz</span></span>

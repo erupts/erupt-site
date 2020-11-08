@@ -1,5 +1,12 @@
 <style>
+    .card {
+        cursor: pointer;
+    }
 
+    .card:hover {
+        transition: all 500ms;
+        transform: translateY(-12px);
+    }
 </style>
 <div class="container" ng-controller="extra">
     <div class="row" style="padding-top: 36px">
@@ -16,12 +23,12 @@
             <div class="card">
                 <img alt="Card image cap" class="card-img-top" src="images/admin.png">
                 <div class="card-body">
-                    <p class="card-text">
-                        <a href="https://github.com/erupt-cyber/zeta-api" target="_blank">
+                    <a href="https://gitee.com/erupt/zeta-api" target="_blank">
+                        <p class="card-text">
                             zeta-api
-                        </a>
-                    </p>
-                    <p class="card-text">使用xml标签快速创建http接口</p>
+                        </p>
+                        <p class="card-text">通过xml配置快速创建Http接口与api使用文档</p>
+                    </a>
                 </div>
             </div>
         </div>
