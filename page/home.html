@@ -44,6 +44,7 @@
 </style>
 <div ng-controller="home">
     <div id="gallery">
+        <img alt="" ondragstart="return false;" src="images/admin.jpeg" style="width: 100%;position: relative">
         <img alt="" ondragstart="return false;" src="images/home.jpeg" style="width: 100%;position: relative">
     </div>
     <div style="position: relative">
@@ -55,11 +56,11 @@
             <h4 style="margin-top: 16px">简单注解配置，轻松实现数据管理</h4>
             <br>
             <p>
-                <a class="btn btn-primary" href="https://www.erupt.xyz/demo" target="_blank" type="button">演示demo</a>
+                <a class="btn btn-primary" href="#!/contrast" type="button">代码示例</a>
+                &nbsp;&nbsp;
+                <a class="btn btn-danger" href="https://www.erupt.xyz/demo" target="_blank" type="button">演示demo</a>
                 &nbsp;&nbsp;
                 <a class="btn btn-success" href="#!/doc" type="button">使用文档</a>
-                &nbsp;&nbsp;
-                <a class="btn btn-danger" href="#!/contrast" type="button">代码示例</a>
             </p>
             <br>
             <p>
@@ -68,29 +69,86 @@
             </p>
         </div>
         <div id="erupt-features" style="margin-top: 60px">
-            <!--            transform: skewY(-4.5deg);-->
             <div style="position: absolute;
             top: 120px;
             left: 0;
             right: 0;
             bottom: 0;
+            box-shadow: 0 -2px 10px #9e9e9ea1;
             background: #f8fafc;">
-
             </div>
             <div class="container">
+                <div class="row" style="margin-bottom: 20px">
+                    <div class="col-md-4" ng-repeat="i in indicator">
+                        <div class="text-center" style="padding: 12px;margin: 12px">
+                            <img alt="" ng-src="images/home/{{i.icon}}" style="width:70%">
+                            <p style="margin-top: 22px;font-size: 1.4em">{{i.name}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 26px;">
+                    <div class="col-md-8  pr-0">
+                        <pre id="DemoErupt" style="margin: 0;height: 100%;border-radius:6px 0 0 6px"><code
+                                class="prism language-java">@Table
+@Entity
+@Erupt(name = "DemoErupt")
+public class DemoErupt extends BaseModel {
+
+    @EruptField(
+        views = @View(title = "表格列名"),
+        edit  = @Edit(title = "表单名称")
+    )
+    private String field;
+
+}</code></pre>
+                    </div>
+                    <div class="col-md-4 pl-0 mr-0">
+                        <div style="background: #fff;border-radius: 0 6px 6px 0;height: 100%;box-shadow: 3px 0 8px #eee">
+                            <div style="padding: 16px 22px;overflow: auto">
+                                <h4>零前端代码</h4>
+                                <p>快速构建企业级管理后台</p>
+                                <hr>
+                                <h4>极简注解配置</h4>
+                                <p>灵活构建管理后台</p>
+                                <hr>
+                                <h4>配合Hibernate</h4>
+                                <p>自动生成表结构</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
                 <div class="card">
                     <div class="card-header">
                         表单支持（{{types.length}}类）
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
-                        <div class="text-center col-lg-2 col-md-4 col-sm-6 card-item" ng-repeat="type in types">
+                        <div class="text-center col-lg-2 col-md-3 col-sm-4 col-6 card-item" ng-repeat="type in types">
                             <!--                            <p>{{type.code}}</p>-->
                             <img ng-src="images/component/{{type.image}}" style="max-width: 33px;">
-                            <p style="font-size: .8em;margin-bottom: 0;color: #666;
-                            margin-top: 18px;font-weight: 600">{{type.name}}</p>
+                            <p style="font-size: .9em;margin-bottom: 0;color: #666;
+                            margin-top: 22px">{{type.name}}</p>
                         </div>
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        数据展示（{{viewTypes.length}}种）
+                    </div>
+                    <div class="row" style="margin-left: 0;margin-right: 0">
+                        <div class="text-center col-lg-2 col-md-3 col-sm-4 col-6 card-item"
+                             ng-repeat="type in viewTypes">
+                            <!--                            <p>{{type.code}}</p>-->
+                            <img ng-src="images/view/{{type.image}}" style="max-width: 33px;">
+                            <p style="font-size: .9em;margin-bottom: 0;color: #666;
+                            margin-top: 22px">{{type.name}}</p>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="card">
                     <div class="card-header">
@@ -101,7 +159,7 @@
                             <div style="padding: 16px;text-align: center">
                                 <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
                             </div>
-                            <p class="text-center">{{db.name}}</p>
+                            <p class="text-center" style="margin-bottom: 0;margin-top: 8px">{{db.name}}</p>
                         </div>
                     </div>
                 </div>

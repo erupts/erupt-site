@@ -5,13 +5,9 @@
     padding: 0;
 }
 
-html {
-    background: #ddd;
-}
-
-body {
-    background: #f8fafc;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+html, body {
+    background: #efefef;
+    /*background: linear-gradient(#fff, #000);*/
 }
 
 
@@ -99,8 +95,8 @@ body {
 
 .card {
     /*overflow: hidden;*/
-    margin-bottom: 20px;
-    border-radius: 8px;
+    margin-bottom: 26px;
+    border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, .14);
     box-shadow: 0 3px 8px -6px rgba(0, 0, 0, .1);
 }

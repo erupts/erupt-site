@@ -36,6 +36,12 @@ var app = angular.module('app', [
     });
 })
 
+app.filter('trustAsResourceUrl', ['$sce', function ($sce) {
+    return function (val) {
+        return $sce.trustAsResourceUrl(val);
+    };
+}])
+
 app.controller("extra", function ($scope) {
     $scope.modules = [{
         name: 'erupt-bi',
@@ -50,4 +56,21 @@ app.controller("extra", function ($scope) {
         name: 'erupt-mongodb',
         desc: '使用erupt管理mongodb数据'
     }]
+})
+
+app.service('dataService', function ($http) {
+    return {
+        eruptReq: function (path, data, callback) {
+            $http({
+                method: 'post',
+                url: host + "/zeta-api/sql" + path,
+                data: JSON.stringify(data),
+                headers: {'Content-Type': 'application/json'}
+            }).then(function (req) {
+                callback(req.data.result);
+            })
+        }
+    }
+
+
 })

@@ -1,22 +1,29 @@
-app.controller("contrast", function ($scope, $http) {
+app.controller("contrast", function ($scope, $http, dataService) {
     let codeEle = document.getElementById("erupt-code");
-
-    // $http.get(host + "/demo-file-content/Student")
-    //     .then(function (response, status, headers, config) {
-    //         $("#erupt-code code").text(response.data);
-    //
-    //     })
-
-    Split(['#code', '#view'], {
-        sizes: [35, 65],
-        minSize: [200, 400],
-        expandToMin: true,
-        gutterSize: 3
+    dataService.eruptReq("/demo/code-list", null, function (data) {
+        $scope.active = data[0];
+        findCode($scope.active);
+        $scope.pages = data;
     })
 
-    Prism.highlightAllUnder(codeEle);
 
     // $scope.$on("$destroy", function () {
     //     $("")
     // })
+
+
+    $scope.choicePage = function (page) {
+        if ($scope.active.id === page.id) {
+            return;
+        }
+        $scope.active = page;
+        findCode(page);
+    }
+
+    function findCode(page) {
+        dataService.eruptReq("/demo/code-by-id", {id: page.id}, function (data) {
+            $("#erupt-code code").text(data[0].code);
+            Prism.highlightAllUnder(codeEle);
+        })
+    }
 });

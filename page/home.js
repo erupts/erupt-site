@@ -10,14 +10,14 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
     ];
 
     $scope.indicator = [{
-        name: "项目启动速度",
-        value: "低于10s"
+        name: "高效开发",
+        icon: "fast.svg"
     }, {
-        name: "页面渲染速度",
-        value: "毫秒级渲染"
+        name: "快速构建后台页面",
+        icon: "web.svg"
     }, {
-        name: "页面渲染速度",
-        value: "毫秒级渲染"
+        name: "专注后端业务逻辑",
+        icon: "dev.svg"
     }]
 
 
@@ -35,12 +35,11 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {name: "H2", image: "h2.svg"},
         {name: "DB2", image: "db2.svg"},
         {name: "mongoDB", image: "mongoDB.svg"},
-        {name: "敬请期待", image: "more.svg"}
+        {name: "持续集成中....", image: "more.svg"}
     ]
 
     $scope.types = [
         {code: "INPUT", name: "文本输入框", image: "input.svg"},
-
         {code: "TEXTAREA", name: "多行文本输入框", image: "textarea.svg"},
         {code: "NUMBER", name: "数值输入框", image: "number.svg"},
         {code: "SLIDER", name: "滑动输入条", image: "slider.svg"},
@@ -66,11 +65,36 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {code: "MAP", name: "地图", image: "map.svg"},
         {code: "DIVIDE", name: "分割线", image: "divide.svg"},
         {code: "HIDDEN", name: "隐藏", image: "hidden.svg"},
-        {code: "EMPTY", name: "空（仍占据组件位置）", image: "empty.svg"},
+        {code: "EMPTY", name: "空白", image: "empty.svg"},
+    ]
+
+    $scope.viewTypes = [
+        {code: "TEXT", name: "普通文字", image: "text.svg"},
+        {code: "IMAGE", name: "图片", image: "image.svg"},
+        {code: "HTML", name: "HTML", image: "html.svg"},
+        {code: "MOBILE_HTML", name: "Mobile HTML", image: "mobile-html.svg"},
+
+        {code: "LINK", name: "链接", image: "link.svg"},
+        {code: "LINK_DIALOG", name: "对话框方式打开链接", image: "link-dialog.svg"},
+
+        {code: "DOWNLOAD", name: "下载附件", image: "download.svg"},
+        {code: "ATTACHMENT", name: "打开附件", image: "attachment.svg"},
+        {code: "ATTACHMENT_DIALOG", name: "对话框中展示附件", image: "attachment-dialog.svg"},
+
+        {code: "QR_CODE", name: "二维码", image: "qr.svg"},
+        {code: "SWF", name: "SWF", image: "swf.svg"},
+        {code: "CODE", name: "代码", image: "code.svg"},
+
+        // {code: "DATE", name: "时间", image: "date.svg"},
+        // {code: "BOOLEAN", name: "布尔", image: "empty.svg"},
+        // {code: "NUMBER", name: "数值", image: "empty.svg"},
+        // {code: "MAP", name: "地图", image: "empty.svg"},
     ]
 
 
     $rootScope.showHeader = false;
+
+    Prism.highlightAllUnder(document.getElementById("DemoErupt"));
 
     $scope.$on("$destroy", function () {
         $rootScope.showHeader = true;
@@ -80,9 +104,9 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
     document.onscroll = function () {
         throttle(() => {
             let top = $(document).scrollTop();
-            $("#gallery img").css({top: -(top / 5)});
+            $("#gallery img").css({top: -(top / 10)});
 
-            if (top > 100) {
+            if (top > 50) {
                 if ($rootScope.showHeader !== true) {
                     $scope.$apply(function () {
                         $rootScope.showHeader = true;
@@ -104,11 +128,8 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
             // if (top > threshold * 1.6) {
             //     // $("#erupt-content").css({background: "#ededed"})
             // }
-        }, 50)()
+        }, 100)()
     }
-
-    // let codeEle = document.getElementById("code-demo");
-    // // Prism.highlightAllUnder(codeEle);
 
 
     // $scope.erupt = [
