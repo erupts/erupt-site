@@ -40,12 +40,27 @@
         bottom: 45px;
         overflow: hidden;
         /*max-height: 660px;*/
+        background: #333;
+    }
+
+    .indicator-card {
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        border-radius: 6px;
+        box-shadow: 0 0 4px #eeeeee;
+
+    }
+
+    .indicator-card:hover {
+        transition: all .6s;
+        transform: translateY(-10px);
     }
 </style>
 <div ng-controller="home">
     <div id="gallery">
-        <img alt="" ondragstart="return false;" src="images/admin.jpeg" style="width: 100%;position: relative">
-        <img alt="" ondragstart="return false;" src="images/home.jpeg" style="width: 100%;position: relative">
+        <img alt="" ondragstart="return false;" src="images/home.jpg" style="width: 100%;position: relative">
+        <img alt="" ondragstart="return false;" src="images/home.jpg" style="width: 100%;position: relative">
     </div>
     <div style="position: relative">
         <div class="text-center" style="color: #fff">
@@ -56,13 +71,13 @@
             <h4 style="margin-top: 16px">简单注解配置，轻松实现数据管理</h4>
             <br>
             <p>
-                <a class="btn btn-primary" href="#!/contrast" type="button">代码示例</a>
+                <a class="btn btn-primary animated flipInY" href="#!/contrast" type="button">代码示例</a>
                 &nbsp;&nbsp;
-                <a class="btn btn-danger" href="https://www.erupt.xyz/demo" target="_blank" type="button">演示demo</a>
+                <a class="btn btn-danger animated flipInY" href="https://www.erupt.xyz/demo"
+                   style="animation-delay: 300ms" target="_blank" type="button">演示demo</a>
                 &nbsp;&nbsp;
-                <a class="btn btn-success" href="#!/doc" type="button">使用文档</a>
+                <a class="btn btn-success animated flipInY" href="#!/doc" style="animation-delay: 600ms" type="button">使用文档</a>
             </p>
-            <br>
             <p>
                 <img alt=""
                      src="https://img.shields.io/github/stars/erupts/erupt?style=social">
@@ -78,11 +93,11 @@
             background: #f8fafc;">
             </div>
             <div class="container">
-                <div class="row" style="margin-bottom: 20px">
+                <div class="row" style="margin-bottom: 26px">
                     <div class="col-md-4" ng-repeat="i in indicator">
-                        <div class="text-center" style="padding: 12px;margin: 12px">
-                            <img alt="" ng-src="images/home/{{i.icon}}" style="width:70%">
-                            <p style="margin-top: 22px;font-size: 1.4em">{{i.name}}</p>
+                        <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
+                            <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
+                            <p style="margin-top: 22px;font-size: 1.2em;margin-bottom: 0;color: #333">{{i.name}}</p>
                         </div>
                     </div>
                 </div>
@@ -105,14 +120,20 @@ public class DemoErupt extends BaseModel {
                     <div class="col-md-4 pl-0 mr-0">
                         <div style="background: #fff;border-radius: 0 6px 6px 0;height: 100%;box-shadow: 3px 0 8px #eee">
                             <div style="padding: 16px 22px;overflow: auto">
-                                <h4>零前端代码</h4>
-                                <p>快速构建企业级管理后台</p>
-                                <hr>
-                                <h4>极简注解配置</h4>
-                                <p>灵活构建管理后台</p>
-                                <hr>
-                                <h4>配合Hibernate</h4>
-                                <p>自动生成表结构</p>
+                                <div class="animated bounceInLeft">
+                                    <h5 class="text-primary">零前端代码</h5>
+                                    <p class="text-secondary">快速构建企业级管理后台</p>
+                                    <hr>
+                                </div>
+                                <div class="animated bounceInLeft delay-1">
+                                    <h5 class="text-success">极简注解配置</h5>
+                                    <p class="text-secondary">灵活构建管理后台</p>
+                                    <hr>
+                                </div>
+                                <div class="animated bounceInLeft delay-2">
+                                    <h5>配合Hibernate</h5>
+                                    <p class="text-secondary">自动生成表结构</p>
+                                </div>
                             </div>
                         </div>
 
@@ -121,7 +142,7 @@ public class DemoErupt extends BaseModel {
 
 
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-white">
                         表单支持（{{types.length}}类）
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
@@ -135,7 +156,7 @@ public class DemoErupt extends BaseModel {
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-white">
                         数据展示（{{viewTypes.length}}种）
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
@@ -151,7 +172,7 @@ public class DemoErupt extends BaseModel {
 
 
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-white">
                         数据源支持
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">

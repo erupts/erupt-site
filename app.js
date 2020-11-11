@@ -1,5 +1,4 @@
-// var host = "https://www.erupt.xyz/demo"
-var host = "http://localhost:9999";
+var host = "https://www.erupt.xyz/demo"
 
 function toTemplate() {
     window.scrollTo(0, 0);
@@ -64,7 +63,7 @@ app.service('dataService', function ($http) {
             $http({
                 method: 'post',
                 url: host + "/zeta-api/sql" + path,
-                data: JSON.stringify(data),
+                data: data && JSON.stringify(data),
                 headers: {'Content-Type': 'application/json'}
             }).then(function (req) {
                 callback(req.data.result);

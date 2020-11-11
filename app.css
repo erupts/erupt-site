@@ -97,6 +97,7 @@ html, body {
     /*overflow: hidden;*/
     margin-bottom: 26px;
     border-radius: 6px;
+    overflow: hidden;
     border: 1px solid rgba(0, 0, 0, .14);
     box-shadow: 0 3px 8px -6px rgba(0, 0, 0, .1);
 }
@@ -109,4 +110,13 @@ html, body {
 
 .annotation {
     color: #FFEB3B !important;
+}
+
+
+.delay-1 {
+    animation-delay: 300ms;
+}
+
+.delay-2 {
+    animation-delay: 600ms;
 }

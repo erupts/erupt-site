@@ -104,7 +104,7 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
     document.onscroll = function () {
         throttle(() => {
             let top = $(document).scrollTop();
-            $("#gallery img").css({top: -(top / 10)});
+            $("#gallery img").css({top: -(top / 4)});
 
             if (top > 50) {
                 if ($rootScope.showHeader !== true) {
@@ -119,38 +119,8 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
                     })
                 }
             }
-
-            // let threshold = 200;
-            // if (top < threshold + 100) {
-            //     $("#gallery img").css({top: -(top / 5)});
-            //     $("#erupt-content").css({background: "none"})
-            // }
-            // if (top > threshold * 1.6) {
-            //     // $("#erupt-content").css({background: "#ededed"})
-            // }
         }, 100)()
     }
-
-
-    // $scope.erupt = [
-    //     {annotation: 'primaryKeyCol'},
-    //     {annotation: 'name'},
-    //     {annotation: 'desc'},
-    //     {annotation: 'loginUse'},
-    //     {annotation: 'rowOperation'},
-    //     {annotation: 'filter'},
-    //     {annotation: 'orderBy'},
-    //     {annotation: 'dataProxy'},
-    //     {annotation: 'tree'},
-    //     {annotation: 'param'},
-    // ];
-    //
-    //
-    // $scope.eruptField = [
-    //     {annotation: '@View'},
-    //     {annotation: '@Edit'},
-    //     {annotation: '@params'},
-    // ];
 
 
 });
