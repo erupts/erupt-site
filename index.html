@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta content="Erupt Framework 通用数据管理框架" name="description">
     <meta content="通用数据管理框架,注解框架,Java注解,Java视图关系映射模型,CURD终极解决方案,快速构建管理后台,@" name="keyword">
+    <meta content="width=device-width, initial-scale=.6" name="viewport">
     <title>Erupt Framework</title>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
-    <!--    <link href="assets/prism/prism.min.css" rel="stylesheet">-->
     <link href="assets/prism/prism-okaidia.min.css" rel="stylesheet">
     <link href="assets/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
@@ -14,20 +14,25 @@
 <body class="ng-cloak" ng-app="app">
 <div ng-controller="index">
     <header id="header" ng-show="showHeader">
-        <div style="display: flex">
-            <div ng-click="goHome()" style="display: inline-block;cursor: pointer">
+        <div class="d-flex">
+            <div ng-click="goHome()" style="cursor: pointer">
                 <img alt="" src="assets/logo.svg" style="width: 45px;">
                 <span class="logo-text">erupt<span style="font-size: .4em">.xyz</span></span>
-                <span style="border-right: 1px solid #ccc;height: 100%;margin: 0 .8rem"></span>
             </div>
             <div style="line-height: 45px;margin-left: auto">
-                <a class="btn btn-sm align-self-center btn-link" href="#!/contrast">
+                <a class="btn btn-sm align-self-center btn-link" href="#!/" ng-class="currRouter=='/'?'active-link':''">
+                    首页
+                </a>
+                <a class="btn btn-sm align-self-center btn-link" href="#!/contrast"
+                   ng-class="currRouter=='/contrast'?'active-link':''">
                     代码示例
                 </a>
-                <a class="btn btn-sm align-self-center btn-link" href="#!/module">
+                <a class="btn btn-sm align-self-center btn-link" href="#!/module"
+                   ng-class="currRouter=='/module'?'active-link':''">
                     扩展模块
                 </a>
-                <a class="btn btn-sm align-self-center btn-link" href="#!/doc">使用文档</a>
+                <a class="btn btn-sm align-self-center btn-link" href="#!/doc"
+                   ng-class="currRouter=='/doc'?'active-link':''">使用文档</a>
                 <a class="btn btn-sm align-self-center btn-link" href="https://www.erupt.xyz/demo"
                    target="_blank">演示DEMO</a>
             </div>
@@ -36,19 +41,15 @@
     <main id="main" ng-view>
     </main>
     <footer id="footer">
-        <div>
-            <div class="row" style="margin-left: 0;margin-right: 0">
-                <div class="col-md-4">
-                    <img alt="" src="assets/logo2.svg" style="width: 45px;"><span class="logo-text">erupt<span
-                        style="font-size: .4em">.xyz</span></span>
-                </div>
-                <div class="col-md-8 align-self-center">
-                    <p class="text-right " style="margin-bottom: 0;font-size: .85em">
-                        <a href="http://beian.miit.gov.cn" style="color: #fff" target="_blank">京ICP备19044060号-1</a>
-                        <span style="color: rgba(255,255,255,0.7)">|</span>
-                        <span>Copyright © 2019-{{year}} erupt.xyz All rights reserved.</span>
-                    </p>
-                </div>
+        <div class="d-flex align-items-center">
+            <img alt="" src="assets/logo2.svg" style="width: 45px;"><span class="logo-text">erupt<span
+                style="font-size: .4em">.xyz</span></span>
+            <div class="ml-auto">
+                <p style="margin-bottom: 0;font-size: .85em;text-align: right;">
+                    <a href="http://beian.miit.gov.cn" style="color: #fff" target="_blank">京ICP备19044060号-1</a>
+                    <span style="color: rgba(255,255,255,0.7)">|</span>
+                    <span>Copyright © 2019-{{year}} erupt.xyz All rights reserved.</span>
+                </p>
             </div>
         </div>
     </footer>

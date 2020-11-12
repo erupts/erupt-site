@@ -1,18 +1,23 @@
-var host = "https://www.erupt.xyz/demo"
+// let host = "https://www.erupt.xyz/demo"
+let host = "http://127.0.0.1:9999"
 
 function toTemplate() {
     window.scrollTo(0, 0);
 }
 
-var app = angular.module('app', [
+let app = angular.module('app', [
     'ngRoute'
 ]).run(function ($rootScope) {
     $rootScope.year = new Date().getFullYear();
     $rootScope.showHeader = true;
+
+    $rootScope.$on('$routeChangeSuccess', function (eve, current, previous) {
+        $rootScope.currRouter = current.$$route.originalPath;
+    });
 }).config(function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: function (attr) {
-            toTemplate();
+            // toTemplate();
             return "page/home.html";
         }
     }).when('/doc', {

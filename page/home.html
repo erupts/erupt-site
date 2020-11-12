@@ -11,7 +11,6 @@
         transition: all .6s;
         color: #f8fafc;
         font-size: 8em;
-        /*font-family: Arial, Helvetica, sans-serif*/
     }
 
     .kernel:hover {
@@ -39,8 +38,8 @@
         top: 0;
         bottom: 45px;
         overflow: hidden;
+        background: #27262b;
         /*max-height: 660px;*/
-        background: #333;
     }
 
     .indicator-card {
@@ -49,18 +48,17 @@
         text-align: center;
         border-radius: 6px;
         box-shadow: 0 0 4px #eeeeee;
+        margin-top: 16px;
 
     }
 
-    .indicator-card:hover {
-        transition: all .6s;
-        transform: translateY(-10px);
+    @media (max-width: 768px) {
+
     }
 </style>
 <div ng-controller="home">
     <div id="gallery">
-        <img alt="" ondragstart="return false;" src="images/home.jpg" style="width: 100%;position: relative">
-        <img alt="" ondragstart="return false;" src="images/home.jpg" style="width: 100%;position: relative">
+        <img class="d-none d-lg-block" src="images/home.jpg" style="position: relative" width="100%">
     </div>
     <div style="position: relative">
         <div class="text-center" style="color: #fff">
@@ -69,16 +67,17 @@
             </div>
             <h1>Erupt Framework</h1>
             <h4 style="margin-top: 16px">简单注解配置，轻松实现数据管理</h4>
-            <br>
-            <p>
-                <a class="btn btn-primary animated flipInY" href="#!/contrast" type="button">代码示例</a>
+            <p style="margin-top: 16px">
+                <button class="btn btn-primary" ng-click="go('#!/contrast')">代码示例
+                </button>
                 &nbsp;&nbsp;
-                <a class="btn btn-danger animated flipInY" href="https://www.erupt.xyz/demo"
-                   style="animation-delay: 300ms" target="_blank" type="button">演示demo</a>
+                <button class="btn btn-danger" ng-click="go('https://www.erupt.xyz/demo',true)">演示demo
+                </button>
                 &nbsp;&nbsp;
-                <a class="btn btn-success animated flipInY" href="#!/doc" style="animation-delay: 600ms" type="button">使用文档</a>
+                <button class="btn btn-success" ng-click="go('#!/doc')">使用文档
+                </button>
             </p>
-            <p>
+            <p style="margin-top: 15px">
                 <img alt=""
                      src="https://img.shields.io/github/stars/erupts/erupt?style=social">
             </p>
@@ -102,7 +101,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 26px;">
-                    <div class="col-md-8  pr-0">
+                    <div class="col-md-8 pr-md-0">
                         <pre id="DemoErupt" style="margin: 0;height: 100%;border-radius:6px 0 0 6px"><code
                                 class="prism language-java">@Table
 @Entity
@@ -117,7 +116,7 @@ public class DemoErupt extends BaseModel {
 
 }</code></pre>
                     </div>
-                    <div class="col-md-4 pl-0 mr-0">
+                    <div class="col-md-4 pl-md-0 mr-md-0">
                         <div style="background: #fff;border-radius: 0 6px 6px 0;height: 100%;box-shadow: 3px 0 8px #eee">
                             <div style="padding: 16px 22px;overflow: auto">
                                 <div class="animated bounceInLeft">
@@ -126,7 +125,7 @@ public class DemoErupt extends BaseModel {
                                     <hr>
                                 </div>
                                 <div class="animated bounceInLeft delay-1">
-                                    <h5 class="text-success">极简注解配置</h5>
+                                    <h5 class="text-warning">极简注解配置</h5>
                                     <p class="text-secondary">灵活构建管理后台</p>
                                     <hr>
                                 </div>
@@ -176,7 +175,7 @@ public class DemoErupt extends BaseModel {
                         数据源支持
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
-                        <div class="card-item col-lg-3  col-md-4 col-sm-6" ng-repeat="db in dbs">
+                        <div class="card-item col-lg-2  col-md-4 col-sm-6" ng-repeat="db in dbs">
                             <div style="padding: 16px;text-align: center">
                                 <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
                             </div>

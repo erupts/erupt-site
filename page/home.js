@@ -20,22 +20,14 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         icon: "dev.svg"
     }]
 
-
-    $scope.steps = [
-        {name: "java"},
-        {name: "erupt"},
-        {name: "java"}
-    ]
-
     $scope.dbs = [
         {name: "MySQL", image: "mysql.svg"},
         {name: "Oracle", image: "oracle.svg"},
         {name: "SQL Server", image: "sqlServer.svg"},
-        {name: "postgreSQL", image: "postgreSQL.svg"},
+        {name: "PostgreSQL", image: "postgreSQL.svg"},
         {name: "H2", image: "h2.svg"},
         {name: "DB2", image: "db2.svg"},
-        {name: "mongoDB", image: "mongoDB.svg"},
-        {name: "持续集成中....", image: "more.svg"}
+        {name: "MongoDB", image: "mongoDB.svg"},
     ]
 
     $scope.types = [
@@ -60,7 +52,6 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
 
         {code: "HTML_EDITOR", name: "富文本编辑器", image: "htmlEditor.svg"},
         {code: "CODE_EDITOR", name: "代码编辑器", image: "codeEditor.svg"},
-
         {code: "TPL", name: "自定义HTML模板", image: "tpl.svg"},
         {code: "MAP", name: "地图", image: "map.svg"},
         {code: "DIVIDE", name: "分割线", image: "divide.svg"},
@@ -69,14 +60,15 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
     ]
 
     $scope.viewTypes = [
-        {code: "TEXT", name: "普通文字", image: "text.svg"},
+        {code: "TEXT", name: "文本", image: "text.svg"},
+        {code: "NUMBER", name: "数值", image: "number.svg"},
+        {code: "DATE", name: "时间", image: "date.svg"},
         {code: "IMAGE", name: "图片", image: "image.svg"},
         {code: "HTML", name: "HTML", image: "html.svg"},
         {code: "MOBILE_HTML", name: "Mobile HTML", image: "mobile-html.svg"},
 
         {code: "LINK", name: "链接", image: "link.svg"},
         {code: "LINK_DIALOG", name: "对话框方式打开链接", image: "link-dialog.svg"},
-
         {code: "DOWNLOAD", name: "下载附件", image: "download.svg"},
         {code: "ATTACHMENT", name: "打开附件", image: "attachment.svg"},
         {code: "ATTACHMENT_DIALOG", name: "对话框中展示附件", image: "attachment-dialog.svg"},
@@ -84,11 +76,8 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {code: "QR_CODE", name: "二维码", image: "qr.svg"},
         {code: "SWF", name: "SWF", image: "swf.svg"},
         {code: "CODE", name: "代码", image: "code.svg"},
-
-        // {code: "DATE", name: "时间", image: "date.svg"},
+        {code: "MAP", name: "地图", image: "map.svg"},
         // {code: "BOOLEAN", name: "布尔", image: "empty.svg"},
-        // {code: "NUMBER", name: "数值", image: "empty.svg"},
-        // {code: "MAP", name: "地图", image: "empty.svg"},
     ]
 
 
@@ -120,6 +109,14 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
                 }
             }
         }, 100)()
+    }
+
+    $scope.go = function (url, open) {
+        if (open) {
+            window.open(url)
+        } else {
+            window.location = url;
+        }
     }
 
 

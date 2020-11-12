@@ -49,14 +49,14 @@
 </style>
 <div ng-controller="contrast">
     <div style="height: calc(100vh - 45px);display: flex">
-        <div id="select" style="width: 226px ">
-            <ul class="menus">
-                <li ng-class="active.id==p.id?'active':''" ng-click="choicePage(p)" ng-repeat="p in pages">
-                    {{p.name}}
-                </li>
-            </ul>
-        </div>
-        <div style="width: calc(100vw - 230px);display: flex">
+        <div style="width: 100vw;display: flex">
+            <div class="split split-horizontal" id="select">
+                <ul class="menus">
+                    <li ng-class="active.id==p.id?'active':''" ng-click="choicePage(p)" ng-repeat="p in pages">
+                        {{p.name}}
+                    </li>
+                </ul>
+            </div>
             <div class="split split-horizontal" id="code">
                 <div class="block-badge">
                     <div class="badge badge-warning">Java代码</div>
@@ -75,9 +75,9 @@
     </div>
 </div>
 <script>
-    Split(['#code', '#view'], {
-        sizes: [35, 65],
-        minSize: [200, 400],
+    Split(['#select', '#code', '#view'], {
+        sizes: [15, 25, 60],
+        minSize: [120, 200, 400],
         expandToMin: true,
         gutterSize: 5
     })

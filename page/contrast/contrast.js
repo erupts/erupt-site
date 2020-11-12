@@ -6,12 +6,6 @@ app.controller("contrast", function ($scope, $http, dataService) {
         $scope.pages = data;
     })
 
-
-    // $scope.$on("$destroy", function () {
-    //     $("")
-    // })
-
-
     $scope.choicePage = function (page) {
         if ($scope.active.id === page.id) {
             return;
