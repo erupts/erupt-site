@@ -20,6 +20,42 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         icon: "dev.svg"
     }]
 
+    $scope.project = {
+        template: {
+            // sub: {
+            //     "***.html": {
+            //         file: true
+            //     },
+            //     "***.js": {
+            //         file: true
+            //     },
+            //     "***.css": {
+            //         file: true
+            //     }
+            // },
+        },
+        controller: {},
+        service: {},
+        "service.impl": {},
+        dao: {},
+        "dao.impl": {},
+        mapper: {},
+        model: {
+            active: true,
+            sub: {
+                DemoErupt: {
+                    file: true,
+                    active: true
+                }
+            }
+        }
+
+    }
+
+    $scope.javaLayer = ["controller", "service", "service impl", "dao", "dao impl", "model"];
+
+    $scope.htmlLayer = ["view.html", "edit.html", "xxx.js", "xxx.css", "util.js"];
+
     $scope.dbs = [
         {name: "MySQL", image: "mysql.svg"},
         {name: "Oracle", image: "oracle.svg"},

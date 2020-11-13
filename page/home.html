@@ -48,12 +48,29 @@
         text-align: center;
         border-radius: 6px;
         box-shadow: 0 0 4px #eeeeee;
-        margin-top: 16px;
-
+        /*margin-top: 16px;*/
     }
 
-    @media (max-width: 768px) {
+    .deg90 {
+        transform: rotate(-90deg);
+    }
 
+    @keyframes del-line {
+        0% {
+            text-decoration: none;
+        }
+        100% {
+            text-decoration: line-through;
+            text-decoration-color: #f00;
+            text-decoration-style: dashed;
+        }
+    }
+
+    .del-line {
+        /*animation: del-line 2s forwards;*/
+        text-decoration: line-through;
+        text-decoration-color: #f00;
+        text-decoration-style: dashed;
     }
 </style>
 <div ng-controller="home">
@@ -92,18 +109,45 @@
             background: #f8fafc;">
             </div>
             <div class="container">
-                <div class="row" style="margin-bottom: 26px">
-                    <div class="col-md-4" ng-repeat="i in indicator">
-                        <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
-                            <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
-                            <p style="margin-top: 22px;font-size: 1.2em;margin-bottom: 0;color: #333">{{i.name}}</p>
-                        </div>
-                    </div>
-                </div>
                 <div class="row" style="margin-bottom: 26px;">
-                    <div class="col-md-8 pr-md-0">
-                        <pre id="DemoErupt" style="margin: 0;height: 100%;border-radius:6px 0 0 6px"><code
-                                class="prism language-java">@Table
+                    <div class="col-12">
+                        <div class="d-flex"
+                             style="overflow: hidden;border-radius: 6px;box-shadow: 3px 3px 8px #eee;">
+                            <div style="width: 210px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;padding: 0 12px;overflow: auto">
+                                <div class="align-items-center" ng-repeat="(key,val) in project"
+                                     style="margin-top: 12px">
+                                    <p>
+                                        <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg" width="8px">
+                                        <img alt="" src="images/file/finder.svg" style="width: 18px;">
+                                        <span ng-class="val.active||'del-line'"
+                                              ng-style="{animationDelay:($index*400)+'ms'}">{{key}}</span>
+                                    </p>
+                                    <div ng-if="val.sub">
+                                        <div class="align-items-center" ng-repeat="(key,val) in val.sub"
+                                             style="padding-left: 32px;margin-top: 12px">
+                                            <div ng-if="val.file">
+                                                <img alt="" src="images/file/file.svg" style="width: 18px">
+                                                <span ng-class="val.active||'del-line'"
+                                                      ng-style="{color:val.active&&'#FFEB3B'}">{{key}}</span>
+                                            </div>
+                                            <div ng-if="!val.file">
+                                                <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg"
+                                                     width="8px">
+                                                <img alt="" src="images/file/finder.svg" style="width: 18px">
+                                                <span class="del-line">{{key}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width: 100%;overflow: auto">
+<pre id="DemoErupt" style="margin: 0;border-radius:0;">
+<code class="prism language-java animated bounce">/**
+    开发后台管理系统枯燥且重复，使用Erupt可轻松完成此工作。
+    Erupt ≈ { template <-> controller <-> service <-> dao <-> xml }
+    erupt非代码生成器，UI视图动态渲染。
+*/
+@Table
 @Entity
 @Erupt(name = "DemoErupt")
 public class DemoErupt extends BaseModel {
@@ -115,10 +159,9 @@ public class DemoErupt extends BaseModel {
     private String field;
 
 }</code></pre>
-                    </div>
-                    <div class="col-md-4 pl-md-0 mr-md-0">
-                        <div style="background: #fff;border-radius: 0 6px 6px 0;height: 100%;box-shadow: 3px 0 8px #eee">
-                            <div style="padding: 16px 22px;overflow: auto">
+                            </div>
+                            <div class="d-none d-md-block"
+                                 style="background: #fff;height: 100%;width: 260px;padding: 16px 22px;overflow: auto;flex-shrink: 0">
                                 <div class="animated bounceInLeft">
                                     <h5 class="text-primary">零前端代码</h5>
                                     <p class="text-secondary">快速构建企业级管理后台</p>
@@ -135,10 +178,18 @@ public class DemoErupt extends BaseModel {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
+
+                <div class="row" style="margin-bottom: 26px">
+                    <div class="col-md-4" ng-repeat="i in indicator">
+                        <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
+                            <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
+                            <p style="margin-top: 22px;font-size: 1.2em;margin-bottom: 0;color: #333">{{i.name}}</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card">
                     <div class="card-header bg-white">
@@ -175,7 +226,7 @@ public class DemoErupt extends BaseModel {
                         数据源支持
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
-                        <div class="card-item col-lg-2  col-md-4 col-sm-6" ng-repeat="db in dbs">
+                        <div class="card-item col-lg-3 col-md-4 col-sm-6" ng-repeat="db in dbs">
                             <div style="padding: 16px;text-align: center">
                                 <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
                             </div>

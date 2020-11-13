@@ -1,5 +1,6 @@
-// let host = "https://www.erupt.xyz/demo"
-let host = "http://127.0.0.1:9999"
+let host = "https://www.erupt.xyz/demo"
+
+// let host = "http://127.0.0.1:9999"
 
 function toTemplate() {
     window.scrollTo(0, 0);
