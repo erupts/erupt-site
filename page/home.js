@@ -11,13 +11,20 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
 
     $scope.indicator = [{
         name: "高效开发",
+        desc: "快速构建后台页面",
         icon: "fast.svg"
     }, {
-        name: "快速构建后台页面",
-        icon: "web.svg"
-    }, {
-        name: "专注后端业务逻辑",
+        name: "摆脱繁琐繁琐的后台代码",
+        desc: "专注后端业务逻辑",
         icon: "dev.svg"
+    }, {
+        name: "出色的安全架构",
+        desc: "为您的数据安全保驾护航",
+        icon: "security.svg"
+    }, {
+        name: "自适应布局",
+        desc: "可在各类终端中使用",
+        icon: "resize.svg"
     }]
 
     $scope.project = {

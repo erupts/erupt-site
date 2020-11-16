@@ -43,12 +43,20 @@
     }
 
     .indicator-card {
+        box-sizing: border-box;
         padding: 16px;
         background: rgba(255, 255, 255, 0.8);
         text-align: center;
         border-radius: 6px;
         box-shadow: 0 0 4px #eeeeee;
-        /*margin-top: 16px;*/
+        margin-bottom: 26px;
+        border: 1px solid transparent;
+    }
+
+    .indicator-card:hover {
+        transition: all 600ms;
+        border: 1px solid #ccc;
+        /*box-shadow: 1px 1px 6px rgba(221, 221, 221, 0.97)*/
     }
 
     .deg90 {
@@ -140,12 +148,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="width: 100%;overflow: auto">
+                            <div style="width: 100%;overflow: auto;position: relative">
 <pre id="DemoErupt" style="margin: 0;border-radius:0;">
 <code class="prism language-java animated bounce">/**
-    开发后台管理系统枯燥且重复，使用Erupt可轻松完成此工作。
-    Erupt ≈ { template <-> controller <-> service <-> dao <-> xml }
-    erupt非代码生成器，UI视图动态渲染。
+    无需多层代码，仅使用注解快速构建管理后台
+    erupt ≈ { template <-> controller <-> service <-> dao <-> xml <-> entity }
+    开发后台管理系统枯燥且重复，Erupt简化了部分的开发流程，专注业务逻辑
+    非代码生成器，动态渲染UI视图。
 */
 @Table
 @Entity
@@ -153,12 +162,16 @@
 public class DemoErupt extends BaseModel {
 
     @EruptField(
-        views = @View(title = "表格列名"),
-        edit  = @Edit(title = "表单名称")
+        views = @View(title = "列名"),
+        edit  = @Edit(title = "表单名")
     )
     private String field;
 
 }</code></pre>
+                                <a class="badge badge-primary" href="#!/contrast"
+                                   style="position: absolute;right: 16px;bottom: 16px;font-family: initial">
+                                    更多示例 →
+                                </a>
                             </div>
                             <div class="d-none d-md-block"
                                  style="background: #fff;height: 100%;width: 260px;padding: 16px 22px;overflow: auto;flex-shrink: 0">
@@ -182,11 +195,12 @@ public class DemoErupt extends BaseModel {
                 </div>
 
 
-                <div class="row" style="margin-bottom: 26px">
+                <div class="row">
                     <div class="col-md-4" ng-repeat="i in indicator">
                         <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
                             <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
-                            <p style="margin-top: 22px;font-size: 1.2em;margin-bottom: 0;color: #333">{{i.name}}</p>
+                            <p style="margin-top: 22px;margin-bottom: 10px;font-size: 1.2em;color: #333">{{i.name}}</p>
+                            <p style="font-size: .95em;margin-bottom: 0;color: #666">{{i.desc}}</p>
                         </div>
                     </div>
                 </div>
