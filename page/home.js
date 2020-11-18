@@ -11,7 +11,7 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
 
     $scope.indicator = [{
         name: "高效开发",
-        desc: "快速构建后台页面",
+        desc: "不需要再编写controller、service、dao",
         icon: "fast.svg"
     }, {
         name: "摆脱繁琐繁琐的后台代码",
