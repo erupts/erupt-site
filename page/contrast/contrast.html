@@ -68,17 +68,26 @@
                 <div class="block-badge">
                     <div class="badge badge-danger" style="font-family: initial">运行效果</div>
                 </div>
-                <iframe ng-src="{{'https://www.erupt.xyz/demo/#/fill/build' + active.path | trustAsResourceUrl}}"
+                <iframe ng-src="{{'https://www.erupt.xyz/demo/#/fill' + active.path | trustAsResourceUrl}}"
                         style="width: 100%;height: calc(100vh - 46px);border:0"></iframe>
             </div>
         </div>
     </div>
 </div>
 <script>
+    // let sizes = localStorage.getItem('split-sizes')
+    // if (sizes) {
+    //     sizes = JSON.parse(sizes)
+    // } else {
+    //     sizes = [15, 25, 60] // default sizes
+    // }
     Split(['#select', '#code', '#view'], {
         sizes: [15, 25, 60],
         minSize: [120, 200, 400],
         expandToMin: true,
-        gutterSize: 5
+        gutterSize: 5,
+        onDragEnd: function (e) {
+
+        },
     })
 </script>

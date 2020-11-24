@@ -1,7 +1,13 @@
 app.controller("contrast", function ($scope, $http, dataService) {
     let codeEle = document.getElementById("erupt-code");
+    let activeKey = "active_key";
     dataService.eruptReq("/demo/code-list", null, function (data) {
-        $scope.active = data[0];
+        let item = sessionStorage.getItem(activeKey);
+        if (null == item) {
+            $scope.active = data[0];
+        } else {
+            $scope.active = JSON.parse(item);
+        }
         findCode($scope.active);
         $scope.pages = data;
     })
@@ -10,6 +16,7 @@ app.controller("contrast", function ($scope, $http, dataService) {
         if ($scope.active.id === page.id) {
             return;
         }
+        sessionStorage.setItem(activeKey, JSON.stringify(page));
         $scope.active = page;
         findCode(page);
     }
