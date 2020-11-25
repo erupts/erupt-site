@@ -29,7 +29,7 @@ let app = angular.module('app', [
     }).when('/module', {
         templateUrl: function (attr) {
             toTemplate();
-            return "page/module.html";
+            return "page/extra/extra.html";
         }
     }).when('/contrast', {
         templateUrl: function (attr) {
@@ -46,22 +46,6 @@ app.filter('trustAsResourceUrl', ['$sce', function ($sce) {
         return $sce.trustAsResourceUrl(val);
     };
 }])
-
-app.controller("extra", function ($scope) {
-    $scope.modules = [{
-        name: 'erupt-bi',
-        desc: '数据分析模块'
-    }, {
-        name: 'erupt-job',
-        desc: '任务调度模块'
-    }, {
-        name: 'erupt-tpl',
-        desc: '嵌入式模板模块'
-    }, {
-        name: 'erupt-mongodb',
-        desc: '使用erupt管理mongodb数据'
-    }]
-})
 
 app.service('dataService', function ($http) {
     return {

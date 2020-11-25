@@ -123,13 +123,33 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         // {code: "BOOLEAN", name: "布尔", image: "empty.svg"},
     ]
 
-
-    $rootScope.showHeader = false;
-
     Prism.highlightAllUnder(document.getElementById("DemoErupt"));
 
+
+    let headerEle = $("#header");
+
+    function inverseHeader(is) {
+        if (is) {
+            headerEle.css({
+                bottom: 0,
+                top: 'auto',
+            })
+        } else {
+            headerEle.css({
+                bottom: 'auto',
+                top: 0,
+            })
+        }
+    }
+
+
+    // $rootScope.showHeader = false;
+    inverseHeader(true);
+
     $scope.$on("$destroy", function () {
-        $rootScope.showHeader = true;
+        // $rootScope.showHeader = true;
+        inverseHeader(false);
+        document.onscroll = null;
     })
 
 
@@ -139,17 +159,19 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
             $("#gallery img").css({top: -(top / 4)});
 
             if (top > 50) {
-                if ($rootScope.showHeader !== true) {
-                    $scope.$apply(function () {
-                        $rootScope.showHeader = true;
-                    })
-                }
+                inverseHeader(false);
+                // if ($rootScope.showHeader !== true) {
+                //     $scope.$apply(function () {
+                //         $rootScope.showHeader = true;
+                //     })
+                // }
             } else {
-                if ($rootScope.showHeader !== false) {
-                    $scope.$apply(function () {
-                        $rootScope.showHeader = false;
-                    })
-                }
+                inverseHeader(true);
+                // if ($rootScope.showHeader !== false) {
+                //     $scope.$apply(function () {
+                //         $rootScope.showHeader = false;
+                //     })
+                // }
             }
         }, 100)()
     }
