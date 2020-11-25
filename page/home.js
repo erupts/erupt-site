@@ -133,11 +133,13 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
             headerEle.css({
                 bottom: 0,
                 top: 'auto',
+                boxShadow: '-1px -11px 21px -15px rgba(0, 0, 0, 0.75)'
             })
         } else {
             headerEle.css({
                 bottom: 'auto',
                 top: 0,
+                boxShadow: '0 4px 10px 0 rgba(0, 0, 0, .05)'
             })
         }
     }
@@ -152,13 +154,12 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         document.onscroll = null;
     })
 
-
+    let galleryEle = $("#gallery img");
     document.onscroll = function () {
         throttle(() => {
             let top = $(document).scrollTop();
-            $("#gallery img").css({top: -(top / 4)});
-
-            if (top > 50) {
+            galleryEle.css({top: -(top / 4)});
+            if (top > 200) {
                 inverseHeader(false);
                 // if ($rootScope.showHeader !== true) {
                 //     $scope.$apply(function () {
