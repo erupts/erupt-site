@@ -75,7 +75,8 @@
     </div>
 </div>
 <script>
-    // let sizes = localStorage.getItem('split-sizes')
+    localStorage.removeItem('split-sizes')
+    // console.log(sizes);
     // if (sizes) {
     //     sizes = JSON.parse(sizes)
     // } else {
@@ -83,11 +84,8 @@
     // }
     Split(['#select', '#code', '#view'], {
         sizes: [15, 25, 60],
-        minSize: [120, 200, 400],
+        minSize: [120, 200, 360],
         expandToMin: true,
         gutterSize: 5,
-        onDragEnd: function (e) {
-
-        },
     })
 </script>

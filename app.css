@@ -29,6 +29,10 @@ html, body {
     padding: 0 26px;
 }
 
+/*#header a.btn-link{*/
+/*    min-width: 80px;*/
+/*}*/
+
 #main {
     background: #f8fafc;
     min-height: calc(100vh - 45px);

@@ -150,8 +150,8 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
 
     $scope.$on("$destroy", function () {
         // $rootScope.showHeader = true;
-        inverseHeader(false);
         document.onscroll = null;
+        setTimeout(() => inverseHeader(false), 100)
     })
 
     let galleryEle = $("#gallery img");

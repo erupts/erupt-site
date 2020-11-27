@@ -10,7 +10,7 @@ app.controller("extra", function ($scope) {
     }, {
         name: 'erupt-tpl',
         title: '嵌入式模板模块',
-        desc: '支持在erupt中自定义页面，支持Freemarker与Thymeleaf'
+        desc: '支持在erupt中自定义页面，渲染方式支持Freemarker与Thymeleaf'
     }, {
         name: 'erupt-mongodb',
         title: 'mongodb数据源支持',
