@@ -97,7 +97,6 @@ html, body {
 
 
 .card {
-    margin-bottom: 26px;
     border-radius: 6px;
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, .14);
@@ -126,4 +125,12 @@ html, body {
 
 .delay-2 {
     animation-delay: 600ms;
+}
+
+.delay-3 {
+    animation-delay: 900ms;
+}
+
+.delay-4 {
+    animation-delay: 1200ms;
 }

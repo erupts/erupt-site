@@ -21,10 +21,14 @@
     .card-item {
         box-sizing: border-box;
         cursor: pointer;
-        padding: 16px;
+        padding: 36px 16px;
         border-right: 1px solid #efefef;
         border-bottom: 1px solid #efefef;
     }
+
+    /*.card-item:nth-child(3n+1) {*/
+    /*    background: #ffeeba;*/
+    /*}*/
 
     .card-item:hover {
         transition: all .3s;
@@ -44,19 +48,34 @@
 
     .indicator-card {
         box-sizing: border-box;
-        padding: 16px;
+        padding: 18px;
         background: rgba(255, 255, 255, 0.8);
         text-align: center;
         border-radius: 6px;
         box-shadow: 0 0 4px #eeeeee;
         margin-bottom: 26px;
-        border: 1px solid transparent;
+        border: 1px solid #eee;
+    }
+
+    .indicator-card .desc {
+        font-size: .95em;
+        text-align: left;
+        margin-bottom: 0;
+        color: #666;
+        height: 55px;
+        overflow: auto;
+        border-top: 1px dashed #9E9E9E;
+        padding-top: 10px;
     }
 
     .indicator-card:hover {
         transition: all 600ms;
-        border: 1px solid #ccc;
-        /*box-shadow: 1px 1px 6px rgba(221, 221, 221, 0.97)*/
+        box-shadow: 0 26px 40px -14px rgba(0, 36, 100, 0.3);
+    }
+
+    .indicator-card:hover img {
+        transition: all 600ms;
+        transform: scale(1.1);
     }
 
     .deg90 {
@@ -80,6 +99,10 @@
         text-decoration-color: #f00;
         text-decoration-style: dashed;
     }
+
+    .card {
+        margin-bottom: 36px;
+    }
 </style>
 <div ng-controller="home">
     <div id="gallery">
@@ -96,10 +119,10 @@
                 <button class="btn btn-primary" ng-click="go('#!/contrast')">代码示例
                 </button>
                 &nbsp;&nbsp;
-                <button class="btn btn-danger" ng-click="go('https://www.erupt.xyz/demo',true)">演示demo
+                <button class="btn btn-success" ng-click="go('#!/doc')">使用文档
                 </button>
                 &nbsp;&nbsp;
-                <button class="btn btn-success" ng-click="go('#!/doc')">使用文档
+                <button class="btn btn-danger" ng-click="go('https://www.erupt.xyz/demo',true)">演示DEMO
                 </button>
             </p>
             <p style="margin-top: 15px">
@@ -120,7 +143,7 @@
                 <div class="row" style="margin-bottom: 26px;">
                     <div class="col-12">
                         <div class="d-flex"
-                             style="overflow: hidden;border-radius: 6px;box-shadow: 3px 3px 8px #eee;">
+                             style="overflow: hidden;border-radius: 6px;box-shadow: 3px 3px 8px #eee;background: #fff">
                             <div style="width: 210px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;padding: 0 12px;overflow: auto">
                                 <div class="align-items-center" ng-repeat="(key,val) in project"
                                      style="margin-top: 12px">
@@ -149,21 +172,21 @@
                                 </div>
                             </div>
                             <div style="width: 100%;overflow: auto;position: relative">
-<pre id="DemoErupt" style="margin: 0;border-radius:0;">
+<pre id="DemoErupt" style="margin: 0;border-radius:0;height: 492px">
 <code class="prism language-java animated bounce">/**
-    无需多层代码，仅使用注解快速构建管理后台
-    erupt ≈ { template <-> controller <-> service <-> dao <-> xml <-> entity }
-    开发后台管理系统枯燥且重复，Erupt简化了90%开发流程，专注业务逻辑
-    非代码生成器，动态渲染UI视图。
-*/
+  *  无需多层代码，仅使用实体类 + 注解，就可快速构建管理后台🚀
+  *  erupt = { template <-> controller <-> service <-> dao <-> xml <-> entity }
+  *  erupt简化了90%的后台开发流程，解除被CURD支配的恐惧，专注核心业务。
+  *  改需求？没关系！可能加减几行注解就能搞定😆
+  */
 @Table
 @Entity
-@Erupt(name = "DemoErupt")
+@Erupt(name = "Hello World")
 public class DemoErupt extends BaseModel {
 
     @EruptField(
-        views = @View(title = "列名"),
-        edit  = @Edit(title = "表单名")
+        views = @View(title = "name"),
+        edit  = @Edit(title = "name")
     )
     private String field;
 
@@ -186,27 +209,43 @@ public class DemoErupt extends BaseModel {
                                     <hr>
                                 </div>
                                 <div class="animated bounceInLeft delay-2">
-                                    <h5>配合Hibernate</h5>
-                                    <p class="text-secondary">自动生成表结构</p>
+                                    <h5 class="text-success">权限管理</h5>
+                                    <p class="text-secondary">自研安全框架，持续保证数据安全</p>
+                                    <hr>
+                                </div>
+                                <div class="animated bounceInLeft delay-3">
+                                    <h5 class="text-danger">多种数据源支持</h5>
+                                    <p class="text-secondary">关系型、非关系型、或自定义数据源！</p>
+                                    <hr>
+                                </div>
+                                <div class="animated bounceInLeft delay-4">
+                                    <h5>库表自动生成</h5>
+                                    <p class="text-secondary mb-0">配合Hibernate无需手动建表</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="row">
-                    <div class="col-md-4" ng-repeat="i in indicator">
-                        <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
-                            <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
-                            <p style="margin-top: 22px;margin-bottom: 10px;font-size: 1.2em;color: #333">{{i.name}}</p>
-                            <p style="font-size: .95em;margin-bottom: 0;color: #666">{{i.desc}}</p>
+            </div>
+            <div style="background: #fff;padding-top:26px;position: relative;margin:26px 0;box-shadow:0 0 10px #9e9e9e36">
+                <div class="container">
+                    <p class="text-center" style="font-size: 1.8em;font-weight: 500">框架特性</p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4" ng-repeat="i in indicator">
+                            <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
+                                <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
+                                <p style="margin-top: 22px;margin-bottom: 10px;font-size: 1.2em;color: #333">
+                                    {{i.name}}</p>
+                                <p class="desc">{{i.desc}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="card-header bg-white">
+            </div>
+            <div class="container">
+                <div class="card border-dark">
+                    <div class="card-header bg-dark text-white text-center">
                         表单支持（{{types.length}}类）
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
@@ -218,9 +257,8 @@ public class DemoErupt extends BaseModel {
                         </div>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="card-header bg-white">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white text-center">
                         数据展示（{{viewTypes.length}}种）
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
@@ -233,18 +271,21 @@ public class DemoErupt extends BaseModel {
                         </div>
                     </div>
                 </div>
-
-
-                <div class="card">
-                    <div class="card-header bg-white">
-                        数据源支持
-                    </div>
-                    <div class="row" style="margin-left: 0;margin-right: 0">
-                        <div class="card-item col-lg-3 col-md-4 col-sm-6" ng-repeat="db in dbs">
-                            <div style="padding: 16px;text-align: center">
-                                <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
+            </div>
+            <div style="background: #09f;">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header bg-white text-center">
+                            数据源支持
+                        </div>
+                        <div class="row" style="margin-left: 0;margin-right: 0">
+                            <div class="card-item col-lg-3 col-md-4 col-sm-6" ng-repeat="db in dbs"
+                                 style="padding: 16px">
+                                <div style="padding: 16px;text-align: center">
+                                    <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
+                                </div>
+                                <p class="text-center" style="margin-bottom: 0;margin-top: 8px">{{db.name}}</p>
                             </div>
-                            <p class="text-center" style="margin-bottom: 0;margin-top: 8px">{{db.name}}</p>
                         </div>
                     </div>
                 </div>

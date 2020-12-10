@@ -10,21 +10,29 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
     ];
 
     $scope.indicator = [{
-        name: "高效开发",
-        desc: "不需要再编写controller、service、dao",
-        icon: "fast.svg"
-    }, {
-        name: "摆脱繁琐繁琐的后台代码",
-        desc: "专注后端业务逻辑",
+        name: "快速迭代",
+        desc: "需求变更仅需修改或添加注解配置即可，迭代速度比需求讨论速度还快。",
         icon: "dev.svg"
     }, {
-        name: "出色的安全架构",
-        desc: "为您的数据安全保驾护航",
+        name: "敏捷开发",
+        desc: "仅单个.java文件即可实现后台管理功能，专注业务与核心功能的研发。",
+        icon: "fast.svg"
+    }, {
+        name: "高安全性",
+        desc: "可靠的安全机制，细颗粒度权限控制，阻绝一切不可靠的数据，为您的数据安全保驾护航。",
         icon: "security.svg"
     }, {
-        name: "自适应布局",
-        desc: "可在各类终端中使用",
+        name: "响应式布局",
+        desc: "支持PC端手机端等各种规格的设备中使用。",
         icon: "resize.svg"
+    }, {
+        name: "低入侵性",
+        desc: "几乎所有功能都围绕注解而展开，不影响你使用其他的框架与库。",
+        icon: "hold.svg"
+    }, {
+        name: "界面美观",
+        desc: "每个交互都精心设计，产品思维打磨，只为了更好的操作体验。",
+        icon: "art.svg"
     }]
 
     $scope.project = {
