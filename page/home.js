@@ -78,6 +78,7 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {name: "PostgreSQL", image: "postgreSQL.svg"},
         {name: "H2", image: "h2.svg"},
         {name: "DB2", image: "db2.svg"},
+        {name: "Sybase", image: "sybase.svg"},
         {name: "MongoDB", image: "mongoDB.svg"},
     ]
 

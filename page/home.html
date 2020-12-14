@@ -55,6 +55,7 @@
         box-shadow: 0 0 4px #eeeeee;
         margin-bottom: 26px;
         border: 1px solid #eee;
+        transition: all 600ms;
     }
 
     .indicator-card .desc {
@@ -69,7 +70,6 @@
     }
 
     .indicator-card:hover {
-        transition: all 600ms;
         box-shadow: 0 26px 40px -14px rgba(0, 36, 100, 0.3);
     }
 
@@ -114,8 +114,8 @@
                 <span class="text-center kernel">@</span>
             </div>
             <h1>Erupt Framework</h1>
-            <h4 style="margin-top: 16px">简单注解配置，轻松实现数据管理</h4>
-            <p style="margin-top: 16px">
+            <h4 style="margin-top: 16px">零前端代码，注解式后台管理框架</h4>
+            <p style="margin-top: 20px">
                 <button class="btn btn-primary" ng-click="go('#!/contrast')">代码示例
                 </button>
                 &nbsp;&nbsp;
@@ -124,14 +124,6 @@
                 &nbsp;&nbsp;
                 <button class="btn btn-danger" ng-click="go('https://www.erupt.xyz/demo',true)">演示DEMO
                 </button>
-            </p>
-            <p style="margin-top: 15px">
-                <a href='https://github.com/erupts/erupt' target="_blank">
-                    <img alt='star' src='https://gitee.com/erupt/erupt/badge/star.svg?theme=dark'/>
-                </a>
-                <a href='https://gitee.com/erupt/erupt/stargazers' target="_blank">
-                    <img alt="" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
-                </a>
             </p>
         </div>
         <div id="erupt-features" style="margin-top: 60px">
@@ -251,6 +243,11 @@ public class DemoErupt extends BaseModel {
                 <div class="card border-dark">
                     <div class="card-header bg-dark text-white text-center">
                         表单支持（{{types.length}}类）
+                        <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/cqgoo9"
+                           style="font-size:1em;color: #fff"
+                           target="_blank">
+                            <img alt="" height="20px" src="images/home/right.svg">
+                        </a>
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
                         <div class="text-center col-lg-2 col-md-3 col-sm-4 col-6 card-item" ng-repeat="type in types">
@@ -264,6 +261,11 @@ public class DemoErupt extends BaseModel {
                 <div class="card border-success">
                     <div class="card-header bg-success text-white text-center">
                         数据展示（{{viewTypes.length}}种）
+                        <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/gec455#JtYTf"
+                           style="font-size:1em;color: #fff"
+                           target="_blank">
+                            <img alt="" height="20px" src="images/home/right.svg">
+                        </a>
                     </div>
                     <div class="row" style="margin-left: 0;margin-right: 0">
                         <div class="text-center col-lg-2 col-md-3 col-sm-4 col-6 card-item"
@@ -278,12 +280,17 @@ public class DemoErupt extends BaseModel {
             </div>
             <div style="background: #09f;">
                 <div class="container">
-                    <div class="card">
-                        <div class="card-header bg-white text-center">
+                    <div class="card border-info">
+                        <div class="card-header bg-info text-white text-center">
                             数据源支持
+                            <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/ku7vx4"
+                               style="font-size:1em;color: #fff"
+                               target="_blank">
+                                <img alt="" height="20px" src="images/home/right.svg">
+                            </a>
                         </div>
                         <div class="row" style="margin-left: 0;margin-right: 0">
-                            <div class="card-item col-lg-3 col-md-4 col-sm-6" ng-repeat="db in dbs"
+                            <div class="card-item col-lg-2 col-md-4 col-sm-6" ng-repeat="db in dbs"
                                  style="padding: 16px">
                                 <div style="padding: 16px;text-align: center">
                                     <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
@@ -292,8 +299,47 @@ public class DemoErupt extends BaseModel {
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="osc-gitee-widget-tag"></div>
+                        </div>
+                        <!--                        <div class="col-lg-3">-->
+                        <!--                            <div style="margin-top: 10px;padding-left: 8px">-->
+                        <!--                                <h3>现已开源 ！</h3>-->
+                        <!--                                <h3 style="margin-top: 18px">欢迎 Star ！</h3>-->
+                        <!--                                <h3 style="margin-top: 18px">欢迎 Fork ！</h3>-->
+                        <!--                                <h3 style="margin-top: 18px">期待你的加入！</h3>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script async defer src='https://gitee.com/erupt/erupt/widget_preview'></script>
+<style>
+    .osc_pro_color {
+        color: #393222 !important;
+    }
+
+    .osc_panel_color {
+        background-color: #ebdfc1 !important;
+    }
+
+    .osc_background_color {
+        background-color: #fffae5 !important;
+    }
+
+    .osc_border_color {
+        border-color: #d8ca9f !important;
+    }
+
+    .osc_desc_color {
+        color: #393222 !important;
+    }
+
+    .osc_link_color * {
+        color: #a28b40 !important;
+    }
+</style>
