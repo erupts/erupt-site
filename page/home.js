@@ -80,6 +80,7 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {name: "DB2", image: "db2.svg"},
         {name: "Sybase", image: "sybase.svg"},
         {name: "MongoDB", image: "mongoDB.svg"},
+        {name: "自定义数据源", image: "custom.svg"}
     ]
 
     $scope.types = [
