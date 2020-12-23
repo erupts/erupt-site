@@ -103,6 +103,20 @@
     .card {
         margin-bottom: 36px;
     }
+
+    #header {
+        animation: header-in 600ms;
+    }
+
+    @keyframes header-in {
+        0% {
+            transform: translateY(50px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
 </style>
 <div ng-controller="home">
     <div id="gallery">
@@ -226,7 +240,7 @@ public class DemoErupt extends BaseModel {
             <div style="background: #fff;padding-top:26px;position: relative;margin:26px 0;box-shadow:0 0 10px #9e9e9e36">
                 <div class="container">
                     <p class="text-center" style="font-size: 1.8em;font-weight: 500">框架特性</p>
-                    <hr>
+                    <hr style="border-top: 1px dashed rgba(0,0,0,.1) !important;">
                     <div class="row">
                         <div class="col-md-4" ng-repeat="i in indicator">
                             <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
@@ -304,12 +318,14 @@ public class DemoErupt extends BaseModel {
                             <div id="osc-gitee-widget-tag"></div>
                         </div>
                         <div class="col-lg-4">
-                            <div style="margin-top: 10px;padding-left: 8px">
-                                <h3>总计开发两年！</h3>
-                                <h3 style="margin-top: 18px">换过多套UI框架！</h3>
-                                <h3 style="margin-top: 18px">经历多次重构！</h3>
-                                <h3 style="margin-top: 18px">已在多个项目中稳定运行！</h3>
-                                <h3 style="margin-top: 18px">现已开源，感谢star ！</h3>
+                            <div style="padding: 22px 12px 0;color: #eae9d7;height: 361px;
+                            border:1px solid #d8ca9f;border-radius: 3px;background: #272821">
+                                <h2>总计开发两年 ！</h2>
+                                <h4 style="margin-top: 18px">换过多套页面 ！</h4>
+                                <h4 style="margin-top: 18px">经历多次重构 ！</h4>
+                                <h4 style="margin-top: 18px">已在多个项目中稳定运行 ！</h4>
+                                <h4 style="margin-top: 18px;">现已开源，感谢<span
+                                        style="color: rgb(162, 139, 64)"> Star </span>！</h4>
                             </div>
                         </div>
                     </div>
@@ -321,26 +337,26 @@ public class DemoErupt extends BaseModel {
 <script async defer src='https://gitee.com/erupt/erupt/widget_preview'></script>
 <style>
     .osc_pro_color {
-        color: #393222 !important;
+        color: #eae9d7 !important;
     }
 
     .osc_panel_color {
-        background-color: #ebdfc1 !important;
+        background-color: #2e2f29 !important;
     }
 
     .osc_background_color {
-        background-color: #fffae5 !important;
+        background-color: #272822 !important;
     }
 
     .osc_border_color {
-        border-color: #d8ca9f !important;
+        border-color: #484a45 !important;
     }
 
     .osc_desc_color {
-        color: #393222 !important;
+        color: #eae9d7 !important;
     }
 
     .osc_link_color * {
-        color: #a28b40 !important;
+        color: #747571 !important;
     }
 </style>
