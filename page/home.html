@@ -117,6 +117,17 @@
             transform: translateY(0);
         }
     }
+
+    /*.code-tip {*/
+    /*    cursor: pointer;*/
+    /*    padding: 0 22px;*/
+    /*}*/
+
+    /*.code-tip:hover {*/
+    /*    transition: all 600ms;*/
+    /*    background: #09f;*/
+
+    /*}*/
 </style>
 <div ng-controller="home">
     <div id="gallery">
@@ -185,6 +196,7 @@
 <pre id="DemoErupt" style="margin: 0;border-radius:0;height: 492px">
 <code class="prism language-java animated bounce">/**
   *  无需多层代码，仅使用实体类 + 注解，就可快速构建管理后台🚀
+  *  不需要懂前端，不用会 JavaScript，就能做出专业且复杂的后台界面 ！
   *  erupt = { template <-> controller <-> service <-> dao <-> xml <-> entity }
   *  erupt简化了90%的后台开发流程，解除被CURD支配的恐惧，专注核心业务。
   *  改需求？没关系！可能加减几行注解就能搞定😆
@@ -207,28 +219,30 @@ public class DemoErupt extends BaseModel {
                                 </a>
                             </div>
                             <div class="d-none d-md-block"
-                                 style="background: #fff;height: 100%;width: 260px;padding: 16px 22px;overflow: auto;flex-shrink: 0">
-                                <div class="animated bounceInLeft">
+                                 style="background: #fff;height: 100%;width: 260px;
+                                 margin:16px 22px;
+                                 overflow: auto;flex-shrink: 0">
+                                <div class="animated bounceInLeft code-tip">
                                     <h5 class="text-primary">零前端代码</h5>
                                     <p class="text-secondary">快速构建企业级管理后台</p>
                                     <hr>
                                 </div>
-                                <div class="animated bounceInLeft delay-1">
+                                <div class="animated bounceInLeft code-tip delay-1">
                                     <h5 class="text-warning">极简注解配置</h5>
                                     <p class="text-secondary">灵活构建管理后台</p>
                                     <hr>
                                 </div>
-                                <div class="animated bounceInLeft delay-2">
+                                <div class="animated bounceInLeft code-tip delay-2">
                                     <h5 class="text-success">权限管理</h5>
                                     <p class="text-secondary">自研安全框架，持续保证数据安全</p>
                                     <hr>
                                 </div>
-                                <div class="animated bounceInLeft delay-3">
+                                <div class="animated bounceInLeft code-tip delay-3">
                                     <h5 class="text-danger">多种数据源支持</h5>
                                     <p class="text-secondary">关系型、非关系型、或自定义数据源！</p>
                                     <hr>
                                 </div>
-                                <div class="animated bounceInLeft delay-4">
+                                <div class="animated bounceInLeft code-tip delay-4">
                                     <h5>库表自动生成</h5>
                                     <p class="text-secondary mb-0">配合Hibernate无需手动建表</p>
                                 </div>
