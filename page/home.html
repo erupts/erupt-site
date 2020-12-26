@@ -139,8 +139,8 @@
                 <span class="text-center kernel">@</span>
             </div>
             <h1>Erupt Framework</h1>
-            <h4 style="margin-top: 16px">零前端代码开发后台管理系统</h4>
-            <p style="margin-top: 20px">
+            <h4 style="margin-top: 18px">使用 Java 注解，开发管理后台</h4>
+            <p style="margin-top: 22px">
                 <button class="btn btn-primary" ng-click="go('#!/contrast')">代码示例
                 </button>
                 &nbsp;&nbsp;
@@ -193,9 +193,9 @@
                                 </div>
                             </div>
                             <div style="width: 100%;overflow: auto;position: relative">
-<pre id="DemoErupt" style="margin: 0;border-radius:0;height: 492px">
+<pre id="DemoErupt" style="margin: 0;border-radius:0;height: 522px">
 <code class="prism language-java animated bounce">/**
-  *  无需多层代码，仅使用实体类 + 注解，就可快速构建管理后台🚀
+  *  无需多层代码，仅使用实体类 + 注解，一个文件就能开发管理后台🚀
   *  不需要懂前端，不用会 JavaScript，就能做出专业且复杂的后台界面 ！
   *  erupt = { template <-> controller <-> service <-> dao <-> xml <-> entity }
   *  erupt简化了90%的后台开发流程，解除被CURD支配的恐惧，专注核心业务。
@@ -207,8 +207,8 @@
 public class DemoErupt extends BaseModel {
 
     @EruptField(
-        views = @View(title = "name"),
-        edit  = @Edit(title = "name")
+        views = @View(title = "用于展示"),
+        edit  = @Edit(title = "用于编辑", notNull = true)
     )
     private String field;
 
@@ -224,27 +224,27 @@ public class DemoErupt extends BaseModel {
                                  overflow: auto;flex-shrink: 0">
                                 <div class="animated bounceInLeft code-tip">
                                     <h5 class="text-primary">零前端代码</h5>
-                                    <p class="text-secondary">快速构建企业级管理后台</p>
+                                    <p class="text-secondary">不需要懂前端，开发专业且强大的管理后台</p>
                                     <hr>
                                 </div>
                                 <div class="animated bounceInLeft code-tip delay-1">
                                     <h5 class="text-warning">极简注解配置</h5>
-                                    <p class="text-secondary">灵活构建管理后台</p>
+                                    <p class="text-secondary">灵活构建功能强大且值得信赖的管理后台</p>
                                     <hr>
                                 </div>
                                 <div class="animated bounceInLeft code-tip delay-2">
-                                    <h5 class="text-success">权限管理</h5>
-                                    <p class="text-secondary">自研安全框架，持续保证数据安全</p>
+                                    <h5 class="text-success">安全可靠</h5>
+                                    <p class="text-secondary">细颗粒全方位安全检查，持续保证数据安全</p>
                                     <hr>
                                 </div>
                                 <div class="animated bounceInLeft code-tip delay-3">
-                                    <h5 class="text-danger">多种数据源支持</h5>
-                                    <p class="text-secondary">关系型、非关系型、或自定义数据源！</p>
+                                    <h5 class="text-danger">通用数据管理</h5>
+                                    <p class="text-secondary">支持市面上所有主流数据库！</p>
                                     <hr>
                                 </div>
                                 <div class="animated bounceInLeft code-tip delay-4">
-                                    <h5>库表自动生成</h5>
-                                    <p class="text-secondary mb-0">配合Hibernate无需手动建表</p>
+                                    <h5>表结构自动生成</h5>
+                                    <p class="text-secondary mb-0">不懂SQL也能操作数据库</p>
                                 </div>
                             </div>
                         </div>
