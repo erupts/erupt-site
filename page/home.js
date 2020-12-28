@@ -37,23 +37,22 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
 
     $scope.project = {
         template: {
-            // sub: {
-            //     "***.html": {
-            //         file: true
-            //     },
-            //     "***.js": {
-            //         file: true
-            //     },
-            //     "***.css": {
-            //         file: true
-            //     }
-            // },
+            sub: {
+                "***.html": {
+                    file: true
+                },
+                "***.js": {
+                    file: true
+                },
+                "***.css": {
+                    file: true
+                }
+            },
         },
         controller: {},
         service: {},
         "service.impl": {},
         dao: {},
-        "dao.impl": {},
         mapper: {},
         model: {
             active: true,

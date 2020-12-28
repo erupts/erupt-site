@@ -10,11 +10,21 @@
         cursor: pointer;
         transition: all .6s;
         color: #f8fafc;
+        text-shadow: -3px 3px 0px #ffffff;
         font-size: 8em;
+        animation: d3-kernel 2s;
+    }
+
+    @keyframes d3-kernel {
+        0% {
+            color: #ffc107;
+            text-shadow: 3px 3px 0px #ffc107;
+        }
     }
 
     .kernel:hover {
         color: #ffc107 !important;
+        text-shadow: 3px 3px 0px #ffc107;
         transform: scaleY(30);
     }
 
@@ -86,6 +96,7 @@
         0% {
             text-decoration: none;
         }
+
         100% {
             text-decoration: line-through;
             text-decoration-color: #f00;
@@ -128,8 +139,8 @@
                 <span class="text-center kernel">@</span>
             </div>
             <h1>Erupt Framework</h1>
-            <h4 style="margin-top: 18px">使用 Java 注解，开发管理后台</h4>
-            <p style="margin-top: 22px">
+            <h4 style="margin-top: 18px">使用<span style="color: #ffc107;"> 注解 </span>快速开发管理后台 🚀</h4>
+            <p style="margin-top: 26px">
                 <button class="btn btn-primary" ng-click="go('#!/contrast')">代码示例
                 </button>
                 &nbsp;&nbsp;
@@ -140,6 +151,11 @@
                 </button>
             </p>
         </div>
+        <!-- <div class="container">
+            <div style="color: #fff;border-left: 8px solid #09f;padding-left: 12px;margin-top: 36px;background: #9e9e9e73;">
+                erupt 是一个低代码 全栈类 框架，它使用 Java 注解 来生成页面以及增、删、改、查、权限控制等后台功能，不需要懂前端，也不需要写繁琐的CURD，自动创建表结构，controller / service / sao / mapper 文件都不用创建，极大减少开发工作量，将后台开发速度提升到极致。
+            </div>
+        </div> -->
         <div id="erupt-features" style="margin-top: 60px">
             <div style="position: absolute;
             top: 120px;
@@ -152,11 +168,15 @@
             <div class="container">
                 <div class="row" style="margin-bottom: 26px;">
                     <div class="col-12">
-                        <div class="d-flex"
+                        <div class="d-flex animated fadeInUpBig"
                              style="overflow: hidden;border-radius: 6px;box-shadow: 3px 3px 8px #eee;background: #fff">
-                            <div style="width: 210px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;padding: 0 12px;overflow: auto">
+                            <div style="width: 210px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;overflow: auto">
+                                <div class="align-items-center"
+                                     style="margin-top: 12px;border-bottom: 1px dashed #bbbbbb;">
+                                    <p style="margin-bottom: 8px;text-align: center;">后台开发仅需一个文件</p>
+                                </div>
                                 <div class="align-items-center" ng-repeat="(key,val) in project"
-                                     style="margin-top: 12px">
+                                     style="margin-top: 12px;padding: 0 12px;">
                                     <p>
                                         <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg" width="8px">
                                         <img alt="" src="images/file/finder.svg" style="width: 18px;">
@@ -182,13 +202,14 @@
                                 </div>
                             </div>
                             <div style="width: 100%;overflow: auto;position: relative">
-<pre id="DemoErupt" style="margin: 0;border-radius:0;height: 522px">
+                                <pre id="DemoErupt" style="margin: 0;border-radius:0;height: 552px">
 <code class="prism language-java animated bounce">/**
-  *  无需多层代码，仅使用实体类 + 注解，一个文件就能开发管理后台🚀
-  *  不需要懂前端，不用会 JavaScript，就能做出专业且复杂的后台界面 ！
-  *  erupt = { template <-> controller <-> service <-> dao <-> xml <-> entity }
-  *  erupt简化了90%的后台开发流程，解除被CURD支配的恐惧，专注核心业务。
-  *  改需求？没关系！可能加减几行注解就能搞定😆
+  *  无需多层代码，仅需一个类文件开发管理后台 🚀
+  *  你不需要了解 Vue / Angular / React / Jquery，也不需要了解 JavaScript / HTML / CSS
+  *  甚至不需要了解 Spring MVC / JPA / Mybatis / SQL，即便没学过 erupt 也能猜到大部分配置的作用，只需要简单配置就能完成所有后台页面开发。
+  *  @Erupt = template + controller + service + dao + xml + entity + dll
+  *  erupt 简化了 90% 的后台开发流程，解除被 CURD 支配的恐惧，专注核心业务。
+  *  改需求？没关系！可能加减几行注解就能搞定 😆
   */
 @Table
 @Entity
@@ -196,10 +217,22 @@
 public class DemoErupt extends BaseModel {
 
     @EruptField(
-        views = @View(title = "用于展示"),
-        edit  = @Edit(title = "用于编辑", notNull = true)
+            views = @View(title = "文本"),
+            edit = @Edit(title = "文本", notNull = true, search = @Search)
     )
-    private String field;
+    private String input;
+
+    @EruptField(
+            views = @View(title = "滑动条", sortable = true),
+            edit = @Edit(title = "滑动条", type = EditType.SLIDER, search = @Search)
+    )
+    private Float number;
+
+    @EruptField(
+            views = @View(title = "时间"),
+            edit = @Edit(title = "时间", search = @Search(vague = true))
+    )
+    private Date date;
 
 }</code></pre>
                                 <a class="badge badge-primary" href="#!/contrast"
@@ -207,8 +240,7 @@ public class DemoErupt extends BaseModel {
                                     更多示例 →
                                 </a>
                             </div>
-                            <div class="d-none d-md-block"
-                                 style="background: #fff;height: 100%;width: 260px;
+                            <div class="d-none d-md-block" style="background: #fff;height: 100%;width: 230px;
                                  margin:16px 22px;
                                  overflow: auto;flex-shrink: 0">
                                 <div class="animated bounceInLeft code-tip">
@@ -240,7 +272,8 @@ public class DemoErupt extends BaseModel {
                     </div>
                 </div>
             </div>
-            <div style="background: #fff;padding-top:26px;position: relative;margin:26px 0;box-shadow:0 0 10px #9e9e9e36">
+            <div
+                    style="background: #fff;padding-top:26px;position: relative;margin:26px 0;box-shadow:0 0 10px #9e9e9e36">
                 <div class="container">
                     <p class="text-center" style="font-size: 1.8em;font-weight: 500">框架特性</p>
                     <hr style="border-top: 1px dashed rgba(0,0,0,.1) !important;">
@@ -261,8 +294,7 @@ public class DemoErupt extends BaseModel {
                     <div class="card-header bg-dark text-white text-center">
                         表单支持（{{types.length}}类）
                         <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/cqgoo9"
-                           style="font-size:1em;color: #fff"
-                           target="_blank">
+                           style="font-size:1em;color: #fff" target="_blank">
                             <img alt="" height="20px" src="images/home/right.svg">
                         </a>
                     </div>
@@ -279,8 +311,7 @@ public class DemoErupt extends BaseModel {
                     <div class="card-header bg-success text-white text-center">
                         数据展示（{{viewTypes.length}}种）
                         <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/gec455#JtYTf"
-                           style="font-size:1em;color: #fff"
-                           target="_blank">
+                           style="font-size:1em;color: #fff" target="_blank">
                             <img alt="" height="20px" src="images/home/right.svg">
                         </a>
                     </div>
@@ -301,8 +332,7 @@ public class DemoErupt extends BaseModel {
                         <div class="card-header bg-info text-white text-center">
                             数据源支持
                             <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/ku7vx4"
-                               style="font-size:1em;color: #fff"
-                               target="_blank">
+                               style="font-size:1em;color: #fff" target="_blank">
                                 <img alt="" height="20px" src="images/home/right.svg">
                             </a>
                         </div>
@@ -327,8 +357,9 @@ public class DemoErupt extends BaseModel {
                                 <h4 style="margin-top: 18px">换过多套页面 ！</h4>
                                 <h4 style="margin-top: 18px">经历多次重构 ！</h4>
                                 <h4 style="margin-top: 18px">已在多个项目中稳定运行 ！</h4>
-                                <h4 style="margin-top: 18px;">现已开源，感谢<span
-                                        style="color: rgb(162, 139, 64)"> Star </span>！</h4>
+                                <h4 style="margin-top: 18px;">现已开源，感谢<span style="color: rgb(162, 139, 64)"> Star
+                                    </span>！</h4>
+                                <h4 style="margin-top: 18px;">👈</h4>
                             </div>
                         </div>
                     </div>
