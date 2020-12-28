@@ -1,6 +1,10 @@
+@font-face {
+    font-family: 'Courier New';
+    src: url('assets/Courier New.ttf');
+}
+
 * {
     font-family: Courier New, Menlo, Monaco, Consolas, monospace;
-    /*Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif*/
     margin: 0;
     padding: 0;
 }
