@@ -11,4 +11,4 @@ https://erupt.xyz/demo/zeta-doc/demo.html
 
 ## 版本截图纪念
 ### 1.0
-[](./history/1.0.png)
+![](./history/1.0.png)
