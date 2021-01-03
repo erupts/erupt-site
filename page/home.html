@@ -6,26 +6,8 @@
         background: #fff;
     }
 
-    .kernel {
-        cursor: pointer;
-        transition: all .6s;
-        color: #f8fafc;
-        text-shadow: -2px 2px 0 #f8fafc;
-        font-size: 8em;
-        animation: d3-kernel 4s;
-    }
-
-    @keyframes d3-kernel {
-        0% {
-            color: #ffc107;
-            text-shadow: 3px 3px 0 #ffc107;
-        }
-    }
-
-    .kernel:hover {
-        color: #ffc107 !important;
-        text-shadow: 3px 3px 0 #ffc107;
-        transform: scaleY(30);
+    .card {
+        margin-bottom: 12px;
     }
 
     .card-item {
@@ -96,10 +78,6 @@
         text-decoration-style: dashed;
     }
 
-    .card {
-        margin-bottom: 36px;
-    }
-
     #header {
         animation: header-in 900ms;
     }
@@ -158,6 +136,12 @@
         transform: scale(.9);
     }
 
+    .mark-title {
+        font-size: 1.2em;
+        font-weight: 500;
+        border-left: 6px solid #09f;
+        padding-left: 12px
+    }
 </style>
 <div ng-controller="home">
     <div>
@@ -184,7 +168,7 @@
                 </div>
             </div>
             <div style="position: relative">
-                <div id="skew-bg" style="position: absolute;top: 350px;left: 0;right: 0;bottom: -500px;background: #fff;
+                <div id="skew-bg" style="position: absolute;top: 350px;left: 0;right: 0;bottom: -500px;background: #09f;
                             transform: skewY(-10deg);transform-origin: 0 50%;transition:all 400ms">
 
                 </div>
@@ -192,7 +176,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="d-flex animated fadeInUpBig bg-dark"
-                                 style="overflow: hidden;border-radius: 6px;box-shadow: 0 0 8px #999">
+                                 style="overflow: hidden;border-radius: 6px;box-shadow: 0 10px 20px #080808a6">
                                 <div style="width: 200px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;overflow: auto">
                                     <div class="align-items-center"
                                          style="margin-top: 12px;border-bottom: 1px dashed #bbbbbb;">
@@ -227,7 +211,7 @@
                                 </div>
                                 <div style="width: 100%;overflow: auto;position: relative">
                                 <pre id="DemoErupt"
-                                     style="margin: 0;border-radius:0;height: 565px;box-shadow: inset 0 0 10px #2310109e">
+                                     style="margin: 0;border-radius:0;height: 562px;box-shadow: inset 0 -10px 10px #2310109e">
 <code class="prism language-java animated bounce">/**
   *  无需多层代码，仅需一个类文件开发管理后台 🚀
   *  完全不需要了解 Vue / Angular / React / Jquery，
@@ -269,27 +253,27 @@ public class DemoErupt extends BaseModel {
                                 <div class="d-none d-md-block" style="color: #fff;height: 100%;width: 210px;
                                  margin:16px 22px;
                                  overflow: auto;flex-shrink: 0">
-                                    <div class="animated bounceInLeft code-tip">
+                                    <div class="animated bounceInLeft code-tip delay-1">
                                         <h5 class="text-primary">零前端代码</h5>
                                         <p class="text-white">不需要懂前端，开发专业且强大的管理后台</p>
                                         <hr>
                                     </div>
-                                    <div class="animated bounceInLeft code-tip delay-1">
+                                    <div class="animated bounceInLeft code-tip delay-2">
                                         <h5 class="text-warning">易于上手</h5>
                                         <p class="text-white">仅需了解 Spring Boot 基础知识即可上手开发</p>
                                         <hr>
                                     </div>
-                                    <div class="animated bounceInLeft code-tip delay-2">
+                                    <div class="animated bounceInLeft code-tip delay-3">
                                         <h5 class="text-success">安全可靠</h5>
                                         <p class="text-white">细颗粒全方位安全检查，持续保证数据安全</p>
                                         <hr>
                                     </div>
-                                    <div class="animated bounceInLeft code-tip delay-3">
+                                    <div class="animated bounceInLeft code-tip delay-4">
                                         <h5 class="text-danger">通用数据管理</h5>
                                         <p class="text-white">支持市面上所有主流数据库，支持自定义数据源</p>
                                         <hr>
                                     </div>
-                                    <div class="animated bounceInLeft code-tip delay-4">
+                                    <div class="animated bounceInLeft code-tip delay-5">
                                         <h5 class="text-info">表结构自动生成</h5>
                                         <p class="text-white mb-0">无需手动建表，不懂SQL也能操作数据库</p>
                                     </div>
@@ -297,9 +281,15 @@ public class DemoErupt extends BaseModel {
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 30px">
+                </div>
+            </div>
+        </div>
+        <div id="erupt-features">
+            <div style="margin-top: 30px;padding:16px 0;background: #efefef">
+                <div class="container">
+                    <div class="row" style="margin-top: 16px">
                         <div class="col-12">
-                            <div style="margin-bottom: 26px;font-size: 1.2em">
+                            <div class="mark-title" style="margin-bottom: 26px;">
                                 Erupt 使用 <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>
                                 协议，源代码完全开源，无商业限制。
                                 开源不易如果喜欢请给作者 Star 鼓励 👇
@@ -312,7 +302,7 @@ public class DemoErupt extends BaseModel {
                                 </div>
                                 <div class="card-body" ng-click="go('https://gitee.com/erupt/erupt',true)">
                                     <div class="text-center">
-                                        <img alt="" class="git-img" src="images/home/gitee.svg" style="width: 100px">
+                                        <img alt="" class="git-img" src="images/home/gitee.svg" style="width: 70px">
                                         <p class="git-name">码云</p>
                                     </div>
                                 </div>
@@ -320,12 +310,12 @@ public class DemoErupt extends BaseModel {
                         </div>
                         <div class="col-sm-6">
                             <div class="card git-card">
-                                <div style="position: absolute;left: 10px;top: 10px">
+                                <div style="position: absolute;right: 10px;top: 10px">
                                     <img alt="" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
                                 </div>
                                 <div class="card-body" ng-click="go('https://github.com/erupts/erupt',true)">
                                     <div class="text-center">
-                                        <img alt="" class="git-img" src="images/home/github.svg" style="width: 100px">
+                                        <img alt="" class="git-img" src="images/home/github.svg" style="width: 70px">
                                         <p class="git-name">github</p>
                                     </div>
                                 </div>
@@ -334,12 +324,8 @@ public class DemoErupt extends BaseModel {
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="erupt-features">
-            <div style="position: relative;margin-bottom:26px;box-shadow:0 0 10px #9e9e9e36;padding-top: 20px">
+            <div style="position: relative;box-shadow:0 0 10px #9e9e9e36;padding-top: 20px;background: #fff">
                 <div class="container">
-                    <p class="text-center" style="font-size: 1.8em;font-weight: 500">框架特性</p>
-                    <hr style="border-top: 1px dashed rgba(0,0,0,.1) !important;">
                     <div class="row">
                         <div class="col-md-4" ng-repeat="i in indicator">
                             <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
@@ -352,43 +338,45 @@ public class DemoErupt extends BaseModel {
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="card border-dark">
-                            <div class="card-header bg-dark text-white text-center">
-                                表单支持（{{types.length}}类）
-                                <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/cqgoo9"
-                                   style="font-size:1em;color: #fff" target="_blank">
-                                    <img alt="" height="20px" src="images/home/right.svg">
-                                </a>
-                            </div>
-                            <div class="row" style="margin-left: 0;margin-right: 0;height: 530px;overflow: auto">
-                                <div class="text-center col-sm-3 col-6 card-item" ng-repeat="type in types">
-                                    <!--                            <p>{{type.code}}</p>-->
-                                    <img ng-src="images/component/{{type.image}}" style="max-width: 33px;">
-                                    <p style="font-size: .9em;margin-bottom: 0;color: #666;
+            <div style="padding-top: 26px;background: #fff;margin-bottom: 26px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="card border-dark">
+                                <div class="card-header bg-dark text-white text-center">
+                                    表单支持（{{types.length}}类）
+                                    <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/cqgoo9"
+                                       style="font-size:1em;color: #fff" target="_blank">
+                                        <img alt="" height="20px" src="images/home/right.svg">
+                                    </a>
+                                </div>
+                                <div class="row" style="margin-left: 0;margin-right: 0;height: 530px;overflow: auto">
+                                    <div class="text-center col-sm-3 col-6 card-item" ng-repeat="type in types">
+                                        <!--                            <p>{{type.code}}</p>-->
+                                        <img ng-src="images/component/{{type.image}}" style="max-width: 33px;">
+                                        <p style="font-size: .9em;margin-bottom: 0;color: #666;
                             margin-top: 22px">{{type.name}}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card border-success">
-                            <div class="card-header bg-success text-white text-center">
-                                数据展示（{{viewTypes.length}}种）
-                                <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/gec455#JtYTf"
-                                   style="font-size:1em;color: #fff" target="_blank">
-                                    <img alt="" height="20px" src="images/home/right.svg">
-                                </a>
-                            </div>
-                            <div class="row" style="margin-left: 0;margin-right: 0;height: 530px;overflow: auto">
-                                <div class="text-center col-6 card-item"
-                                     ng-repeat="type in viewTypes">
-                                    <!--                            <p>{{type.code}}</p>-->
-                                    <img ng-src="images/view/{{type.image}}" style="max-width: 33px;">
-                                    <p style="font-size: .9em;margin-bottom: 0;color: #666;
+                        <div class="col-lg-4">
+                            <div class="card border-success">
+                                <div class="card-header bg-success text-white text-center">
+                                    数据展示（{{viewTypes.length}}种）
+                                    <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/gec455#JtYTf"
+                                       style="font-size:1em;color: #fff" target="_blank">
+                                        <img alt="" height="20px" src="images/home/right.svg">
+                                    </a>
+                                </div>
+                                <div class="row" style="margin-left: 0;margin-right: 0;height: 530px;overflow: auto">
+                                    <div class="text-center col-6 card-item"
+                                         ng-repeat="type in viewTypes">
+                                        <!--                            <p>{{type.code}}</p>-->
+                                        <img ng-src="images/view/{{type.image}}" style="max-width: 33px;">
+                                        <p style="font-size: .9em;margin-bottom: 0;color: #666;
                             margin-top: 22px">{{type.name}}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -397,42 +385,15 @@ public class DemoErupt extends BaseModel {
             </div>
             <div style="background: #fff;box-shadow: 0 0 10px #9e9e9e36;padding: 20px 0">
                 <div class="container">
-                    <p class="text-center" style="font-size: 1.8em;font-weight: 500">数据源支持</p>
-                    <hr style="border-top: 1px dashed rgba(0,0,0,.1) !important;">
+                    <p class="mark-title">数据源支持</p>
                     <div class="card">
                         <div class="row" style="margin-left: 0;margin-right: 0">
-                            <div class="card-item col-lg-2 col-md-4 col-sm-6" ng-repeat="db in dbs"
+                            <div class="card-item col-lg-2 col-md-4 col-sm-6 col-6" ng-repeat="db in dbs"
                                  style="padding: 16px">
                                 <div style="padding: 16px;text-align: center">
                                     <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
                                 </div>
                                 <p class="text-center" style="margin-bottom: 0;margin-top: 8px">{{db.name}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div style="padding: 50px 0">
-                <div class="container">
-                    <p class="text-center" style="font-size: 1.8em;font-weight: 500">加入讨论</p>
-                    <hr style="border-top: 1px dashed rgba(0,0,0,.1) !important;">
-                    <div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="text-center"><a href="https://jq.qq.com/?_wv=1027&k=MCd4plZ0"
-                                                            target="_blank">QQ群：821389129</a></div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="text-center"><a href="mailto:erupts@126.com"
-                                                            target="_blank">erupts@126.com</a></div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="text-center"><a href="https://gitee.com/erupt/erupt/issues" target="_blank">Gitee
-                                    issues</a></div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="text-center"><a href="https://github.com/erupts/erupt/issues"
-                                                            target="_blank">Github issues</a></div>
                             </div>
                         </div>
                     </div>

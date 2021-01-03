@@ -51,7 +51,7 @@
 <div ng-controller="contrast">
     <div style="height: calc(100vh - 45px);display: flex">
         <div style="width: 100vw;display: flex">
-            <div class="split split-horizontal" id="select">
+            <div class="split split-horizontal" id="select" style="background: #fff">
                 <ul class="menus">
                     <li ng-class="active.id==p.id?'active':''" ng-click="choicePage(p)" ng-repeat="p in pages">
                         {{p.name}}
