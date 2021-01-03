@@ -135,48 +135,33 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
     Prism.highlightAllUnder(document.getElementById("DemoErupt"));
 
 
-    let headerEle = $("#header");
+    $("#logo").attr("src", "assets/logo2.svg");
 
-    function inverseHeader(is) {
-        if (is) {
-            headerEle.css({
-                bottom: 0,
-                top: 'auto',
-                boxShadow: '-1px -11px 21px -15px rgba(0, 0, 0, 0.75)'
-            })
-        } else {
-            headerEle.css({
-                bottom: 'auto',
-                top: 0,
-                boxShadow: '0 4px 10px 0 rgba(0, 0, 0, .05)'
-            })
-        }
-    }
-
-
-    // $rootScope.showHeader = false;
-    inverseHeader(true);
+    $.get("assets/logo2.svg", function (res) {
+        var svg = res.getElementById("erupt_logo_svg");
+        svg.style.width = "100px";
+        $("#home-logo").html(svg)
+    })
 
     $scope.$on("$destroy", function () {
         // $rootScope.showHeader = true;
         document.onscroll = null;
-        setTimeout(() => inverseHeader(false), 100)
+        $("#logo").attr("src", "assets/logo.svg");
     })
 
-    let galleryEle = $("#gallery img");
+    var galleryEle = $("#skew-bg");
+    var base = 16;
     document.onscroll = function () {
         throttle(() => {
-            let top = $(document).scrollTop();
-            galleryEle.css({top: -(top / 4)});
+            var top = $(document).scrollTop();
+            // galleryEle.css({transform: 'skewY(' + top % base + 'deg)'});
             if (top > 200) {
-                inverseHeader(false);
                 // if ($rootScope.showHeader !== true) {
                 //     $scope.$apply(function () {
                 //         $rootScope.showHeader = true;
                 //     })
                 // }
             } else {
-                inverseHeader(true);
                 // if ($rootScope.showHeader !== false) {
                 //     $scope.$apply(function () {
                 //         $rootScope.showHeader = false;

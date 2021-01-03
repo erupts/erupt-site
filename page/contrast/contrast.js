@@ -1,8 +1,8 @@
 app.controller("contrast", function ($scope, $http, dataService) {
-    let codeEle = document.getElementById("erupt-code");
-    let activeKey = "active_key";
+    var codeEle = document.getElementById("erupt-code");
+    var activeKey = "active_key";
     dataService.eruptReq("/demo/code-list", null, function (data) {
-        let item = sessionStorage.getItem(activeKey);
+        var item = sessionStorage.getItem(activeKey);
         if (null == item) {
             $scope.active = data[0];
         } else {

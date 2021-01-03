@@ -16,17 +16,17 @@
     <header id="header" ng-show="showHeader">
         <div class="d-flex">
             <div ng-click="goHome()" style="cursor: pointer">
-                <img alt="" src="assets/logo.svg" style="width: 45px;">
-                <span class="logo-text">erupt<span style="font-size: .4em">.xyz</span></span>
+                <img alt="" id="logo" src="assets/logo.svg" style="width: 45px;">
+                <span class="logo-text">Erupt<span style="font-size: .4em">.xyz</span></span>
             </div>
-            <div style="line-height: 45px;margin-left: 20px">
-                <a class="align-self-center" href='https://gitee.com/erupt/erupt' target="_blank">
-                    <img alt='gitee star' src='https://gitee.com/erupt/erupt/badge/star.svg?theme=dark'/>
-                </a>
-                <a class="align-self-center" href='https://github.com/erupts/erupt' target="_blank">
-                    <img alt="github star" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
-                </a>
-            </div>
+            <!--            <div style="line-height: 45px;margin-left: 20px">-->
+            <!--                <a class="align-self-center" href='https://gitee.com/erupt/erupt' target="_blank">-->
+            <!--                    <img alt='gitee star' src='https://gitee.com/erupt/erupt/badge/star.svg?theme=dark'/>-->
+            <!--                </a>-->
+            <!--                <a class="align-self-center" href='https://github.com/erupts/erupt' target="_blank">-->
+            <!--                    <img alt="github star" src="https://img.shields.io/github/stars/erupts/erupt?style=social">-->
+            <!--                </a>-->
+            <!--            </div>-->
             <div style="line-height: 45px;margin-left: auto">
                 <a class="btn btn-sm align-self-center btn-link" href="#!/" ng-class="currRouter=='/'?'active-link':''">
                     首页
@@ -46,18 +46,30 @@
             </div>
         </div>
     </header>
-    <main id="main" ng-view>
+    <main id="main">
+        <div ng-view>
+
+        </div>
     </main>
+
     <footer id="footer">
-        <div class="d-flex align-items-center">
-            <img alt="" src="assets/logo2.svg" style="width: 45px;"><span class="logo-text">erupt<span
-                style="font-size: .4em">.xyz</span></span>
-            <div class="ml-auto">
-                <p style="margin-bottom: 0;font-size: .85em;text-align: right;">
-                    <a href="http://beian.miit.gov.cn" style="color: #fff" target="_blank">京ICP备19044060号-1</a>
-                    <span style="color: rgba(255,255,255,0.7)">|</span>
-                    <span>Copyright © 2019-{{year}} erupt.xyz All rights reserved.</span>
-                </p>
+        <div class="container" style="padding: 20px 36px;height: 200px">
+            <!--            <h3 class="text-center">加入讨论</h3>-->
+            <div class="row">
+
+            </div>
+        </div>
+        <div style="background: #000;padding: 0 26px;">
+            <div class="d-flex align-items-center">
+                <img alt="" src="assets/logo2.svg" style="width: 45px;"><span class="logo-text">erupt<span
+                    style="font-size: .4em">.xyz</span></span>
+                <div class="ml-auto">
+                    <p style="margin-bottom: 0;font-size: .85em;text-align: right;">
+                        <a href="http://beian.miit.gov.cn" style="color: #fff" target="_blank">京ICP备19044060号-1</a>
+                        <span style="color: rgba(255,255,255,0.7)">|</span>
+                        <span>Copyright © 2019-{{year}} erupt.xyz All rights reserved.</span>
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
@@ -97,7 +109,7 @@
 
     //节流
     function throttle(fn, delay) {
-        let runFlag = false;
+        var runFlag = false;
         return function (e) {
             // 判断之前的调用是否完成
             if (runFlag) {

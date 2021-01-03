@@ -8,7 +8,7 @@
         }
 
         #p3:hover {
-        fill: #000;
+        fill: #fff;
         }
 
         path {
@@ -26,8 +26,7 @@
         }
 
         polygon:hover {
-        stroke: #000;
-
+        stroke: #fff;
         }
     </style>
     <g id="eagle_1_">

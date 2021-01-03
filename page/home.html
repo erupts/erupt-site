@@ -2,29 +2,29 @@
     #erupt-features {
         transition: all .6s;
         border-radius: 6px;
-        padding: 20px 0;
         position: relative;
+        background: #fff;
     }
 
     .kernel {
         cursor: pointer;
         transition: all .6s;
         color: #f8fafc;
-        text-shadow: -3px 3px 0px #ffffff;
+        text-shadow: -2px 2px 0 #f8fafc;
         font-size: 8em;
-        animation: d3-kernel 2s;
+        animation: d3-kernel 4s;
     }
 
     @keyframes d3-kernel {
         0% {
             color: #ffc107;
-            text-shadow: 3px 3px 0px #ffc107;
+            text-shadow: 3px 3px 0 #ffc107;
         }
     }
 
     .kernel:hover {
         color: #ffc107 !important;
-        text-shadow: 3px 3px 0px #ffc107;
+        text-shadow: 3px 3px 0 #ffc107;
         transform: scaleY(30);
     }
 
@@ -36,24 +36,9 @@
         border-bottom: 1px solid #efefef;
     }
 
-    /*.card-item:nth-child(3n+1) {*/
-    /*    background: #ffeeba;*/
-    /*}*/
-
     .card-item:hover {
         transition: all .3s;
         box-shadow: inset 0 0 30px rgba(0, 0, 0, .06);
-    }
-
-    #gallery {
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 45px;
-        overflow: hidden;
-        background: #27262b;
-        /*max-height: 660px;*/
     }
 
     .indicator-card {
@@ -116,100 +101,141 @@
     }
 
     #header {
-        animation: header-in 600ms;
+        animation: header-in 900ms;
     }
 
     @keyframes header-in {
         0% {
-            transform: translateY(50px);
+            transform: translateY(-50px);
         }
 
         100% {
             transform: translateY(0);
         }
     }
+
+    .git-name {
+        margin-bottom: 0;
+        margin-top: 16px;
+        font-size: 1.3em;
+    }
+
+    #main {
+        margin-top: 0;
+    }
+
+    #header {
+        background: none;
+        border-bottom: 0;
+        color: #fff;
+        background: rgba(39, 38, 43, 0.99);
+    }
+
+    #header a {
+        color: #aaa;
+    }
+
+    #header .active-link {
+        color: #fff !important;
+    }
+
+    .git-card {
+        cursor: pointer;
+        transition: all 600ms;
+    }
+
+    .git-card img {
+        transition: all 600ms;
+    }
+
+    .git-card:hover {
+        background: rgba(52, 58, 64, 0.76);
+        color: #fff;
+        box-shadow: 0 18px 20px -14px rgba(0, 36, 100, 0.3);
+    }
+
+    .git-card:hover .git-img {
+        transform: scale(.9);
+    }
+
 </style>
 <div ng-controller="home">
-    <div id="gallery">
-        <img class="d-none d-lg-block" src="images/home.jpg" style="position: relative" width="100%">
-    </div>
-    <div style="position: relative">
-        <div class="text-center" style="color: #fff">
-            <div>
-                <span class="text-center kernel">@</span>
+    <div>
+        <div style="background: #27262b">
+            <div style="padding-top: 60px">
+                <div class="text-center" style="color: #fff">
+                    <div style="margin-top: 60px;text-align: center">
+                        <span id="home-logo">
+                            <img alt="" src="assets/logo2.svg" width="120px">
+                        </span>
+                    </div>
+                    <h1 style="margin-top: 30px">Erupt Framework</h1>
+                    <h4 style="margin-top: 18px">使用<span style="color: #ffc107;"> 注解 </span>快速开发管理后台 🚀</h4>
+                    <p style="margin-top: 26px">
+                        <button class="btn btn-primary" ng-click="go('#!/contrast')">代码示例
+                        </button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-success" ng-click="go('#!/doc')">开始使用
+                        </button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-danger" ng-click="go('https://www.erupt.xyz/demo',true)">演示DEMO
+                        </button>
+                    </p>
+                </div>
             </div>
-            <h1>Erupt Framework</h1>
-            <h4 style="margin-top: 18px">使用<span style="color: #ffc107;"> 注解 </span>快速开发管理后台 🚀</h4>
-            <p style="margin-top: 26px">
-                <button class="btn btn-primary" ng-click="go('#!/contrast')">代码示例
-                </button>
-                &nbsp;&nbsp;
-                <button class="btn btn-success" ng-click="go('#!/doc')">使用文档
-                </button>
-                &nbsp;&nbsp;
-                <button class="btn btn-danger" ng-click="go('https://www.erupt.xyz/demo',true)">演示DEMO
-                </button>
-            </p>
-        </div>
-        <!-- <div class="container">
-            <div style="color: #fff;border-left: 8px solid #09f;padding-left: 12px;margin-top: 36px;background: #9e9e9e73;">
-                erupt 是一个低代码 全栈类 框架，它使用 Java 注解 来生成页面以及增、删、改、查、权限控制等后台功能，不需要懂前端，也不需要写繁琐的CURD，自动创建表结构，controller / service / sao / mapper 文件都不用创建，极大减少开发工作量，将后台开发速度提升到极致。
-            </div>
-        </div> -->
-        <div id="erupt-features" style="margin-top: 60px">
-            <div style="position: absolute;
-            top: 120px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            box-shadow: 0 -2px 10px #9e9e9ea1;
-            background: #f8fafc;">
-            </div>
-            <div class="container">
-                <div class="row" style="margin-bottom: 26px;">
-                    <div class="col-12">
-                        <div class="d-flex animated fadeInUpBig"
-                             style="overflow: hidden;border-radius: 6px;box-shadow: 3px 3px 8px #eee;background: #fff">
-                            <div style="width: 210px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;overflow: auto">
-                                <div class="align-items-center"
-                                     style="margin-top: 12px;border-bottom: 1px dashed #bbbbbb;">
-                                    <p style="margin-bottom: 8px;text-align: center;">后台开发仅需一个文件</p>
-                                </div>
-                                <div class="align-items-center" ng-repeat="(key,val) in project"
-                                     style="margin-top: 12px;padding: 0 12px;">
-                                    <p>
-                                        <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg" width="8px">
-                                        <img alt="" src="images/file/finder.svg" style="width: 18px;">
-                                        <span ng-class="val.active||'del-line'"
-                                              ng-style="{animationDelay:($index*400)+'ms'}">{{key}}</span>
-                                    </p>
-                                    <div ng-if="val.sub">
-                                        <div class="align-items-center" ng-repeat="(key,val) in val.sub"
-                                             style="padding-left: 32px;margin-top: 12px">
-                                            <div ng-if="val.file">
-                                                <img alt="" src="images/file/file.svg" style="width: 18px">
-                                                <span ng-class="val.active||'del-line'"
-                                                      ng-style="{color:val.active&&'#FFEB3B'}">{{key}}</span>
-                                            </div>
-                                            <div ng-if="!val.file">
-                                                <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg"
-                                                     width="8px">
-                                                <img alt="" src="images/file/finder.svg" style="width: 18px">
-                                                <span class="del-line">{{key}}</span>
+            <div style="position: relative">
+                <div id="skew-bg" style="position: absolute;top: 350px;left: 0;right: 0;bottom: -500px;background: #fff;
+                            transform: skewY(-10deg);transform-origin: 0 50%;transition:all 400ms">
+
+                </div>
+                <div class="container" style="margin-top: 80px;padding-bottom: 20px;">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex animated fadeInUpBig bg-dark"
+                                 style="overflow: hidden;border-radius: 6px;box-shadow: 0 0 8px #999">
+                                <div style="width: 200px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;overflow: auto">
+                                    <div class="align-items-center"
+                                         style="margin-top: 12px;border-bottom: 1px dashed #bbbbbb;">
+                                        <p style="margin-bottom: 8px;text-align: center;">后台开发仅需一个类文件</p>
+                                    </div>
+                                    <div class="align-items-center" ng-repeat="(key,val) in project"
+                                         style="margin-top: 12px;padding: 0 12px;">
+                                        <p>
+                                            <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg"
+                                                 width="8px">
+                                            <img alt="" src="images/file/finder.svg" style="width: 18px;">
+                                            <span ng-class="val.active||'del-line'"
+                                                  ng-style="{animationDelay:($index*400)+'ms'}">{{key}}</span>
+                                        </p>
+                                        <div ng-if="val.sub">
+                                            <div class="align-items-center" ng-repeat="(key,val) in val.sub"
+                                                 style="padding-left: 32px;margin-top: 12px">
+                                                <div ng-if="val.file">
+                                                    <img alt="" src="images/file/file.svg" style="width: 18px">
+                                                    <span ng-class="val.active||'del-line'"
+                                                          ng-style="{color:val.active&&'#FFEB3B'}">{{key}}</span>
+                                                </div>
+                                                <div ng-if="!val.file">
+                                                    <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg"
+                                                         width="8px">
+                                                    <img alt="" src="images/file/finder.svg" style="width: 18px">
+                                                    <span class="del-line">{{key}}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div style="width: 100%;overflow: auto;position: relative">
-                                <pre id="DemoErupt" style="margin: 0;border-radius:0;height: 552px">
+                                <div style="width: 100%;overflow: auto;position: relative">
+                                <pre id="DemoErupt"
+                                     style="margin: 0;border-radius:0;height: 565px;box-shadow: inset 0 0 10px #2310109e">
 <code class="prism language-java animated bounce">/**
   *  无需多层代码，仅需一个类文件开发管理后台 🚀
-  *  你不需要了解 Vue / Angular / React / Jquery，也不需要了解 JavaScript / HTML / CSS
-  *  甚至不需要了解 Spring MVC / JPA / Mybatis / SQL，即便没学过 erupt 也能猜到大部分配置的作用，只需要简单配置就能完成所有后台页面开发。
-  *  @Erupt = template + controller + service + dao + xml + entity + dll
-  *  erupt 简化了 90% 的后台开发流程，解除被 CURD 支配的恐惧，专注核心业务。
-  *  改需求？没关系！可能加减几行注解就能搞定 😆
+  *  完全不需要了解 Vue / Angular / React / Jquery，
+  *  而且不需要了解 JavaScript / HTML / CSS
+  *  甚至不需要了解 Spring MVC / JPA / Mybatis / SQL
+  *  即便没学过 erupt 也能猜到大部分配置的作用，只需要简单配置就能完成所有后台页面开发。
+  *  @Erupt = template + controller + service + dao + xml + entity + ddl
+  *  简化了 90% 的后台开发流程，解除被 CURD 支配的恐惧，专注核心业务。改需求？没关系！可能加减几行注解就能搞定 😆
   */
 @Table
 @Entity
@@ -223,8 +249,8 @@ public class DemoErupt extends BaseModel {
     private String input;
 
     @EruptField(
-            views = @View(title = "滑动条", sortable = true),
-            edit = @Edit(title = "滑动条", type = EditType.SLIDER, search = @Search)
+            views = @View(title = "数值", sortable = true),
+            edit = @Edit(title = "数值", search = @Search)
     )
     private Float number;
 
@@ -235,45 +261,82 @@ public class DemoErupt extends BaseModel {
     private Date date;
 
 }</code></pre>
-                                <a class="badge badge-primary" href="#!/contrast"
-                                   style="position: absolute;right: 16px;bottom: 16px;font-family: initial">
-                                    更多示例 →
-                                </a>
-                            </div>
-                            <div class="d-none d-md-block" style="background: #fff;height: 100%;width: 230px;
+                                    <a class="badge badge-primary" href="#!/contrast"
+                                       style="position: absolute;right: 16px;bottom: 16px;font-family: initial">
+                                        更多示例 →
+                                    </a>
+                                </div>
+                                <div class="d-none d-md-block" style="color: #fff;height: 100%;width: 210px;
                                  margin:16px 22px;
                                  overflow: auto;flex-shrink: 0">
-                                <div class="animated bounceInLeft code-tip">
-                                    <h5 class="text-primary">零前端代码</h5>
-                                    <p class="text-secondary">不需要懂前端，开发专业且强大的管理后台</p>
-                                    <hr>
+                                    <div class="animated bounceInLeft code-tip">
+                                        <h5 class="text-primary">零前端代码</h5>
+                                        <p class="text-white">不需要懂前端，开发专业且强大的管理后台</p>
+                                        <hr>
+                                    </div>
+                                    <div class="animated bounceInLeft code-tip delay-1">
+                                        <h5 class="text-warning">易于上手</h5>
+                                        <p class="text-white">仅需了解 Spring Boot 基础知识即可上手开发</p>
+                                        <hr>
+                                    </div>
+                                    <div class="animated bounceInLeft code-tip delay-2">
+                                        <h5 class="text-success">安全可靠</h5>
+                                        <p class="text-white">细颗粒全方位安全检查，持续保证数据安全</p>
+                                        <hr>
+                                    </div>
+                                    <div class="animated bounceInLeft code-tip delay-3">
+                                        <h5 class="text-danger">通用数据管理</h5>
+                                        <p class="text-white">支持市面上所有主流数据库，支持自定义数据源</p>
+                                        <hr>
+                                    </div>
+                                    <div class="animated bounceInLeft code-tip delay-4">
+                                        <h5 class="text-info">表结构自动生成</h5>
+                                        <p class="text-white mb-0">无需手动建表，不懂SQL也能操作数据库</p>
+                                    </div>
                                 </div>
-                                <div class="animated bounceInLeft code-tip delay-1">
-                                    <h5 class="text-warning">极简注解配置</h5>
-                                    <p class="text-secondary">灵活构建功能强大且值得信赖的管理后台</p>
-                                    <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 30px">
+                        <div class="col-12">
+                            <div style="margin-bottom: 26px;font-size: 1.2em">
+                                Erupt 使用 <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>
+                                协议，源代码完全开源，无商业限制。
+                                开源不易如果喜欢请给作者 Star 鼓励 👇
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card git-card">
+                                <div style="position: absolute;left: 10px;top: 10px">
+                                    <img alt="" src="https://gitee.com/erupt/erupt/badge/star.svg?theme=dark">
                                 </div>
-                                <div class="animated bounceInLeft code-tip delay-2">
-                                    <h5 class="text-success">安全可靠</h5>
-                                    <p class="text-secondary">细颗粒全方位安全检查，持续保证数据安全</p>
-                                    <hr>
+                                <div class="card-body" ng-click="go('https://gitee.com/erupt/erupt',true)">
+                                    <div class="text-center">
+                                        <img alt="" class="git-img" src="images/home/gitee.svg" style="width: 100px">
+                                        <p class="git-name">码云</p>
+                                    </div>
                                 </div>
-                                <div class="animated bounceInLeft code-tip delay-3">
-                                    <h5 class="text-danger">通用数据管理</h5>
-                                    <p class="text-secondary">支持市面上所有主流数据库！</p>
-                                    <hr>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card git-card">
+                                <div style="position: absolute;left: 10px;top: 10px">
+                                    <img alt="" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
                                 </div>
-                                <div class="animated bounceInLeft code-tip delay-4">
-                                    <h5>表结构自动生成</h5>
-                                    <p class="text-secondary mb-0">不懂SQL也能操作数据库</p>
+                                <div class="card-body" ng-click="go('https://github.com/erupts/erupt',true)">
+                                    <div class="text-center">
+                                        <img alt="" class="git-img" src="images/home/github.svg" style="width: 100px">
+                                        <p class="git-name">github</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div
-                    style="background: #fff;padding-top:26px;position: relative;margin:26px 0;box-shadow:0 0 10px #9e9e9e36">
+        </div>
+        <div id="erupt-features">
+            <div style="position: relative;margin-bottom:26px;box-shadow:0 0 10px #9e9e9e36;padding-top: 20px">
                 <div class="container">
                     <p class="text-center" style="font-size: 1.8em;font-weight: 500">框架特性</p>
                     <hr style="border-top: 1px dashed rgba(0,0,0,.1) !important;">
@@ -290,52 +353,53 @@ public class DemoErupt extends BaseModel {
                 </div>
             </div>
             <div class="container">
-                <div class="card border-dark">
-                    <div class="card-header bg-dark text-white text-center">
-                        表单支持（{{types.length}}类）
-                        <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/cqgoo9"
-                           style="font-size:1em;color: #fff" target="_blank">
-                            <img alt="" height="20px" src="images/home/right.svg">
-                        </a>
-                    </div>
-                    <div class="row" style="margin-left: 0;margin-right: 0">
-                        <div class="text-center col-lg-2 col-md-3 col-sm-4 col-6 card-item" ng-repeat="type in types">
-                            <!--                            <p>{{type.code}}</p>-->
-                            <img ng-src="images/component/{{type.image}}" style="max-width: 33px;">
-                            <p style="font-size: .9em;margin-bottom: 0;color: #666;
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card border-dark">
+                            <div class="card-header bg-dark text-white text-center">
+                                表单支持（{{types.length}}类）
+                                <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/cqgoo9"
+                                   style="font-size:1em;color: #fff" target="_blank">
+                                    <img alt="" height="20px" src="images/home/right.svg">
+                                </a>
+                            </div>
+                            <div class="row" style="margin-left: 0;margin-right: 0;height: 530px;overflow: auto">
+                                <div class="text-center col-sm-3 col-6 card-item" ng-repeat="type in types">
+                                    <!--                            <p>{{type.code}}</p>-->
+                                    <img ng-src="images/component/{{type.image}}" style="max-width: 33px;">
+                                    <p style="font-size: .9em;margin-bottom: 0;color: #666;
                             margin-top: 22px">{{type.name}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card border-success">
-                    <div class="card-header bg-success text-white text-center">
-                        数据展示（{{viewTypes.length}}种）
-                        <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/gec455#JtYTf"
-                           style="font-size:1em;color: #fff" target="_blank">
-                            <img alt="" height="20px" src="images/home/right.svg">
-                        </a>
-                    </div>
-                    <div class="row" style="margin-left: 0;margin-right: 0">
-                        <div class="text-center col-lg-2 col-md-3 col-sm-4 col-6 card-item"
-                             ng-repeat="type in viewTypes">
-                            <!--                            <p>{{type.code}}</p>-->
-                            <img ng-src="images/view/{{type.image}}" style="max-width: 33px;">
-                            <p style="font-size: .9em;margin-bottom: 0;color: #666;
+                    <div class="col-lg-4">
+                        <div class="card border-success">
+                            <div class="card-header bg-success text-white text-center">
+                                数据展示（{{viewTypes.length}}种）
+                                <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/gec455#JtYTf"
+                                   style="font-size:1em;color: #fff" target="_blank">
+                                    <img alt="" height="20px" src="images/home/right.svg">
+                                </a>
+                            </div>
+                            <div class="row" style="margin-left: 0;margin-right: 0;height: 530px;overflow: auto">
+                                <div class="text-center col-6 card-item"
+                                     ng-repeat="type in viewTypes">
+                                    <!--                            <p>{{type.code}}</p>-->
+                                    <img ng-src="images/view/{{type.image}}" style="max-width: 33px;">
+                                    <p style="font-size: .9em;margin-bottom: 0;color: #666;
                             margin-top: 22px">{{type.name}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style="background: #09f;">
+            <div style="background: #fff;box-shadow: 0 0 10px #9e9e9e36;padding: 20px 0">
                 <div class="container">
-                    <div class="card border-info">
-                        <div class="card-header bg-info text-white text-center">
-                            数据源支持
-                            <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/ku7vx4"
-                               style="font-size:1em;color: #fff" target="_blank">
-                                <img alt="" height="20px" src="images/home/right.svg">
-                            </a>
-                        </div>
+                    <p class="text-center" style="font-size: 1.8em;font-weight: 500">数据源支持</p>
+                    <hr style="border-top: 1px dashed rgba(0,0,0,.1) !important;">
+                    <div class="card">
                         <div class="row" style="margin-left: 0;margin-right: 0">
                             <div class="card-item col-lg-2 col-md-4 col-sm-6" ng-repeat="db in dbs"
                                  style="padding: 16px">
@@ -346,20 +410,29 @@ public class DemoErupt extends BaseModel {
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div id="osc-gitee-widget-tag"></div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div style="padding: 22px 12px 0;color: #eae9d7;height: 361px;
-                            border:1px solid #d8ca9f;border-radius: 3px;background: #272821">
-                                <h2>总计开发两年 ！</h2>
-                                <h4 style="margin-top: 18px">换过多套页面 ！</h4>
-                                <h4 style="margin-top: 18px">经历多次重构 ！</h4>
-                                <h4 style="margin-top: 18px">已在多个项目中稳定运行 ！</h4>
-                                <h4 style="margin-top: 18px;">现已开源，感谢<span style="color: rgb(162, 139, 64)"> Star
-                                    </span>！</h4>
-                                <h4 style="margin-top: 18px;">👈</h4>
+                </div>
+            </div>
+            <div style="padding: 50px 0">
+                <div class="container">
+                    <p class="text-center" style="font-size: 1.8em;font-weight: 500">加入讨论</p>
+                    <hr style="border-top: 1px dashed rgba(0,0,0,.1) !important;">
+                    <div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="text-center"><a href="https://jq.qq.com/?_wv=1027&k=MCd4plZ0"
+                                                            target="_blank">QQ群：821389129</a></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="text-center"><a href="mailto:erupts@126.com"
+                                                            target="_blank">erupts@126.com</a></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="text-center"><a href="https://gitee.com/erupt/erupt/issues" target="_blank">Gitee
+                                    issues</a></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="text-center"><a href="https://github.com/erupts/erupt/issues"
+                                                            target="_blank">Github issues</a></div>
                             </div>
                         </div>
                     </div>
@@ -368,29 +441,3 @@ public class DemoErupt extends BaseModel {
         </div>
     </div>
 </div>
-<script async defer src='https://gitee.com/erupt/erupt/widget_preview'></script>
-<style>
-    .osc_pro_color {
-        color: #eae9d7 !important;
-    }
-
-    .osc_panel_color {
-        background-color: #2e2f29 !important;
-    }
-
-    .osc_background_color {
-        background-color: #272822 !important;
-    }
-
-    .osc_border_color {
-        border-color: #484a45 !important;
-    }
-
-    .osc_desc_color {
-        color: #eae9d7 !important;
-    }
-
-    .osc_link_color * {
-        color: #747571 !important;
-    }
-</style>
