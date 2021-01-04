@@ -128,20 +128,20 @@
     console.log("%chttps://www.erupt.xyz/demo/zeta-doc/demo.html", "font-size:1.3em;")
 
     //节流
-    function throttle(fn, delay) {
-        var runFlag = false;
-        return function (e) {
-            // 判断之前的调用是否完成
-            if (runFlag) {
-                return false;
-            }
-            runFlag = true;
-            setTimeout(() => {
-                fn(e);
-                runFlag = false;
-            }, delay)
-        }
-    }
+    // function throttle(fn, delay) {
+    //     var runFlag = false;
+    //     return function (e) {
+    //         // 判断之前的调用是否完成
+    //         if (runFlag) {
+    //             return false;
+    //         }
+    //         runFlag = true;
+    //         setTimeout(() => {
+    //             fn(e);
+    //             runFlag = false;
+    //         }, delay)
+    //     }
+    // }
 
     app.controller("index", function ($scope) {
         $scope.goHome = function () {

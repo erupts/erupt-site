@@ -160,27 +160,26 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         $("#logo").attr("src", "assets/logo.svg");
     })
 
-    var galleryEle = $("#skew-bg");
-    var base = 16;
-    document.onscroll = function () {
-        throttle(() => {
-            var top = $(document).scrollTop();
-            // galleryEle.css({transform: 'skewY(' + top % base + 'deg)'});
-            if (top > 200) {
-                // if ($rootScope.showHeader !== true) {
-                //     $scope.$apply(function () {
-                //         $rootScope.showHeader = true;
-                //     })
-                // }
-            } else {
-                // if ($rootScope.showHeader !== false) {
-                //     $scope.$apply(function () {
-                //         $rootScope.showHeader = false;
-                //     })
-                // }
-            }
-        }, 100)()
-    }
+
+    // document.onscroll = function () {
+    //     throttle(() => {
+    //         var top = $(document).scrollTop();
+    //         // galleryEle.css({transform: 'skewY(' + top % base + 'deg)'});
+    //         if (top > 200) {
+    //             // if ($rootScope.showHeader !== true) {
+    //             //     $scope.$apply(function () {
+    //             //         $rootScope.showHeader = true;
+    //             //     })
+    //             // }
+    //         } else {
+    //             // if ($rootScope.showHeader !== false) {
+    //             //     $scope.$apply(function () {
+    //             //         $rootScope.showHeader = false;
+    //             //     })
+    //             // }
+    //         }
+    //     }, 100)()
+    // }
 
     $scope.go = function (url, open) {
         if (open) {
