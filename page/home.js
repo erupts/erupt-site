@@ -10,29 +10,41 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
     ];
 
     $scope.indicator = [{
-        name: "快速迭代",
-        desc: "需求变更仅需修改或添加注解配置即可，迭代速度比需求讨论速度还快。",
-        icon: "dev.svg"
-    }, {
         name: "敏捷开发",
-        desc: "仅单个.java文件即可实现后台管理功能，专注业务与核心功能的研发。",
+        desc: "仅单个.java文件即可实现后台管理功能，专注业务与核心功能的研发",
         icon: "fast.svg"
     }, {
         name: "高安全性",
-        desc: "可靠的安全机制，细颗粒度权限控制，阻绝一切不可靠的数据，为您的数据安全保驾护航。",
+        desc: "可靠的安全机制，细颗粒度权限控制，阻绝一切不可靠的数据，为您的数据安全保驾护航",
         icon: "security.svg"
     }, {
         name: "响应式布局",
-        desc: "支持PC端手机端等各种规格的设备中使用。",
+        desc: "支持PC端手机端等各种规格的设备中使用",
         icon: "resize.svg"
     }, {
         name: "低入侵性",
-        desc: "几乎所有功能都围绕注解而展开，不影响你使用其他的框架与库。",
+        desc: "几乎所有功能都围绕注解而展开，不影响你使用如 Mybatis 等框架与库",
         icon: "hold.svg"
     }, {
         name: "界面美观",
-        desc: "每个交互都精心设计，产品思维打磨，只为了更好的操作体验。",
+        desc: "每个交互都精心设计，产品思维打磨，只为了更好的操作体验",
         icon: "art.svg"
+    }, {
+        name: "通用数据管理",
+        desc: "支持市面上所有主流数据库，支持MongoDB，支持自定义数据源",
+        icon: "db.svg"
+    }, {
+        name: "支持事件代理",
+        desc: "增删改查等功能全部可控，且支持切面",
+        icon: "extend.svg"
+    }, {
+        name: "自定义附件上传",
+        desc: "仅需简单的适配代码，可以让 erupt 支持 fastDFS、七牛云等附件存储方式",
+        icon: "attachment.svg"
+    }, {
+        name: "自定义模板",
+        desc: "可自定义页面，自定义按钮模板，支持Freemarker/Thymeleaf/h5，给予 erupt 无限可能",
+        icon: "template.svg"
     }]
 
     $scope.project = {
@@ -129,7 +141,6 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {code: "SWF", name: "SWF", image: "swf.svg"},
         {code: "CODE", name: "代码", image: "code.svg"},
         {code: "MAP", name: "地图", image: "map.svg"},
-        // {code: "BOOLEAN", name: "布尔", image: "empty.svg"},
     ]
 
     Prism.highlightAllUnder(document.getElementById("DemoErupt"));

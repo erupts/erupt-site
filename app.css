@@ -63,6 +63,9 @@ html, body {
     background: #111;
     height: 295px;
     color: #fff;
+    background: #111 url("https://img.alicdn.com/tfs/TB1LfTdZUH1gK0jSZSyXXXtlpXa-2328-2328.svg") no-repeat;
+    background-size: 2328px 2328px;
+    background-position: center -1164px;
     box-shadow: inset 0 30px 30px -15px rgba(33, 33, 33, 0.8);
 }
 

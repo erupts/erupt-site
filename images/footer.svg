@@ -1,0 +1,105 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2328" height="2328" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter x="-2.9%" y="-2.9%" width="105.8%" height="105.8%" filterUnits="objectBoundingBox" id="a">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-3.8%" y="-3.8%" width="107.5%" height="107.5%" filterUnits="objectBoundingBox" id="c">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-3.3%" y="-3.3%" width="106.6%" height="106.6%" filterUnits="objectBoundingBox" id="e">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-4.9%" y="-4.9%" width="109.9%" height="109.9%" filterUnits="objectBoundingBox" id="g">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-4.3%" y="-4.3%" width="108.6%" height="108.6%" filterUnits="objectBoundingBox" id="i">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-6.7%" y="-6.7%" width="113.4%" height="113.4%" filterUnits="objectBoundingBox" id="k">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-5.7%" y="-5.7%" width="111.5%" height="111.5%" filterUnits="objectBoundingBox" id="m">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-10%" y="-10%" width="119.9%" height="119.9%" filterUnits="objectBoundingBox" id="o">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-8%" y="-8%" width="116%" height="116%" filterUnits="objectBoundingBox" id="q">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-14.1%" y="-14.1%" width="128.1%" height="128.1%" filterUnits="objectBoundingBox" id="s">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <filter x="-21.9%" y="-21.9%" width="143.8%" height="143.8%" filterUnits="objectBoundingBox" id="u">
+            <feGaussianBlur stdDeviation="30.5" in="SourceAlpha" result="shadowBlurInner1"/>
+            <feOffset dy="-51" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                         result="shadowInnerInner1"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0" in="shadowInnerInner1"/>
+        </filter>
+        <circle id="b" cx="1164" cy="1164" r="960"/>
+        <circle id="d" cx="1164" cy="1164" r="744"/>
+        <circle id="f" cx="1164" cy="1164" r="850"/>
+        <circle id="h" cx="1164" cy="1164" r="568"/>
+        <circle id="j" cx="1164" cy="1164" r="652"/>
+        <circle id="l" cx="1164" cy="1164" r="417"/>
+        <circle id="n" cx="1164" cy="1164" r="489"/>
+        <circle id="p" cx="1164" cy="1164" r="281"/>
+        <circle id="r" cx="1164" cy="1164" r="351"/>
+        <circle id="t" cx="1164" cy="1164" r="199"/>
+        <circle id="v" cx="1164" cy="1164" r="128"/>
+    </defs>
+    <g fill-rule="evenodd" transform="rotate(104 1164 1164)">
+        <use filter="url(#a)" xlink:href="#b"/>
+        <use filter="url(#c)" xlink:href="#d"/>
+        <use filter="url(#e)" xlink:href="#f"/>
+        <use filter="url(#g)" xlink:href="#h"/>
+        <use filter="url(#i)" xlink:href="#j"/>
+        <use filter="url(#k)" xlink:href="#l"/>
+        <use filter="url(#m)" xlink:href="#n"/>
+        <use filter="url(#o)" xlink:href="#p"/>
+        <use filter="url(#q)" xlink:href="#r"/>
+        <use filter="url(#s)" xlink:href="#t"/>
+        <use filter="url(#u)" xlink:href="#v"/>
+    </g>
+</svg>
