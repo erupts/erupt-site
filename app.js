@@ -2,6 +2,8 @@ var host = "https://www.erupt.xyz/demo"
 
 // var host = "http://127.0.0.1:9999"
 
+document.title = "Erupt 通用数据管理框架"
+
 function toTemplate() {
     window.scrollTo(0, 0);
 }
@@ -18,7 +20,6 @@ var app = angular.module('app', [
 }).config(function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: function (attr) {
-            // toTemplate();
             return "page/home.html";
         }
     }).when('/doc', {
