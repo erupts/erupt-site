@@ -339,7 +339,7 @@ public class DemoErupt extends BaseModel {
                 <div class="container">
                     <p class="mark-title">特性一览</p>
                     <div class="row">
-                        <div class="col-md-4" ng-repeat="i in indicator">
+                        <div class="col-md-4 col-6" ng-repeat="i in indicator">
                             <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
                                 <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
                                 <p style="margin-top: 22px;margin-bottom: 10px;font-size: 1.2em;color: #333">
@@ -363,7 +363,7 @@ public class DemoErupt extends BaseModel {
                                     </a>
                                 </div>
                                 <div class="row" style="margin-left: 0;margin-right: 0;height: 530px;overflow: auto">
-                                    <div class="text-center col-sm-3 col-6 card-item" ng-repeat="type in types">
+                                    <div class="text-center col-sm-3 col-4 card-item" ng-repeat="type in types">
                                         <!--                            <p>{{type.code}}</p>-->
                                         <img ng-src="images/component/{{type.image}}" style="max-width: 33px;">
                                         <p style="font-size: .9em;margin-bottom: 0;color: #666;
@@ -382,7 +382,7 @@ public class DemoErupt extends BaseModel {
                                     </a>
                                 </div>
                                 <div class="row" style="margin-left: 0;margin-right: 0;height: 530px;overflow: auto">
-                                    <div class="text-center col-6 card-item"
+                                    <div class="text-center col-lg-6 col-4 card-item"
                                          ng-repeat="type in viewTypes">
                                         <!--                            <p>{{type.code}}</p>-->
                                         <img ng-src="images/view/{{type.image}}" style="max-width: 33px;">
@@ -406,7 +406,7 @@ public class DemoErupt extends BaseModel {
                             </a>
                         </div>
                         <div class="row" style="margin-left: 0;margin-right: 0">
-                            <div class="card-item col-lg-2 col-md-4 col-sm-6 col-6" ng-repeat="db in dbs"
+                            <div class="card-item col-lg-2 col-md-4 col-4" ng-repeat="db in dbs"
                                  style="padding: 16px">
                                 <div style="padding: 16px;text-align: center">
                                     <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
