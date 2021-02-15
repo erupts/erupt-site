@@ -47,7 +47,7 @@ html, body {
     right: 0;
     border-bottom: 1px solid #efe3e5;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .05);
-    background: #fff;
+    background: #ffffff;
     background: rgba(255, 255, 255, 0.96);
     transition: all 600ms;
     padding: 0 26px;
@@ -70,9 +70,7 @@ html, body {
     bottom: 0;
     height: 295px;
     color: #fff;
-    background: #111;
-    /*background: #111 url("https://img.alicdn.com/tfs/TB1LfTdZUH1gK0jSZSyXXXtlpXa-2328-2328.svg") no-repeat center -1164px;*/
-    /*background-size: 2328px 2328px;*/
+    background: #111 url(images/tile.png) 0 0 repeat;
     box-shadow: inset 0 30px 30px -15px rgba(33, 33, 33, 0.8);
 }
 

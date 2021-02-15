@@ -27,23 +27,27 @@
     }
 
 </style>
-<div class="container" ng-controller="extra">
-    <div class="row" style="padding-top: 36px">
-        <div class="col-md-4" ng-repeat="module in modules">
-            <div class="card position-relative" style="margin-bottom: 26px">
-                <div class="bg" style="height: 160px;">
-                </div>
-                <p class="card-text module_name">{{module.name}}</p>
-                <div class="card-body">
-                    <p class="card-text">
-                        <a ng-href="{{module.link}}" ng-if="module.link" target="_blank">
-                            {{module.title}}
-                        </a>
-                        <span ng-if="!module.link">{{module.title}}</span>
-                    </p>
-                    <p class="card-text text-secondary" style="height: 50px;overflow: auto">{{module.remark}}</p>
+<!--background: #27262b url(images/tile.png);-->
+<div>
+    <div ng-controller="extra" style="padding: 0 36px">
+        <div class="row" style="padding-top: 36px">
+            <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="module in modules">
+                <div class="card position-relative" style="margin-bottom: 26px">
+                    <div class="bg" style="height: 160px;">
+                    </div>
+                    <p class="card-text module_name">{{module.name}}</p>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <a ng-href="{{module.link}}" ng-if="module.link" target="_blank">
+                                {{module.title}}
+                            </a>
+                            <span ng-if="!module.link">{{module.title}}</span>
+                        </p>
+                        <p class="card-text text-secondary" style="height: 50px;overflow: auto">{{module.remark}}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>

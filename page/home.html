@@ -145,6 +145,30 @@
         letter-spacing: 5px;
     }
 
+    .table-vs tr:hover {
+        background: rgba(122, 186, 255);
+    }
+
+    .table-vs tr th {
+        border: none;
+    }
+
+    .table-vs tr td:nth-child(2) {
+        text-align: center;
+    }
+
+    .table-vs tr td:nth-child(1) {
+        text-align: right;
+    }
+
+    .position-fill {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
 
     @keyframes skew-up {
         100% {
@@ -154,7 +178,7 @@
 </style>
 <div ng-controller="home">
     <div>
-        <div style="background: #27262b">
+        <div style="background: #27262b url(images/tile.png);">
             <div style="padding-top: 60px">
                 <div class="text-center" style="color: #fff">
                     <div style="margin-top: 60px;text-align: center">
@@ -177,12 +201,10 @@
                 </div>
             </div>
             <div style="position: relative">
-                <!--                <div style="position: absolute;top: 150px;left: 0;right: 0;bottom: -500px;background: #ff5722;-->
-                <!--                                                            transform: skewY(10deg);transform-origin: 0 50%;transition:all 400ms">-->
-                <!--                </div>-->
-                <div id="skew-bg" style="position: absolute;top: 350px;left: 0;right: 0;bottom: -500px;background: #09f;
-                            transform: skewY(-10deg);transform-origin: 0 50%;transition:all 400ms;box-shadow: 5px -5px 20px 0 #000000">
-
+                <div id="skew-bg" style="position: absolute;
+                            top: 350px;left: 0;right: 0;bottom: -500px;background: #09f;
+                            transform: skewY(-10deg);transform-origin: 0 50%;
+                            transition:all 400ms;box-shadow: 5px -5px 20px 0 #000000">
                 </div>
                 <div class="container" style="margin-top: 60px;padding-bottom: 20px;">
                     <div class="row">
@@ -223,7 +245,7 @@
                                 </div>
                                 <div style="width: 100%;overflow: auto;position: relative">
                                 <pre id="DemoErupt"
-                                     style="margin: 0;border-radius:0;height: 562px;box-shadow: inset 0 -10px 10px #2310109e">
+                                     style="margin: 0;border-radius:0;height: 562px;box-shadow: inset 0 0 10px #2310109e">
 <code class="prism language-java animated bounce">/**
   *  无需多层代码，仅需一个类文件开发管理后台 🚀
   *  完全不需要了解 Vue / Angular / React / Jquery，
@@ -333,6 +355,63 @@ public class DemoErupt extends BaseModel {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div style="background: #38404e url(images/tile.png) 0 0 repeat fixed;padding:36px;position: relative">
+                <div class="container">
+                    <table class="table table-bordered table-vs" style="color: #fff;margin-bottom: 0">
+                        <tr>
+                            <th style="width: 45%;text-align: right">代码生成器</th>
+                            <th class="text-warning" style="width: 10%;text-align: center">VS</th>
+                            <th style="width: 45%;text-align: left">Erupt</th>
+                        </tr>
+                        <tr>
+                            <td>前端 + 后端 7 ~ 10 个文件</td>
+                            <td>文件数量</td>
+                            <td>仅需一个类文件</td>
+                        </tr>
+                        <tr>
+                            <td>重新生成代码或修改已生成代码</td>
+                            <td>修改字段</td>
+                            <td>添加字段注解</td>
+                        </tr>
+                        <tr>
+                            <td>需要手动执行建表 SQL</td>
+                            <td>建表语句</td>
+                            <td>自动建表</td>
+                        </tr>
+                        <tr>
+                            <td>需要整个工程，模块众多不好管理</td>
+                            <td>初次部署</td>
+                            <td>仅需引入 Jar 依赖即可，基础数据自动生成</td>
+                        </tr>
+
+                        <tr>
+                            <td>需要熟悉代码生成器所提供的前端 API，有一定学习成本</td>
+                            <td>前端代码</td>
+                            <td>零前端代码</td>
+                        </tr>
+                        <tr>
+                            <td>传统分层调用的方式开发</td>
+                            <td>开发方式</td>
+                            <td>全注解式开发</td>
+                        </tr>
+                        <tr>
+                            <td>仅支持基本的数据组件复杂的组件需自定义</td>
+                            <td>组件支持</td>
+                            <td>支持23类表单组件，且支持一对多，多对多等复杂关系组件</td>
+                        </tr>
+                        <tr>
+                            <td>一般只支持 MySQL</td>
+                            <td>数据库</td>
+                            <td>支持 MySQL、Oracle、PostgreSQL、H2 等所有主流数据库</td>
+                        </tr>
+                        <tr>
+                            <td>初期开发成本较低，后期字段修改时有一定开发成本且枯燥</td>
+                            <td>开发时间</td>
+                            <td>仅需一个后端工程师，几天就可以搞定高质量后台管理系统</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div style="position: relative;box-shadow:0 0 10px #9e9e9e36;padding-top: 20px;background: #fff">
