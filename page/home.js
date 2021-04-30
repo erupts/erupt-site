@@ -23,7 +23,7 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         icon: "resize.svg"
     }, {
         name: "低入侵性",
-        desc: "几乎所有功能都围绕注解而展开，不影响你使用如 Mybatis 等框架与库",
+        desc: "几乎所有功能都围绕注解而展开，不影响你使用任何第三方库",
         icon: "hold.svg"
     }, {
         name: "界面美观",
@@ -34,17 +34,20 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         desc: "支持市面上所有主流数据库，支持MongoDB，支持自定义数据源",
         icon: "db.svg"
     }, {
-        name: "支持事件代理",
-        desc: "增删改查等功能全部可控，且支持切面",
+        name: "服务层逻辑扩展(不止于 CURD)",
+        desc: "支持 CURD 前置扩展、后置扩展，也可自定义按钮！",
+        url: "https://www.yuque.com/erupts/erupt/nicqg3",
         icon: "extend.svg"
     }, {
         name: "自定义附件上传",
         desc: "仅需简单的适配代码，可以让 erupt 支持 fastDFS、七牛云等附件存储方式",
-        icon: "attachment.svg"
+        icon: "attachment.svg",
+        url: "https://www.yuque.com/erupts/erupt/famk6i"
     }, {
-        name: "自定义模板",
+        name: "自定义页面",
         desc: "可自定义页面，自定义按钮模板，支持Freemarker/Thymeleaf/h5，给予 erupt 无限可能",
-        icon: "template.svg"
+        icon: "template.svg",
+        url: "https://www.yuque.com/erupts/gd8zod/wzmdu2"
     }]
 
     $scope.project = {

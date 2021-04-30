@@ -177,7 +177,7 @@
 </style>
 <div ng-controller="home">
     <div>
-        <div style="background: #27262b url(images/tile.png) fixed;">
+        <div style="background: #27262b url(images/tile.png);">
             <div style="padding-top: 60px">
                 <div class="text-center" style="color: #fff">
                     <div style="margin-top: 60px;text-align: center">
@@ -322,9 +322,9 @@ public class DemoErupt extends BaseModel {
                 <div class="container">
                     <div class="row" style="margin-top: 16px">
                         <div class="col-12">
-                            <div style="margin-bottom: 26px;font-size: 1.6em">
+                            <div style="margin-bottom: 26px;font-size: 1.6em;text-align: center">
                                 Erupt 使用 <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>
-                                协议，源代码完全开源，无商业限制。 开源不易如果喜欢请给作者 Star 鼓励 👇
+                                协议，源代码完全开源，无商业限制。 开源不易感谢 Star 👇
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -418,9 +418,11 @@ public class DemoErupt extends BaseModel {
                     <p class="mark-title">特性一览</p>
                     <div class="row">
                         <div class="col-md-4 col-6" ng-repeat="i in indicator">
-                            <div class="indicator-card" ng-style="{animation: 'bounceInUp {{$index+1}}s'}">
+                            <div class="indicator-card" ng-click="i.url && go(i.url,true)"
+                                 ng-style="{animation: 'bounceInUp {{$index+1}}s'}" style="cursor: pointer">
                                 <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
-                                <p style="margin-top: 22px;margin-bottom: 10px;font-size: 1.2em;color: #333">
+                                <p ng-class="i.url?'text-primary':''"
+                                   style="margin-top: 22px;margin-bottom: 10px;font-size: 1.2em;color: #333">
                                     {{i.name}}</p>
                                 <p class="desc">{{i.desc}}</p>
                             </div>
