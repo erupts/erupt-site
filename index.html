@@ -32,14 +32,19 @@
                    ng-class="currRouter=='/module'?'active-link':''">
                     扩展模块
                 </a>
-                <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/erupts/erupt/mwf15h"
-                   target="_blank">
+                <a class="btn btn-sm align-self-center btn-link" href="#!/doc?link=/erupt/mwf15h">
                     捐赠指南
                 </a>
-                <a class="btn btn-sm align-self-center btn-link" href="#!/doc"
-                   ng-class="currRouter=='/doc'?'active-link':''">
+                <span class="dropdown">
+                    <a class="btn btn-sm align-self-center btn-link dropdown-toggle" data-toggle="dropdown"
+                       href="#!/doc?link=/erupt" ng-class="currRouter=='/doc'?'active-link':''">
                     使用文档
-                </a>
+                    </a>
+                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu">
+                        <a class="dropdown-item" href="#!/doc?link=/erupt">V 1.7.X</a>
+                        <a class="dropdown-item" href="#!/doc?link=/1.6.x">V 1.6.X</a>
+                    </div>
+                </span>
                 <a class="btn btn-sm align-self-center btn-link" href="https://www.erupt.xyz/demo" target="_blank">
                     演示DEMO
                 </a>
@@ -106,6 +111,8 @@
     <!--    </div>-->
 </div>
 <script src="assets/jquery.min.js"></script>
+<script src="assets/bootstrap.bundle.min.js"></script>
+<script src="assets/bootstrap.min.js"></script>
 <script src="assets/angular.min.js"></script>
 <script src="assets/angular-route.min.js"></script>
 <script src="app.js"></script>
