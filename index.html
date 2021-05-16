@@ -38,11 +38,11 @@
                 <span class="dropdown">
                     <a class="btn btn-sm align-self-center btn-link dropdown-toggle" data-toggle="dropdown"
                        href="#!/doc?link=/erupt" ng-class="currRouter=='/doc'?'active-link':''">
-                    使用文档
+                    使用文档 ({{docVersion}})
                     </a>
                     <div aria-labelledby="dropdownMenuLink" class="dropdown-menu">
-                        <a class="dropdown-item" href="#!/doc?link=/erupt">V 1.7.X</a>
-                        <a class="dropdown-item" href="#!/doc?link=/1.6.x">V 1.6.X</a>
+                        <a class="dropdown-item" href="#!/doc" ng-click="docVersion = '1.7.x'">V 1.7.x</a>
+                        <a class="dropdown-item" href="#!/doc?link=/1.6.x" ng-click="docVersion = '1.6.x'">V 1.6.x</a>
                     </div>
                 </span>
                 <a class="btn btn-sm align-self-center btn-link" href="https://www.erupt.xyz/demo" target="_blank">
@@ -167,6 +167,8 @@
         $scope.goTop = function () {
             $("html,body").animate({"scrollTop": 0}, 600);
         }
+
+        $scope.docVersion = "1.7.x";
     });
 </script>
 </body>
