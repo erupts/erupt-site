@@ -266,3 +266,23 @@ html, body {
         opacity: 0;
     }
 }
+
+
+/*美化滚动条*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 7px;
+    background-color: rgba(0, 0, 0, 0);
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #ddd;
+}
+
+
+::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
