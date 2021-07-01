@@ -270,15 +270,15 @@ html, body {
 
 /*美化滚动条*/
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 7px;
+    width: 4px;
+    height: 4px;
     background-color: rgba(0, 0, 0, 0);
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: #ddd;
+    background-color: rgba(102, 102, 102, 0.65);
 }
 
 
