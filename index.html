@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="零前端代码,急速开发后台管理系统！" name="description">
-    <meta content="注解框架,Java注解,Java视图关系映射模型,CURD终极解决方案,快速构建管理后台,erupt" name="keyword">
+    <meta content="开源低代码框架，零前端代码，纯注解开发管理后台！" name="description">
+    <meta content="注解框架,CURD,低代码,Java注解,Java视图关系映射模型,vorm,快速构建管理后台,erupt" name="keyword">
     <meta content="width=device-width, initial-scale=.7" name="viewport">
     <title>erupt</title>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
@@ -40,8 +40,9 @@
                        href="#!/doc?link=/erupt" ng-class="currRouter=='/doc'?'active-link':''">
                     使用文档 ({{docVersion}})
                     </a>
-                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu">
-                        <a class="dropdown-item" href="#!/doc" ng-click="docVersion = '1.7.x'">V 1.7.x</a>
+                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='V 1.8.x'">
+                        <a class="dropdown-item" href="#!/doc" ng-click="docVersion = '1.8.x'">V 1.8.x</a>
+                        <a class="dropdown-item" href="#!/doc?link=/1.7.x" ng-click="docVersion = '1.7.x'">V 1.7.x</a>
                         <a class="dropdown-item" href="#!/doc?link=/1.6.x" ng-click="docVersion = '1.6.x'">V 1.6.x</a>
                     </div>
                 </span>
@@ -167,8 +168,6 @@
         $scope.goTop = function () {
             $("html,body").animate({"scrollTop": 0}, 600);
         }
-
-        $scope.docVersion = "1.7.x";
     });
 </script>
 </body>
