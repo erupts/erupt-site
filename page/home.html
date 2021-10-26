@@ -174,6 +174,13 @@
             top: 350px
         }
     }
+
+    .sponsor .name {
+        margin-top: 12px;
+        margin-bottom: 0;
+        text-align: center;
+        color: #eee;
+    }
 </style>
 <div ng-controller="home">
     <div>
@@ -186,7 +193,7 @@
                         </span>
                     </div>
                     <h1 style="margin-top: 30px">Erupt Framework</h1>
-                    <h4 style="margin-top: 18px">使用<span style="color: #ffc107;"> 注解 </span>快速开发管理后台 🚀</h4>
+                    <h4 style="margin-top: 18px"><span style="color: #ffc107;"> 纯注解·低代码 </span>数据管理框架 🚀</h4>
                     <p style="margin-top: 26px">
                         <button class="btn btn-primary" ng-click="go('#!/contrast')">代码示例
                         </button>
@@ -213,7 +220,8 @@
                                 <div style="width: 200px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;overflow: auto">
                                     <div class="align-items-center"
                                          style="margin-top: 12px;border-bottom: 1px dashed #bbbbbb;">
-                                        <p style="margin-bottom: 8px;text-align: center;">后台开发仅需一个类文件</p>
+                                        <p style="margin-bottom: 8px;text-align: center;">仅需一个<span
+                                                style="color: #ffc107;"> .class </span>文件</p>
                                     </div>
                                     <div class="align-items-center" ng-repeat="(key,val) in project"
                                          style="margin-top: 12px;padding: 0 12px;">
@@ -247,7 +255,7 @@
                                      style="margin: 0;border-radius:0;height: 562px;box-shadow: inset 0 0 10px #2310109e">
 <code class="prism language-java animated bounce">/**
   *  无需多层代码，仅需一个类文件开发管理后台 🚀
-  *  完全不需要了解 Vue / Angular / React / Jquery，
+  *  完全不需要了解 Vue / Angular / React / jQuery，
   *  而且不需要了解 JavaScript / HTML / CSS
   *  甚至不需要了解 Spring MVC / JPA / Mybatis / SQL
   *  即便没学过 erupt 也能猜到大部分配置的作用，只需要简单配置就能完成所有后台页面开发。
@@ -356,7 +364,8 @@ public class DemoErupt extends BaseModel {
                     </div>
                 </div>
             </div>
-            <div style="background: #38404e url(images/tile.png) 0 0 repeat fixed;padding:36px;position: relative">
+            <div style="background: #38404e url(images/tile.png) 0 0 repeat fixed;padding:36px;position: relative;
+            box-shadow: inset 0 0 10px #222">
                 <div class="container">
                     <table class="table table-bordered table-vs" style="color: #fff;margin-bottom: 0">
                         <tr>
@@ -426,13 +435,41 @@ public class DemoErupt extends BaseModel {
                     <div class="row">
                         <div class="col-md-4 col-6" ng-repeat="i in indicator">
                             <div class="indicator-card" ng-click="i.url && go(i.url,true)"
-                                 ng-style="{animation: 'bounceInUp {{$index+1}}s'}" style="cursor: pointer">
+                                 style="cursor: pointer">
                                 <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
                                 <p ng-class="i.url?'text-primary':''"
                                    style="margin-top: 22px;margin-bottom: 10px;font-size: 1.2em;color: #333">
                                     {{i.name}}</p>
                                 <p class="desc">{{i.desc}}</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background: #38404e url(images/tile.png) 0 0 repeat fixed;padding:36px;position: relative;
+                box-shadow: inset 0 0 10px #222">
+                <div class="container sponsor">
+                    <p class="text-center" style="color: #fff;font-size: 1.2em;font-weight:500">贡献者 & 赞助商</p>
+                    <div style="display: flex;justify-content: center">
+                        <div>
+                            <a href="https://github.com/wjw465150" target="_blank">
+                                <img alt="" src="/images/sponsor/baishi.png" style="border-radius: 50%" width="70px">
+                            </a>
+                            <p class="name">白石</p>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div>
+                            <a href="https://github.com/erupts" target="_blank">
+                                <img alt="" src="/images/sponsor/me.jpeg" style="border-radius: 50%;" width="70px">
+                            </a>
+                            <p class="name">YuePeng</p>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div>
+                            <a href="https://www.jetbrains.com" target="_blank">
+                                <img alt="" height="70px" src="/images/sponsor/idea.svg">
+                            </a>
+                            <p class="name">JetBrains</p>
                         </div>
                     </div>
                 </div>

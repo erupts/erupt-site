@@ -149,6 +149,7 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
     Prism.highlightAllUnder(document.getElementById("DemoErupt"));
 
 
+    // $('[data-toggle="tooltip"]').tooltip()
     $("#logo").attr("src", "assets/logo2.svg");
 
     $.get("assets/logo2.svg", function (res) {
