@@ -4,11 +4,11 @@
      x="0px" y="0px" viewBox="0 0 500 500" enable-background="new 0 0 500 500">
     <style>
         #p3 {
-        fill: #FF5722;
+        fill: #f44336;
         }
 
         #p3:hover {
-        fill: #fff;
+        fill: #4caf50;
         }
 
         path {
@@ -22,7 +22,7 @@
 
         polygon {
         transition: all 0.5s;
-        fill: #FF5722;
+        fill: #007bff;
         }
 
         polygon:hover {

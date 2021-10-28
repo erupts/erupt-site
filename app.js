@@ -37,6 +37,11 @@ var app = angular.module('app', [
             toTemplate();
             return "page/contrast/contrast.html";
         }
+    }).when('/component', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/component/component.html";
+        }
     }).otherwise({
         redirectTo: '/'
     });

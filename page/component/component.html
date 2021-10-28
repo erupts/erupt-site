@@ -1,0 +1,87 @@
+<style>
+    .component-item {
+        border-left: 1px solid rgba(0, 0, 0, .1);
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        padding-left: 0;
+        padding-right: 0;
+        transition: all 500ms;
+        box-sizing: border-box;
+        /*margin-left: -1px;*/
+        /*margin-right: -1px;*/
+        /*margin-bottom: -1px;*/
+    }
+
+    .component-item:hover {
+        outline: 1px solid #333;
+    }
+
+    .component-item:hover .text {
+        background: #000;
+        color: #fff;
+    }
+
+    .component-item img {
+        margin: 38px 0;
+        max-height: 50px;
+    }
+
+    .component-item .text {
+        font-size: .9em;
+        color: #666;
+        /*transition: all 100ms;*/
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+</style>
+<div ng-controller="component" style="background: #fff">
+    <div class="container" style="padding: 0;border: 1px solid rgba(0,0,0,.1);">
+        <div>
+            <div>
+                <hr style="margin-top: 0">
+                <p style="text-align: center;font-weight: 800">
+                    表单组件（{{types.length}}类）
+                    <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/cqgoo9"
+                       style="font-size:1em;color: #fff" target="_blank">
+                        <img alt="" height="20px" src="images/home/right2.svg">
+                        &nbsp;
+                    </a>
+                </p>
+                <hr style="margin-bottom: 0">
+            </div>
+            <div class="row" style="margin-left: 0;margin-right: 0;">
+                <div class="text-center col-sm-3 col-md-2 col-4 component-item" ng-repeat="type in types">
+                    <div>
+                        <img alt="" ng-src="images/component/{{type.image}}">
+                        <div style="width: 100%;border: 1px dashed rgba(0, 0, 0, .1)"></div>
+                        <p class="text">{{type.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <hr style="margin-top: 0;border: none">
+                <p style="text-align: center;font-weight: 800">数据组件（{{types.length}}类）
+                    <a class="float-right" href="https://www.yuque.com/yuepeng/erupt/gec455#JtYTf"
+                       style="font-size:1em;color: #fff" target="_blank">
+                        <img alt="" height="20px" src="images/home/right2.svg">
+                        &nbsp;
+                    </a>
+                </p>
+                <hr style="margin-bottom: 0">
+            </div>
+            <div class="row" style="margin-left: 0;margin-right: 0;">
+                <div class="text-center col-sm-3 col-md-2 col-4 component-item" ng-repeat="type in viewTypes">
+                    <div>
+                        <img alt="" ng-src="images/view/{{type.image}}">
+                        <div style="width: 100%;border: 1px dashed rgba(0, 0, 0, .1)"></div>
+                        <p class="text">{{type.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
