@@ -50,6 +50,24 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         url: "https://www.yuque.com/erupts/gd8zod/wzmdu2"
     }]
 
+    $scope.sponsor = [
+        {
+            toggleText: "每天还在写代码的，写了20多年的代码民工,希望到60岁时还能运指如飞的敲键盒",
+            headImg: "baishi.png",
+            nickname: "白石",
+        },
+        {
+            toggleText: "兴趣使然的全栈研发",
+            headImg: "me.jpeg",
+            nickname: "YuePeng",
+        },
+        {
+            toggleText: "宇宙最好用的IDE",
+            headImg: "idea.svg",
+            nickname: "JetBrains",
+        }
+    ]
+
     $scope.project = {
         template: {
             sub: {
