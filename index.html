@@ -44,8 +44,9 @@
                        href="#!/doc?link=/erupt" ng-class="currRouter=='/doc'?'active-link':''">
                     使用文档 ({{docVersion}})
                     </a>
-                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='V 1.9.x'">
-                        <a class="dropdown-item" href="#!/doc" ng-click="docVersion = '1.9.x'">V 1.9.x</a>
+                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='V 1.10.x'">
+                        <a class="dropdown-item" href="#!/doc" ng-click="docVersion = '1.10.x'">V 1.10.x</a>
+                        <a class="dropdown-item" href="#!/doc?link=/1.9.x" ng-click="docVersion = '1.9.x'">V 1.9.x</a>
                         <a class="dropdown-item" href="#!/doc?link=/1.8.x" ng-click="docVersion = '1.8.x'">V 1.8.x</a>
                         <a class="dropdown-item" href="#!/doc?link=/1.7.x" ng-click="docVersion = '1.7.x'">V 1.7.x</a>
                         <a class="dropdown-item" href="#!/doc?link=/1.6.x" ng-click="docVersion = '1.6.x'">V 1.6.x</a>
