@@ -36,7 +36,8 @@
                    ng-class="currRouter=='/module'?'active-link':''">
                     扩展模块
                 </a>
-                <a class="btn btn-sm align-self-center btn-link" href="#!/doc?link=/erupt/mwf15h">
+                <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/erupts/erupt/mwf15h"
+                   target="_blank">
                     捐赠指南
                 </a>
                 <span class="dropdown">
@@ -44,12 +45,17 @@
                        href="#!/doc?link=/erupt" ng-class="currRouter=='/doc'?'active-link':''">
                     使用文档 ({{docVersion}})
                     </a>
-                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='V 1.10.x'">
-                        <a class="dropdown-item" href="#!/doc" ng-click="docVersion = '1.10.x'">V 1.10.x</a>
-                        <a class="dropdown-item" href="#!/doc?link=/1.9.x" ng-click="docVersion = '1.9.x'">V 1.9.x</a>
-                        <a class="dropdown-item" href="#!/doc?link=/1.8.x" ng-click="docVersion = '1.8.x'">V 1.8.x</a>
-                        <a class="dropdown-item" href="#!/doc?link=/1.7.x" ng-click="docVersion = '1.7.x'">V 1.7.x</a>
-                        <a class="dropdown-item" href="#!/doc?link=/1.6.x" ng-click="docVersion = '1.6.x'">V 1.6.x</a>
+                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='1.10.x'">
+                        <a class="dropdown-item" href="https://www.yuque.com/erupts/erupt"
+                           ng-click="docVersion = '1.10.x'" target="_blank">v 1.10.x</a>
+                        <a class="dropdown-item" href="https://www.yuque.com/erupts/1.9.x"
+                           ng-click="docVersion = '1.9.x'" target="_blank">v 1.9.x</a>
+                        <a class="dropdown-item" href="https://www.yuque.com/erupts/1.8.x"
+                           ng-click="docVersion = '1.8.x'" target="_blank">v 1.8.x</a>
+                        <a class="dropdown-item" href="https://www.yuque.com/erupts/1.7.x"
+                           ng-click="docVersion = '1.7.x'" target="_blank">v 1.7.x</a>
+                        <a class="dropdown-item" href="https://www.yuque.com/erupts/1.6.x"
+                           ng-click="docVersion = '1.6.x'" target="_blank">v 1.6.x</a>
                     </div>
                 </span>
                 <a class="btn btn-sm align-self-center btn-link" href="https://www.erupt.xyz/demo" target="_blank">
