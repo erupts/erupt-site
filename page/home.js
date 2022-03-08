@@ -54,18 +54,15 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {
             toggleText: "每天还在写代码的，写了20多年的代码民工,希望到60岁时还能运指如飞的敲键盒",
             headImg: "baishi.png",
+            home: "https://github.com/wjw465150",
             nickname: "白石",
         },
         {
-            toggleText: "兴趣使然的全栈研发",
-            headImg: "me.jpeg",
-            nickname: "YuePeng",
+            toggleText: "magic-api 作者",
+            headImg: "xiaodong.jpeg",
+            home: "https://gitee.com/jmxd",
+            nickname: "小东",
         },
-        {
-            toggleText: "宇宙最好用的IDE",
-            headImg: "idea.svg",
-            nickname: "JetBrains",
-        }
     ]
 
     $scope.project = {
@@ -130,7 +127,10 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         document.onscroll = null;
         $("#logo").attr("src", "assets/logo.svg");
     })
-    $('[data-toggle="tooltip"]').tooltip()
+
+    $timeout(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    }, 1000);
 
 
     // document.onscroll = function () {
