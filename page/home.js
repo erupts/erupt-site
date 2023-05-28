@@ -63,6 +63,12 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
             home: "https://gitee.com/jmxd",
             nickname: "小东",
         },
+        {
+            toggleText: "erupt-flow 作者",
+            headImg: "hlhutu.jpeg",
+            home: "https://gitee.com/hlhutu",
+            nickname: "hlhutu",
+        },
     ]
 
     $scope.project = {
