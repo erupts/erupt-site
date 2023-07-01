@@ -21,6 +21,11 @@
                 <span class="logo-text">Erupt<span style="font-size: .4em">.xyz</span></span>
             </div>
             <div style="line-height: 45px;margin-left: auto">
+                <a class="btn btn-sm align-self-center btn-link" href="https://github.com/erupts/erupt"
+                   style="padding: 0"
+                   target="_blank">
+                    <img alt="" src="assets/github.svg" style="height: 18px">
+                </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/" ng-class="currRouter=='/'?'active-link':''">
                     首页
                 </a>
@@ -41,14 +46,16 @@
                     捐赠指南
                 </a>
                 <span class="dropdown show">
-                    <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/erupts"
+                    <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/erupts/erupt"
                        style="padding-right: 0" target="_blank">
                         使用文档
                     </a>
                     <a aria-expanded="false" aria-haspopup="true" class="btn btn-sm align-self-center dropdown-toggle"
                        data-toggle="dropdown" href="javascript:;" role="button" style="padding: 0"></a>
-                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='1.11.x'">
+                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='1.12.x'">
                         <a class="dropdown-item" href="https://www.yuque.com/erupts/erupt"
+                           ng-click="docVersion = '1.12.x'" target="_blank">v 1.12.x</a>
+                        <a class="dropdown-item" href="https://www.yuque.com/erupts/1.11.x"
                            ng-click="docVersion = '1.11.x'" target="_blank">v 1.11.x</a>
                         <a class="dropdown-item" href="https://www.yuque.com/erupts/1.10.x"
                            ng-click="docVersion = '1.10.x'" target="_blank">v 1.10.x</a>
