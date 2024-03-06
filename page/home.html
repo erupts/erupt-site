@@ -195,15 +195,26 @@
     }
 </style>
 <div ng-controller="home">
-    <button class="btn btn-success animated zoomIn delay-2"
-            ng-click="go('https://www.yuque.com/erupts/erupt/ggbcv9',true)"
+
+    <button class="btn btn-primary animated zoomIn delay-2"
+            ng-click="go('https://github.com/erupts/Linq.J',true)"
             style="position: fixed;left: 20px;top: 60px;z-index: 99999999;box-shadow: 1px 1px 10px #333">
         <span style="position: absolute;left: -8px;top: -8px;background: #dc3545;
                     width: 16px;height:16px;border-radius: 100%;box-shadow: 0 0 3px #333"></span>
+        <span><span style="color: #ffc107">Linq.J</span> 基于Jvm的联邦分析库</span>
+        <!--        <br>-->
+        <!--        <span>Join, Where, Group By, Order By</span>-->
+    </button>
+
+    <button class="btn btn-success animated zoomIn delay-4"
+            ng-click="go('https://www.yuque.com/erupts/erupt/ggbcv9',true)"
+            style="position: fixed;left: 20px;top: 120px;z-index: 99999999;box-shadow: 1px 1px 10px #333">
         <span><span style="color: #ffc107">Erupt Cloud</span> 通用云配置中心</span>
         <br>
         <span style="margin-top: 16px">@ 集群内全服务实现数据可视化</span>
     </button>
+
+
     <div>
         <div style="background: #27262b url(images/tile.png) fixed;">
             <div style="padding-top: 60px">
@@ -294,7 +305,7 @@
   *  完全不需要了解 Vue / Angular / React / jQuery
   *  而且不需要了解 JavaScript / HTML / CSS
   *  甚至不需要了解 Spring MVC / JPA / Mybatis / SQL
-  *  @Erupt >= template + js + css + controller + service + dao + xml + entity + ddl
+  *  @Erupt > html + js + css + controller + service + dao + xml + entity + ddl
   *  简化了 95% 的后台开发流程，让研发有时间更专注于业务与前沿技术 😆
   */
 @Table
