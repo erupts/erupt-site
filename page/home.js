@@ -50,6 +50,46 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         url: "https://www.yuque.com/erupts/gd8zod/wzmdu2"
     }]
 
+
+    $scope.using = [
+        {name: '阿里巴巴', logo: "images/using/ali.png"},
+        {name: '用友政务', logo: "images/using/yongyou.png"},
+        {name: '上海银行', logo: "images/using/shanghai_bank.png"},
+        {name: '民生银行', logo: "images/using/民生银行.png"},
+        {name: '传音控股', logo: "images/using/transsion.png"},
+        {name: '思为科技', logo: "images/using/ideamake.png"},
+        {name: '招商蛇口', logo: "images/using/zhaoshang.png"},
+        {name: '金科地产', logo: "images/using/jinke.png"},
+        {name: '中海地产', logo: "images/using/中海地产.png"},
+        {name: '龙湖数科', logo: "images/using/longhu.png"},
+        {name: '零跑汽车', logo: "images/using/零跑汽车.png"},
+        {name: '哪吒汽车', logo: "images/using/nezha.webp"},
+        {name: 'YashanDB', logo: "images/using/yashan.png"},
+        {name: '中国电信', logo: "images/using/telecom.png"},
+        {name: '安克创新', logo: "images/using/logo-anker-in.png"},
+        {name: '跨越速运', logo: "images/using/跨越速运.png"},
+        {name: '南开大学', logo: "images/using/南开大学.png"},
+        {name: '中国地质大学（北京）', logo: "images/using/geosciences.png"},
+        {name: '完美世界', logo: "images/using/完美世界.png"},
+        {name: '恒瑞医药', logo: "images/using/hengrui.png"},
+        {name: '销售易', logo: "images/using/销售易.jpg"},
+        {name: '歌华有线', logo: "images/using/gehua.jpg"},
+        {name: '良医汇', logo: "images/using/良医汇.png"},
+        {name: 'keep', logo: "images/using/keep.png"},
+        {name: '乐刻运动', logo: "images/using/leke.svg"},
+
+        {name: '青云', logo: "images/using/青云.png"},
+        {name: '阿里云', logo: "images/using/阿里云.png"},
+        {name: '金山云', logo: "images/using/金山云.png"},
+        {name: '爱范儿', logo: "images/using/ifanr.png"},
+        {name: '中通服', logo: "images/using/chinaccs.png"},
+        {name: '合智互联', logo: "images/using/合智互联.png"},
+        {name: '柳钢集团', logo: "images/using/柳钢集团.png"},
+        // {name: '合智互联', logo: "images/using/合智互联.png"},
+
+        {name: '...', text: "100+"},
+    ]
+
     $scope.sponsor = [
         {
             toggleText: "每天还在写代码的，写了20多年的代码民工,希望到60岁时还能运指如飞的敲键盒",

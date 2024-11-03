@@ -370,13 +370,25 @@ public class DemoErupt extends BaseModel {
             </div>
         </div>
         <div id="erupt-features">
-            <!--            <div style="background: #fff url(images/tile.png) 0 0 repeat fixed;padding:36px;position: relative;">-->
-            <!--                <div class="container sponsor">-->
-            <!--                    <p class="text-center" style="color: #000;font-size: 1.2em;font-weight:500">谁在用</p>-->
-            <!--                    123-->
-            <!--                </div>-->
-            <!--                <hr>-->
-            <!--            </div>-->
+            <div style="background: #38404e url(images/tile.png) 0 0 repeat fixed;padding:36px;position: relative;box-shadow: inset 0 0 10px #222;max-height: 300px;overflow: scroll">
+                <div>
+                    <div>
+                        <p class="text-center" style="color: #fff;margin-bottom: 0">
+                            谁在使用？
+                        </p>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-2 col-lg-1" ng-repeat="u in using" style="padding: 0 8px">
+                                <div style="text-align: center;margin: 8px 0;width: 100%;height: 80px;padding: 3px;
+                                display: flex;justify-content: center;align-content: center;flex-wrap: wrap;">
+                                    <img alt="" ng-if="u.logo" src="{{u.logo}}" style="width: 75%;">
+                                    <span ng-if="u.text" style="color: #eee;">{{u.text}}</span>
+                                </div>
+                                <p style="color: #fff;margin:12px 0;text-align: center;font-size: .7em">{{u.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div style="margin-top: 30px;padding:16px 0;background: #fff">
                 <div class="container">
                     <div class="row" style="margin-top: 16px">
