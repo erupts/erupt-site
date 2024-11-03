@@ -222,8 +222,9 @@
                             <img alt="" src="assets/logo2.svg" width="120px">
                         </span>
                     </div>
-                    <h1 style="margin-top: 30px">Erupt Admin</h1>
-                    <h4 style="margin-top: 18px"><span style="color: #ffc107;"> 注解·低代码 </span> ⚔ 对象视图模型</h4>
+                    <h1 style="margin-top: 30px">Erupt Model</h1>
+                    <h4 style="margin-top: 18px"><span style="color: #ffc107;"> 注解·低代码 </span> ⚔ 对象视图模型 ⚔
+                        <span style="color: #ffc107">VORM</span></h4>
                     <p style="margin-top: 26px">
                         <button class="btn btn-primary" ng-click="go('#!/contrast')">代码示例
                         </button>
@@ -442,21 +443,25 @@ public class DemoErupt extends BaseModel {
                             <td>仅需一个类文件</td>
                         </tr>
                         <tr>
-                            <td>重新生成代码或修改已生成代码</td>
+                            <td>重新生成代码或修改已生成代码 → 100~500行代码</td>
                             <td>修改字段</td>
-                            <td>添加字段注解</td>
+                            <td>添加或修改注解 → 2~10行</td>
                         </tr>
                         <tr>
                             <td>需要手动执行建表 SQL</td>
                             <td>建表语句</td>
-                            <td>自动建表</td>
+                            <td>自动建表+字段注释</td>
                         </tr>
                         <tr>
-                            <td>需要整个工程，模块众多不好管理</td>
+                            <td>下载整个工程，代码量极大</td>
                             <td>初次部署</td>
-                            <td>仅需引入 Jar 依赖即可，基础数据自动生成</td>
+                            <td>通过Maven管理依赖，基础数据自动生成</td>
                         </tr>
-
+                        <tr>
+                            <td>升级成本极高，需要对比大量差异</td>
+                            <td>版本升级</td>
+                            <td>调整版本号即可</td>
+                        </tr>
                         <tr>
                             <td>需要熟悉代码生成器所提供的前端 API，有一定学习成本</td>
                             <td>前端代码</td>
@@ -473,7 +478,7 @@ public class DemoErupt extends BaseModel {
                             <td>支持23类表单组件，且支持一对多，多对多等复杂关系组件</td>
                         </tr>
                         <tr>
-                            <td>一般只支持 MySQL</td>
+                            <td>一般只支持 MySQL，改造成本较高</td>
                             <td>数据库</td>
                             <td>支持 MySQL、Oracle、PostgreSQL、H2 等所有主流数据库</td>
                         </tr>
