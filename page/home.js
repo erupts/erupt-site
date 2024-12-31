@@ -92,7 +92,7 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
 
     $scope.sponsor = [
         {
-            toggleText: "每天还在写代码的，写了20多年的代码民工,希望到60岁时还能运指如飞的敲键盒",
+            toggleText: "每天还在写代码的，写了20多年的代码民工,希望到60岁时还能运指如飞的敲键盘",
             headImg: "baishi.png",
             home: "https://github.com/wjw465150",
             nickname: "白石",
