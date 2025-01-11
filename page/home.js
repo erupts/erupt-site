@@ -83,8 +83,8 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {name: '哥们网', logo: "images/using/game2.png"},
 
         {name: '青云', logo: "images/using/青云.png"},
-        {name: '阿里云', logo: "images/using/阿里云.png"},
-        {name: '金山云', logo: "images/using/金山云.png"},
+        {name: '好未来', logo: "images/using/hwl.png"},
+        {name: '企迈科技', logo: "images/using/qmai.png"},
         {name: '爱范儿', logo: "images/using/ifanr.png"},
         {name: '货拉拉', logo: "images/using/huolala.png"},
         {name: '中通服', logo: "images/using/chinaccs.png"},
