@@ -196,20 +196,18 @@
 </style>
 <div ng-controller="home">
 
-    <button class="btn btn-primary animated zoomIn delay-2"
-            ng-click="go('https://www.yuque.com/erupts/erupt/fl0lyrdlrbm9mg0g',true)"
+    <button class="btn btn-success animated zoomIn delay-2"
+            ng-click="go('https://www.yuque.com/erupts/erupt/ggbcv9',true)"
             style="position: fixed;left: 20px;top: 60px;z-index: 99999999;box-shadow: 1px 1px 10px #333;text-align: left">
+        <span><span style="color: #ffc107">☁️ Erupt Cloud</span> 多维云配置中心【分布式微服务架构】</span>
+    </button>
+
+    <button class="btn btn-primary animated zoomIn delay-4"
+            ng-click="go('https://www.yuque.com/erupts/erupt/fl0lyrdlrbm9mg0g',true)"
+            style="position: fixed;left: 20px;top: 120px;z-index: 99999999;box-shadow: 1px 1px 10px #333;text-align: left">
         <span style="position: absolute;left: -8px;top: -8px;background: #dc3545;
                     width: 16px;height:16px;border-radius: 100%;box-shadow: 0 0 3px #333"></span>
         <span><span style="color: #ffc107">Linq.J</span> C# Linq 能力的 Java 实现</span>
-    </button>
-
-    <button class="btn btn-success animated zoomIn delay-4"
-            ng-click="go('https://www.yuque.com/erupts/erupt/ggbcv9',true)"
-            style="position: fixed;left: 20px;top: 120px;z-index: 99999999;box-shadow: 1px 1px 10px #333;text-align: left">
-        <span><span style="color: #ffc107">Erupt Cloud</span> 多维云配置中心</span>
-        <br>
-        <span style="margin-top: 16px">用<span style="color: #FFEB3B">数据表</span>在线管理微服务内配置</span>
     </button>
 
 
@@ -399,7 +397,33 @@ public class DemoErupt extends BaseModel {
                                 协议，源代码完全开源，无商业限制，开源不易感谢 Star 👇
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <div class="card git-card">
+                                <div style="position: absolute;left: 10px;top: 10px">
+                                    <img alt="" src="https://gitcode.com/erupts/erupt/star/badge.svg">
+                                </div>
+                                <div class="card-body" ng-click="go('https://gitcode.com/erupts/erupt',true)">
+                                    <div class="text-center">
+                                        <img alt="" class="git-img" src="images/gitcode.svg" style="width: 70px">
+                                        <p class="git-name">GitCode</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card git-card">
+                                <div style="position: absolute;left: 10px;top: 10px">
+                                    <img alt="" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
+                                </div>
+                                <div class="card-body" ng-click="go('https://github.com/erupts/erupt',true)">
+                                    <div class="text-center">
+                                        <img alt="" class="git-img" src="images/github.svg" style="width: 70px">
+                                        <p class="git-name">GitHub</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
                             <div class="card git-card">
                                 <div style="position: absolute;left: 10px;top: 10px">
                                     <img alt="" src="https://gitee.com/erupt/erupt/badge/star.svg?theme=dark">
@@ -408,19 +432,6 @@ public class DemoErupt extends BaseModel {
                                     <div class="text-center">
                                         <img alt="" class="git-img" src="images/gitee.svg" style="width: 70px">
                                         <p class="git-name">码云</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card git-card">
-                                <div style="position: absolute;right: 10px;top: 10px">
-                                    <img alt="" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
-                                </div>
-                                <div class="card-body" ng-click="go('https://github.com/erupts/erupt',true)">
-                                    <div class="text-center">
-                                        <img alt="" class="git-img" src="images/github.svg" style="width: 70px">
-                                        <p class="git-name">github</p>
                                     </div>
                                 </div>
                             </div>
@@ -558,7 +569,7 @@ public class DemoErupt extends BaseModel {
                             </a>
                             <p class="name">JetBrains</p>
                         </div>
-                        <div data-placement="top" data-toggle="tooltip" style="text-align: center;margin:0 26px"
+                        <div data-placement="bottom" data-toggle="tooltip" style="text-align: center;margin:0 26px"
                              title="感谢陪伴">
                             <a href="https://www.ideamake.cn/" target="_blank">
                                 <img alt="" height="70px" src="/images/sponsor/sw.png">
