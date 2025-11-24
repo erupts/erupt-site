@@ -157,8 +157,11 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {name: "SQL Server", image: "sqlServer.svg"},
         {name: "PostgreSQL", image: "postgreSQL.svg"},
         {name: "H2", image: "h2.svg"},
-        {name: "DB2", image: "db2.svg"},
-        {name: "Sybase", image: "sybase.svg"},
+        {name: "PolarDB", image: "polardb.svg"},
+        {name: "达梦", image: "dm.svg"},
+        {name: "人大金仓", image: "kingbase.svg"},
+        {name: "API 数据源", image: "api.svg"},
+        {name: "Google Spanner", image: "spanner.svg"},
         {name: "MongoDB", image: "mongoDB.svg"},
         {name: "自定义数据源", image: "custom.svg"}
     ]

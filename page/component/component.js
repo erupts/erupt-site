@@ -24,9 +24,9 @@ app.controller("component", function ($scope) {
         {code: "TPL", name: "自定义HTML模板", image: "tpl.svg"},
         {code: "MAP", name: "地图", image: "map.svg"},
         {code: "DIVIDE", name: "分割线", image: "divide.svg"},
+        {code: "SIGNATURE", name: "数字签名", image: "sign.svg"},
         {code: "HIDDEN", name: "隐藏", image: "hidden.svg"},
         {code: "EMPTY", name: "空白", image: "empty.svg"},
-        {code: "", name: "——", image: "white.svg"},
     ]
 
     $scope.viewTypes = [
@@ -41,14 +41,14 @@ app.controller("component", function ($scope) {
         {code: "LINK_DIALOG", name: "对话框方式打开链接", image: "link-dialog.svg"},
         {code: "DOWNLOAD", name: "下载附件", image: "download.svg"},
         {code: "ATTACHMENT", name: "打开附件", image: "attachment.svg"},
+        {code: "OVR", name: "One to many", image: "ovr.svg"},
         {code: "ATTACHMENT_DIALOG", name: "对话框中展示附件", image: "attachment-dialog.svg"},
 
-        {code: "QR_CODE", name: "二维码", image: "qr.svg"},
+        {code: "QR_CODE", name: "QRCODE", image: "qr.svg"},
         {code: "SWF", name: "SWF", image: "swf.svg"},
-        {code: "CODE", name: "代码", image: "code.svg"},
-        {code: "MAP", name: "地图", image: "map.svg"},
-        {code: "", name: "——", image: "white.svg"},
-        {code: "", name: "——", image: "white.svg"},
-        {code: "", name: "——", image: "white.svg"},
+        {code: "CODE", name: "CODE", image: "code.svg"},
+        {code: "MAP", name: "MAP", image: "map.svg"},
+        {code: "BASE64", name: "BASE64", image: "base64.svg"},
+        {code: "MARKDOWN", name: "MARKDOWN", image: "markdown.svg"},
     ]
 });
