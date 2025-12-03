@@ -129,20 +129,12 @@
     .git-card:hover {
         background: #38404e;
         color: #fff;
-        box-shadow: 0 18px 20px -14px rgba(0, 36, 100, 0.3);
+        box-shadow: 0 18px 30px -14px rgba(0, 36, 100, 0.4), 0 0 25px rgba(0, 123, 255, 0.2);
+        transform: translateY(-5px) scale(1.05);
     }
 
     .git-card:hover .git-img {
         transform: scale(.9);
-    }
-
-    .mark-title {
-        font-size: 1.2em;
-        font-weight: 500;
-        border-left: 6px solid #09f;
-        padding-left: 12px;
-        font-family: initial;
-        letter-spacing: 5px;
     }
 
     .table-vs tr:hover {
@@ -161,17 +153,13 @@
         text-align: right;
     }
 
-    .position-fill {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-
     @keyframes skew-up {
         0% {
-            top: 650px
+            top: 650px;
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
         }
     }
 
@@ -192,6 +180,102 @@
         margin-bottom: 0;
         text-align: center;
         color: #eee;
+    }
+
+    @keyframes erupt-fly-in {
+        0% {
+            opacity: 0;
+            transform: translateY(300px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        30% {
+            opacity: 0.3;
+        }
+        60% {
+            opacity: 0.8;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 123, 255, 0.25);
+        }
+        85% {
+            opacity: 0.95;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 123, 255, 0.3);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 123, 255, 0.2);
+        }
+    }
+
+    #erupt-box {
+        opacity: 0;
+        transform: translateY(300px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 123, 255, 0.2);
+        border: 2px solid rgba(0, 123, 255, 0.3);
+        position: relative;
+        animation: erupt-fly-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    #erupt-box::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, rgba(0, 123, 255, 0.3), rgba(40, 167, 69, 0.3), rgba(255, 193, 7, 0.3));
+        opacity: 1;
+        z-index: -1;
+        filter: blur(10px);
+    }
+
+    /* 内部元素依次出现 */
+    @keyframes erupt-inner-fade-in-1 {
+        0%, 55% {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes erupt-inner-fade-in-2 {
+        0%, 60% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes erupt-inner-fade-in-3 {
+        0%, 65% {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    #erupt-box > div:nth-child(1) {
+        opacity: 0;
+        animation: erupt-inner-fade-in-1 1.5s ease-out .1ms forwards;
+    }
+
+    #erupt-box > div:nth-child(2) {
+        opacity: 0;
+        animation: erupt-inner-fade-in-2 1.5s ease-out .1ms forwards;
+    }
+
+    #erupt-box > div:nth-child(3) {
+        opacity: 0;
+        animation: erupt-inner-fade-in-3 1.5s ease-out .1ms forwards;
     }
 </style>
 <div ng-controller="home">
@@ -221,7 +305,8 @@
                         </span>
                     </div>
                     <h1 style="margin-top: 30px">{{'home.title' | i18n}}</h1>
-                    <h4 style="margin-top: 18px"><span style="color: #ffc107;"> {{'home.subtitle' | i18n}} </span> ⚔ {{'home.subtitle2' | i18n}}</h4>
+                    <h4 style="margin-top: 18px"><span style="color: #ffc107;"> {{'home.subtitle' | i18n}} </span> ⚔
+                        {{'home.subtitle2' | i18n}}</h4>
                     <p style="margin-top: 26px">
                         <button class="btn btn-primary" ng-click="go('#!/contrast')">{{'home.btn.code' | i18n}}
                         </button>
@@ -250,20 +335,21 @@
                             transform: skewY(-10deg);transform-origin: 0 50%;
                             transition:all 400ms;box-shadow: 5px -5px 20px 0 #000000">
                 </div>
-                <!--                <div id="skew-bg0" style="position: absolute;-->
-                <!--                            top: 850px;left: 0;right: 0;bottom: -500px;background: #ffc107;-->
-                <!--                            transform: skewY(-10deg);transform-origin: 0 50%;-->
-                <!--                            transition:all 400ms;box-shadow: 5px -5px 5px 0 #333">-->
-                <!--                </div>-->
-                <div class="container" style="margin-top: 60px;padding-bottom: 20px;">
+<!--                <div id="skew-bg0" style="position: absolute;-->
+<!--                                            top: 850px;left: 0;right: 0;bottom: -500px;background: #ffc107;-->
+<!--                                            transform: skewY(-10deg);transform-origin: 0 50%;-->
+<!--                                            transition:all 400ms;box-shadow: 5px -5px 5px 0 #333">-->
+                </div>
+                <div class="container" style="margin-top: 60px;padding-bottom: 20px;position: relative;z-index: 1;">
                     <div class="row">
                         <div class="col-12">
-                            <div id="erupt-box" class="d-flex animated fadeInUpBig bg-dark"
-                                 style="overflow: hidden;border-radius: 6px;box-shadow: 0 10px 20px #080808a6">
+                            <div id="erupt-box" class="d-flex bg-dark"
+                                 style="overflow: hidden;border-radius: 6px;box-shadow: 0 10px 20px #080808a6;position: relative;z-index: 2;">
                                 <div style="width: 200px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;overflow: auto">
                                     <div class="align-items-center"
                                          style="margin-top: 12px;border-bottom: 1px dashed #bbbbbb;">
-                                        <p style="margin-bottom: 8px;text-align: center;" ng-bind-html="'home.code.title' | i18nHtml"></p>
+                                        <p style="margin-bottom: 8px;text-align: center;"
+                                           ng-bind-html="'home.code.title' | i18nHtml"></p>
                                     </div>
                                     <div class="align-items-center" ng-repeat="(key,val) in project"
                                          style="margin-top: 12px;padding: 0 12px;">
@@ -296,7 +382,7 @@
                                 <pre id="DemoErupt"
                                      style="margin: 0;border-radius:0;height: 562px;box-shadow: inset 0 0 10px #2310109e">
 <code class="prism language-java animated bounce">/**
-  *  极简开发，开箱即用 🚀
+  *  plug-and-play 🚀
   *  @Erupt > html + js + css + controller + service + dao + xml + entity + ddl
   *  Class > API + DB + Web + Flow + UPMS + Log + I18n + ...
   */
@@ -384,7 +470,7 @@ public class DemoErupt extends BaseModel {
                                     <img alt="" ng-if="u.logo" src="{{u.logo}}" style="width: 75%;">
                                     <span ng-if="u.text" style="color: #eee;">{{u.text}}</span>
                                 </div>
-<!--                                <p style="color: #fff;margin:12px 0;text-align: center;font-size: .7em">{{u.name}}</p>-->
+                                <!--                                <p style="color: #fff;margin:12px 0;text-align: center;font-size: .7em">{{u.name}}</p>-->
                             </div>
                         </div>
                     </div>
@@ -395,7 +481,8 @@ public class DemoErupt extends BaseModel {
                     <div class="row" style="margin-top: 16px">
                         <div class="col-12">
                             <div style="margin-bottom: 26px;font-size: 1.6em;text-align: center">
-                                {{'home.license' | i18n}} <a href="http://www.apache.org/licenses/LICENSE-2.0">{{'home.license.link' | i18n}}</a>
+                                {{'home.license' | i18n}} <a href="http://www.apache.org/licenses/LICENSE-2.0">{{'home.license.link'
+                                | i18n}}</a>
                                 {{'home.license.desc' | i18n}}
                             </div>
                         </div>
@@ -541,7 +628,8 @@ public class DemoErupt extends BaseModel {
             <div style="background: #38404e url(images/tile.png) 0 0 repeat fixed;padding:36px;position: relative;
                 box-shadow: inset 0 0 10px #222">
                 <div class="container sponsor">
-                    <p class="text-center" style="color: #fff;font-size: 1.2em;font-weight:500">{{'home.sponsor.title' | i18n}}</p>
+                    <p class="text-center" style="color: #fff;font-size: 1.2em;font-weight:500">{{'home.sponsor.title' |
+                        i18n}}</p>
                     <div style="display: flex;justify-content: center">
                         <div data-placement="bottom" data-toggle="tooltip" style="text-align: center;margin:0 26px"
                              title="{{'home.sponsor.author' | i18n}}">
