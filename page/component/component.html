@@ -41,7 +41,7 @@
             <div>
                 <hr style="margin-top: 0">
                 <p style="text-align: center;font-weight: 800">
-                    表单组件（{{types.length}}类）
+                    <span ng-bind-html="getI18nHtml('component.form.title', {count: types.length})"></span>
                     <a class="float-right" href="https://www.yuque.com/erupts/erupt/cqgoo9"
                        style="font-size:1em;color: #fff" target="_blank">
                         <img alt="" height="20px" src="images/home/right2.svg">
@@ -64,7 +64,7 @@
         <div>
             <div>
                 <hr style="margin-top: 0;border: none">
-                <p style="text-align: center;font-weight: 800">数据组件（{{viewTypes.length}}类）
+                <p style="text-align: center;font-weight: 800"><span ng-bind-html="getI18nHtml('component.view.title', {count: viewTypes.length})"></span>
                     <a class="float-right" href="https://www.yuque.com/erupts/erupt/gec455#JtYTf"
                        style="font-size:1em;color: #fff" target="_blank">
                         <img alt="" height="20px" src="images/home/right2.svg">

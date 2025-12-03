@@ -2,7 +2,9 @@ var host = "https://www.erupt.xyz/demo"
 
 // var host = "http://127.0.0.1:9999"
 
-document.title = "Erupt 通用数据管理框架"
+function updateTitle() {
+    document.title = i18n.t('nav.home') + " - Erupt";
+}
 
 function toTemplate() {
     window.scrollTo(0, 0);
@@ -13,6 +15,8 @@ var app = angular.module('app', [
 ]).run(function ($rootScope) {
     $rootScope.year = new Date().getFullYear();
     $rootScope.showHeader = true;
+    $rootScope.currentLang = i18n.getLang();
+    updateTitle();
 
     $rootScope.$on('$routeChangeSuccess', function (eve, current, previous) {
         $rootScope.currRouter = current.$$route.originalPath;
@@ -52,6 +56,38 @@ app.filter('trustAsResourceUrl', ['$sce', function ($sce) {
         return $sce.trustAsResourceUrl(val);
     };
 }])
+
+// 国际化过滤器
+app.filter('i18n', function() {
+    return function(key, params) {
+        if (!key) return '';
+        return i18n.t(key, params);
+    };
+})
+
+// 国际化过滤器（HTML版本）
+app.filter('i18nHtml', ['$sce', function($sce) {
+    return function(key, params) {
+        if (!key) return '';
+        var translation = i18n.t(key, params);
+        return $sce.trustAsHtml(translation);
+    };
+}])
+
+// 国际化服务
+app.service('i18nService', function() {
+    return {
+        t: function(key, params) {
+            return i18n.t(key, params);
+        },
+        setLang: function(lang) {
+            i18n.setLang(lang);
+        },
+        getLang: function() {
+            return i18n.getLang();
+        }
+    };
+})
 
 app.service('dataService', function ($http) {
     return {

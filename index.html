@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="开源低代码框架，零前端代码，纯注解开发管理后台！" name="description">
-    <meta content="注解框架,CURD,低代码,DDD领域模型,快速开发,Java注解,Java视图关系映射模型,vorm,快速构建管理后台,erupt"
+    <meta content="Open source low-code framework, zero frontend code, pure annotation development admin system!" name="description">
+    <meta content="Erupt,Annotation,CURD,Low Code,DDD,Spring Boot,JPA,VORM,Admin"
           name="keyword">
     <meta content="width=device-width, initial-scale=.7" name="viewport">
     <title>erupt</title>
@@ -26,28 +26,28 @@
                     <img alt="" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
                 </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/" ng-class="currRouter=='/'?'active-link':''">
-                    首页
+                    {{'nav.home' | i18n}}
                 </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/component"
                    ng-class="currRouter=='/component'?'active-link':''">
-                    组件支持
+                    {{'nav.component' | i18n}}
                 </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/contrast"
                    ng-class="currRouter=='/contrast'?'active-link':''">
-                    代码示例
+                    {{'nav.contrast' | i18n}}
                 </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/module"
                    ng-class="currRouter=='/module'?'active-link':''">
-                    扩展模块
+                    {{'nav.module' | i18n}}
                 </a>
                 <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/erupts/erupt/mwf15h"
                    target="_blank">
-                    捐赠指南
+                    {{'nav.donate' | i18n}}
                 </a>
                 <span class="dropdown show">
                     <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/erupts/erupt"
                        style="padding-right: 0" target="_blank">
-                        使用文档
+                        {{'nav.doc' | i18n}}
                     </a>
                     <a aria-expanded="false" aria-haspopup="true" class="btn btn-sm align-self-center dropdown-toggle"
                        data-toggle="dropdown" href="javascript:;" role="button" style="padding: 0"></a>
@@ -71,8 +71,18 @@
                     </div>
                 </span>
                 <a class="btn btn-sm align-self-center btn-link" href="https://www.erupt.xyz/demo" target="_blank">
-                    演示DEMO
+                    {{'nav.demo' | i18n}}
                 </a>
+                <span class="dropdown lang-dropdown" style="margin-left: 10px;">
+                    <a aria-expanded="false" aria-haspopup="true" class="btn btn-sm align-self-center dropdown-toggle btn-link"
+                       href="javascript:;" role="button">
+                        {{currentLang === 'zh-CN' ? '中文' : 'English'}}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="javascript:;" ng-click="switchLang('zh-CN')">中文</a>
+                        <a class="dropdown-item" href="javascript:;" ng-click="switchLang('en-US')">English</a>
+                    </div>
+                </span>
             </div>
         </div>
     </header>
@@ -87,19 +97,19 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="footer-link">
-                        <h2>QQ 交流群</h2>
+                        <h2>{{'footer.qq' | i18n}}</h2>
                         <h4><a href="https://jq.qq.com/?_wv=1027&k=MCd4plZ0" target="_blank">821389129</a></h4>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="footer-link">
-                        <h2>邮箱地址</h2>
+                        <h2>{{'footer.email' | i18n}}</h2>
                         <h4><a href="mailto:erupts@126.com" target="_blank">erupts@126.com</a></h4>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="footer-link">
-                        <h2>使用文档</h2>
+                        <h2>{{'footer.doc' | i18n}}</h2>
                         <h4><a href="https://www.yuque.com/erupts" target="_blank">https://yuque.com/erupts</a></h4>
                     </div>
                 </div>
@@ -107,21 +117,21 @@
             <div class="row mt-4">
                 <div class="col-md-4">
                     <div class="footer-link">
-                        <h2>GitHub</h2>
+                        <h2>{{'footer.github' | i18n}}</h2>
                         <h4><a href="https://github.com/erupts/erupt"
                                target="_blank">https://github.com</a></h4>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="footer-link">
-                        <h2>Gitee</h2>
+                        <h2>{{'footer.gitee' | i18n}}</h2>
                         <h4><a href="https://gitee.com/erupt/erupt"
                                target="_blank">https://gitee.com</a></h4>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="footer-link">
-                        <h2>GitCode</h2>
+                        <h2>{{'footer.gitcode' | i18n}}</h2>
                         <h4><a href="https://gitcode.com/erupts/erupt"
                                target="_blank">https://gitcode.com</a></h4>
                     </div>
@@ -136,7 +146,7 @@
                     <p style="margin-bottom: 0;font-size: .85em;text-align: right;">
                         <a href="http://beian.miit.gov.cn" style="color: #fff" target="_blank">京ICP备19044060号-1</a>
                         <span style="color: rgba(255,255,255,0.7)">|</span>
-                        <span>Copyright © 2019-{{year}} erupt.xyz All rights reserved.</span>
+                        <span>{{getCopyright()}}</span>
                     </p>
                 </div>
             </div>
@@ -152,6 +162,7 @@
 <script src="assets/bootstrap.min.js"></script>
 <script src="assets/angular.min.js"></script>
 <script src="assets/angular-route.min.js"></script>
+<script src="i18n.js"></script>
 <script src="app.js"></script>
 <script src="page/home.js"></script>
 <script src="page/doc/doc.js"></script>
@@ -197,7 +208,10 @@
     //     }
     // }
 
-    app.controller("index", function ($scope) {
+    app.controller("index", function ($scope, $rootScope, i18nService) {
+        $scope.currentLang = i18nService.getLang();
+        $scope.year = $rootScope.year;
+        
         $scope.goHome = function () {
             location.href = "#";
         }
@@ -205,6 +219,19 @@
         $scope.goTop = function () {
             $("html,body").animate({"scrollTop": 0}, 600);
         }
+        
+        $scope.switchLang = function(lang) {
+            i18nService.setLang(lang);
+            $scope.currentLang = lang;
+            // 刷新页面以应用所有更改
+            location.reload();
+        }
+        
+        // 获取版权信息
+        $scope.getCopyright = function() {
+            var copyright = i18nService.t('footer.copyright');
+            return copyright.replace('{{year}}', $rootScope.year);
+        };
     });
 </script>
 <script>

@@ -1,4 +1,4 @@
-app.controller("home", function ($scope, $rootScope, $timeout) {
+app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
     $scope.erupt = [
         {annotation: '@Erupt'},
         {annotation: '@EruptField'},
@@ -9,46 +9,50 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
         {annotation: '@EruptProperty'},
     ];
 
-    $scope.indicator = [{
-        name: "敏捷开发",
-        desc: "仅单个.java文件即可实现后台管理功能，专注业务与核心功能的研发",
-        icon: "fast.svg"
-    }, {
-        name: "数据安全",
-        desc: "可靠的安全机制，细颗粒度权限控制，阻绝一切不可靠的数据，为您的数据安全保驾护航",
-        icon: "security.svg"
-    }, {
-        name: "响应式布局",
-        desc: "支持PC端手机端等各种规格的设备中使用",
-        icon: "resize.svg"
-    }, {
-        name: "低侵入性",
-        desc: "几乎所有功能都围绕注解而展开，不影响你使用任何第三方库",
-        icon: "hold.svg"
-    }, {
-        name: "界面美观",
-        desc: "每个交互都精心设计，产品思维打磨，只为了更好的操作体验",
-        icon: "art.svg"
-    }, {
-        name: "通用数据管理",
-        desc: "支持市面上所有主流数据库，支持MongoDB，支持自定义数据源",
-        icon: "db.svg"
-    }, {
-        name: "服务层逻辑扩展",
-        desc: "支持 CURD 前后置扩展、自定义按钮、自定义LDAP登录",
-        url: "https://www.yuque.com/erupts/erupt/nicqg3",
-        icon: "extend.svg"
-    }, {
-        name: "自定义附件上传",
-        desc: "仅需简单的适配代码，可以让 erupt 支持 fastDFS、七牛云、OSS 等存储方式",
-        icon: "attachment.svg",
-        url: "https://www.yuque.com/erupts/erupt/famk6i"
-    }, {
-        name: "自定义模板",
-        desc: "自定义页面按钮模板，支持多种渲染方式 Freemarker/Thymeleaf/Vue/Velocity",
-        icon: "template.svg",
-        url: "https://www.yuque.com/erupts/gd8zod/wzmdu2"
-    }]
+    function updateIndicator() {
+        $scope.indicator = [{
+            name: i18nService.t('home.features.fast.name'),
+            desc: i18nService.t('home.features.fast.desc'),
+            icon: "fast.svg"
+        }, {
+            name: i18nService.t('home.features.security.name'),
+            desc: i18nService.t('home.features.security.desc'),
+            icon: "security.svg"
+        }, {
+            name: i18nService.t('home.features.responsive.name'),
+            desc: i18nService.t('home.features.responsive.desc'),
+            icon: "resize.svg"
+        }, {
+            name: i18nService.t('home.features.low.name'),
+            desc: i18nService.t('home.features.low.desc'),
+            icon: "hold.svg"
+        }, {
+            name: i18nService.t('home.features.beautiful.name'),
+            desc: i18nService.t('home.features.beautiful.desc'),
+            icon: "art.svg"
+        }, {
+            name: i18nService.t('home.features.db.name'),
+            desc: i18nService.t('home.features.db.desc'),
+            icon: "db.svg"
+        }, {
+            name: i18nService.t('home.features.extend.name'),
+            desc: i18nService.t('home.features.extend.desc'),
+            url: "https://www.yuque.com/erupts/erupt/nicqg3",
+            icon: "extend.svg"
+        }, {
+            name: i18nService.t('home.features.attachment.name'),
+            desc: i18nService.t('home.features.attachment.desc'),
+            icon: "attachment.svg",
+            url: "https://www.yuque.com/erupts/erupt/famk6i"
+        }, {
+            name: i18nService.t('home.features.template.name'),
+            desc: i18nService.t('home.features.template.desc'),
+            icon: "template.svg",
+            url: "https://www.yuque.com/erupts/gd8zod/wzmdu2"
+        }];
+    }
+    
+    updateIndicator();
 
 
     $scope.using = [
@@ -100,7 +104,7 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
             toggleText: "每天还在写代码的，写了20多年的代码民工,希望到60岁时还能运指如飞的敲键盘",
             headImg: "baishi.png",
             home: "https://github.com/wjw465150",
-            nickname: "白石",
+            nickname: "W.Stone",
         },
         {
             toggleText: "magic-api 作者",
@@ -151,21 +155,25 @@ app.controller("home", function ($scope, $rootScope, $timeout) {
 
     $scope.htmlLayer = ["view.html", "edit.html", "xxx.js", "xxx.css", "util.js"];
 
-    $scope.dbs = [
-        {name: "MySQL", image: "mysql.svg"},
-        {name: "Oracle", image: "oracle.svg"},
-        {name: "SQL Server", image: "sqlServer.svg"},
-        {name: "PostgreSQL", image: "postgreSQL.svg"},
-        {name: "H2", image: "h2.svg"},
-        {name: "PolarDB", image: "polardb.svg"},
-        {name: "达梦", image: "dm.svg"},
-        {name: "人大金仓", image: "kingbase.svg"},
-        {name: "API 数据源", image: "api.svg"},
-        {name: "Google Spanner", image: "spanner.svg"},
-        {name: "MongoDB", image: "mongoDB.svg"},
-        {name: "自定义数据源", image: "custom.svg"}
-    ]
-
+    function updateDbs() {
+        $scope.dbs = [
+            {name: i18nService.t('db.mysql'), image: "mysql.svg"},
+            {name: i18nService.t('db.oracle'), image: "oracle.svg"},
+            {name: i18nService.t('db.sqlserver'), image: "sqlServer.svg"},
+            {name: i18nService.t('db.postgresql'), image: "postgreSQL.svg"},
+            {name: i18nService.t('db.h2'), image: "h2.svg"},
+            {name: i18nService.t('db.polardb'), image: "polardb.svg"},
+            {name: i18nService.t('db.dm'), image: "dm.svg"},
+            {name: i18nService.t('db.kingbase'), image: "kingbase.svg"},
+            {name: i18nService.t('db.api'), image: "api.svg"},
+            {name: i18nService.t('db.spanner'), image: "spanner.svg"},
+            {name: i18nService.t('db.mongodb'), image: "mongoDB.svg"},
+            {name: i18nService.t('db.custom'), image: "custom.svg"}
+        ];
+    }
+    
+    updateDbs();
+    
     Prism.highlightAllUnder(document.getElementById("DemoErupt"));
 
     $("#logo").attr("src", "assets/logo2.svg");

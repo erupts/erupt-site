@@ -292,3 +292,12 @@ html, body {
 .dropdown-item.active, .dropdown-item:active {
     background: #eee;
 }
+
+/* 语言切换下拉菜单 hover 效果 */
+.lang-dropdown:hover .dropdown-menu {
+    display: block !important;
+}
+
+.lang-dropdown .dropdown-toggle {
+    cursor: pointer;
+}
