@@ -1,58 +1,44 @@
 app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
-    $scope.erupt = [
-        {annotation: '@Erupt'},
-        {annotation: '@EruptField'},
-        {annotation: '@EruptRouter'},
-        {annotation: '@EruptApi'},
-        {annotation: '@EruptTpl'},
-        {annotation: '@TplAction'},
-        {annotation: '@EruptProperty'},
-    ];
-
-    function updateIndicator() {
-        $scope.indicator = [{
-            name: i18nService.t('home.features.fast.name'),
-            desc: i18nService.t('home.features.fast.desc'),
-            icon: "fast.svg"
-        }, {
-            name: i18nService.t('home.features.security.name'),
-            desc: i18nService.t('home.features.security.desc'),
-            icon: "security.svg"
-        }, {
-            name: i18nService.t('home.features.responsive.name'),
-            desc: i18nService.t('home.features.responsive.desc'),
-            icon: "resize.svg"
-        }, {
-            name: i18nService.t('home.features.low.name'),
-            desc: i18nService.t('home.features.low.desc'),
-            icon: "hold.svg"
-        }, {
-            name: i18nService.t('home.features.beautiful.name'),
-            desc: i18nService.t('home.features.beautiful.desc'),
-            icon: "art.svg"
-        }, {
-            name: i18nService.t('home.features.db.name'),
-            desc: i18nService.t('home.features.db.desc'),
-            icon: "db.svg"
-        }, {
-            name: i18nService.t('home.features.extend.name'),
-            desc: i18nService.t('home.features.extend.desc'),
-            url: "https://www.yuque.com/erupts/erupt/nicqg3",
-            icon: "extend.svg"
-        }, {
-            name: i18nService.t('home.features.attachment.name'),
-            desc: i18nService.t('home.features.attachment.desc'),
-            icon: "attachment.svg",
-            url: "https://www.yuque.com/erupts/erupt/famk6i"
-        }, {
-            name: i18nService.t('home.features.template.name'),
-            desc: i18nService.t('home.features.template.desc'),
-            icon: "template.svg",
-            url: "https://www.yuque.com/erupts/gd8zod/wzmdu2"
-        }];
-    }
-    
-    updateIndicator();
+    $scope.indicator = [{
+        name: i18nService.t('home.features.fast.name'),
+        desc: i18nService.t('home.features.fast.desc'),
+        icon: "fast.svg"
+    }, {
+        name: i18nService.t('home.features.security.name'),
+        desc: i18nService.t('home.features.security.desc'),
+        icon: "security.svg"
+    }, {
+        name: i18nService.t('home.features.responsive.name'),
+        desc: i18nService.t('home.features.responsive.desc'),
+        icon: "resize.svg"
+    }, {
+        name: i18nService.t('home.features.low.name'),
+        desc: i18nService.t('home.features.low.desc'),
+        icon: "hold.svg"
+    }, {
+        name: i18nService.t('home.features.beautiful.name'),
+        desc: i18nService.t('home.features.beautiful.desc'),
+        icon: "art.svg"
+    }, {
+        name: i18nService.t('home.features.db.name'),
+        desc: i18nService.t('home.features.db.desc'),
+        icon: "db.svg"
+    }, {
+        name: i18nService.t('home.features.extend.name'),
+        desc: i18nService.t('home.features.extend.desc'),
+        url: "https://www.yuque.com/erupts/erupt/nicqg3",
+        icon: "extend.svg"
+    }, {
+        name: i18nService.t('home.features.attachment.name'),
+        desc: i18nService.t('home.features.attachment.desc'),
+        icon: "attachment.svg",
+        url: "https://www.yuque.com/erupts/erupt/famk6i"
+    }, {
+        name: i18nService.t('home.features.template.name'),
+        desc: i18nService.t('home.features.template.desc'),
+        icon: "template.svg",
+        url: "https://www.yuque.com/erupts/gd8zod/wzmdu2"
+    }];
 
 
     $scope.using = [
@@ -155,25 +141,21 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
 
     $scope.htmlLayer = ["view.html", "edit.html", "xxx.js", "xxx.css", "util.js"];
 
-    function updateDbs() {
-        $scope.dbs = [
-            {name: i18nService.t('db.mysql'), image: "mysql.svg"},
-            {name: i18nService.t('db.oracle'), image: "oracle.svg"},
-            {name: i18nService.t('db.sqlserver'), image: "sqlServer.svg"},
-            {name: i18nService.t('db.postgresql'), image: "postgreSQL.svg"},
-            {name: i18nService.t('db.h2'), image: "h2.svg"},
-            {name: i18nService.t('db.polardb'), image: "polardb.svg"},
-            {name: i18nService.t('db.dm'), image: "dm.svg"},
-            {name: i18nService.t('db.kingbase'), image: "kingbase.svg"},
-            {name: i18nService.t('db.api'), image: "api.svg"},
-            {name: i18nService.t('db.spanner'), image: "spanner.svg"},
-            {name: i18nService.t('db.mongodb'), image: "mongoDB.svg"},
-            {name: i18nService.t('db.custom'), image: "custom.svg"}
-        ];
-    }
-    
-    updateDbs();
-    
+    $scope.dbs = [
+        {name: i18nService.t('db.mysql'), image: "mysql.svg"},
+        {name: i18nService.t('db.oracle'), image: "oracle.svg"},
+        {name: i18nService.t('db.sqlserver'), image: "sqlServer.svg"},
+        {name: i18nService.t('db.postgresql'), image: "postgreSQL.svg"},
+        {name: i18nService.t('db.h2'), image: "h2.svg"},
+        {name: i18nService.t('db.polardb'), image: "polardb.svg"},
+        {name: i18nService.t('db.dm'), image: "dm.svg"},
+        {name: i18nService.t('db.kingbase'), image: "kingbase.svg"},
+        {name: i18nService.t('db.api'), image: "api.svg"},
+        {name: i18nService.t('db.spanner'), image: "spanner.svg"},
+        {name: i18nService.t('db.mongodb'), image: "mongoDB.svg"},
+        {name: i18nService.t('db.custom'), image: "custom.svg"}
+    ];
+
     Prism.highlightAllUnder(document.getElementById("DemoErupt"));
 
     $("#logo").attr("src", "assets/logo2.svg");
@@ -193,27 +175,6 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
     $timeout(function () {
         $('[data-toggle="tooltip"]').tooltip()
     }, 1000);
-
-
-    // document.onscroll = function () {
-    //     throttle(() => {
-    //         var top = $(document).scrollTop();
-    //         // galleryEle.css({transform: 'skewY(' + top % base + 'deg)'});
-    //         if (top > 200) {
-    //             // if ($rootScope.showHeader !== true) {
-    //             //     $scope.$apply(function () {
-    //             //         $rootScope.showHeader = true;
-    //             //     })
-    //             // }
-    //         } else {
-    //             // if ($rootScope.showHeader !== false) {
-    //             //     $scope.$apply(function () {
-    //             //         $rootScope.showHeader = false;
-    //             //     })
-    //             // }
-    //         }
-    //     }, 100)()
-    // }
 
     $scope.go = function (url, open) {
         if (open) {
