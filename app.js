@@ -31,6 +31,16 @@ var app = angular.module('app', [
             toTemplate();
             return "page/doc/doc.html";
         }
+    }).when('/flow', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/flow/flow.html";
+        }
+    }).when('/cloud', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/cloud/cloud.html";
+        }
     }).when('/module', {
         templateUrl: function (attr) {
             toTemplate();

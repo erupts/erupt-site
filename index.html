@@ -32,6 +32,14 @@
                    ng-class="currRouter=='/component'?'active-link':''">
                     {{'nav.component' | i18n}}
                 </a>
+                <a class="btn btn-sm align-self-center btn-link" href="#!/flow"
+                   ng-class="currRouter=='/flow'?'active-link':''">
+                    {{'nav.flow' | i18n}}
+                </a>
+                <a class="btn btn-sm align-self-center btn-link" href="#!/cloud"
+                   ng-class="currRouter=='/cloud'?'active-link':''">
+                    {{'nav.cloud' | i18n}}
+                </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/contrast"
                    ng-class="currRouter=='/contrast'?'active-link':''">
                     {{'nav.contrast' | i18n}}
@@ -165,6 +173,8 @@
 <script src="i18n.js"></script>
 <script src="app.js"></script>
 <script src="page/home.js"></script>
+<script src="page/flow/flow.js"></script>
+<script src="page/cloud/cloud.js"></script>
 <script src="page/doc/doc.js"></script>
 <script src="page/contrast/contrast.js"></script>
 <script src="page/extra/extra.js"></script>

@@ -1,0 +1,824 @@
+<style>
+    /* ===== HERO ===== */
+    .flow-hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2040 100%);
+        color: #fff;
+        padding: 70px 0 60px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .flow-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(59, 130, 246, .15) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .flow-hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+        background: linear-gradient(90deg, #fff 40%, #60a5fa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .flow-hero-sub {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, .65);
+        margin-bottom: 28px;
+        max-width: 480px;
+    }
+
+    .flow-btn-group {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    .flow-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: .95rem;
+        transition: all .2s;
+        text-decoration: none !important;
+        border: none;
+        cursor: pointer;
+    }
+
+    .flow-btn-primary {
+        background: #3b82f6;
+        color: #fff;
+    }
+
+    .flow-btn-primary:hover {
+        background: #2563eb;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+
+    .flow-btn-outline {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .flow-btn-outline:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .flow-badge {
+        display: inline-block;
+        padding: 4px 14px;
+        border-radius: 20px;
+        font-size: .78rem;
+        margin: 4px 4px 4px 0;
+        font-weight: 600;
+        letter-spacing: .5px;
+    }
+
+    .badge-blue {
+        background: rgba(59, 130, 246, .2);
+        color: #93c5fd;
+        border: 1px solid rgba(59, 130, 246, .35);
+    }
+
+    .badge-green {
+        background: rgba(16, 185, 129, .2);
+        color: #6ee7b7;
+        border: 1px solid rgba(16, 185, 129, .35);
+    }
+
+    .badge-amber {
+        background: rgba(245, 158, 11, .2);
+        color: #fcd34d;
+        border: 1px solid rgba(245, 158, 11, .35);
+    }
+
+    .badge-purple {
+        background: rgba(139, 92, 246, .2);
+        color: #c4b5fd;
+        border: 1px solid rgba(139, 92, 246, .35);
+    }
+
+    /* ===== FLOW DIAGRAM (SVG inside hero) ===== */
+    .flow-diagram-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 10px 0;
+    }
+
+    .flow-diagram {
+        width: 100%;
+        max-width: 440px;
+        filter: drop-shadow(0 8px 24px rgba(0, 0, 0, .5));
+    }
+
+    /* node pulse animation */
+    @keyframes nodePulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: .6;
+        }
+    }
+
+    @keyframes dashFlow {
+        to {
+            stroke-dashoffset: -24;
+        }
+    }
+
+    .flow-edge {
+        stroke: #3b82f6;
+        stroke-width: 2;
+        fill: none;
+        stroke-dasharray: 6 4;
+        animation: dashFlow 1.2s linear infinite;
+    }
+
+    .flow-edge-done {
+        stroke: #10b981;
+        stroke-width: 2;
+        fill: none;
+        stroke-dasharray: 6 4;
+        animation: dashFlow 1.2s linear infinite;
+    }
+
+    /* ===== PAGE BODY ===== */
+    .flow-body {
+        background: #f1f5f9;
+        padding: 48px 0 60px;
+    }
+
+    /* ===== FEATURE CARDS ===== */
+    .feat-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 28px 24px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+        height: 100%;
+        border-top: 3px solid transparent;
+        transition: box-shadow .2s, transform .2s;
+    }
+
+    .feat-card:hover {
+        box-shadow: 0 8px 28px rgba(0, 0, 0, .1);
+        transform: translateY(-3px);
+    }
+
+    .feat-card.fc-blue {
+        border-top-color: #3b82f6;
+    }
+
+    .feat-card.fc-green {
+        border-top-color: #10b981;
+    }
+
+    .feat-card.fc-amber {
+        border-top-color: #f59e0b;
+    }
+
+    .feat-card.fc-purple {
+        border-top-color: #8b5cf6;
+    }
+
+    .feat-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+    }
+
+    .fi-blue {
+        background: rgba(59, 130, 246, .1);
+    }
+
+    .fi-green {
+        background: rgba(16, 185, 129, .1);
+    }
+
+    .fi-amber {
+        background: rgba(245, 158, 11, .1);
+    }
+
+    .fi-purple {
+        background: rgba(139, 92, 246, .1);
+    }
+
+    .feat-card h5 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 8px;
+    }
+
+    .feat-card p {
+        font-size: .88rem;
+        color: #64748b;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* ===== SECTION BLOCKS ===== */
+    .flow-block {
+        background: #fff;
+        border-radius: 12px;
+        padding: 36px 36px 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+        margin-bottom: 28px;
+    }
+
+    .block-heading {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .block-step-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #3b82f6;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: .95rem;
+        flex-shrink: 0;
+    }
+
+    .block-heading h2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0;
+    }
+
+    .block-heading .block-desc {
+        font-size: .82rem;
+        color: #94a3b8;
+        margin: 0;
+        font-weight: 400;
+    }
+
+    .flow-block h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #334155;
+        margin: 24px 0 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .flow-block h3::before {
+        content: '';
+        display: inline-block;
+        width: 4px;
+        height: 16px;
+        background: #3b82f6;
+        border-radius: 2px;
+    }
+
+    .flow-block p {
+        font-size: .9rem;
+        color: #4b5563;
+        line-height: 1.7;
+        margin-bottom: 10px;
+    }
+
+    pre[class*="language-"] {
+        margin: 12px 0 8px;
+        border-radius: 8px;
+        font-size: .82rem;
+    }
+
+    /* ===== STEPS (quick start) ===== */
+    .qs-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .qs-step {
+        display: flex;
+        gap: 18px;
+        position: relative;
+    }
+
+    .qs-step:not(:last-child)::before {
+        content: '';
+        position: absolute;
+        left: 17px;
+        top: 36px;
+        bottom: 0;
+        width: 2px;
+        background: #e2e8f0;
+    }
+
+    .qs-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid #3b82f6;
+        color: #3b82f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: .9rem;
+        flex-shrink: 0;
+        background: #fff;
+        z-index: 1;
+    }
+
+    .qs-content {
+        padding-bottom: 28px;
+        flex: 1;
+    }
+
+    .qs-content h4 {
+        font-size: .95rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 6px;
+        margin-top: 6px;
+    }
+
+    .qs-content p {
+        font-size: .88rem;
+        color: #64748b;
+        margin-bottom: 8px;
+    }
+
+    /* ===== NODE TYPE SHOWCASE ===== */
+    .node-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 14px;
+        margin-top: 12px;
+    }
+
+    .node-card {
+        border-radius: 10px;
+        padding: 16px 18px;
+        border: 1px solid;
+        position: relative;
+    }
+
+    .node-card .nc-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 8px;
+    }
+
+    .node-card .nc-name {
+        font-weight: 700;
+        font-size: .9rem;
+    }
+
+    .node-card .nc-desc {
+        font-size: .8rem;
+        margin-top: 6px;
+        line-height: 1.5;
+    }
+
+    .nc-start {
+        background: rgba(16, 185, 129, .07);
+        border-color: rgba(16, 185, 129, .3);
+        color: #065f46;
+    }
+
+    .nc-start .nc-dot {
+        background: #10b981;
+    }
+
+    .nc-start .nc-desc {
+        color: #047857;
+    }
+
+    .nc-approve {
+        background: rgba(59, 130, 246, .07);
+        border-color: rgba(59, 130, 246, .3);
+        color: #1e3a5f;
+    }
+
+    .nc-approve .nc-dot {
+        background: #3b82f6;
+    }
+
+    .nc-approve .nc-desc {
+        color: #1d4ed8;
+    }
+
+    .nc-custom {
+        background: rgba(245, 158, 11, .07);
+        border-color: rgba(245, 158, 11, .3);
+        color: #713f12;
+    }
+
+    .nc-custom .nc-dot {
+        background: #f59e0b;
+    }
+
+    .nc-custom .nc-desc {
+        color: #92400e;
+    }
+
+    .nc-schedule {
+        background: rgba(139, 92, 246, .07);
+        border-color: rgba(139, 92, 246, .3);
+        color: #3b0764;
+    }
+
+    .nc-schedule .nc-dot {
+        background: #8b5cf6;
+    }
+
+    .nc-schedule .nc-desc {
+        color: #6d28d9;
+    }
+
+    .nc-end {
+        background: rgba(239, 68, 68, .07);
+        border-color: rgba(239, 68, 68, .3);
+        color: #450a0a;
+    }
+
+    .nc-end .nc-dot {
+        background: #ef4444;
+    }
+
+    .nc-end .nc-desc {
+        color: #b91c1c;
+    }
+
+    /* ===== DB TABLE ===== */
+    .db-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: .88rem;
+    }
+
+    .db-table thead th {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 12px 16px;
+        text-align: left;
+        font-weight: 600;
+    }
+
+    .db-table thead th:first-child {
+        border-radius: 8px 0 0 0;
+    }
+
+    .db-table thead th:last-child {
+        border-radius: 0 8px 0 0;
+    }
+
+    .db-table tbody tr:nth-child(even) {
+        background: #f8fafc;
+    }
+
+    .db-table tbody tr:hover {
+        background: #eff6ff;
+    }
+
+    .db-table tbody td {
+        padding: 11px 16px;
+        color: #374151;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .db-table .td-code {
+        font-family: monospace;
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 24px;
+        position: relative;
+        padding-left: 16px;
+    }
+
+    .section-title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 3px;
+        bottom: 3px;
+        width: 4px;
+        background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+        border-radius: 2px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+        .flow-hero-title {
+            font-size: 2rem;
+        }
+
+        .flow-diagram-wrap {
+            display: none;
+        }
+
+        .flow-block {
+            padding: 24px 18px;
+        }
+    }
+</style>
+
+<div ng-controller="flow">
+
+    <!-- ===== HERO ===== -->
+    <div class="flow-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="flow-hero-title">Erupt Flow</h1>
+                    <p class="flow-hero-sub">基于 Erupt 的极简流程引擎 —— 零前端代码，深度融合业务模型，可视化节点设计</p>
+                    <div class="flow-btn-group">
+                        <a class="flow-btn flow-btn-primary" href="https://www.erupt.xyz/demo/#/flow/management"
+                           target="_blank">
+                            <span>立即体验</span>
+                        </a>
+                        <!--                        <a href="https://github.com/erupt-team/erupt-flow" target="_blank" class="flow-btn flow-btn-outline">-->
+                        <!--                            <span>GitHub</span>-->
+                        <!--                        </a>-->
+                    </div>
+                    <div>
+                        <span class="flow-badge badge-blue">零前端开发</span>
+                        <span class="flow-badge badge-green">深度业务融合</span>
+                        <span class="flow-badge badge-amber">自定义节点</span>
+                        <span class="flow-badge badge-purple">可扩展回调</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="flow-diagram-wrap">
+                        <!-- Inline SVG flow diagram -->
+                        <svg class="flow-diagram" viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg">
+                            <!-- background panel -->
+                            <rect fill="#1e293b" height="240" opacity=".9" rx="14" width="440"/>
+
+                            <!-- grid lines -->
+                            <line stroke="#334155" stroke-width=".5" x1="0" x2="440" y1="120" y2="120"/>
+                            <line stroke="#334155" stroke-width=".5" x1="220" x2="220" y1="0" y2="240"/>
+
+                            <!-- edge: start -> form -->
+                            <path class="flow-edge" d="M 84 120 L 116 120"/>
+                            <polygon fill="#3b82f6" points="116,115 126,120 116,125"/>
+                            <!-- edge: form -> approval -->
+                            <path class="flow-edge" d="M 186 120 L 210 120"/>
+                            <polygon fill="#3b82f6" points="210,115 220,120 210,125"/>
+                            <!-- edge: approval -> custom -->
+                            <path class="flow-edge-done" d="M 262 120 L 282 120"/>
+                            <polygon fill="#10b981" points="282,115 292,120 282,125"/>
+                            <!-- edge: custom -> end -->
+                            <path class="flow-edge-done" d="M 350 120 L 378 120"/>
+                            <polygon fill="#10b981" points="378,115 388,120 378,125"/>
+
+                            <!-- START node -->
+                            <circle cx="56" cy="120" fill="#064e3b" r="28" stroke="#10b981" stroke-width="2"/>
+                            <text fill="#6ee7b7" font-size="9" font-weight="bold" text-anchor="middle" x="56" y="115">
+                                START
+                            </text>
+                            <circle cx="56" cy="126" fill="#10b981" opacity=".8" r="4">
+                                <animate attributeName="r" dur="2s" repeatCount="indefinite" values="4;7;4"/>
+                                <animate attributeName="opacity" dur="2s" repeatCount="indefinite" values=".8;0;.8"/>
+                            </circle>
+
+                            <!-- FORM node (rounded rect) -->
+                            <rect fill="#1e3a5f" height="48" rx="8" stroke="#3b82f6" stroke-width="2" width="60" x="126"
+                                  y="96"/>
+                            <text fill="#93c5fd" font-size="9" font-weight="bold" text-anchor="middle" x="156" y="118">
+                                审批
+                            </text>
+                            <text fill="#93c5fd" font-size="9" text-anchor="middle" x="156" y="131">APPROVAL</text>
+
+                            <!-- APPROVAL node (diamond) -->
+                            <rect fill="#312e81" height="48" rx="8" stroke="#6366f1" stroke-width="2" width="42" x="220"
+                                  y="96"/>
+                            <text fill="#c7d2fe" font-size="9" font-weight="bold" text-anchor="middle" x="241" y="118">
+                                条件
+                            </text>
+                            <text fill="#c7d2fe" font-size="9" text-anchor="middle" x="241" y="131">COND</text>
+
+                            <!-- CUSTOM node (rounded rect, orange) -->
+                            <rect fill="#451a03" height="48" rx="8" stroke="#f59e0b" stroke-width="2" width="58" x="292"
+                                  y="96"/>
+                            <text fill="#fcd34d" font-size="9" font-weight="bold" text-anchor="middle" x="321" y="118">
+                                自定义
+                            </text>
+                            <text fill="#fcd34d" font-size="9" text-anchor="middle" x="321" y="131">CUSTOM</text>
+
+                            <!-- END node -->
+                            <circle cx="406" cy="120" fill="#450a0a" r="26" stroke="#ef4444" stroke-width="2"/>
+                            <text fill="#fca5a5" font-size="9" font-weight="bold" text-anchor="middle" x="406" y="115">
+                                END
+                            </text>
+                            <text fill="#fca5a5" font-size="8" text-anchor="middle" x="406" y="127">完成</text>
+
+                            <!-- label bar at bottom -->
+                            <rect fill="#0f172a" height="40" opacity=".6" rx="0 0 14 14" width="440" x="0" y="200"/>
+                            <circle cx="50" cy="220" fill="#10b981" r="5"/>
+                            <text fill="#94a3b8" font-size="9" x="62" y="224">开始/结束</text>
+                            <circle cx="130" cy="220" fill="#3b82f6" r="5"/>
+                            <text fill="#94a3b8" font-size="9" x="142" y="224">审批节点</text>
+                            <circle cx="210" cy="220" fill="#6366f1" r="5"/>
+                            <text fill="#94a3b8" font-size="9" x="222" y="224">条件分支</text>
+                            <circle cx="290" cy="220" fill="#f59e0b" r="5"/>
+                            <text fill="#94a3b8" font-size="9" x="302" y="224">自定义节点</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BODY ===== -->
+    <div class="flow-body">
+        <div class="container">
+
+            <!-- ===== FEATURE CARDS ===== -->
+            <div class="row mb-4" style="margin-bottom: 32px!important">
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="feat-card fc-green">
+                        <div class="feat-icon fi-green">&#9881;</div>
+                        <h5>零前端代码</h5>
+                        <p>纯注解驱动，流程表单、节点、回调全部后端定义，无需任何前端开发</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="feat-card fc-blue">
+                        <div class="feat-icon fi-blue">&#128279;</div>
+                        <h5>深度业务融合</h5>
+                        <p>直接使用 Erupt 类作为流程表单，数据模型与流程无缝打通</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="feat-card fc-amber">
+                        <div class="feat-icon fi-amber">&#127381;</div>
+                        <h5>自定义节点</h5>
+                        <p>继承 FlexFlowProcess 即可扩展自定义节点，支持邮件、短信、延时等场景</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="feat-card fc-purple">
+                        <div class="feat-icon fi-purple">&#128204;</div>
+                        <h5>可扩展回调</h5>
+                        <p>FlowProxy 接口监听节点进出事件，EruptFlowProcess 可自定义通知与流程编号逻辑</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== QUICK START ===== -->
+            <div class="flow-block">
+                <div class="block-heading">
+                    <div class="block-step-num">1</div>
+                    <div>
+                        <h2>快速接入</h2>
+                        <p class="block-desc">三步完成 Erupt Flow 的编译、导入与启动</p>
+                    </div>
+                </div>
+
+                <div class="qs-steps">
+                    <div class="qs-step">
+                        <div class="qs-num">1</div>
+                        <div class="qs-content">
+                            <h4>编译源码并发布到本地仓库</h4>
+                            <p>拉取 <a href="https://github.com/erupt-team/erupt-flow" target="_blank">erupt-flow</a>
+                                源码，切换到对应
+                                <a href="https://github.com/erupt-team/erupt-flow/tags" target="_blank">tag 版本</a>，在项目根目录执行：
+                            </p>
+                            <pre><code class="language-bash">mvn -D skipTests=true install</code></pre>
+                        </div>
+                    </div>
+                    <div class="qs-step">
+                        <div class="qs-num">2</div>
+                        <div class="qs-content">
+                            <h4>导入 Maven 依赖</h4>
+                            <p>在 Erupt 项目的 <code>pom.xml</code> 中添加：</p>
+                            <pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;xyz.erupt&lt;/groupId&gt;
+    &lt;artifactId&gt;erupt-flow&lt;/artifactId&gt;
+    &lt;version&gt;${erupt.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+                        </div>
+                    </div>
+                    <div class="qs-step">
+                        <div class="qs-num">3</div>
+                        <div class="qs-content">
+                            <h4>启动 &amp; 验证</h4>
+                            <p>重新启动项目并使用超管账号登录，侧边栏会自动出现"流程管理"菜单。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== CONFIGURATION ===== -->
+            <div class="flow-block">
+                <div class="block-heading">
+                    <div class="block-step-num" style="background:#8b5cf6">&#9881;</div>
+                    <div>
+                        <h2>可配置项</h2>
+                        <p class="block-desc">在 application.yml 中调整调度行为</p>
+                    </div>
+                </div>
+                <pre><code class="language-yaml">erupt:
+  flow:
+    scheduler-cron: '0 */2 * * * ?'  # 调度频率，用于调度流程流转
+    enable-scheduler: true            # 是否开启调度</code></pre>
+            </div>
+
+            <!-- ===== FLOW DEVELOPMENT ===== -->
+
+            <!-- ===== DATABASE SCHEMA ===== -->
+            <div class="flow-block">
+                <div class="block-heading">
+                    <div class="block-step-num" style="background:#64748b">DB</div>
+                    <div>
+                        <h2>数据库设计</h2>
+                        <p class="block-desc">7 张核心表支撑完整的流程生命周期</p>
+                    </div>
+                </div>
+                <div style="overflow-x:auto">
+                    <table class="db-table">
+                        <thead>
+                        <tr>
+                            <th>表名</th>
+                            <th>业务含义</th>
+                            <th>职责说明</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="td-code">e_flow</td>
+                            <td>流程定义表</td>
+                            <td>保存所有可发起的"流程模板"，流程的核心定义</td>
+                        </tr>
+                        <tr>
+                            <td class="td-code">e_flow_group</td>
+                            <td>流程分组表</td>
+                            <td>给流程打分类标签，方便前端按分组展示</td>
+                        </tr>
+                        <tr>
+                            <td class="td-code">e_flow_instance</td>
+                            <td>流程实例表</td>
+                            <td>每次"发起流程"产生一条运行期数据，记录谁、何时、跑哪个模板、当前状态</td>
+                        </tr>
+                        <tr>
+                            <td class="td-code">e_flow_instance_record</td>
+                            <td>实例节点记录表</td>
+                            <td>记录实例运行时每个节点的进出快照，用于审批轨迹图、审计与重跑</td>
+                        </tr>
+                        <tr>
+                            <td class="td-code">e_flow_instance_approval_task</td>
+                            <td>审批任务表</td>
+                            <td>将"需要人点按钮"的节点拆成待办任务，支持多人、多轮、会签、或签</td>
+                        </tr>
+                        <tr>
+                            <td class="td-code">e_flow_instance_comment</td>
+                            <td>审批意见表</td>
+                            <td>存储流程实例的评论信息</td>
+                        </tr>
+                        <tr>
+                            <td class="td-code">e_flow_instance_form_history</td>
+                            <td>表单历史表</td>
+                            <td>流程运行中表单数据每次被修改的记录</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div><!-- /.container -->
+    </div><!-- /.flow-body -->
+
+</div>
