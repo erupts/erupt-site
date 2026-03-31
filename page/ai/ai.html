@@ -1169,7 +1169,7 @@
                         <span class="cap-model-chip">Gemini</span>
                         <span class="cap-model-chip">DeepSeek</span>
                         <span class="cap-model-chip">Qwen</span>
-                        <span class="cap-model-chip">文心</span>
+                        <span class="cap-model-chip">Open Router</span>
                         <span class="cap-model-chip">GLM</span>
                         <span class="cap-model-chip">Doubao</span>
                         <span class="cap-model-chip">Kimi</span>
@@ -1346,45 +1346,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- 全面兼容主流大模型 -->
-    <div class="models-section">
-        <div class="container">
-            <div class="ai-section-title">
-                <h2>{{'ai.models.title' | i18n}}</h2>
-                <p>{{'ai.models.subtitle' | i18n}}</p>
-            </div>
-
-            <!-- 国际模型 -->
-            <div class="model-group">
-                <div class="model-group-label">{{'ai.models.international' | i18n}}</div>
-                <div class="model-grid">
-                    <div class="model-item" ng-repeat="m in internationalModels">
-                        <div class="model-icon" ng-style="{'background': m.bg, 'color': m.fg}">{{m.abbr}}</div>
-                        <div class="model-info">
-                            <span class="model-name">{{m.name}}</span>
-                            <span class="model-company">{{m.company}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 开源 & 私有化部署 -->
-            <div class="model-group">
-                <div class="model-group-label">{{'ai.models.opensource' | i18n}}</div>
-                <div class="model-grid">
-                    <div class="model-item" ng-repeat="m in openSourceModels">
-                        <div class="model-icon" ng-style="{'background': m.bg, 'color': m.fg}">{{m.abbr}}</div>
-                        <div class="model-info">
-                            <span class="model-name">{{m.name}}</span>
-                            <span class="model-company">{{m.company}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 

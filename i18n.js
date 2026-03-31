@@ -309,13 +309,6 @@ var i18n = {
         'ai.arch.title': ['技术架构', 'Technical Architecture'],
         'ai.arch.desc': ['Erupt AI 采用分层架构设计，将大模型能力与低代码框架深度融合', 'Erupt AI uses layered architecture design, deeply integrating LLM capabilities with the low-code framework'],
 
-        // AI 页面 - 模型支持
-        'ai.models.title': ['全面兼容主流大模型', 'Compatible with All Mainstream LLMs'],
-        'ai.models.subtitle': ['无缝对接国内外所有主流大模型，统一 API 接口，一键切换，无需修改业务代码', 'Seamlessly connect with all mainstream LLMs worldwide, unified API, one-click switching, no business code changes needed'],
-        'ai.models.international': ['国际模型', 'International Models'],
-        'ai.models.opensource': ['开源 & 私有化部署', 'Open Source & Self-hosted'],
-        'ai.models.standard': ['协议兼容', 'Protocol Compatible'],
-
         // AI 页面 - MCP
         'ai.mcp.title': ['MCP 协议支持', 'MCP Protocol Support'],
         'ai.mcp.subtitle': ['Model Context Protocol — 让 AI 拥有标准化的外部工具调用能力', 'Model Context Protocol — Giving AI standardized external tool invocation capabilities'],
