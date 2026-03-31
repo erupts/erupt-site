@@ -1,72 +1,85 @@
 <style>
-    .ai-hero-outer {
-        background: #000;
-        padding: 0;
+    @media (max-width: 768px) {
+        .ai-hero-outer {
+            padding: 1px;
+        }
+    }
+
+    .ai-hero-outer-border {
         position: relative;
+        margin: 0 auto 0;
+        border-radius: 0;
+        overflow: hidden;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*max-width: 1200px;*/
+        box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
     }
 
-    .ai-hero-border {
-        position: relative;
-        margin: 0 auto;
-    }
-
-    .ai-hero-strip {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(79, 70, 229, 0) 5%,
-            #6366f1 25%,
-            #a78bfa 50%,
-            #22d3ee 75%,
-            rgba(34, 211, 238, 0) 95%,
-            transparent 100%
-        );
-        z-index: 10;
-        box-shadow:
-            0 0 8px 1px rgba(99, 102, 241, 0.7),
-            0 0 20px 4px rgba(99, 102, 241, 0.35),
-            0 0 60px 8px rgba(34, 211, 238, 0.15);
-    }
-
-    .ai-hero-strip::after {
+    .ai-hero-outer-border::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 5%;
-        right: 5%;
-        height: 160px;
-        background: radial-gradient(
-            ellipse at 50% 0%,
-            rgba(99, 102, 241, 0.18) 0%,
-            rgba(139, 92, 246, 0.08) 30%,
-            rgba(34, 211, 238, 0.05) 55%,
-            transparent 75%
+        width: 150%;
+        padding-bottom: 150%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: conic-gradient(
+                transparent 0%,
+                transparent 10%,
+                #5bc2f9 25%,
+                #5522ed 50%,
+                #00d1f3 75%,
+                transparent 90%,
+                transparent 100%
         );
-        pointer-events: none;
+        animation: rotate-border 4s linear infinite;
+        z-index: 0;
+    }
+
+    @keyframes rotate-border {
+        from {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
     }
 
     .ai-hero {
+        border-radius: 6px;
         position: relative;
         background: #0a0a12;
         color: #fff;
         padding: 80px 0 60px;
         text-align: center;
         overflow: hidden;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+        .ai-hero-outer-border {
+            margin: 20px 15px;
+            border-radius: 15px;
+        }
+
+        .ai-hero {
+            border-radius: 13px;
+        }
     }
 
     .ai-hero::before {
         content: '';
         position: absolute;
         inset: 0;
-        background:
-            radial-gradient(ellipse 60% 50% at 50% 50%, rgba(120,80,255,0.07) 0%, transparent 70%),
-            radial-gradient(ellipse 40% 60% at 30% 30%, rgba(255,100,200,0.04) 0%, transparent 60%),
-            radial-gradient(ellipse 40% 60% at 70% 70%, rgba(0,200,255,0.04) 0%, transparent 60%);
+        background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(120, 80, 255, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 30% 30%, rgba(255, 100, 200, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 70% 70%, rgba(0, 200, 255, 0.04) 0%, transparent 60%);
         pointer-events: none;
     }
 
@@ -215,7 +228,9 @@
         border-left: 1px solid #e4e6ef;
     }
 
-    .ai-caps-stat:first-child { border-left: none; }
+    .ai-caps-stat:first-child {
+        border-left: none;
+    }
 
     .ai-caps-stat-num {
         display: block;
@@ -263,26 +278,30 @@
     .cap-card-featured::before {
         content: '';
         position: absolute;
-        top: -40%; left: -15%;
-        width: 65%; height: 120%;
-        background: radial-gradient(ellipse, rgba(99,102,241,0.13) 0%, transparent 65%);
+        top: -40%;
+        left: -15%;
+        width: 65%;
+        height: 120%;
+        background: radial-gradient(ellipse, rgba(99, 102, 241, 0.13) 0%, transparent 65%);
         pointer-events: none;
     }
 
     .cap-card-featured::after {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.65) 30%, rgba(167,139,250,0.5) 65%, transparent 100%);
+        background: linear-gradient(90deg, transparent 0%, rgba(99, 102, 241, 0.65) 30%, rgba(167, 139, 250, 0.5) 65%, transparent 100%);
     }
 
     .cap-feat-tag {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(99,102,241,0.16);
-        border: 1px solid rgba(99,102,241,0.28);
+        background: rgba(99, 102, 241, 0.16);
+        border: 1px solid rgba(99, 102, 241, 0.28);
         border-radius: 4px;
         padding: 3px 10px;
         font-size: 0.64em;
@@ -303,8 +322,12 @@
     }
 
     @keyframes capFeatPulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.3; }
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.3;
+        }
     }
 
     .cap-feat-icon {
@@ -325,7 +348,7 @@
 
     .cap-feat-desc {
         font-size: 0.82em;
-        color: rgba(255,255,255,0.48);
+        color: rgba(255, 255, 255, 0.48);
         line-height: 1.65;
         margin-bottom: 18px;
     }
@@ -337,12 +360,12 @@
     }
 
     .cap-model-chip {
-        background: rgba(255,255,255,0.07);
-        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 3px;
         padding: 3px 9px;
         font-size: 0.69em;
-        color: rgba(255,255,255,0.55);
+        color: rgba(255, 255, 255, 0.55);
         white-space: nowrap;
     }
 
@@ -360,7 +383,9 @@
     .cap-card::after {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 2px;
         background: var(--cap-accent);
         opacity: 0;
@@ -369,11 +394,13 @@
 
     .cap-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
         border-color: #d0d4e8;
     }
 
-    .cap-card:hover::after { opacity: 1; }
+    .cap-card:hover::after {
+        opacity: 1;
+    }
 
     .cap-icon {
         width: 44px;
@@ -478,7 +505,7 @@
     .cap-card-code {
         grid-column: 1 / -1;
         background: #0b0b14;
-        border: 1px solid rgba(255,255,255,0.06);
+        border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 3px;
         overflow: hidden;
         display: grid;
@@ -488,7 +515,7 @@
     .cap-code-info {
         padding: 34px 30px;
         color: #fff;
-        border-right: 1px solid rgba(255,255,255,0.05);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
         position: relative;
         overflow: hidden;
     }
@@ -496,17 +523,21 @@
     .cap-code-info::before {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 1px;
-        background: linear-gradient(90deg, rgba(239,68,68,0.55), transparent 60%);
+        background: linear-gradient(90deg, rgba(239, 68, 68, 0.55), transparent 60%);
     }
 
     .cap-code-info::after {
         content: '';
         position: absolute;
-        bottom: -30%; right: -10%;
-        width: 180px; height: 180px;
-        background: radial-gradient(ellipse, rgba(239,68,68,0.06) 0%, transparent 70%);
+        bottom: -30%;
+        right: -10%;
+        width: 180px;
+        height: 180px;
+        background: radial-gradient(ellipse, rgba(239, 68, 68, 0.06) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -514,8 +545,8 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(239,68,68,0.14);
-        border: 1px solid rgba(239,68,68,0.22);
+        background: rgba(239, 68, 68, 0.14);
+        border: 1px solid rgba(239, 68, 68, 0.22);
         border-radius: 4px;
         padding: 3px 10px;
         font-size: 0.64em;
@@ -543,7 +574,7 @@
 
     .cap-tools-desc {
         font-size: 0.82em;
-        color: rgba(255,255,255,0.42);
+        color: rgba(255, 255, 255, 0.42);
         line-height: 1.65;
         margin: 0;
     }
@@ -560,7 +591,7 @@
         gap: 6px;
         padding: 10px 16px;
         background: #161622;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         flex-shrink: 0;
     }
 
@@ -573,12 +604,12 @@
     .cap-code-tab {
         margin-left: 10px;
         font-size: 0.7rem;
-        color: rgba(255,255,255,0.3);
+        color: rgba(255, 255, 255, 0.3);
         font-family: 'JetBrains Mono', 'Fira Code', monospace;
-        background: rgba(255,255,255,0.05);
+        background: rgba(255, 255, 255, 0.05);
         padding: 3px 12px;
         border-radius: 3px 3px 0 0;
-        border: 1px solid rgba(255,255,255,0.07);
+        border: 1px solid rgba(255, 255, 255, 0.07);
         border-bottom: none;
     }
 
@@ -596,21 +627,26 @@
         .ai-caps-grid {
             grid-template-columns: repeat(2, 1fr);
         }
+
         .cap-card-featured {
             grid-column: span 2;
         }
+
         .cap-card-code {
             grid-template-columns: 1fr;
         }
+
         .cap-code-info {
             border-right: none;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding: 26px 22px;
         }
+
         .ai-caps-header {
             flex-direction: column;
             align-items: flex-start;
         }
+
         .ai-caps-stats {
             align-self: stretch;
         }
@@ -620,12 +656,15 @@
         .ai-caps-grid {
             grid-template-columns: 1fr;
         }
+
         .cap-card-featured, .cap-card-code {
             grid-column: span 1;
         }
+
         .ai-caps-stats {
             flex-wrap: wrap;
         }
+
         .ai-caps-stat {
             flex: 1 1 40%;
         }
@@ -649,7 +688,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 60%);
+        background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
         pointer-events: none;
     }
 
@@ -938,7 +977,7 @@
         margin-bottom: 28px;
         padding: 20px 24px;
         background: #fff;
-        border-radius: 4px;
+        border-radius: 0;
         border: 1px solid rgba(0, 0, 0, 0.06);
         border-left: 3px solid #6366f1;
         transition: all 300ms;
@@ -956,7 +995,7 @@
         top: 24px;
         width: 12px;
         height: 12px;
-        border-radius: 4px;
+        border-radius: 12px;
         background: #6366f1;
         border: 3px solid #e0e7ff;
     }
@@ -1020,11 +1059,30 @@
         text-align: center;
     }
 
-    .react-msg-tag-user { background: #3b82f6; color: #fff; }
-    .react-msg-tag-think { background: #a78bfa; color: #fff; }
-    .react-msg-tag-action { background: #f59e0b; color: #fff; }
-    .react-msg-tag-observe { background: #10b981; color: #fff; }
-    .react-msg-tag-result { background: #ef4444; color: #fff; }
+    .react-msg-tag-user {
+        background: #3b82f6;
+        color: #fff;
+    }
+
+    .react-msg-tag-think {
+        background: #a78bfa;
+        color: #fff;
+    }
+
+    .react-msg-tag-action {
+        background: #f59e0b;
+        color: #fff;
+    }
+
+    .react-msg-tag-observe {
+        background: #10b981;
+        color: #fff;
+    }
+
+    .react-msg-tag-result {
+        background: #ef4444;
+        color: #fff;
+    }
 
     .react-msg-text {
         color: rgba(255, 255, 255, 0.8);
@@ -1051,11 +1109,25 @@
         white-space: pre;
     }
 
-    .ai-code-block .code-comment { color: #6c7086; }
-    .ai-code-block .code-keyword { color: #cba6f7; }
-    .ai-code-block .code-string { color: #a6e3a1; }
-    .ai-code-block .code-annotation { color: #f9e2af; }
-    .ai-code-block .code-tag { color: #89b4fa; }
+    .ai-code-block .code-comment {
+        color: #6c7086;
+    }
+
+    .ai-code-block .code-keyword {
+        color: #cba6f7;
+    }
+
+    .ai-code-block .code-string {
+        color: #a6e3a1;
+    }
+
+    .ai-code-block .code-annotation {
+        color: #f9e2af;
+    }
+
+    .ai-code-block .code-tag {
+        color: #89b4fa;
+    }
 
     .ai-step-label {
         display: inline-block;
@@ -1087,41 +1159,84 @@
     }
 
     @media (max-width: 768px) {
-        .ai-hero h1 { font-size: 1.6em; }
-        .ai-hero p { font-size: 0.9em; }
-        .ai-hero { padding: 50px 0 40px; }
-        .ai-arch-wrapper { padding: 24px 16px; }
-        .arch-row { flex-direction: column; gap: 8px; }
-        .arch-col-left { flex: none; }
-        .arch-row-connector { flex-direction: column; }
-        .arch-connector { flex: none; }
-        .arch-connector-line { height: auto; width: auto; }
-        .mcp-flow { flex-direction: column; }
-        .mcp-flow-arrow { transform: rotate(90deg); }
-        .react-timeline { padding-left: 30px; }
-        .model-item { padding: 10px 14px; }
+        .ai-hero h1 {
+            font-size: 1.6em;
+        }
+
+        .ai-hero p {
+            font-size: 0.9em;
+        }
+
+        .ai-hero {
+            padding: 50px 0 40px;
+        }
+
+        .ai-arch-wrapper {
+            padding: 24px 16px;
+        }
+
+        .arch-row {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .arch-col-left {
+            flex: none;
+        }
+
+        .arch-row-connector {
+            flex-direction: column;
+        }
+
+        .arch-connector {
+            flex: none;
+        }
+
+        .arch-connector-line {
+            height: auto;
+            width: auto;
+        }
+
+        .mcp-flow {
+            flex-direction: column;
+        }
+
+        .mcp-flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        .react-timeline {
+            padding-left: 30px;
+        }
+
+        .model-item {
+            padding: 10px 14px;
+        }
+
+        .ai-hero-border {
+            margin: 20px 15px;
+            border-radius: 15px;
+        }
     }
 </style>
 
 <div ng-controller="ai">
     <!-- Hero -->
-    <div class="ai-hero-outer">
-        <div class="ai-hero-border">
-            <div class="ai-hero">
-                <div class="ai-hero-strip"></div>
-                <div class="container">
-                    <h1 class="animated fadeInDown">
-                        <span>{{'ai.hero.title' | i18n}}</span>
-                    </h1>
-                    <p class="animated fadeIn delay-1">{{'ai.hero.subtitle' | i18n}}</p>
-                    <div class="animated fadeInUp delay-2">
-                        <a class="btn btn-ai-primary" href="https://www.yuque.com/erupts/erupt/qsk71q5zyy3segr6" target="_blank">
-                            {{'ai.hero.btn.doc' | i18n}}
-                        </a>
-                        <a class="btn btn-ai-outline" href="https://www.erupt.xyz/demo/#/ai/chat" target="_blank">
-                            {{'ai.hero.btn.demo' | i18n}}
-                        </a>
-                    </div>
+    <div class="ai-hero-outer-border">
+        <div class="ai-hero">
+            <div class="container">
+                <h1 class="animated fadeInDown">
+                    <span>{{'ai.hero.title' | i18n}}</span>
+                </h1>
+                <p class="animated fadeIn delay-1">{{'ai.hero.subtitle' | i18n}}</p>
+                <div class="animated fadeInUp delay-2">
+                    <a class="btn btn-ai-primary" href="https://www.yuque.com/erupts/erupt/qsk71q5zyy3segr6"
+                       target="_blank">
+                        {{'ai.hero.btn.doc' | i18n}}
+                    </a>
+                    <a class="btn btn-ai-outline" href="https://www.erupt.xyz/demo/#/ai/chat" target="_blank">
+                        {{'ai.hero.btn.demo' | i18n}}
+                    </a>
                 </div>
             </div>
         </div>
@@ -1182,7 +1297,8 @@
                 </div>
 
                 <!-- Agent -->
-                <div class="cap-card" style="--cap-accent: linear-gradient(90deg,#10b981,#34d399); --cap-bg: #d1fae5; --cap-fg: #047857">
+                <div class="cap-card"
+                     style="--cap-accent: linear-gradient(90deg,#10b981,#34d399); --cap-bg: #d1fae5; --cap-fg: #047857">
                     <div class="cap-icon">🤖</div>
                     <span class="cap-tag">AGENT</span>
                     <div class="cap-title">{{'ai.core.agent.title' | i18n}}</div>
@@ -1190,7 +1306,8 @@
                 </div>
 
                 <!-- Context -->
-                <div class="cap-card" style="--cap-accent: linear-gradient(90deg,#3b82f6,#60a5fa); --cap-bg: #dbeafe; --cap-fg: #1d4ed8">
+                <div class="cap-card"
+                     style="--cap-accent: linear-gradient(90deg,#3b82f6,#60a5fa); --cap-bg: #dbeafe; --cap-fg: #1d4ed8">
                     <div class="cap-icon">💬</div>
                     <span class="cap-tag">CONTEXT</span>
                     <div class="cap-title">{{'ai.core.context.title' | i18n}}</div>
@@ -1289,8 +1406,12 @@
 
                 <!-- 连接线 -->
                 <div class="arch-row-connector">
-                    <div class="arch-connector"><div class="arch-connector-line">&#8597;</div></div>
-                    <div class="arch-connector-body"><div class="arch-connector-line">&#8595;</div></div>
+                    <div class="arch-connector">
+                        <div class="arch-connector-line">&#8597;</div>
+                    </div>
+                    <div class="arch-connector-body">
+                        <div class="arch-connector-line">&#8595;</div>
+                    </div>
                 </div>
 
                 <!-- 引擎层 -->
@@ -1316,8 +1437,12 @@
 
                 <!-- 连接线 -->
                 <div class="arch-row-connector">
-                    <div class="arch-connector"><div class="arch-connector-line">&#8597;</div></div>
-                    <div class="arch-connector-body"><div class="arch-connector-line">&#8595;</div></div>
+                    <div class="arch-connector">
+                        <div class="arch-connector-line">&#8597;</div>
+                    </div>
+                    <div class="arch-connector-body">
+                        <div class="arch-connector-line">&#8595;</div>
+                    </div>
                 </div>
 
                 <!-- 模型适配层 -->
@@ -1375,7 +1500,8 @@
                     <p>ChatGPT / Cursor / Custom</p>
                 </div>
                 <span class="mcp-flow-arrow">&#8596;</span>
-                <div class="mcp-flow-item" style="border-color: rgba(99,102,241,0.5); background: rgba(99,102,241,0.15)">
+                <div class="mcp-flow-item"
+                     style="border-color: rgba(99,102,241,0.5); background: rgba(99,102,241,0.15)">
                     <h5 style="color: #818cf8">MCP Protocol</h5>
                     <p>JSON-RPC / SSE</p>
                 </div>
