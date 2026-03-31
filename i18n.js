@@ -281,6 +281,90 @@ var i18n = {
         'db.mongodb': ['MongoDB', 'MongoDB'],
         'db.custom': ['自定义数据源', 'Custom Data Source'],
 
+        // AI 页面 - 导航
+        'nav.ai': ['AI 能力', 'AI'],
+
+        // AI 页面 - Hero 区域
+        'ai.hero.title': ['Erupt AI 大模型深度集成', 'Erupt AI Deep LLM Integration'],
+        'ai.hero.subtitle': ['将大模型能力无缝融入低代码开发，让 AI 赋能每一个业务场景', 'Seamlessly integrate LLM capabilities into low-code development, empowering every business scenario with AI'],
+        'ai.hero.btn.doc': ['查看文档', 'Documentation'],
+        'ai.hero.btn.demo': ['在线体验', 'Live Demo'],
+
+        // AI 页面 - 核心能力
+        'ai.core.title': ['核心 AI 能力', 'Core AI Capabilities'],
+        'ai.core.multillm.title': ['多 LLM 支持', 'Multi-LLM Support'],
+        'ai.core.multillm.desc': ['兼容所有主流大模型，OpenAI / Claude / Gemini / DeepSeek / 通义千问等，统一接口一键切换', 'Compatible with all mainstream LLMs — OpenAI / Claude / Gemini / DeepSeek / Qwen — unified API, one-click switching'],
+        'ai.core.context.title': ['多轮对话上下文', 'Multi-turn Context'],
+        'ai.core.context.desc': ['完整的多轮对话上下文管理，AI 始终理解对话历史，渐进式构建复杂业务逻辑', 'Complete multi-turn dialogue context management, AI always understands conversation history for progressive complex logic building'],
+        'ai.core.agent.title': ['Agent 智能体', 'AI Agent'],
+        'ai.core.agent.desc': ['基于 ReAct 模式的自主推理 Agent，可拆解复杂任务、制定计划、调用工具并迭代优化直至完成', 'Autonomous reasoning Agent based on ReAct pattern, decomposes complex tasks, plans, invokes tools and iterates until completion'],
+        'ai.core.mcp.title': ['MCP 协议', 'MCP Protocol'],
+        'ai.core.mcp.desc': ['同时支持 MCP Server 与 Client，标准化工具注册与发现，安全连接外部 AI 生态', 'Supports both MCP Server and Client, standardized tool registration and discovery, securely connects to external AI ecosystems'],
+        'ai.core.interactive.title': ['交互式对话', 'Interactive Chat'],
+        'ai.core.interactive.desc': ['内置流式响应的对话界面，支持 Markdown 渲染、代码高亮，打造沉浸式 AI 交互体验', 'Built-in streaming chat interface with Markdown rendering and code highlighting for immersive AI interaction experience'],
+        'ai.core.systemprompt.title': ['System Prompt', 'System Prompt'],
+        'ai.core.systemprompt.desc': ['灵活配置系统提示词，定义 AI 角色、行为边界与输出格式，精准控制每一次对话', 'Flexibly configure system prompts to define AI roles, behavior boundaries, and output formats for precise control of every conversation'],
+        'ai.core.opensource.title': ['完全开源', 'Open Source'],
+        'ai.core.opensource.desc': ['基于 Apache 2.0 协议完全开源，社区驱动持续迭代，源码透明无商业限制', 'Fully open source under Apache 2.0 license, community-driven continuous iteration, transparent source code with no commercial restrictions'],
+        'ai.core.tools.title': ['自定义 Tools', 'Custom Tools'],
+        'ai.core.tools.desc': ['通过注解声明即可将 Java 方法注册为 AI 工具，支持运行时动态注册，按需扩展 AI 能力', 'Register Java methods as AI tools via annotation declarations, support runtime dynamic registration, extend AI capabilities on demand'],
+
+        // AI 页面 - 架构
+        'ai.arch.title': ['技术架构', 'Technical Architecture'],
+        'ai.arch.desc': ['Erupt AI 采用分层架构设计，将大模型能力与低代码框架深度融合', 'Erupt AI uses layered architecture design, deeply integrating LLM capabilities with the low-code framework'],
+
+        // AI 页面 - 模型支持
+        'ai.models.title': ['全面兼容主流大模型', 'Compatible with All Mainstream LLMs'],
+        'ai.models.subtitle': ['无缝对接国内外所有主流大模型，统一 API 接口，一键切换，无需修改业务代码', 'Seamlessly connect with all mainstream LLMs worldwide, unified API, one-click switching, no business code changes needed'],
+        'ai.models.international': ['国际模型', 'International Models'],
+        'ai.models.china': ['国产模型', 'Chinese Models'],
+        'ai.models.opensource': ['开源 & 私有化部署', 'Open Source & Self-hosted'],
+        'ai.models.standard': ['协议兼容', 'Protocol Compatible'],
+
+        // AI 页面 - MCP
+        'ai.mcp.title': ['MCP 协议支持', 'MCP Protocol Support'],
+        'ai.mcp.subtitle': ['Model Context Protocol — 让 AI 拥有标准化的外部工具调用能力', 'Model Context Protocol — Giving AI standardized external tool invocation capabilities'],
+        'ai.mcp.what.title': ['什么是 MCP？', 'What is MCP?'],
+        'ai.mcp.what.desc': ['MCP（Model Context Protocol）是一种标准化协议，允许大模型通过统一接口调用外部工具与服务。Erupt 深度集成 MCP 协议，让 AI 能安全、高效地访问数据库、API、文件系统等各类资源', 'MCP (Model Context Protocol) is a standardized protocol that allows LLMs to invoke external tools and services through a unified interface. Erupt deeply integrates MCP protocol, enabling AI to securely and efficiently access databases, APIs, file systems and other resources'],
+        'ai.mcp.server.title': ['MCP Server', 'MCP Server'],
+        'ai.mcp.server.desc': ['Erupt 作为 MCP Server 对外暴露数据管理能力，任何兼容 MCP 协议的 AI 客户端均可接入', 'Erupt acts as an MCP Server exposing data management capabilities. Any MCP-compatible AI client can connect'],
+        'ai.mcp.client.title': ['MCP Client', 'MCP Client'],
+        'ai.mcp.client.desc': ['Erupt 同时作为 MCP Client，可调用外部 MCP 服务扩展 AI 能力边界，如搜索引擎、知识库、第三方 API 等', 'Erupt also acts as an MCP Client, invoking external MCP services to extend AI capability boundaries such as search engines, knowledge bases, and third-party APIs'],
+        'ai.mcp.feature1.title': ['标准化工具注册', 'Standardized Tool Registration'],
+        'ai.mcp.feature1.desc': ['通过注解声明即可将 Java 方法注册为 MCP 工具，AI 可自动发现并调用', 'Register Java methods as MCP tools through annotation declarations. AI can auto-discover and invoke them'],
+        'ai.mcp.feature2.title': ['安全沙箱执行', 'Secure Sandbox Execution'],
+        'ai.mcp.feature2.desc': ['所有工具调用均在安全沙箱中执行，支持权限控制与调用审计', 'All tool invocations execute in a secure sandbox with permission control and audit logging'],
+        'ai.mcp.feature3.title': ['动态工具编排', 'Dynamic Tool Orchestration'],
+        'ai.mcp.feature3.desc': ['支持运行时动态注册与注销工具，根据业务场景灵活调整 AI 可用能力', 'Support runtime dynamic registration and deregistration of tools, flexibly adjusting AI capabilities based on business scenarios'],
+
+        // AI 页面 - ReAct
+        'ai.react.title': ['ReAct 动态工具调用', 'ReAct Dynamic Tool Invocation'],
+        'ai.react.subtitle': ['Reasoning + Acting — AI 自主推理、规划与执行', 'Reasoning + Acting — AI autonomous reasoning, planning and execution'],
+        'ai.react.desc': ['Erupt AI 采用 ReAct（Reasoning and Acting）模式，让大模型不仅能思考，还能自主调用工具执行操作。AI 会分析用户意图，制定执行计划，逐步调用工具完成复杂任务', 'Erupt AI adopts the ReAct (Reasoning and Acting) pattern, enabling LLMs to not only think but also autonomously invoke tools. AI analyzes user intent, formulates execution plans, and progressively calls tools to complete complex tasks'],
+        'ai.react.step1.title': ['推理 Reasoning', 'Reasoning'],
+        'ai.react.step1.desc': ['AI 分析用户输入，理解意图，拆解任务目标', 'AI analyzes user input, understands intent, and decomposes task goals'],
+        'ai.react.step2.title': ['规划 Planning', 'Planning'],
+        'ai.react.step2.desc': ['选择合适的工具与执行顺序，制定执行计划', 'Selects appropriate tools and execution order, formulates execution plan'],
+        'ai.react.step3.title': ['执行 Acting', 'Acting'],
+        'ai.react.step3.desc': ['调用工具获取结果，观察反馈', 'Invokes tools to get results, observes feedback'],
+        'ai.react.step4.title': ['迭代 Iterating', 'Iterating'],
+        'ai.react.step4.desc': ['根据结果继续推理，循环直至任务完成', 'Continues reasoning based on results, loops until task completion'],
+        'ai.react.example.title': ['实际场景示例', 'Real-world Example'],
+        'ai.react.example.user': ['用户：帮我查看上个月销售额超过10万的客户，并生成一份分析报告', 'User: Show me customers with sales over 100k last month and generate an analysis report'],
+        'ai.react.example.thought1': ['思考：需要先查询数据库获取上月销售数据，筛选出超过10万的记录', 'Thought: Need to query the database for last month\'s sales data, filter records over 100k'],
+        'ai.react.example.action1': ['执行：调用数据查询工具 → SQL: SELECT * FROM sales WHERE amount > 100000 AND month = last_month', 'Action: Call data query tool → SQL: SELECT * FROM sales WHERE amount > 100000 AND month = last_month'],
+        'ai.react.example.observe1': ['观察：获得 23 条符合条件的客户记录', 'Observation: Got 23 matching customer records'],
+        'ai.react.example.thought2': ['思考：需要对数据进行统计分析，生成报告', 'Thought: Need to perform statistical analysis on data and generate report'],
+        'ai.react.example.action2': ['执行：调用数据分析工具 → 生成销售趋势、客户分布等图表', 'Action: Call data analysis tool → Generate sales trends, customer distribution charts'],
+        'ai.react.example.result': ['结果：生成完整的分析报告，包含数据汇总、趋势图表和建议', 'Result: Generated complete analysis report with data summary, trend charts and recommendations'],
+
+        // AI 页面 - 快速接入
+        'ai.start.title': ['快速接入', 'Quick Start'],
+        'ai.start.step1.title': ['添加依赖', 'Add Dependency'],
+        'ai.start.step2.title': ['配置大模型', 'Configure LLM'],
+        'ai.start.step3.title': ['使用 AI 能力', 'Use AI Capabilities'],
+        'ai.start.doc.link': ['查看完整文档 →', 'View Full Documentation →'],
+
         // 语言切换
         'lang.zh': ['中文', '中文'],
         'lang.en': ['English', 'English'],

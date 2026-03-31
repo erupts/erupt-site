@@ -56,6 +56,11 @@ var app = angular.module('app', [
             toTemplate();
             return "page/component/component.html";
         }
+    }).when('/ai', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/ai/ai.html";
+        }
     }).otherwise({
         redirectTo: '/'
     });
@@ -67,7 +72,6 @@ app.filter('trustAsResourceUrl', ['$sce', function ($sce) {
     };
 }])
 
-// 国际化过滤器
 app.filter('i18n', function() {
     return function(key, params) {
         if (!key) return '';
@@ -75,7 +79,6 @@ app.filter('i18n', function() {
     };
 })
 
-// 国际化过滤器（HTML版本）
 app.filter('i18nHtml', ['$sce', function($sce) {
     return function(key, params) {
         if (!key) return '';
@@ -84,7 +87,6 @@ app.filter('i18nHtml', ['$sce', function($sce) {
     };
 }])
 
-// 国际化服务
 app.service('i18nService', function() {
     return {
         t: function(key, params) {
@@ -112,6 +114,4 @@ app.service('dataService', function ($http) {
             })
         }
     }
-
-
 })

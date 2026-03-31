@@ -28,6 +28,10 @@
                 <a class="btn btn-sm align-self-center btn-link" href="#!/" ng-class="currRouter=='/'?'active-link':''">
                     {{'nav.home' | i18n}}
                 </a>
+                <a class="btn btn-sm align-self-center btn-link" href="#!/ai"
+                   ng-class="currRouter=='/ai'?'active-link':''">
+                    {{'nav.ai' | i18n}}
+                </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/component"
                    ng-class="currRouter=='/component'?'active-link':''">
                     {{'nav.component' | i18n}}
@@ -179,6 +183,7 @@
 <script src="page/contrast/contrast.js"></script>
 <script src="page/extra/extra.js"></script>
 <script src="page/component/component.js"></script>
+<script src="page/ai/ai.js"></script>
 
 <script src="assets/prism/prism.min.js"></script>
 <script src="assets/prism/prism-java.min.js"></script>
