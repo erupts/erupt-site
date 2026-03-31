@@ -195,7 +195,8 @@ var i18n = {
         'home.btn.component': ['组件支持', 'Components'],
         'home.btn.module': ['扩展模块', 'Extensions'],
         'home.btn.cloud': ['<span style="color: #ffc107">☁️ Erupt Cloud</span> 多维表云配置中心', '<span style="color: #ffc107">☁️ Erupt Cloud</span> Cloud Table Config Center'],
-        'home.btn.linq': ['<span style="color: #ffc107">⚡ Linq.J</span> 用 SQL 语句操作 Java 对象', '<span style="color: #ffc107">⚡ Linq.J</span> Operate Java Objects with SQL'],
+        'home.btn.linq': ['<span style="color: #ffc107">⚡ Linq.J</span> SQL To Java', '<span style="color: #ffc107">⚡ Linq.J</span> Operate Java Objects with SQL'],
+        'home.btn.flow': ['<span style="color: #dc3545">🌊 Erupt Flow</span> 通用流程引擎', '<span style="color: #dc3545">🌊 Erupt Flow</span> Universal Workflow Engine'],
         'ideamake': ['思为科技', 'Ideamake'],
         // Footer
         'footer.qq': ['QQ 交流群', 'QQ Group'],
@@ -271,7 +272,7 @@ var i18n = {
         'db.custom': ['自定义数据源', 'Custom Data Source'],
 
         // AI 页面 - 导航
-        'nav.ai': ['AI 能力', 'AI'],
+        'nav.ai': ['AI 大模型', 'AI'],
 
         // AI 页面 - Hero 区域
         'ai.hero.title': ['Erupt AI 大模型深度集成', 'Erupt AI Deep LLM Integration'],
