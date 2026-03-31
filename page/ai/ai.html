@@ -8,30 +8,45 @@
     .ai-hero-border {
         position: relative;
         margin: 0 auto;
-        padding: 3px;
-        overflow: hidden;
     }
 
     .ai-hero-border::before {
         content: '';
         position: absolute;
-        top: -150%;
-        left: -150%;
-        width: 400%;
-        height: 400%;
-        background: conic-gradient(
-            from 0deg,
-            #f06,  #f90,  #ff0,
-            #0c0,  #0cf,  #60f,
-            #f06,  #f90,  #ff0,
-            #0c0,  #0cf,  #60f,
-            #f06
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            #4f46e5 20%,
+            #818cf8 40%,
+            #22d3ee 60%,
+            #4f46e5 80%,
+            transparent 100%
         );
-        animation: ai-border-spin 4s linear infinite;
+        background-size: 200% 100%;
+        animation: ai-strip-drift 6s ease-in-out infinite;
+        z-index: 2;
     }
 
-    @keyframes ai-border-spin {
-        to { transform: rotate(360deg); }
+    .ai-hero-border::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 15%;
+        right: 15%;
+        height: 80px;
+        background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.22) 0%, rgba(34, 211, 238, 0.08) 50%, transparent 80%);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    @keyframes ai-strip-drift {
+        0%   { background-position: 0% 0%; opacity: 0.8; }
+        50%  { background-position: 100% 0%; opacity: 1; }
+        100% { background-position: 0% 0%; opacity: 0.8; }
     }
 
     .ai-hero {
@@ -67,20 +82,7 @@
     }
 
     .ai-hero h1 span {
-        background: linear-gradient(
-            90deg,
-            #f06 0%, #f90 15%, #ff0 30%,
-            #0c0 45%, #0cf 60%, #60f 75%,
-            #f06 100%
-        );
-        background-size: 200% 100%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: ai-title-shimmer 6s linear infinite;
-    }
-
-    @keyframes ai-title-shimmer {
-        to { background-position: -200% 0; }
+        color: #fff;
     }
 
     .ai-hero p {
@@ -927,19 +929,6 @@
                 </div>
             </div>
 
-            <!-- 协议兼容 -->
-            <div class="model-group" style="margin-bottom: 0">
-                <div class="model-group-label">{{'ai.models.standard' | i18n}}</div>
-                <div class="model-grid">
-                    <div class="model-item" ng-repeat="m in standardModels">
-                        <div class="model-icon" ng-style="{'background': m.bg, 'color': m.fg}">{{m.abbr}}</div>
-                        <div class="model-info">
-                            <span class="model-name">{{m.name}}</span>
-                            <span class="model-company">{{m.company}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

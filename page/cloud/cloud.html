@@ -149,35 +149,6 @@
         filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.35));
     }
 
-    @keyframes cloudPulse {
-        0%, 100% {
-            opacity: 1;
-            transform: scale(1);
-        }
-        50% {
-            opacity: 0.85;
-            transform: scale(1.02);
-        }
-    }
-
-    @keyframes cloudBeam {
-        to {
-            stroke-dashoffset: -20;
-        }
-    }
-
-    .cloud-node-hub {
-        animation: cloudPulse 3s ease-in-out infinite;
-    }
-
-    .cloud-link-line {
-        stroke: rgba(125, 211, 252, 0.55);
-        stroke-width: 1.8;
-        fill: none;
-        stroke-dasharray: 5 5;
-        animation: cloudBeam 1.8s linear infinite;
-    }
-
     /* body */
     .cloud-body {
         background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 35%, #f8fafc 100%);
@@ -578,69 +549,8 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="cloud-topo-wrap">
-                        <svg aria-hidden="true" class="cloud-topo" viewBox="0 0 400 320"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="cloudHubGrad" x1="0%" x2="100%" y1="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#38bdf8"/>
-                                    <stop offset="100%" style="stop-color:#6366f1"/>
-                                </linearGradient>
-                                <filter height="200%" id="cloudGlow" width="200%" x="-50%" y="-50%">
-                                    <feGaussianBlur result="b" stdDeviation="4"/>
-                                    <feMerge>
-                                        <feMergeNode in="b"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                            </defs>
-                            <ellipse cx="200" cy="268" fill="rgba(125,211,252,0.08)" rx="160" ry="28"/>
-                            <line class="cloud-link-line" x1="200" x2="90" y1="150" y2="88"/>
-                            <line class="cloud-link-line" x1="200" x2="310" y1="150" y2="88"/>
-                            <line class="cloud-link-line" x1="200" x2="60" y1="150" y2="200"/>
-                            <line class="cloud-link-line" x1="200" x2="340" y1="150" y2="200"/>
-                            <line class="cloud-link-line" x1="200" x2="200" y1="150" y2="248"/>
-                            <g filter="url(#cloudGlow)">
-                                <rect fill="rgba(15,23,42,0.5)" height="44" rx="10" stroke="rgba(125,211,252,0.5)" stroke-width="1.2" width="70"
-                                      x="55" y="58"/>
-                                <text fill="#bae6fd" font-family="inherit" font-size="11" text-anchor="middle" x="90"
-                                      y="85">Node
-                                </text>
-                                <rect fill="rgba(15,23,42,0.5)" height="44" rx="10" stroke="rgba(125,211,252,0.5)" stroke-width="1.2" width="70"
-                                      x="275" y="58"/>
-                                <text fill="#bae6fd" font-family="inherit" font-size="11" text-anchor="middle" x="310"
-                                      y="85">Node
-                                </text>
-                                <rect fill="rgba(15,23,42,0.45)" height="44" rx="10" stroke="rgba(125,211,252,0.45)" stroke-width="1.2" width="70"
-                                      x="25" y="178"/>
-                                <text fill="#bae6fd" font-family="inherit" font-size="11" text-anchor="middle" x="60"
-                                      y="205">SVC
-                                </text>
-                                <rect fill="rgba(15,23,42,0.45)" height="44" rx="10" stroke="rgba(125,211,252,0.45)" stroke-width="1.2" width="70"
-                                      x="305" y="178"/>
-                                <text fill="#bae6fd" font-family="inherit" font-size="11" text-anchor="middle" x="340"
-                                      y="205">SVC
-                                </text>
-                            </g>
-                            <g class="cloud-node-hub">
-                                <circle cx="200" cy="150" fill="url(#cloudHubGrad)" opacity="0.95" r="52"/>
-                                <circle cx="200" cy="150" fill="none" r="62" stroke="rgba(255,255,255,0.25)"
-                                        stroke-width="2"/>
-                                <text fill="#fff" font-family="inherit" font-size="13" font-weight="700" text-anchor="middle" x="200"
-                                      y="148">Erupt
-                                </text>
-                                <text fill="rgba(255,255,255,0.85)" font-family="inherit" font-size="10" text-anchor="middle" x="200"
-                                      y="164">Cloud
-                                </text>
-                            </g>
-                            <g>
-                                <rect fill="rgba(15,23,42,0.55)" height="40" rx="10" stroke="rgba(34,211,238,0.4)" stroke-width="1.2" width="104"
-                                      x="148" y="228"/>
-                                <text fill="#a5f3fc" font-family="inherit" font-size="11" text-anchor="middle" x="200"
-                                      y="252">
-                                    <tspan ng-bind="'cloud.diagram.console' | i18n"></tspan>
-                                </text>
-                            </g>
-                        </svg>
+                        <canvas id="cloudTopoCanvas" aria-hidden="true" class="cloud-topo"
+                                style="display:block;margin:0 auto"></canvas>
                     </div>
                 </div>
             </div>
@@ -847,73 +757,6 @@ public class CloudDemo extends BaseModel {
                         <p>{{'cloud.docs.d4.desc' | i18n}}</p>
                         <a href="https://www.yuque.com/erupts/erupt/tkmt4rkmuh7o5y9b" rel="noopener" target="_blank">{{'cloud.docs.read'
                             | i18n}} →</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-4">
-                <div class="col-lg-10 mx-auto cloud-code-wrap">
-                    <h5>{{'cloud.maven.title' | i18n}}</h5>
-                    <p class="text-secondary small mb-2">{{'cloud.maven.hint' | i18n}}</p>
-                    <p class="text-secondary small mb-2">{{'cloud.maven.serverHint' | i18n}}</p>
-                    <pre class="language-markup mb-0"><code class="language-markup">&lt;dependency&gt;
-    &lt;groupId&gt;xyz.erupt&lt;/groupId&gt;
-    &lt;artifactId&gt;erupt-cloud&lt;/artifactId&gt;
-    &lt;version&gt;${erupt.version}&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
-                </div>
-            </div>
-
-            <h2 class="cloud-section-title mt-5">{{'cloud.faq.title' | i18n}}</h2>
-            <p class="cloud-section-desc">{{'cloud.faq.desc' | i18n}}</p>
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="cloud-faq-card">
-                        <div class="faq-header" id="cloudFaqH1">
-                            <button aria-controls="cloudFaq1" aria-expanded="true" class="btn btn-link" data-target="#cloudFaq1"
-                                    data-toggle="collapse" type="button">
-                                {{'cloud.faq.q1' | i18n}}
-                            </button>
-                        </div>
-                        <div aria-labelledby="cloudFaqH1" class="collapse show" id="cloudFaq1">
-                            <div class="faq-body">{{'cloud.faq.a1' | i18n}}</div>
-                        </div>
-                    </div>
-                    <div class="cloud-faq-card">
-                        <div class="faq-header" id="cloudFaqH2">
-                            <button aria-controls="cloudFaq2" aria-expanded="false" class="btn btn-link collapsed"
-                                    data-target="#cloudFaq2"
-                                    data-toggle="collapse" type="button">
-                                {{'cloud.faq.q2' | i18n}}
-                            </button>
-                        </div>
-                        <div aria-labelledby="cloudFaqH2" class="collapse" id="cloudFaq2">
-                            <div class="faq-body">{{'cloud.faq.a2' | i18n}}</div>
-                        </div>
-                    </div>
-                    <div class="cloud-faq-card">
-                        <div class="faq-header" id="cloudFaqH3">
-                            <button aria-controls="cloudFaq3" aria-expanded="false" class="btn btn-link collapsed"
-                                    data-target="#cloudFaq3"
-                                    data-toggle="collapse" type="button">
-                                {{'cloud.faq.q3' | i18n}}
-                            </button>
-                        </div>
-                        <div aria-labelledby="cloudFaqH3" class="collapse" id="cloudFaq3">
-                            <div class="faq-body">{{'cloud.faq.a3' | i18n}}</div>
-                        </div>
-                    </div>
-                    <div class="cloud-faq-card">
-                        <div class="faq-header" id="cloudFaqH4">
-                            <button aria-controls="cloudFaq4" aria-expanded="false" class="btn btn-link collapsed"
-                                    data-target="#cloudFaq4"
-                                    data-toggle="collapse" type="button">
-                                {{'cloud.faq.q4' | i18n}}
-                            </button>
-                        </div>
-                        <div aria-labelledby="cloudFaqH4" class="collapse" id="cloudFaq4">
-                            <div class="faq-body">{{'cloud.faq.a4' | i18n}}</div>
-                        </div>
                     </div>
                 </div>
             </div>

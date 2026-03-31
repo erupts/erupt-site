@@ -72,7 +72,6 @@ app.controller("ai", function ($scope, $sce, i18nService) {
         { name: 'Mistral / Mixtral', company: 'Mistral AI', abbr: 'M', bg: '#f24822', fg: '#fff' },
         { name: 'Command R+', company: 'Cohere', abbr: 'Co', bg: '#39594d', fg: '#fff' },
         { name: 'Grok', company: 'xAI', abbr: 'X', bg: '#1d1d1f', fg: '#fff' },
-        { name: 'Phi-4', company: 'Microsoft', abbr: 'P', bg: '#00a4ef', fg: '#fff' }
     ];
 
     // 国产模型
@@ -84,11 +83,7 @@ app.controller("ai", function ($scope, $sce, i18nService) {
         { name: '豆包 Doubao', company: '字节跳动', abbr: 'D', bg: '#325aff', fg: '#fff' },
         { name: 'Kimi / Moonshot', company: '月之暗面', abbr: 'K', bg: '#1a1a2e', fg: '#fff' },
         { name: '讯飞星火 Spark', company: '科大讯飞', abbr: 'S', bg: '#e4393c', fg: '#fff' },
-        { name: '百川 Baichuan', company: '百川智能', abbr: 'B', bg: '#ff6a00', fg: '#fff' },
-        { name: 'Yi 万物', company: '零一万物', abbr: 'Yi', bg: '#0a0a0a', fg: '#fff' },
         { name: 'MiniMax', company: 'MiniMax', abbr: 'M', bg: '#6c5ce7', fg: '#fff' },
-        { name: '混元 Hunyuan', company: '腾讯', abbr: 'H', bg: '#0052d9', fg: '#fff' },
-        { name: '阶跃星辰 Step', company: '阶跃星辰', abbr: 'St', bg: '#7b2ff7', fg: '#fff' }
     ];
 
     // 开源 & 私有化部署
@@ -97,14 +92,6 @@ app.controller("ai", function ($scope, $sce, i18nService) {
         { name: 'vLLM', company: '高性能推理', abbr: 'V', bg: '#e85d04', fg: '#fff' },
         { name: 'LM Studio', company: '桌面部署', abbr: 'LM', bg: '#0f766e', fg: '#fff' },
         { name: 'LocalAI', company: '本地推理', abbr: 'LA', bg: '#4f46e5', fg: '#fff' },
-        { name: 'Xinference', company: '分布式推理', abbr: 'Xi', bg: '#be185d', fg: '#fff' },
-        { name: 'TensorRT-LLM', company: 'NVIDIA', abbr: 'T', bg: '#76b900', fg: '#fff' }
-    ];
-
-    // 协议兼容
-    $scope.standardModels = [
-        { name: 'OpenAI API Compatible', company: '标准协议兼容', abbr: 'API', bg: 'linear-gradient(135deg, #6366f1, #8b5cf6)', fg: '#fff' },
-        { name: 'Custom LLM', company: '自定义模型接入', abbr: '++', bg: 'linear-gradient(135deg, #f59e0b, #ef4444)', fg: '#fff' }
     ];
 
     $scope.mcpFeatures = [
