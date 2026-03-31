@@ -1,4 +1,4 @@
-app.controller("ai", function ($scope, $sce, i18nService) {
+app.controller("ai", function ($scope, $sce, $timeout, i18nService) {
 
     $scope.getI18nHtml = function (key, params) {
         return $sce.trustAsHtml(i18nService.t(key, params));
@@ -65,9 +65,13 @@ app.controller("ai", function ($scope, $sce, i18nService) {
             bg: '#fee2e2', fg: '#b91c1c', wide: false, full: true,
             title: i18nService.t('ai.core.tools.title'),
             desc: i18nService.t('ai.core.tools.desc'),
-            code: '<span class="cc">// 一个注解，将 Java 方法注册为 AI 工具</span>\n<span class="ca">@Tool</span>(name = <span class="cs">"查询用户订单"</span>)\n<span class="ck">public</span> List&lt;Order&gt; <span class="cn">queryOrders</span>(@P("UserId") <span class="ck">String</span> userId) {\n    <span class="ck">return</span> orderService.findByUserId(userId);\n}\n\n<span class="cc">// 支持运行时动态注册 / 注销</span>\n<span class="ca">@Tool</span>(name = <span class="cs">"创建工单"</span>, auth = <span class="ck">true</span>)\n<span class="ck">public</span> <span class="ck">boolean</span> <span class="cn">createTicket</span>(@P("标题") <span class="ck">String</span> title,@P("内容")  <span class="ck">String</span> content) {\n    <span class="ck">return</span> ticketService.create(title, content);\n}'
+            code: '// 一个注解，将 Java 方法注册为 AI 工具\n@Tool(name = "查询用户订单")\npublic List<Order> queryOrders(@P("UserId") String userId) {\n    return orderService.findByUserId(userId);\n}\n\n@Tool(name = "创建工单")\npublic boolean createTicket(@P("标题") String title, @P("内容") String content) {\n    return ticketService.create(title, content);\n}'
         }
     ];
+
+    $timeout(function () {
+        Prism.highlightAll();
+    }, 100);
 
     // 国际模型
     $scope.internationalModels = [
@@ -78,17 +82,12 @@ app.controller("ai", function ($scope, $sce, i18nService) {
         { name: 'Mistral / Mixtral', company: 'Mistral AI', abbr: 'M', bg: '#f24822', fg: '#fff' },
         { name: 'Command R+', company: 'Cohere', abbr: 'Co', bg: '#39594d', fg: '#fff' },
         { name: 'Grok', company: 'xAI', abbr: 'X', bg: '#1d1d1f', fg: '#fff' },
-    ];
-
-    // 国产模型
-    $scope.chinaModels = [
         { name: 'DeepSeek V3 / R1', company: '深度求索', abbr: 'DS', bg: '#4d6bfe', fg: '#fff' },
         { name: '通义千问 Qwen', company: '阿里云', abbr: 'Q', bg: '#6236ff', fg: '#fff' },
         { name: '文心一言 ERNIE', company: '百度', abbr: 'E', bg: '#2932e1', fg: '#fff' },
         { name: 'GLM / ChatGLM', company: '智谱 AI', abbr: 'Z', bg: '#3366ff', fg: '#fff' },
         { name: '豆包 Doubao', company: '字节跳动', abbr: 'D', bg: '#325aff', fg: '#fff' },
         { name: 'Kimi / Moonshot', company: '月之暗面', abbr: 'K', bg: '#1a1a2e', fg: '#fff' },
-        { name: '讯飞星火 Spark', company: '科大讯飞', abbr: 'S', bg: '#e4393c', fg: '#fff' },
         { name: 'MiniMax', company: 'MiniMax', abbr: 'M', bg: '#6c5ce7', fg: '#fff' },
     ];
 

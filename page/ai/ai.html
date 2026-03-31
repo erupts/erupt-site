@@ -98,7 +98,7 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         color: #fff;
         padding: 10px 30px;
-        border-radius: 100px;
+        border-radius: 4px;
         font-weight: 600;
         margin: 0 8px;
         transition: all 300ms;
@@ -116,7 +116,7 @@
         border: 1px solid rgba(255, 255, 255, 0.15);
         color: rgba(255, 255, 255, 0.7);
         padding: 10px 30px;
-        border-radius: 100px;
+        border-radius: 4px;
         font-weight: 600;
         margin: 0 8px;
         background: transparent;
@@ -169,269 +169,473 @@
         color: rgba(255, 255, 255, 0.6);
     }
 
-    /* 核心能力 - Bento Grid */
-    .ai-bento {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
+    /* ===== 核心 AI 能力 ===== */
+    .ai-caps-section {
+        background: #f7f8fc;
+        padding: 72px 0 80px;
     }
 
-    .ai-bento-card {
-        position: relative;
-        border-radius: 16px;
-        padding: 28px 24px;
-        background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        overflow: hidden;
-        transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .ai-bento-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: var(--card-accent);
-        opacity: 0.45;
-        transition: opacity 350ms;
-    }
-
-    .ai-bento-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 44px -10px rgba(0, 0, 0, 0.11);
-        border-color: rgba(0, 0, 0, 0.1);
-    }
-
-    .ai-bento-card:hover::before {
-        opacity: 1;
-    }
-
-    .ai-bento-card .bento-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
+    .ai-caps-header {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.35em;
-        margin-bottom: 16px;
-        background: var(--card-bg);
-        color: var(--card-fg);
-        position: relative;
-    }
-
-    .ai-bento-card .bento-icon::after {
-        content: '';
-        position: absolute;
-        inset: -4px;
-        border-radius: 16px;
-        background: var(--card-bg);
-        opacity: 0.3;
-        filter: blur(8px);
-        z-index: -1;
-    }
-
-    .ai-bento-card .bento-tag {
-        display: inline-block;
-        font-size: 0.68em;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: var(--card-fg);
-        opacity: 0.85;
-        margin-bottom: 8px;
-    }
-
-    .ai-bento-card h4 {
-        font-size: 1.15em;
-        font-weight: 800;
-        color: #1a1a2e;
-        margin-bottom: 8px;
-        line-height: 1.3;
-    }
-
-    .ai-bento-card p {
-        font-size: 0.85em;
-        color: #71717a;
-        line-height: 1.65;
-        margin-bottom: 0;
-    }
-
-    .ai-bento-card.bento-wide {
-        grid-column: span 2;
-    }
-
-    .ai-bento-card.bento-full {
-        grid-column: 1 / -1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-        align-items: start;
-    }
-
-    .ai-bento-card.bento-full .bento-main {
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Stats 条 */
-    .ai-core-stats {
-        display: flex;
-        background: linear-gradient(90deg, #f8f8fd 0%, #f4f4fb 100%);
-        border: 1px solid rgba(99, 102, 241, 0.1);
-        border-radius: 14px;
+        align-items: flex-end;
+        justify-content: space-between;
         margin-bottom: 36px;
-        overflow: hidden;
+        gap: 24px;
+        flex-wrap: wrap;
     }
 
-    .ai-core-stat {
-        flex: 1;
-        padding: 20px 16px;
-        text-align: center;
-        border-right: 1px solid rgba(0, 0, 0, 0.06);
-        position: relative;
-    }
-
-    .ai-core-stat:last-child {
-        border-right: none;
-    }
-
-    .ai-core-stat-num {
-        display: block;
-        font-size: 1.7em;
-        font-weight: 900;
-        color: #1a1a2e;
-        line-height: 1;
-        margin-bottom: 5px;
+    .ai-caps-header-left h2 {
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: #0f0f1e;
+        margin-bottom: 8px;
         letter-spacing: -0.5px;
     }
 
-    .ai-core-stat-num sup {
-        font-size: 0.48em;
+    .ai-caps-header-left p {
+        font-size: 0.95rem;
+        color: #71717a;
+        margin: 0;
+        max-width: 480px;
+    }
+
+    .ai-caps-stats {
+        display: flex;
+        gap: 0;
+        flex-shrink: 0;
+        border: 1px solid #e4e6ef;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .ai-caps-stat {
+        padding: 12px 20px;
+        text-align: center;
+        border-left: 1px solid #e4e6ef;
+    }
+
+    .ai-caps-stat:first-child { border-left: none; }
+
+    .ai-caps-stat-num {
+        display: block;
+        font-size: 1.25em;
+        font-weight: 900;
+        color: #1a1a2e;
+        line-height: 1;
+        margin-bottom: 3px;
+        letter-spacing: -1px;
+    }
+
+    .ai-caps-stat-num sup {
+        font-size: 0.5em;
         font-weight: 700;
         color: #6366f1;
         vertical-align: super;
-        letter-spacing: 0;
     }
 
-    .ai-core-stat-label {
+    .ai-caps-stat-label {
         display: block;
-        font-size: 0.76em;
-        color: #71717a;
-        font-weight: 500;
-    }
-
-    /* Chips */
-    .bento-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin-top: 14px;
-    }
-
-    .bento-chip {
-        background: rgba(99, 102, 241, 0.07);
-        border: 1px solid rgba(99, 102, 241, 0.13);
-        border-radius: 4px;
-        padding: 2px 9px;
-        font-size: 0.72em;
-        color: #5046e4;
-        font-weight: 500;
+        font-size: 0.68em;
+        color: #94a3b8;
         white-space: nowrap;
     }
 
-    /* 代码块 */
-    .bento-code {
-        background: #0f0f1c;
-        border-radius: 10px;
-        padding: 18px 20px;
-        position: relative;
-        overflow: hidden;
-        height: 100%;
-        box-sizing: border-box;
+    /* Grid */
+    .ai-caps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
     }
 
-    .bento-code::before {
+    /* ---- Featured card (LLM) ---- */
+    .cap-card-featured {
+        grid-column: span 2;
+        background: linear-gradient(145deg, #0d0d1a 0%, #13102c 55%, #0b1525 100%);
+        border: 1px solid rgba(99, 102, 241, 0.18);
+        border-radius: 10px;
+        padding: 30px 28px;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+    }
+
+    .cap-card-featured::before {
+        content: '';
+        position: absolute;
+        top: -40%; left: -15%;
+        width: 65%; height: 120%;
+        background: radial-gradient(ellipse, rgba(99,102,241,0.13) 0%, transparent 65%);
+        pointer-events: none;
+    }
+
+    .cap-card-featured::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5), rgba(34,211,238,0.4), transparent);
+        background: linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.65) 30%, rgba(167,139,250,0.5) 65%, transparent 100%);
     }
 
-    .bento-code-label {
-        font-size: 0.7em;
-        color: rgba(255,255,255,0.3);
-        letter-spacing: 1px;
-        font-weight: 600;
-        margin-bottom: 10px;
+    .cap-feat-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(99,102,241,0.16);
+        border: 1px solid rgba(99,102,241,0.28);
+        border-radius: 4px;
+        padding: 3px 10px;
+        font-size: 0.64em;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        color: #a5b4fc;
+        margin-bottom: 16px;
         text-transform: uppercase;
     }
 
-    .bento-code pre {
-        margin: 0;
-        font-size: 0.82em;
-        line-height: 1.75;
-        color: #cdd6f4;
-        font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-        white-space: pre;
+    .cap-feat-tag-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #818cf8;
+        animation: capFeatPulse 2s ease-in-out infinite;
+        flex-shrink: 0;
     }
 
-    .bento-code .ck { color: #cba6f7; }
-    .bento-code .ca { color: #f9e2af; }
-    .bento-code .cs { color: #a6e3a1; }
-    .bento-code .cc { color: #585b70; }
-    .bento-code .cn { color: #89b4fa; }
+    @keyframes capFeatPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
 
+    .cap-feat-icon {
+        font-size: 1.8em;
+        margin-bottom: 12px;
+        display: block;
+        line-height: 1;
+    }
+
+    .cap-feat-title {
+        font-size: 1.25em;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 8px;
+        letter-spacing: -0.3px;
+        line-height: 1.25;
+    }
+
+    .cap-feat-desc {
+        font-size: 0.82em;
+        color: rgba(255,255,255,0.48);
+        line-height: 1.65;
+        margin-bottom: 18px;
+    }
+
+    .cap-model-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .cap-model-chip {
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 3px;
+        padding: 3px 9px;
+        font-size: 0.69em;
+        color: rgba(255,255,255,0.55);
+        white-space: nowrap;
+    }
+
+    /* ---- Standard card ---- */
+    .cap-card {
+        background: #fff;
+        border: 1px solid #e8eaf2;
+        border-radius: 10px;
+        padding: 26px 22px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .cap-card::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: var(--cap-accent);
+        opacity: 0;
+        transition: opacity 0.25s;
+    }
+
+    .cap-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+        border-color: #d0d4e8;
+    }
+
+    .cap-card:hover::after { opacity: 1; }
+
+    .cap-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3em;
+        margin-bottom: 14px;
+        background: var(--cap-bg);
+    }
+
+    .cap-tag {
+        display: block;
+        font-size: 0.62em;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--cap-fg);
+        opacity: 0.85;
+        margin-bottom: 5px;
+    }
+
+    .cap-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0f0f1e;
+        margin-bottom: 7px;
+        line-height: 1.3;
+    }
+
+    .cap-desc {
+        font-size: 0.82em;
+        color: #71717a;
+        line-height: 1.62;
+        margin: 0;
+    }
+
+    /* ---- Feature tiles (row 2) ---- */
+    .cap-tile {
+        background: #fff;
+        border: 1px solid #e8eaf2;
+        border-radius: 8px;
+        padding: 16px 14px;
+        display: flex;
+        align-items: flex-start;
+        gap: 11px;
+        transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+
+    .cap-tile:hover {
+        border-color: #c8cce0;
+        background: #fafbff;
+        transform: translateY(-2px);
+    }
+
+    .cap-tile-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1em;
+        flex-shrink: 0;
+        background: var(--cap-bg);
+        margin-top: 1px;
+    }
+
+    .cap-tile-tag {
+        display: block;
+        font-size: 0.58em;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--cap-fg);
+        margin-bottom: 2px;
+        opacity: 0.8;
+    }
+
+    .cap-tile-title {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #0f0f1e;
+        margin-bottom: 3px;
+        line-height: 1.3;
+    }
+
+    .cap-tile-desc {
+        font-size: 0.74em;
+        color: #94a3b8;
+        margin: 0;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* ---- Code showcase card (Tools) ---- */
+    .cap-card-code {
+        grid-column: 1 / -1;
+        background: #0b0b14;
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 10px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1.65fr;
+    }
+
+    .cap-code-info {
+        padding: 34px 30px;
+        color: #fff;
+        border-right: 1px solid rgba(255,255,255,0.05);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cap-code-info::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(239,68,68,0.55), transparent 60%);
+    }
+
+    .cap-code-info::after {
+        content: '';
+        position: absolute;
+        bottom: -30%; right: -10%;
+        width: 180px; height: 180px;
+        background: radial-gradient(ellipse, rgba(239,68,68,0.06) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .cap-tools-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(239,68,68,0.14);
+        border: 1px solid rgba(239,68,68,0.22);
+        border-radius: 4px;
+        padding: 3px 10px;
+        font-size: 0.64em;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        color: #fca5a5;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+    }
+
+    .cap-tools-icon {
+        font-size: 1.8em;
+        margin-bottom: 12px;
+        display: block;
+        line-height: 1;
+    }
+
+    .cap-tools-title {
+        font-size: 1.25em;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 8px;
+        letter-spacing: -0.3px;
+    }
+
+    .cap-tools-desc {
+        font-size: 0.82em;
+        color: rgba(255,255,255,0.42);
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    .cap-code-editor {
+        background: #0f0f1c;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cap-code-editor-bar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 16px;
+        background: #161622;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        flex-shrink: 0;
+    }
+
+    .cap-code-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .cap-code-tab {
+        margin-left: 10px;
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.3);
+        font-family: 'JetBrains Mono', 'Fira Code', monospace;
+        background: rgba(255,255,255,0.05);
+        padding: 3px 12px;
+        border-radius: 3px 3px 0 0;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-bottom: none;
+    }
+
+    .cap-code-editor pre {
+        margin: 0;
+        padding: 20px 24px;
+        font-size: 0.82em;
+        line-height: 1.8;
+        flex: 1;
+        overflow-x: auto;
+    }
+
+    /* Responsive */
     @media (max-width: 992px) {
-        .ai-bento {
+        .ai-caps-grid {
             grid-template-columns: repeat(2, 1fr);
         }
-        .ai-bento-card.bento-wide {
+        .cap-card-featured {
             grid-column: span 2;
         }
-        .ai-bento-card.bento-full {
+        .cap-card-code {
             grid-template-columns: 1fr;
-            gap: 20px;
         }
-        .ai-core-stats {
-            flex-wrap: wrap;
-        }
-        .ai-core-stat {
-            flex: 0 0 50%;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .ai-core-stat:nth-child(2), .ai-core-stat:nth-child(4) {
+        .cap-code-info {
             border-right: none;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 26px 22px;
         }
-        .ai-core-stat:nth-child(3), .ai-core-stat:nth-child(4) {
-            border-bottom: none;
+        .ai-caps-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .ai-caps-stats {
+            align-self: stretch;
         }
     }
 
     @media (max-width: 576px) {
-        .ai-bento {
+        .ai-caps-grid {
             grid-template-columns: 1fr;
         }
-        .ai-bento-card.bento-wide,
-        .ai-bento-card.bento-full {
+        .cap-card-featured, .cap-card-code {
             grid-column: span 1;
         }
-        .ai-bento-card.bento-full {
-            display: block;
+        .ai-caps-stats {
+            flex-wrap: wrap;
         }
-        .bento-code {
-            margin-top: 16px;
-            height: auto;
+        .ai-caps-stat {
+            flex: 1 1 40%;
         }
     }
 
     /* ===== 技术架构 - 重新设计 ===== */
     .ai-arch-wrapper {
         background: linear-gradient(135deg, #1e1b4b, #312e81);
-        border-radius: 16px;
+        border-radius: 4px;
+        border-left: 4px solid #6366f1;
         padding: 48px 40px;
         margin: 0 auto;
         position: relative;
@@ -472,7 +676,7 @@
         background: linear-gradient(135deg, #6366f1, #8b5cf6);
         color: #fff;
         padding: 8px 14px;
-        border-radius: 8px;
+        border-radius: 4px;
         font-size: 0.75em;
         font-weight: 700;
         text-align: center;
@@ -484,7 +688,7 @@
     .arch-box {
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
+        border-radius: 4px;
         padding: 16px 20px;
         transition: all 300ms;
     }
@@ -503,7 +707,7 @@
     .arch-chip {
         background: rgba(99, 102, 241, 0.18);
         border: 1px solid rgba(99, 102, 241, 0.28);
-        border-radius: 6px;
+        border-radius: 4px;
         padding: 5px 14px;
         font-size: 0.82em;
         color: #c4b5fd;
@@ -587,7 +791,7 @@
         gap: 10px;
         background: #fff;
         border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 10px;
+        border-radius: 4px;
         padding: 12px 20px;
         transition: all 300ms;
         cursor: default;
@@ -602,7 +806,7 @@
     .model-icon {
         width: 32px;
         height: 32px;
-        border-radius: 8px;
+        border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -630,7 +834,8 @@
 
     /* MCP 区域 */
     .mcp-card {
-        border-radius: 12px;
+        border-radius: 4px;
+        border-left: 3px solid rgba(167, 139, 250, 0.4);
         padding: 30px;
         margin-bottom: 24px;
         height: 100%;
@@ -688,7 +893,7 @@
     .mcp-flow-item {
         background: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 10px;
+        border-radius: 4px;
         padding: 18px 24px;
         text-align: center;
         min-width: 140px;
@@ -732,8 +937,9 @@
         margin-bottom: 28px;
         padding: 20px 24px;
         background: #fff;
-        border-radius: 10px;
+        border-radius: 4px;
         border: 1px solid rgba(0, 0, 0, 0.06);
+        border-left: 3px solid #6366f1;
         transition: all 300ms;
     }
 
@@ -749,7 +955,7 @@
         top: 24px;
         width: 12px;
         height: 12px;
-        border-radius: 50%;
+        border-radius: 4px;
         background: #6366f1;
         border: 3px solid #e0e7ff;
     }
@@ -760,7 +966,7 @@
         color: #fff;
         width: 26px;
         height: 26px;
-        border-radius: 50%;
+        border-radius: 4px;
         text-align: center;
         line-height: 26px;
         font-size: 0.8em;
@@ -783,7 +989,8 @@
     /* ReAct 示例 */
     .react-example {
         background: linear-gradient(135deg, #1e1b4b, #312e81);
-        border-radius: 12px;
+        border-radius: 4px;
+        border-left: 4px solid #a78bfa;
         padding: 30px;
         margin-top: 30px;
     }
@@ -828,7 +1035,8 @@
     /* 快速接入 */
     .ai-code-block {
         background: #1e1e2e;
-        border-radius: 10px;
+        border-radius: 4px;
+        border-left: 3px solid #6366f1;
         padding: 24px;
         margin-bottom: 20px;
         overflow-x: auto;
@@ -853,7 +1061,7 @@
         background: linear-gradient(135deg, #6366f1, #8b5cf6);
         color: #fff;
         padding: 4px 14px;
-        border-radius: 20px;
+        border-radius: 4px;
         font-size: 0.85em;
         font-weight: 700;
         margin-bottom: 16px;
@@ -919,59 +1127,131 @@
     </div>
 
     <!-- 核心 AI 能力 -->
-    <div class="ai-section ai-section-light">
+    <div class="ai-caps-section">
         <div class="container">
-            <div class="ai-section-title">
-                <h2>{{'ai.core.title' | i18n}}</h2>
-                <p>{{'ai.core.subtitle' | i18n}}</p>
+            <div class="ai-caps-header">
+                <div class="ai-caps-header-left">
+                    <h2>{{'ai.core.title' | i18n}}</h2>
+                    <p>{{'ai.core.subtitle' | i18n}}</p>
+                </div>
+                <div class="ai-caps-stats">
+                    <div class="ai-caps-stat">
+                        <span class="ai-caps-stat-num">13<sup>+</sup></span>
+                        <span class="ai-caps-stat-label">{{'ai.stat.llms' | i18n}}</span>
+                    </div>
+                    <div class="ai-caps-stat">
+                        <span class="ai-caps-stat-num">5<sup>min</sup></span>
+                        <span class="ai-caps-stat-label">{{'ai.stat.quickstart' | i18n}}</span>
+                    </div>
+                    <div class="ai-caps-stat">
+                        <span class="ai-caps-stat-num">ReAct</span>
+                        <span class="ai-caps-stat-label">{{'ai.stat.agent' | i18n}}</span>
+                    </div>
+                    <div class="ai-caps-stat">
+                        <span class="ai-caps-stat-num">MCP</span>
+                        <span class="ai-caps-stat-label">{{'ai.stat.mcp' | i18n}}</span>
+                    </div>
+                </div>
             </div>
 
-            <!-- Stats 条 -->
-            <div class="ai-core-stats">
-                <div class="ai-core-stat">
-                    <span class="ai-core-stat-num">13<sup>+</sup></span>
-                    <span class="ai-core-stat-label">{{'ai.stat.llms' | i18n}}</span>
-                </div>
-                <div class="ai-core-stat">
-                    <span class="ai-core-stat-num">5<sup>min</sup></span>
-                    <span class="ai-core-stat-label">{{'ai.stat.quickstart' | i18n}}</span>
-                </div>
-                <div class="ai-core-stat">
-                    <span class="ai-core-stat-num">ReAct</span>
-                    <span class="ai-core-stat-label">{{'ai.stat.agent' | i18n}}</span>
-                </div>
-                <div class="ai-core-stat">
-                    <span class="ai-core-stat-num">MCP</span>
-                    <span class="ai-core-stat-label">{{'ai.stat.mcp' | i18n}}</span>
-                </div>
-            </div>
-
-            <div class="ai-bento">
-                <div class="ai-bento-card animated fadeInUp"
-                     ng-repeat="cap in capabilities"
-                     ng-class="[cap.wide ? 'bento-wide' : '', cap.full ? 'bento-full' : '', 'delay-' + ($index % 3 + 1)]"
-                     ng-style="{'--card-accent': cap.accent, '--card-bg': cap.bg, '--card-fg': cap.fg}">
-                    <!-- 全宽卡片（Tools）左右两栏布局 -->
-                    <div class="bento-main" ng-if="cap.full">
-                        <div class="bento-icon">{{cap.icon}}</div>
-                        <span class="bento-tag">{{cap.tag}}</span>
-                        <h4>{{cap.title}}</h4>
-                        <p>{{cap.desc}}</p>
+            <div class="ai-caps-grid">
+                <!-- Featured: Multi-LLM (2 cols, dark) -->
+                <div class="cap-card-featured">
+                    <span class="cap-feat-tag">
+                        <span class="cap-feat-tag-dot"></span>LLM
+                    </span>
+                    <span class="cap-feat-icon">🌐</span>
+                    <div class="cap-feat-title">{{'ai.core.multillm.title' | i18n}}</div>
+                    <div class="cap-feat-desc">{{'ai.core.multillm.desc' | i18n}}</div>
+                    <div class="cap-model-chips">
+                        <span class="cap-model-chip">GPT-4o</span>
+                        <span class="cap-model-chip">Claude 3.5</span>
+                        <span class="cap-model-chip">Gemini</span>
+                        <span class="cap-model-chip">DeepSeek</span>
+                        <span class="cap-model-chip">Qwen</span>
+                        <span class="cap-model-chip">文心</span>
+                        <span class="cap-model-chip">GLM</span>
+                        <span class="cap-model-chip">Doubao</span>
+                        <span class="cap-model-chip">Kimi</span>
+                        <span class="cap-model-chip">Spark</span>
+                        <span class="cap-model-chip">Llama</span>
+                        <span class="cap-model-chip">Ollama</span>
+                        <span class="cap-model-chip">···</span>
                     </div>
-                    <div class="bento-code" ng-if="cap.full && cap.code">
-                        <div class="bento-code-label">示例代码</div>
-                        <pre ng-bind-html="trustHtml(cap.code)"></pre>
-                    </div>
+                </div>
 
-                    <!-- 普通卡片 -->
-                    <div ng-if="!cap.full">
-                        <div class="bento-icon">{{cap.icon}}</div>
-                        <span class="bento-tag">{{cap.tag}}</span>
-                        <h4>{{cap.title}}</h4>
-                        <p>{{cap.desc}}</p>
-                        <div class="bento-chips" ng-if="cap.chips">
-                            <span class="bento-chip" ng-repeat="c in cap.chips">{{c}}</span>
+                <!-- Agent -->
+                <div class="cap-card" style="--cap-accent: linear-gradient(90deg,#10b981,#34d399); --cap-bg: #d1fae5; --cap-fg: #047857">
+                    <div class="cap-icon">🤖</div>
+                    <span class="cap-tag">AGENT</span>
+                    <div class="cap-title">{{'ai.core.agent.title' | i18n}}</div>
+                    <p class="cap-desc">{{'ai.core.agent.desc' | i18n}}</p>
+                </div>
+
+                <!-- Context -->
+                <div class="cap-card" style="--cap-accent: linear-gradient(90deg,#3b82f6,#60a5fa); --cap-bg: #dbeafe; --cap-fg: #1d4ed8">
+                    <div class="cap-icon">💬</div>
+                    <span class="cap-tag">CONTEXT</span>
+                    <div class="cap-title">{{'ai.core.context.title' | i18n}}</div>
+                    <p class="cap-desc">{{'ai.core.context.desc' | i18n}}</p>
+                </div>
+
+                <!-- MCP -->
+                <div class="cap-tile" style="--cap-bg: #fef3c7; --cap-fg: #b45309">
+                    <div class="cap-tile-icon">🔗</div>
+                    <div>
+                        <span class="cap-tile-tag">PROTOCOL</span>
+                        <div class="cap-tile-title">{{'ai.core.mcp.title' | i18n}}</div>
+                        <p class="cap-tile-desc">{{'ai.core.mcp.desc' | i18n}}</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Chat -->
+                <div class="cap-tile" style="--cap-bg: #fce7f3; --cap-fg: #be185d">
+                    <div class="cap-tile-icon">🗨️</div>
+                    <div>
+                        <span class="cap-tile-tag">CHAT</span>
+                        <div class="cap-tile-title">{{'ai.core.interactive.title' | i18n}}</div>
+                        <p class="cap-tile-desc">{{'ai.core.interactive.desc' | i18n}}</p>
+                    </div>
+                </div>
+
+                <!-- System Prompt -->
+                <div class="cap-tile" style="--cap-bg: #f3e8ff; --cap-fg: #7c3aed">
+                    <div class="cap-tile-icon">⚙️</div>
+                    <div>
+                        <span class="cap-tile-tag">PROMPT</span>
+                        <div class="cap-tile-title">{{'ai.core.systemprompt.title' | i18n}}</div>
+                        <p class="cap-tile-desc">{{'ai.core.systemprompt.desc' | i18n}}</p>
+                    </div>
+                </div>
+
+                <!-- Open Source -->
+                <div class="cap-tile" style="--cap-bg: #cffafe; --cap-fg: #0e7490">
+                    <div class="cap-tile-icon">🔓</div>
+                    <div>
+                        <span class="cap-tile-tag">APACHE 2.0</span>
+                        <div class="cap-tile-title">{{'ai.core.opensource.title' | i18n}}</div>
+                        <p class="cap-tile-desc">{{'ai.core.opensource.desc' | i18n}}</p>
+                    </div>
+                </div>
+
+                <!-- Tools / Code showcase (full width) -->
+                <div class="cap-card-code">
+                    <div class="cap-code-info">
+                        <span class="cap-tools-tag">TOOLS</span>
+                        <span class="cap-tools-icon">🔧</span>
+                        <div class="cap-tools-title">{{'ai.core.tools.title' | i18n}}</div>
+                        <p class="cap-tools-desc">{{'ai.core.tools.desc' | i18n}}</p>
+                    </div>
+                    <div class="cap-code-editor">
+                        <div class="cap-code-editor-bar">
+                            <span class="cap-code-dot" style="background:#ff5f57"></span>
+                            <span class="cap-code-dot" style="background:#febc2e"></span>
+                            <span class="cap-code-dot" style="background:#28c840"></span>
+                            <span class="cap-code-tab">ToolService.java</span>
                         </div>
+                        <pre><code class="language-java" ng-bind="capabilities[7].code"></code></pre>
                     </div>
                 </div>
             </div>
@@ -1082,20 +1362,6 @@
                 <div class="model-group-label">{{'ai.models.international' | i18n}}</div>
                 <div class="model-grid">
                     <div class="model-item" ng-repeat="m in internationalModels">
-                        <div class="model-icon" ng-style="{'background': m.bg, 'color': m.fg}">{{m.abbr}}</div>
-                        <div class="model-info">
-                            <span class="model-name">{{m.name}}</span>
-                            <span class="model-company">{{m.company}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 国产模型 -->
-            <div class="model-group">
-                <div class="model-group-label">{{'ai.models.china' | i18n}}</div>
-                <div class="model-grid">
-                    <div class="model-item" ng-repeat="m in chinaModels">
                         <div class="model-icon" ng-style="{'background': m.bg, 'color': m.fg}">{{m.abbr}}</div>
                         <div class="model-info">
                             <span class="model-name">{{m.name}}</span>

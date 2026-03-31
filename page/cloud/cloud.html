@@ -82,7 +82,7 @@
     .cloud-badge {
         display: inline-block;
         padding: 4px 12px;
-        border-radius: 999px;
+        border-radius: 4px;
         font-size: .74rem;
         margin: 3px 6px 3px 0;
         font-weight: 600;
@@ -114,7 +114,7 @@
     }
 
     .cloud-hero-actions .btn {
-        border-radius: 8px;
+        border-radius: 4px;
         font-weight: 600;
         padding: 10px 20px;
     }
@@ -170,11 +170,14 @@
 
     .cloud-feat-card {
         background: #fff;
-        border-radius: 14px;
+        border-radius: 4px;
+        border-top: 3px solid #0ea5e9;
         padding: 26px 22px;
         height: 100%;
         box-shadow: 0 2px 16px rgba(14, 116, 144, 0.08);
-        border: 1px solid rgba(14, 165, 233, 0.12);
+        border-bottom: 1px solid rgba(14, 165, 233, 0.12);
+        border-right: 1px solid rgba(14, 165, 233, 0.12);
+        border-left: 1px solid rgba(14, 165, 233, 0.12);
         transition: box-shadow .25s, transform .25s, border-color .25s;
     }
 
@@ -201,7 +204,7 @@
     .cloud-feat-icon {
         width: 48px;
         height: 48px;
-        border-radius: 12px;
+        border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -212,10 +215,13 @@
 
     .cloud-doc-card {
         background: #fff;
-        border-radius: 12px;
+        border-radius: 4px;
         padding: 22px 20px;
         height: 100%;
         border-left: 4px solid #0ea5e9;
+        border-top: 1px solid rgba(14, 165, 233, 0.12);
+        border-right: 1px solid rgba(14, 165, 233, 0.12);
+        border-bottom: 1px solid rgba(14, 165, 233, 0.12);
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
         transition: transform .2s, box-shadow .2s;
     }
@@ -246,10 +252,13 @@
 
     .cloud-code-wrap {
         background: #fff;
-        border-radius: 12px;
+        border-radius: 4px;
+        border-left: 3px solid #0ea5e9;
         padding: 20px 22px 8px;
         box-shadow: 0 2px 16px rgba(14, 116, 144, 0.08);
-        border: 1px solid rgba(14, 165, 233, 0.15);
+        border-top: 1px solid rgba(14, 165, 233, 0.15);
+        border-right: 1px solid rgba(14, 165, 233, 0.15);
+        border-bottom: 1px solid rgba(14, 165, 233, 0.15);
     }
 
     .cloud-code-wrap h5 {
@@ -262,10 +271,13 @@
     /* scenarios */
     .cloud-scenario-card {
         background: #fff;
-        border-radius: 14px;
+        border-radius: 4px;
+        border-top: 3px solid rgba(14, 165, 233, 0.5);
         padding: 22px 20px;
         height: 100%;
-        border: 1px solid rgba(14, 165, 233, 0.14);
+        border-bottom: 1px solid rgba(14, 165, 233, 0.14);
+        border-right: 1px solid rgba(14, 165, 233, 0.14);
+        border-left: 1px solid rgba(14, 165, 233, 0.14);
         box-shadow: 0 2px 12px rgba(8, 47, 73, 0.06);
         transition: box-shadow .2s, border-color .2s;
     }
@@ -308,9 +320,12 @@
         flex: 1 1 200px;
         max-width: 100%;
         background: #fff;
-        border-radius: 12px;
+        border-radius: 4px;
+        border-left: 3px solid #0ea5e9;
         padding: 18px 16px;
-        border: 1px solid rgba(14, 165, 233, 0.12);
+        border-top: 1px solid rgba(14, 165, 233, 0.12);
+        border-right: 1px solid rgba(14, 165, 233, 0.12);
+        border-bottom: 1px solid rgba(14, 165, 233, 0.12);
         position: relative;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
     }
@@ -321,7 +336,7 @@
         justify-content: center;
         width: 28px;
         height: 28px;
-        border-radius: 8px;
+        border-radius: 4px;
         font-size: .8rem;
         font-weight: 800;
         color: #fff;
@@ -379,9 +394,10 @@
     /* compare table */
     .cloud-table-wrap {
         background: #fff;
-        border-radius: 12px;
+        border-radius: 4px;
         overflow: hidden;
         border: 1px solid rgba(14, 165, 233, 0.15);
+        border-top: 3px solid #0ea5e9;
         box-shadow: 0 2px 14px rgba(8, 47, 73, 0.06);
     }
 
@@ -413,8 +429,9 @@
     /* FAQ */
     .cloud-faq-card {
         background: #fff;
-        border-radius: 12px;
+        border-radius: 4px;
         border: 1px solid #e2e8f0;
+        border-left: 3px solid #0ea5e9;
         margin-bottom: 10px;
         overflow: hidden;
     }
@@ -432,10 +449,11 @@
         color: #0f172a;
         text-decoration: none;
         border: none;
-        border-radius: 0;
+        border-radius: 4px;
         background: #fff;
         position: relative;
         white-space: normal;
+        padding-left: 16px;
     }
 
     .cloud-faq-card .faq-header .btn:hover,
@@ -471,7 +489,8 @@
     /* demo CTA */
     .cloud-demo-bar {
         background: linear-gradient(120deg, #0c4a6e 0%, #155e75 50%, #0e7490 100%);
-        border-radius: 14px;
+        border-radius: 4px;
+        border-top: 3px solid #38bdf8;
         padding: 28px 26px;
         color: #fff;
         text-align: center;
@@ -497,7 +516,7 @@
     .cloud-demo-bar .btn {
         margin-top: 18px;
         font-weight: 600;
-        border-radius: 8px;
+        border-radius: 4px;
         padding: 10px 20px;
     }
 

@@ -197,7 +197,7 @@ var i18n = {
         'home.btn.component': ['组件支持', 'Components'],
         'home.btn.module': ['扩展模块', 'Extensions'],
         'home.btn.cloud': ['<span style="color: #ffc107">☁️ Erupt Cloud</span> 多维表云配置中心', '<span style="color: #ffc107">☁️ Erupt Cloud</span> Cloud Table Config Center'],
-        'home.btn.linq': ['<span style="color: #ffc107">⚡ Linq.J</span>用 SQL 语句操作 Java 对象', '<span style="color: #ffc107">⚡ Linq.J</span> Operate Java Objects with SQL'],
+        'home.btn.linq': ['<span style="color: #ffc107">⚡ Linq.J</span> 用 SQL 语句操作 Java 对象', '<span style="color: #ffc107">⚡ Linq.J</span> Operate Java Objects with SQL'],
         'ideamake': ['思为科技', 'Ideamake'],
         // Footer
         'footer.qq': ['QQ 交流群', 'QQ Group'],
@@ -313,7 +313,6 @@ var i18n = {
         'ai.models.title': ['全面兼容主流大模型', 'Compatible with All Mainstream LLMs'],
         'ai.models.subtitle': ['无缝对接国内外所有主流大模型，统一 API 接口，一键切换，无需修改业务代码', 'Seamlessly connect with all mainstream LLMs worldwide, unified API, one-click switching, no business code changes needed'],
         'ai.models.international': ['国际模型', 'International Models'],
-        'ai.models.china': ['国产模型', 'Chinese Models'],
         'ai.models.opensource': ['开源 & 私有化部署', 'Open Source & Self-hosted'],
         'ai.models.standard': ['协议兼容', 'Protocol Compatible'],
 
