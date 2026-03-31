@@ -32,10 +32,10 @@
                    ng-class="currRouter=='/ai'?'active-link':''">
                     {{'nav.ai' | i18n}}
                 </a>
-                <a class="btn btn-sm align-self-center btn-link" href="#!/flow"
-                   ng-class="currRouter=='/flow'?'active-link':''">
-                    {{'nav.flow' | i18n}}
-                </a>
+                <!--                <a class="btn btn-sm align-self-center btn-link" href="#!/flow"-->
+                <!--                   ng-class="currRouter=='/flow'?'active-link':''">-->
+                <!--                    {{'nav.flow' | i18n}}-->
+                <!--                </a>-->
                 <a class="btn btn-sm align-self-center btn-link" href="#!/cloud"
                    ng-class="currRouter=='/cloud'?'active-link':''">
                     {{'nav.cloud' | i18n}}
@@ -226,7 +226,7 @@
     app.controller("index", function ($scope, $rootScope, i18nService) {
         $scope.currentLang = i18nService.getLang();
         $scope.year = $rootScope.year;
-        
+
         $scope.goHome = function () {
             location.href = "#";
         }
@@ -234,14 +234,14 @@
         $scope.goTop = function () {
             $("html,body").animate({"scrollTop": 0}, 600);
         }
-        
+
         $scope.switchLang = function(lang) {
             i18nService.setLang(lang);
             $scope.currentLang = lang;
             // 刷新页面以应用所有更改
             location.reload();
         }
-        
+
         // 获取版权信息
         $scope.getCopyright = function() {
             var copyright = i18nService.t('footer.copyright');

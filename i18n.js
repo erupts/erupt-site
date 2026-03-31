@@ -24,7 +24,7 @@ var i18n = {
         'cloud.badge.cluster': ['集群 / 多节点', 'Cluster & nodes'],
         'cloud.badge.light': ['轻依赖', 'Lightweight'],
         'cloud.badge.visual': ['服务可视化', 'Service visibility'],
-        'cloud.cta.doc': ['阅读语雀文档', 'Read docs on Yuque'],
+        'cloud.cta.doc': ['阅读文档', 'Read docs'],
         'cloud.cta.github': ['GitHub 源码', 'GitHub'],
         'cloud.diagram.console': ['多维管理台', 'Admin plane'],
         'cloud.features.title': ['核心能力', 'Capabilities'],
@@ -37,8 +37,6 @@ var i18n = {
         'cloud.features.f3.desc': ['通过 Node 配置将集群内服务纳入同一视图，配合控制台理解调用与数据面关系。', 'Register services via node configuration and understand topology and data relationships in one console.'],
         'cloud.features.f4.title': ['集群内数据可视化', 'In-cluster data UI'],
         'cloud.features.f4.desc': ['让集群中的业务服务也能挂载 Erupt 管理界面，无需为每个子系统重复搭建后台脚手架。', 'Expose Erupt admin UIs on business services without rebuilding admin scaffolding per subsystem.'],
-        'cloud.docs.title': ['官方文档（语雀）', 'Official docs (Yuque)'],
-        'cloud.docs.desc': ['以下为 Erupt Cloud 相关章节入口，细节与排错请以语雀正文为准。', 'Entry points to Cloud chapters; follow Yuque for full steps and troubleshooting.'],
         'cloud.docs.d1.title': ['概述与多维配置', 'Overview & multidimensional config'],
         'cloud.docs.d1.desc': ['Erupt Cloud 定位、能力与整体架构说明。', 'Positioning, capabilities, and architecture.'],
         'cloud.docs.d2.title': ['集成与依赖', 'Integration & dependencies'],
@@ -64,7 +62,7 @@ var i18n = {
         'cloud.scenarios.s4.desc': ['业务迭代频繁时，希望依赖轻、升级路径清晰，与主 Erupt 版本同步演进。', 'Light deps and clear upgrade path aligned with the core Erupt release train.'],
 
         'cloud.arch.title': ['能力如何串起来', 'How pieces connect'],
-        'cloud.arch.desc': ['从「建模」到「集群可见」的一条逻辑路径（具体组件名以语雀与版本为准）。', 'A logical path from modeling to cluster visibility (names may vary by version—see Yuque).'],
+        'cloud.arch.desc': ['从「建模」到「集群可见」的一条逻辑路径。', 'A logical path from modeling to cluster visibility.'],
         'cloud.arch.step1.title': ['注解建模', 'Annotate models'],
         'cloud.arch.step1.desc': ['在业务服务中仍用 @Erupt / @EruptField 等描述多维表与界面。', 'Describe tables and UI with @Erupt / @EruptField as usual.'],
         'cloud.arch.step2.title': ['接入 Cloud', 'Wire Cloud'],
@@ -367,7 +365,7 @@ var i18n = {
         } else {
             // 检测浏览器语言
             var browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-            
+
             // 匹配中文：zh, zh-CN, zh-TW, zh-HK 等
             if (browserLang.startsWith('zh')) {
                 this.currentLang = 'zh-CN';

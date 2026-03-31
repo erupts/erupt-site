@@ -11,7 +11,7 @@
     .cloud-hero {
         background: linear-gradient(160deg, var(--cloud-sky-0) 0%, var(--cloud-sky-1) 42%, var(--cloud-sky-2) 88%);
         color: #fff;
-        padding: 72px 0 56px;
+        padding: 0;
         position: relative;
         overflow: hidden;
     }
@@ -140,7 +140,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 8px 0 0;
+        padding: 0;
     }
 
     .cloud-topo {
@@ -671,77 +671,41 @@
                 </div>
             </div>
 
-
-            <h2 class="cloud-section-title mt-2">{{'cloud.compare.title' | i18n}}</h2>
-            <p class="cloud-section-desc">{{'cloud.compare.desc' | i18n}}</p>
-            <div class="cloud-table-wrap mb-5 table-responsive">
-                <table class="table mb-0">
-                    <thead>
-                    <tr>
-                        <th>{{'cloud.compare.th.dim' | i18n}}</th>
-                        <th>{{'cloud.compare.th.single' | i18n}}</th>
-                        <th>{{'cloud.compare.th.cloud' | i18n}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><strong>{{'cloud.compare.r1.dim' | i18n}}</strong></td>
-                        <td>{{'cloud.compare.r1.single' | i18n}}</td>
-                        <td>{{'cloud.compare.r1.cloud' | i18n}}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>{{'cloud.compare.r2.dim' | i18n}}</strong></td>
-                        <td>{{'cloud.compare.r2.single' | i18n}}</td>
-                        <td>{{'cloud.compare.r2.cloud' | i18n}}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>{{'cloud.compare.r3.dim' | i18n}}</strong></td>
-                        <td>{{'cloud.compare.r3.single' | i18n}}</td>
-                        <td>{{'cloud.compare.r3.cloud' | i18n}}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>{{'cloud.compare.r4.dim' | i18n}}</strong></td>
-                        <td>{{'cloud.compare.r4.single' | i18n}}</td>
-                        <td>{{'cloud.compare.r4.cloud' | i18n}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2 class="cloud-section-title">{{'cloud.docs.title' | i18n}}</h2>
-            <p class="cloud-section-desc">{{'cloud.docs.desc' | i18n}}</p>
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="cloud-doc-card">
-                        <h5>{{'cloud.docs.d1.title' | i18n}}</h5>
-                        <p>{{'cloud.docs.d1.desc' | i18n}}</p>
-                        <a href="https://www.yuque.com/erupts/erupt/ggbcv9" rel="noopener" target="_blank">{{'cloud.docs.read'
-                            | i18n}} →</a>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="cloud-doc-card" style="border-left-color: #6366f1;">
-                        <h5>{{'cloud.docs.d2.title' | i18n}}</h5>
-                        <p>{{'cloud.docs.d2.desc' | i18n}}</p>
-                        <a href="https://www.yuque.com/erupts/erupt/cthlzp" rel="noopener" target="_blank">{{'cloud.docs.read'
-                            | i18n}} →</a>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="cloud-doc-card" style="border-left-color: #10b981;">
-                        <h5>{{'cloud.docs.d3.title' | i18n}}</h5>
-                        <p>{{'cloud.docs.d3.desc' | i18n}}</p>
-                        <a href="https://www.yuque.com/erupts/erupt/av6gdn" rel="noopener" target="_blank">{{'cloud.docs.read'
-                            | i18n}} →</a>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="cloud-doc-card" style="border-left-color: #f59e0b;">
-                        <h5>{{'cloud.docs.d4.title' | i18n}}</h5>
-                        <p>{{'cloud.docs.d4.desc' | i18n}}</p>
-                        <a href="https://www.yuque.com/erupts/erupt/tkmt4rkmuh7o5y9b" rel="noopener" target="_blank">{{'cloud.docs.read'
-                            | i18n}} →</a>
-                    </div>
+            <div style="margin-top: 30px">
+                <h2 class="cloud-section-title mt-2">{{'cloud.compare.title' | i18n}}</h2>
+                <p class="cloud-section-desc">{{'cloud.compare.desc' | i18n}}</p>
+                <div class="cloud-table-wrap mb-5 table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                        <tr>
+                            <th>{{'cloud.compare.th.dim' | i18n}}</th>
+                            <th>{{'cloud.compare.th.single' | i18n}}</th>
+                            <th>{{'cloud.compare.th.cloud' | i18n}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>{{'cloud.compare.r1.dim' | i18n}}</strong></td>
+                            <td>{{'cloud.compare.r1.single' | i18n}}</td>
+                            <td>{{'cloud.compare.r1.cloud' | i18n}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>{{'cloud.compare.r2.dim' | i18n}}</strong></td>
+                            <td>{{'cloud.compare.r2.single' | i18n}}</td>
+                            <td>{{'cloud.compare.r2.cloud' | i18n}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>{{'cloud.compare.r3.dim' | i18n}}</strong></td>
+                            <td>{{'cloud.compare.r3.single' | i18n}}</td>
+                            <td>{{'cloud.compare.r3.cloud' | i18n}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>{{'cloud.compare.r4.dim' | i18n}}</strong></td>
+                            <td>{{'cloud.compare.r4.single' | i18n}}</td>
+                            <td>{{'cloud.compare.r4.cloud' | i18n}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -749,8 +713,10 @@
                 <div class="col-lg-10 mx-auto cloud-demo-bar">
                     <h3>{{'cloud.demo.title' | i18n}}</h3>
                     <p>{{'cloud.demo.desc' | i18n}}</p>
-                    <a class="btn btn-light" href="https://www.erupt.xyz/demo" rel="noopener" target="_blank">{{'cloud.demo.btn'
-                        | i18n}}</a>
+                    <a class="btn btn-light" href="https://www.erupt.xyz/demo/#/build/table/CloudNode" rel="noopener"
+                       target="_blank">
+                        {{'cloud.demo.btn' | i18n}}
+                    </a>
                 </div>
             </div>
         </div>

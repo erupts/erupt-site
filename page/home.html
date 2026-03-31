@@ -1,6 +1,6 @@
 <style>
     #erupt-features {
-        transition: all .6s;
+        transition: transform .6s;
         border-radius: 6px;
         position: relative;
         background: #fff;
@@ -19,7 +19,7 @@
     }
 
     .card-item:hover {
-        transition: all .3s;
+        transition: box-shadow .3s;
         box-shadow: inset 0 0 30px rgba(0, 0, 0, .06);
     }
 
@@ -31,7 +31,7 @@
         box-shadow: 0 0 4px #eeeeee;
         margin-bottom: 26px;
         border: 1px solid #eee;
-        transition: all 600ms;
+        transition: box-shadow 600ms;
     }
 
     .indicator-card .desc {
@@ -51,7 +51,7 @@
     }
 
     .indicator-card:hover img {
-        transition: all 600ms;
+        transition: transform 600ms;
         transform: scale(1.05);
     }
 
@@ -119,11 +119,11 @@
 
     .git-card {
         cursor: pointer;
-        transition: all 600ms;
+        transition: transform 600ms, background 600ms, color 600ms, box-shadow 600ms;
     }
 
     .git-card img {
-        transition: all 600ms;
+        transition: transform 600ms;
     }
 
     .git-card:hover {
@@ -155,24 +155,31 @@
 
     @keyframes skew-up {
         0% {
-            top: 650px;
+            transform: skewY(var(--skew-angle, 0deg)) translateY(200px);
             opacity: 0;
         }
         100% {
+            transform: skewY(var(--skew-angle, 0deg)) translateY(0);
             opacity: 1;
         }
     }
 
     #skew-bg3 {
-        animation: skew-up 3.6s;
+        --skew-angle: 25deg;
+        animation: skew-up 3.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: transform, opacity;
     }
 
     #skew-bg2 {
-        animation: skew-up 2.6s;
+        --skew-angle: 10deg;
+        animation: skew-up 2.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: transform, opacity;
     }
 
     #skew-bg {
-        animation: skew-up 2s;
+        --skew-angle: -10deg;
+        animation: skew-up 2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: transform, opacity;
     }
 
     .sponsor .name {
@@ -213,6 +220,7 @@
         border: 2px solid rgba(0, 123, 255, 0.3);
         position: relative;
         animation: erupt-fly-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        will-change: transform, opacity;
     }
 
     #erupt-box::before {
@@ -298,17 +306,17 @@
                 <div id="skew-bg3" style="position: absolute;
                             top: 180px;left: 0;right: 0;bottom: -500px;background: #f44336;
                             transform: skewY(25deg);transform-origin: 0 50%;
-                            transition:all 400ms;box-shadow: 5px -5px 20px 0 #000000">
+                            transition: transform 400ms;box-shadow: 5px -5px 20px 0 #000000">
                 </div>
                 <div id="skew-bg2" style="position: absolute;
                             top: 260px;left: 0;right: 0;bottom: -500px;background: #4caf50;
                             transform: skewY(10deg);transform-origin: 0 50%;
-                            transition:all 400ms;box-shadow: 5px -5px 20px 0 #000000">
+                            transition: transform 400ms;box-shadow: 5px -5px 20px 0 #000000">
                 </div>
                 <div id="skew-bg" style="position: absolute;
                             top: 350px;left: 0;right: 0;bottom: -500px;background: #007bff;
                             transform: skewY(-10deg);transform-origin: 0 50%;
-                            transition:all 400ms;box-shadow: 5px -5px 20px 0 #000000">
+                            transition: transform 400ms;box-shadow: 5px -5px 20px 0 #000000">
                 </div>
                 <!--                <div id="skew-bg0" style="position: absolute;-->
                 <!--                                            top: 540px;left: 0;right: 0;bottom: -500px;background: #ffc107;;transform-origin: 0 50%;-->
@@ -431,7 +439,7 @@ public class DemoErupt extends BaseModel {
             </div>
         </div>
         <div id="erupt-features">
-            <div style="background: #38404e url(images/tile.png) 0 0 repeat ;padding:26px 26px 0;position: relative;box-shadow: inset 0 0 10px #222;max-height: 500px;overflow: scroll">
+            <div style="background: #38404e url(images/tile.png) 0 0 repeat ;padding:26px 26px 0;position: relative;box-shadow: inset 0 0 10px #222;max-height: 500px;overflow-y: auto; -webkit-overflow-scrolling: touch;">
                 <div>
                     <div>
                         <p class="text-center" style="color: #fff;margin-bottom: 0">
