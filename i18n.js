@@ -74,15 +74,6 @@ var i18n = {
         'cloud.arch.step4.title': ['统一控制台', 'Unified console'],
         'cloud.arch.step4.desc': ['在管理台浏览、检索并操作各服务暴露的 Erupt 页面与数据。', 'Browse and operate Erupt UIs exposed by each service from one place.'],
 
-        'cloud.concepts.title': ['核心概念与开发方式', 'Concepts & development'],
-        'cloud.concepts.desc': ['Cloud 不改变「注解驱动」的心智模型，只是把配置面与运行面扩展到分布式环境。', 'Cloud keeps the annotation-first model while extending config and runtime to distributed setups.'],
-        'cloud.concepts.b1': ['多维表（OVM）仍是中心：字段、视图、权限仍在模型上声明。', 'Multidimensional tables (OVM) stay central: fields, views, permissions on the model.'],
-        'cloud.concepts.b2': ['配置中心负责「哪些表在哪些节点可用、如何同步」，减少硬编码环境地址。', 'The config plane governs which tables run where and how they sync—fewer hard-coded endpoints.'],
-        'cloud.concepts.b3': ['Node 将运行中的服务实例映射到拓扑，便于可视化与跳转。', 'Nodes map running instances into the topology for visualization and deep links.'],
-        'cloud.concepts.b4': ['与单节点 Erupt 相同的安全与审计思路，在集群场景下更强调边界与令牌传递。', 'Same security mindset as single-node Erupt; clusters add emphasis on boundaries and token propagation.'],
-        'cloud.concepts.b5': ['详细注解清单、Starter 与排错请始终以语雀对应章节为准。', 'For annotation lists, starters, and troubleshooting, always follow the matching Yuque chapter.'],
-        'cloud.concepts.codeCaption': ['业务侧模型示例（字段省略）', 'Sample model (fields omitted)'],
-
         'cloud.compare.title': ['单节点 vs Cloud 模式', 'Single-node vs Cloud'],
         'cloud.compare.desc': ['帮助判断你是否需要引入 Cloud（以下为能力向对比，非性能测试结论）。', 'A capability-oriented comparison—not a performance benchmark.'],
         'cloud.compare.th.dim': ['维度', 'Aspect'],
@@ -292,6 +283,11 @@ var i18n = {
 
         // AI 页面 - 核心能力
         'ai.core.title': ['核心 AI 能力', 'Core AI Capabilities'],
+        'ai.core.subtitle': ['开箱即用的多模型 · 多工具 · 全场景 AI 能力', 'Multi-model · Multi-tool · Full-scenario AI capabilities, ready out of the box'],
+        'ai.stat.llms': ['主流大模型', 'Mainstream LLMs'],
+        'ai.stat.quickstart': ['快速集成', 'Quick Integration'],
+        'ai.stat.agent': ['智能体引擎', 'Agent Engine'],
+        'ai.stat.mcp': ['协议原生支持', 'Native Protocol'],
         'ai.core.multillm.title': ['多 LLM 支持', 'Multi-LLM Support'],
         'ai.core.multillm.desc': ['兼容所有主流大模型，OpenAI / Claude / Gemini / DeepSeek / 通义千问等，统一接口一键切换', 'Compatible with all mainstream LLMs — OpenAI / Claude / Gemini / DeepSeek / Qwen — unified API, one-click switching'],
         'ai.core.context.title': ['多轮对话上下文', 'Multi-turn Context'],

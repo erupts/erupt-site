@@ -4,13 +4,18 @@ app.controller("ai", function ($scope, $sce, i18nService) {
         return $sce.trustAsHtml(i18nService.t(key, params));
     };
 
+    $scope.trustHtml = function (html) {
+        return $sce.trustAsHtml(html || '');
+    };
+
     $scope.capabilities = [
         {
             icon: '\u{1F310}', tag: 'LLM',
             accent: 'linear-gradient(90deg, #6366f1, #8b5cf6)',
             bg: '#ede9fe', fg: '#6d28d9', wide: true,
             title: i18nService.t('ai.core.multillm.title'),
-            desc: i18nService.t('ai.core.multillm.desc')
+            desc: i18nService.t('ai.core.multillm.desc'),
+            chips: ['GPT-4o', 'Claude 3.5', 'Gemini', 'DeepSeek', 'Qwen', '文心', 'GLM', 'Doubao', 'Kimi', 'Spark', 'Llama', 'Ollama', '...']
         },
         {
             icon: '\u{1F4AC}', tag: 'CONTEXT',
@@ -57,9 +62,10 @@ app.controller("ai", function ($scope, $sce, i18nService) {
         {
             icon: '\u{1F527}', tag: 'TOOLS',
             accent: 'linear-gradient(90deg, #ef4444, #f87171)',
-            bg: '#fee2e2', fg: '#b91c1c', wide: true,
+            bg: '#fee2e2', fg: '#b91c1c', wide: false, full: true,
             title: i18nService.t('ai.core.tools.title'),
-            desc: i18nService.t('ai.core.tools.desc')
+            desc: i18nService.t('ai.core.tools.desc'),
+            code: '<span class="cc">// 一个注解，将 Java 方法注册为 AI 工具</span>\n<span class="ca">@Tool</span>(name = <span class="cs">"查询用户订单"</span>)\n<span class="ck">public</span> List&lt;Order&gt; <span class="cn">queryOrders</span>(@P("UserId") <span class="ck">String</span> userId) {\n    <span class="ck">return</span> orderService.findByUserId(userId);\n}\n\n<span class="cc">// 支持运行时动态注册 / 注销</span>\n<span class="ca">@Tool</span>(name = <span class="cs">"创建工单"</span>, auth = <span class="ck">true</span>)\n<span class="ck">public</span> <span class="ck">boolean</span> <span class="cn">createTicket</span>(@P("标题") <span class="ck">String</span> title,@P("内容")  <span class="ck">String</span> content) {\n    <span class="ck">return</span> ticketService.create(title, content);\n}'
         }
     ];
 

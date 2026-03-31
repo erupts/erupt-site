@@ -135,7 +135,7 @@
         color: #fff;
     }
 
-    /* topology SVG */
+    /* topology canvas */
     .cloud-topo-wrap {
         display: flex;
         align-items: center;
@@ -145,8 +145,7 @@
 
     .cloud-topo {
         width: 100%;
-        max-width: 420px;
-        filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.35));
+        max-width: 460px;
     }
 
     /* body */
@@ -302,7 +301,7 @@
         flex-wrap: wrap;
         gap: 16px;
         justify-content: space-between;
-        margin-bottom: 8px;
+        margin-bottom: 26px;
     }
 
     .cloud-arch-step {
@@ -653,40 +652,6 @@
                 </div>
             </div>
 
-            <h2 class="cloud-section-title mt-5">{{'cloud.concepts.title' | i18n}}</h2>
-            <p class="cloud-section-desc">{{'cloud.concepts.desc' | i18n}}</p>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="cloud-feat-card h-100">
-                        <ul class="cloud-concept-list">
-                            <li>{{'cloud.concepts.b1' | i18n}}</li>
-                            <li>{{'cloud.concepts.b2' | i18n}}</li>
-                            <li>{{'cloud.concepts.b3' | i18n}}</li>
-                            <li>{{'cloud.concepts.b4' | i18n}}</li>
-                            <li>{{'cloud.concepts.b5' | i18n}}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="cloud-code-wrap h-100">
-                        <h5>{{'cloud.concepts.codeCaption' | i18n}}</h5>
-                        <pre class="language-java mb-0" ng-non-bindable><code class="language-java">@Entity
-@Table(name = "e_cloud_demo")
-@Erupt(name = "Cloud demo")
-public class CloudDemo extends BaseModel {
-
-    @EruptField(
-        views = @View(title = "Name", type = ViewType.TEXT),
-        edit = @Edit(title = "Name", type = EditType.INPUT, search = @Search)
-    )
-    private String name;
-
-    // Same annotation style as single-node Erupt;
-    // Cloud adds registry &amp; node wiring per Yuque.
-}</code></pre>
-                    </div>
-                </div>
-            </div>
 
             <h2 class="cloud-section-title mt-2">{{'cloud.compare.title' | i18n}}</h2>
             <p class="cloud-section-desc">{{'cloud.compare.desc' | i18n}}</p>

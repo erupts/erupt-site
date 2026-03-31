@@ -10,8 +10,7 @@
         margin: 0 auto;
     }
 
-    .ai-hero-border::before {
-        content: '';
+    .ai-hero-strip {
         position: absolute;
         top: 0;
         left: 0;
@@ -20,33 +19,35 @@
         background: linear-gradient(
             90deg,
             transparent 0%,
-            #4f46e5 20%,
-            #818cf8 40%,
-            #22d3ee 60%,
-            #4f46e5 80%,
+            rgba(79, 70, 229, 0) 5%,
+            #6366f1 25%,
+            #a78bfa 50%,
+            #22d3ee 75%,
+            rgba(34, 211, 238, 0) 95%,
             transparent 100%
         );
-        background-size: 200% 100%;
-        animation: ai-strip-drift 6s ease-in-out infinite;
-        z-index: 2;
+        z-index: 10;
+        box-shadow:
+            0 0 8px 1px rgba(99, 102, 241, 0.7),
+            0 0 20px 4px rgba(99, 102, 241, 0.35),
+            0 0 60px 8px rgba(34, 211, 238, 0.15);
     }
 
-    .ai-hero-border::after {
+    .ai-hero-strip::after {
         content: '';
         position: absolute;
         top: 0;
-        left: 15%;
-        right: 15%;
-        height: 80px;
-        background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.22) 0%, rgba(34, 211, 238, 0.08) 50%, transparent 80%);
+        left: 5%;
+        right: 5%;
+        height: 160px;
+        background: radial-gradient(
+            ellipse at 50% 0%,
+            rgba(99, 102, 241, 0.18) 0%,
+            rgba(139, 92, 246, 0.08) 30%,
+            rgba(34, 211, 238, 0.05) 55%,
+            transparent 75%
+        );
         pointer-events: none;
-        z-index: 1;
-    }
-
-    @keyframes ai-strip-drift {
-        0%   { background-position: 0% 0%; opacity: 0.8; }
-        50%  { background-position: 100% 0%; opacity: 1; }
-        100% { background-position: 0% 0%; opacity: 0.8; }
     }
 
     .ai-hero {
@@ -191,15 +192,16 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 3px;
+        height: 2px;
         background: var(--card-accent);
-        opacity: 0;
-        transition: opacity 400ms;
+        opacity: 0.45;
+        transition: opacity 350ms;
     }
 
     .ai-bento-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.12);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 44px -10px rgba(0, 0, 0, 0.11);
+        border-color: rgba(0, 0, 0, 0.1);
     }
 
     .ai-bento-card:hover::before {
@@ -261,6 +263,128 @@
         grid-column: span 2;
     }
 
+    .ai-bento-card.bento-full {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: start;
+    }
+
+    .ai-bento-card.bento-full .bento-main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Stats 条 */
+    .ai-core-stats {
+        display: flex;
+        background: linear-gradient(90deg, #f8f8fd 0%, #f4f4fb 100%);
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        border-radius: 14px;
+        margin-bottom: 36px;
+        overflow: hidden;
+    }
+
+    .ai-core-stat {
+        flex: 1;
+        padding: 20px 16px;
+        text-align: center;
+        border-right: 1px solid rgba(0, 0, 0, 0.06);
+        position: relative;
+    }
+
+    .ai-core-stat:last-child {
+        border-right: none;
+    }
+
+    .ai-core-stat-num {
+        display: block;
+        font-size: 1.7em;
+        font-weight: 900;
+        color: #1a1a2e;
+        line-height: 1;
+        margin-bottom: 5px;
+        letter-spacing: -0.5px;
+    }
+
+    .ai-core-stat-num sup {
+        font-size: 0.48em;
+        font-weight: 700;
+        color: #6366f1;
+        vertical-align: super;
+        letter-spacing: 0;
+    }
+
+    .ai-core-stat-label {
+        display: block;
+        font-size: 0.76em;
+        color: #71717a;
+        font-weight: 500;
+    }
+
+    /* Chips */
+    .bento-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 14px;
+    }
+
+    .bento-chip {
+        background: rgba(99, 102, 241, 0.07);
+        border: 1px solid rgba(99, 102, 241, 0.13);
+        border-radius: 4px;
+        padding: 2px 9px;
+        font-size: 0.72em;
+        color: #5046e4;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    /* 代码块 */
+    .bento-code {
+        background: #0f0f1c;
+        border-radius: 10px;
+        padding: 18px 20px;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .bento-code::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5), rgba(34,211,238,0.4), transparent);
+    }
+
+    .bento-code-label {
+        font-size: 0.7em;
+        color: rgba(255,255,255,0.3);
+        letter-spacing: 1px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .bento-code pre {
+        margin: 0;
+        font-size: 0.82em;
+        line-height: 1.75;
+        color: #cdd6f4;
+        font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+        white-space: pre;
+    }
+
+    .bento-code .ck { color: #cba6f7; }
+    .bento-code .ca { color: #f9e2af; }
+    .bento-code .cs { color: #a6e3a1; }
+    .bento-code .cc { color: #585b70; }
+    .bento-code .cn { color: #89b4fa; }
+
     @media (max-width: 992px) {
         .ai-bento {
             grid-template-columns: repeat(2, 1fr);
@@ -268,14 +392,39 @@
         .ai-bento-card.bento-wide {
             grid-column: span 2;
         }
+        .ai-bento-card.bento-full {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .ai-core-stats {
+            flex-wrap: wrap;
+        }
+        .ai-core-stat {
+            flex: 0 0 50%;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .ai-core-stat:nth-child(2), .ai-core-stat:nth-child(4) {
+            border-right: none;
+        }
+        .ai-core-stat:nth-child(3), .ai-core-stat:nth-child(4) {
+            border-bottom: none;
+        }
     }
 
     @media (max-width: 576px) {
         .ai-bento {
             grid-template-columns: 1fr;
         }
-        .ai-bento-card.bento-wide {
+        .ai-bento-card.bento-wide,
+        .ai-bento-card.bento-full {
             grid-column: span 1;
+        }
+        .ai-bento-card.bento-full {
+            display: block;
+        }
+        .bento-code {
+            margin-top: 16px;
+            height: auto;
         }
     }
 
@@ -750,6 +899,7 @@
     <div class="ai-hero-outer">
         <div class="ai-hero-border">
             <div class="ai-hero">
+                <div class="ai-hero-strip"></div>
                 <div class="container">
                     <h1 class="animated fadeInDown">
                         <span>{{'ai.hero.title' | i18n}}</span>
@@ -773,16 +923,56 @@
         <div class="container">
             <div class="ai-section-title">
                 <h2>{{'ai.core.title' | i18n}}</h2>
+                <p>{{'ai.core.subtitle' | i18n}}</p>
             </div>
+
+            <!-- Stats 条 -->
+            <div class="ai-core-stats">
+                <div class="ai-core-stat">
+                    <span class="ai-core-stat-num">13<sup>+</sup></span>
+                    <span class="ai-core-stat-label">{{'ai.stat.llms' | i18n}}</span>
+                </div>
+                <div class="ai-core-stat">
+                    <span class="ai-core-stat-num">5<sup>min</sup></span>
+                    <span class="ai-core-stat-label">{{'ai.stat.quickstart' | i18n}}</span>
+                </div>
+                <div class="ai-core-stat">
+                    <span class="ai-core-stat-num">ReAct</span>
+                    <span class="ai-core-stat-label">{{'ai.stat.agent' | i18n}}</span>
+                </div>
+                <div class="ai-core-stat">
+                    <span class="ai-core-stat-num">MCP</span>
+                    <span class="ai-core-stat-label">{{'ai.stat.mcp' | i18n}}</span>
+                </div>
+            </div>
+
             <div class="ai-bento">
                 <div class="ai-bento-card animated fadeInUp"
                      ng-repeat="cap in capabilities"
-                     ng-class="[cap.wide ? 'bento-wide' : '', 'delay-' + ($index % 3 + 1)]"
+                     ng-class="[cap.wide ? 'bento-wide' : '', cap.full ? 'bento-full' : '', 'delay-' + ($index % 3 + 1)]"
                      ng-style="{'--card-accent': cap.accent, '--card-bg': cap.bg, '--card-fg': cap.fg}">
-                    <div class="bento-icon">{{cap.icon}}</div>
-                    <span class="bento-tag">{{cap.tag}}</span>
-                    <h4>{{cap.title}}</h4>
-                    <p>{{cap.desc}}</p>
+                    <!-- 全宽卡片（Tools）左右两栏布局 -->
+                    <div class="bento-main" ng-if="cap.full">
+                        <div class="bento-icon">{{cap.icon}}</div>
+                        <span class="bento-tag">{{cap.tag}}</span>
+                        <h4>{{cap.title}}</h4>
+                        <p>{{cap.desc}}</p>
+                    </div>
+                    <div class="bento-code" ng-if="cap.full && cap.code">
+                        <div class="bento-code-label">示例代码</div>
+                        <pre ng-bind-html="trustHtml(cap.code)"></pre>
+                    </div>
+
+                    <!-- 普通卡片 -->
+                    <div ng-if="!cap.full">
+                        <div class="bento-icon">{{cap.icon}}</div>
+                        <span class="bento-tag">{{cap.tag}}</span>
+                        <h4>{{cap.title}}</h4>
+                        <p>{{cap.desc}}</p>
+                        <div class="bento-chips" ng-if="cap.chips">
+                            <span class="bento-chip" ng-repeat="c in cap.chips">{{c}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -22,381 +22,380 @@ function initCloudTopo() {
 
     var ctx = canvas.getContext('2d');
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var W = 420, H = 320;
-    canvas.width = W * dpr;
+    var W = 460, H = 360;
+    canvas.width  = W * dpr;
     canvas.height = H * dpr;
-    canvas.style.width = W + 'px';
+    canvas.style.width  = W + 'px';
     canvas.style.height = H + 'px';
     ctx.scale(dpr, dpr);
 
-    var cx = 210, cy = 152;
-    var ORBIT_R = 108;
+    var cx = 230, cy = 175;
+    var OR = 118; // orbit radius
 
-    /* ── helpers ── */
+    /* ─── util ─── */
     function ha(hex, a) {
-        var r = parseInt(hex.slice(1, 3), 16);
-        var g = parseInt(hex.slice(3, 5), 16);
-        var b = parseInt(hex.slice(5, 7), 16);
-        return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+        return 'rgba(' + parseInt(hex.slice(1,3),16) + ',' +
+               parseInt(hex.slice(3,5),16) + ',' +
+               parseInt(hex.slice(5,7),16) + ',' + a + ')';
     }
-    function lerp(a, b, t) { return a + (b - a) * t; }
-    function dist2(ax, ay, bx, by) { var dx = ax - bx, dy = ay - by; return Math.sqrt(dx * dx + dy * dy); }
+    // Quadratic bezier point
+    function qb(x0,y0,cpx,cpy,x2,y2,t) {
+        var m = 1-t;
+        return { x: m*m*x0 + 2*m*t*cpx + t*t*x2,
+                 y: m*m*y0 + 2*m*t*cpy + t*t*y2 };
+    }
+    // Right-perpendicular control point (curves clockwise hub→sat)
+    function ctrlPt(ax,ay,bx,by,bend) {
+        var mx=(ax+bx)/2, my=(ay+by)/2;
+        var dx=bx-ax, dy=by-ay, len=Math.sqrt(dx*dx+dy*dy);
+        return { x: mx + (dy/len)*bend, y: my + (-dx/len)*bend };
+    }
 
-    /* ── nodes ── */
-    var hub = { x: cx, y: cy, r: 35, line1: 'Cloud', line2: 'Server', c1: '#38bdf8', c2: '#6366f1' };
+    /* ─── nodes ─── */
+    var hub = { x:cx, y:cy, r:38, l1:'Cloud', l2:'Server', c1:'#38bdf8', c2:'#6366f1' };
 
-    var satDefs = [
-        { angle: -90,  r: 23, line1: 'Admin',  line2: 'Console', c1: '#22d3ee', c2: '#0891b2' },
-        { angle: -30,  r: 20, line1: 'Node',   line2: '#1',      c1: '#818cf8', c2: '#6366f1' },
-        { angle:  30,  r: 20, line1: 'Node',   line2: '#2',      c1: '#a78bfa', c2: '#7c3aed' },
-        { angle:  90,  r: 21, line1: 'Config', line2: 'Store',   c1: '#fb923c', c2: '#ea580c' },
-        { angle: 150,  r: 20, line1: 'Node',   line2: '#3',      c1: '#34d399', c2: '#059669' },
-        { angle: 210,  r: 20, line1: 'Node',   line2: '#4',      c1: '#818cf8', c2: '#6366f1' },
+    var sats = [
+        { a:-90,  r:26, l1:'Console', l2:'Admin',  c1:'#22d3ee', c2:'#0891b2' },
+        { a:-30,  r:22, l1:'Node',    l2:'#1',     c1:'#818cf8', c2:'#6366f1' },
+        { a: 30,  r:22, l1:'Node',    l2:'#2',     c1:'#a78bfa', c2:'#7c3aed' },
+        { a: 90,  r:22, l1:'Config',  l2:'Store',  c1:'#fb923c', c2:'#ea580c' },
+        { a:150,  r:22, l1:'Node',    l2:'#3',     c1:'34d399',  c2:'#059669' },
+        { a:210,  r:22, l1:'Node',    l2:'#4',     c1:'#818cf8', c2:'#6366f1' },
     ];
+    // Fix Node #3 color (was missing #)
+    sats[4].c1 = '#34d399';
 
-    satDefs.forEach(function (s) {
-        var rad = s.angle * Math.PI / 180;
-        s.x = cx + ORBIT_R * Math.cos(rad);
-        s.y = cy + ORBIT_R * Math.sin(rad);
+    sats.forEach(function(s) {
+        var rad = s.a * Math.PI / 180;
+        s.x = cx + OR * Math.cos(rad);
+        s.y = cy + OR * Math.sin(rad);
+        s.cp = ctrlPt(cx, cy, s.x, s.y, 22); // bezier control point
     });
 
-    /* ── data packets ── */
-    // outward = config push (cyan), inward = heartbeat (green)
-    var packets = [];
-    satDefs.forEach(function (s, i) {
-        var base = i / satDefs.length;
-        packets.push({ from: hub, to: s, t: base,              speed: 0.0038 + Math.random() * 0.002, c: '#7dd3fc', r: 3.2 });
-        packets.push({ from: hub, to: s, t: (base + 0.5) % 1, speed: 0.0030 + Math.random() * 0.002, c: '#7dd3fc', r: 2.4 });
-        packets.push({ from: s, to: hub, t: (base + 0.28) % 1, speed: 0.0045 + Math.random() * 0.002, c: '#6ee7b7', r: 2.2 });
+    /* ─── packets ─── */
+    var pkts = [];
+    sats.forEach(function(s, i) {
+        var b = i / sats.length;
+        // 2× outward (config push) — cyan
+        pkts.push({ x0:cx, y0:cy, cpx:s.cp.x, cpy:s.cp.y, x2:s.x, y2:s.y, t:(b)%1,        sp:0.0040+Math.random()*0.0018, c:'#7dd3fc', r:3.0 });
+        pkts.push({ x0:cx, y0:cy, cpx:s.cp.x, cpy:s.cp.y, x2:s.x, y2:s.y, t:(b+0.48)%1, sp:0.0032+Math.random()*0.0015, c:'#7dd3fc', r:2.2 });
+        // 1× inward (heartbeat) — green
+        pkts.push({ x0:s.x, y0:s.y, cpx:s.cp.x, cpy:s.cp.y, x2:cx, y2:cy, t:(b+0.24)%1, sp:0.0048+Math.random()*0.0018, c:'#6ee7b7', r:2.0 });
     });
 
-    /* ── pulse rings ── */
-    var rings = [];
-    var lastRingFrame = -200;
-    function spawnRing(node) {
-        rings.push({ x: node.x, y: node.y, r0: node.r, r: node.r, rMax: node.r + 52, t: 0, c: node.c1 });
-    }
+    /* ─── hub pulse rings ─── */
+    var hRings = [];
+    var lastRing = -300;
 
-    /* ── stars ── */
-    var stars = [];
-    for (var i = 0; i < 55; i++) {
-        stars.push({
-            x: Math.random() * W,
-            y: Math.random() * H,
-            r: Math.random() * 0.9 + 0.25,
-            ph: Math.random() * Math.PI * 2,
-            sp: 0.016 + Math.random() * 0.028
+    /* ─── floating particles (drift in canvas space) ─── */
+    var drifters = [];
+    for (var i = 0; i < 28; i++) {
+        drifters.push({
+            x: Math.random()*W, y: Math.random()*H,
+            vx: (Math.random()-0.5)*0.25, vy: (Math.random()-0.5)*0.25,
+            r: Math.random()*1.1+0.3,
+            ph: Math.random()*Math.PI*2,
+            sp: 0.018+Math.random()*0.025,
+            c: Math.random()<0.5 ? '#7dd3fc' : '#818cf8'
         });
     }
-
-    /* ── nebula clouds (static) ── */
-    var nebulas = [
-        { x: 55,  y: 60,  rx: 70, ry: 45, c: '#6366f1', a: 0.07 },
-        { x: 360, y: 240, rx: 60, ry: 40, c: '#38bdf8', a: 0.06 },
-        { x: 90,  y: 260, rx: 50, ry: 35, c: '#22d3ee', a: 0.05 },
-    ];
 
     var frame = 0;
 
-    /* ════════════════════════════════
-       DRAW FUNCTIONS
-    ════════════════════════════════ */
+    /* ═══════════════════════════════
+       DRAWING FUNCTIONS
+    ═══════════════════════════════ */
 
-    function drawBg() {
-        /* base */
-        var bg = ctx.createLinearGradient(0, 0, W, H);
-        bg.addColorStop(0, '#020c1b');
-        bg.addColorStop(1, '#030f22');
-        ctx.fillStyle = bg;
+    function drawAtmo() {
+        var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, 200);
+        g.addColorStop(0,   'rgba(56,189,248,0.30)');
+        g.addColorStop(0.35,'rgba(99,102,241,0.16)');
+        g.addColorStop(0.7, 'rgba(56,189,248,0.06)');
+        g.addColorStop(1,   'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
         ctx.fillRect(0, 0, W, H);
+    }
 
-        /* dot matrix grid — brighter near center */
-        for (var gx = 16; gx < W; gx += 22) {
-            for (var gy = 16; gy < H; gy += 22) {
-                var d = dist2(gx, gy, cx, cy);
-                var a = Math.max(0.03, 0.14 - d / 650);
-                ctx.fillStyle = 'rgba(56,189,248,' + a + ')';
-                ctx.beginPath();
-                ctx.arc(gx, gy, 0.85, 0, Math.PI * 2);
-                ctx.fill();
+    function drawDotGrid() {
+        for (var gx = 18; gx < W; gx += 24) {
+            for (var gy = 18; gy < H; gy += 24) {
+                var d = Math.sqrt((gx-cx)*(gx-cx)+(gy-cy)*(gy-cy));
+                var a = Math.max(0.025, 0.10 - d/680);
+                ctx.fillStyle = 'rgba(125,211,252,' + a + ')';
+                ctx.beginPath(); ctx.arc(gx, gy, 0.75, 0, Math.PI*2); ctx.fill();
             }
         }
-
-        /* nebula blobs */
-        nebulas.forEach(function (nb) {
-            ctx.save();
-            ctx.scale(1, nb.ry / nb.rx);
-            var g = ctx.createRadialGradient(nb.x, nb.y * nb.rx / nb.ry, 0,
-                nb.x, nb.y * nb.rx / nb.ry, nb.rx);
-            g.addColorStop(0, ha(nb.c, nb.a));
-            g.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = g;
-            ctx.beginPath();
-            ctx.arc(nb.x, nb.y * nb.rx / nb.ry, nb.rx, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-        });
-
-        /* central atmospheric glow */
-        var atm = ctx.createRadialGradient(cx, cy, 0, cx, cy, 165);
-        atm.addColorStop(0, 'rgba(99,102,241,0.22)');
-        atm.addColorStop(0.38, 'rgba(56,189,248,0.09)');
-        atm.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = atm;
-        ctx.fillRect(0, 0, W, H);
     }
 
-    function drawStars() {
-        stars.forEach(function (s) {
-            var a = 0.22 + 0.55 * Math.sin(frame * s.sp + s.ph);
-            ctx.fillStyle = 'rgba(255,255,255,' + a + ')';
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-            ctx.fill();
+    function drawDrifters() {
+        drifters.forEach(function(p) {
+            p.x = (p.x + p.vx + W) % W;
+            p.y = (p.y + p.vy + H) % H;
+            var a = 0.12 + 0.18*Math.sin(frame*p.sp + p.ph);
+            ctx.fillStyle = ha(p.c, a);
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
         });
     }
 
-    function drawOrbitRing() {
+    function drawOrbit() {
+        ctx.save();
         ctx.beginPath();
-        ctx.arc(cx, cy, ORBIT_R, 0, Math.PI * 2);
-        ctx.setLineDash([3, 9]);
-        ctx.strokeStyle = 'rgba(56,189,248,0.07)';
+        ctx.arc(cx, cy, OR, 0, Math.PI*2);
+        ctx.setLineDash([2, 11]);
+        ctx.strokeStyle = 'rgba(125,211,252,0.09)';
         ctx.lineWidth = 1;
         ctx.stroke();
         ctx.setLineDash([]);
+        ctx.restore();
     }
 
-    function drawPulseRings() {
-        rings = rings.filter(function (pr) {
-            pr.t += 0.017;
-            pr.r = pr.r0 + (pr.rMax - pr.r0) * pr.t;
-            var a = 0.5 * (1 - pr.t);
-            ctx.beginPath();
-            ctx.arc(pr.x, pr.y, pr.r, 0, Math.PI * 2);
-            ctx.strokeStyle = ha(pr.c, a);
-            ctx.lineWidth = 1.5;
+    function drawHubPulse() {
+        if (frame - lastRing > 75) {
+            hRings.push({ t:0, maxR: hub.r+80, a:0.80 });
+            lastRing = frame;
+        }
+        hRings = hRings.filter(function(r) {
+            r.t += 0.013;
+            var rad = hub.r + (r.maxR - hub.r)*r.t;
+            var a = r.a * (1-r.t);
+            ctx.beginPath(); ctx.arc(cx, cy, rad, 0, Math.PI*2);
+            ctx.strokeStyle = ha(hub.c1, a);
+            ctx.lineWidth = 2.5*(1-r.t*0.6);
             ctx.stroke();
-            return pr.t < 1;
+            return r.t < 1;
         });
     }
 
-    function drawConn(sat) {
-        var dx = sat.x - hub.x, dy = sat.y - hub.y;
-        var d = Math.sqrt(dx * dx + dy * dy);
-        var nx = dx / d, ny = dy / d;
-        var x1 = hub.x + nx * hub.r, y1 = hub.y + ny * hub.r;
-        var x2 = sat.x - nx * sat.r, y2 = sat.y - ny * sat.r;
+    function drawConn(s) {
+        var x1 = cx + (s.x-cx)/OR*hub.r,   y1 = cy + (s.y-cy)/OR*hub.r;
+        var x2 = s.x - (s.x-cx)/OR*s.r,    y2 = s.y - (s.y-cy)/OR*s.r;
+        var cp = s.cp;
 
-        /* wide outer glow */
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
-        ctx.strokeStyle = 'rgba(56,189,248,0.08)';
-        ctx.lineWidth = 10; ctx.stroke();
-
-        /* mid glow */
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
-        ctx.strokeStyle = 'rgba(125,211,252,0.16)';
-        ctx.lineWidth = 4; ctx.stroke();
-
-        /* dashed bright core */
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
-        ctx.setLineDash([5, 5]);
-        ctx.lineDashOffset = -(frame * 0.5 % 10);
-        ctx.strokeStyle = 'rgba(186,230,253,0.42)';
-        ctx.lineWidth = 1.2; ctx.stroke();
-        ctx.setLineDash([]);
+        // Outermost diffuse glow
+        ctx.beginPath(); ctx.moveTo(x1,y1); ctx.quadraticCurveTo(cp.x,cp.y,x2,y2);
+        ctx.strokeStyle = 'rgba(56,189,248,0.18)'; ctx.lineWidth = 22; ctx.stroke();
+        // Wide glow
+        ctx.beginPath(); ctx.moveTo(x1,y1); ctx.quadraticCurveTo(cp.x,cp.y,x2,y2);
+        ctx.strokeStyle = 'rgba(125,211,252,0.32)'; ctx.lineWidth = 9; ctx.stroke();
+        // Mid bright
+        ctx.beginPath(); ctx.moveTo(x1,y1); ctx.quadraticCurveTo(cp.x,cp.y,x2,y2);
+        ctx.strokeStyle = 'rgba(186,230,253,0.50)'; ctx.lineWidth = 3.5; ctx.stroke();
+        // Dashed bright core
+        ctx.save();
+        ctx.beginPath(); ctx.moveTo(x1,y1); ctx.quadraticCurveTo(cp.x,cp.y,x2,y2);
+        ctx.setLineDash([5,5]);
+        ctx.lineDashOffset = -(frame*0.45 % 10);
+        ctx.strokeStyle = 'rgba(224,247,255,0.75)'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.restore();
     }
 
-    function drawPacket(p) {
-        p.t = (p.t + p.speed) % 1;
-        var px = lerp(p.from.x, p.to.x, p.t);
-        var py = lerp(p.from.y, p.to.y, p.t);
+    function drawPkt(p) {
+        p.t = (p.t + p.sp) % 1;
+        var pt = qb(p.x0, p.y0, p.cpx, p.cpy, p.x2, p.y2, p.t);
 
-        /* comet trail */
-        for (var i = 1; i <= 6; i++) {
-            var tBack = p.t - i * p.speed * 7;
-            if (tBack < 0) continue;
-            var tx = lerp(p.from.x, p.to.x, tBack);
-            var ty = lerp(p.from.y, p.to.y, tBack);
-            var tr = Math.max(0.5, p.r * (1 - i * 0.14));
-            ctx.fillStyle = ha(p.c, 0.45 - i * 0.06);
-            ctx.beginPath(); ctx.arc(tx, ty, tr, 0, Math.PI * 2); ctx.fill();
+        // Comet trail (8 steps, brighter)
+        for (var i = 1; i <= 8; i++) {
+            var tb = p.t - i*p.sp*9;
+            if (tb < 0) continue;
+            var pb = qb(p.x0, p.y0, p.cpx, p.cpy, p.x2, p.y2, tb);
+            var tr = Math.max(0.4, p.r*(1-i*0.10));
+            ctx.fillStyle = ha(p.c, 0.60-i*0.062);
+            ctx.beginPath(); ctx.arc(pb.x, pb.y, tr, 0, Math.PI*2); ctx.fill();
         }
-
-        /* glow bloom */
-        var bloom = ctx.createRadialGradient(px, py, 0, px, py, p.r * 2.8);
-        bloom.addColorStop(0, ha(p.c, 0.95));
-        bloom.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = bloom;
-        ctx.beginPath(); ctx.arc(px, py, p.r * 2.8, 0, Math.PI * 2); ctx.fill();
-
-        /* white core */
+        // Outer diffuse bloom
+        var g2 = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, p.r*7);
+        g2.addColorStop(0, ha(p.c, 0.45));
+        g2.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g2;
+        ctx.beginPath(); ctx.arc(pt.x, pt.y, p.r*7, 0, Math.PI*2); ctx.fill();
+        // Inner bright bloom
+        var g = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, p.r*3.5);
+        g.addColorStop(0, ha(p.c, 1.0));
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(pt.x, pt.y, p.r*3.5, 0, Math.PI*2); ctx.fill();
+        // White hot core
         ctx.fillStyle = '#fff';
-        ctx.beginPath(); ctx.arc(px, py, p.r * 0.55, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(pt.x, pt.y, p.r*0.65, 0, Math.PI*2); ctx.fill();
     }
 
-    function drawSatNode(s) {
-        var pulse = 0.5 + 0.5 * Math.sin(frame * 0.05 + s.angle * 0.08);
+    function drawSat(s) {
+        var pulse = 0.5 + 0.5*Math.sin(frame*0.052 + s.a*0.08);
 
-        /* halo */
-        var hr = s.r * 2.9;
-        var halo = ctx.createRadialGradient(s.x, s.y, s.r * 0.4, s.x, s.y, hr);
-        halo.addColorStop(0, ha(s.c1, 0.28 + pulse * 0.12));
+        // Outer diffuse halo (large, very soft)
+        var hr2 = s.r*5.5;
+        var outerH = ctx.createRadialGradient(s.x, s.y, s.r, s.x, s.y, hr2);
+        outerH.addColorStop(0, ha(s.c1, 0.20+pulse*0.10));
+        outerH.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = outerH;
+        ctx.beginPath(); ctx.arc(s.x, s.y, hr2, 0, Math.PI*2); ctx.fill();
+
+        // Pulsing outer ring
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r+9+pulse*5, 0, Math.PI*2);
+        ctx.strokeStyle = ha(s.c1, 0.28+pulse*0.18); ctx.lineWidth = 2; ctx.stroke();
+
+        // Inner halo
+        var hr = s.r*3.2;
+        var halo = ctx.createRadialGradient(s.x, s.y, s.r*0.2, s.x, s.y, hr);
+        halo.addColorStop(0, ha(s.c1, 0.48+pulse*0.18));
+        halo.addColorStop(0.5, ha(s.c1, 0.15));
         halo.addColorStop(1, 'rgba(0,0,0,0)');
         ctx.fillStyle = halo;
-        ctx.beginPath(); ctx.arc(s.x, s.y, hr, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(s.x, s.y, hr, 0, Math.PI*2); ctx.fill();
 
-        /* body */
-        var grad = ctx.createRadialGradient(s.x - s.r * 0.3, s.y - s.r * 0.35, s.r * 0.08, s.x, s.y, s.r);
-        grad.addColorStop(0, s.c1);
-        grad.addColorStop(1, s.c2);
+        // Frosted glass base
+        ctx.fillStyle = 'rgba(4,18,48,0.68)';
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill();
+
+        // Colored overlay
+        var grad = ctx.createRadialGradient(s.x-s.r*0.25, s.y-s.r*0.3, 0, s.x, s.y, s.r);
+        grad.addColorStop(0, ha(s.c1, 0.65));
+        grad.addColorStop(1, ha(s.c2, 0.38));
         ctx.fillStyle = grad;
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill();
 
-        /* specular shine */
-        var shine = ctx.createRadialGradient(s.x - s.r * 0.28, s.y - s.r * 0.38, 0,
-            s.x - s.r * 0.28, s.y - s.r * 0.38, s.r * 0.85);
-        shine.addColorStop(0, 'rgba(255,255,255,0.32)');
+        // Specular highlight
+        var shine = ctx.createRadialGradient(s.x-s.r*0.25, s.y-s.r*0.35, 0, s.x, s.y, s.r*0.85);
+        shine.addColorStop(0, 'rgba(255,255,255,0.38)');
         shine.addColorStop(1, 'rgba(255,255,255,0)');
         ctx.fillStyle = shine;
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill();
 
-        /* border */
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(255,255,255,0.26)';
-        ctx.lineWidth = 1.2; ctx.stroke();
+        // Glowing border (shadowBlur for real glow)
+        ctx.save();
+        ctx.shadowBlur = 18;
+        ctx.shadowColor = s.c1;
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        ctx.strokeStyle = ha(s.c1, 0.90+pulse*0.10); ctx.lineWidth = 2; ctx.stroke();
+        ctx.restore();
 
-        /* label */
+        // Labels
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.fillStyle = '#fff';
-        ctx.font = 'bold 8px system-ui,sans-serif';
-        ctx.fillText(s.line1, s.x, s.y - 4.5);
+        ctx.font = 'bold 8.5px system-ui,sans-serif';
+        ctx.fillText(s.l1, s.x, s.y - 4.5);
         ctx.font = '7.5px system-ui,sans-serif';
-        ctx.fillStyle = 'rgba(255,255,255,0.78)';
-        ctx.fillText(s.line2, s.x, s.y + 5);
+        ctx.fillStyle = ha(s.c1, 0.95);
+        ctx.fillText(s.l2, s.x, s.y + 5.5);
     }
 
     function drawHub() {
-        var pulse = 0.5 + 0.5 * Math.sin(frame * 0.028);
-        var pulse2 = 0.5 + 0.5 * Math.sin(frame * 0.021 + 1.4);
+        var p1 = 0.5+0.5*Math.sin(frame*0.027);
+        var p2 = 0.5+0.5*Math.sin(frame*0.021+1.3);
 
-        /* outermost soft halo */
-        var outerH = ctx.createRadialGradient(cx, cy, hub.r, cx, cy, hub.r + 90);
-        outerH.addColorStop(0, ha(hub.c2, 0.12 + pulse * 0.06));
-        outerH.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = outerH;
+        // Vast atmospheric halo
+        var bigH = ctx.createRadialGradient(cx, cy, hub.r, cx, cy, hub.r*4.5);
+        bigH.addColorStop(0,   ha(hub.c1, 0.38+p1*0.15));
+        bigH.addColorStop(0.3, ha(hub.c2, 0.18+p2*0.08));
+        bigH.addColorStop(0.7, ha(hub.c1, 0.05));
+        bigH.addColorStop(1,   'rgba(0,0,0,0)');
+        ctx.fillStyle = bigH;
         ctx.fillRect(0, 0, W, H);
 
-        /* slow expanding pulse rings */
-        var pr1 = hub.r + 52 + pulse * 10;
-        ctx.beginPath(); ctx.arc(cx, cy, pr1, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(99,102,241,' + (0.07 + pulse * 0.05) + ')';
-        ctx.lineWidth = 1; ctx.stroke();
-
-        var pr2 = hub.r + 70 + pulse2 * 12;
-        ctx.beginPath(); ctx.arc(cx, cy, pr2, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(56,189,248,' + (0.05 + pulse2 * 0.04) + ')';
-        ctx.lineWidth = 1; ctx.stroke();
-
-        /* three rotating orbital arcs */
-        for (var i = 0; i < 3; i++) {
-            var rr = hub.r + 13 + i * 12;
-            var rot = frame * 0.014 * (i % 2 === 0 ? 1 : -1) + i * 1.05;
+        // Slow pulsing outer rings (brighter, thicker)
+        [
+            { r: hub.r+54+p1*9,  a: 0.20+p1*0.12, c: hub.c1, w: 1.8 },
+            { r: hub.r+74+p2*11, a: 0.14+p2*0.08, c: hub.c2, w: 1.4 },
+        ].forEach(function(ring) {
             ctx.save();
-            ctx.translate(cx, cy);
-            ctx.rotate(rot);
-            /* arc (partial) */
-            ctx.beginPath();
-            ctx.arc(0, 0, rr, 0, Math.PI * 2 * (0.62 + i * 0.06));
-            ctx.strokeStyle = 'rgba(56,189,248,' + (0.28 - i * 0.06) + ')';
-            ctx.lineWidth = 1.6 - i * 0.35;
-            ctx.stroke();
-            /* leading dot */
-            ctx.fillStyle = ha(hub.c1, 0.75 - i * 0.18);
-            ctx.beginPath();
-            ctx.arc(rr * Math.cos(0), rr * Math.sin(0), 2.5 - i * 0.5, 0, Math.PI * 2);
-            ctx.fill();
-            /* trailing dot (opposite) */
-            ctx.fillStyle = ha(hub.c1, 0.25 - i * 0.05);
-            ctx.beginPath();
-            ctx.arc(rr * Math.cos(Math.PI * 2 * 0.62), rr * Math.sin(Math.PI * 2 * 0.62),
-                1.5 - i * 0.3, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.shadowBlur = 10; ctx.shadowColor = ring.c;
+            ctx.beginPath(); ctx.arc(cx, cy, ring.r, 0, Math.PI*2);
+            ctx.strokeStyle = ha(ring.c, ring.a); ctx.lineWidth = ring.w; ctx.stroke();
+            ctx.restore();
+        });
+
+        // Three rotating orbital arcs (brighter, with shadowBlur)
+        for (var i = 0; i < 3; i++) {
+            var rr  = hub.r + 15 + i*12;
+            var spd = 0.015 * (i%2===0 ? 1 : -1.4);
+            var rot = frame*spd + i*1.15;
+            ctx.save();
+            ctx.translate(cx, cy); ctx.rotate(rot);
+            ctx.shadowBlur = 12; ctx.shadowColor = hub.c1;
+            // Arc body
+            ctx.beginPath(); ctx.arc(0, 0, rr, 0, Math.PI*2*(0.65+i*0.04));
+            ctx.strokeStyle = ha(hub.c1, 0.55-i*0.08); ctx.lineWidth = 2.0-i*0.35; ctx.stroke();
+            // Leading bright dot
+            ctx.shadowBlur = 16;
+            ctx.fillStyle = ha(hub.c1, 1.0);
+            ctx.beginPath(); ctx.arc(rr, 0, 3.2-i*0.5, 0, Math.PI*2); ctx.fill();
+            // Secondary dot
+            var tailAngle = Math.PI*2*(0.65+i*0.04);
+            ctx.shadowBlur = 8;
+            ctx.fillStyle = ha(hub.c1, 0.45-i*0.08);
+            ctx.beginPath(); ctx.arc(rr*Math.cos(tailAngle), rr*Math.sin(tailAngle), 1.8-i*0.3, 0, Math.PI*2); ctx.fill();
             ctx.restore();
         }
 
-        /* inner halo */
-        var halo = ctx.createRadialGradient(cx, cy, hub.r * 0.35, cx, cy, hub.r * 3.2);
-        halo.addColorStop(0, ha(hub.c1, 0.48));
-        halo.addColorStop(0.35, ha(hub.c2, 0.18));
-        halo.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = halo;
-        ctx.beginPath(); ctx.arc(cx, cy, hub.r * 3.2, 0, Math.PI * 2); ctx.fill();
+        // Inner halo (stronger)
+        var innerH = ctx.createRadialGradient(cx, cy, hub.r*0.2, cx, cy, hub.r*3.2);
+        innerH.addColorStop(0,    ha(hub.c1, 0.80));
+        innerH.addColorStop(0.3,  ha(hub.c2, 0.40));
+        innerH.addColorStop(0.65, ha(hub.c1, 0.10));
+        innerH.addColorStop(1,    'rgba(0,0,0,0)');
+        ctx.fillStyle = innerH;
+        ctx.beginPath(); ctx.arc(cx, cy, hub.r*3.2, 0, Math.PI*2); ctx.fill();
 
-        /* body */
-        var grad = ctx.createRadialGradient(cx - hub.r * 0.3, cy - hub.r * 0.35, hub.r * 0.08, cx, cy, hub.r);
-        grad.addColorStop(0, hub.c1);
-        grad.addColorStop(0.55, '#4f8ef7');
-        grad.addColorStop(1, hub.c2);
+        // Frosted glass base
+        ctx.fillStyle = 'rgba(3,14,38,0.72)';
+        ctx.beginPath(); ctx.arc(cx, cy, hub.r, 0, Math.PI*2); ctx.fill();
+
+        // Colored gradient
+        var grad = ctx.createRadialGradient(cx-hub.r*0.3, cy-hub.r*0.35, hub.r*0.05, cx, cy, hub.r);
+        grad.addColorStop(0,   ha(hub.c1, 0.72));
+        grad.addColorStop(0.5, ha('#4f90f8', 0.42));
+        grad.addColorStop(1,   ha(hub.c2, 0.62));
         ctx.fillStyle = grad;
-        ctx.beginPath(); ctx.arc(cx, cy, hub.r, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, cy, hub.r, 0, Math.PI*2); ctx.fill();
 
-        /* specular */
-        var shine = ctx.createRadialGradient(cx - hub.r * 0.28, cy - hub.r * 0.38, 0,
-            cx - hub.r * 0.28, cy - hub.r * 0.38, hub.r * 0.95);
-        shine.addColorStop(0, 'rgba(255,255,255,0.35)');
+        // Inner decoration ring
+        ctx.beginPath(); ctx.arc(cx, cy, hub.r*0.58, 0, Math.PI*2);
+        ctx.strokeStyle = 'rgba(255,255,255,0.13)'; ctx.lineWidth = 1; ctx.stroke();
+
+        // Specular
+        var shine = ctx.createRadialGradient(cx-hub.r*0.28, cy-hub.r*0.38, 0, cx-hub.r*0.28, cy-hub.r*0.38, hub.r*0.92);
+        shine.addColorStop(0, 'rgba(255,255,255,0.38)');
         shine.addColorStop(1, 'rgba(255,255,255,0)');
         ctx.fillStyle = shine;
-        ctx.beginPath(); ctx.arc(cx, cy, hub.r, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, cy, hub.r, 0, Math.PI*2); ctx.fill();
 
-        /* border */
-        ctx.beginPath(); ctx.arc(cx, cy, hub.r, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(255,255,255,0.32)';
-        ctx.lineWidth = 1.6; ctx.stroke();
+        // Glowing border (shadowBlur for strong glow)
+        ctx.save();
+        ctx.shadowBlur = 28; ctx.shadowColor = hub.c1;
+        ctx.beginPath(); ctx.arc(cx, cy, hub.r, 0, Math.PI*2);
+        ctx.strokeStyle = ha(hub.c1, 0.95); ctx.lineWidth = 2.5; ctx.stroke();
+        ctx.restore();
 
-        /* text */
+        // Labels
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.fillStyle = '#fff';
-        ctx.font = 'bold 11.5px system-ui,sans-serif';
-        ctx.fillText(hub.line1, cx, cy - 6.5);
-        ctx.font = '9.5px system-ui,sans-serif';
-        ctx.fillStyle = 'rgba(255,255,255,0.82)';
-        ctx.fillText(hub.line2, cx, cy + 7.5);
+        ctx.font = 'bold 12px system-ui,sans-serif';
+        ctx.fillText(hub.l1, cx, cy-7);
+        ctx.font = '10px system-ui,sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.86)';
+        ctx.fillText(hub.l2, cx, cy+8);
     }
 
-    /* ════════════════════════════════
+    /* ═══════════════════════════════
        MAIN LOOP
-    ════════════════════════════════ */
-    function animate() {
+    ═══════════════════════════════ */
+    function tick() {
         frame++;
-        ctx.clearRect(0, 0, W, H);
+        ctx.clearRect(0, 0, W, H); // transparent — hero bg shows through
 
-        drawBg();
-        drawStars();
-        drawOrbitRing();
+        drawDotGrid();
+        drawAtmo();
+        drawDrifters();
+        drawOrbit();
+        drawHubPulse();
 
-        /* spawn pulse ring every ~75 frames, cycling through all nodes */
-        if (frame - lastRingFrame > 75) {
-            var allNodes = [hub].concat(satDefs);
-            spawnRing(allNodes[Math.floor(frame / 75) % allNodes.length]);
-            lastRingFrame = frame;
-        }
-
-        drawPulseRings();
-
-        /* connections */
-        satDefs.forEach(drawConn);
-
-        /* packets */
-        packets.forEach(drawPacket);
-
-        /* satellite nodes */
-        satDefs.forEach(drawSatNode);
-
-        /* hub last (on top) */
+        sats.forEach(drawConn);
+        pkts.forEach(drawPkt);
+        sats.forEach(drawSat);
         drawHub();
 
-        window._cloudTopoRaf = requestAnimationFrame(animate);
+        window._cloudTopoRaf = requestAnimationFrame(tick);
     }
 
-    animate();
+    tick();
 }
