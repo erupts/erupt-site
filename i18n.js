@@ -9,7 +9,7 @@ var i18n = {
         'nav.home': ['首页', 'Home'],
         'nav.flow': ['工作流', 'Workflow'],
         'nav.component': ['组件支持', 'Components'],
-        'nav.contrast': ['代码示例', 'Code Examples'],
+        'nav.contrast': ['模型示例', 'Code Examples'],
         'nav.module': ['扩展模块', 'Extensions'],
         'nav.donate': ['捐赠指南', 'Donate'],
         'nav.doc': ['使用文档', 'Documentation'],

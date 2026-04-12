@@ -1,0 +1,535 @@
+<style>
+    #header {
+        background: none;
+        border-bottom: 0;
+        color: #fff;
+        background: rgb(12, 35, 32);
+    }
+
+    #header a {
+        color: #aaa;
+    }
+
+    #header .active-link {
+        color: #fff !important;
+    }
+
+
+    .claw-hero {
+        background: #0d1117;
+        color: #fff;
+        padding: 80px 0 60px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .claw-hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+        background-size: 44px 44px;
+        pointer-events: none;
+    }
+
+    .claw-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 55% at 50% -5%, rgba(0, 255, 136, 0.10) 0%, transparent 65%);
+        pointer-events: none;
+    }
+
+    .claw-hero .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .claw-hero h1 {
+        font-size: 3em;
+        font-weight: 900;
+        margin-bottom: 18px;
+        letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+        .claw-hero h1 {
+            font-size: 2.1em;
+        }
+    }
+
+    .claw-green {
+        color: #00ff88;
+    }
+
+    .claw-cursor {
+        display: inline-block;
+        width: 3px;
+        height: 0.85em;
+        background: #00ff88;
+        margin-left: 4px;
+        vertical-align: middle;
+        border-radius: 1px;
+        animation: claw-blink 1s step-end infinite;
+    }
+
+    @keyframes claw-blink {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .claw-hero p.subtitle {
+        font-size: 1.12em;
+        color: rgba(255, 255, 255, 0.58);
+        max-width: 660px;
+        margin: 0 auto 28px;
+        line-height: 1.75;
+    }
+
+    .claw-badge {
+        display: inline-block;
+        background: rgba(0, 255, 136, 0.09);
+        border: 1px solid rgba(0, 255, 136, 0.22);
+        color: #00ff88;
+        border-radius: 20px;
+        padding: 4px 13px;
+        font-size: 0.8em;
+        font-family: 'SFMono-Regular', 'Fira Code', 'Consolas', monospace;
+        margin: 4px 3px;
+    }
+
+    .claw-hero-btns {
+        margin-top: 28px;
+    }
+
+    .claw-btn-primary {
+        background: #00ff88;
+        color: #0d1117 !important;
+        border: none;
+        padding: 10px 28px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.95em;
+        margin: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .claw-btn-primary:hover {
+        background: #00e678;
+        color: #0d1117 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 255, 136, 0.3);
+        text-decoration: none;
+    }
+
+    .claw-btn-outline {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.7) !important;
+        padding: 10px 28px;
+        border-radius: 4px;
+        font-weight: 600;
+        margin: 6px;
+        background: transparent;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .claw-btn-outline:hover {
+        border-color: rgba(255, 255, 255, 0.4);
+        color: #fff !important;
+        background: rgba(255, 255, 255, 0.06);
+        transform: translateY(-2px);
+        text-decoration: none;
+    }
+
+    /* ── Sections ── */
+    .claw-section {
+        padding: 60px 0;
+        background: #fff;
+    }
+
+    .claw-section-dark {
+        padding: 60px 0;
+        background: #0d1117;
+        color: #fff;
+    }
+
+    .claw-section-gray {
+        padding: 60px 0;
+        background: #f6f8fa;
+    }
+
+    .claw-section-term {
+        padding: 50px 0;
+        background: #161b22;
+    }
+
+    .claw-section-title {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .claw-section-title h2 {
+        font-size: 2em;
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+
+    .claw-section-title p {
+        color: #888;
+        font-size: 1.03em;
+        max-width: 620px;
+        margin: 0 auto;
+    }
+
+    .claw-section-dark .claw-section-title p,
+    .claw-section-term .claw-section-title p {
+        color: rgba(255, 255, 255, 0.48);
+    }
+
+    .claw-section-dark .claw-section-title h2,
+    .claw-section-term .claw-section-title h2 {
+        color: #fff;
+    }
+
+    /* ── Terminal window ── */
+    .claw-terminal {
+        background: #0d1117;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
+        max-width: 820px;
+        margin: 0 auto;
+    }
+
+    .claw-term-bar {
+        background: #21262d;
+        padding: 11px 16px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .claw-term-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    .claw-term-bar .term-title {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.8em;
+        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        margin-left: 10px;
+    }
+
+    .claw-term-body {
+        padding: 22px 26px 26px;
+        font-family: 'SFMono-Regular', 'Fira Code', 'Consolas', monospace;
+        font-size: 0.87em;
+        line-height: 1.75;
+    }
+
+    .claw-msg-user {
+        color: #79c0ff;
+        margin-top: 18px;
+        margin-bottom: 4px;
+    }
+
+    .claw-msg-user::before {
+        content: '$ ';
+        color: #00ff88;
+        font-weight: 700;
+    }
+
+    .claw-msg-think {
+        color: rgba(255, 255, 255, 0.38);
+        font-style: italic;
+        padding-left: 16px;
+        border-left: 2px solid rgba(0, 255, 136, 0.25);
+        margin: 5px 0;
+        font-size: 0.95em;
+    }
+
+    .claw-msg-action {
+        color: #ffa657;
+        padding-left: 16px;
+        margin: 3px 0;
+    }
+
+    .claw-msg-result {
+        color: #00ff88;
+        padding-left: 16px;
+        margin-top: 3px;
+    }
+
+    /* ── Feature Cards ── */
+    .claw-feat-card {
+        background: #fff;
+        border: 1px solid #e4e8ed;
+        border-radius: 10px;
+        padding: 26px 22px;
+        transition: all 0.22s;
+        height: 100%;
+    }
+
+    .claw-feat-card:hover {
+        border-color: #00cc6e;
+        box-shadow: 0 6px 24px rgba(0, 204, 110, 0.1);
+        transform: translateY(-3px);
+    }
+
+    .claw-feat-icon {
+        font-size: 2em;
+        margin-bottom: 12px;
+    }
+
+    .claw-feat-tag {
+        display: inline-block;
+        background: #f0fdf4;
+        color: #15803d;
+        border: 1px solid #bbf7d0;
+        border-radius: 4px;
+        padding: 2px 8px;
+        font-size: 0.73em;
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-family: 'SFMono-Regular', monospace;
+        letter-spacing: 0.5px;
+    }
+
+    .claw-feat-card h3 {
+        font-size: 1.08em;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #1a1a2e;
+    }
+
+    .claw-feat-card p {
+        color: #666;
+        font-size: 0.91em;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    /* ── Skills ── */
+    .claw-skills-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .claw-skills-list li {
+        color: rgba(255, 255, 255, 0.6);
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 0.93em;
+    }
+
+    .claw-skills-list li::before {
+        content: '✓  ';
+        color: #00ff88;
+        font-weight: 700;
+    }
+
+    .claw-code-wrap {
+        background: #161b22;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .claw-code-wrap pre {
+        margin: 0;
+        padding: 22px 24px;
+        font-size: 0.87em;
+        line-height: 1.7;
+        overflow-x: auto;
+    }
+
+    /* ── CTA ── */
+    .claw-cta-link {
+        display: inline-block;
+        background: #0d1117;
+        color: #00ff88 !important;
+        border: 1px solid rgba(0, 255, 136, 0.35);
+        padding: 11px 32px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.95em;
+        margin: 6px;
+        transition: all 0.2s;
+        text-decoration: none;
+    }
+
+    .claw-cta-link:hover {
+        background: rgba(0, 255, 136, 0.08);
+        border-color: #00ff88;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 255, 136, 0.2);
+        text-decoration: none;
+        color: #00ff88 !important;
+    }
+
+    .claw-cta-secondary {
+        display: inline-block;
+        border: 1px solid #d0d7de;
+        color: #555 !important;
+        padding: 11px 28px;
+        border-radius: 4px;
+        font-weight: 600;
+        margin: 6px;
+        transition: all 0.2s;
+        text-decoration: none;
+    }
+
+    .claw-cta-secondary:hover {
+        border-color: #999;
+        color: #222 !important;
+        transform: translateY(-2px);
+        text-decoration: none;
+    }
+</style>
+
+<div ng-controller="aiClaw">
+
+    <!-- ── Hero ── -->
+    <div class="claw-hero">
+        <div class="claw-hero-grid"></div>
+        <div class="container">
+            <div style="margin-bottom:14px">
+                <span class="claw-badge">Apache 2.0</span>
+                <span class="claw-badge">xyz.erupt</span>
+            </div>
+            <h1>🦞 Erupt<span class="claw-green"> AI Claw</span><span class="claw-cursor"></span></h1>
+            <p class="subtitle">{{'claw.hero.subtitle' | i18n}}</p>
+            <div style="margin-bottom:8px">
+                <span class="claw-badge">{{'claw.badge.nlp' | i18n}}</span>
+                <span class="claw-badge">{{'claw.badge.shell' | i18n}}</span>
+                <span class="claw-badge">{{'claw.badge.file' | i18n}}</span>
+                <span class="claw-badge">{{'claw.badge.data' | i18n}}</span>
+                <span class="claw-badge">{{'claw.badge.skills' | i18n}}</span>
+            </div>
+            <div class="claw-hero-btns">
+                <a class="claw-btn-primary"
+                   href="https://www.yuque.com/erupts/erupt/hnx1hac9acfacb0v"
+                   target="_blank">{{'claw.hero.btn.doc' | i18n}}</a>
+                <a class="claw-btn-outline" href="https://github.com/erupts/erupt"
+                   target="_blank">GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Terminal Demo ── -->
+    <div class="claw-section-term">
+        <div class="container">
+            <div class="claw-section-title">
+                <h2>{{'claw.demo.title' | i18n}}</h2>
+                <p>{{'claw.demo.subtitle' | i18n}}</p>
+            </div>
+            <div class="claw-terminal">
+                <div class="claw-term-bar">
+                    <div class="claw-term-dot" style="background:#ff5f56"></div>
+                    <div class="claw-term-dot" style="background:#ffbd2e"></div>
+                    <div class="claw-term-dot" style="background:#27c93f"></div>
+                    <span class="term-title">erupt-ai-claw — natural language console</span>
+                </div>
+                <div class="claw-term-body">
+                    <div ng-repeat="msg in demoMessages">
+                        <div class="claw-msg-user" ng-if="msg.type==='user'">{{msg.text}}</div>
+                        <div class="claw-msg-think" ng-if="msg.type==='think'">💭 {{msg.text}}</div>
+                        <div class="claw-msg-action" ng-if="msg.type==='action'">⚡ {{msg.text}}</div>
+                        <div class="claw-msg-result" ng-if="msg.type==='result'">✓ {{msg.text}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Core Features ── -->
+    <div class="claw-section-gray">
+        <div class="container">
+            <div class="claw-section-title">
+                <h2>{{'claw.feat.title' | i18n}}</h2>
+                <p>{{'claw.feat.subtitle' | i18n}}</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 col-sm-6 mb-4" ng-repeat="f in features">
+                    <div class="claw-feat-card">
+                        <div class="claw-feat-icon">{{f.icon}}</div>
+                        <div class="claw-feat-tag">{{f.tag}}</div>
+                        <h3>{{f.title}}</h3>
+                        <p>{{f.desc}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Skills Extension ── -->
+    <div class="claw-section-dark">
+        <div class="container">
+            <div class="claw-section-title">
+                <h2>{{'claw.skills.title' | i18n}}</h2>
+                <p>{{'claw.skills.subtitle' | i18n}}</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-5" style="margin-bottom:28px">
+                    <h3 style="color:#00ff88;font-size:1.15em;font-weight:700;margin-bottom:14px">
+                        {{'claw.skills.how' | i18n}}
+                    </h3>
+                    <p style="color:rgba(255,255,255,0.55);line-height:1.8;font-size:0.95em;margin-bottom:20px">
+                        {{'claw.skills.desc' | i18n}}
+                    </p>
+                    <ul class="claw-skills-list">
+                        <li ng-repeat="item in skillPoints">{{item}}</li>
+                    </ul>
+                </div>
+                <div class="col-md-7">
+                    <div class="claw-code-wrap">
+                        <pre><code class="language-java">// 一个注解，将 Java 方法注册为 AI Claw 技能
+@Skill(name = "发送告警通知")
+public String sendAlert(@P("告警内容") String msg) {
+    return alertService.send(msg);
+}
+
+@Skill(name = "查询服务健康状态")
+public ServiceStatus checkService(@P("服务名称") String name) {
+    return monitorService.status(name);
+}
+
+@Skill(name = "执行数据库备份")
+public boolean backupDatabase(@P("数据库名") String db) {
+    return dbService.backup(db);
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── CTA ── -->
+    <div class="claw-section" style="text-align:center">
+        <div class="container">
+            <div style="font-size:2.6em;margin-bottom:14px">🦞</div>
+            <h2 style="font-size:1.9em;font-weight:800;margin-bottom:12px">{{'claw.cta.title' | i18n}}</h2>
+            <p style="color:#888;margin-bottom:30px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7">
+                {{'claw.cta.subtitle' | i18n}}
+            </p>
+            <a class="claw-cta-link" href="https://www.yuque.com/erupts/erupt/hnx1hac9acfacb0v"
+               target="_blank">{{'claw.cta.doc' | i18n}}</a>
+            <a class="claw-cta-secondary" href="#!/ai">{{'claw.cta.also_ai' | i18n}}</a>
+        </div>
+    </div>
+
+</div>
