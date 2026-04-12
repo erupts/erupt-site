@@ -272,7 +272,7 @@ var i18n = {
         'db.custom': ['自定义数据源', 'Custom Data Source'],
 
         // AI 页面 - 导航
-        'nav.ai': ['AI', 'AI'],
+        'nav.ai': ['🤖 AI', '🤖 AI'],
 
         // AI 页面 - Hero 区域
         'ai.hero.title': ['Erupt AI 大模型深度集成', 'Erupt AI Deep LLM Integration'],
@@ -346,7 +346,7 @@ var i18n = {
         'ai.react.example.result': ['结果：生成完整的分析报告，包含数据汇总、趋势图表和建议', 'Result: Generated complete analysis report with data summary, trend charts and recommendations'],
 
         // ── Erupt AI Claw ──
-        'nav.aiclaw': ['AI Claw', 'AI Claw'],
+        'nav.aiclaw': ['🦞 AI Claw', '🦞 AI Claw'],
 
         'claw.hero.subtitle': [
             '通过自然语言直接驱动服务器，操作注解驱动的数据与业务——像与同事对话一样简单',
