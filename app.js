@@ -61,6 +61,11 @@ var app = angular.module('app', [
             toTemplate();
             return "page/ai/ai.html";
         }
+    }).when('/ai-claw', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/ai-claw/ai-claw.html";
+        }
     }).otherwise({
         redirectTo: '/'
     });

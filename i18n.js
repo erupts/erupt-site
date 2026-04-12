@@ -272,7 +272,7 @@ var i18n = {
         'db.custom': ['自定义数据源', 'Custom Data Source'],
 
         // AI 页面 - 导航
-        'nav.ai': ['AI 大模型', 'AI'],
+        'nav.ai': ['AI', 'AI'],
 
         // AI 页面 - Hero 区域
         'ai.hero.title': ['Erupt AI 大模型深度集成', 'Erupt AI Deep LLM Integration'],
@@ -345,12 +345,48 @@ var i18n = {
         'ai.react.example.action2': ['执行：调用数据分析工具 → 生成销售趋势、客户分布等图表', 'Action: Call data analysis tool → Generate sales trends, customer distribution charts'],
         'ai.react.example.result': ['结果：生成完整的分析报告，包含数据汇总、趋势图表和建议', 'Result: Generated complete analysis report with data summary, trend charts and recommendations'],
 
-        // AI 页面 - 快速接入
-        'ai.start.title': ['快速接入', 'Quick Start'],
-        'ai.start.step1.title': ['添加依赖', 'Add Dependency'],
-        'ai.start.step2.title': ['配置大模型', 'Configure LLM'],
-        'ai.start.step3.title': ['使用 AI 能力', 'Use AI Capabilities'],
-        'ai.start.doc.link': ['查看完整文档 →', 'View Full Documentation →'],
+        // ── Erupt AI Claw ──
+        'nav.aiclaw': ['AI Claw', 'AI Claw'],
+
+        'claw.hero.subtitle': [
+            '通过自然语言直接驱动服务器，操作注解驱动的数据与业务——像与同事对话一样简单',
+            'Drive your server with natural language — query, write and operate annotation-driven data as if chatting with a colleague'
+        ],
+        'claw.badge.nlp': ['自然语言交互', 'Natural Language'],
+        'claw.badge.shell': ['Shell 执行', 'Shell Execution'],
+        'claw.badge.file': ['文件操作', 'File Operations'],
+        'claw.badge.data': ['数据驱动', 'Data Driven'],
+        'claw.badge.skills': ['自定义 Skills', 'Custom Skills'],
+
+        'claw.hero.btn.doc': ['查看文档', 'Documentation'],
+
+        'claw.demo.title': ['看看它能做什么', 'See It in Action'],
+        'claw.demo.subtitle': ['输入自然语言，AI Claw 自动解析意图、调用技能、返回结果', 'Type natural language — AI Claw parses intent, invokes skills, and returns results'],
+
+        'claw.feat.title': ['核心能力', 'Core Capabilities'],
+        'claw.feat.subtitle': ['像与同事对话一样简单——AI Claw 让自然语言成为服务器的控制台', 'As simple as chatting with a colleague — AI Claw turns natural language into a server console'],
+
+        'claw.feat.f1.title': ['自然语言交互', 'Natural Language'],
+        'claw.feat.f1.desc': ['用一句话完成复杂的服务器操作，无需记忆命令语法，AI 自动理解意图并执行', 'Complete complex server operations with a sentence. No memorizing syntax — AI understands intent and acts'],
+        'claw.feat.f2.title': ['数据驱动操作', 'Data Operations'],
+        'claw.feat.f2.desc': ['直接操作 Erupt 注解驱动的业务数据，增删改查一步到位，数据与业务逻辑无缝贯通', 'Directly manipulate Erupt annotation-driven business data. Create, read, update and delete — all in one natural command'],
+        'claw.feat.f3.title': ['Shell 命令执行', 'Shell Execution'],
+        'claw.feat.f3.desc': ['支持执行系统级 Shell 命令，实现服务器运维自动化，让 AI 成为你的运维助手', 'Execute system-level shell commands for server operations automation — AI becomes your ops assistant'],
+        'claw.feat.f4.title': ['文件读写操作', 'File Operations'],
+        'claw.feat.f4.desc': ['读取与写入服务器文件，支持日志分析、配置修改等常见运维场景，开箱即用', 'Read and write server files. Analyze logs, modify configs and more, all through natural language'],
+        'claw.feat.f5.title': ['自定义 Skills', 'Custom Skills'],
+        'claw.feat.f5.desc': ['通过 Skills 扩展机制注册自定义能力，无限扩展 AI Claw 的操作边界', 'Register custom capabilities via the Skills extension — expand AI Claw\'s boundaries without limits'],
+
+        'claw.skills.title': ['Skills 扩展体系', 'Skills Extension System'],
+        'claw.skills.subtitle': ['通过注解声明自定义技能，将任意 Java 方法注册为 AI 可调用的操作', 'Declare custom skills via annotations — register any Java method as an AI-callable operation'],
+        'claw.skills.how': ['一个注解，注册自定义技能', 'One annotation, one skill'],
+        'claw.skills.desc': ['通过 @Skill 注解将任意 Java 方法注册为 AI Claw 的可调用技能。AI 能自动发现技能、理解参数含义，并在对话中按需调用。', 'Use the @Skill annotation to register any Java method as a callable skill. AI auto-discovers skills, understands parameters, and invokes them on demand.'],
+        'claw.skills.points': ['自动发现与描述生成|参数类型自动推断|运行时动态注册|权限与安全控制', 'Auto discovery & description|Auto parameter type inference|Dynamic registration at runtime|Permission & security control'],
+
+        'claw.cta.title': ['立即接入 AI Claw', 'Get Started with AI Claw'],
+        'claw.cta.subtitle': ['几行配置，让自然语言接管你的服务器', 'A few lines of config to let natural language take over your server'],
+        'claw.cta.doc': ['查看完整文档 →', 'Full Documentation →'],
+        'claw.cta.also_ai': ['← 查看 Erupt AI', '← Erupt AI'],
 
         // 语言切换
         'lang.zh': ['中文', '中文'],
