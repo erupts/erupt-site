@@ -65,7 +65,7 @@ app.controller("ai", function ($scope, $sce, $timeout, i18nService) {
             bg: '#fee2e2', fg: '#b91c1c', wide: false, full: true,
             title: i18nService.t('ai.core.tools.title'),
             desc: i18nService.t('ai.core.tools.desc'),
-            code: '// 一个注解，将 Java 方法注册为 AI 工具\n@Tool(name = "查询用户订单")\npublic List<Order> queryOrders() {\n    return orderService.findByUserId(currentUserId());\n}\n\n@Tool(name = "创建工单")\npublic boolean createTicket(@P("标题") String title, @P("内容") String content) {\n    return ticketService.create(title, content);\n}'
+            code: `@Tool("查询用户订单")\npublic List<Order> queryOrders() {\n    return orderService.findByUserId(currentUserId());\n}\n\n@Tool("创建工单")\npublic boolean createTicket(@P("标题") String title, @P("内容") String content) {\n    return ticketService.create(title, content);\n}`
         }
     ];
 

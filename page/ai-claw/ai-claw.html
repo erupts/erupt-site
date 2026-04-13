@@ -498,17 +498,17 @@
                 <div class="col-md-7">
                     <div class="claw-code-wrap">
                         <pre><code class="language-java">// 一个注解，将 Java 方法注册为 AI Claw 技能
-@Skill(name = "发送告警通知")
+@Tool("发送告警通知")
 public String sendAlert(@P("告警内容") String msg) {
     return alertService.send(msg);
 }
 
-@Skill(name = "查询服务健康状态")
+@Tool("查询服务健康状态")
 public ServiceStatus checkService(@P("服务名称") String name) {
     return monitorService.status(name);
 }
 
-@Skill(name = "执行数据库备份")
+@Tool("执行数据库备份")
 public boolean backupDatabase(@P("数据库名") String db) {
     return dbService.backup(db);
 }</code></pre>
