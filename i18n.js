@@ -106,9 +106,8 @@ var i18n = {
         'cloud.demo.btn': ['打开演示 DEMO', 'Open demo'],
 
         // 首页
-        'home.title': ['Erupt Engine', 'Erupt Engine'],
         'home.subtitle': ['注解·低代码', 'Annotation·Low Code'],
-        'home.subtitle2': ['对象视图模型', 'Object View Model'],
+        'home.subtitle2': ['AI 大模型', 'AI LLM'],
         'home.btn.code': ['代码示例', 'Codes'],
         'home.btn.doc': ['使用文档', 'Docs'],
         'home.btn.demo': ['演示DEMO', 'Demo'],
