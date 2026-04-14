@@ -73,32 +73,6 @@ app.controller("ai", function ($scope, $sce, $timeout, i18nService) {
         Prism.highlightAll();
     }, 100);
 
-    // 国际模型
-    $scope.internationalModels = [
-        { name: 'GPT-4o / GPT-4', company: 'OpenAI', abbr: 'G', bg: '#10a37f', fg: '#fff' },
-        { name: 'Claude 3.5 / Claude 4', company: 'Anthropic', abbr: 'C', bg: '#d97757', fg: '#fff' },
-        { name: 'Gemini', company: 'Google', abbr: 'G', bg: '#4285f4', fg: '#fff' },
-        { name: 'Llama 3 / 4', company: 'Meta', abbr: 'L', bg: '#0668e1', fg: '#fff' },
-        { name: 'Mistral / Mixtral', company: 'Mistral AI', abbr: 'M', bg: '#f24822', fg: '#fff' },
-        { name: 'Command R+', company: 'Cohere', abbr: 'Co', bg: '#39594d', fg: '#fff' },
-        { name: 'Grok', company: 'xAI', abbr: 'X', bg: '#1d1d1f', fg: '#fff' },
-        { name: 'DeepSeek V3 / R1', company: '深度求索', abbr: 'DS', bg: '#4d6bfe', fg: '#fff' },
-        { name: '通义千问 Qwen', company: '阿里云', abbr: 'Q', bg: '#6236ff', fg: '#fff' },
-        { name: '文心一言 ERNIE', company: '百度', abbr: 'E', bg: '#2932e1', fg: '#fff' },
-        { name: 'GLM / ChatGLM', company: '智谱 AI', abbr: 'Z', bg: '#3366ff', fg: '#fff' },
-        { name: '豆包 Doubao', company: '字节跳动', abbr: 'D', bg: '#325aff', fg: '#fff' },
-        { name: 'Kimi / Moonshot', company: '月之暗面', abbr: 'K', bg: '#1a1a2e', fg: '#fff' },
-        { name: 'MiniMax', company: 'MiniMax', abbr: 'M', bg: '#6c5ce7', fg: '#fff' },
-    ];
-
-    // 开源 & 私有化部署
-    $scope.openSourceModels = [
-        { name: 'Ollama', company: '本地部署', abbr: 'O', bg: '#1a1a2e', fg: '#fff' },
-        { name: 'vLLM', company: '高性能推理', abbr: 'V', bg: '#e85d04', fg: '#fff' },
-        { name: 'LM Studio', company: '桌面部署', abbr: 'LM', bg: '#0f766e', fg: '#fff' },
-        { name: 'LocalAI', company: '本地推理', abbr: 'LA', bg: '#4f46e5', fg: '#fff' },
-    ];
-
     $scope.mcpFeatures = [
         {
             title: i18nService.t('ai.mcp.feature1.title'),

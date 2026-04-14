@@ -63,7 +63,7 @@
     .cube-hero-sub {
         font-size: 1.08em;
         color: rgba(255, 255, 255, 0.45);
-        max-width: 580px;
+        max-width: 800px;
         margin: 0 auto 28px;
         line-height: 1.85;
     }
@@ -82,6 +82,47 @@
     }
 
     .cube-hero-btns { margin-top: 28px; margin-bottom: 0; }
+
+    .demo-tip-wrap {
+        position: relative;
+        display: inline-block;
+    }
+
+    .demo-tip-wrap .demo-tip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(30, 30, 40, 0.95);
+        color: #fff;
+        border-radius: 8px;
+        padding: 8px 14px;
+        font-size: 0.82em;
+        white-space: nowrap;
+        z-index: 9999;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+        line-height: 1.9;
+        text-align: left;
+        pointer-events: none;
+        transition: opacity 0.2s;
+    }
+
+    .demo-tip-wrap .demo-tip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: rgba(30, 30, 40, 0.95);
+    }
+
+    .demo-tip-wrap:hover .demo-tip {
+        visibility: visible;
+        opacity: 1;
+    }
 
     .cube-btn-primary {
         background: #6366f1;
@@ -1170,7 +1211,10 @@
             <h1>Erupt <em>Cube</em></h1>
             <p class="cube-hero-sub">{{'cube.hero.sub' | i18n}}</p>
             <div class="cube-hero-btns">
-                <a class="cube-btn-primary" href="https://www.erupt.xyz/demo" target="_blank">{{'cube.hero.btn.demo' | i18n}}</a>
+                <span class="demo-tip-wrap">
+                    <a class="cube-btn-primary" href="https://www.erupt.xyz/demo" target="_blank">{{'cube.hero.btn.demo' | i18n}}</a>
+                    <span class="demo-tip" ng-bind-html="'cube.demo.tip' | i18nHtml"></span>
+                </span>
                 <a class="cube-btn-outline" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
             </div>
         </div>
@@ -1194,94 +1238,9 @@
         </div>
     </div>
 
-    <!-- ── Problem: Why Semantic Model ── -->
-    <div class="cube-section cube-section-white">
-        <div class="container">
-            <div class="cube-section-title">
-                <span class="cube-eyebrow">WHY SEMANTIC LAYER</span>
-                <h2>{{'cube.problem.title' | i18n}}</h2>
-                <p>{{'cube.problem.desc' | i18n}}</p>
-            </div>
-            <div style="overflow-x:auto">
-                <table class="cube-compare-table">
-                    <thead>
-                    <tr>
-                        <th>{{'cube.table.th.aspect' | i18n}}</th>
-                        <th>✗ &nbsp;{{'cube.table.th.without' | i18n}}</th>
-                        <th>✓ &nbsp;{{'cube.table.th.with' | i18n}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="row in compareRows">
-                        <td>{{row.aspect}}</td>
-                        <td>{{row.without}}</td>
-                        <td>{{row.with}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── Role Separation ── -->
-    <div class="cube-section cube-section-dark2">
-        <div class="container">
-            <div class="cube-section-title">
-                <span class="cube-eyebrow">DIVISION OF LABOR</span>
-                <h2>{{'cube.roles.title' | i18n}}</h2>
-                <p>{{'cube.roles.desc' | i18n}}</p>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="cube-role-card cube-role-engineer">
-                        <h3>{{'cube.roles.eng.title' | i18n}}</h3>
-                        <div class="role-sub">Data Engineer</div>
-                        <ul class="cube-role-list">
-                            <li ng-repeat="item in engineerPoints">{{item}}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="cube-role-card cube-role-analyst">
-                        <h3>{{'cube.roles.ana.title' | i18n}}</h3>
-                        <div class="role-sub">Data Analyst</div>
-                        <ul class="cube-role-list">
-                            <li ng-repeat="item in analystPoints">{{item}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── Core Annotations ── -->
-    <div class="cube-section cube-section-dark">
-        <div class="container">
-            <div class="cube-section-title">
-                <span class="cube-eyebrow">CORE ANNOTATIONS</span>
-                <h2>{{'cube.anno.title' | i18n}}</h2>
-                <p>{{'cube.anno.desc' | i18n}}</p>
-            </div>
-            <div class="cube-anno-grid">
-                <div class="cube-anno-card" ng-repeat="a in annotations">
-                    <div class="cube-anno-name">{{a.name}}</div>
-                    <h3>{{a.title}}</h3>
-                    <p>{{a.desc}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- ── Visualization ── -->
     <div class="cube-section cube-section-dark2">
         <div class="container">
-            <div class="cube-section-title">
-                <span class="cube-eyebrow">VISUALIZATION</span>
-                <h2>{{'cube.viz.title' | i18n}}</h2>
-                <p>{{'cube.viz.desc' | i18n}}</p>
-            </div>
-
-            <!-- Mock Dashboard -->
             <div class="cviz-shell">
                 <div class="cviz-titlebar">
                     <div class="cviz-dot" style="background:#ff5f56"></div>
@@ -1398,7 +1357,11 @@
                     </div>
                 </div>
             </div>
-
+            <div class="cube-section-title">
+                <span class="cube-eyebrow">VISUALIZATION</span>
+                <h2>{{'cube.viz.title' | i18n}}</h2>
+                <p>{{'cube.viz.desc' | i18n}}</p>
+            </div>
             <!-- Feature strips -->
             <div class="cviz-feat-row">
                 <div class="cviz-feat-item" ng-repeat="f in vizFeatures">
@@ -1409,28 +1372,89 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Chart types -->
-            <div class="cviz-types-section">
-                <div class="cviz-types-label">{{'cube.viz.charts.label' | i18n}}</div>
-                <div class="cviz-types-row">
-                    <span class="cviz-type-chip" ng-repeat="c in chartTypes">{{c.icon}} {{c.name}}</span>
+    <!-- ── Problem: Why Semantic Model ── -->
+    <div class="cube-section cube-section-white">
+        <div class="container">
+            <div class="cube-section-title">
+                <span class="cube-eyebrow">WHY SEMANTIC LAYER</span>
+                <h2>{{'cube.problem.title' | i18n}}</h2>
+                <p>{{'cube.problem.desc' | i18n}}</p>
+            </div>
+            <div style="overflow-x:auto">
+                <table class="cube-compare-table">
+                    <thead>
+                    <tr>
+                        <th>{{'cube.table.th.aspect' | i18n}}</th>
+                        <th>✗ &nbsp;{{'cube.table.th.without' | i18n}}</th>
+                        <th>✓ &nbsp;{{'cube.table.th.with' | i18n}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in compareRows">
+                        <td>{{row.aspect}}</td>
+                        <td>{{row.without}}</td>
+                        <td>{{row.with}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Role Separation ── -->
+    <div class="cube-section cube-section-dark2">
+        <div class="container">
+            <div class="cube-section-title">
+                <span class="cube-eyebrow">DIVISION OF LABOR</span>
+                <h2>{{'cube.roles.title' | i18n}}</h2>
+                <p>{{'cube.roles.desc' | i18n}}</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="cube-role-card cube-role-engineer">
+                        <h3>{{'cube.roles.eng.title' | i18n}}</h3>
+                        <div class="role-sub">Data Engineer</div>
+                        <ul class="cube-role-list">
+                            <li ng-repeat="item in engineerPoints">{{item}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="cube-role-card cube-role-analyst">
+                        <h3>{{'cube.roles.ana.title' | i18n}}</h3>
+                        <div class="role-sub">Data Analyst</div>
+                        <ul class="cube-role-list">
+                            <li ng-repeat="item in analystPoints">{{item}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Filter types -->
-            <div class="cviz-types-section">
-                <div class="cviz-types-label">{{'cube.viz.filters.label' | i18n}}</div>
-                <div class="cviz-types-row">
-                    <span class="cviz-type-chip cviz-filter-type-chip" ng-repeat="f in filterTypes">{{f.icon}} {{f.name}}</span>
+    <!-- ── Core Annotations ── -->
+    <div class="cube-section cube-section-dark">
+        <div class="container">
+            <div class="cube-section-title">
+                <span class="cube-eyebrow">CORE ANNOTATIONS</span>
+                <h2>{{'cube.anno.title' | i18n}}</h2>
+                <p>{{'cube.anno.desc' | i18n}}</p>
+            </div>
+            <div class="cube-anno-grid">
+                <div class="cube-anno-card" ng-repeat="a in annotations">
+                    <div class="cube-anno-name">{{a.name}}</div>
+                    <h3>{{a.title}}</h3>
+                    <p>{{a.desc}}</p>
                 </div>
             </div>
-
         </div>
     </div>
 
     <!-- ── Three-Way Comparison ── -->
-    <div class="cube-section cube-section-dark">
+    <div class="cube-section cube-section-dark2">
         <div class="container">
             <div class="cube-section-title">
                 <span class="cube-eyebrow">SIDE-BY-SIDE</span>
@@ -1600,10 +1624,14 @@ public class OrderCube {
     <!-- ── CTA ── -->
     <div class="cube-cta">
         <div class="container">
-            <div style="font-size:2.8em;margin-bottom:16px">📊</div>
+            <div style="font-size:2.8em;margin-bottom:16px">🔦</div>
             <h2>{{'cube.cta.title' | i18n}}</h2>
             <p>{{'cube.cta.desc' | i18n}}</p>
-            <a class="cube-cta-link" href="https://www.erupt.xyz/demo" target="_blank">{{'cube.cta.demo' | i18n}}</a>
+            <span class="demo-tip-wrap">
+                <a class="cube-cta-link" href="https://www.erupt.xyz/demo"
+                   target="_blank">{{'cube.cta.demo' | i18n}}</a>
+                <span class="demo-tip" ng-bind-html="'cube.demo.tip' | i18nHtml"></span>
+            </span>
             <a class="cube-cta-secondary" href="https://www.yuque.com/erupts/erupt" target="_blank">{{'cube.cta.doc' | i18n}}</a>
         </div>
     </div>

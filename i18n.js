@@ -496,20 +496,6 @@ var i18n = {
         'cube.viz.f6.name': ['多维过滤器', 'Multi-dim Filters'],
         'cube.viz.f6.desc': ['下拉、日期范围、数值区间等多种过滤器，支持联动过滤', 'Dropdown, date range, numeric range filters with cross-chart linkage'],
 
-        'cube.viz.charts.label': ['图表类型', 'Chart Types'],
-        'cube.viz.chart.types': [
-            '📊:柱状图|📈:折线图|🥧:饼图|🔵:散点图|📉:面积图|🟦:热力图|⬜:表格|🔢:KPI 卡片'
-            ,
-            '📊:Bar Chart|📈:Line Chart|🥧:Pie Chart|🔵:Scatter|📉:Area Chart|🟦:Heatmap|⬜:Table|🔢:KPI Card'
-        ],
-
-        'cube.viz.filters.label': ['过滤器类型', 'Filter Types'],
-        'cube.viz.filter.types': [
-            '🔽:下拉选择|📅:日期范围|🔢:数值区间|🔍:模糊搜索|☑️:多选|🔘:单选|📆:相对时间'
-            ,
-            '🔽:Dropdown|📅:Date Range|🔢:Numeric Range|🔍:Text Search|☑️:Multi-select|🔘:Radio|📆:Relative Time'
-        ],
-
         'cube.db.title': ['广泛的数据库支持', 'Broad Database Support'],
         'cube.db.desc': [
             '无论是 OLAP 大数据仓库、传统关系型数据库、国产数据库还是云原生数仓，Erupt Cube 均可直接接入，无需额外适配。',
@@ -518,11 +504,12 @@ var i18n = {
 
         'cube.cta.title': ['准备好构建语义模型了吗？', 'Ready to Build Your Semantic Model?'],
         'cube.cta.desc': [
-            '演示地址已部署完整的 Cube 示例，账号：cube / 密码：cube，直接体验拖拽分析。',
-            'The live demo includes complete Cube examples. Login: cube / cube — try drag-and-drop analytics now.'
+            '演示地址已部署完整的 Cube 示例，直接体验拖拽分析。',
+            'The live demo includes complete Cube examples. try drag-and-drop analytics now.'
         ],
         'cube.cta.demo': ['立即体验 →', 'Try Live Demo →'],
         'cube.cta.doc': ['阅读文档', 'Documentation'],
+        'cube.demo.tip': ['账号：cube<br>密码：cube', 'Username: cube<br>Password: cube'],
 
         // 语言切换
         'lang.zh': ['中文', '中文'],
