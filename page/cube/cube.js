@@ -3,6 +3,8 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
     var lang = i18nService.getLang();
     var zh = lang === 'zh-CN';
 
+    $scope.expanded = {};
+
     $scope.compareRows = [
         {
             aspect: zh ? '指标口径' : 'Metric definition',
@@ -118,12 +120,6 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
             looker: zh ? 'SaaS / 企业私有化' : 'SaaS / Enterprise on-prem',
             cubedev: zh ? '独立 Node.js 服务' : 'Separate Node.js service',
             us: zh ? '内嵌 Spring Boot，零额外运维' : 'Embedded in Spring Boot'
-        },
-        {
-            feature: zh ? '开源许可' : 'Open Source',
-            looker: zh ? '✗ 商业闭源' : '✗ Commercial',
-            cubedev: zh ? '✓ BSL 许可（有限制）' : '✓ BSL (with restrictions)',
-            us: zh ? '✓ Apache 2.0' : '✓ Apache 2.0'
         }
     ];
 
@@ -156,7 +152,7 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
             label: 'OLAP',
             color: '#a78bfa',
             bgColor: 'rgba(167,139,250,0.12)',
-            dbs: ['Apache Doris', 'StarRocks', 'ClickHouse', 'GreenPlum', 'Apache Hive', 'Presto', 'Trino', 'Impala', 'ADB']
+            dbs: ['Apache Doris', 'StarRocks', 'ClickHouse', 'GreenPlum', 'Apache Hive', 'Presto', 'Trino', 'Impala', 'ADB', 'Apache Druid', 'DuckDB']
         },
         {
             type: zh ? '关系型数据库' : 'Relational Database',
@@ -177,7 +173,7 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
             label: 'Cloud DW',
             color: '#34d399',
             bgColor: 'rgba(52,211,153,0.12)',
-            dbs: [zh ? '阿里云 MaxCompute' : 'Aliyun MaxCompute', zh ? '华为云 DWS' : 'Huawei DWS']
+            dbs: ['Redshift', 'Snowflake', 'BigQuery', 'Databricks', zh ? '阿里云 MaxCompute' : 'Aliyun MaxCompute', zh ? '华为云 DWS' : 'Huawei DWS']
         }
     ];
 

@@ -396,6 +396,38 @@
         overflow-x: auto;
     }
 
+    .cmp-code-wrap {
+        position: relative;
+        max-height: 168px;
+        overflow: hidden;
+        transition: max-height .4s ease;
+    }
+    .cmp-code-wrap.cmp-code-expanded { max-height: 1400px; }
+    .cmp-code-fade {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 80px;
+        background: linear-gradient(transparent, #0d1117);
+        pointer-events: none;
+        transition: opacity .25s;
+    }
+    .cmp-code-wrap.cmp-code-expanded .cmp-code-fade { opacity: 0; }
+    .cmp-code-btn {
+        width: 100%;
+        padding: 9px 0;
+        background: rgba(255,255,255,0.03);
+        border: none;
+        border-top: 1px solid rgba(255,255,255,0.07);
+        color: rgba(255,255,255,0.4);
+        cursor: pointer;
+        font-size: 0.78em;
+        letter-spacing: .04em;
+        text-align: center;
+        transition: background .18s, color .18s;
+        font-family: inherit;
+    }
+    .cmp-code-btn:hover { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.8); }
+
     /* ── Code block ── */
     .cube-code-wrap {
         background: #0d1117;
@@ -1240,66 +1272,6 @@
         </div>
     </div>
 
-    <!-- ── Code Example ── -->
-    <div class="cube-section cube-section-dark2">
-        <div class="container">
-            <div class="cube-section-title">
-                <span class="cube-eyebrow">CODE EXAMPLE</span>
-                <h2>{{'cube.code.title' | i18n}}</h2>
-                <p>{{'cube.code.desc' | i18n}}</p>
-            </div>
-            <div class="cube-code-wrap">
-                <div class="cube-code-bar">
-                    <div class="cube-code-dot" style="background:#ff5f56"></div>
-                    <div class="cube-code-dot" style="background:#ffbd2e"></div>
-                    <div class="cube-code-dot" style="background:#27c93f"></div>
-                    <span class="file-name">OrderCube.java</span>
-                </div>
-                <pre><code class="language-java">@EruptCube(
-    name = "Order Analysis",
-    sql = """
-        select o.channel, o.status, o.create_time,
-               o.amount, u.city, p.category
-        from orders o
-          inner join users u on o.user_id = u.id
-          inner join products p on o.product_id = p.id
-        """
-)
-public class OrderCube {
-
-    // ── Dimensions: for grouping and filtering ────────
-    @Dimension(title = "Channel", sql = "channel")
-    private String channel;
-
-    @Dimension(title = "Status", sql = "status")
-    private String status;
-
-    @Dimension(title = "City", sql = "city")
-    private String city;
-
-    @Dimension(title = "Category", sql = "category")
-    private String category;
-
-    @Dimension(title = "Order Date", sql = "create_time")
-    private Date createTime;
-
-    // ── Measures: aggregations, define once reuse anywhere ──
-    @Measure(title = "Orders", sql = "count(*)")
-    private Long orderCount;
-
-    @Measure(title = "Revenue", sql = "sum(amount)")
-    private Double totalAmount;
-
-    @Measure(title = "Avg. Order", sql = "round(sum(amount) / count(*), 2)")
-    private Double avgOrderValue;
-
-    @Measure(title = "Unique Users", sql = "count(distinct user_id)")
-    private Long uniqueUsers;
-}</code></pre>
-            </div>
-        </div>
-    </div>
-
     <!-- ── Visualization ── -->
     <div class="cube-section cube-section-dark2">
         <div class="container">
@@ -1457,23 +1429,6 @@ public class OrderCube {
         </div>
     </div>
 
-    <!-- ── How it works: flow ── -->
-    <div class="cube-section cube-section-faint">
-        <div class="container">
-            <div class="cube-section-title">
-                <span class="cube-eyebrow" style="color:#999">FROM MODEL TO INSIGHT</span>
-                <h2>{{'cube.flow.title' | i18n}}</h2>
-                <p>{{'cube.flow.desc' | i18n}}</p>
-            </div>
-            <div class="cube-flow">
-                <div class="cube-flow-step" ng-repeat="step in flowSteps">
-                    <div class="cube-flow-step-icon">{{step.icon}}</div>
-                    <div class="cube-flow-step-label">{{step.label}}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- ── Three-Way Comparison ── -->
     <div class="cube-section cube-section-dark">
         <div class="container">
@@ -1489,7 +1444,8 @@ public class OrderCube {
                     <div class="cube-looker-card-head lk">
                         <span>◈</span> LookML (Google Looker)
                     </div>
-                    <pre><code class="language-java">view: order_analysis {
+                    <div class="cmp-code-wrap" ng-class="{'cmp-code-expanded': expanded.code}">
+                        <pre><code class="language-java">view: order_analysis {
   sql_table_name: orders ;;
 
   dimension: channel {
@@ -1515,12 +1471,15 @@ public class OrderCube {
     label: "Revenue"
   }
 }</code></pre>
+                        <div class="cmp-code-fade"></div>
+                    </div>
                 </div>
                 <div class="cube-looker-card">
                     <div class="cube-looker-card-head cd">
                         <span>◈</span> Cube.dev (YAML)
                     </div>
-                    <pre><code class="language-yaml">cubes:
+                    <div class="cmp-code-wrap" ng-class="{'cmp-code-expanded': expanded.code}">
+                        <pre><code class="language-yaml">cubes:
   - name: OrderAnalysis
     sql_table: orders
 
@@ -1544,12 +1503,15 @@ public class OrderCube {
         type: sum
         sql: "{TABLE}.amount"
         title: Revenue</code></pre>
+                        <div class="cmp-code-fade"></div>
+                    </div>
                 </div>
                 <div class="cube-looker-card">
                     <div class="cube-looker-card-head ec">
                         <span>◈</span> Erupt Cube (Java Annotations)
                     </div>
-                    <pre><code class="language-java">@EruptCube(
+                    <div class="cmp-code-wrap" ng-class="{'cmp-code-expanded': expanded.code}">
+                        <pre><code class="language-java">@EruptCube(
   name = "Order Analysis",
   sql = "orders",
   sqlType = SqlType.TABLE_NAME
@@ -1572,7 +1534,15 @@ public class OrderCube {
     sql = "sum(amount)")
   private Double totalAmount;
 }</code></pre>
+                        <div class="cmp-code-fade"></div>
+                    </div>
                 </div>
+            </div>
+            <div style="text-align:center;margin-top:16px">
+                <button class="cmp-code-btn" style="display:inline-block;width:auto;padding:9px 28px;border-radius:8px;border:1px solid rgba(255,255,255,0.1)"
+                        ng-click="expanded.code = !expanded.code">
+                    {{expanded.code ? '↑ Collapse' : '↓ View full model'}}
+                </button>
             </div>
 
             <!-- Feature comparison table -->
