@@ -388,6 +388,114 @@ var i18n = {
         'claw.cta.doc': ['查看完整文档 →', 'Full Documentation →'],
         'claw.cta.also_ai': ['← 查看 Erupt AI', '← Erupt AI'],
 
+        // ── Erupt Cube ──
+        'nav.cube': ['◈ Cube', '◈ Cube'],
+
+        'cube.hero.sub': [
+            '借鉴 Google Looker 语义层理念，为 Java 生态打造专业级大数据分析方案——用注解定义语义模型，拖拽完成可视化分析，让数据建模回归本质。',
+            'Inspired by Google Looker\'s semantic layer, Erupt Cube brings professional-grade big data analytics to the Java ecosystem — define models with annotations, analyze with drag-and-drop.'
+        ],
+        'cube.hero.btn.demo': ['在线演示', 'Live Demo'],
+
+        'cube.stat.model': ['语义建模', 'Semantic Model'],
+        'cube.stat.dim': ['维度定义', 'Dimension'],
+        'cube.stat.measure': ['指标聚合', 'Measure'],
+        'cube.stat.nosql': ['分析师无需写 SQL', 'Analysts skip SQL'],
+
+        'cube.problem.title': ['语义模型解决了什么问题', 'What Semantic Models Solve'],
+        'cube.problem.desc': [
+            '没有语义层，每个人写自己的 SQL，口径不一致、逻辑到处复制、改一张表要改十个报表。语义模型把指标定义一次，全局复用。',
+            'Without a semantic layer, every analyst writes their own SQL — inconsistent metrics, duplicated logic, fragile reports. A semantic model defines metrics once and shares them everywhere.'
+        ],
+        'cube.table.th.aspect': ['维度', 'Aspect'],
+        'cube.table.th.without': ['没有语义模型', 'Without Semantic Model'],
+        'cube.table.th.with': ['有语义模型', 'With Semantic Model'],
+
+        'cube.roles.title': ['各司其职，效率倍增', 'Clear Roles, Maximum Efficiency'],
+        'cube.roles.desc': [
+            '数据工程师专注构建可复用的语义模型，数据分析师基于模型自助分析——两个角色分工明确，无需相互等待。',
+            'Data engineers build reusable semantic models; analysts self-serve on top. Clear separation of concerns, no waiting for each other.'
+        ],
+        'cube.roles.eng.title': ['数据工程师', 'Data Engineer'],
+        'cube.roles.eng.points': [
+            '用 @EruptCube 定义数据源与 SQL|用 @Dimension 声明可分组、可筛选的维度|用 @Measure 封装聚合指标逻辑|业务指标沉淀为标准化可复用资产|修改表结构只需改模型层，一处改处处生效'
+            ,
+            'Define data source and SQL with @EruptCube|Declare groupable/filterable dimensions with @Dimension|Encapsulate aggregation logic with @Measure|Standardize business metrics as reusable assets|Schema changes only require updating the model layer'
+        ],
+        'cube.roles.ana.title': ['数据分析师', 'Data Analyst'],
+        'cube.roles.ana.points': [
+            '基于语义层自助完成可视化分析|无需关心底层 SQL 实现细节|拖拽维度和指标即可生成图表|所有指标口径统一，不再争论数字|专注业务洞察，而非技术实现'
+            ,
+            'Self-serve visualization on top of the semantic layer|No need to understand underlying SQL|Drag dimensions and measures to build charts|Consistent metrics — no more arguing about numbers|Focus on business insights, not technical details'
+        ],
+
+        'cube.anno.title': ['四个注解，构建完整分析体系', 'Four Annotations, Complete Analytics Stack'],
+        'cube.anno.desc': [
+            '没有新语言，没有新 DSL，Java 开发者开箱即用。',
+            'No new language, no new DSL. Works out of the box for any Java developer.'
+        ],
+        'cube.anno.a1.title': ['声明数据立方体', 'Declare a Data Cube'],
+        'cube.anno.a1.desc': [
+            '绑定 SQL 数据源（支持子查询或直接引用表），声明对外暴露的查询视图。',
+            'Bind a SQL data source (subquery or table reference) and declare exposed query views.'
+        ],
+        'cube.anno.a2.title': ['定义分析维度', 'Define Analysis Dimensions'],
+        'cube.anno.a2.desc': [
+            '声明可用于分组和筛选的字段，支持日期、字符串、数值类型自动推断。',
+            'Declare fields for grouping and filtering. Type inference handles date, string, and number automatically.'
+        ],
+        'cube.anno.a3.title': ['封装聚合指标', 'Encapsulate Aggregation Measures'],
+        'cube.anno.a3.desc': [
+            '将 count、sum、avg、复合表达式等聚合逻辑封装为可复用指标，一处定义全局生效。',
+            'Encapsulate count, sum, avg, and compound expressions as reusable measures — define once, use everywhere.'
+        ],
+        'cube.anno.a4.title': ['运行时查询参数', 'Runtime Query Parameters'],
+        'cube.anno.a4.desc': [
+            '声明运行时动态传入的查询条件，支持枚举选项，让语义模型更灵活。',
+            'Declare runtime filter parameters with optional enum choices for flexible, parameterized queries.'
+        ],
+
+        'cube.code.title': ['一个完整的语义模型', 'A Complete Semantic Model'],
+        'cube.code.desc': [
+            '多表 JOIN 查询、多个维度与指标，全部通过注解声明，无需编写任何 Controller 或 Service。',
+            'Multi-table JOIN, dimensions and measures — all declared with annotations. Zero Controller or Service code required.'
+        ],
+
+        'cube.flow.title': ['从建模到洞察，全程无摩擦', 'From Model to Insight, Zero Friction'],
+        'cube.flow.desc': [
+            '过去需要多方协同数周才能完成的 BI 链路，现在一个工程师一天内搞定。',
+            'What used to require weeks of cross-team coordination now takes a single engineer a day.'
+        ],
+        'cube.flow.steps': [
+            '🗃️:分析 SQL 数据源|⬡:@EruptCube 声明模型|📐:@Dimension 定义维度|📊:@Measure 封装指标|🖱️:拖拽生成图表|💡:业务洞察'
+            ,
+            '🗃️:Analyze SQL source|⬡:@EruptCube model|📐:@Dimension fields|📊:@Measure metrics|🖱️:Drag & drop charts|💡:Business insights'
+        ],
+
+        'cube.looker.title': ['与 Google Looker 的关系', 'Inspired by Google Looker'],
+        'cube.looker.desc': [
+            'Looker 用 LookML DSL 实现了语义层理念，Erupt Cube 用 Java 注解复刻同样的思想——对 Java 开发者更友好，无需学习新语言。',
+            'Looker implements semantic layers via the LookML DSL. Erupt Cube replicates the same idea with Java annotations — no new language to learn.'
+        ],
+        'cube.looker.note': [
+            '两者的核心理念相同：所有指标逻辑只定义一次，所有报表共享同一套语义层。Erupt Cube 只是把 LookML 换成了 Java 开发者更熟悉的注解语法。',
+            'The core idea is identical: define every metric exactly once, share one semantic layer across all reports. Erupt Cube simply replaces LookML with Java annotation syntax.'
+        ],
+
+        'cube.db.title': ['广泛的数据库支持', 'Broad Database Support'],
+        'cube.db.desc': [
+            '无论是 OLAP 大数据仓库、传统关系型数据库、国产数据库还是云原生数仓，Erupt Cube 均可直接接入，无需额外适配。',
+            'Whether OLAP warehouses, traditional RDBMS, domestic databases, or cloud-native DWs — Erupt Cube connects directly with no extra adapters.'
+        ],
+
+        'cube.cta.title': ['准备好构建语义模型了吗？', 'Ready to Build Your Semantic Model?'],
+        'cube.cta.desc': [
+            '演示地址已部署完整的 Cube 示例，账号：cube / 密码：cube，直接体验拖拽分析。',
+            'The live demo includes complete Cube examples. Login: cube / cube — try drag-and-drop analytics now.'
+        ],
+        'cube.cta.demo': ['立即体验 →', 'Try Live Demo →'],
+        'cube.cta.doc': ['阅读文档', 'Documentation'],
+
         // 语言切换
         'lang.zh': ['中文', '中文'],
         'lang.en': ['English', 'English'],
