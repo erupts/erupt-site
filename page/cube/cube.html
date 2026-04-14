@@ -358,11 +358,11 @@
     /* ── Looker compare ── */
     .cube-looker-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         .cube-looker-grid { grid-template-columns: 1fr; }
     }
 
@@ -384,7 +384,8 @@
     }
 
     .cube-looker-card-head.lk { background: #1a1230; color: #c4b5fd; }
-    .cube-looker-card-head.ec { background: #0d1a30; color: #93c5fd; }
+    .cube-looker-card-head.cd { background: #1a1500; color: #fcd34d; }
+    .cube-looker-card-head.ec { background: #0a1f14; color: #86efac; }
 
     .cube-looker-card pre {
         margin: 0;
@@ -430,79 +431,481 @@
         overflow-x: auto;
     }
 
-    /* ── Database Support ── */
-    .cube-db-grid {
+    /* ── Visualization ── */
+    .cviz-shell {
+        background: #0a0e1a;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(99,102,241,0.1);
+        margin-bottom: 40px;
+    }
+
+    .cviz-titlebar {
+        background: #141828;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .cviz-dot { width: 11px; height: 11px; border-radius: 50%; }
+
+    .cviz-title {
+        font-size: 0.75em;
+        color: rgba(255,255,255,0.3);
+        font-family: 'SFMono-Regular', monospace;
+        margin-left: 10px;
+        flex: 1;
+    }
+
+    .cviz-toolbar-right { display: flex; gap: 8px; }
+
+    .cviz-toolbar-btn {
+        font-size: 0.72em;
+        padding: 3px 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(255,255,255,0.12);
+        color: rgba(255,255,255,0.5);
+        cursor: default;
+        font-weight: 500;
+    }
+
+    .cviz-toolbar-btn-primary {
+        background: #6366f1;
+        color: #fff;
+        border-color: transparent;
+    }
+
+    /* filter bar */
+    .cviz-filter-bar {
+        background: #0f1322;
+        padding: 9px 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cviz-filter-label {
+        font-size: 0.7em;
+        color: rgba(255,255,255,0.25);
+        font-family: 'SFMono-Regular', monospace;
+        letter-spacing: 0.5px;
+        margin-right: 4px;
+    }
+
+    .cviz-filter-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75em;
+        padding: 4px 10px;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.45);
+        cursor: default;
+    }
+
+    .cviz-filter-active {
+        border-color: rgba(99,102,241,0.4);
+        color: rgba(165,180,252,0.9);
+        background: rgba(99,102,241,0.08);
+    }
+
+    .cviz-filter-dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: #6366f1;
+        flex-shrink: 0;
+    }
+
+    .cviz-filter-arrow { opacity: 0.4; font-size: 0.85em; }
+
+    .cviz-filter-add {
+        font-size: 0.72em;
+        color: rgba(99,102,241,0.6);
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px dashed rgba(99,102,241,0.25);
+        cursor: default;
+    }
+
+    /* grid */
+    .cviz-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 12px;
     }
 
     @media (max-width: 768px) {
-        .cube-db-grid { grid-template-columns: 1fr; }
+        .cviz-grid { grid-template-columns: 1fr; }
+        .cviz-span2 { grid-column: span 1 !important; }
     }
 
-    .cube-db-card {
-        background: #fff;
-        border: 1px solid #e5e7eb;
-        border-radius: 10px;
-        padding: 22px 22px 18px;
-        transition: border-color 0.15s, box-shadow 0.15s;
+    .cviz-span2 { grid-column: span 2; }
+
+    .cviz-card {
+        background: #141828;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 8px;
+        padding: 14px 16px 18px;
+        position: relative;
+        overflow: hidden;
     }
 
-    .cube-db-card:hover {
-        border-color: #c7d2fe;
-        box-shadow: 0 4px 16px rgba(99, 102, 241, 0.08);
-    }
-
-    .cube-db-card-head {
+    .cviz-card-head {
         display: flex;
         align-items: center;
-        gap: 14px;
+        justify-content: space-between;
         margin-bottom: 14px;
     }
 
-    .cube-db-icon {
-        font-size: 1.8em;
-        line-height: 1;
+    .cviz-card-title {
+        font-size: 0.78em;
+        font-weight: 600;
+        color: rgba(255,255,255,0.65);
     }
 
-    .cube-db-type {
-        font-size: 0.92em;
-        font-weight: 700;
-        color: #111;
-        line-height: 1.3;
-    }
-
-    .cube-db-label {
-        font-size: 0.72em;
-        color: #999;
+    .cviz-card-type {
+        font-size: 0.65em;
         font-family: 'SFMono-Regular', monospace;
-        letter-spacing: 0.3px;
-        margin-top: 2px;
+        color: rgba(99,102,241,0.7);
+        background: rgba(99,102,241,0.1);
+        padding: 2px 7px;
+        border-radius: 3px;
+        border: 1px solid rgba(99,102,241,0.2);
     }
 
-    .cube-db-tags {
+    .cviz-resize-handle {
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        width: 12px;
+        height: 12px;
+        background-image: radial-gradient(circle, rgba(99,102,241,0.5) 1.5px, transparent 1.5px);
+        background-size: 4px 4px;
+        opacity: 0.6;
+        cursor: se-resize;
+    }
+
+    /* KPI */
+    .cviz-kpi-row {
+        display: flex;
+        align-items: center;
+        gap: 0;
+    }
+
+    .cviz-kpi {
+        flex: 1;
+        text-align: center;
+        padding: 4px 0;
+    }
+
+    .cviz-kpi-divider {
+        width: 1px;
+        height: 48px;
+        background: rgba(255,255,255,0.07);
+    }
+
+    .cviz-kpi-val {
+        font-size: 1.22em;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 4px;
+    }
+
+    .cviz-kpi-label {
+        font-size: 0.68em;
+        color: rgba(255,255,255,0.28);
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    .cviz-kpi-trend {
+        font-size: 0.7em;
+        font-weight: 600;
+        margin-top: 3px;
+    }
+
+    .cviz-up { color: #4ade80; }
+    .cviz-down { color: #f87171; }
+
+    /* Bar chart */
+    .cviz-bar-chart { display: flex; flex-direction: column; gap: 9px; }
+
+    .cviz-bar-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cviz-bar-name {
+        font-size: 0.72em;
+        color: rgba(255,255,255,0.4);
+        width: 38px;
+        flex-shrink: 0;
+        text-align: right;
+    }
+
+    .cviz-bar-track {
+        flex: 1;
+        height: 8px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .cviz-bar {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.6s ease;
+    }
+
+    .cviz-bar-val {
+        font-size: 0.68em;
+        color: rgba(255,255,255,0.3);
+        width: 28px;
+        flex-shrink: 0;
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    /* Pie chart */
+    .cviz-pie-wrap {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .cviz-pie {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: conic-gradient(
+            #6366f1 0% 38%,
+            #22d3ee 38% 65%,
+            #f59e0b 65% 85%,
+            #f87171 85% 100%
+        );
+    }
+
+    .cviz-pie-legend { display: flex; flex-direction: column; gap: 6px; }
+
+    .cviz-pie-leg-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.72em;
+        color: rgba(255,255,255,0.5);
+    }
+
+    .cviz-pie-leg-item span {
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+
+    /* Line chart */
+    .cviz-line-wrap { padding: 4px 0; }
+
+    .cviz-line-svg {
+        width: 100%;
+        height: 80px;
+        display: block;
+    }
+
+    /* Feature strip */
+    .cviz-feat-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+        .cviz-feat-row { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+        .cviz-feat-row { grid-template-columns: 1fr; }
+    }
+
+    .cviz-feat-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 8px;
+        transition: border-color 0.15s;
+    }
+
+    .cviz-feat-item:hover { border-color: rgba(99,102,241,0.3); }
+
+    .cviz-feat-icon { font-size: 1.4em; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+
+    .cviz-feat-name {
+        font-size: 0.88em;
+        font-weight: 700;
+        color: #e5e7eb;
+        margin-bottom: 4px;
+    }
+
+    .cviz-feat-desc {
+        font-size: 0.78em;
+        color: rgba(255,255,255,0.38);
+        line-height: 1.6;
+    }
+
+    /* Type chips section */
+    .cviz-types-section {
+        margin-bottom: 18px;
+    }
+
+    .cviz-types-label {
+        font-size: 0.68em;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.22);
+        font-family: 'SFMono-Regular', monospace;
+        margin-bottom: 10px;
+    }
+
+    .cviz-types-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 7px;
+        gap: 8px;
     }
 
-    .cube-db-tag {
-        display: inline-block;
-        background: #f3f4f6;
-        color: #374151;
-        border: 1px solid #e5e7eb;
-        border-radius: 5px;
-        padding: 3px 10px;
+    .cviz-type-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 14px;
+        border-radius: 20px;
         font-size: 0.8em;
         font-weight: 500;
-        transition: background 0.12s, border-color 0.12s;
+        background: rgba(99,102,241,0.1);
+        border: 1px solid rgba(99,102,241,0.2);
+        color: #a5b4fc;
+        transition: background 0.15s;
     }
 
-    .cube-db-card:hover .cube-db-tag {
-        background: #eef2ff;
-        border-color: #c7d2fe;
-        color: #4338ca;
+    .cviz-type-chip:hover {
+        background: rgba(99,102,241,0.18);
+        border-color: rgba(99,102,241,0.4);
+    }
+
+    .cviz-filter-type-chip {
+        background: rgba(52,211,153,0.08);
+        border-color: rgba(52,211,153,0.2);
+        color: #6ee7b7;
+    }
+
+    .cviz-filter-type-chip:hover {
+        background: rgba(52,211,153,0.14);
+        border-color: rgba(52,211,153,0.35);
+    }
+
+    /* ── Database Support ── */
+    .cube-db-wrap {
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .cube-db-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        transition: background 0.15s;
+    }
+
+    .cube-db-row:last-child { border-bottom: none; }
+
+    .cube-db-row:hover { background: rgba(255, 255, 255, 0.025); }
+
+    .cube-db-meta {
+        width: 220px;
+        flex-shrink: 0;
+        padding: 22px 24px;
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+        .cube-db-row { flex-direction: column; }
+        .cube-db-meta {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 16px 18px 12px;
+        }
+    }
+
+    .cube-db-accent {
+        width: 3px;
+        height: 32px;
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+
+    .cube-db-meta-text {}
+
+    .cube-db-type {
+        font-size: 0.88em;
+        font-weight: 700;
+        color: #e5e7eb;
+        line-height: 1.3;
+        margin-bottom: 3px;
+    }
+
+    .cube-db-badge {
+        display: inline-block;
+        font-size: 0.65em;
+        font-family: 'SFMono-Regular', monospace;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        padding: 1px 7px;
+        border-radius: 3px;
+    }
+
+    .cube-db-chips {
+        flex: 1;
+        padding: 18px 22px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cube-db-chip {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.72);
+        border-radius: 6px;
+        padding: 5px 13px;
+        font-size: 0.82em;
+        font-weight: 500;
+        letter-spacing: 0.1px;
+        transition: background 0.15s, border-color 0.15s, color 0.15s;
+        white-space: nowrap;
+    }
+
+    .cube-db-row:hover .cube-db-chip {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.18);
+        color: #fff;
     }
 
     /* ── CTA ── */
@@ -613,6 +1016,111 @@
     @media (max-width: 576px) {
         .cube-flow-arrow { display: none; }
         .cube-flow { gap: 8px; }
+    }
+
+    /* ── vs Cube.dev ── */
+    .cmp-table {
+        margin-top: 40px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cmp-header, .cmp-row {
+        display: grid;
+        grid-template-columns: 190px 1fr 1fr 1fr;
+    }
+    .cmp-header { background: rgba(255,255,255,0.04); }
+    .cmp-row { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .cmp-row:last-child { border-bottom: none; }
+    .cmp-row:nth-child(odd) { background: rgba(255,255,255,0.015); }
+    .cmp-cell {
+        padding: 13px 18px;
+        font-size: 0.855em;
+        line-height: 1.55;
+    }
+    .cmp-col-feature {
+        font-size: 0.74em;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .07em;
+        color: rgba(255,255,255,0.3);
+        display: flex;
+        align-items: center;
+    }
+    .cmp-col-lk {
+        color: #c4b5fd;
+        font-weight: 700;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255,255,255,0.06);
+    }
+    .cmp-col-cd {
+        color: #fcd34d;
+        font-weight: 700;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255,255,255,0.06);
+    }
+    .cmp-col-ec {
+        color: #86efac;
+        font-weight: 700;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255,255,255,0.06);
+    }
+    .cmp-feature {
+        color: rgba(255,255,255,0.65);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+    }
+    .cmp-lk, .cmp-cd {
+        color: rgba(255,255,255,0.38);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255,255,255,0.05);
+    }
+    .cmp-ec {
+        color: rgba(255,255,255,0.88);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255,255,255,0.05);
+        background: rgba(134,239,172,0.04);
+    }
+    .cmp-adv-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 48px;
+    }
+    .cmp-adv-card {
+        background: rgba(99,102,241,0.07);
+        border: 1px solid rgba(99,102,241,0.22);
+        border-radius: 16px;
+        padding: 26px 22px;
+        transition: border-color .2s;
+    }
+    .cmp-adv-card:hover { border-color: rgba(99,102,241,0.5); }
+    .cmp-adv-icon { font-size: 1.8em; margin-bottom: 14px; }
+    .cmp-adv-title { font-size: 0.97em; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .cmp-adv-desc { font-size: 0.81em; color: rgba(255,255,255,0.48); line-height: 1.65; }
+    @media (max-width: 900px) {
+        .cmp-adv-grid { grid-template-columns: repeat(2, 1fr); }
+        .cmp-header, .cmp-row { grid-template-columns: 1fr 1fr 1fr; }
+        .cmp-feature { display: none; }
+    }
+    @media (max-width: 600px) {
+        .cmp-adv-grid { grid-template-columns: 1fr; }
     }
 </style>
 
@@ -748,7 +1256,7 @@
                     <span class="file-name">OrderCube.java</span>
                 </div>
                 <pre><code class="language-java">@EruptCube(
-    name = "订单分析",
+    name = "Order Analysis",
     sql = """
         select o.channel, o.status, o.create_time,
                o.amount, u.city, p.category
@@ -759,36 +1267,193 @@
 )
 public class OrderCube {
 
-    // ── 维度：用于分组与筛选 ──────────────────────────
-    @Dimension(title = "渠道", sql = "channel")
+    // ── Dimensions: for grouping and filtering ────────
+    @Dimension(title = "Channel", sql = "channel")
     private String channel;
 
-    @Dimension(title = "状态", sql = "status")
+    @Dimension(title = "Status", sql = "status")
     private String status;
 
-    @Dimension(title = "城市", sql = "city")
+    @Dimension(title = "City", sql = "city")
     private String city;
 
-    @Dimension(title = "品类", sql = "category")
+    @Dimension(title = "Category", sql = "category")
     private String category;
 
-    @Dimension(title = "下单时间", sql = "create_time")
+    @Dimension(title = "Order Date", sql = "create_time")
     private Date createTime;
 
-    // ── 指标：聚合计算，一次定义到处复用 ─────────────
-    @Measure(title = "订单量", sql = "count(*)")
+    // ── Measures: aggregations, define once reuse anywhere ──
+    @Measure(title = "Orders", sql = "count(*)")
     private Long orderCount;
 
-    @Measure(title = "销售额", sql = "sum(amount)")
+    @Measure(title = "Revenue", sql = "sum(amount)")
     private Double totalAmount;
 
-    @Measure(title = "客单价", sql = "round(sum(amount) / count(*), 2)")
+    @Measure(title = "Avg. Order", sql = "round(sum(amount) / count(*), 2)")
     private Double avgOrderValue;
 
-    @Measure(title = "独立用户数", sql = "count(distinct user_id)")
+    @Measure(title = "Unique Users", sql = "count(distinct user_id)")
     private Long uniqueUsers;
 }</code></pre>
             </div>
+        </div>
+    </div>
+
+    <!-- ── Visualization ── -->
+    <div class="cube-section cube-section-dark2">
+        <div class="container">
+            <div class="cube-section-title">
+                <span class="cube-eyebrow">VISUALIZATION</span>
+                <h2>{{'cube.viz.title' | i18n}}</h2>
+                <p>{{'cube.viz.desc' | i18n}}</p>
+            </div>
+
+            <!-- Mock Dashboard -->
+            <div class="cviz-shell">
+                <div class="cviz-titlebar">
+                    <div class="cviz-dot" style="background:#ff5f56"></div>
+                    <div class="cviz-dot" style="background:#ffbd2e"></div>
+                    <div class="cviz-dot" style="background:#27c93f"></div>
+                    <span class="cviz-title">Erupt Cube — Order Analysis Dashboard</span>
+                    <div class="cviz-toolbar-right">
+                        <span class="cviz-toolbar-btn">+ Add Chart</span>
+                        <span class="cviz-toolbar-btn cviz-toolbar-btn-primary">Save</span>
+                    </div>
+                </div>
+                <!-- Filter bar -->
+                <div class="cviz-filter-bar">
+                    <span class="cviz-filter-label">Filters</span>
+                    <div class="cviz-filter-chip cviz-filter-active">
+                        <span class="cviz-filter-dot"></span>Channel = All
+                        <span class="cviz-filter-arrow">▾</span>
+                    </div>
+                    <div class="cviz-filter-chip cviz-filter-active">
+                        <span class="cviz-filter-dot"></span>Order Date = Last 30 days
+                        <span class="cviz-filter-arrow">▾</span>
+                    </div>
+                    <div class="cviz-filter-chip">
+                        <span class="cviz-filter-dot" style="background:#6b7280"></span>City = All
+                        <span class="cviz-filter-arrow">▾</span>
+                    </div>
+                    <div class="cviz-filter-add">+ Filter</div>
+                </div>
+                <!-- Grid -->
+                <div class="cviz-grid">
+                    <!-- Card 1: KPI row -->
+                    <div class="cviz-card cviz-span2">
+                        <div class="cviz-card-head">
+                            <span class="cviz-card-title">Core Metrics</span>
+                            <span class="cviz-card-type">KPI</span>
+                        </div>
+                        <div class="cviz-kpi-row">
+                            <div class="cviz-kpi">
+                                <div class="cviz-kpi-val" style="color:#a5b4fc">128,430</div>
+                                <div class="cviz-kpi-label">Orders</div>
+                                <div class="cviz-kpi-trend cviz-up">↑ 12.4%</div>
+                            </div>
+                            <div class="cviz-kpi-divider"></div>
+                            <div class="cviz-kpi">
+                                <div class="cviz-kpi-val" style="color:#86efac">$ 3,284,100</div>
+                                <div class="cviz-kpi-label">Revenue</div>
+                                <div class="cviz-kpi-trend cviz-up">↑ 8.7%</div>
+                            </div>
+                            <div class="cviz-kpi-divider"></div>
+                            <div class="cviz-kpi">
+                                <div class="cviz-kpi-val" style="color:#fcd34d">$ 25.57</div>
+                                <div class="cviz-kpi-label">Avg. Order</div>
+                                <div class="cviz-kpi-trend cviz-down">↓ 3.2%</div>
+                            </div>
+                            <div class="cviz-kpi-divider"></div>
+                            <div class="cviz-kpi">
+                                <div class="cviz-kpi-val" style="color:#67e8f9">43,210</div>
+                                <div class="cviz-kpi-label">Unique Users</div>
+                                <div class="cviz-kpi-trend cviz-up">↑ 5.1%</div>
+                            </div>
+                        </div>
+                        <div class="cviz-resize-handle"></div>
+                    </div>
+                    <!-- Card 2: Bar chart -->
+                    <div class="cviz-card">
+                        <div class="cviz-card-head">
+                            <span class="cviz-card-title">Revenue by Channel</span>
+                            <span class="cviz-card-type">Bar Chart</span>
+                        </div>
+                        <div class="cviz-bar-chart">
+                            <div class="cviz-bar-row"><span class="cviz-bar-name">App</span><div class="cviz-bar-track"><div class="cviz-bar" style="width:82%;background:linear-gradient(90deg,#6366f1,#818cf8)"></div></div><span class="cviz-bar-val">82%</span></div>
+                            <div class="cviz-bar-row"><span class="cviz-bar-name">Web</span><div class="cviz-bar-track"><div class="cviz-bar" style="width:65%;background:linear-gradient(90deg,#6366f1,#818cf8)"></div></div><span class="cviz-bar-val">65%</span></div>
+                            <div class="cviz-bar-row"><span class="cviz-bar-name">Mini App</span><div class="cviz-bar-track"><div class="cviz-bar" style="width:47%;background:linear-gradient(90deg,#6366f1,#818cf8)"></div></div><span class="cviz-bar-val">47%</span></div>
+                            <div class="cviz-bar-row"><span class="cviz-bar-name">Offline</span><div class="cviz-bar-track"><div class="cviz-bar" style="width:31%;background:linear-gradient(90deg,#6366f1,#818cf8)"></div></div><span class="cviz-bar-val">31%</span></div>
+                        </div>
+                        <div class="cviz-resize-handle"></div>
+                    </div>
+                    <!-- Card 3: Pie chart (CSS conic) -->
+                    <div class="cviz-card">
+                        <div class="cviz-card-head">
+                            <span class="cviz-card-title">Category Mix</span>
+                            <span class="cviz-card-type">Pie Chart</span>
+                        </div>
+                        <div class="cviz-pie-wrap">
+                            <div class="cviz-pie"></div>
+                            <div class="cviz-pie-legend">
+                                <div class="cviz-pie-leg-item"><span style="background:#6366f1"></span>Electronics 38%</div>
+                                <div class="cviz-pie-leg-item"><span style="background:#22d3ee"></span>Apparel 27%</div>
+                                <div class="cviz-pie-leg-item"><span style="background:#f59e0b"></span>Food 20%</div>
+                                <div class="cviz-pie-leg-item"><span style="background:#f87171"></span>Other 15%</div>
+                            </div>
+                        </div>
+                        <div class="cviz-resize-handle"></div>
+                    </div>
+                    <!-- Card 4: Line chart -->
+                    <div class="cviz-card cviz-span2">
+                        <div class="cviz-card-head">
+                            <span class="cviz-card-title">30-Day Order Trend</span>
+                            <span class="cviz-card-type">Line Chart</span>
+                        </div>
+                        <div class="cviz-line-wrap">
+                            <svg class="cviz-line-svg" viewBox="0 0 480 80" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#6366f1" stop-opacity="0.35"/>
+                                        <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M0,60 L20,52 L48,55 L72,40 L96,44 L120,30 L144,35 L168,22 L192,28 L216,18 L240,25 L264,15 L288,20 L312,10 L336,16 L360,8 L384,14 L408,6 L432,11 L456,4 L480,8" fill="url(#lg1)" stroke="none"/>
+                                <path d="M0,60 L20,52 L48,55 L72,40 L96,44 L120,30 L144,35 L168,22 L192,28 L216,18 L240,25 L264,15 L288,20 L312,10 L336,16 L360,8 L384,14 L408,6 L432,11 L456,4 L480,8" fill="none" stroke="#818cf8" stroke-width="2" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="cviz-resize-handle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature strips -->
+            <div class="cviz-feat-row">
+                <div class="cviz-feat-item" ng-repeat="f in vizFeatures">
+                    <span class="cviz-feat-icon">{{f.icon}}</span>
+                    <div>
+                        <div class="cviz-feat-name">{{f.name}}</div>
+                        <div class="cviz-feat-desc">{{f.desc}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart types -->
+            <div class="cviz-types-section">
+                <div class="cviz-types-label">{{'cube.viz.charts.label' | i18n}}</div>
+                <div class="cviz-types-row">
+                    <span class="cviz-type-chip" ng-repeat="c in chartTypes">{{c.icon}} {{c.name}}</span>
+                </div>
+            </div>
+
+            <!-- Filter types -->
+            <div class="cviz-types-section">
+                <div class="cviz-types-label">{{'cube.viz.filters.label' | i18n}}</div>
+                <div class="cviz-types-row">
+                    <span class="cviz-type-chip cviz-filter-type-chip" ng-repeat="f in filterTypes">{{f.icon}} {{f.name}}</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -809,14 +1474,16 @@ public class OrderCube {
         </div>
     </div>
 
-    <!-- ── Looker Comparison ── -->
+    <!-- ── Three-Way Comparison ── -->
     <div class="cube-section cube-section-dark">
         <div class="container">
             <div class="cube-section-title">
-                <span class="cube-eyebrow">INSPIRED BY GOOGLE LOOKER</span>
-                <h2>{{'cube.looker.title' | i18n}}</h2>
-                <p>{{'cube.looker.desc' | i18n}}</p>
+                <span class="cube-eyebrow">SIDE-BY-SIDE</span>
+                <h2>{{'cube.cmp.title' | i18n}}</h2>
+                <p>{{'cube.cmp.desc' | i18n}}</p>
             </div>
+
+            <!-- Code examples: 3 columns -->
             <div class="cube-looker-grid">
                 <div class="cube-looker-card">
                     <div class="cube-looker-card-head lk">
@@ -828,83 +1495,132 @@ public class OrderCube {
   dimension: channel {
     type: string
     sql: ${TABLE}.channel ;;
-    label: "渠道"
+    label: "Channel"
   }
 
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
-    label: "状态"
+    label: "Status"
   }
 
   measure: order_count {
     type: count
-    label: "订单量"
+    label: "Orders"
   }
 
   measure: total_amount {
     type: sum
     sql: ${TABLE}.amount ;;
-    label: "销售额"
+    label: "Revenue"
   }
 }</code></pre>
+                </div>
+                <div class="cube-looker-card">
+                    <div class="cube-looker-card-head cd">
+                        <span>◈</span> Cube.dev (YAML)
+                    </div>
+                    <pre><code class="language-yaml">cubes:
+  - name: OrderAnalysis
+    sql_table: orders
+
+    dimensions:
+      - name: channel
+        type: string
+        sql: "{TABLE}.channel"
+        title: Channel
+
+      - name: status
+        type: string
+        sql: "{TABLE}.status"
+        title: Status
+
+    measures:
+      - name: order_count
+        type: count
+        title: Orders
+
+      - name: total_amount
+        type: sum
+        sql: "{TABLE}.amount"
+        title: Revenue</code></pre>
                 </div>
                 <div class="cube-looker-card">
                     <div class="cube-looker-card-head ec">
                         <span>◈</span> Erupt Cube (Java Annotations)
                     </div>
                     <pre><code class="language-java">@EruptCube(
-  name = "订单分析",
+  name = "Order Analysis",
   sql = "orders",
   sqlType = SqlType.TABLE_NAME
 )
 public class OrderCube {
 
-  @Dimension(title = "渠道")
+  @Dimension(title = "Channel")
   private String channel;
 
-  @Dimension(title = "状态")
+  @Dimension(title = "Status")
   private String status;
 
   @Measure(
-    title = "订单量",
+    title = "Orders",
     sql = "count(*)")
   private Long orderCount;
 
   @Measure(
-    title = "销售额",
+    title = "Revenue",
     sql = "sum(amount)")
   private Double totalAmount;
 }</code></pre>
                 </div>
             </div>
-            <div style="text-align:center;margin-top:36px">
-                <p style="color:rgba(255,255,255,0.35);font-size:0.9em;max-width:560px;margin:0 auto;line-height:1.8">
-                    {{'cube.looker.note' | i18n}}
-                </p>
+
+            <!-- Feature comparison table -->
+            <div class="cmp-table" style="margin-top:48px">
+                <div class="cmp-header">
+                    <div class="cmp-cell cmp-col-feature">{{'cube.cmp.col.feature' | i18n}}</div>
+                    <div class="cmp-cell cmp-col-lk">Google Looker</div>
+                    <div class="cmp-cell cmp-col-cd">Cube.dev</div>
+                    <div class="cmp-cell cmp-col-ec">Erupt Cube</div>
+                </div>
+                <div class="cmp-row" ng-repeat="r in cmpRows">
+                    <div class="cmp-cell cmp-feature">{{r.feature}}</div>
+                    <div class="cmp-cell cmp-lk">{{r.looker}}</div>
+                    <div class="cmp-cell cmp-cd">{{r.cubedev}}</div>
+                    <div class="cmp-cell cmp-ec">{{r.us}}</div>
+                </div>
+            </div>
+
+            <!-- Annotation advantage cards -->
+            <div class="cmp-adv-grid">
+                <div class="cmp-adv-card" ng-repeat="a in annoAdvantages">
+                    <div class="cmp-adv-icon">{{a.icon}}</div>
+                    <div class="cmp-adv-title">{{a.title}}</div>
+                    <div class="cmp-adv-desc">{{a.desc}}</div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- ── Database Support ── -->
-    <div class="cube-section cube-section-faint">
+    <div class="cube-section cube-section-dark">
         <div class="container">
             <div class="cube-section-title">
                 <span class="cube-eyebrow">DATABASE SUPPORT</span>
                 <h2>{{'cube.db.title' | i18n}}</h2>
                 <p>{{'cube.db.desc' | i18n}}</p>
             </div>
-            <div class="cube-db-grid">
-                <div class="cube-db-card" ng-repeat="cat in dbCategories">
-                    <div class="cube-db-card-head">
-                        <span class="cube-db-icon">{{cat.icon}}</span>
-                        <div>
+            <div class="cube-db-wrap">
+                <div class="cube-db-row" ng-repeat="cat in dbCategories">
+                    <div class="cube-db-meta">
+                        <div class="cube-db-accent" ng-style="{'background': cat.color}"></div>
+                        <div class="cube-db-meta-text">
                             <div class="cube-db-type">{{cat.type}}</div>
-                            <div class="cube-db-label">{{cat.label}}</div>
+                            <span class="cube-db-badge" ng-style="{'background': cat.bgColor, 'color': cat.color}">{{cat.label}}</span>
                         </div>
                     </div>
-                    <div class="cube-db-tags">
-                        <span class="cube-db-tag" ng-repeat="db in cat.dbs">{{db}}</span>
+                    <div class="cube-db-chips">
+                        <span class="cube-db-chip" ng-repeat="db in cat.dbs">{{db}}</span>
                     </div>
                 </div>
             </div>

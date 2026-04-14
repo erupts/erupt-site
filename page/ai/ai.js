@@ -65,7 +65,7 @@ app.controller("ai", function ($scope, $sce, $timeout, i18nService) {
             bg: '#fee2e2', fg: '#b91c1c', wide: false, full: true,
             title: i18nService.t('ai.core.tools.title'),
             desc: i18nService.t('ai.core.tools.desc'),
-            code: `@Tool("查询用户订单")\npublic List<Order> queryOrders() {\n    return orderService.findByUserId(currentUserId());\n}\n\n@Tool("创建工单")\npublic boolean createTicket(@P("标题") String title, @P("内容") String content) {\n    return ticketService.create(title, content);\n}`
+            code: `@Tool("Query user orders")\npublic List<Order> queryOrders() {\n    return orderService.findByUserId(currentUserId());\n}\n\n@Tool("Create order")\npublic boolean createTicket(@P("Order Title") String title, @P("Order Content") String content) {\n    return ticketService.create(title, content);\n}`
         }
     ];
 

@@ -472,14 +472,43 @@ var i18n = {
             '🗃️:Analyze SQL source|⬡:@EruptCube model|📐:@Dimension fields|📊:@Measure metrics|🖱️:Drag & drop charts|💡:Business insights'
         ],
 
-        'cube.looker.title': ['与 Google Looker 的关系', 'Inspired by Google Looker'],
-        'cube.looker.desc': [
-            'Looker 用 LookML DSL 实现了语义层理念，Erupt Cube 用 Java 注解复刻同样的思想——对 Java 开发者更友好，无需学习新语言。',
-            'Looker implements semantic layers via the LookML DSL. Erupt Cube replicates the same idea with Java annotations — no new language to learn.'
+        'cube.cmp.title': ['三方横向对比', 'Three-Way Comparison'],
+        'cube.cmp.desc': [
+            'Google Looker、Cube.dev 与 Erupt Cube 都实现了语义层理念，但工程能力天差地别。注解方案在 IDE 支持、版本管理、动态性和继承上全面领先。',
+            'Google Looker, Cube.dev, and Erupt Cube all implement the semantic layer concept — but their engineering capabilities differ dramatically. Annotations lead on IDE support, versioning, dynamic models, and inheritance.'
         ],
-        'cube.looker.note': [
-            '两者的核心理念相同：所有指标逻辑只定义一次，所有报表共享同一套语义层。Erupt Cube 只是把 LookML 换成了 Java 开发者更熟悉的注解语法。',
-            'The core idea is identical: define every metric exactly once, share one semantic layer across all reports. Erupt Cube simply replaces LookML with Java annotation syntax.'
+        'cube.cmp.col.feature': ['能力对比', 'Capability'],
+
+        'cube.viz.title': ['强大的可视化能力', 'Powerful Visualization'],
+        'cube.viz.desc': [
+            '从维度指标到可交互仪表盘，全程拖拽完成，无需前端代码。',
+            'From dimensions and measures to interactive dashboards — all by drag-and-drop, no frontend code.'
+        ],
+        'cube.viz.f1.name': ['拖拽构建', 'Drag & Drop'],
+        'cube.viz.f1.desc': ['从字段列表拖入维度和指标，即刻生成图表，无需配置代码', 'Drag dimensions and measures onto a canvas — charts appear instantly'],
+        'cube.viz.f2.name': ['栅格布局', 'Grid Layout'],
+        'cube.viz.f2.desc': ['仪表盘基于栅格系统排列，卡片自动对齐，整洁美观', 'Dashboard cards snap to a grid — auto-aligned, pixel-perfect'],
+        'cube.viz.f3.name': ['自由缩放', 'Free Resize'],
+        'cube.viz.f3.desc': ['拖动卡片边角即可调整大小，按需分配各图表的占比空间', 'Drag card corners to resize — allocate space however the data demands'],
+        'cube.viz.f4.name': ['所见即所得', 'WYSIWYG'],
+        'cube.viz.f4.desc': ['编辑模式与预览模式实时同步，调整即见效果，无需刷新', 'Edit and preview are always in sync — what you build is what users see'],
+        'cube.viz.f5.name': ['多图表类型', 'Rich Chart Types'],
+        'cube.viz.f5.desc': ['柱状图、折线图、饼图、散点图等多种图表类型开箱即用', 'Bar, line, pie, scatter and more — pick the right chart for any data shape'],
+        'cube.viz.f6.name': ['多维过滤器', 'Multi-dim Filters'],
+        'cube.viz.f6.desc': ['下拉、日期范围、数值区间等多种过滤器，支持联动过滤', 'Dropdown, date range, numeric range filters with cross-chart linkage'],
+
+        'cube.viz.charts.label': ['图表类型', 'Chart Types'],
+        'cube.viz.chart.types': [
+            '📊:柱状图|📈:折线图|🥧:饼图|🔵:散点图|📉:面积图|🟦:热力图|⬜:表格|🔢:KPI 卡片'
+            ,
+            '📊:Bar Chart|📈:Line Chart|🥧:Pie Chart|🔵:Scatter|📉:Area Chart|🟦:Heatmap|⬜:Table|🔢:KPI Card'
+        ],
+
+        'cube.viz.filters.label': ['过滤器类型', 'Filter Types'],
+        'cube.viz.filter.types': [
+            '🔽:下拉选择|📅:日期范围|🔢:数值区间|🔍:模糊搜索|☑️:多选|🔘:单选|📆:相对时间'
+            ,
+            '🔽:Dropdown|📅:Date Range|🔢:Numeric Range|🔍:Text Search|☑️:Multi-select|🔘:Radio|📆:Relative Time'
         ],
 
         'cube.db.title': ['广泛的数据库支持', 'Broad Database Support'],
