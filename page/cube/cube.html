@@ -1550,13 +1550,16 @@ public class OrderCube {
 
   @Measure(
     title = "Orders",
-    sql = "count(*)")
+    sql = "count(*)"
+  )
   private Long orderCount;
 
   @Measure(
     title = "Revenue",
-    sql = "sum(amount)")
+    sql = "sum(amount)"
+  )
   private Double totalAmount;
+
 }</code></pre>
                         <div class="cmp-code-fade"></div>
                     </div>
