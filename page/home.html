@@ -320,11 +320,13 @@
     </button>
 
     <button class="btn animated zoomIn delay-6"
-            ng-click="go('#!/ai-claw')"
+            ng-click="go('#!/cube')"
             style="position: fixed;left: 20px;top: 240px;z-index: 99999999;
                    box-shadow: 1px 1px 10px #333;border: none;font-weight: 600;color: #fff;
-                   background: linear-gradient(135deg, #6366f1, #8b5cf6)">
-        Erupt AI Claw 🦞
+                   background: linear-gradient(135deg, #10b981, #059669)">
+        <span style="position: absolute;left: -8px;top: -8px;background: #dc3545;
+                    width: 16px;height:16px;border-radius: 100%;box-shadow: 0 0 3px #333"></span>
+        🧊 Erupt Cube
     </button>
 
 
@@ -497,7 +499,7 @@ public class DemoErupt extends BaseModel {
                             <div class="col-sm-3 col-md-2 col-lg-1 col-4" ng-repeat="u in using" style="padding: 0 8px">
                                 <div style="text-align: center;margin: 8px 0;width: 100%;height: 80px;padding: 3px;
                                 display: flex;justify-content: center;align-content: center;flex-wrap: wrap;">
-                                    <img alt="" ng-if="u.logo" src="{{u.logo}}" style="width: 75%;">
+                                    <img alt="" ng-if="u.logo" ng-src="{{u.logo}}" style="width: 75%;">
                                     <span ng-if="u.text" style="color: #eee;">{{u.text}}</span>
                                 </div>
                                 <p style="color: #fff;margin:12px 0;text-align: center;font-size: .7em">{{u.name}}</p>
@@ -593,24 +595,25 @@ public class DemoErupt extends BaseModel {
                                 <span style="color:#818cf8;font-weight:700;font-size:0.88em">了解 Erupt AI →</span>
                             </div>
                         </div>
-                        <!-- Erupt AI Claw -->
+                        <!-- Erupt Cube -->
                         <div class="col-md-5 col-sm-10 mb-3">
-                            <div class="ai-promo-card ai-promo-card-claw" ng-click="go('#!/ai-claw')">
-                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#00ff88,#00d1f3)"></div>
-                                <div style="font-size:2em;margin-bottom:10px">🦞</div>
-                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt AI
-                                    Claw</h4>
+                            <div class="ai-promo-card ai-promo-card-claw" ng-click="go('#!/cube')"
+                                 style="background:linear-gradient(135deg,#0b1e16 0%,#071510 100%)">
+                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#10b981,#34d399)"></div>
+                                <div style="font-size:2em;margin-bottom:10px">🧊</div>
+                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt
+                                    Cube</h4>
                                 <p style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px">
-                                    自然语言操控系统 · 智能 Agent · 技能扩展<br>
-                                    用一句话代替复杂的业务操作流程
+                                    语义层建模 · 拖拽可视化分析 · 零前端代码<br>
+                                    注解定义指标，分析师自助完成 BI
                                 </p>
                                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
-                                    <span style="background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.22);color:#00ff88;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">自然语言</span>
-                                    <span style="background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.22);color:#00ff88;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Agent</span>
-                                    <span style="background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.22);color:#00ff88;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Skill</span>
-                                    <span style="background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.22);color:#00ff88;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Beta</span>
+                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@EruptCube</span>
+                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Dimension</span>
+                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Measure</span>
+                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">拖拽分析</span>
                                 </div>
-                                <span style="color:#00cc6e;font-weight:700;font-size:0.88em">了解 AI Claw →</span>
+                                <span style="color:#10b981;font-weight:700;font-size:0.88em">了解 Erupt Cube →</span>
                             </div>
                         </div>
                     </div>
@@ -733,7 +736,7 @@ public class DemoErupt extends BaseModel {
                                  style="text-align: center;margin: 0 26px"
                                  title="{{s.toggleText}}">
                                 <a ng-href="{{s.home}}" target="_blank">
-                                    <img alt="" src="/images/sponsor/{{s.headImg}}" style="border-radius: 50%"
+                                    <img alt="" ng-src="/images/sponsor/{{s.headImg}}" style="border-radius: 50%"
                                          width="70px">
                                 </a>
                                 <p class="name">{{s.nickname}}</p>

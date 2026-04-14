@@ -2,7 +2,7 @@ key,zh-CN,en-US
 nav.home,首页,Home
 nav.flow,工作流,Workflow
 nav.component,组件支持,Components
-nav.contrast,模型示例,Code Examples
+nav.contrast,💻 代码示例,💻 Code Examples
 nav.module,扩展模块,Extensions
 nav.donate,捐赠指南,Donate
 nav.doc,使用文档,Documentation
@@ -339,7 +339,7 @@ claw.cta.title,立即接入 AI Claw,Get Started with AI Claw
 claw.cta.subtitle,几行配置，让自然语言接管你的服务器,A few lines of config to let natural language take over your server
 claw.cta.doc,查看完整文档 →,Full Documentation →
 claw.cta.also_ai,← 查看 Erupt AI,← Erupt AI
-nav.cube,◈ Cube,◈ Cube
+nav.cube,🧊 语义建模,🧊 Cube
 cube.hero.sub,拖拽即分析，注解即模型。,"Inspired by Google Looker's semantic layer, Erupt Cube brings professional-grade big data analytics to the Java ecosystem — define models with annotations, analyze with drag-and-drop."
 cube.hero.btn.demo,在线演示,Live Demo
 cube.stat.model,语义建模,Semantic Model

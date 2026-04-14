@@ -301,3 +301,119 @@ html, body {
 .lang-dropdown .dropdown-toggle {
     cursor: pointer;
 }
+
+/* 右下角广告位 */
+#corner-ads {
+    position: fixed;
+    right: 16px;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 9999;
+    width: 200px;
+}
+
+.corner-ad-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    color: #fff;
+    text-decoration: none;
+    padding: 11px 14px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: transform 0.18s, box-shadow 0.18s;
+    line-height: 1.4;
+}
+
+/* 顶部光晕线 */
+.corner-ad-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    opacity: 0.5;
+}
+
+.corner-ad-aliyun {
+    background: linear-gradient(135deg, #1a2a1a 0%, #0f1f0f 100%);
+}
+
+.corner-ad-aliyun::before {
+    background: linear-gradient(90deg, transparent, #36c45a, transparent);
+}
+
+.corner-ad-petal {
+    background: linear-gradient(135deg, #1a1030 0%, #0d0820 100%);
+}
+
+.corner-ad-petal::before {
+    background: linear-gradient(90deg, transparent, #a78bfa, transparent);
+}
+
+.corner-ad-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+.corner-ad-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.corner-ad-icon {
+    font-size: 15px;
+    line-height: 1;
+}
+
+.corner-ad-name {
+    font-size: 14px;
+    font-weight: bold;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.corner-ad-tag {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 20px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.corner-ad-aliyun .corner-ad-tag {
+    background: rgba(54, 196, 90, 0.2);
+    color: #7ee89a;
+}
+
+.corner-ad-petal .corner-ad-tag {
+    background: rgba(167, 139, 250, 0.2);
+    color: #c4b5fd;
+}
+
+.corner-ad-sub {
+    font-size: 11px;
+    opacity: 0.5;
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+    #corner-ads {
+        width: 170px;
+        right: 10px;
+        bottom: 12px;
+    }
+}
