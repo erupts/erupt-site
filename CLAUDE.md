@@ -18,7 +18,8 @@ annotations (zero frontend code required).
 index.html          # Entry point, AngularJS app shell with nav/header
 app.js              # AngularJS module, routes, and controllers
 app.css             # Custom styles
-i18n.js             # Internationalization service (zh-CN / en)
+i18n.js             # Internationalization runtime (fetch + CSV parser)
+i18n.csv            # Translation data — source of truth (key, zh-CN, en-US)
 assets/             # Third-party libs (Bootstrap, Angular, Prism, fonts)
 page/
   home.html         # Home page
@@ -42,8 +43,17 @@ Routes are hash-based (`#!/path`) defined in `app.js`:
 
 ## Internationalization
 
-`i18n.js` provides a global `i18n` object with zh-CN (default) and English support. Templates use `{{'key' | i18n}}`
-filter syntax. Language toggle is handled via `i18n.getLang()` / `i18n.setLang()`.
+**Source of truth: `i18n.csv`** — three-column CSV (`key,zh-CN,en-US`). Add or edit translations here only.
+
+`i18n.js` provides a global `i18n` object that loads the CSV at startup via `fetch('i18n.csv')` and parses it
+with a built-in RFC 4180 parser. `init()` returns a Promise; AngularJS is bootstrapped manually
+(`angular.bootstrap`) only after the Promise resolves — there is no `ng-app` attribute on `<body>`.
+
+Templates use `{{'key' | i18n}}` filter syntax for plain text, or `ng-bind-html="'key' | i18nHtml"` for values
+that contain HTML. Language toggle is handled via `i18n.getLang()` / `i18n.setLang()`.
+
+CSV escaping: fields containing commas or double-quotes must be quoted; literal `"` is escaped as `""`
+(standard RFC 4180).
 
 ## Development
 

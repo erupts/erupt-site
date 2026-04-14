@@ -12,7 +12,7 @@
     <link href="assets/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
 </head>
-<body class="ng-cloak" ng-app="app">
+<body class="ng-cloak">
 <h1 class="d-none">erupt</h1>
 <div ng-controller="index">
     <header id="header" ng-show="showHeader">
@@ -196,6 +196,11 @@
 <script src="page/ai/ai.js"></script>
 <script src="page/ai-claw/ai-claw.js"></script>
 <script src="page/cube/cube.js"></script>
+<script>
+    i18n.init().then(function () {
+        angular.bootstrap(document.body, ['app']);
+    });
+</script>
 
 <script src="assets/prism/prism.min.js"></script>
 <script src="assets/prism/prism-java.min.js"></script>

@@ -1,0 +1,400 @@
+key,zh-CN,en-US
+nav.home,首页,Home
+nav.flow,工作流,Workflow
+nav.component,组件支持,Components
+nav.contrast,模型示例,Code Examples
+nav.module,扩展模块,Extensions
+nav.donate,捐赠指南,Donate
+nav.doc,使用文档,Documentation
+nav.demo,演示DEMO,Demo
+nav.cloud,Erupt Cloud,Erupt Cloud
+cloud.hero.kicker,DISTRIBUTED CONFIG,DISTRIBUTED CONFIG
+cloud.hero.title,Erupt Cloud,Erupt Cloud
+cloud.hero.sub,面向微服务与集群的「多维表」云配置能力：集中管理、轻量依赖，让集群内每个服务都能以注解方式获得一致的数据可视化管理体验。,"Cloud-native multidimensional table configuration for clusters: centralized management, light dependencies, and consistent annotation-driven admin across services."
+cloud.badge.config,多维配置中心,Multi-dim config
+cloud.badge.cluster,集群 / 多节点,Cluster & nodes
+cloud.badge.light,轻依赖,Lightweight
+cloud.badge.visual,服务可视化,Service visibility
+cloud.cta.doc,阅读文档,Read docs
+cloud.cta.github,GitHub 源码,GitHub
+cloud.diagram.console,多维管理台,Admin plane
+cloud.features.title,核心能力,Capabilities
+cloud.features.desc,与开源 Erupt 注解体系一脉相承，把「对象视图模型」延伸到分布式场景：配置上行、能力下行，开发与运维协作更顺滑。,"Built on the same annotation model as open-source Erupt, extending OVM to distributed setups—smoother dev and ops handoff."
+cloud.features.f1.title,分布式多维配置,Distributed multidimensional config
+cloud.features.f1.desc,在云端统一维护多维表、节点与策略，各服务实例按需同步，降低分散配置带来的不一致风险。,"Centralize multidimensional schemas and policies; instances sync on demand, reducing configuration drift."
+cloud.features.f2.title,轻依赖、可演进,Lightweight & evolvable
+cloud.features.f2.desc,以最小侵入方式接入现有 Spring Boot / 微服务体系，版本与主工程对齐，便于持续升级。,Minimal intrusion into Spring Boot and microservices; align versions with the main Erupt stack for easier upgrades.
+cloud.features.f3.title,Node 与拓扑,Nodes & topology
+cloud.features.f3.desc,通过 Node 配置将集群内服务纳入同一视图，配合控制台理解调用与数据面关系。,Register services via node configuration and understand topology and data relationships in one console.
+cloud.features.f4.title,集群内数据可视化,In-cluster data UI
+cloud.features.f4.desc,让集群中的业务服务也能挂载 Erupt 管理界面，无需为每个子系统重复搭建后台脚手架。,Expose Erupt admin UIs on business services without rebuilding admin scaffolding per subsystem.
+cloud.docs.d1.title,概述与多维配置,Overview & multidimensional config
+cloud.docs.d1.desc,Erupt Cloud 定位、能力与整体架构说明。,"Positioning, capabilities, and architecture."
+cloud.docs.d2.title,集成与依赖,Integration & dependencies
+cloud.docs.d2.desc,工程引入、依赖管理与基础配置要点。,How to add dependencies and baseline configuration.
+cloud.docs.d3.title,开发与使用,Development & usage
+cloud.docs.d3.desc,日常开发、注解与常见使用场景说明。,"Day-to-day development, annotations, and common scenarios."
+cloud.docs.d4.title,Node 与服务可视化,Nodes & service visualization
+cloud.docs.d4.desc,配置 Node 节点，在集群拓扑中可视化并管理任意服务。,Configure nodes to visualize and manage services across the cluster.
+cloud.docs.read,打开文档,Open
+cloud.maven.title,Maven 依赖示例,Maven dependency
+cloud.maven.hint,版本号请与主工程 xyz.erupt:erupt 保持一致；服务端/客户端模块以语雀文档为准。,Use the same version as xyz.erupt:erupt; see Yuque for server vs client modules.
+cloud.maven.serverHint,若需独立 Cloud 服务端能力，语雀中可能另有 erupt-cloud-server 等模块，请按文档组合引入。,Yuque may list additional artifacts such as erupt-cloud-server; combine as documented.
+cloud.scenarios.title,典型场景,Typical scenarios
+cloud.scenarios.desc,以下场景特别适合引入 Erupt Cloud，把「后台能力」当成集群内可编排的基础设施。,"These scenarios fit Erupt Cloud well—treat admin UIs as cluster-wide, orchestratable infrastructure."
+cloud.scenarios.s1.title,多环境 / 多租户配置统一,Unified config across envs / tenants
+cloud.scenarios.s1.desc,开发、预发、生产多套集群中，希望同一套多维表定义与权限策略可集中修订、分级下发。,"Revise multidimensional definitions and policies once, roll out per environment with less drift."
+cloud.scenarios.s2.title,微服务各自为政的后台,Per-service admin sprawl
+cloud.scenarios.s2.desc,订单、库存、结算等多个 Spring Boot 服务都需要运营后台，希望沿用 Erupt 注解而非重复造轮子。,Many services need ops consoles—reuse Erupt annotations instead of one-off admin stacks.
+cloud.scenarios.s3.title,运维可观测与治理,Ops visibility & governance
+cloud.scenarios.s3.desc,需要看清节点注册、服务健康与数据面关系，在统一拓扑里跳转排查。,"See registrations, health, and data paths in one topology for faster triage."
+cloud.scenarios.s4.title,平滑升级与演进,Rolling upgrades
+cloud.scenarios.s4.desc,业务迭代频繁时，希望依赖轻、升级路径清晰，与主 Erupt 版本同步演进。,Light deps and clear upgrade path aligned with the core Erupt release train.
+cloud.arch.title,能力如何串起来,How pieces connect
+cloud.arch.desc,从「建模」到「集群可见」的一条逻辑路径。,A logical path from modeling to cluster visibility.
+cloud.arch.step1.title,注解建模,Annotate models
+cloud.arch.step1.desc,在业务服务中仍用 @Erupt / @EruptField 等描述多维表与界面。,Describe tables and UI with @Erupt / @EruptField as usual.
+cloud.arch.step2.title,接入 Cloud,Wire Cloud
+cloud.arch.step2.desc,引入 erupt-cloud 等依赖，按文档完成注册中心、路由或网关侧配置。,"Add erupt-cloud and follow docs for registry, routing, or gateway settings."
+cloud.arch.step3.title,登记 Node,Register nodes
+cloud.arch.step3.desc,为集群内服务实例配置 Node，使控制台能发现路由与元数据。,Configure nodes so the console discovers routes and metadata.
+cloud.arch.step4.title,统一控制台,Unified console
+cloud.arch.step4.desc,在管理台浏览、检索并操作各服务暴露的 Erupt 页面与数据。,Browse and operate Erupt UIs exposed by each service from one place.
+cloud.compare.title,单节点 vs Cloud 模式,Single-node vs Cloud
+cloud.compare.desc,帮助判断你是否需要引入 Cloud（以下为能力向对比，非性能测试结论）。,A capability-oriented comparison—not a performance benchmark.
+cloud.compare.th.dim,维度,Aspect
+cloud.compare.th.single,单节点 Erupt,Single-node Erupt
+cloud.compare.th.cloud,Erupt Cloud,Erupt Cloud
+cloud.compare.r1.dim,配置存储,Config storage
+cloud.compare.r1.single,随应用部署，偏本地化,Local to the deployment
+cloud.compare.r1.cloud,集中式多维配置与策略,Centralized multidimensional config
+cloud.compare.r2.dim,适用拓扑,Topology
+cloud.compare.r2.single,单体或单集群单入口,Monolith or single entry
+cloud.compare.r2.cloud,多节点、多服务协同,"Multi-node, multi-service"
+cloud.compare.r3.dim,运维视图,Ops view
+cloud.compare.r3.single,实例级监控为主,Instance-centric
+cloud.compare.r3.cloud,拓扑 + 服务级跳转,Topology & cross-service
+cloud.compare.r4.dim,引入成本,Adoption cost
+cloud.compare.r4.single,仅 erupt 核心依赖,Core erupt only
+cloud.compare.r4.cloud,额外 cloud 模块与集群约定,Cloud modules + cluster conventions
+cloud.faq.title,常见问题,FAQ
+cloud.faq.desc,以下为站内导读式解答，参数与排错请以语雀为准。,Introductory answers; defer to Yuque for parameters and fixes.
+cloud.faq.q1,已有单体 Erupt 项目，迁移到 Cloud 工作量大吗？,How heavy is migrating an existing monolith?
+cloud.faq.a1,通常先保持业务注解不变，再按文档分批引入 cloud 依赖、注册与 Node 配置；可渐进切换。,"Keep annotations first; introduce cloud deps, registry, and nodes in phases per Yuque."
+cloud.faq.q2,和 Spring Cloud / K8s 的关系？,How does it relate to Spring Cloud / Kubernetes?
+cloud.faq.a2,Erupt Cloud 关注「管理端与多维配置」在集群中的落地，可与现有注册发现、网关、编排方式配合，细节见语雀集成篇。,It focuses on admin and multidimensional config in clusters; pairs with your existing stack—see integration docs.
+cloud.faq.q3,必须部署独立控制台吗？,Do I need a standalone console?
+cloud.faq.a3,取决于版本与架构选型：有的方案由中心控制台聚合，有的能力下沉到各服务；请对照 ggbcv9 / cthlzp 章节。,Depends on version and architecture; compare the overview and integration chapters.
+cloud.faq.q4,本地如何联调？,How to debug locally?
+cloud.faq.a4,一般可本地起多个 Spring Boot 实例模拟多节点，配合文档中的注册与路由示例；具体端口与 profile 以语雀为准。,Run multiple local Spring Boot instances to simulate nodes; follow Yuque for ports and profiles.
+cloud.demo.title,在线体验,Try the demo
+cloud.demo.desc,官方演示环境已集成 Erupt 能力，可在实际界面中感受注解生成的管理端。,The official demo showcases annotation-driven admin UIs—try it live.
+cloud.demo.btn,打开演示 DEMO,Open demo
+home.subtitle,注解·低代码,Annotation·Low Code
+home.subtitle2,AI 大模型,AI LLM
+home.btn.code,代码示例,Codes
+home.btn.doc,使用文档,Docs
+home.btn.demo,演示DEMO,Demo
+home.code.title,"仅需一个<span style=""color: #ffc107;""> .class </span>文件","Only one<span style=""color: #ffc107;""> .class </span>file"
+home.code.tip1.title,零前端代码,Zero Front-end
+home.code.tip1.desc,不需要懂前端，开发专业且强大的管理后台,"No HTML/JS required, full admin in minutes"
+home.code.tip2.title,易于上手,Easy Start
+home.code.tip2.desc,仅需了解 Spring Boot 基础知识即可上手开发,Spring Boot basics only
+home.code.tip3.title,安全可靠,Secure
+home.code.tip3.desc,细颗粒全方位安全检查，持续保证数据安全,"Fine-grained, always safe"
+home.code.tip4.title,通用数据管理,Any DB
+home.code.tip4.desc,支持市面上所有主流数据库，支持自定义数据源,"MySQL, PG, Oracle, custom sources"
+home.code.tip5.title,表结构自动生成,Auto Table
+home.code.tip5.desc,无需手动建表，不懂SQL也能操作数据库,"No SQL, no DDL, auto-created"
+home.code.more,更多示例 →,More Examples →
+home.code.comment,极简开发，开箱即用 🚀,"Minimal dev, ready to use 🚀"
+home.using.title,谁在使用？,Who is using?
+home.license,使用,Using
+home.license.link,Apache License 2.0,Apache License 2.0
+home.license.desc,协议，源代码完全开源，无商业限制，开源不易感谢 Star 👇,"license, completely open source, no commercial restrictions, open source is not easy, thank you for Star 👇"
+home.features.title,特性一览,Features
+home.features.fast.name,敏捷开发,Agile Development
+home.features.fast.desc,仅单个.java文件即可实现后台管理功能，专注业务与核心功能的研发,"Only a single .java file to implement admin functions, focus on business and core functionality"
+home.features.security.name,数据安全,Data Security
+home.features.security.desc,可靠的安全机制，细颗粒度权限控制，阻绝一切不可靠的数据，为您的数据安全保驾护航,"Reliable security mechanism, fine-grained permission control, blocking all unreliable data"
+home.features.responsive.name,响应式布局,Responsive Layout
+home.features.responsive.desc,支持PC端手机端等各种规格的设备中使用,"Supports PC, mobile and various device specifications"
+home.features.low.name,低侵入性,Low Intrusiveness
+home.features.low.desc,几乎所有功能都围绕注解而展开，不影响你使用任何第三方库,"Almost all features revolve around annotations, does not affect any third-party libraries"
+home.features.beautiful.name,界面美观,Beautiful Interface
+home.features.beautiful.desc,每个交互都精心设计，产品思维打磨，只为了更好的操作体验,"Every interaction is carefully designed, product thinking polished, for better user experience"
+home.features.db.name,通用数据管理,Universal Data Management
+home.features.db.desc,支持市面上所有主流数据库，支持MongoDB，支持自定义数据源,"Supports all mainstream databases, supports MongoDB, supports custom data sources"
+home.features.extend.name,服务层逻辑扩展,Service Layer Extension
+home.features.extend.desc,支持 CURD 前后置扩展、自定义按钮、自定义LDAP登录,"Supports CURD pre/post extension, custom buttons, custom LDAP login"
+home.features.attachment.name,自定义附件上传,Custom Attachment Upload
+home.features.attachment.desc,仅需简单的适配代码，可以让 erupt 支持 fastDFS、七牛云、OSS 等存储方式,"Simple adapter code to support fastDFS, Qiniu Cloud, OSS and other storage methods"
+home.features.template.name,自定义模板,Custom Template
+home.features.template.desc,自定义页面按钮模板，支持多种渲染方式 Freemarker/Thymeleaf/Vue/Velocity,"Custom page button templates, supports multiple rendering methods Freemarker/Thymeleaf/Vue/Velocity"
+home.vs.title,代码生成器,Code Generator
+home.vs.vs,VS,VS
+home.vs.erupt,Erupt,Erupt
+home.vs.files.left,前端 + 后端 7 ~ 10 个文件,7~10 files
+home.vs.files.right,仅需一个类文件,1 file
+home.vs.files.title,文件数量,Files
+home.vs.modify.left,重新生成代码或修改已生成代码 → 100~500行代码,Regenerate/modify code → 100~500 lines
+home.vs.modify.right,添加或修改注解 → 2~10行,Modify annotations → 2~10 lines
+home.vs.modify.title,修改字段,Edit
+home.vs.table.left,需要手动执行建表 SQL,Manual SQL
+home.vs.table.right,自动建表+字段注释,Auto table + comments
+home.vs.table.title,建表语句,Tables
+home.vs.deploy.left,下载整个工程，代码量极大,Download full project
+home.vs.deploy.right,通过Maven管理依赖，基础数据自动生成,"Maven deps, auto data"
+home.vs.deploy.title,初次部署,Deployment
+home.vs.upgrade.left,升级成本极高，需要对比大量差异,"High cost, compare diffs"
+home.vs.upgrade.right,调整版本号即可,Adjust version
+home.vs.upgrade.title,版本升级,Upgrade
+home.vs.frontend.left,需要熟悉代码生成器所提供的前端 API，有一定学习成本,Learn generator API
+home.vs.frontend.right,零前端代码,Zero frontend
+home.vs.frontend.title,前端代码,Frontend
+home.vs.dev.left,传统分层调用的方式开发,Layered approach
+home.vs.dev.right,全注解式开发,Annotation-based
+home.vs.dev.title,开发方式,Development
+home.vs.component.left,仅支持基本的数据组件复杂的组件需自定义,Basic components only
+home.vs.component.right,支持23类表单组件，且支持一对多，多对多等复杂关系组件,"23 form types, 1-to-many, many-to-many"
+home.vs.component.title,组件支持,Components
+home.vs.database.left,一般只支持 MySQL，改造成本较高,"MySQL only, high cost"
+home.vs.database.right,支持 MySQL、Oracle、PostgreSQL、H2 等所有主流数据库,All mainstream DBs
+home.vs.database.title,数据库,Database
+home.vs.time.left,需要生成大量代码复制到项目中，功能越多维护成本越高,"Generate & copy code, high maintenance"
+home.vs.time.right,仅需一个后端工程师，短时间就可以完成高质量后台管理系统,"1 engineer, fast delivery"
+home.vs.time.title,开发时间,Time
+home.vs.logic.left,Java 代码,Java code
+home.vs.logic.right,"按需 <a href=""https://www.yuque.com/erupts/erupt/nicqg3"" style=""color: #ffc107"">@DataProxy</a> 实现","On-demand <a href=""https://www.yuque.com/erupts/erupt/nicqg3"" style=""color: #ffc107"">@DataProxy</a>"
+home.vs.logic.title,逻辑扩展,Logic
+home.vs.startup.left,表数量越多启动越慢,Slower with more tables
+home.vs.startup.right,百张表映射毫秒级初始化,"100+ tables, ms init"
+home.vs.startup.title,启动速度,Startup
+home.sponsor.title,贡献者 & 赞助商,Contributors & Sponsors
+home.sponsor.author,Erupt 作者 & 发起人,Erupt Author & Founder
+home.sponsor.ide,宇宙最好用的IDE,The Best IDE in the Universe
+home.sponsor.thanks,感谢陪伴,Thanks for Company
+home.db.title,数据源支持,Data Source Support
+home.btn.component,组件支持,Components
+home.btn.module,扩展模块,Extensions
+home.btn.cloud,"<span style=""color: #ffc107"">☁️ Erupt Cloud</span> 多维表云配置中心","<span style=""color: #ffc107"">☁️ Erupt Cloud</span> Cloud Table Config Center"
+home.btn.linq,"<span style=""color: #ffc107"">⚡ Linq.J</span> SQL To Java","<span style=""color: #ffc107"">⚡ Linq.J</span> Operate Java Objects with SQL"
+home.btn.flow,"<span style=""color: #dc3545"">🌊 Erupt Flow</span> 通用流程引擎","<span style=""color: #dc3545"">🌊 Erupt Flow</span> Universal Workflow Engine"
+ideamake,思为科技,Ideamake
+footer.qq,QQ 交流群,QQ Group
+footer.email,邮箱地址,Email
+footer.doc,使用文档,Documentation
+footer.github,GitHub,GitHub
+footer.gitee,Gitee,Gitee
+footer.gitcode,GitCode,GitCode
+footer.copyright,Copyright © 2019-{{year}} erupt.xyz All rights reserved.,Copyright © 2019-{{year}} erupt.xyz All rights reserved.
+component.form.title,表单组件（{{count}}类）,Form Components ({{count}} types)
+component.view.title,数据组件（{{count}}类）,Data Components ({{count}} types)
+component.input,文本输入框,Text Input
+component.textarea,多行文本输入框,Textarea
+component.number,数值输入框,Number Input
+component.slider,滑动输入条,Slider
+component.date,时间选择器,Date Picker
+component.boolean,布尔开关,Boolean Switch
+component.choice,单选选择器,Single Select
+component.tags,标签选择器,Tags Selector
+component.attachment,附件上传,Attachment Upload
+component.autocomplete,自动完成,Auto Complete
+component.referenceTree,树选择器,Tree Selector
+component.referenceTable,表格选择器,Table Selector
+component.checkbox,多选框,Checkbox
+component.tabTree,一对多树选择器,One-to-Many Tree
+component.tabTableRefer,一对多表格选择器,One-to-Many Table
+component.tabTableAdd,一对多增加,One-to-Many Add
+component.htmlEditor,富文本编辑器,Rich Text Editor
+component.codeEditor,代码编辑器,Code Editor
+component.tpl,自定义HTML模板,Custom HTML Template
+component.map,地图,Map
+component.divide,分割线,Divider
+component.signature,数字签名,Digital Signature
+component.hidden,隐藏,Hidden
+component.empty,空白,Empty
+component.view.text,文本,Text
+component.view.number,数值,Number
+component.view.date,时间,Date
+component.view.image,图片,Image
+component.view.html,HTML,HTML
+component.view.mobileHtml,Mobile HTML,Mobile HTML
+component.view.link,链接,Link
+component.view.linkDialog,对话框方式打开链接,Link Dialog
+component.view.download,下载附件,Download Attachment
+component.view.attachment,打开附件,Open Attachment
+component.view.ovr,One to many,One to many
+component.view.attachmentDialog,对话框中展示附件,Attachment Dialog
+component.view.qrCode,QRCODE,QRCODE
+component.view.swf,SWF,SWF
+component.view.code,CODE,CODE
+component.view.map,MAP,MAP
+component.view.base64,BASE64,BASE64
+component.view.markdown,MARKDOWN,MARKDOWN
+contrast.java,Java代码,Java Code
+contrast.effect,运行效果,Running Effect
+db.mysql,MySQL,MySQL
+db.oracle,Oracle,Oracle
+db.sqlserver,SQL Server,SQL Server
+db.postgresql,PostgreSQL,PostgreSQL
+db.h2,H2,H2
+db.polardb,PolarDB,PolarDB
+db.dm,达梦,DM
+db.kingbase,人大金仓,Kingbase
+db.api,API 数据源,API Data Source
+db.spanner,Google Spanner,Google Spanner
+db.mongodb,MongoDB,MongoDB
+db.custom,自定义数据源,Custom Data Source
+nav.ai,🤖 AI,🤖 AI
+ai.hero.title,Erupt AI 大模型深度集成,Erupt AI Deep LLM Integration
+ai.hero.subtitle,将大模型能力无缝融入低代码开发，让 AI 赋能每一个业务场景,"Seamlessly integrate LLM capabilities into low-code development, empowering every business scenario with AI"
+ai.hero.btn.doc,查看文档,Documentation
+ai.hero.btn.demo,在线体验,Live Demo
+ai.core.title,核心 AI 能力,Core AI Capabilities
+ai.core.subtitle,开箱即用的多模型 · 多工具 · 全场景 AI 能力,"Multi-model · Multi-tool · Full-scenario AI capabilities, ready out of the box"
+ai.stat.llms,主流大模型,Mainstream LLMs
+ai.stat.quickstart,快速集成,Quick Integration
+ai.stat.agent,智能体引擎,Agent Engine
+ai.stat.mcp,协议原生支持,Native Protocol
+ai.core.multillm.title,多 LLM 支持,Multi-LLM Support
+ai.core.multillm.desc,兼容所有主流大模型，OpenAI / Claude / Gemini / DeepSeek / 通义千问等，统一接口一键切换,"Compatible with all mainstream LLMs — OpenAI / Claude / Gemini / DeepSeek / Qwen — unified API, one-click switching"
+ai.core.context.title,多轮对话上下文,Multi-turn Context
+ai.core.context.desc,完整的多轮对话上下文管理，AI 始终理解对话历史，渐进式构建复杂业务逻辑,"Complete multi-turn dialogue context management, AI always understands conversation history for progressive complex logic building"
+ai.core.agent.title,Agent 智能体,AI Agent
+ai.core.agent.desc,基于 ReAct 模式的自主推理 Agent，可拆解复杂任务、制定计划、调用工具并迭代优化直至完成,"Autonomous reasoning Agent based on ReAct pattern, decomposes complex tasks, plans, invokes tools and iterates until completion"
+ai.core.mcp.title,MCP 协议,MCP Protocol
+ai.core.mcp.desc,同时支持 MCP Server 与 Client，标准化工具注册与发现，安全连接外部 AI 生态,"Supports both MCP Server and Client, standardized tool registration and discovery, securely connects to external AI ecosystems"
+ai.core.interactive.title,交互式对话,Interactive Chat
+ai.core.interactive.desc,内置流式响应的对话界面，支持 Markdown 渲染、代码高亮，打造沉浸式 AI 交互体验,Built-in streaming chat interface with Markdown rendering and code highlighting for immersive AI interaction experience
+ai.core.systemprompt.title,System Prompt,System Prompt
+ai.core.systemprompt.desc,灵活配置系统提示词，定义 AI 角色、行为边界与输出格式，精准控制每一次对话,"Flexibly configure system prompts to define AI roles, behavior boundaries, and output formats for precise control of every conversation"
+ai.core.opensource.title,完全开源,Open Source
+ai.core.opensource.desc,基于 Apache 2.0 协议完全开源，社区驱动持续迭代，源码透明无商业限制,"Fully open source under Apache 2.0 license, community-driven continuous iteration, transparent source code with no commercial restrictions"
+ai.core.tools.title,自定义 Tools,Custom Tools
+ai.core.tools.desc,通过注解声明即可将 Java 方法注册为 AI 工具，支持运行时动态注册，按需扩展 AI 能力,"Register Java methods as AI tools via annotation declarations, support runtime dynamic registration, extend AI capabilities on demand"
+ai.arch.title,技术架构,Technical Architecture
+ai.arch.desc,Erupt AI 采用分层架构设计，将大模型能力与低代码框架深度融合,"Erupt AI uses layered architecture design, deeply integrating LLM capabilities with the low-code framework"
+ai.mcp.title,MCP 协议支持,MCP Protocol Support
+ai.mcp.subtitle,Model Context Protocol — 让 AI 拥有标准化的外部工具调用能力,Model Context Protocol — Giving AI standardized external tool invocation capabilities
+ai.mcp.what.title,什么是 MCP？,What is MCP?
+ai.mcp.what.desc,MCP（Model Context Protocol）是一种标准化协议，允许大模型通过统一接口调用外部工具与服务。Erupt 深度集成 MCP 协议，让 AI 能安全、高效地访问数据库、API、文件系统等各类资源,"MCP (Model Context Protocol) is a standardized protocol that allows LLMs to invoke external tools and services through a unified interface. Erupt deeply integrates MCP protocol, enabling AI to securely and efficiently access databases, APIs, file systems and other resources"
+ai.mcp.server.title,MCP Server,MCP Server
+ai.mcp.server.desc,Erupt 作为 MCP Server 对外暴露数据管理能力，任何兼容 MCP 协议的 AI 客户端均可接入,Erupt acts as an MCP Server exposing data management capabilities. Any MCP-compatible AI client can connect
+ai.mcp.client.title,MCP Client,MCP Client
+ai.mcp.client.desc,Erupt 同时作为 MCP Client，可调用外部 MCP 服务扩展 AI 能力边界，如搜索引擎、知识库、第三方 API 等,"Erupt also acts as an MCP Client, invoking external MCP services to extend AI capability boundaries such as search engines, knowledge bases, and third-party APIs"
+ai.mcp.feature1.title,标准化工具注册,Standardized Tool Registration
+ai.mcp.feature1.desc,通过注解声明即可将 Java 方法注册为 MCP 工具，AI 可自动发现并调用,Register Java methods as MCP tools through annotation declarations. AI can auto-discover and invoke them
+ai.mcp.feature2.title,安全沙箱执行,Secure Sandbox Execution
+ai.mcp.feature2.desc,所有工具调用均在安全沙箱中执行，支持权限控制与调用审计,All tool invocations execute in a secure sandbox with permission control and audit logging
+ai.mcp.feature3.title,动态工具编排,Dynamic Tool Orchestration
+ai.mcp.feature3.desc,支持运行时动态注册与注销工具，根据业务场景灵活调整 AI 可用能力,"Support runtime dynamic registration and deregistration of tools, flexibly adjusting AI capabilities based on business scenarios"
+ai.react.title,ReAct 动态工具调用,ReAct Dynamic Tool Invocation
+ai.react.subtitle,Reasoning + Acting — AI 自主推理、规划与执行,"Reasoning + Acting — AI autonomous reasoning, planning and execution"
+ai.react.desc,Erupt AI 采用 ReAct（Reasoning and Acting）模式，让大模型不仅能思考，还能自主调用工具执行操作。AI 会分析用户意图，制定执行计划，逐步调用工具完成复杂任务,"Erupt AI adopts the ReAct (Reasoning and Acting) pattern, enabling LLMs to not only think but also autonomously invoke tools. AI analyzes user intent, formulates execution plans, and progressively calls tools to complete complex tasks"
+ai.react.step1.title,推理 Reasoning,Reasoning
+ai.react.step1.desc,AI 分析用户输入，理解意图，拆解任务目标,"AI analyzes user input, understands intent, and decomposes task goals"
+ai.react.step2.title,规划 Planning,Planning
+ai.react.step2.desc,选择合适的工具与执行顺序，制定执行计划,"Selects appropriate tools and execution order, formulates execution plan"
+ai.react.step3.title,执行 Acting,Acting
+ai.react.step3.desc,调用工具获取结果，观察反馈,"Invokes tools to get results, observes feedback"
+ai.react.step4.title,迭代 Iterating,Iterating
+ai.react.step4.desc,根据结果继续推理，循环直至任务完成,"Continues reasoning based on results, loops until task completion"
+ai.react.example.title,实际场景示例,Real-world Example
+ai.react.example.user,用户：帮我查看上个月销售额超过10万的客户，并生成一份分析报告,User: Show me customers with sales over 100k last month and generate an analysis report
+ai.react.example.thought1,思考：需要先查询数据库获取上月销售数据，筛选出超过10万的记录,"Thought: Need to query the database for last month's sales data, filter records over 100k"
+ai.react.example.action1,执行：调用数据查询工具 → SQL: SELECT * FROM sales WHERE amount > 100000 AND month = last_month,Action: Call data query tool → SQL: SELECT * FROM sales WHERE amount > 100000 AND month = last_month
+ai.react.example.observe1,观察：获得 23 条符合条件的客户记录,Observation: Got 23 matching customer records
+ai.react.example.thought2,思考：需要对数据进行统计分析，生成报告,Thought: Need to perform statistical analysis on data and generate report
+ai.react.example.action2,执行：调用数据分析工具 → 生成销售趋势、客户分布等图表,"Action: Call data analysis tool → Generate sales trends, customer distribution charts"
+ai.react.example.result,结果：生成完整的分析报告，包含数据汇总、趋势图表和建议,"Result: Generated complete analysis report with data summary, trend charts and recommendations"
+nav.aiclaw,🦞 AI Claw,🦞 AI Claw
+claw.hero.subtitle,通过自然语言直接驱动服务器，操作注解驱动的数据与业务——像与同事对话一样简单,"Drive your server with natural language — query, write and operate annotation-driven data as if chatting with a colleague"
+claw.badge.nlp,自然语言交互,Natural Language
+claw.badge.shell,Shell 执行,Shell Execution
+claw.badge.file,文件操作,File Operations
+claw.badge.data,数据驱动,Data Driven
+claw.badge.skills,自定义 Skills,Custom Skills
+claw.hero.btn.doc,查看文档,Documentation
+claw.demo.title,看看它能做什么,See It in Action
+claw.demo.subtitle,输入自然语言，AI Claw 自动解析意图、调用技能、返回结果,"Type natural language — AI Claw parses intent, invokes skills, and returns results"
+claw.feat.title,核心能力,Core Capabilities
+claw.feat.subtitle,像与同事对话一样简单——AI Claw 让自然语言成为服务器的控制台,As simple as chatting with a colleague — AI Claw turns natural language into a server console
+claw.feat.f1.title,自然语言交互,Natural Language
+claw.feat.f1.desc,用一句话完成复杂的服务器操作，无需记忆命令语法，AI 自动理解意图并执行,Complete complex server operations with a sentence. No memorizing syntax — AI understands intent and acts
+claw.feat.f2.title,数据驱动操作,Data Operations
+claw.feat.f2.desc,直接操作 Erupt 注解驱动的业务数据，增删改查一步到位，数据与业务逻辑无缝贯通,"Directly manipulate Erupt annotation-driven business data. Create, read, update and delete — all in one natural command"
+claw.feat.f3.title,Shell 命令执行,Shell Execution
+claw.feat.f3.desc,支持执行系统级 Shell 命令，实现服务器运维自动化，让 AI 成为你的运维助手,Execute system-level shell commands for server operations automation — AI becomes your ops assistant
+claw.feat.f4.title,文件读写操作,File Operations
+claw.feat.f4.desc,读取与写入服务器文件，支持日志分析、配置修改等常见运维场景，开箱即用,"Read and write server files. Analyze logs, modify configs and more, all through natural language"
+claw.feat.f5.title,自定义 Skills,Custom Skills
+claw.feat.f5.desc,通过 Skills 扩展机制注册自定义能力，无限扩展 AI Claw 的操作边界,Register custom capabilities via the Skills extension — expand AI Claw's boundaries without limits
+claw.skills.title,Skills 扩展体系,Skills Extension System
+claw.skills.subtitle,通过注解声明自定义技能，将任意 Java 方法注册为 AI 可调用的操作,Declare custom skills via annotations — register any Java method as an AI-callable operation
+claw.skills.how,一个注解，注册自定义技能,"One annotation, one skill"
+claw.skills.desc,通过 @Skill 注解将任意 Java 方法注册为 AI Claw 的可调用技能。AI 能自动发现技能、理解参数含义，并在对话中按需调用。,"Use the @Skill annotation to register any Java method as a callable skill. AI auto-discovers skills, understands parameters, and invokes them on demand."
+claw.skills.points,自动发现与描述生成|参数类型自动推断|运行时动态注册|权限与安全控制,Auto discovery & description|Auto parameter type inference|Dynamic registration at runtime|Permission & security control
+claw.cta.title,立即接入 AI Claw,Get Started with AI Claw
+claw.cta.subtitle,几行配置，让自然语言接管你的服务器,A few lines of config to let natural language take over your server
+claw.cta.doc,查看完整文档 →,Full Documentation →
+claw.cta.also_ai,← 查看 Erupt AI,← Erupt AI
+nav.cube,◈ Cube,◈ Cube
+cube.hero.sub,拖拽即分析，注解即模型。,"Inspired by Google Looker's semantic layer, Erupt Cube brings professional-grade big data analytics to the Java ecosystem — define models with annotations, analyze with drag-and-drop."
+cube.hero.btn.demo,在线演示,Live Demo
+cube.stat.model,语义建模,Semantic Model
+cube.stat.dim,维度定义,Dimension
+cube.stat.measure,指标聚合,Measure
+cube.stat.nosql,分析师无需写 SQL,Analysts skip SQL
+cube.problem.title,语义模型解决了什么问题,What Semantic Models Solve
+cube.problem.desc,没有语义层，每个人写自己的 SQL，口径不一致、逻辑到处复制、改一张表要改十个报表。语义模型把指标定义一次，全局复用。,"Without a semantic layer, every analyst writes their own SQL — inconsistent metrics, duplicated logic, fragile reports. A semantic model defines metrics once and shares them everywhere."
+cube.table.th.aspect,维度,Aspect
+cube.table.th.without,没有语义模型,Without Semantic Model
+cube.table.th.with,有语义模型,With Semantic Model
+cube.roles.title,各司其职，效率倍增,"Clear Roles, Maximum Efficiency"
+cube.roles.desc,数据工程师专注构建可复用的语义模型，数据分析师基于模型自助分析——两个角色分工明确，无需相互等待。,"Data engineers build reusable semantic models; analysts self-serve on top. Clear separation of concerns, no waiting for each other."
+cube.roles.eng.title,数据工程师,Data Engineer
+cube.roles.eng.points,用 @EruptCube 定义数据源与 SQL|用 @Dimension 声明可分组、可筛选的维度|用 @Measure 封装聚合指标逻辑|业务指标沉淀为标准化可复用资产|修改表结构只需改模型层，一处改处处生效,Define data source and SQL with @EruptCube|Declare groupable/filterable dimensions with @Dimension|Encapsulate aggregation logic with @Measure|Standardize business metrics as reusable assets|Schema changes only require updating the model layer
+cube.roles.ana.title,数据分析师,Data Analyst
+cube.roles.ana.points,基于语义层自助完成可视化分析|无需关心底层 SQL 实现细节|拖拽维度和指标即可生成图表|所有指标口径统一，不再争论数字|专注业务洞察，而非技术实现,"Self-serve visualization on top of the semantic layer|No need to understand underlying SQL|Drag dimensions and measures to build charts|Consistent metrics — no more arguing about numbers|Focus on business insights, not technical details"
+cube.anno.title,四个注解，构建完整分析体系,"Four Annotations, Complete Analytics Stack"
+cube.anno.desc,没有新语言，没有新 DSL，Java 开发者开箱即用。,"No new language, no new DSL. Works out of the box for any Java developer."
+cube.anno.a1.title,声明数据立方体,Declare a Data Cube
+cube.anno.a1.desc,绑定 SQL 数据源（支持子查询或直接引用表），声明对外暴露的查询视图。,Bind a SQL data source (subquery or table reference) and declare exposed query views.
+cube.anno.a2.title,定义分析维度,Define Analysis Dimensions
+cube.anno.a2.desc,声明可用于分组和筛选的字段，支持日期、字符串、数值类型自动推断。,"Declare fields for grouping and filtering. Type inference handles date, string, and number automatically."
+cube.anno.a3.title,封装聚合指标,Encapsulate Aggregation Measures
+cube.anno.a3.desc,将 count、sum、avg、复合表达式等聚合逻辑封装为可复用指标，一处定义全局生效。,"Encapsulate count, sum, avg, and compound expressions as reusable measures — define once, use everywhere."
+cube.anno.a4.title,运行时查询参数,Runtime Query Parameters
+cube.anno.a4.desc,声明运行时动态传入的查询条件，支持枚举选项，让语义模型更灵活。,"Declare runtime filter parameters with optional enum choices for flexible, parameterized queries."
+cube.code.title,一个完整的语义模型,A Complete Semantic Model
+cube.code.desc,多表 JOIN 查询、多个维度与指标，全部通过注解声明，无需编写任何 Controller 或 Service。,"Multi-table JOIN, dimensions and measures — all declared with annotations. Zero Controller or Service code required."
+cube.flow.title,从建模到洞察，全程无摩擦,"From Model to Insight, Zero Friction"
+cube.flow.desc,过去需要多方协同数周才能完成的 BI 链路，现在一个工程师一天内搞定。,What used to require weeks of cross-team coordination now takes a single engineer a day.
+cube.flow.steps,🗃️:分析 SQL 数据源|⬡:@EruptCube 声明模型|📐:@Dimension 定义维度|📊:@Measure 封装指标|🖱️:拖拽生成图表|💡:业务洞察,🗃️:Analyze SQL source|⬡:@EruptCube model|📐:@Dimension fields|📊:@Measure metrics|🖱️:Drag & drop charts|💡:Business insights
+cube.cmp.title,三方横向对比,Three-Way Comparison
+cube.cmp.desc,Google Looker、Cube.dev 与 Erupt Cube 都实现了语义层理念，但工程能力天差地别。注解方案在 IDE 支持、版本管理、动态性和继承上全面领先。,"Google Looker, Cube.dev, and Erupt Cube all implement the semantic layer concept — but their engineering capabilities differ dramatically. Annotations lead on IDE support, versioning, dynamic models, and inheritance."
+cube.cmp.col.feature,能力对比,Capability
+cube.viz.title,强大的可视化能力,Powerful Visualization
+cube.viz.desc,从维度指标到可交互仪表盘，全程拖拽完成，无需前端代码。,"From dimensions and measures to interactive dashboards — all by drag-and-drop, no frontend code."
+cube.viz.f1.name,拖拽构建,Drag & Drop
+cube.viz.f1.desc,从字段列表拖入维度和指标，即刻生成图表，无需配置代码,Drag dimensions and measures onto a canvas — charts appear instantly
+cube.viz.f2.name,栅格布局,Grid Layout
+cube.viz.f2.desc,仪表盘基于栅格系统排列，卡片自动对齐，整洁美观,"Dashboard cards snap to a grid — auto-aligned, pixel-perfect"
+cube.viz.f3.name,自由缩放,Free Resize
+cube.viz.f3.desc,拖动卡片边角即可调整大小，按需分配各图表的占比空间,Drag card corners to resize — allocate space however the data demands
+cube.viz.f4.name,所见即所得,WYSIWYG
+cube.viz.f4.desc,编辑模式与预览模式实时同步，调整即见效果，无需刷新,Edit and preview are always in sync — what you build is what users see
+cube.viz.f5.name,多图表类型,Rich Chart Types
+cube.viz.f5.desc,柱状图、折线图、饼图、散点图等多种图表类型开箱即用,"Bar, line, pie, scatter and more — pick the right chart for any data shape"
+cube.viz.f6.name,多维过滤器,Multi-dim Filters
+cube.viz.f6.desc,下拉、日期范围、数值区间等多种过滤器，支持联动过滤,"Dropdown, date range, numeric range filters with cross-chart linkage"
+cube.db.title,广泛的数据库支持,Broad Database Support
+cube.db.desc,无论是 OLAP 大数据仓库、传统关系型数据库、国产数据库还是云原生数仓，Erupt Cube 均可直接接入，无需额外适配。,"Whether OLAP warehouses, traditional RDBMS, domestic databases, or cloud-native DWs — Erupt Cube connects directly with no extra adapters."
+cube.cta.title,准备好构建语义模型了吗？,Ready to Build Your Semantic Model?
+cube.cta.desc,演示地址已部署完整的 Cube 示例，直接体验拖拽分析。,The live demo includes complete Cube examples. try drag-and-drop analytics now.
+cube.cta.demo,立即体验 →,Try Live Demo →
+cube.cta.doc,阅读文档,Documentation
+cube.demo.tip,账号：cube<br>密码：cube,Username: cube<br>Password: cube
+lang.zh,中文,中文
+lang.en,English,English
