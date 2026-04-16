@@ -396,5 +396,14 @@ cube.cta.desc,演示地址已部署完整的 Cube 示例，直接体验拖拽分
 cube.cta.demo,立即体验 →,Try Live Demo →
 cube.cta.doc,阅读文档,Documentation
 cube.demo.tip,账号：cube<br>密码：cube,Username: cube<br>Password: cube
+cube.ml.title,Cube ML — 动态 SQL 模板引擎,Cube ML — Dynamic SQL Template Engine
+cube.ml.desc,"Cube ML 是 EruptCube 内置的模板表达式语言，基于 Velocity 语法，可在 dimension.sql()、measure.sql()、EruptCube.sql()、explore.where() 等任意 SQL 注解中动态生成查询逻辑。","Cube ML is EruptCube's built-in template expression language, based on Velocity syntax. It enables dynamic SQL generation inside any annotation: dimension.sql(), measure.sql(), EruptCube.sql(), explore.where(), and more."
+cube.ml.vars.label,可用变量,Available Variables
+cube.ml.col.var,关键字,Variable
+cube.ml.col.desc,说明,Description
+cube.ml.col.example,示例,Example
+cube.ml.cond.title,条件分支  #if / #elseif / #else / #end,Conditionals  #if / #elseif / #else / #end
+cube.ml.loop.title,循环  #foreach / #end,Loop  #foreach / #end
+cube.ml.combined.title,组合示例 — 动态 IN 子句 + 权限过滤,Combined — Dynamic IN Clause + Permission Filter
 lang.zh,中文,中文
 lang.en,English,English

@@ -886,6 +886,111 @@
         border-color: rgba(52,211,153,0.35);
     }
 
+    /* ── Cube ML ── */
+    .cml-sub-label {
+        font-size: 0.68em;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.22);
+        font-family: 'SFMono-Regular', monospace;
+        margin-bottom: 12px;
+    }
+
+    .cml-vars-wrap {
+        overflow-x: auto;
+        margin-bottom: 32px;
+    }
+
+    .cml-vars-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 10px;
+        overflow: hidden;
+        font-size: 0.9em;
+    }
+
+    .cml-vars-table th {
+        padding: 11px 18px;
+        font-size: 0.77em;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-align: left;
+        background: rgba(255,255,255,0.03);
+        color: rgba(255,255,255,0.32);
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .cml-vars-table td {
+        padding: 12px 18px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        color: rgba(255,255,255,0.58);
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    .cml-vars-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .cml-kw {
+        display: inline-block;
+        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        font-size: 0.9em;
+        color: #a5b4fc;
+        background: rgba(99,102,241,0.12);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .cml-ex {
+        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        font-size: 0.86em;
+        color: #86efac;
+        background: rgba(134,239,172,0.08);
+        padding: 2px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+    }
+
+    .cml-code-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+        .cml-code-grid { grid-template-columns: 1fr; }
+    }
+
+    .cml-code-block {
+        background: #0d1117;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .cml-code-head {
+        background: #161b22;
+        padding: 10px 16px;
+        font-size: 0.78em;
+        font-weight: 700;
+        color: rgba(255,255,255,0.4);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        font-family: 'SFMono-Regular', monospace;
+        letter-spacing: 0.2px;
+    }
+
+    .cml-code-block pre {
+        margin: 0;
+        padding: 20px 22px;
+        font-size: 0.84em;
+        line-height: 1.75;
+        overflow-x: auto;
+    }
+
     /* ── Database Support ── */
     .cube-db-wrap {
         border: 1px solid rgba(255, 255, 255, 0.07);
@@ -1449,6 +1554,77 @@
                     <h3>{{a.title}}</h3>
                     <p>{{a.desc}}</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Cube ML ── -->
+    <div class="cube-section cube-section-dark2">
+        <div class="container">
+            <div class="cube-section-title">
+                <span class="cube-eyebrow">TEMPLATE ENGINE</span>
+                <h2>{{'cube.ml.title' | i18n}}</h2>
+                <p>{{'cube.ml.desc' | i18n}}</p>
+            </div>
+
+            <div class="cml-sub-label">{{'cube.ml.vars.label' | i18n}}</div>
+            <div class="cml-vars-wrap">
+                <table class="cml-vars-table">
+                    <thead>
+                    <tr>
+                        <th>{{'cube.ml.col.var' | i18n}}</th>
+                        <th>{{'cube.ml.col.desc' | i18n}}</th>
+                        <th>{{'cube.ml.col.example' | i18n}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="v in mlVars">
+                        <td><code class="cml-kw">{{v.name}}</code></td>
+                        <td>{{v.desc}}</td>
+                        <td><code class="cml-ex">{{v.example}}</code></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cml-code-grid">
+                <div class="cml-code-block">
+                    <div class="cml-code-head">{{'cube.ml.cond.title' | i18n}}</div>
+                    <pre><code class="language-sql">#if(${query.parameter["role"]} == "admin")
+    -- 管理员：全量数据
+    1 = 1
+#elseif(${query.parameter["role"]} == "manager")
+    -- 主管：按部门过滤
+    dept_id = ${filter["deptId"]}
+#else
+    -- 普通用户：按本人过滤
+    user_id = '${query.parameter["userId"]}'
+#end</code></pre>
+                </div>
+                <div class="cml-code-block">
+                    <div class="cml-code-head">{{'cube.ml.loop.title' | i18n}}</div>
+                    <pre><code class="language-sql">#foreach($item in ${query.parameter["ids"]})
+    #if($foreach.index > 0) OR #end
+    id = '${item}'
+#end
+
+-- Output (ids = ["001","002","003"]):
+-- id = '001' OR id = '002' OR id = '003'</code></pre>
+                </div>
+            </div>
+
+            <div class="cml-code-block" style="margin-top:16px">
+                <div class="cml-code-head">{{'cube.ml.combined.title' | i18n}}</div>
+                <pre><code class="language-sql">#if(${query.parameter["role"]} != "admin")
+    AND user_id = '${query.parameter["userId"]}'
+#end
+#if(${query.parameter["ids"]} && !${query.parameter["ids"]}.isEmpty())
+    AND order_id IN (
+        #foreach($id in ${query.parameter["ids"]})
+            '${id}'#if($foreach.hasNext),#end
+        #end
+    )
+#end</code></pre>
             </div>
         </div>
     </div>
