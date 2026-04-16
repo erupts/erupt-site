@@ -191,6 +191,16 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
     });
 
     $timeout(function () {
+        if (!Prism.languages.velocity) {
+            Prism.languages.velocity = {
+                'comment': { pattern: /--[^\r\n]*/, greedy: true },
+                'string':  { pattern: /'(?:[^'\\]|\\.)*'/, greedy: true },
+                'directive': { pattern: /#(?:if|elseif|else|end|foreach)\b/, alias: 'keyword' },
+                'variable': { pattern: /\$(?:\{[^}]*\}|[a-zA-Z_$][a-zA-Z0-9_.()]*)/,  alias: 'function' },
+                'operator': /[!=<>]=?|&&|\|\|/,
+                'punctuation': /[()[\]{},;]/
+            };
+        }
         Prism.highlightAll();
     }, 100);
 });

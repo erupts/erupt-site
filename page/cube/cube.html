@@ -991,6 +991,13 @@
         overflow-x: auto;
     }
 
+    .cml-fn-desc {
+        font-size: 0.9em;
+        color: rgba(255,255,255,0.42);
+        line-height: 1.75;
+        margin: 8px 0 16px;
+    }
+
     /* ── Database Support ── */
     .cube-db-wrap {
         border: 1px solid rgba(255, 255, 255, 0.07);
@@ -1590,7 +1597,7 @@
             <div class="cml-code-grid">
                 <div class="cml-code-block">
                     <div class="cml-code-head">{{'cube.ml.cond.title' | i18n}}</div>
-                    <pre><code class="language-sql">#if(${query.parameter["role"]} == "admin")
+                    <pre><code class="language-velocity">#if(${query.parameter["role"]} == "admin")
     -- 管理员：全量数据
     1 = 1
 #elseif(${query.parameter["role"]} == "manager")
@@ -1603,7 +1610,7 @@
                 </div>
                 <div class="cml-code-block">
                     <div class="cml-code-head">{{'cube.ml.loop.title' | i18n}}</div>
-                    <pre><code class="language-sql">#foreach($item in ${query.parameter["ids"]})
+                    <pre><code class="language-velocity">#foreach($item in ${query.parameter["ids"]})
     #if($foreach.index > 0) OR #end
     id = '${item}'
 #end
@@ -1615,7 +1622,7 @@
 
             <div class="cml-code-block" style="margin-top:16px">
                 <div class="cml-code-head">{{'cube.ml.combined.title' | i18n}}</div>
-                <pre><code class="language-sql">#if(${query.parameter["role"]} != "admin")
+                <pre><code class="language-velocity">#if(${query.parameter["role"]} != "admin")
     AND user_id = '${query.parameter["userId"]}'
 #end
 #if(${query.parameter["ids"]} && !${query.parameter["ids"]}.isEmpty())
@@ -1625,6 +1632,45 @@
         #end
     )
 #end</code></pre>
+            </div>
+
+            <!-- Custom Function -->
+            <div style="margin-top:32px">
+                <div class="cml-sub-label">{{'cube.ml.fn.label' | i18n}}</div>
+                <p class="cml-fn-desc">{{'cube.ml.fn.desc' | i18n}}</p>
+                <div class="cml-code-grid">
+                    <div class="cml-code-block">
+                        <div class="cml-code-head">{{'cube.ml.fn.reg.title' | i18n}}</div>
+                        <pre><code class="language-java">@CubeFunction("fn")
+public class SqlFunctions {
+
+    // ${fn.inClause(ids)} → 'a', 'b', 'c'
+    public String inClause(List&lt;String&gt; ids) {
+        return ids.stream()
+            .map(id -> "'" + id + "'")
+            .collect(Collectors.joining(", "));
+    }
+
+    // ${fn.toDate(val)} → DATE '2024-01-01'
+    public String toDate(String val) {
+        return "DATE '" + val + "'";
+    }
+}</code></pre>
+                    </div>
+                    <div class="cml-code-block">
+                        <div class="cml-code-head">{{'cube.ml.fn.use.title' | i18n}}</div>
+                        <pre><code class="language-velocity">-- 调用 inClause 函数
+#if(!${query.parameter["ids"]}.isEmpty())
+    AND order_id IN (
+        ${fn.inClause(${query.parameter["ids"]})}
+    )
+#end
+
+-- 调用 toDate 函数
+AND order_date >= ${fn.toDate(${query.parameter["startDate"]})}
+AND order_date &lt;= ${fn.toDate(${query.parameter["endDate"]})}</code></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
