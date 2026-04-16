@@ -108,7 +108,8 @@ home.code.tip5.title,表结构自动生成,Auto Table
 home.code.tip5.desc,无需手动建表，不懂SQL也能操作数据库,"No SQL, no DDL, auto-created"
 home.code.more,更多示例 →,More Examples →
 home.code.comment,极简开发，开箱即用 🚀,"Minimal dev, ready to use 🚀"
-home.using.title,谁在使用？,Who is using?
+home.using.eyebrow,TRUSTED BY,TRUSTED BY
+home.using.title,谁在使用,Trusted by
 home.license,使用,Using
 home.license.link,Apache License 2.0,Apache License 2.0
 home.license.desc,协议，源代码完全开源，无商业限制，开源不易感谢 Star 👇,"license, completely open source, no commercial restrictions, open source is not easy, thank you for Star 👇"
@@ -180,6 +181,16 @@ home.btn.module,扩展模块,Extensions
 home.btn.cloud,"<span style=""color: #ffc107"">☁️ Erupt Cloud</span> 多维表云配置中心","<span style=""color: #ffc107"">☁️ Erupt Cloud</span> Cloud Table Config Center"
 home.btn.linq,"<span style=""color: #ffc107"">⚡ Linq.J</span> SQL To Java","<span style=""color: #ffc107"">⚡ Linq.J</span> Operate Java Objects with SQL"
 home.btn.flow,"<span style=""color: #dc3545"">🌊 Erupt Flow</span> 通用流程引擎","<span style=""color: #dc3545"">🌊 Erupt Flow</span> Universal Workflow Engine"
+home.btn.cube,"<span style=""color: #dc3545"">🧊 Erupt Cube</span> 语义建模","<span style=""color: #dc3545"">🧊 Erupt Cube</span> Analytics Platform"
+home.new.badge,✦ New,✦ New
+home.new.title.pre,低代码,Low-code
+home.new.desc,Erupt 将零代码开发与 AI 能力深度融合——大模型对话、ReAct Agent、MCP 协议、自然语言操控，让每个业务系统都拥有智能,"Erupt fuses zero-code development with AI — LLM dialogue, ReAct Agent, MCP protocol, natural language control. Intelligence for every app."
+home.promo.ai.desc,"多 LLM 接入 · ReAct Agent · MCP 协议 · @Tool 注解<br>5 分钟为任意 Erupt 应用接入 AI 能力","Multi-LLM · ReAct Agent · MCP Protocol · @Tool<br>Add AI to any Erupt app in 5 minutes"
+home.promo.ai.link,了解 Erupt AI →,Explore Erupt AI →
+home.promo.claw.desc,"自然语言驱动服务器 · Shell 执行 · 文件操作 · 自定义 Skills<br>像与同事对话一样简单，让 AI 接管运维","Natural language server control · Shell · File I/O · Custom Skills<br>As simple as chatting with a colleague"
+home.promo.claw.link,了解 AI Claw →,Explore AI Claw →
+home.promo.cube.desc,"语义层建模 · 拖拽可视化分析 · 零前端代码<br>注解定义指标，分析师自助完成 BI","Semantic layer · Drag-and-drop analytics · Zero frontend<br>Define metrics with annotations, analysts self-serve BI"
+home.promo.cube.link,了解 Erupt Cube →,Explore Erupt Cube →
 ideamake,思为科技,Ideamake
 footer.qq,QQ 交流群,QQ Group
 footer.email,邮箱地址,Email
@@ -339,7 +350,7 @@ claw.cta.title,立即接入 AI Claw,Get Started with AI Claw
 claw.cta.subtitle,几行配置，让自然语言接管你的服务器,A few lines of config to let natural language take over your server
 claw.cta.doc,查看完整文档 →,Full Documentation →
 claw.cta.also_ai,← 查看 Erupt AI,← Erupt AI
-nav.cube,🧊 语义建模,🧊 Cube
+nav.cube,🧊 语义建模,🧊 Cube Semantic
 cube.hero.sub,拖拽即分析，注解即模型。,"Inspired by Google Looker's semantic layer, Erupt Cube brings professional-grade big data analytics to the Java ecosystem — define models with annotations, analyze with drag-and-drop."
 cube.hero.btn.demo,在线演示,Live Demo
 cube.stat.model,语义建模,Semantic Model
