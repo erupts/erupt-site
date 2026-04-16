@@ -404,9 +404,7 @@ cube.ml.col.desc,说明,Description
 cube.ml.col.example,示例,Example
 cube.ml.cond.title,条件分支  #if / #elseif / #else / #end,Conditionals  #if / #elseif / #else / #end
 cube.ml.loop.title,循环  #foreach / #end,Loop  #foreach / #end
-cube.ml.combined.title,组合示例 — 动态 IN 子句 + 权限过滤,Combined — Dynamic IN Clause + Permission Filter
 cube.ml.fn.label,自定义函数 — CubeFunction,Custom Function — CubeFunction
-cube.ml.fn.desc,"通过 @CubeFunction 注解注册 Java 类，即可在任意 ML 模板中以 ${name.method(args)} 形式调用其方法，将复杂逻辑从模板中剥离，保持 SQL 片段简洁可读。","Annotate a Java class with @CubeFunction to expose its methods as ${name.method(args)} calls inside any ML template — move complex logic out of the template and keep SQL fragments clean."
 cube.ml.fn.reg.title,Java — 注册自定义函数,Java — Register Function
 cube.ml.fn.use.title,ML — 调用自定义函数,ML — Call Function
 lang.zh,中文,中文
