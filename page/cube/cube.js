@@ -177,12 +177,30 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
         }
     ];
 
+    $scope.mlVars = [
+        { name: 'query',    desc: zh ? '请求上下文，可获取请求维度、模型名称、parameter 等字段' : 'Request context: access requested dimensions, model name, and parameter fields', example: '${query.parameter["userName"]}' },
+        { name: 'filter',   desc: zh ? '获取当前过滤器数据' : 'Access current filter values', example: '${filter["userName"]}' },
+        { name: 'this',     desc: zh ? '当前对象引用，用于获取同类中其他注解的配置，实现派生与复用' : 'Reference to the current object — read other annotation configs for derivation and reuse', example: '${this.ip.sql()}' },
+        { name: 'user',     desc: zh ? '当前登录用户上下文（uid、account、name）' : 'Current logged-in user context (uid, account, name)', example: '${user.name}' },
+        { name: 'tenantId', desc: zh ? '多租户场景中使用，为当前租户 ID' : 'Current tenant ID for multi-tenant scenarios', example: '${tenantId}' }
+    ];
+
     $scope.flowSteps = i18nService.t('cube.flow.steps').split('|').map(function (s) {
         var parts = s.split(':');
         return { icon: parts[0], label: parts[1] };
     });
 
     $timeout(function () {
+        if (!Prism.languages.velocity) {
+            Prism.languages.velocity = {
+                'comment': { pattern: /--[^\r\n]*/, greedy: true },
+                'string':  { pattern: /'(?:[^'\\]|\\.)*'/, greedy: true },
+                'directive': { pattern: /#(?:if|elseif|else|end|foreach)\b/, alias: 'keyword' },
+                'variable': { pattern: /\$(?:\{[^}]*\}|[a-zA-Z_$][a-zA-Z0-9_.()]*)/,  alias: 'function' },
+                'operator': /[!=<>]=?|&&|\|\|/,
+                'punctuation': /[()[\]{},;]/
+            };
+        }
         Prism.highlightAll();
     }, 100);
 });
