@@ -25,21 +25,54 @@
     .v-hero {
         background: #000;
         color: #fff;
-        padding: 100px 0 0;
+        padding: 96px 0 0;
         text-align: center;
         position: relative;
         overflow: hidden;
     }
 
-    /* Vercel-style dot grid */
+    /* Dot grid */
     .v-hero-dots {
         position: absolute;
         inset: 0;
-        background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-        background-size: 24px 24px;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+        background-size: 28px 28px;
         pointer-events: none;
-        -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 100%);
-        mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 100%);
+        -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, #000 20%, transparent 100%);
+        mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, #000 20%, transparent 100%);
+    }
+
+    /* Ambient glow blobs */
+    .v-hero-glow {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(70px);
+    }
+
+    .v-hero-glow-center {
+        width: 900px;
+        height: 500px;
+        background: radial-gradient(ellipse, rgba(99, 102, 241, 0.18) 0%, transparent 65%);
+        top: -160px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .v-hero-glow-left {
+        width: 440px;
+        height: 440px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+        top: 40px;
+        left: -120px;
+    }
+
+    .v-hero-glow-right {
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+        top: 60px;
+        right: -100px;
     }
 
     .v-hero .container {
@@ -47,37 +80,55 @@
         z-index: 1;
     }
 
+    /* Eyebrow pill badge */
     .v-eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        font-size: 0.75em;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.4);
-        letter-spacing: 0.3px;
-        margin-bottom: 22px;
+        font-size: 0.72em;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.45);
+        letter-spacing: 0.4px;
+        margin-bottom: 24px;
         font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 5px 14px 5px 6px;
+    }
+
+    .v-eyebrow-tag {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+        font-size: 0.82em;
+        font-weight: 800;
+        padding: 2px 8px;
+        border-radius: 14px;
+        letter-spacing: 0.8px;
+        line-height: 1.5;
     }
 
     .v-eyebrow-dot {
-        width: 4px;
-        height: 4px;
+        width: 3px;
+        height: 3px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.2);
+        flex-shrink: 0;
     }
 
+    /* H1 */
     .v-hero h1 {
-        font-size: 4em;
+        font-size: 4.8em;
         font-weight: 900;
-        line-height: 1.08;
-        letter-spacing: -2px;
+        line-height: 1.04;
+        letter-spacing: -3px;
         margin-bottom: 20px;
         color: #fff;
     }
 
     .v-hero h1 em {
         font-style: normal;
-        background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 60%);
+        background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 45%, #818cf8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -89,18 +140,17 @@
         }
 
         .v-hero h1 {
-            font-size: 2.5em;
-            letter-spacing: -1px;
+            font-size: 2.8em;
+            letter-spacing: -1.5px;
         }
     }
 
     .v-hero-sub {
         font-size: 1.05em;
-        color: rgba(255, 255, 255, 0.42);
-        max-width: 520px;
+        color: rgba(255, 255, 255, 0.4);
+        max-width: 500px;
         margin: 0 auto 32px;
-        line-height: 1.8;
-        letter-spacing: 0.1px;
+        line-height: 1.85;
     }
 
     .v-hero-actions {
@@ -108,7 +158,7 @@
         justify-content: center;
         gap: 10px;
         flex-wrap: wrap;
-        margin-bottom: 56px;
+        margin-bottom: 40px;
     }
 
     .v-btn-white {
@@ -151,16 +201,24 @@
         text-decoration: none;
     }
 
-    /* Stats bar — inside hero, at bottom */
+    /* Stats pill row */
     .v-hero-stats {
-        display: flex;
+        display: inline-flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 4px;
+        gap: 0;
+        margin-bottom: 52px;
+        flex-wrap: wrap;
         justify-content: center;
     }
 
     .v-hero-stat {
-        padding: 20px 36px;
-        border-right: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 14px 28px;
         text-align: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.07);
     }
 
     .v-hero-stat:last-child {
@@ -169,7 +227,7 @@
 
     .v-hero-stat-num {
         display: block;
-        font-size: 1.35em;
+        font-size: 1.3em;
         font-weight: 800;
         color: #fff;
         letter-spacing: -0.5px;
@@ -178,8 +236,8 @@
     }
 
     .v-hero-stat-label {
-        font-size: 0.68em;
-        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.64em;
+        color: rgba(255, 255, 255, 0.28);
         text-transform: uppercase;
         letter-spacing: 1px;
         font-family: 'SFMono-Regular', monospace;
@@ -187,9 +245,117 @@
 
     @media (max-width: 576px) {
         .v-hero-stat {
-            padding: 16px 18px;
+            padding: 12px 16px;
             flex: 1 1 50%;
         }
+
+        .v-hero-stats {
+            width: 100%;
+        }
+    }
+
+    /* Hero demo console window */
+    .v-hero-demo {
+        margin: 0 auto;
+        max-width: 680px;
+        border-radius: 10px 10px 0 0;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: none;
+        text-align: left;
+        position: relative;
+        background: #080808;
+        box-shadow: 0 -20px 60px rgba(99, 102, 241, 0.1), 0 0 0 1px rgba(99, 102, 241, 0.08);
+    }
+
+    .v-hero-demo-bar {
+        background: #111;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .v-hero-demo-title {
+        font-size: 0.74em;
+        color: rgba(255, 255, 255, 0.28);
+        font-family: 'SFMono-Regular', monospace;
+        margin-left: 8px;
+        flex: 1;
+    }
+
+    .v-hero-demo-status {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.65em;
+        color: #4ade80;
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    .v-hero-demo-status::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #4ade80;
+        display: inline-block;
+        animation: pulse-green 2s infinite;
+    }
+
+    @keyframes pulse-green {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.3;
+        }
+    }
+
+    .v-hero-demo-body {
+        padding: 16px 20px 24px;
+    }
+
+    .v-hero-demo-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .v-hero-demo-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .v-hero-demo-tag {
+        flex-shrink: 0;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 0.6em;
+        font-weight: 700;
+        min-width: 44px;
+        text-align: center;
+        font-family: 'SFMono-Regular', monospace;
+        letter-spacing: 0.3px;
+        margin-top: 2px;
+    }
+
+    .v-hero-demo-text {
+        font-size: 0.79em;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.65;
+        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+    }
+
+    .v-hero-demo-fade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 56px;
+        background: linear-gradient(to bottom, transparent, #000);
+        pointer-events: none;
     }
 
     /* ── Section base ── */
@@ -963,8 +1129,12 @@
     <!-- ══ Hero ══════════════════════════════════════ -->
     <div class="v-hero">
         <div class="v-hero-dots"></div>
+        <div class="v-hero-glow v-hero-glow-center"></div>
+        <div class="v-hero-glow v-hero-glow-left"></div>
+        <div class="v-hero-glow v-hero-glow-right"></div>
         <div class="container">
             <div class="v-eyebrow">
+                <span class="v-eyebrow-tag">NEW</span>
                 xyz.erupt
                 <span class="v-eyebrow-dot"></span>
                 Apache 2.0
@@ -979,7 +1149,7 @@
             </div>
             <div class="v-hero-stats">
                 <div class="v-hero-stat">
-                    <span class="v-hero-stat-num">13+</span>
+                    <span class="v-hero-stat-num">50+</span>
                     <span class="v-hero-stat-label">{{'ai.stat.llms' | i18n}}</span>
                 </div>
                 <div class="v-hero-stat">
@@ -994,6 +1164,39 @@
                     <span class="v-hero-stat-num">MCP</span>
                     <span class="v-hero-stat-label">{{'ai.stat.mcp' | i18n}}</span>
                 </div>
+            </div>
+            <!-- ReAct demo console -->
+            <div class="v-hero-demo">
+                <div class="v-hero-demo-bar">
+                    <div class="v-code-dot" style="background:#ff5f56"></div>
+                    <div class="v-code-dot" style="background:#ffbd2e"></div>
+                    <div class="v-code-dot" style="background:#27c93f"></div>
+                    <span class="v-hero-demo-title">AI Agent — ReAct Loop</span>
+                    <span class="v-hero-demo-status">running</span>
+                </div>
+                <div class="v-hero-demo-body">
+                    <div class="v-hero-demo-row">
+                        <span class="v-hero-demo-tag v-t-user">User</span>
+                        <span class="v-hero-demo-text">{{'ai.react.example.user' | i18n}}</span>
+                    </div>
+                    <div class="v-hero-demo-row">
+                        <span class="v-hero-demo-tag v-t-think">Think</span>
+                        <span class="v-hero-demo-text">{{'ai.react.example.thought1' | i18n}}</span>
+                    </div>
+                    <div class="v-hero-demo-row">
+                        <span class="v-hero-demo-tag v-t-act">Act</span>
+                        <span class="v-hero-demo-text">{{'ai.react.example.action1' | i18n}}</span>
+                    </div>
+                    <div class="v-hero-demo-row">
+                        <span class="v-hero-demo-tag v-t-obs">Obs</span>
+                        <span class="v-hero-demo-text">{{'ai.react.example.observe1' | i18n}}</span>
+                    </div>
+                    <div class="v-hero-demo-row">
+                        <span class="v-hero-demo-tag v-t-done">Done</span>
+                        <span class="v-hero-demo-text">{{'ai.react.example.result' | i18n}}</span>
+                    </div>
+                </div>
+                <div class="v-hero-demo-fade"></div>
             </div>
         </div>
     </div>

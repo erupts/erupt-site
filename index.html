@@ -8,7 +8,7 @@
     <meta content="width=device-width, initial-scale=.7" name="viewport">
     <title>Erupt</title>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/prism/prism-okaidia.min.css" rel="stylesheet">
+    <link href="assets/prism/prism-one-dark.min.css" rel="stylesheet">
     <link href="assets/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
 </head>
@@ -229,24 +229,6 @@
         "                           \\/_/        ", "color:#2196f3;font-weight:800");
     console.log("%chttps://www.erupt.xyz", "color:#2196f3;font-size:1.3em;padding:16px 0;");
     console.groupEnd();
-    console.log("%c站内接口文档：", "color:#4caf50;font-size:1.5em")
-    console.log("%chttps://www.erupt.xyz/demo/zeta-doc/demo.html", "font-size:1.3em;")
-
-    //节流
-    // function throttle(fn, delay) {
-    //     var runFlag = false;
-    //     return function (e) {
-    //         // 判断之前的调用是否完成
-    //         if (runFlag) {
-    //             return false;
-    //         }
-    //         runFlag = true;
-    //         setTimeout(() => {
-    //             fn(e);
-    //             runFlag = false;
-    //         }, delay)
-    //     }
-    // }
 
     app.controller("index", function ($scope, $rootScope, i18nService) {
         $scope.currentLang = i18nService.getLang();

@@ -248,25 +248,162 @@
         }
     }
 
-    #erupt-box > div:nth-child(1) {
+    /* IDE window chrome */
+    .eb-titlebar {
         opacity: 0;
         animation: erupt-inner-fade-in 1s ease-out .1ms forwards;
+        display: flex;
+        align-items: center;
+        height: 38px;
+        background: #2d2d2d;
+        border-bottom: 1px solid #191919;
+        padding: 0 14px;
+        flex-shrink: 0;
+        gap: 8px;
+        user-select: none;
     }
 
-    #erupt-box > div:nth-child(2) {
-        opacity: 0;
-        animation: erupt-inner-fade-in 1.5s ease-out .1ms forwards;
+    .eb-traffic {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        margin-right: 8px;
     }
 
-    #erupt-box > div:nth-child(3) {
+    .eb-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .eb-dot-r {
+        background: #ff5f57;
+    }
+
+    .eb-dot-y {
+        background: #ffbd2e;
+    }
+
+    .eb-dot-g {
+        background: #28c840;
+    }
+
+    .eb-titlebar-name {
+        flex: 1;
+        text-align: center;
+        font-size: 0.78em;
+        color: rgba(255, 255, 255, 0.45);
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    .eb-titlebar-badge {
+        font-size: 0.68em;
+        color: rgba(99, 102, 241, 0.8);
+        font-family: monospace;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.22);
+        border-radius: 4px;
+        padding: 1px 8px;
+    }
+
+    .eb-content {
         opacity: 0;
-        animation: erupt-inner-fade-in 2s ease-out .1ms forwards;
+        animation: erupt-inner-fade-in 1.8s ease-out .1ms forwards;
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+        min-height: 0;
+    }
+
+    .eb-sidebar {
+        width: 200px;
+        flex-shrink: 0;
+        background: #252526;
+        color: #cccccc;
+        overflow: auto;
+        border-right: 1px solid #191919;
+        font-family: 'SFMono-Regular', monospace;
+        font-size: 0.82em;
+    }
+
+    .eb-sidebar-header {
+        padding: 8px 14px 7px;
+        font-size: 0.72em;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        margin-bottom: 6px;
+    }
+
+    .eb-tabs {
+        display: flex;
+        background: #252526;
+        border-bottom: 1px solid #191919;
+        flex-shrink: 0;
+    }
+
+    .eb-tab {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 0 16px;
+        height: 34px;
+        font-size: 0.8em;
+        color: rgba(255, 255, 255, 0.78);
+        border-right: 1px solid #191919;
+        background: #1e1e1e;
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    .eb-tab-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #007bff;
+        opacity: 0.6;
+    }
+
+    .eb-tips {
+        width: 220px;
+        flex-shrink: 0;
+        padding: 16px 14px;
+        overflow: auto;
+        background: #12121f;
+        border-left: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .code-tip-card {
+        border-left: 2px solid;
+        padding: 8px 10px;
+        margin-bottom: 14px;
+        border-radius: 0 6px 6px 0;
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .code-tip-card:last-child {
+        margin-bottom: 0;
+    }
+
+    .code-tip-card h5 {
+        font-size: 0.85em;
+        margin: 0 0 4px;
+        font-weight: 700;
+    }
+
+    .code-tip-card p {
+        font-size: 0.82em;
+        color: rgba(255, 255, 255, 0.48);
+        margin: 0;
+        line-height: 1.5;
     }
 
     /* ── Who is using ── */
     .using-section {
-        background: #2a2a30;
-        padding: 48px 0;
+        background: #10131a;
+        padding: 38px 0;
         position: relative;
         overflow: hidden;
     }
@@ -276,7 +413,7 @@
         content: '';
         position: absolute;
         top: 0; bottom: 0;
-        width: 120px;
+        width: 180px;
         z-index: 2;
         pointer-events: none;
     }
@@ -286,83 +423,156 @@
 
     .using-header {
         text-align: center;
-        margin-bottom: 28px;
+        margin-bottom: 18px;
+        padding: 0 20px;
     }
 
     .using-eyebrow {
-        display: block;
-        font-size: 0.68em;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.7em;
         font-weight: 700;
         letter-spacing: 1.8px;
         text-transform: uppercase;
-        color: rgba(255,255,255,0.2);
+        color: rgba(99, 102, 241, 0.85);
         font-family: 'SFMono-Regular', monospace;
-        margin-bottom: 6px;
+        margin-bottom: 14px;
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid rgba(99, 102, 241, 0.22);
+        border-radius: 20px;
+        padding: 4px 14px;
+    }
+
+    .using-eyebrow::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #6366f1;
+        display: inline-block;
+        flex-shrink: 0;
     }
 
     .using-header h3 {
-        font-size: 1.25em;
-        font-weight: 700;
-        color: rgba(255,255,255,0.85);
+        font-size: 1.7em;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.88);
         margin: 0;
+        letter-spacing: 0.3px;
     }
 
     .using-header h3 em {
         font-style: normal;
-        color: rgba(255,255,255,0.25);
-        font-weight: 400;
-        font-size: 0.78em;
-        margin-left: 8px;
+        background: linear-gradient(135deg, #a5b4fc, #67e8f9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        margin-left: 6px;
     }
 
-    .using-track-wrap { overflow: hidden; }
+    .using-track-wrap {
+        overflow: hidden;
+        margin-bottom: 14px;
+    }
+
+    .using-track-wrap:last-child {
+        margin-bottom: 0;
+    }
 
     .using-track {
         display: flex;
-        gap: 0;
+        gap: 10px;
         width: max-content;
-        animation: using-ltr 60s linear infinite;
+        animation: using-ltr 55s linear infinite;
+        padding: 4px 0;
     }
 
-    .using-track:hover { animation-play-state: paused; }
+    .using-track-reverse {
+        display: flex;
+        gap: 10px;
+        width: max-content;
+        animation: using-rtl 55s linear infinite;
+        animation-delay: -20s;
+        padding: 4px 0;
+    }
+
+    .using-track:hover,
+    .using-track-reverse:hover {
+        animation-play-state: paused;
+    }
 
     @keyframes using-ltr {
         0%   { transform: translateX(0); }
         100% { transform: translateX(-50%); }
     }
 
+    @keyframes using-rtl {
+        0% {
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
     .using-logo-card {
         flex-shrink: 0;
-        width: 160px;
-        height: 72px;
+        width: 168px;
+        height: 80px;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 14px 22px;
-        border-right: 1px solid rgba(255,255,255,0.06);
-        transition: background 0.2s;
+        gap: 7px;
+        padding: 10px 18px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.03);
+        transition: all 0.25s;
+        cursor: default;
     }
 
     .using-logo-card:hover {
-        background: rgba(255,255,255,0.04);
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
 
     .using-logo-card img {
         max-width: 100%;
-        max-height: 28px;
+        max-height: 30px;
         object-fit: contain;
-        opacity: 0.35;
+        opacity: 0.38;
         transition: opacity 0.25s;
     }
 
     .using-logo-card:hover img {
-        opacity: 0.85;
+        opacity: 0.92;
+    }
+
+    .using-logo-card .logo-name {
+        font-size: 0.65em;
+        color: rgba(255, 255, 255, 0.2);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        text-align: center;
+        transition: color 0.25s;
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    .using-logo-card:hover .logo-name {
+        color: rgba(255, 255, 255, 0.65);
     }
 
     /* ── AI promo cards ── */
     .ai-promo-card {
         cursor: pointer;
-        border-radius: 12px;
+        border-radius: 0;
         padding: 28px 26px;
         text-align: left;
         transition: all 0.22s;
@@ -482,44 +692,66 @@
                 <div class="container" style="margin-top: 60px;padding-bottom: 20px;position: relative;z-index: 1;">
                     <div class="row">
                         <div class="col-12">
-                            <div id="erupt-box" class="d-flex bg-dark"
-                                 style="overflow: hidden;border-radius: 6px;box-shadow: 0 10px 20px #080808a6;position: relative;z-index: 2;">
-                                <div style="width: 200px;flex-shrink:0;background:#3c3f41;color: #bbbbbb;overflow: auto">
-                                    <div class="align-items-center"
-                                         style="margin-top: 12px;border-bottom: 1px dashed #bbbbbb;">
-                                        <p style="margin-bottom: 8px;text-align: center;"
-                                           ng-bind-html="'home.code.title' | i18nHtml"></p>
+                            <div id="erupt-box"
+                                 style="display:flex;flex-direction:column;overflow:hidden;border-radius:8px;position:relative;z-index:2;">
+                                <!-- IDE title bar -->
+                                <div class="eb-titlebar">
+                                    <div class="eb-traffic">
+                                        <span class="eb-dot eb-dot-r"></span>
+                                        <span class="eb-dot eb-dot-y"></span>
+                                        <span class="eb-dot eb-dot-g"></span>
                                     </div>
-                                    <div class="align-items-center" ng-repeat="(key,val) in project"
-                                         style="margin-top: 12px;padding: 0 12px;">
-                                        <p>
-                                            <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg"
-                                                 width="8px">
-                                            <img alt="" src="images/file/finder.svg" style="width: 18px;">
-                                            <span ng-class="val.active||'del-line'"
-                                                  ng-style="{animationDelay:($index*400)+'ms'}">{{key}}</span>
-                                        </p>
-                                        <div ng-if="val.sub">
-                                            <div class="align-items-center" ng-repeat="(key,val) in val.sub"
-                                                 style="padding-left: 32px;margin-top: 12px">
-                                                <div ng-if="val.file">
-                                                    <img alt="" src="images/file/file.svg" style="width: 18px">
-                                                    <span ng-class="val.active||'del-line'"
-                                                          ng-style="{color:val.active&&'#FFEB3B'}">{{key}}</span>
-                                                </div>
-                                                <div ng-if="!val.file">
-                                                    <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg"
-                                                         width="8px">
-                                                    <img alt="" src="images/file/finder.svg" style="width: 18px">
-                                                    <span class="del-line">{{key}}</span>
+                                    <span class="eb-titlebar-name">DemoErupt.java — erupt-demo</span>
+                                    <span class="eb-titlebar-badge">Erupt Engine</span>
+                                </div>
+                                <!-- Content row -->
+                                <div class="eb-content">
+                                    <!-- File tree sidebar -->
+                                    <div class="eb-sidebar">
+                                        <div class="eb-sidebar-header"
+                                             ng-bind-html="'home.code.title' | i18nHtml"></div>
+                                        <div ng-repeat="(key,val) in project" style="padding: 0 6px;margin-top: 2px">
+                                            <div style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px">
+                                                <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg"
+                                                     width="7px">
+                                                <img alt="" src="images/file/finder.svg" style="width:15px;opacity:0.7">
+                                                <span ng-class="val.active||'del-line'"
+                                                      ng-style="{animationDelay:($index*400)+'ms'}"
+                                                      style="font-size:0.9em">{{key}}</span>
+                                            </div>
+                                            <div ng-if="val.sub">
+                                                <div ng-repeat="(key,val) in val.sub"
+                                                     style="padding-left: 20px;margin-top: 2px">
+                                                    <div ng-if="val.file"
+                                                         style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px;background:rgba(0,123,255,0.14)">
+                                                        <img alt="" src="images/file/file.svg"
+                                                             style="width:14px;opacity:0.85">
+                                                        <span ng-class="val.active||'del-line'"
+                                                              ng-style="{color:val.active&&'#FFEB3B'}"
+                                                              style="font-size:0.88em">{{key}}</span>
+                                                    </div>
+                                                    <div ng-if="!val.file"
+                                                         style="display:flex;align-items:center;gap:4px;padding:3px 6px">
+                                                        <img alt="" ng-class="val.sub||'deg90'"
+                                                             src="images/file/below.svg" width="7px">
+                                                        <img alt="" src="images/file/finder.svg"
+                                                             style="width:14px;opacity:0.5">
+                                                        <span class="del-line" style="font-size:0.88em">{{key}}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div style="width: 100%;overflow: auto;position: relative">
-                                <pre id="DemoErupt"
-                                     style="margin: 0;border-radius:0;height: 562px;box-shadow: inset 0 0 10px #2310109e">
+                                    <!-- Code editor -->
+                                    <div style="display:flex;flex-direction:column;width:100%;overflow:hidden;position:relative">
+                                        <div class="eb-tabs">
+                                            <div class="eb-tab">
+                                                <span class="eb-tab-dot"></span>
+                                                DemoErupt.java
+                                            </div>
+                                        </div>
+                                        <pre id="DemoErupt"
+                                             style="margin:0;border-radius:0;height:490px;box-shadow:inset 0 0 10px #2310109e">
 <code class="prism language-java animated bounce">/**
   *  plug-and-play 🚀
   *  @Erupt > html + js + css + controller + service + dao + xml + entity + ddl
@@ -556,37 +788,38 @@ public class DemoErupt extends BaseModel {
     private String code;
 
 }</code></pre>
-                                    <a class="badge badge-primary" href="#!/contrast"
-                                       style="position: absolute;right: 16px;bottom: 16px;font-family: initial">
-                                        {{'home.code.more' | i18n}}
-                                    </a>
-                                </div>
-                                <div class="d-none d-md-block" style="color: #fff;height: 100%;width: 210px;
-                                 margin:16px 22px;
-                                 overflow: auto;flex-shrink: 0">
-                                    <div class="animated bounceInLeft code-tip delay-1">
-                                        <h5 class="text-primary">{{'home.code.tip1.title' | i18n}}</h5>
-                                        <p class="text-white">{{'home.code.tip1.desc' | i18n}}</p>
-                                        <hr>
+                                        <a class="badge badge-primary" href="#!/contrast"
+                                           style="position:absolute;right:16px;bottom:16px;font-family:initial">
+                                            {{'home.code.more' | i18n}}
+                                        </a>
                                     </div>
-                                    <div class="animated bounceInLeft code-tip delay-2">
-                                        <h5 class="text-warning">{{'home.code.tip2.title' | i18n}}</h5>
-                                        <p class="text-white">{{'home.code.tip2.desc' | i18n}}</p>
-                                        <hr>
-                                    </div>
-                                    <div class="animated bounceInLeft code-tip delay-3">
-                                        <h5 class="text-success">{{'home.code.tip3.title' | i18n}}</h5>
-                                        <p class="text-white">{{'home.code.tip3.desc' | i18n}}</p>
-                                        <hr>
-                                    </div>
-                                    <div class="animated bounceInLeft code-tip delay-4">
-                                        <h5 class="text-danger">{{'home.code.tip4.title' | i18n}}</h5>
-                                        <p class="text-white">{{'home.code.tip4.desc' | i18n}}</p>
-                                        <hr>
-                                    </div>
-                                    <div class="animated bounceInLeft code-tip delay-5">
-                                        <h5 class="text-info">{{'home.code.tip5.title' | i18n}}</h5>
-                                        <p class="text-white mb-0">{{'home.code.tip5.desc' | i18n}}</p>
+                                    <!-- Tips panel -->
+                                    <div class="d-none d-md-block eb-tips">
+                                        <div class="code-tip-card animated bounceInLeft delay-1"
+                                             style="border-color:#007bff">
+                                            <h5 class="text-primary">{{'home.code.tip1.title' | i18n}}</h5>
+                                            <p>{{'home.code.tip1.desc' | i18n}}</p>
+                                        </div>
+                                        <div class="code-tip-card animated bounceInLeft delay-2"
+                                             style="border-color:#ffc107">
+                                            <h5 class="text-warning">{{'home.code.tip2.title' | i18n}}</h5>
+                                            <p>{{'home.code.tip2.desc' | i18n}}</p>
+                                        </div>
+                                        <div class="code-tip-card animated bounceInLeft delay-3"
+                                             style="border-color:#28a745">
+                                            <h5 class="text-success">{{'home.code.tip3.title' | i18n}}</h5>
+                                            <p>{{'home.code.tip3.desc' | i18n}}</p>
+                                        </div>
+                                        <div class="code-tip-card animated bounceInLeft delay-4"
+                                             style="border-color:#dc3545">
+                                            <h5 class="text-danger">{{'home.code.tip4.title' | i18n}}</h5>
+                                            <p>{{'home.code.tip4.desc' | i18n}}</p>
+                                        </div>
+                                        <div class="code-tip-card animated bounceInLeft delay-5"
+                                             style="border-color:#17a2b8">
+                                            <h5 class="text-info">{{'home.code.tip5.title' | i18n}}</h5>
+                                            <p>{{'home.code.tip5.desc' | i18n}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -598,16 +831,29 @@ public class DemoErupt extends BaseModel {
         <div id="erupt-features">
             <div class="using-section">
                 <div class="using-header">
-                    <span class="using-eyebrow">{{'home.using.eyebrow' | i18n}}</span>
                     <h3>{{'home.using.title' | i18n}} <em>100+</em></h3>
                 </div>
                 <div class="using-track-wrap">
                     <div class="using-track">
                         <div class="using-logo-card" ng-repeat="u in using" ng-if="u.logo" title="{{u.name}}">
                             <img ng-src="{{u.logo}}" alt="{{u.name}}">
+                            <span class="logo-name">{{u.name}}</span>
                         </div>
                         <div class="using-logo-card" ng-repeat="u in using" ng-if="u.logo" title="{{u.name}}">
                             <img ng-src="{{u.logo}}" alt="{{u.name}}">
+                            <span class="logo-name">{{u.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="using-track-wrap">
+                    <div class="using-track-reverse">
+                        <div class="using-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                            <img alt="{{u.name}}" ng-src="{{u.logo}}">
+                            <span class="logo-name">{{u.name}}</span>
+                        </div>
+                        <div class="using-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                            <img alt="{{u.name}}" ng-src="{{u.logo}}">
+                            <span class="logo-name">{{u.name}}</span>
                         </div>
                     </div>
                 </div>
@@ -686,7 +932,7 @@ public class DemoErupt extends BaseModel {
                                 <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt AI</h4>
                                 <p style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px" ng-bind-html="'home.promo.ai.desc' | i18nHtml"></p>
                                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
-                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">13+ LLMs</span>
+                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">50+ LLMs</span>
                                     <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">ReAct Agent</span>
                                     <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">MCP</span>
                                     <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Tool</span>
@@ -702,7 +948,7 @@ public class DemoErupt extends BaseModel {
                                 <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">AI Claw</h4>
                                 <p style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px" ng-bind-html="'home.promo.claw.desc' | i18nHtml"></p>
                                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
-                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Skill</span>
+                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Skill</span>
                                     <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Shell</span>
                                     <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">File I/O</span>
                                     <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">NLP</span>
