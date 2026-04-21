@@ -42,6 +42,11 @@ app.controller("aiClaw", function ($scope, $timeout, i18nService) {
             icon: '🔌', tag: 'SKILLS',
             title: i18nService.t('claw.feat.f5.title'),
             desc: i18nService.t('claw.feat.f5.desc')
+        },
+        {
+            icon: '🧠', tag: 'MEMORY',
+            title: i18nService.t('claw.feat.f6.title'),
+            desc: i18nService.t('claw.feat.f6.desc')
         }
     ];
 

@@ -274,24 +274,66 @@
     }
 
     /* ── Feature Cards ── */
+    .claw-section-gray {
+        padding: 70px 0;
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .claw-section-gray::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(0, 204, 110, 0.055) 0%, transparent 65%);
+        pointer-events: none;
+    }
+
     .claw-feat-card {
         background: #fff;
-        border: 1px solid #e4e8ed;
+        border: 1px solid rgba(0, 0, 0, 0.07);
         border-radius: 10px;
-        padding: 26px 22px;
-        transition: all 0.22s;
+        padding: 28px 22px;
+        transition: all 0.24s;
         height: 100%;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .claw-feat-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #00ff88, #00cc6e);
+        opacity: 0;
+        transition: opacity 0.24s;
     }
 
     .claw-feat-card:hover {
-        border-color: #00cc6e;
-        box-shadow: 0 6px 24px rgba(0, 204, 110, 0.1);
-        transform: translateY(-3px);
+        border-color: rgba(0, 204, 110, 0.22);
+        box-shadow: 0 10px 36px rgba(0, 204, 110, 0.1);
+        transform: translateY(-4px);
+    }
+
+    .claw-feat-card:hover::after {
+        opacity: 1;
+    }
+
+    .claw-feat-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
     }
 
     .claw-feat-icon {
-        font-size: 2em;
-        margin-bottom: 12px;
+        font-size: 1.7em;
+        line-height: 1;
+        flex-shrink: 0;
     }
 
     .claw-feat-tag {
@@ -301,45 +343,238 @@
         border: 1px solid #bbf7d0;
         border-radius: 4px;
         padding: 2px 8px;
-        font-size: 0.73em;
+        font-size: 0.7em;
         font-weight: 700;
-        margin-bottom: 10px;
         font-family: 'SFMono-Regular', monospace;
         letter-spacing: 0.5px;
     }
 
     .claw-feat-card h3 {
-        font-size: 1.08em;
+        font-size: 1.02em;
         font-weight: 700;
         margin-bottom: 8px;
-        color: #1a1a2e;
+        color: #111;
     }
 
     .claw-feat-card p {
         color: #666;
-        font-size: 0.91em;
-        line-height: 1.65;
+        font-size: 0.89em;
+        line-height: 1.68;
         margin: 0;
     }
 
     /* ── Skills ── */
-    .claw-skills-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .claw-section-skills {
+        padding: 70px 0;
+        background: #0a0f1a;
+        position: relative;
+        overflow: hidden;
     }
 
-    .claw-skills-list li {
-        color: rgba(255, 255, 255, 0.6);
-        padding: 7px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        font-size: 0.93em;
+    .claw-section-skills::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(0, 255, 136, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.025) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
     }
 
-    .claw-skills-list li::before {
-        content: '✓  ';
-        color: #00ff88;
+    .claw-skill-prop {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: rgba(0, 255, 136, 0.04);
+        border: 1px solid rgba(0, 255, 136, 0.12);
+        border-radius: 10px;
+        padding: 18px 20px;
+        height: 100%;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .claw-skill-prop:hover {
+        border-color: rgba(0, 255, 136, 0.3);
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.06);
+    }
+
+    .claw-sp-icon {
+        font-size: 1.4em;
+        flex-shrink: 0;
+        line-height: 1;
+        margin-top: 2px;
+    }
+
+    .claw-sp-title {
+        color: #fff;
         font-weight: 700;
+        font-size: 0.93em;
+        margin-bottom: 5px;
+    }
+
+    .claw-sp-desc {
+        color: rgba(255, 255, 255, 0.42);
+        font-size: 0.82em;
+        line-height: 1.55;
+    }
+
+    /* file explorer */
+    .claw-file-explorer {
+        background: #161b22;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .claw-fe-titlebar {
+        background: #21262d;
+        padding: 9px 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 0.72em;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.35);
+        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        text-transform: uppercase;
+    }
+
+    .claw-fe-body {
+        padding: 10px 0;
+    }
+
+    .claw-fe-row {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 5px 16px;
+        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        font-size: 0.84em;
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: background 0.15s;
+        user-select: none;
+    }
+
+    .claw-fe-row:hover {
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .claw-fe-dir {
+        color: rgba(255, 255, 255, 0.65);
+        font-weight: 600;
+    }
+
+    .claw-fe-active {
+        background: rgba(0, 255, 136, 0.07) !important;
+        color: #00ff88 !important;
+    }
+
+    .claw-fe-arrow {
+        font-size: 0.65em;
+        color: rgba(255, 255, 255, 0.25);
+        width: 10px;
+    }
+
+    .claw-fe-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+        flex-shrink: 0;
+    }
+
+    .claw-fe-active .claw-fe-dot {
+        background: #00ff88;
+        box-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
+    }
+
+    .claw-fe-preview {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 16px 18px;
+        margin-top: auto;
+        background: rgba(0, 255, 136, 0.025);
+    }
+
+    .claw-fe-preview-name {
+        font-family: monospace;
+        font-size: 0.78em;
+        color: #00ff88;
+        margin-bottom: 8px;
+        opacity: 0.8;
+    }
+
+    .claw-fe-preview-content {
+        font-size: 0.86em;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.65;
+    }
+
+    /* invoke panel */
+    .claw-skill-invoke {
+        background: #161b22;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 24px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .claw-si-label {
+        font-size: 0.7em;
+        color: rgba(255, 255, 255, 0.28);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-family: monospace;
+    }
+
+    .claw-si-user {
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid rgba(99, 102, 241, 0.18);
+        border-radius: 6px;
+        padding: 10px 14px;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+
+    .claw-si-step {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.82em;
+    }
+
+    .claw-si-step-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(0, 255, 136, 0.55);
+        flex-shrink: 0;
+    }
+
+    .claw-si-step-label {
+        color: rgba(255, 255, 255, 0.35);
+    }
+
+    .claw-si-step-val {
+        color: #00ff88;
+        font-family: monospace;
+    }
+
+    .claw-si-result {
+        background: rgba(0, 255, 136, 0.05);
+        border: 1px solid rgba(0, 255, 136, 0.14);
+        border-radius: 6px;
+        padding: 12px 14px;
+        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        font-size: 0.8em;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.7;
+        margin-top: auto;
     }
 
     .claw-code-wrap {
@@ -458,7 +693,7 @@
 
     <!-- ── Core Features ── -->
     <div class="claw-section-gray">
-        <div class="container">
+        <div class="container" style="position:relative;z-index:1">
             <div class="claw-section-title">
                 <h2>{{'claw.feat.title' | i18n}}</h2>
                 <p>{{'claw.feat.subtitle' | i18n}}</p>
@@ -466,8 +701,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-4 col-sm-6 mb-4" ng-repeat="f in features">
                     <div class="claw-feat-card">
-                        <div class="claw-feat-icon">{{f.icon}}</div>
-                        <div class="claw-feat-tag">{{f.tag}}</div>
+                        <div class="claw-feat-header">
+                            <span class="claw-feat-icon">{{f.icon}}</span>
+                            <span class="claw-feat-tag">{{f.tag}}</span>
+                        </div>
                         <h3>{{f.title}}</h3>
                         <p>{{f.desc}}</p>
                     </div>
@@ -477,41 +714,95 @@
     </div>
 
     <!-- ── Skills Extension ── -->
-    <div class="claw-section-dark">
-        <div class="container">
+    <div class="claw-section-skills">
+        <div class="container" style="position:relative;z-index:1">
             <div class="claw-section-title">
-                <h2>{{'claw.skills.title' | i18n}}</h2>
-                <p>{{'claw.skills.subtitle' | i18n}}</p>
+                <h2 style="color:#fff">{{'claw.skills.title' | i18n}}</h2>
+                <p style="color:rgba(255,255,255,0.45)">{{'claw.skills.subtitle' | i18n}}</p>
             </div>
-            <div class="row align-items-center">
-                <div class="col-md-5" style="margin-bottom:28px">
-                    <h3 style="color:#00ff88;font-size:1.15em;font-weight:700;margin-bottom:14px">
-                        {{'claw.skills.how' | i18n}}
-                    </h3>
-                    <p style="color:rgba(255,255,255,0.55);line-height:1.8;font-size:0.95em;margin-bottom:20px">
-                        {{'claw.skills.desc' | i18n}}
-                    </p>
-                    <ul class="claw-skills-list">
-                        <li ng-repeat="item in skillPoints">{{item}}</li>
-                    </ul>
+
+            <!-- 3 property cards -->
+            <div class="row justify-content-center" style="margin-bottom:44px">
+                <div class="col-md-4 col-sm-6 mb-3">
+                    <div class="claw-skill-prop">
+                        <span class="claw-sp-icon">⚡</span>
+                        <div>
+                            <div class="claw-sp-title">{{'claw.skills.p1.title' | i18n}}</div>
+                            <div class="claw-sp-desc">{{'claw.skills.p1.desc' | i18n}}</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-7">
-                    <div class="claw-code-wrap">
-                        <pre><code class="language-java">// 一个注解，将 Java 方法注册为 AI Claw 技能
-@Tool("发送告警通知")
-public String sendAlert(@P("告警内容") String msg) {
-    return alertService.send(msg);
-}
+                <div class="col-md-4 col-sm-6 mb-3">
+                    <div class="claw-skill-prop">
+                        <span class="claw-sp-icon">🔄</span>
+                        <div>
+                            <div class="claw-sp-title">{{'claw.skills.p2.title' | i18n}}</div>
+                            <div class="claw-sp-desc">{{'claw.skills.p2.desc' | i18n}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-3">
+                    <div class="claw-skill-prop">
+                        <span class="claw-sp-icon">∞</span>
+                        <div>
+                            <div class="claw-sp-title">{{'claw.skills.p3.title' | i18n}}</div>
+                            <div class="claw-sp-desc">{{'claw.skills.p3.desc' | i18n}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-@Tool("查询服务健康状态")
-public ServiceStatus checkService(@P("服务名称") String name) {
-    return monitorService.status(name);
-}
+            <!-- file explorer + invocation -->
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-4">
+                    <div class="claw-file-explorer">
+                        <div class="claw-fe-titlebar">Explorer — .erupt/skills</div>
+                        <div class="claw-fe-body">
+                            <div class="claw-fe-row claw-fe-dir">
+                                <span class="claw-fe-arrow">▾</span> .erupt/skills
+                            </div>
+                            <div class="claw-fe-row claw-fe-dir" style="padding-left:24px">
+                                <span class="claw-fe-arrow">▸</span> send-alert
+                            </div>
+                            <div class="claw-fe-row claw-fe-dir claw-fe-active" style="padding-left:24px">
+                                <span class="claw-fe-arrow">▾</span> check-service
+                            </div>
+                            <div class="claw-fe-row claw-fe-file claw-fe-active" style="padding-left:48px">
+                                <span class="claw-fe-dot"></span> SKILL.md
+                            </div>
+                            <div class="claw-fe-row" style="padding-left:48px">
+                                <span class="claw-fe-dot"></span> references
+                            </div>
+                            <div class="claw-fe-row claw-fe-dir" style="padding-left:24px">
+                                <span class="claw-fe-arrow">▸</span> backup-db
+                            </div>
+                        </div>
+                        <div class="claw-fe-preview">
+                            <div class="claw-fe-preview-name">▸ check-service / SKILL.md</div>
+                            <div class="claw-fe-preview-content">查询指定服务的健康状态，返回 UP / DOWN 及各组件状态。
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-@Tool("执行数据库备份")
-public boolean backupDatabase(@P("数据库名") String db) {
-    return dbService.backup(db);
-}</code></pre>
+                <div class="col-md-5 mb-4">
+                    <div class="claw-skill-invoke">
+                        <div class="claw-si-label">{{'claw.skills.invoke.label' | i18n}}</div>
+                        <div class="claw-si-user">检查 payment 服务是否正常</div>
+                        <div class="claw-si-step">
+                            <span class="claw-si-step-dot"></span>
+                            <span class="claw-si-step-label">{{'claw.skills.invoke.discover' | i18n}}</span>
+                            <code class="claw-si-step-val">check-service.md</code>
+                        </div>
+                        <div class="claw-si-step">
+                            <span class="claw-si-step-dot"></span>
+                            <span class="claw-si-step-label">{{'claw.skills.invoke.call' | i18n}}</span>
+                            <code class="claw-si-step-val">payment-service</code>
+                        </div>
+                        <div class="claw-si-result">
+                            <span style="color:#00ff88">✓</span>&nbsp;
+                            {"status":"UP","db":"UP","cache":"UP"}
+                        </div>
                     </div>
                 </div>
             </div>

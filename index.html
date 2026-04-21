@@ -188,15 +188,6 @@
             </div>
             <span class="corner-ad-sub">云服务器 · 数据库 · 对象存储</span>
         </a>
-        <a class="corner-ad-item corner-ad-petal" href="https://petal-api.crystallinepetal.cn/register?aff=gKny"
-           target="_blank">
-            <div class="corner-ad-header">
-                <span class="corner-ad-icon">🌸</span>
-                <span class="corner-ad-name">Petal API</span>
-                <span class="corner-ad-tag">注册</span>
-            </div>
-            <span class="corner-ad-sub">Claude · GPT · Gemini</span>
-        </a>
     </div>
 </div>
 
@@ -218,11 +209,6 @@
 <script src="page/ai/ai.js"></script>
 <script src="page/ai-claw/ai-claw.js"></script>
 <script src="page/cube/cube.js"></script>
-<script>
-    i18n.init().then(function () {
-        angular.bootstrap(document.body, ['app']);
-    });
-</script>
 
 <script src="assets/prism/prism.min.js"></script>
 <script src="assets/prism/prism-java.min.js"></script>
@@ -286,6 +272,10 @@
             var copyright = i18nService.t('footer.copyright');
             return copyright.replace('{{year}}', $rootScope.year);
         };
+    });
+
+    i18n.init().then(function () {
+        angular.bootstrap(document.body, ['app']);
     });
 </script>
 <script>

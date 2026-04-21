@@ -266,8 +266,8 @@
     /* ── AI promo cards ── */
     .ai-promo-card {
         cursor: pointer;
-        border-radius: 12px;
-        padding: 28px 26px;
+        border-radius: 0;
+        padding: 18px 16px;
         text-align: left;
         transition: all 0.22s;
         position: relative;
@@ -295,6 +295,17 @@
         border-color: rgba(0, 255, 136, 0.45);
         transform: translateY(-4px);
         box-shadow: 0 16px 40px rgba(0, 255, 136, 0.1);
+    }
+
+    .ai-promo-card-erupt-claw {
+        background: rgba(251, 146, 60, 0.06);
+        border: 1px solid rgba(251, 146, 60, 0.18);
+    }
+
+    .ai-promo-card-erupt-claw:hover {
+        border-color: rgba(251, 146, 60, 0.5);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(251, 146, 60, 0.12);
     }
 </style>
 <div ng-controller="home">
@@ -569,51 +580,65 @@ public class DemoErupt extends BaseModel {
                 <div class="container" style="position:relative;z-index:1;text-align:center">
                     <span style="display:inline-block;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:20px;padding:4px 16px;font-size:0.78em;font-family:monospace;margin-bottom:16px">✦ New</span>
                     <h2 style="color:#fff;font-size:2em;font-weight:900;margin-bottom:14px;letter-spacing:0.5px">
-                        低代码
+                        {{'home.ai.promo.title' | i18n}}
                         <span style="background:linear-gradient(135deg,#a5b4fc,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text"> × AI</span>
                     </h2>
-                    <p style="color:rgba(255,255,255,0.52);max-width:560px;margin:0 auto 40px;line-height:1.8;font-size:1em">
-                        Erupt 将零代码开发与 AI 能力深度融合——大模型对话、ReAct Agent、MCP 协议、自然语言操控，让每个业务系统都拥有智能
-                    </p>
+                    <p ng-bind-html="'home.ai.promo.desc' | i18nHtml"
+                       style="color:rgba(255,255,255,0.52);max-width:560px;margin:0 auto 40px;line-height:1.8;font-size:1em"></p>
                     <div class="row justify-content-center">
                         <!-- Erupt AI -->
-                        <div class="col-md-5 col-sm-10 mb-3">
+                        <div class="col-md-4 col-sm-10 mb-3">
                             <div class="ai-promo-card ai-promo-card-ai" ng-click="go('#!/ai')">
                                 <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#8b5cf6)"></div>
                                 <div style="font-size:2em;margin-bottom:10px">🤖</div>
                                 <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt AI</h4>
-                                <p style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px">
-                                    多 LLM 接入 · ReAct Agent · MCP 协议 · @Tool 注解<br>
-                                    5 分钟为任意 Erupt 应用接入 AI 能力
-                                </p>
+                                <p ng-bind-html="'home.ai.promo.ai.desc' | i18nHtml"
+                                   style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px"></p>
                                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
                                     <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">13+ LLMs</span>
                                     <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">ReAct Agent</span>
                                     <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">MCP</span>
                                     <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Tool</span>
                                 </div>
-                                <span style="color:#818cf8;font-weight:700;font-size:0.88em">了解 Erupt AI →</span>
+                                <span style="color:#818cf8;font-weight:700;font-size:0.88em">{{'home.ai.promo.ai.cta' | i18n}}</span>
                             </div>
                         </div>
                         <!-- Erupt Cube -->
-                        <div class="col-md-5 col-sm-10 mb-3">
+                        <div class="col-md-4 col-sm-10 mb-3">
                             <div class="ai-promo-card ai-promo-card-claw" ng-click="go('#!/cube')"
                                  style="background:linear-gradient(135deg,#0b1e16 0%,#071510 100%)">
                                 <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#10b981,#34d399)"></div>
                                 <div style="font-size:2em;margin-bottom:10px">🧊</div>
                                 <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt
                                     Cube</h4>
-                                <p style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px">
-                                    语义层建模 · 拖拽可视化分析 · 零前端代码<br>
-                                    注解定义指标，分析师自助完成 BI
-                                </p>
+                                <p ng-bind-html="'home.ai.promo.cube.desc' | i18nHtml"
+                                   style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px"></p>
                                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
                                     <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@EruptCube</span>
                                     <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Dimension</span>
                                     <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Measure</span>
-                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">拖拽分析</span>
+                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">{{'home.ai.promo.cube.tag.drag' | i18n}}</span>
                                 </div>
-                                <span style="color:#10b981;font-weight:700;font-size:0.88em">了解 Erupt Cube →</span>
+                                <span style="color:#10b981;font-weight:700;font-size:0.88em">{{'home.ai.promo.cube.cta' | i18n}}</span>
+                            </div>
+                        </div>
+                        <!-- Erupt AI Claw -->
+                        <div class="col-md-4 col-sm-10 mb-3">
+                            <div class="ai-promo-card ai-promo-card-erupt-claw" ng-click="go('#!/ai-claw')"
+                                 style="background:linear-gradient(135deg,#1c1208 0%,#120d05 100%)">
+                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f59e0b,#fb923c)"></div>
+                                <div style="font-size:2em;margin-bottom:10px">🦞</div>
+                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt AI
+                                    Claw</h4>
+                                <p ng-bind-html="'home.ai.promo.ai-claw.desc' | i18nHtml"
+                                   style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px"></p>
+                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
+                                    <span style="background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.28);color:#fbbf24;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">{{'claw.badge.nlp' | i18n}}</span>
+                                    <span style="background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.28);color:#fbbf24;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">{{'claw.badge.shell' | i18n}}</span>
+                                    <span style="background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.28);color:#fbbf24;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">{{'claw.badge.data' | i18n}}</span>
+                                    <span style="background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.28);color:#fbbf24;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">.erupt/skills</span>
+                                </div>
+                                <span style="color:#f59e0b;font-weight:700;font-size:0.88em">{{'home.ai.promo.ai-claw.cta' | i18n}}</span>
                             </div>
                         </div>
                     </div>
