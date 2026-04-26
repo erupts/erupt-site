@@ -60,9 +60,9 @@
                    ng-class="currRouter=='/module'?'active-link':''">
                     {{'nav.module' | i18n}}
                 </a>
-                <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/erupts/erupt/mwf15h"
-                   target="_blank">
-                    {{'nav.donate' | i18n}}
+                <a class="btn btn-sm align-self-center btn-link" href="#!/about"
+                   ng-class="currRouter=='/about'?'active-link':''">
+                    {{'nav.about' | i18n}}
                 </a>
                 <span class="dropdown show">
                     <a class="btn btn-sm align-self-center btn-link" href="https://www.yuque.com/erupts/erupt"
@@ -178,17 +178,17 @@
     <!--        <img alt="" ng-click="goTop()" src="images/top.svg" style="width: 28px;cursor: pointer">-->
     <!--    </div>-->
 
-    <div id="corner-ads" ng-show="currentLang === 'zh-CN'">
-        <a class="corner-ad-item corner-ad-aliyun" href="https://www.aliyun.com/minisite/goods?userCode=9dkg55jw"
-           target="_blank">
-            <div class="corner-ad-header">
-                <span class="corner-ad-icon">☁️</span>
-                <span class="corner-ad-name">阿里云</span>
-                <span class="corner-ad-tag">优惠</span>
-            </div>
-            <span class="corner-ad-sub">云服务器 · 数据库 · 对象存储</span>
-        </a>
-    </div>
+    <!--    <div id="corner-ads" ng-show="currentLang === 'zh-CN'">-->
+    <!--        <a class="corner-ad-item corner-ad-aliyun" href="https://www.aliyun.com/minisite/goods?userCode=9dkg55jw"-->
+    <!--           target="_blank">-->
+    <!--            <div class="corner-ad-header">-->
+    <!--                <span class="corner-ad-icon">☁️</span>-->
+    <!--                <span class="corner-ad-name">阿里云</span>-->
+    <!--                <span class="corner-ad-tag">优惠</span>-->
+    <!--            </div>-->
+    <!--            <span class="corner-ad-sub">云服务器 · 数据库 · 对象存储</span>-->
+    <!--        </a>-->
+    <!--    </div>-->
 </div>
 
 <script src="assets/jquery.min.js"></script>
@@ -210,6 +210,7 @@
 <script src="page/ai-claw/ai-claw.js"></script>
 <script src="page/cube/cube.js"></script>
 
+<script src="page/about/about.js"></script>
 <script src="assets/prism/prism.min.js"></script>
 <script src="assets/prism/prism-java.min.js"></script>
 

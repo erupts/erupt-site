@@ -71,6 +71,11 @@ var app = angular.module('app', [
             toTemplate();
             return "page/cube/cube.html";
         }
+    }).when('/about', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/about/about.html";
+        }
     }).otherwise({
         redirectTo: '/'
     });

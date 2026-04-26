@@ -90,7 +90,7 @@ cloud.faq.a4,一般可本地起多个 Spring Boot 实例模拟多节点，配合
 cloud.demo.title,在线体验,Try the demo
 cloud.demo.desc,官方演示环境已集成 Erupt 能力，可在实际界面中感受注解生成的管理端。,The official demo showcases annotation-driven admin UIs—try it live.
 cloud.demo.btn,打开演示 DEMO,Open demo
-home.subtitle,注解·低代码,Annotation·Low Code
+home.subtitle,开源·低代码,Annotation·Low Code
 home.subtitle2,AI 大模型,AI LLM
 home.btn.code,代码示例,Codes
 home.btn.doc,使用文档,Docs
@@ -420,3 +420,32 @@ cube.ml.fn.reg.title,Java — 注册自定义函数,Java — Register Function
 cube.ml.fn.use.title,ML — 调用自定义函数,ML — Call Function
 lang.zh,中文,中文
 lang.en,English,English
+nav.about,关于我们,About
+about.hero.title.pre,关于,About
+about.hero.title.highlight, Erupt, Erupt
+about.hero.sub,开源低代码框架，用注解驱动开发，让每个 Java 工程师都能快速构建专业管理后台。,An open-source low-code framework driven by annotations — empowering every Java developer to build professional admin UIs fast.
+about.stat.founded,创立于,Founded
+about.stat.license,开源协议,License
+about.stat.platform,开源平台,Platforms
+about.stat.stack,技术栈,Built On
+about.intro.eyebrow,项目介绍,ABOUT THE PROJECT
+about.intro.title,我们是谁,Who We Are
+about.intro.sub,Erupt 是一个完全开源、社区驱动的低代码框架项目，致力于让每个 Java 工程师都能用最少的代码构建最专业的管理后台。,Erupt is a fully open-source community-driven low-code framework — helping every Java developer build professional admin UIs with minimal code.
+about.connect.eyebrow,保持联系,STAY CONNECTED
+about.connect.title,关注与支持,Follow & Support
+about.connect.sub,扫码关注公众号获取最新动态，或通过捐赠支持项目持续发展。,Follow the official account for updates, or support the project through a donation.
+about.intro.c1.title,开源使命,Open Source Mission
+about.intro.c1.desc,基于 Apache 2.0 协议完全开源，无商业限制，持续由社区驱动迭代演进。,Fully open-source under Apache 2.0 with no commercial restrictions — driven by the community.
+about.intro.c2.title,全球开发者,Global Developers
+about.intro.c2.desc,来自全球各地的开发者共同参与，在 GitHub、Gitee、GitCode 上广泛传播。,Developers worldwide contribute and use Erupt across GitHub、Gitee and GitCode.
+about.intro.c3.title,持续创新,Continuous Innovation
+about.intro.c3.desc,从注解 CRUD 到 AI 集成、语义建模，持续将前沿能力带入低代码领域。,"From annotation CRUD to AI integration and semantic modeling — always bringing frontier capabilities to low-code."
+about.wechat.title,公众号,WeChat Official Account
+about.wechat.sub,扫码关注，获取最新资讯与更新。,Scan to follow for the latest news and updates.
+about.wechat.qr.tip,扫描二维码关注公众号,Scan QR code to follow
+about.wechat.desc,关注 Erupt 公众号，第一时间获取版本更新、最佳实践与社区动态。,Follow the Erupt official account for release updates、best practices and community news.
+about.donate.title,捐赠支持,Donate & Support
+about.donate.sub,开源不易，你的支持是我们持续前行的动力。,Open source is hard work — your support keeps us moving forward.
+about.donate.card.title,支持 Erupt 开源,Support Erupt Open Source
+about.donate.card.desc,如果 Erupt 帮助了你的项目，欢迎通过捐赠表达支持。每一份捐赠都将用于项目的持续维护与改进。,If Erupt has helped your project, consider showing your support through a donation. Every contribution goes toward ongoing maintenance and improvement.
+about.donate.btn,查看捐赠指南,View Donation Guide

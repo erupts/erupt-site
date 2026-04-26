@@ -1,0 +1,492 @@
+<style>
+    .ab-page {
+        background: #fff;
+        color: #111;
+    }
+
+    /* ── Hero ── */
+    .ab-hero {
+        background: #080c14;
+        padding: 100px 0 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* fine grid */
+    .ab-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+    }
+
+    /* center fade-out mask */
+    .ab-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 70% 60% at 50% 100%, #080c14 0%, transparent 100%);
+        pointer-events: none;
+    }
+
+    /* accent line at top */
+    .ab-hero-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #3b5bdb 30%, #7048e8 60%, transparent);
+    }
+
+    .ab-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+
+    .ab-hero-kicker {
+        font-size: .68em;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, .35);
+        margin-bottom: 24px;
+        display: block;
+    }
+
+    .ab-hero h1 {
+        font-size: 3.2em;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.08;
+        letter-spacing: -.03em;
+        margin-bottom: 24px;
+    }
+
+    .ab-hero h1 em {
+        font-style: normal;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, .5);
+    }
+
+    .ab-hero-sub {
+        font-size: .97em;
+        color: rgba(255, 255, 255, .42);
+        line-height: 1.8;
+    }
+
+    /* ── Stats ── */
+    .ab-stats {
+        border-bottom: 1px solid #e8e8e8;
+    }
+
+    .ab-stats-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .ab-stat {
+        padding: 28px 0;
+        border-right: 1px solid #e8e8e8;
+        padding-left: 32px;
+    }
+
+    .ab-stat:first-child {
+        padding-left: 0;
+    }
+
+    .ab-stat:last-child {
+        border-right: none;
+    }
+
+    .ab-stat-num {
+        font-size: 1.5em;
+        font-weight: 800;
+        color: #111;
+        letter-spacing: -.02em;
+        line-height: 1;
+    }
+
+    .ab-stat-label {
+        font-size: .72em;
+        color: #aaa;
+        margin-top: 5px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    /* ── Shared section ── */
+    .ab-section {
+        padding: 72px 0;
+    }
+
+    .ab-section-alt {
+        background: #f9f9fb;
+    }
+
+    .ab-section-dark {
+        background: #080c14;
+        color: #fff;
+    }
+
+    .ab-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    .ab-eyebrow {
+        font-size: .68em;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: #3b5bdb;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .ab-section-dark .ab-eyebrow {
+        color: #748ffc;
+    }
+
+    .ab-heading {
+        font-size: 1.9em;
+        font-weight: 800;
+        letter-spacing: -.025em;
+        color: #111;
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+
+    .ab-section-dark .ab-heading {
+        color: #fff;
+    }
+
+    .ab-lead {
+        font-size: .9em;
+        color: #888;
+        line-height: 1.85;
+    }
+
+    .ab-section-dark .ab-lead {
+        color: rgba(255, 255, 255, .38);
+    }
+
+    /* ── Cards ── */
+    .ab-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: #e8e8e8;
+        border: 1px solid #e8e8e8;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 48px;
+    }
+
+    .ab-card {
+        background: #fff;
+        padding: 32px 28px;
+        transition: background .15s;
+    }
+
+    .ab-card:hover {
+        background: #fafafa;
+    }
+
+    .ab-card-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--dot, #3b5bdb);
+        margin-bottom: 20px;
+    }
+
+    .ab-card h3 {
+        font-size: .95em;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 8px;
+    }
+
+    .ab-card p {
+        font-size: .85em;
+        color: #888;
+        line-height: 1.75;
+        margin: 0;
+    }
+
+    /* ── WeChat + Donate ── */
+    .ab-duo {
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        gap: 1px;
+        background: rgba(255, 255, 255, .07);
+        border: 1px solid rgba(255, 255, 255, .07);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 48px;
+    }
+
+    /* WeChat */
+    .ab-wx {
+        padding: 48px 40px;
+        background: rgba(255, 255, 255, .03);
+        border-right: 1px solid rgba(255, 255, 255, .06);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .ab-wx-label {
+        font-size: .68em;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, .3);
+        margin-bottom: 28px;
+    }
+
+    .ab-wx-qr {
+        width: 148px;
+        height: 148px;
+        background: #fff;
+        border-radius: 6px;
+        padding: 8px;
+        margin-bottom: 20px;
+    }
+
+    .ab-wx-qr img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 3px;
+        display: block;
+    }
+
+    .ab-wx-name {
+        font-size: .92em;
+        font-weight: 600;
+        color: rgba(255, 255, 255, .75);
+        margin-bottom: 4px;
+    }
+
+    .ab-wx-tip {
+        font-size: .78em;
+        color: rgba(255, 255, 255, .28);
+    }
+
+    /* Donate */
+    .ab-donate {
+        padding: 52px 48px;
+        background: rgba(255, 255, 255, .02);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .ab-donate-eyebrow {
+        font-size: .68em;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: #748ffc;
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+
+    .ab-donate h3 {
+        font-size: 1.7em;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -.025em;
+        line-height: 1.15;
+        margin-bottom: 14px;
+    }
+
+    .ab-donate p {
+        font-size: .87em;
+        color: rgba(255, 255, 255, .38);
+        line-height: 1.85;
+        margin-bottom: 32px;
+        max-width: 380px;
+    }
+
+    .ab-donate-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #fff;
+        color: #111;
+        border-radius: 4px;
+        padding: 11px 26px;
+        font-size: .85em;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: .01em;
+        width: fit-content;
+        transition: opacity .15s, transform .15s;
+    }
+
+    .ab-donate-btn:hover {
+        opacity: .88;
+        color: #111;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .ab-donate-methods {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+    }
+
+    .ab-donate-method {
+        font-size: .72em;
+        color: rgba(255, 255, 255, .25);
+        border: 1px solid rgba(255, 255, 255, .08);
+        border-radius: 3px;
+        padding: 3px 10px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+        .ab-hero h1 {
+            font-size: 2.1em;
+        }
+
+        .ab-stats-inner {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .ab-stat:nth-child(2) {
+            border-right: none;
+        }
+
+        .ab-stat:nth-child(3) {
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .ab-stat:nth-child(4) {
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .ab-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .ab-duo {
+            grid-template-columns: 1fr;
+        }
+
+        .ab-wx {
+            border-right: none;
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+        }
+    }
+</style>
+
+<div class="ab-page" ng-controller="about">
+
+    <!-- Hero -->
+    <div class="ab-hero">
+        <div class="ab-hero-line"></div>
+        <div class="ab-hero-inner">
+            <span class="ab-hero-kicker">OPEN SOURCE · LOW CODE · JAVA</span>
+            <h1>{{'about.hero.title.pre' | i18n}}<em>{{'about.hero.title.highlight' | i18n}}</em></h1>
+            <p class="ab-hero-sub">{{'about.hero.sub' | i18n}}</p>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="ab-stats">
+        <div class="ab-stats-inner">
+            <div class="ab-stat">
+                <div class="ab-stat-num">2019</div>
+                <div class="ab-stat-label">{{'about.stat.founded' | i18n}}</div>
+            </div>
+            <div class="ab-stat">
+                <div class="ab-stat-num">Apache 2.0</div>
+                <div class="ab-stat-label">{{'about.stat.license' | i18n}}</div>
+            </div>
+            <div class="ab-stat">
+                <div class="ab-stat-num">GitHub / Gitee</div>
+                <div class="ab-stat-label">{{'about.stat.platform' | i18n}}</div>
+            </div>
+            <div class="ab-stat">
+                <div class="ab-stat-num">Spring Boot</div>
+                <div class="ab-stat-label">{{'about.stat.stack' | i18n}}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="ab-section ab-section-alt">
+        <div class="ab-container">
+            <div class="ab-eyebrow">{{'about.intro.eyebrow' | i18n}}</div>
+            <div class="ab-heading">{{'about.intro.title' | i18n}}</div>
+            <p class="ab-lead">{{'about.intro.sub' | i18n}}</p>
+
+            <div class="ab-cards">
+                <div class="ab-card">
+                    <div class="ab-card-dot" style="--dot:#3b5bdb"></div>
+                    <h3>{{'about.intro.c1.title' | i18n}}</h3>
+                    <p>{{'about.intro.c1.desc' | i18n}}</p>
+                </div>
+                <div class="ab-card">
+                    <div class="ab-card-dot" style="--dot:#0ca678"></div>
+                    <h3>{{'about.intro.c2.title' | i18n}}</h3>
+                    <p>{{'about.intro.c2.desc' | i18n}}</p>
+                </div>
+                <div class="ab-card">
+                    <div class="ab-card-dot" style="--dot:#7048e8"></div>
+                    <h3>{{'about.intro.c3.title' | i18n}}</h3>
+                    <p>{{'about.intro.c3.desc' | i18n}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WeChat + Donate -->
+    <div class="ab-section ab-section-dark">
+        <div class="ab-container">
+            <div class="ab-eyebrow">{{'about.connect.eyebrow' | i18n}}</div>
+            <div class="ab-heading">{{'about.connect.title' | i18n}}</div>
+            <p class="ab-lead">{{'about.connect.sub' | i18n}}</p>
+
+            <div class="ab-duo">
+                <div class="ab-wx">
+                    <div class="ab-wx-label">{{'about.wechat.title' | i18n}}</div>
+                    <div class="ab-wx-qr">
+                        <img alt="Erupt 公众号" src="images/me/mp.jpg">
+                    </div>
+                    <div class="ab-wx-name">Erupt 公众号</div>
+                    <div class="ab-wx-tip">{{'about.wechat.desc' | i18n}}</div>
+                </div>
+
+                <div class="ab-donate">
+                    <div class="ab-donate-eyebrow">{{'about.donate.title' | i18n}}</div>
+                    <h3>{{'about.donate.card.title' | i18n}}</h3>
+                    <p>{{'about.donate.card.desc' | i18n}}</p>
+                    <a class="ab-donate-btn" href="https://www.yuque.com/erupts/erupt/mwf15h" target="_blank">
+                        {{'about.donate.btn' | i18n}} &nbsp;→
+                    </a>
+                    <div class="ab-donate-methods">
+                        <span class="ab-donate-method">微信</span>
+                        <span class="ab-donate-method">支付宝</span>
+                        <span class="ab-donate-method">GitHub Sponsors</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
