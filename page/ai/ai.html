@@ -1122,6 +1122,68 @@
         color: #111 !important;
         text-decoration: none;
     }
+
+    /* ── AI Claw promo ── */
+    .v-claw-promo {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 64px;
+        align-items: start;
+    }
+
+    .v-claw-feats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: rgba(0, 255, 136, 0.12);
+        border: 1px solid rgba(0, 255, 136, 0.18);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .v-claw-feat {
+        background: #0d1117;
+        padding: 22px 20px;
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        transition: background .12s;
+    }
+
+    .v-claw-feat:hover {
+        background: #121a1a;
+    }
+
+    .v-claw-feat-icon {
+        font-size: 1.3em;
+        line-height: 1;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .v-claw-feat-title {
+        font-size: .88em;
+        font-weight: 700;
+        color: #00ff88;
+        margin-bottom: 4px;
+    }
+
+    .v-claw-feat-desc {
+        font-size: .8em;
+        color: rgba(255, 255, 255, 0.38);
+        line-height: 1.65;
+    }
+
+    @media (max-width: 768px) {
+        .v-claw-promo {
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        .v-claw-feats {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 
 <div ng-controller="ai">
@@ -1470,6 +1532,53 @@
         </div>
     </div>
 
+    <!-- ══ AI Claw Cross-promo ══════════════════════ -->
+    <div class="v-section v-section-dark" style="background:#0d1117;border-top:1px solid rgba(0,255,136,0.12)">
+        <div class="container">
+            <div class="v-claw-promo">
+                <div class="v-claw-promo-text">
+                    <span class="v-section-eyebrow" style="color:#00ff88;font-family:'SFMono-Regular',monospace">🦞 AI CLAW</span>
+                    <h2 class="v-section-heading" style="color:#fff">{{'claw.feat.title' | i18n}}</h2>
+                    <p class="v-section-desc" style="color:rgba(255,255,255,0.38)">{{'claw.hero.subtitle' | i18n}}</p>
+                    <a class="v-cta-btn" href="#!/ai-claw"
+                       style="margin-top:24px;display:inline-block;background:#00ff88;border-color:#00ff88;color:#000!important">
+                        {{'claw.hero.btn.doc' | i18n}} &nbsp;→
+                    </a>
+                </div>
+                <div class="v-claw-feats">
+                    <div class="v-claw-feat">
+                        <span class="v-claw-feat-icon">🗣️</span>
+                        <div>
+                            <div class="v-claw-feat-title">{{'claw.feat.f1.title' | i18n}}</div>
+                            <div class="v-claw-feat-desc">{{'claw.feat.f1.desc' | i18n}}</div>
+                        </div>
+                    </div>
+                    <div class="v-claw-feat">
+                        <span class="v-claw-feat-icon">💾</span>
+                        <div>
+                            <div class="v-claw-feat-title">{{'claw.feat.f2.title' | i18n}}</div>
+                            <div class="v-claw-feat-desc">{{'claw.feat.f2.desc' | i18n}}</div>
+                        </div>
+                    </div>
+                    <div class="v-claw-feat">
+                        <span class="v-claw-feat-icon">⚡</span>
+                        <div>
+                            <div class="v-claw-feat-title">{{'claw.feat.f3.title' | i18n}}</div>
+                            <div class="v-claw-feat-desc">{{'claw.feat.f3.desc' | i18n}}</div>
+                        </div>
+                    </div>
+                    <div class="v-claw-feat">
+                        <span class="v-claw-feat-icon">🧠</span>
+                        <div>
+                            <div class="v-claw-feat-title">{{'claw.feat.f6.title' | i18n}}</div>
+                            <div class="v-claw-feat-desc">{{'claw.feat.f6.desc' | i18n}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ══ CTA ═══════════════════════════════════════ -->
     <div class="v-cta">
         <div class="container">
@@ -1477,7 +1586,6 @@
             <p>{{'ai.hero.subtitle' | i18n}}</p>
             <a class="v-cta-btn" href="https://www.yuque.com/erupts/erupt/qsk71q5zyy3segr6"
                target="_blank">{{'ai.hero.btn.doc' | i18n}}</a>
-            <a class="v-cta-btn-outline" href="#!/ai-claw">{{'claw.cta.also_ai' | i18n}}</a>
         </div>
     </div>
 
