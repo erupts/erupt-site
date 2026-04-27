@@ -13,7 +13,7 @@ var i18n = {
             var browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
             this.currentLang = browserLang.startsWith('zh') ? 'zh-CN' : 'en-US';
         }
-        return fetch('i18n.csv')
+        return fetch('i18n.csv?v=' + Date.now())
             .then(function (res) {
                 return res.text();
             })

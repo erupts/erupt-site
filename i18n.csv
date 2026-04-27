@@ -329,7 +329,7 @@ claw.badge.skills,自定义 Skills,Custom Skills
 claw.hero.btn.doc,查看文档,Documentation
 claw.demo.title,看看它能做什么,See It in Action
 claw.demo.subtitle,输入自然语言，AI Claw 自动解析意图、调用技能、返回结果,"Type natural language — AI Claw parses intent, invokes skills, and returns results"
-claw.feat.title,核心能力,Core Capabilities
+claw.feat.title,🦞 能力,🦞 Claw Capabilities
 claw.feat.subtitle,像与同事对话一样简单——AI Claw 让自然语言成为服务器的控制台,As simple as chatting with a colleague — AI Claw turns natural language into a server console
 claw.feat.f1.title,自然语言交互,Natural Language
 claw.feat.f1.desc,用一句话完成复杂的服务器操作，无需记忆命令语法，AI 自动理解意图并执行,Complete complex server operations with a sentence. No memorizing syntax — AI understands intent and acts
@@ -341,11 +341,22 @@ claw.feat.f4.title,文件读写操作,File Operations
 claw.feat.f4.desc,读取与写入服务器文件，支持日志分析、配置修改等常见运维场景，开箱即用,"Read and write server files. Analyze logs, modify configs and more, all through natural language"
 claw.feat.f5.title,自定义 Skills,Custom Skills
 claw.feat.f5.desc,通过 Skills 扩展机制注册自定义能力，无限扩展 AI Claw 的操作边界,Register custom capabilities via the Skills extension — expand AI Claw's boundaries without limits
+claw.feat.f6.title,上下文记忆,Context Memory
+claw.feat.f6.desc,AI Claw 保持多轮对话上下文，理解前序操作意图，实现连贯的运维对话体验。,AI Claw retains multi-turn conversation context — understanding prior actions for coherent ops sessions.
 claw.skills.title,Skills 扩展体系,Skills Extension System
 claw.skills.subtitle,通过注解声明自定义技能，将任意 Java 方法注册为 AI 可调用的操作,Declare custom skills via annotations — register any Java method as an AI-callable operation
 claw.skills.how,一个注解，注册自定义技能,"One annotation, one skill"
 claw.skills.desc,通过 @Skill 注解将任意 Java 方法注册为 AI Claw 的可调用技能。AI 能自动发现技能、理解参数含义，并在对话中按需调用。,"Use the @Skill annotation to register any Java method as a callable skill. AI auto-discovers skills, understands parameters, and invokes them on demand."
 claw.skills.points,自动发现与描述生成|参数类型自动推断|运行时动态注册|权限与安全控制,Auto discovery & description|Auto parameter type inference|Dynamic registration at runtime|Permission & security control
+claw.skills.p1.title,一键注册技能,One-line Registration
+claw.skills.p1.desc,用 @Skill 注解标注任意 Java 方法，AI Claw 启动时自动扫描并注册为可调用技能。,Annotate any Java method with @Skill — AI Claw auto-scans and registers it as a callable skill on startup.
+claw.skills.p2.title,运行时动态加载,Dynamic Loading
+claw.skills.p2.desc,支持在不重启服务的情况下动态添加、更新或禁用技能，热插拔无感切换。,Add, update or disable skills at runtime without restarting — seamless hot-swap.
+claw.skills.p3.title,无限扩展边界,Unlimited Extensibility
+claw.skills.p3.desc,任意业务逻辑皆可封装为 Skill，AI Claw 的能力边界随你的业务一起成长。,Any business logic can become a Skill — AI Claw grows with your domain.
+claw.skills.invoke.label,技能调用过程,Skill Invocation
+claw.skills.invoke.discover,匹配技能,Matched skill
+claw.skills.invoke.call,传入参数,Parameter
 claw.cta.title,立即接入 AI Claw,Get Started with AI Claw
 claw.cta.subtitle,几行配置，让自然语言接管你的服务器,A few lines of config to let natural language take over your server
 claw.cta.doc,查看完整文档 →,Full Documentation →
@@ -420,6 +431,7 @@ cube.ml.fn.reg.title,Java — 注册自定义函数,Java — Register Function
 cube.ml.fn.use.title,ML — 调用自定义函数,ML — Call Function
 lang.zh,中文,中文
 lang.en,English,English
+nav.more,更多,More
 nav.about,关于我们,About
 about.hero.title.pre,关于,About
 about.hero.title.highlight, Erupt, Erupt

@@ -293,12 +293,14 @@ html, body {
     background: #eee;
 }
 
-/* 语言切换下拉菜单 hover 效果 */
-.lang-dropdown:hover .dropdown-menu {
+/* 语言切换 & 更多 下拉菜单 hover 效果 */
+.lang-dropdown:hover .dropdown-menu,
+.more-dropdown:hover .dropdown-menu {
     display: block !important;
 }
 
-.lang-dropdown .dropdown-toggle {
+.lang-dropdown .dropdown-toggle,
+.more-dropdown .dropdown-toggle {
     cursor: pointer;
 }
 
