@@ -461,3 +461,122 @@ about.donate.sub,开源不易，你的支持是我们持续前行的动力。,Op
 about.donate.card.title,支持 Erupt 开源,Support Erupt Open Source
 about.donate.card.desc,如果 Erupt 帮助了你的项目，欢迎通过捐赠表达支持。每一份捐赠都将用于项目的持续维护与改进。,If Erupt has helped your project, consider showing your support through a donation. Every contribution goes toward ongoing maintenance and improvement.
 about.donate.btn,查看捐赠指南,View Donation Guide
+home.v2.hero.sub,"<b>Erupt</b> 是注解驱动的企业级低代码引擎。用几行 <mark>@Erupt</mark> 注解描述你的领域模型，框架自动生成管理界面、API、权限、审计与大模型能力——<b>一个文件，一套系统</b>。","<b>Erupt</b> is an annotation-driven low-code engine. Describe your domain with a few <mark>@Erupt</mark> annotations and the framework generates the admin UI, APIs, permissions, audit trail and LLM capabilities — <b>one file, one system</b>."
+home.v2.cta.demo,查看实时 Demo,Launch live demo
+home.v2.cta.docs,阅读文档,Read the docs
+home.v2.cta.copy,复制,Copy
+home.v2.comp.live,热加载中,Hot-reload
+home.v2.comp.export,↓ 导出 CSV,↓ Export CSV
+home.v2.comp.new,新建,New
+home.v2.comp.search,搜索用户名…,Search user name…
+home.v2.comp.all,全部,All
+home.v2.comp.on,启用,Enabled
+home.v2.comp.off,停用,Disabled
+home.v2.comp.off2,● 停用,● Inactive
+home.v2.comp.col.mgmt,用户管理,User Management
+home.v2.comp.col.name,用户名 ↑,Name ↑
+home.v2.comp.col.dept,部门,Department
+home.v2.comp.col.level,职级,Level
+home.v2.comp.col.status,状态,Status
+home.v2.comp.senior,高级工程师,Senior
+home.v2.comp.active,● 启用,● Active
+home.v2.comp.pending,● 审核中,● Pending
+home.v2.comp.perpage,每页 10 条,10 / page
+home.v2.comp.scope,权限:admin.user,scope:admin.user
+home.v2.meta.stars.d,持续成长的开源社区,Growing OSS community
+home.v2.meta.anno.d,覆盖 90% 后台场景,Covers 90% of admin cases
+home.v2.meta.lines.d,一个文件完成整个模块,One file, whole module
+home.v2.meta.users.d,"金融 · 制造 · 医疗 · 政务","Finance · Mfg · Healthcare · Gov"
+home.v2.how.title.pre,四步，把 ,Four steps —
+home.v2.how.title.post, 变成一套运行中的系统, become a running system
+home.v2.how.lede,Erupt 不是代码生成器——它是运行时的注解编译器，模型即系统，修改即生效。,Erupt isn't a code generator — it's a runtime annotation compiler. The model is the system. Edit it and it's live.
+home.v2.how.s1.h,声明领域模型,Declare the model
+home.v2.how.s1.p,"在 JPA 实体上加 @Erupt 和 @EruptField，描述字段意图。","Add @Erupt and @EruptField to your JPA entities. Describe field intent."
+home.v2.how.s2.h,启动时扫描,Scan on boot
+home.v2.how.s2.p,"Spring Boot 自动装配 Erupt 引擎，扫描所有 @Erupt 注解构建元数据树。","Spring Boot auto-configures Erupt. It scans @Erupt and builds a metadata tree."
+home.v2.how.s3.h,编译为 JSON Schema,Compile to schema
+home.v2.how.s3.p,注解被翻译成统一的视图 Schema，驱动前端动态渲染——无需前端代码。,Annotations become a unified view schema that drives the front-end dynamically — no front-end code.
+home.v2.how.s4.h,渲染 + 运行,Render + run
+home.v2.how.s4.p,"Angular/Vue 内核接收 Schema，渲染列表、表单、搜索、权限——实时可用。","The Angular/Vue shell renders list, form, search and permissions from the schema — live."
+home.v2.anno.title.pre,十二个注解，,Twelve annotations —
+home.v2.anno.title.mid,一门声明式的业务语言,one declarative language
+home.v2.anno.lede,"核心注解覆盖从字段到权限、从关联到 AI 调用的所有业务语义。IDE 自带补全，无需背诵。","Core annotations cover everything from fields to permissions, relations to AI calls. IDE autocomplete, nothing to memorise."
+home.v2.anno.erupt.h,根注解 · 定义业务实体,Root — defines the business entity
+home.v2.anno.erupt.p,"声明一个业务单元的入口。name/desc 是人类语言，power 控制导入导出/增删改查/审计等权限，filter 定义行级数据过滤表达式。","Entry point of a business unit. name/desc are human labels; power gates CRUD/import/export/audit; filter expresses row-level predicates."
+home.v2.anno.field.h,字段注解 · 一个字段的一生,Field — the lifecycle of a property
+home.v2.anno.field.p,"views 描述列表显示，edit 描述表单编辑，search 描述搜索行为。一个字段在列表、表单、搜索中的三种形态都在这里。","views for list, edit for form, search for query. A field's three identities — list column, form input, search predicate — all in one annotation."
+home.v2.anno.edit.h,22 种编辑类型,22 edit types
+home.v2.anno.edit.p,INPUT · SELECT · DATE · TAGS · REFERENCE_TREE · CODE_EDITOR …,INPUT · SELECT · DATE · TAGS · REFERENCE_TREE · CODE_EDITOR …
+home.v2.anno.power.h,操作级权限,Action-level permissions
+home.v2.anno.power.p,新建、编辑、删除、导入、导出、查看——独立控制。,"Add, edit, delete, import, export, view — controlled independently."
+home.v2.anno.search.h,自动搜索栏,Auto search bar
+home.v2.anno.search.p,把字段声明为可搜索，搜索栏、条件匹配、占位符全部自动生成。,"Mark a field searchable — the search bar, matching and placeholder are generated."
+home.v2.anno.reftree.h,树形关联选择,Tree reference
+home.v2.anno.reftree.p,部门、分类、菜单——一行声明出树形关联字段。,"Departments, categories, menus — declare a tree relation in one line."
+home.v2.anno.drill.h,数据钻取 · 层级跳转,Drill-down · cross-entity navigation
+home.v2.anno.drill.p,从主表跳到子表、从订单跳到物流、从用户跳到审计——一行声明，无需写任何跳转代码。,"Jump from master to detail, order to logistics, user to audit — declare once, zero navigation code."
+home.v2.anno.ai.h,AI 原生注解 · 大模型即字段,AI-native · LLM as a field
+home.v2.anno.ai.p,Erupt 自动调用模型完成推断、摘要、分类、翻译——像数据库默认值一样自然。,Erupt calls the model to infer / summarise / classify / translate — as natural as a default value.
+home.v2.anno.filter.h,行级过滤,Row-level filter
+home.v2.anno.filter.p,SpEL 表达式做数据隔离，多租户天然支持。,SpEL predicates for data isolation — multi-tenant out of the box.
+home.v2.anno.rowop.h,业务按钮,Row actions
+home.v2.anno.rowop.p,自定义列级按钮，支持确认、条件、权限。,"Custom per-row buttons with confirm, conditional and permission."
+home.v2.anno.proxy.h,生命周期钩子,Lifecycle hooks
+home.v2.anno.proxy.p,beforeAdd / afterUpdate / beforeDelete——业务扩展点。,beforeAdd / afterUpdate / beforeDelete — the extension points.
+home.v2.anno.linktree.h,关联树侧栏,Linked tree sidebar
+home.v2.anno.linktree.p,列表旁边挂一棵分类树，点击自动过滤。,Dock a category tree beside the list — clicks filter automatically.
+home.v2.out.title.pre,注解的另一侧，,On the other side of annotation —
+home.v2.out.title.em,是整座后台,a whole back-office
+home.v2.out.lede,这些能力不是插件，是注解编译器内建的原子能力。你写一次注解，它们全部到位。,These aren't plugins — they're atomic primitives in the compiler. Write the annotation once; they all come online.
+home.v2.out.list.h,列表页 · 分页 · 排序 · 导出,List · pagination · sort · export
+home.v2.out.list.p,表头、分页、多列排序、CSV/Excel 导出、批量操作、行级权限——全部由注解推导。,"Headers, pagination, multi-sort, CSV/Excel export, bulk actions, row-level perms — all inferred."
+home.v2.out.form.h,表单 · 校验 · 关联 · 上传,Form · validation · refs · upload
+home.v2.out.form.p,必填、正则、唯一、条件显示、树形关联、文件上传——每种控件有成熟的缺省行为。,"Required, regex, unique, conditional visibility, tree refs, file uploads — every control has sane defaults."
+home.v2.out.perm.h,权限 · RBAC,Permissions · RBAC
+home.v2.out.perm.p,菜单/按钮/字段/行 四级。,"Menu, button, field, row — four levels."
+home.v2.out.audit.h,审计日志,Audit log
+home.v2.out.audit.p,增删改自动落库。,All mutations auto-logged.
+home.v2.out.api.h,REST API,REST API
+home.v2.out.api.p,注解自带开放接口。,Every @Erupt is an API.
+home.v2.out.dash.h,Dashboard,Dashboard
+home.v2.out.dash.p,"图表、指标、钻取一体。","Charts, metrics, drill-down."
+home.v2.out.ai.h,AI 原生,AI native
+home.v2.out.ai.p,字段级调用大模型。,Field-level LLM invocation.
+home.v2.out.tenant.h,多租户隔离,Multi-tenant isolation
+home.v2.out.tenant.p,一个 @Filter 搞定。,One @Filter does it all.
+home.v2.ai.title,让 AI 透过注解操纵你的系统,Let AI reach through annotations and operate your system
+home.v2.ai.p,"AI Claw 把每一个 @Erupt 实体变成模型的工具。用自然语言查询订单、更新字段、执行流程——模型能做的，是你注解允许的一切。","AI Claw turns every @Erupt entity into a model-callable tool. Query orders, update fields, run flows in plain language — the model can do exactly what your annotations permit."
+home.v2.ai.mcp.t,MCP 协议接入,MCP protocol ready
+home.v2.ai.mcp.d,"SSE + STDIO 双传输，自动重连健康检查，兼容任何 MCP 工具服务器。","SSE + STDIO transports, auto-reconnect health checks, works with any MCP tool server."
+home.v2.ai.bean.t,Spring Bean = AI 工具,Spring Bean = AI tool
+home.v2.ai.bean.d,"在任意 Bean 上加 @AiToolbox + @Tool，该方法立刻成为模型可调用工具。","Add @AiToolbox + @Tool to any bean — that method becomes a tool the model can call."
+home.v2.ai.agent.t,Agent 框架内建,Built-in agent framework
+home.v2.ai.agent.d,"定义 system prompt、hint list、动态 prompt handler；会话、Token、历史全自动管理。","Define system prompts, hint lists, dynamic prompt handlers. Sessions, tokens and history are auto-managed."
+home.v2.ai.chat.q,昨天金额大于 1000 的订单有多少？状态异常的全部置为审核中。,"How many orders over 1,000 yesterday? Flip all abnormal ones to 'under review'."
+home.v2.ai.chat.a1,"昨日成交订单 > 1000 共 17 条，其中状态异常 3 条（ #1204 / #1211 / #1236 ）。","Yesterday's orders > 1,000: 17 total, abnormal: 3 ( #1204 / #1211 / #1236 )."
+home.v2.ai.chat.a1.s,✓ 使用 Order@Erupt · 0.8s · 1340 tokens,✓ Order@Erupt · 0.8s · 1340 tokens
+home.v2.ai.chat.a2,已将 3 条异常订单状态更新为「审核中」，写入审计日志。,"Updated 3 abnormal orders to 'under review', audit log written."
+home.v2.ai.chat.a2.s,✓ 3 rows · audit#4821 · 0.3s,✓ 3 rows · audit#4821 · 0.3s
+home.v2.ai.chat.ph,问点什么…,Ask anything…
+home.v2.ai.chat.send,发送 ↵,Send ↵
+home.v2.fam.title.pre,一个内核，,One core —
+home.v2.fam.title.em,一族产品,a family of products
+home.v2.fam.lede,围绕 Engine 的子项目共享同一套注解与权限模型，按需组合。,"Sub-projects share the same annotation and permission model — compose as needed."
+home.v2.fam.cloud.p,"多维度云配置中心，统一托管配置、灰度、开关。","Multi-dimensional cloud config — centrally manage configs, flags and gradual rollouts."
+home.v2.fam.flow.p,"通用流程引擎。表单、审批、分支、回退，可视化编排。","General-purpose workflow engine — forms, approvals, branches, rollbacks, visually orchestrated."
+home.v2.fam.linq.p,把 Java 集合查询写成 SQL 思维。JOIN/WHERE/GROUP BY 链式一行。,Query Java collections like SQL. JOIN / WHERE / GROUP BY in a single chain.
+home.v2.fam.sem.h,语义建模,Semantic Modeling
+home.v2.fam.sem.p,把业务知识结构化，让模型理解你的领域，而不是靠 prompt 猜。,Structure domain knowledge so the model understands your business rather than guessing it.
+home.v2.fam.more,了解更多,Learn more
+home.v2.quotes.title.em,在生产环境中，,In production —
+home.v2.quotes.title.post,它是什么样子,this is what it feels like
+home.v2.quotes.lede,300+ 团队的真实反馈。,Real feedback from 300+ teams.
+home.v2.q1.text,过去三个人排期两周的后台模块，现在一个后端半天就能上线，还自带权限和审计。,"A back-office module that took three people two weeks now goes live in an afternoon — with perms and audit built in."
+home.v2.q1.name,郭辉 · 后端架构师,Guo Hui · Backend Architect
+home.v2.q1.role,某 SaaS · 金融科技,SaaS · FinTech
+home.v2.q2.text,"我们把 OA、CRM、ERP 的管理端全部迁到 Erupt，代码量从 10 万行缩到 8 千行。","We moved OA, CRM and ERP admin onto Erupt. Codebase dropped from 100k to 8k lines."
+home.v2.q2.name,李雪 · 技术总监,Li Xue · CTO
+home.v2.q2.role,某制造业集团,Manufacturing group
+home.v2.q3.text,AI Claw 让业务同事可以直接用自然语言操作我们的系统——这是之前任何低代码做不到的。,"AI Claw lets business colleagues drive our system in plain language. No low-code product I've used could do this before."
+home.v2.q3.name,王明 · AI 平台负责人,Wang Ming · Head of AI Platform
+home.v2.q3.role,某医疗集团,Healthcare group
