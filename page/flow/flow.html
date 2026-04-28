@@ -44,23 +44,6 @@
         --rose: oklch(0.74 0.17 18);
     }
 
-    * {
-        box-sizing: border-box
-    }
-
-    html, body {
-        margin: 0;
-        padding: 0
-    }
-
-    body {
-        background: var(--bg);
-        color: var(--fg);
-        font-family: "Inter", "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        line-height: 1.55;
-        overflow-x: hidden;
-    }
 
     a {
         color: inherit;
@@ -95,42 +78,6 @@
         opacity: .28;
     }
 
-    /* NAV */
-    .nav {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        backdrop-filter: blur(16px) saturate(140%);
-        background: color-mix(in oklch, var(--bg) 78%, transparent);
-        border-bottom: 1px solid var(--line-soft);
-    }
-
-    .nav-row {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        height: 64px
-    }
-
-    .brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        letter-spacing: -.01em;
-        font-size: 15px
-    }
-
-    .brand-mark {
-        width: 28px;
-        height: 28px;
-        display: grid;
-        place-items: center;
-        border-radius: 8px;
-        background: linear-gradient(145deg, var(--accent), var(--rose));
-        box-shadow: 0 8px 22px -4px color-mix(in oklch, var(--accent) 40%, transparent);
-    }
-
     .brand-mark svg {
         width: 14px;
         height: 14px
@@ -157,36 +104,6 @@
         font-weight: 500
     }
 
-    .nav-links {
-        display: flex;
-        gap: 24px;
-        margin-left: 8px
-    }
-
-    .nav-links a {
-        color: var(--fg-dim);
-        font-size: 13.5px
-    }
-
-    .nav-links a.on {
-        color: var(--fg)
-    }
-
-    .nav-links a.on::after {
-        content: "";
-        display: block;
-        height: 2px;
-        margin-top: 6px;
-        background: var(--accent);
-        border-radius: 2px
-    }
-
-    .nav-right {
-        margin-left: auto;
-        display: flex;
-        gap: 10px;
-        align-items: center
-    }
 
     .ghost {
         border: 1px solid var(--line);
@@ -344,42 +261,6 @@
         align-items: center
     }
 
-    .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 13px 20px;
-        border-radius: 10px;
-        font: inherit;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        border: 1px solid transparent;
-        transition: all .2s;
-    }
-
-    .btn .arrow {
-        transition: transform .2s
-    }
-
-    .btn:hover .arrow {
-        transform: translateX(3px)
-    }
-
-    .btn.accent {
-        background: linear-gradient(145deg, var(--accent), var(--rose));
-        color: #1a0600;
-        font-weight: 600;
-        box-shadow: 0 0 0 1px color-mix(in oklch, var(--accent) 50%, transparent),
-        0 14px 34px -12px color-mix(in oklch, var(--accent) 80%, transparent),
-        inset 0 1px 0 rgba(255, 255, 255, .25);
-    }
-
-    .btn.secondary {
-        background: var(--panel-2);
-        color: var(--fg);
-        border-color: var(--line)
-    }
 
     /* hero side credentials card */
     .creds {
@@ -2287,72 +2168,9 @@
         opacity: 0;
     }
 
-    body.energy-static .particles {
-        display: none
-    }
-
-    body.energy-pulse .particles .p {
-        animation: particle 3.8s linear infinite
-    }
-
-    body.energy-storm .particles .p {
-        animation: particle 1.6s linear infinite
-    }
-
     body.energy-storm .particles .p {
         width: 8px;
         height: 8px
-    }
-
-    .particles .p:nth-child(1) {
-        animation-delay: 0s !important
-    }
-
-    .particles .p:nth-child(2) {
-        animation-delay: -0.5s !important
-    }
-
-    .particles .p:nth-child(3) {
-        animation-delay: -1.2s !important
-    }
-
-    .particles .p:nth-child(4) {
-        animation-delay: -2.0s !important
-    }
-
-    .particles .p:nth-child(5) {
-        animation-delay: -2.7s !important
-    }
-
-    @keyframes particle {
-        0% {
-            offset-distance: 0%;
-            opacity: 0
-        }
-        8% {
-            opacity: 1
-        }
-        92% {
-            opacity: 1
-        }
-        100% {
-            offset-distance: 100%;
-            opacity: 0
-        }
-    }
-
-    /* Path: start → branch → cond2 → 审批人 → end. Use coord-based clip-path-free motion via offset-path */
-    .particles .p {
-        offset-path: path("M608 76 L608 144 L408 144 L408 198 L408 252 L408 328 L408 432 L608 432 L608 510");
-        offset-rotate: 0deg;
-    }
-
-    .particles .p:nth-child(2) {
-        offset-path: path("M608 76 L608 144 L808 144 L808 198 L808 252 L808 328 L808 432 L608 432 L608 510");
-    }
-
-    .particles .p:nth-child(3) {
-        offset-path: path("M608 76 L608 144 L160 144 L160 198 L160 252 L160 432 L608 432 L608 510");
     }
 
     @media (max-width: 980px) {
@@ -2645,7 +2463,7 @@
                 </div>
             </div>
 
-            <div class="cap">
+            <div class="cap" style="grid-column:span 6 !important;">
                 <span class="cap-num">+ 通知</span>
                 <h3>多通道 <span class="accent">流程通知</span></h3>
                 <p>邮件、企业微信、钉钉、飞书、站内信 —— 每个节点独立配置触达方式与模板。</p>
@@ -3015,3 +2833,86 @@
 </section>
 
 
+<script>
+    (function () {
+        var stage = document.getElementById('stage');
+        if (!stage) return;
+        var dots = Array.from(stage.querySelectorAll('.particles .p'));
+        if (!dots.length) return;
+
+        // Waypoints in SVG coordinate space (viewBox 0 0 1216 520)
+        var PATHS = [
+            [[608, 76], [608, 144], [408, 144], [408, 198], [408, 252], [408, 328], [408, 432], [608, 432], [608, 510]],
+            [[608, 76], [608, 144], [808, 144], [808, 198], [808, 252], [808, 328], [808, 432], [608, 432], [608, 510]],
+            [[608, 76], [608, 144], [160, 144], [160, 198], [160, 252], [160, 432], [608, 432], [608, 510]]
+        ];
+        // p0→path0, p1→path1, p2→path2, p3→path0, p4→path0
+        var DOT_PATH = [0, 1, 2, 0, 0];
+        // phase offsets in ms (mirror the original CSS negative animation-delays)
+        var DOT_DELAY = [0, 500, 1200, 2000, 2700];
+        var SVG_W = 1216, SVG_H = 520;
+
+        // Pre-build cumulative segment lengths for each path
+        var BUILT = PATHS.map(function (pts) {
+            var segs = [], cum = 0;
+            for (var i = 1; i < pts.length; i++) {
+                var dx = pts[i][0] - pts[i - 1][0], dy = pts[i][1] - pts[i - 1][1];
+                var len = Math.sqrt(dx * dx + dy * dy);
+                cum += len;
+                segs.push({x0: pts[i - 1][0], y0: pts[i - 1][1], x1: pts[i][0], y1: pts[i][1], len: len, cum: cum});
+            }
+            return {segs: segs, total: cum};
+        });
+
+        function pointAt(built, t) {
+            var target = t * built.total;
+            var segs = built.segs;
+            for (var i = 0; i < segs.length; i++) {
+                if (segs[i].cum >= target - 0.001) {
+                    var prev = i === 0 ? 0 : segs[i - 1].cum;
+                    var f = segs[i].len > 0 ? (target - prev) / segs[i].len : 0;
+                    f = Math.max(0, Math.min(1, f));
+                    return [
+                        segs[i].x0 + (segs[i].x1 - segs[i].x0) * f,
+                        segs[i].y0 + (segs[i].y1 - segs[i].y0) * f
+                    ];
+                }
+            }
+            var last = segs[segs.length - 1];
+            return [last.x1, last.y1];
+        }
+
+        var t0 = null;
+
+        function tick(ts) {
+            if (t0 === null) t0 = ts;
+            var body = document.body;
+            var isStatic = body.classList.contains('energy-static');
+            var isStorm = body.classList.contains('energy-storm');
+            var dur = isStorm ? 1600 : 3800;
+
+            for (var i = 0; i < dots.length; i++) {
+                var el = dots[i];
+                if (isStatic) {
+                    el.style.opacity = 0;
+                    continue;
+                }
+
+                var elapsed = (ts - t0 + DOT_DELAY[i]) % dur;
+                var t = elapsed / dur;
+                var pt = pointAt(BUILT[DOT_PATH[i]], t);
+
+                // half-size offset so the dot centres on the wire
+                var r = isStorm ? 4 : 3;
+                el.style.left = 'calc(' + (pt[0] / SVG_W * 100).toFixed(3) + '% - ' + r + 'px)';
+                el.style.top = 'calc(' + (pt[1] / SVG_H * 100).toFixed(3) + '% - ' + r + 'px)';
+                // fade in 0-8%, full 8-92%, fade out 92-100%
+                el.style.opacity = (t < 0.08 ? t / 0.08 : t > 0.92 ? (1 - t) / 0.08 : 1).toFixed(3);
+            }
+
+            requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+    })();
+</script>
