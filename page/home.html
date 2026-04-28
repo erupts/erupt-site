@@ -1,4 +1,28 @@
 <style>
+    /* ── v2 section variables & fonts ── */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+    :root {
+        --bg: #ffffff;
+        --bg-2: #f5f6f8;
+        --panel: #edeef1;
+        --panel-2: #e2e4e9;
+        --line: #cfd1d8;
+        --line-soft: #e5e7ed;
+        --fg: #111827;
+        --fg-dim: #374151;
+        --fg-mute: #6b7280;
+        --accent: #4f46e5;
+        --amber: #d97706;
+        --rose: #dc2626;
+        --cyan: #0891b2;
+        --green: #16a34a;
+        --purple: #7c3aed;
+        --radius: 12px;
+        --serif: "Instrument Serif", Georgia, serif;
+    }
+
+    /* ── original hero & page styles ── */
     #erupt-features {
         transition: transform .6s;
         border-radius: 6px;
@@ -41,7 +65,6 @@
         color: #666;
         height: 55px;
         overflow: auto;
-        /*border-top: 1px dashed #c4c0c0;*/
         padding-top: 10px;
         margin-top: 16px;
     }
@@ -50,29 +73,11 @@
         box-shadow: 0 6px 40px -14px rgba(0, 36, 100, 0.3);
     }
 
-    .indicator-card:hover img {
-        transition: transform 600ms;
-        transform: scale(1.05);
-    }
-
     .deg90 {
         transform: rotate(-90deg);
     }
 
-    @keyframes del-line {
-        0% {
-            text-decoration: none;
-        }
-
-        100% {
-            text-decoration: line-through;
-            text-decoration-color: #f00;
-            text-decoration-style: dashed;
-        }
-    }
-
     .del-line {
-        /*animation: del-line 2s forwards;*/
         text-decoration: line-through;
         text-decoration-color: #f00;
         text-decoration-style: dashed;
@@ -86,7 +91,6 @@
         0% {
             transform: translateY(-50px);
         }
-
         100% {
             transform: translateY(0);
         }
@@ -164,24 +168,6 @@
         }
     }
 
-    #skew-bg3 {
-        --skew-angle: 25deg;
-        animation: skew-up 3.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-        will-change: transform, opacity;
-    }
-
-    #skew-bg2 {
-        --skew-angle: 10deg;
-        animation: skew-up 2.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-        will-change: transform, opacity;
-    }
-
-    #skew-bg {
-        --skew-angle: -10deg;
-        animation: skew-up 2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        will-change: transform, opacity;
-    }
-
     .sponsor .name {
         margin-top: 12px;
         margin-bottom: 0;
@@ -231,14 +217,12 @@
         right: -2px;
         bottom: -2px;
         border-radius: 8px;
-        /*background: linear-gradient(135deg, rgba(0, 123, 255, 0.3), rgba(40, 167, 69, 0.3), rgba(255, 193, 7, 0.3));*/
         opacity: 1;
         z-index: -1;
         -webkit-filter: blur(10px);
         filter: blur(10px);
     }
 
-    /* 内部元素依次出现 */
     @keyframes erupt-inner-fade-in {
         0%, 55% {
             opacity: 0;
@@ -248,7 +232,6 @@
         }
     }
 
-    /* IDE window chrome */
     .eb-titlebar {
         opacity: 0;
         animation: erupt-inner-fade-in 1s ease-out .1ms forwards;
@@ -400,7 +383,7 @@
         line-height: 1.5;
     }
 
-    /* ── Who is using ── */
+    /* ── using / logos marquee ── */
     .using-section {
         background: #10131a;
         padding: 38px 0;
@@ -408,8 +391,7 @@
         overflow: hidden;
     }
 
-    .using-section::before,
-    .using-section::after {
+    .using-section::before, .using-section::after {
         content: '';
         position: absolute;
         top: 0; bottom: 0;
@@ -425,33 +407,6 @@
         text-align: center;
         margin-bottom: 18px;
         padding: 0 20px;
-    }
-
-    .using-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        font-size: 0.7em;
-        font-weight: 700;
-        letter-spacing: 1.8px;
-        text-transform: uppercase;
-        color: rgba(99, 102, 241, 0.85);
-        font-family: 'SFMono-Regular', monospace;
-        margin-bottom: 14px;
-        background: rgba(99, 102, 241, 0.08);
-        border: 1px solid rgba(99, 102, 241, 0.22);
-        border-radius: 20px;
-        padding: 4px 14px;
-    }
-
-    .using-eyebrow::before {
-        content: '';
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #6366f1;
-        display: inline-block;
-        flex-shrink: 0;
     }
 
     .using-header h3 {
@@ -498,14 +453,17 @@
         padding: 4px 0;
     }
 
-    .using-track:hover,
-    .using-track-reverse:hover {
+    .using-track:hover, .using-track-reverse:hover {
         animation-play-state: paused;
     }
 
     @keyframes using-ltr {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
     }
 
     @keyframes using-rtl {
@@ -613,7 +571,726 @@
         transform: translateY(-4px);
         box-shadow: 0 16px 40px rgba(6, 182, 212, 0.1);
     }
+
+    /* ── v2 new sections ── */
+    .v2-block {
+        padding: 100px 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .v2-wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+
+    .v2-sec-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 48px;
+        margin-bottom: 64px;
+    }
+
+    .v2-sec-tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        color: var(--accent);
+        letter-spacing: .16em;
+        text-transform: uppercase;
+    }
+
+    .v2-sec-tag::before {
+        content: "// ";
+        color: var(--fg-mute);
+    }
+
+    .v2-sec-title {
+        font-size: clamp(28px, 3.5vw, 48px);
+        line-height: 1.06;
+        letter-spacing: -.03em;
+        font-weight: 600;
+        margin: 12px 0 0;
+        max-width: 22ch;
+        color: var(--fg);
+    }
+
+    .v2-sec-title .s-i {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--fg-dim);
+    }
+
+    .v2-sec-lede {
+        color: var(--fg-dim);
+        max-width: 48ch;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* reveal on scroll */
+    .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.in {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* principle */
+    .principle {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: color-mix(in oklch, var(--panel) 40%, var(--bg-2));
+    }
+
+    .prin-cell {
+        padding: 28px;
+        position: relative;
+        border-left: 1px solid var(--line-soft);
+    }
+
+    .prin-cell:first-child {
+        border-left: 0;
+    }
+
+    .prin-cell .num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--fg-mute);
+        letter-spacing: .15em;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .prin-cell .num::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--line-soft);
+    }
+
+    .prin-cell h4 {
+        margin: 0 0 8px;
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--fg);
+    }
+
+    .prin-cell p {
+        margin: 0 0 18px;
+        color: var(--fg-dim);
+        font-size: 13.5px;
+        line-height: 1.55;
+    }
+
+    .prin-cell .visual {
+        height: 120px;
+        border-radius: 8px;
+        padding: 14px;
+        background: color-mix(in oklch, var(--bg) 50%, var(--panel));
+        border: 1px solid var(--line-soft);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        line-height: 1.6;
+        color: var(--fg-dim);
+        white-space: pre;
+        overflow: hidden;
+    }
+
+    .prin-cell .visual b {
+        color: var(--accent);
+    }
+
+    .prin-cell .visual .dim {
+        color: var(--fg-mute);
+    }
+
+    .prin-cell::after {
+        content: "→";
+        position: absolute;
+        right: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--bg-2);
+        color: var(--accent);
+        width: 18px;
+        height: 18px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 1px solid var(--line-soft);
+        font-size: 11px;
+        z-index: 2;
+    }
+
+    .prin-cell:last-child::after {
+        display: none;
+    }
+
+    /* annotations */
+    .anno-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 16px;
+    }
+
+    .anno {
+        grid-column: span 3;
+        padding: 22px;
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, color-mix(in oklch, var(--panel) 70%, transparent), color-mix(in oklch, var(--bg-2) 60%, transparent));
+        transition: border-color .2s;
+        position: relative;
+    }
+
+    .anno:hover {
+        border-color: color-mix(in oklch, var(--accent) 35%, var(--line));
+    }
+
+    .anno.wide {
+        grid-column: span 6;
+    }
+
+    .anno.xl {
+        grid-column: span 6;
+        padding: 28px;
+    }
+
+    .anno .atk {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .anno .atk .badge {
+        font-size: 10px;
+        padding: 2px 7px;
+        border-radius: 4px;
+        background: color-mix(in oklch, var(--accent) 15%, transparent);
+        color: var(--accent);
+        border: 1px solid color-mix(in oklch, var(--accent) 30%, transparent);
+        font-weight: 500;
+    }
+
+    .anno h4 {
+        margin: 0 0 6px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--fg);
+    }
+
+    .anno p {
+        margin: 0;
+        color: var(--fg-dim);
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .anno .mini {
+        margin-top: 14px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: color-mix(in oklch, var(--bg) 50%, var(--panel));
+        border: 1px solid var(--line-soft);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--fg-dim);
+        line-height: 1.55;
+        white-space: pre;
+        overflow: auto;
+    }
+
+    .anno-cat {
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        color: var(--fg-mute);
+        letter-spacing: .1em;
+        text-transform: uppercase;
+    }
+
+    /* output matrix */
+    .out-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 16px;
+    }
+
+    .out-item {
+        grid-column: span 2;
+        padding: 22px;
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius);
+        background: color-mix(in oklch, var(--panel) 55%, var(--bg-2));
+    }
+
+    .out-item.wide {
+        grid-column: span 3;
+    }
+
+    .out-item .oi {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        background: color-mix(in oklch, var(--accent) 15%, var(--panel-2));
+        border: 1px solid color-mix(in oklch, var(--accent) 25%, var(--line));
+        color: var(--accent);
+        margin-bottom: 16px;
+    }
+
+    .out-item h4 {
+        margin: 0 0 6px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--fg);
+    }
+
+    .out-item p {
+        margin: 0;
+        color: var(--fg-dim);
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .out-item .chiplist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 14px;
+    }
+
+    .out-item .chip {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10.5px;
+        padding: 3px 7px;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        color: var(--fg-dim);
+        background: color-mix(in oklch, var(--panel-2) 50%, transparent);
+    }
+
+    /* AI section */
+    .ai-wrap {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        background: linear-gradient(180deg, color-mix(in oklch, var(--panel) 80%, transparent), var(--bg-2));
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        min-height: 500px;
+    }
+
+    .ai-left {
+        padding: 48px;
+        border-right: 1px solid var(--line-soft);
+    }
+
+    .ai-left h3 {
+        font-size: 36px;
+        letter-spacing: -.03em;
+        line-height: 1.1;
+        margin: 12px 0 20px;
+        font-weight: 600;
+        color: var(--fg);
+    }
+
+    .ai-left > p {
+        color: var(--fg-dim);
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0 0 28px;
+        max-width: 42ch;
+    }
+
+    .ai-feat {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ai-feat .arow {
+        display: flex;
+        gap: 14px;
+        padding: 14px 16px;
+        border: 1px solid var(--line-soft);
+        border-radius: 10px;
+        background: color-mix(in oklch, var(--bg) 50%, transparent);
+        transition: border-color .2s;
+    }
+
+    .ai-feat .arow:hover {
+        border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
+    }
+
+    .ai-feat .arow .k {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--accent);
+        width: 88px;
+        flex-shrink: 0;
+        padding-top: 1px;
+    }
+
+    .ai-feat .arow .t {
+        color: var(--fg);
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 3px;
+    }
+
+    .ai-feat .arow .d {
+        color: var(--fg-dim);
+        font-size: 12.5px;
+        line-height: 1.5;
+    }
+
+    .ai-right {
+        padding: 32px;
+        background: color-mix(in oklch, var(--bg) 60%, var(--bg-2));
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .ai-msg {
+        padding: 12px 14px;
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 1.55;
+        max-width: 86%;
+    }
+
+    .ai-msg.user {
+        background: var(--panel-2);
+        color: var(--fg);
+        align-self: flex-end;
+        border: 1px solid var(--line-soft);
+    }
+
+    .ai-msg.bot {
+        background: linear-gradient(180deg, color-mix(in oklch, var(--accent) 14%, transparent), color-mix(in oklch, var(--accent) 6%, transparent));
+        border: 1px solid color-mix(in oklch, var(--accent) 25%, transparent);
+        color: var(--fg);
+        align-self: flex-start;
+    }
+
+    .ai-msg.bot .tool {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        background: color-mix(in oklch, var(--accent) 18%, transparent);
+        color: var(--accent);
+        margin-right: 8px;
+    }
+
+    .ai-msg.bot .tool::before {
+        content: "⚒";
+        font-size: 10px;
+    }
+
+    .ai-msg.bot small {
+        display: block;
+        margin-top: 6px;
+        color: var(--fg-mute);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+    }
+
+    .ai-bar {
+        margin-top: auto;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--panel);
+        color: var(--fg-mute);
+        font-size: 13px;
+    }
+
+    .ai-bar .send {
+        margin-left: auto;
+        background: var(--accent);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    /* family cards */
+    .fam {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+
+    .fam-card {
+        padding: 24px;
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, color-mix(in oklch, var(--panel) 70%, transparent), color-mix(in oklch, var(--bg-2) 50%, transparent));
+        position: relative;
+        overflow: hidden;
+        min-height: 190px;
+        display: flex;
+        flex-direction: column;
+        transition: border-color .2s;
+    }
+
+    .fam-card:hover {
+        border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
+    }
+
+    .fam-card .etag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        align-self: flex-start;
+    }
+
+    .fam-card h4 {
+        font-size: 18px;
+        margin: 14px 0 6px;
+        letter-spacing: -.015em;
+        font-weight: 600;
+        color: var(--fg);
+    }
+
+    .fam-card p {
+        color: var(--fg-dim);
+        font-size: 13px;
+        margin: 0 0 auto;
+        line-height: 1.55;
+    }
+
+    .fam-card .more {
+        margin-top: 16px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--fg-dim);
+        cursor: pointer;
+    }
+
+    .fam-card .more .arrow {
+        transition: transform .2s;
+    }
+
+    .fam-card:hover .more .arrow {
+        transform: translateX(3px);
+    }
+
+    .fam-card .fam-art {
+        position: absolute;
+        right: -20px;
+        bottom: -20px;
+        opacity: .1;
+        font-size: 80px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .fam-1 .etag {
+        background: color-mix(in oklch, var(--accent) 18%, transparent);
+        color: var(--accent);
+        border: 1px solid color-mix(in oklch, var(--accent) 30%, transparent);
+    }
+
+    .fam-2 .etag {
+        background: color-mix(in oklch, var(--cyan) 18%, transparent);
+        color: var(--cyan);
+        border: 1px solid color-mix(in oklch, var(--cyan) 30%, transparent);
+    }
+
+    .fam-3 .etag {
+        background: color-mix(in oklch, var(--purple) 18%, transparent);
+        color: var(--purple);
+        border: 1px solid color-mix(in oklch, var(--purple) 30%, transparent);
+    }
+
+    .fam-4 .etag {
+        background: color-mix(in oklch, var(--green) 18%, transparent);
+        color: var(--green);
+        border: 1px solid color-mix(in oklch, var(--green) 30%, transparent);
+    }
+
+    /* quotes */
+    .quotes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .quote {
+        padding: 28px;
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius);
+        background: color-mix(in oklch, var(--panel) 55%, var(--bg-2));
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .quote blockquote {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.55;
+        color: var(--fg);
+    }
+
+    .quote blockquote::before {
+        content: "\201C";
+        font-family: var(--serif);
+        font-size: 60px;
+        color: var(--accent);
+        display: block;
+        line-height: .6;
+        margin-bottom: -8px;
+        opacity: .7;
+    }
+
+    .quote .who {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: auto;
+        padding-top: 18px;
+        border-top: 1px solid var(--line-soft);
+    }
+
+    .quote .who .av {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--rose));
+        display: grid;
+        place-items: center;
+        font-weight: 600;
+        color: #fff;
+        font-size: 13px;
+    }
+
+    .quote .who .av.c2 {
+        background: linear-gradient(135deg, var(--cyan), var(--purple));
+        color: #fff;
+    }
+
+    .quote .who .av.c3 {
+        background: linear-gradient(135deg, var(--green), var(--cyan));
+        color: #0a1a10;
+    }
+
+    .quote .who .n {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--fg);
+    }
+
+    .quote .who .r {
+        font-size: 12px;
+        color: var(--fg-mute);
+    }
+
+    /* responsive */
+    @media (max-width: 1100px) {
+        .principle {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .prin-cell:nth-child(2n+1) {
+            border-left: 0;
+        }
+
+        .prin-cell::after {
+            display: none;
+        }
+
+        .anno-grid {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        .anno, .anno.wide, .anno.xl {
+            grid-column: span 6;
+        }
+
+        .out-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .out-item, .out-item.wide {
+            grid-column: span 1;
+        }
+
+        .ai-wrap {
+            grid-template-columns: 1fr;
+        }
+
+        .ai-left {
+            border-right: 0;
+            border-bottom: 1px solid var(--line-soft);
+        }
+
+        .fam {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .quotes {
+            grid-template-columns: 1fr;
+        }
+
+        .v2-sec-head {
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .v2-block {
+            padding: 60px 0;
+        }
+
+        .v2-wrap {
+            padding: 0 20px;
+        }
+
+        .fam {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
+
 <div ng-controller="home">
 
     <button class="btn btn-success animated zoomIn delay-2"
@@ -646,7 +1323,7 @@
         <span ng-bind-html="'home.btn.cube' | i18nHtml"></span>
     </button>
 
-
+    <!-- ── ORIGINAL HERO ── -->
     <div>
         <div style="background: #27262b url(images/tile.png);">
             <div style="padding-top: 60px">
@@ -670,31 +1347,11 @@
                 </div>
             </div>
             <div style="position: relative">
-                <div id="skew-bg3" style="position: absolute;
-                            top: 180px;left: 0;right: 0;bottom: -500px;background: #f44336;
-                            transform: skewY(25deg);transform-origin: 0 50%;
-                            transition: transform 400ms;box-shadow: 5px -5px 20px 0 #000000">
-                </div>
-                <div id="skew-bg2" style="position: absolute;
-                            top: 260px;left: 0;right: 0;bottom: -500px;background: #4caf50;
-                            transform: skewY(10deg);transform-origin: 0 50%;
-                            transition: transform 400ms;box-shadow: 5px -5px 20px 0 #000000">
-                </div>
-                <div id="skew-bg" style="position: absolute;
-                            top: 350px;left: 0;right: 0;bottom: -500px;background: #007bff;
-                            transform: skewY(-10deg);transform-origin: 0 50%;
-                            transition: transform 400ms;box-shadow: 5px -5px 20px 0 #000000">
-                </div>
-                <!--                <div id="skew-bg0" style="position: absolute;-->
-                <!--                                            top: 540px;left: 0;right: 0;bottom: -500px;background: #ffc107;;transform-origin: 0 50%;-->
-                <!--                                            transition:all 400ms;box-shadow: 1px -1px 1px 0 #333">-->
-                <!--                </div>-->
                 <div class="container" style="margin-top: 60px;padding-bottom: 20px;position: relative;z-index: 1;">
                     <div class="row">
                         <div class="col-12">
                             <div id="erupt-box"
                                  style="display:flex;flex-direction:column;overflow:hidden;border-radius:8px;position:relative;z-index:2;">
-                                <!-- IDE title bar -->
                                 <div class="eb-titlebar">
                                     <div class="eb-traffic">
                                         <span class="eb-dot eb-dot-r"></span>
@@ -704,9 +1361,7 @@
                                     <span class="eb-titlebar-name">DemoErupt.java — erupt-demo</span>
                                     <span class="eb-titlebar-badge">Erupt Engine</span>
                                 </div>
-                                <!-- Content row -->
                                 <div class="eb-content">
-                                    <!-- File tree sidebar -->
                                     <div class="eb-sidebar">
                                         <div class="eb-sidebar-header"
                                              ng-bind-html="'home.code.title' | i18nHtml"></div>
@@ -742,7 +1397,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Code editor -->
                                     <div style="display:flex;flex-direction:column;width:100%;overflow:hidden;position:relative">
                                         <div class="eb-tabs">
                                             <div class="eb-tab">
@@ -793,7 +1447,6 @@ public class DemoErupt extends BaseModel {
                                             {{'home.code.more' | i18n}}
                                         </a>
                                     </div>
-                                    <!-- Tips panel -->
                                     <div class="d-none d-md-block eb-tips">
                                         <div class="code-tip-card animated bounceInLeft delay-1"
                                              style="border-color:#007bff">
@@ -828,10 +1481,14 @@ public class DemoErupt extends BaseModel {
                 </div>
             </div>
         </div>
+
+        <!-- ── EXISTING SECTIONS ── -->
         <div id="erupt-features">
+
+            <!-- Who is using -->
             <div class="using-section">
                 <div class="using-header">
-                    <h3>{{'home.using.title' | i18n}} <em>100+</em></h3>
+                    <h3>{{'home.using.title' | i18n}} <em>300+</em></h3>
                 </div>
                 <div class="using-track-wrap">
                     <div class="using-track">
@@ -858,126 +1515,420 @@ public class DemoErupt extends BaseModel {
                     </div>
                 </div>
             </div>
-            <div style="margin-top: 30px;padding:16px 0;background: #fff">
-                <div class="container">
-                    <div class="row" style="margin-top: 16px">
-                        <div class="col-12">
-                            <div style="margin-bottom: 26px;font-size: 1.6em;text-align: center">
-                                {{'home.license' | i18n}} <a href="http://www.apache.org/licenses/LICENSE-2.0">{{'home.license.link'
-                                | i18n}}</a>
-                                {{'home.license.desc' | i18n}}
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="card git-card">
-                                <div style="position: absolute;left: 10px;top: 10px">
-                                    <img alt="" src="https://gitee.com/erupt/erupt/badge/star.svg?theme=dark">
-                                </div>
-                                <div class="card-body" ng-click="go('https://gitee.com/erupt/erupt',true)">
-                                    <div class="text-center">
-                                        <img alt="" class="git-img" src="images/gitee.svg" style="width: 70px">
-                                        <p class="git-name">码云</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="card git-card">
-                                <div style="position: absolute;left: 10px;top: 10px">
-                                    <img alt="" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
-                                </div>
-                                <div class="card-body" ng-click="go('https://github.com/erupts/erupt',true)">
-                                    <div class="text-center">
-                                        <img alt="" class="git-img" src="images/github.svg" style="width: 70px">
-                                        <p class="git-name">GitHub</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="card git-card">
-                                <div style="position: absolute;left: 10px;top: 10px">
-                                    <img alt="" src="https://gitcode.com/erupts/erupt/star/badge.svg">
-                                </div>
-                                <div class="card-body" ng-click="go('https://gitcode.com/erupts/erupt',true)">
-                                    <div class="text-center">
-                                        <img alt="" class="git-img" src="images/gitcode.svg" style="width: 70px">
-                                        <p class="git-name">GitCode</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ── 低代码 × AI 宣传 ── -->
-            <div style="background: #0d1117; padding: 60px 0; position: relative; overflow: hidden;">
-                <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,0.04) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:0"></div>
-                <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 0%,rgba(99,102,241,0.13) 0%,transparent 65%);pointer-events:none;z-index:0"></div>
-                <div class="container" style="position:relative;z-index:1;text-align:center">
-                    <span style="display:inline-block;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:20px;padding:4px 16px;font-size:0.78em;font-family:monospace;margin-bottom:16px">{{'home.new.badge' | i18n}}</span>
-                    <h2 style="color:#fff;font-size:2em;font-weight:900;margin-bottom:14px;letter-spacing:0.5px">
-                        {{'home.new.title.pre' | i18n}}
-                        <span style="background:linear-gradient(135deg,#a5b4fc,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text"> × AI</span>
-                    </h2>
-                    <p style="color:rgba(255,255,255,0.52);max-width:580px;margin:0 auto 40px;line-height:1.8;font-size:1em">
-                        {{'home.new.desc' | i18n}}
-                    </p>
-                    <div class="row justify-content-center">
-                        <!-- Erupt AI -->
-                        <div class="col-md-4 col-sm-10 mb-3">
-                            <div class="ai-promo-card ai-promo-card-ai" ng-click="go('#!/ai')">
-                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#8b5cf6)"></div>
-                                <div style="font-size:2em;margin-bottom:10px">🤖</div>
-                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt AI</h4>
-                                <p style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px" ng-bind-html="'home.promo.ai.desc' | i18nHtml"></p>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
-                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">50+ LLMs</span>
-                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">ReAct Agent</span>
-                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">MCP</span>
-                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Tool</span>
-                                </div>
-                                <span style="color:#818cf8;font-weight:700;font-size:0.88em">{{'home.promo.ai.link' | i18n}}</span>
-                            </div>
-                        </div>
-                        <!-- AI Claw -->
-                        <div class="col-md-4 col-sm-10 mb-3">
-                            <div class="ai-promo-card ai-promo-card-claw" ng-click="go('#!/ai-claw')">
-                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#06b6d4,#22d3ee)"></div>
-                                <div style="font-size:2em;margin-bottom:10px">🦞</div>
-                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">AI Claw</h4>
-                                <p style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px" ng-bind-html="'home.promo.claw.desc' | i18nHtml"></p>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
-                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Skill</span>
-                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Shell</span>
-                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">File I/O</span>
-                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">NLP</span>
-                                </div>
-                                <span style="color:#22d3ee;font-weight:700;font-size:0.88em">{{'home.promo.claw.link' | i18n}}</span>
-                            </div>
-                        </div>
-                        <!-- Erupt Cube -->
-                        <div class="col-md-4 col-sm-10 mb-3">
-                            <div class="ai-promo-card ai-promo-card-cube" ng-click="go('#!/cube')">
-                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#10b981,#34d399)"></div>
-                                <div style="font-size:2em;margin-bottom:10px">🧊</div>
-                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt Cube</h4>
-                                <p style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px" ng-bind-html="'home.promo.cube.desc' | i18nHtml"></p>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
-                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@EruptCube</span>
-                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Dimension</span>
-                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Measure</span>
-                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Drag & Drop</span>
-                                </div>
-                                <span style="color:#10b981;font-weight:700;font-size:0.88em">{{'home.promo.cube.link' | i18n}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
+            <!-- ══════════════════════════════════════════
+                 NEW v2 CONTENT — below 低代码 × AI
+                 ══════════════════════════════════════════ -->
+
+            <!-- HOW IT WORKS -->
+            <section class="v2-block" id="how" style="background:var(--bg)">
+                <div class="v2-wrap">
+                    <div class="v2-sec-head reveal">
+                        <div>
+                            <div class="v2-sec-tag">How it works</div>
+                            <h2 class="v2-sec-title">{{'home.v2.how.title.pre' | i18n}}<span class="s-i">Java</span>{{'home.v2.how.title.post'
+                                | i18n}}</h2>
+                        </div>
+                        <p class="v2-sec-lede">{{'home.v2.how.lede' | i18n}}</p>
+                    </div>
+                    <div class="principle reveal">
+                        <div class="prin-cell">
+                            <div class="num">01 · MODEL</div>
+                            <h4>{{'home.v2.how.s1.h' | i18n}}</h4>
+                            <p>{{'home.v2.how.s1.p' | i18n}}</p>
+                            <div class="visual"><span class="dim">// User.java</span>
+                                <b>@Erupt</b>(name=<span style="color:var(--amber)">"用户"</span>)
+                                <b>class</b> User <b>{...}</b></div>
+                        </div>
+                        <div class="prin-cell">
+                            <div class="num">02 · SCAN</div>
+                            <h4>{{'home.v2.how.s2.h' | i18n}}</h4>
+                            <p>{{'home.v2.how.s2.p' | i18n}}</p>
+                            <div class="visual"><span class="dim">▶ EruptBoot</span>
+                                scan <b>✓ 3</b> entities
+                                meta <b>✓ 17</b> fields
+                            </div>
+                        </div>
+                        <div class="prin-cell">
+                            <div class="num">03 · COMPILE</div>
+                            <h4>{{'home.v2.how.s3.h' | i18n}}</h4>
+                            <p>{{'home.v2.how.s3.p' | i18n}}</p>
+                            <div class="visual">{
+                                <b>"type"</b>: <span style="color:var(--amber)">"table"</span>,
+                                <b>"cols"</b>: [...],
+                                <b>"edit"</b>: {...}
+                                }
+                            </div>
+                        </div>
+                        <div class="prin-cell">
+                            <div class="num">04 · RENDER</div>
+                            <h4>{{'home.v2.how.s4.h' | i18n}}</h4>
+                            <p>{{'home.v2.how.s4.p' | i18n}}</p>
+                            <div class="visual"><span class="dim">◎ GET /admin/user</span>
+                                <b>200</b> OK · 128 rows
+                                <span class="dim">✓ live · hot-reload</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANNOTATIONS -->
+            <section class="v2-block" id="annotations" style="background:var(--bg-2)">
+                <div class="v2-wrap">
+                    <div class="v2-sec-head reveal">
+                        <div>
+                            <div class="v2-sec-tag">Vocabulary</div>
+                            <h2 class="v2-sec-title">{{'home.v2.anno.title.pre' | i18n}}<span class="s-i">{{'home.v2.anno.title.mid' | i18n}}</span>
+                            </h2>
+                        </div>
+                        <p class="v2-sec-lede">{{'home.v2.anno.lede' | i18n}}</p>
+                    </div>
+                    <div class="anno-grid">
+                        <div class="anno xl reveal">
+                            <span class="anno-cat">Root</span>
+                            <div class="atk">@Erupt <span class="badge">entity</span></div>
+                            <h4>{{'home.v2.anno.erupt.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.erupt.p' | i18n}}</p>
+                            <div class="mini"><span style="color:var(--accent)">@Erupt</span>(
+                                name = <span style="color:var(--amber)">"用户管理"</span>,
+                                power = <span style="color:var(--accent)">@Power</span>(importable = <span
+                                        style="color:var(--purple)">true</span>, exportable = <span
+                                        style="color:var(--purple)">true</span>),
+                                filter = <span style="color:var(--accent)">@Filter</span>(<span
+                                        style="color:var(--amber)">"dept_id = #{user.deptId}"</span>)
+                                )
+                            </div>
+                        </div>
+                        <div class="anno xl reveal">
+                            <span class="anno-cat">Field</span>
+                            <div class="atk">@EruptField <span class="badge">view + edit</span></div>
+                            <h4>{{'home.v2.anno.field.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.field.p' | i18n}}</p>
+                            <div class="mini"><span style="color:var(--accent)">@EruptField</span>(
+                                views = <span style="color:var(--accent)">@View</span>(title = <span
+                                        style="color:var(--amber)">"用户名"</span>, sortable = <span
+                                        style="color:var(--purple)">true</span>),
+                                edit = <span style="color:var(--accent)">@Edit</span>(type = INPUT, search = <span
+                                        style="color:var(--accent)">@Search</span>)
+                                )
+                            </div>
+                        </div>
+                        <div class="anno reveal">
+                            <div class="atk">@Edit</div>
+                            <h4>{{'home.v2.anno.edit.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.edit.p' | i18n}}</p>
+                        </div>
+                        <div class="anno reveal">
+                            <div class="atk">@Power</div>
+                            <h4>{{'home.v2.anno.power.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.power.p' | i18n}}</p>
+                        </div>
+                        <div class="anno reveal">
+                            <div class="atk">@Search</div>
+                            <h4>{{'home.v2.anno.search.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.search.p' | i18n}}</p>
+                        </div>
+                        <div class="anno reveal">
+                            <div class="atk">@ReferenceTree</div>
+                            <h4>{{'home.v2.anno.reftree.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.reftree.p' | i18n}}</p>
+                        </div>
+                        <div class="anno wide reveal">
+                            <div class="atk">@Drill <span class="badge">navigate</span></div>
+                            <h4>{{'home.v2.anno.drill.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.drill.p' | i18n}}</p>
+                        </div>
+                        <div class="anno reveal wide">
+                            <div class="atk">@DataProxy</div>
+                            <h4>{{'home.v2.anno.proxy.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.proxy.p' | i18n}}</p>
+                        </div>
+
+                        <div class="anno reveal">
+                            <div class="atk">@Filter</div>
+                            <h4>{{'home.v2.anno.filter.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.filter.p' | i18n}}</p>
+                        </div>
+                        <div class="anno reveal">
+                            <div class="atk">@RowOperation</div>
+                            <h4>{{'home.v2.anno.rowop.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.rowop.p' | i18n}}</p>
+                        </div>
+                        <div class="anno reveal">
+                            <div class="atk">@AiField</div>
+                            <h4>{{'home.v2.anno.ai.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.ai.p' | i18n}}</p>
+                        </div>
+                        <div class="anno reveal">
+                            <div class="atk">@LinkTree</div>
+                            <h4>{{'home.v2.anno.linktree.h' | i18n}}</h4>
+                            <p>{{'home.v2.anno.linktree.p' | i18n}}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- OUTPUT MATRIX -->
+            <section class="v2-block" id="output" style="background:var(--bg)">
+                <div class="v2-wrap">
+                    <div class="v2-sec-head reveal">
+                        <div>
+                            <div class="v2-sec-tag">What you get</div>
+                            <h2 class="v2-sec-title">{{'home.v2.out.title.pre' | i18n}}<span class="s-i">{{'home.v2.out.title.em' | i18n}}</span>
+                            </h2>
+                        </div>
+                        <p class="v2-sec-lede">{{'home.v2.out.lede' | i18n}}</p>
+                    </div>
+                    <div class="out-grid">
+                        <div class="out-item wide reveal">
+                            <div class="oi">
+                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                     width="16">
+                                    <path d="M3 6h18M3 12h18M3 18h18"/>
+                                </svg>
+                            </div>
+                            <h4>{{'home.v2.out.list.h' | i18n}}</h4>
+                            <p>{{'home.v2.out.list.p' | i18n}}</p>
+                            <div class="chiplist"><span class="chip">pagination</span><span
+                                    class="chip">multi-sort</span><span class="chip">export.csv</span><span
+                                    class="chip">bulk.delete</span></div>
+                        </div>
+                        <div class="out-item wide reveal">
+                            <div class="oi"
+                                 style="background:color-mix(in oklch,var(--cyan) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--cyan) 28%,var(--line));color:var(--cyan)">
+                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                     width="16">
+                                    <path d="M5 5h14v14H5zM5 12h14M12 5v14"/>
+                                </svg>
+                            </div>
+                            <h4>{{'home.v2.out.form.h' | i18n}}</h4>
+                            <p>{{'home.v2.out.form.p' | i18n}}</p>
+                            <div class="chiplist"><span class="chip">notNull</span><span class="chip">regex</span><span
+                                    class="chip">unique</span><span class="chip">upload</span><span class="chip">cascader</span>
+                            </div>
+                        </div>
+                        <div class="out-item reveal">
+                            <div class="oi"
+                                 style="background:color-mix(in oklch,var(--green) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--green) 28%,var(--line));color:var(--green)">
+                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                     width="16">
+                                    <rect height="10" rx="2" width="18" x="3" y="11"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                            <h4>{{'home.v2.out.perm.h' | i18n}}</h4>
+                            <p>{{'home.v2.out.perm.p' | i18n}}</p>
+                        </div>
+                        <div class="out-item reveal">
+                            <div class="oi"
+                                 style="background:color-mix(in oklch,var(--purple) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--purple) 28%,var(--line));color:var(--purple)">
+                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                     width="16">
+                                    <path d="M4 7h16M4 12h16M4 17h12"/>
+                                </svg>
+                            </div>
+                            <h4>{{'home.v2.out.audit.h' | i18n}}</h4>
+                            <p>{{'home.v2.out.audit.p' | i18n}}</p>
+                        </div>
+                        <div class="out-item reveal">
+                            <div class="oi"
+                                 style="background:color-mix(in oklch,var(--amber) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--amber) 28%,var(--line));color:var(--amber)">
+                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                     width="16">
+                                    <path d="M8 4h12v12M8 16l12-12M16 20H4V8M4 20l12-12"/>
+                                </svg>
+                            </div>
+                            <h4>{{'home.v2.out.api.h' | i18n}}</h4>
+                            <p>{{'home.v2.out.api.p' | i18n}}</p>
+                        </div>
+                        <div class="out-item reveal">
+                            <div class="oi"
+                                 style="background:color-mix(in oklch,var(--rose) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--rose) 28%,var(--line));color:var(--rose)">
+                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                     width="16">
+                                    <path d="M3 17l6-6 4 4 8-8"/>
+                                </svg>
+                            </div>
+                            <h4>{{'home.v2.out.dash.h' | i18n}}</h4>
+                            <p>{{'home.v2.out.dash.p' | i18n}}</p>
+                        </div>
+                        <div class="out-item reveal">
+                            <div class="oi">
+                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                     width="16">
+                                    <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>
+                                </svg>
+                            </div>
+                            <h4>{{'home.v2.out.ai.h' | i18n}}</h4>
+                            <p>{{'home.v2.out.ai.p' | i18n}}</p>
+                        </div>
+                        <div class="out-item reveal">
+                            <div class="oi"
+                                 style="background:color-mix(in oklch,var(--cyan) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--cyan) 28%,var(--line));color:var(--cyan)">
+                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                     width="16">
+                                    <path d="M3 4h18v16H3z"/>
+                                    <path d="M3 10h18"/>
+                                </svg>
+                            </div>
+                            <h4>{{'home.v2.out.tenant.h' | i18n}}</h4>
+                            <p>{{'home.v2.out.tenant.p' | i18n}}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI CLAW DETAIL -->
+            <section class="v2-block" id="ai-detail" style="background:var(--bg-2)">
+                <div class="v2-wrap">
+                    <div class="ai-wrap reveal">
+                        <div class="ai-left">
+                            <div class="v2-sec-tag">AI Claw</div>
+                            <h3>{{'home.v2.ai.title' | i18n}}</h3>
+                            <p>{{'home.v2.ai.p' | i18n}}</p>
+                            <div class="ai-feat">
+                                <div class="arow">
+                                    <span class="k">MCP</span>
+                                    <div>
+                                        <div class="t">{{'home.v2.ai.mcp.t' | i18n}}</div>
+                                        <div class="d">{{'home.v2.ai.mcp.d' | i18n}}</div>
+                                    </div>
+                                </div>
+                                <div class="arow">
+                                    <span class="k">@AiToolbox</span>
+                                    <div>
+                                        <div class="t">{{'home.v2.ai.bean.t' | i18n}}</div>
+                                        <div class="d">{{'home.v2.ai.bean.d' | i18n}}</div>
+                                    </div>
+                                </div>
+                                <div class="arow">
+                                    <span class="k">Agent</span>
+                                    <div>
+                                        <div class="t">{{'home.v2.ai.agent.t' | i18n}}</div>
+                                        <div class="d">{{'home.v2.ai.agent.d' | i18n}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-right">
+                            <div class="ai-msg user">{{'home.v2.ai.chat.q' | i18n}}</div>
+                            <div class="ai-msg bot">
+                                <span class="tool">@Erupt:Order.query</span>
+                                {{'home.v2.ai.chat.a1' | i18n}}
+                                <small>{{'home.v2.ai.chat.a1.s' | i18n}}</small>
+                            </div>
+                            <div class="ai-msg bot">
+                                <span class="tool">@Erupt:Order.update</span>
+                                {{'home.v2.ai.chat.a2' | i18n}}
+                                <small>{{'home.v2.ai.chat.a2.s' | i18n}}</small>
+                            </div>
+                            <div class="ai-bar">
+                                <span>{{'home.v2.ai.chat.ph' | i18n}}</span>
+                                <span class="send">{{'home.v2.ai.chat.send' | i18n}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAMILY -->
+            <section class="v2-block" id="family" style="background:var(--bg)">
+                <div class="v2-wrap">
+                    <div class="v2-sec-head reveal">
+                        <div>
+                            <div class="v2-sec-tag">Family</div>
+                            <h2 class="v2-sec-title">{{'home.v2.fam.title.pre' | i18n}}<span class="s-i">{{'home.v2.fam.title.em' | i18n}}</span>
+                            </h2>
+                        </div>
+                        <p class="v2-sec-lede">{{'home.v2.fam.lede' | i18n}}</p>
+                    </div>
+                    <div class="fam">
+                        <div class="fam-card fam-1 reveal"
+                             ng-click="go('https://www.yuque.com/erupts/erupt/ggbcv9',true)">
+                            <span class="etag">☁ CLOUD</span>
+                            <h4>Erupt Cloud</h4>
+                            <p>{{'home.v2.fam.cloud.p' | i18n}}</p>
+                            <span class="more">{{'home.v2.fam.more' | i18n}}<span class="arrow">→</span></span>
+                            <div class="fam-art">☁</div>
+                        </div>
+                        <div class="fam-card fam-2 reveal"
+                             ng-click="go('https://www.yuque.com/erupts/erupt/ioqkpssno1wx3dvf',true)">
+                            <span class="etag">⚡ FLOW</span>
+                            <h4>Erupt Flow</h4>
+                            <p>{{'home.v2.fam.flow.p' | i18n}}</p>
+                            <span class="more">{{'home.v2.fam.more' | i18n}}<span class="arrow">→</span></span>
+                            <div class="fam-art">⚡</div>
+                        </div>
+                        <div class="fam-card fam-3 reveal"
+                             ng-click="go('https://www.yuque.com/erupts/erupt/fl0lyrdlrbm9mg0g',true)">
+                            <span class="etag">⎇ LINQ.J</span>
+                            <h4>Linq.J</h4>
+                            <p>{{'home.v2.fam.linq.p' | i18n}}</p>
+                            <span class="more">{{'home.v2.fam.more' | i18n}}<span class="arrow">→</span></span>
+                            <div class="fam-art">λ</div>
+                        </div>
+                        <div class="fam-card fam-4 reveal" ng-click="go('#!/cube')">
+                            <span class="etag">⌘ CUBE</span>
+                            <h4>{{'home.v2.fam.sem.h' | i18n}}</h4>
+                            <p>{{'home.v2.fam.sem.p' | i18n}}</p>
+                            <span class="more">{{'home.v2.fam.more' | i18n}}<span class="arrow">→</span></span>
+                            <div class="fam-art">⌘</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QUOTES -->
+            <section class="v2-block" style="background:var(--bg-2)">
+                <div class="v2-wrap">
+                    <div class="v2-sec-head reveal">
+                        <div>
+                            <div class="v2-sec-tag">In production</div>
+                            <h2 class="v2-sec-title"><span class="s-i">{{'home.v2.quotes.title.em' | i18n}}</span>{{'home.v2.quotes.title.post'
+                                | i18n}}</h2>
+                        </div>
+                        <p class="v2-sec-lede">{{'home.v2.quotes.lede' | i18n}}</p>
+                    </div>
+                    <div class="quotes">
+                        <div class="quote reveal">
+                            <blockquote>{{'home.v2.q1.text' | i18n}}</blockquote>
+                            <div class="who"><span class="av">G</span>
+                                <div>
+                                    <div class="n">{{'home.v2.q1.name' | i18n}}</div>
+                                    <div class="r">{{'home.v2.q1.role' | i18n}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quote reveal">
+                            <blockquote>{{'home.v2.q2.text' | i18n}}</blockquote>
+                            <div class="who"><span class="av c2">L</span>
+                                <div>
+                                    <div class="n">{{'home.v2.q2.name' | i18n}}</div>
+                                    <div class="r">{{'home.v2.q2.role' | i18n}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quote reveal">
+                            <blockquote>{{'home.v2.q3.text' | i18n}}</blockquote>
+                            <div class="who"><span class="av c3">W</span>
+                                <div>
+                                    <div class="n">{{'home.v2.q3.name' | i18n}}</div>
+                                    <div class="r">{{'home.v2.q3.role' | i18n}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════
+                 ORIGINAL remaining sections
+                 ═══════════════════════════════════════════ -->
+
+            <!-- VS table -->
             <div style="background: #38404e url(images/tile.png) 0 0 repeat;padding:36px;position: relative;
-            box-shadow: inset 0 0 10px #222">
+                box-shadow: inset 0 0 10px #222">
                 <div class="container">
                     <table class="table table-bordered table-vs" style="color: #fff;margin-bottom: 0">
                         <tr>
@@ -1048,6 +1999,8 @@ public class DemoErupt extends BaseModel {
                     </table>
                 </div>
             </div>
+
+            <!-- Features -->
             <div style="position: relative;box-shadow:0 0 10px #9e9e9e36;padding-top: 20px;background: #fff">
                 <div class="container">
                     <p class="text-center">{{'home.features.title' | i18n}}</p>
@@ -1056,8 +2009,7 @@ public class DemoErupt extends BaseModel {
                             <div class="indicator-card">
                                 <p style="margin-top: 0;margin-bottom: 16px;font-size: 1em;color: #333; padding: 8px;border-bottom: 1px solid #eee">
                                     <span style="line-height: 24px"> {{i.name}}</span>
-                                    <a href="{{i.url}}"
-                                       ng-if="i.url"
+                                    <a href="{{i.url}}" ng-if="i.url"
                                        style="font-size:1em;color: #09f;position: absolute;right: 25px;top: 8px;"
                                        target="_blank">
                                         <img alt="" height="20px" src="images/home/right2.svg">
@@ -1068,12 +2020,100 @@ public class DemoErupt extends BaseModel {
                                     <p class="desc">{{i.desc}}</p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <div style="background: #38404e url(images/tile.png) 0 0 repeat;padding:36px;position: relative;
+
+            <!-- 低代码 × AI promo cards -->
+            <div style="background: #0d1117; padding: 60px 0; position: relative; overflow: hidden;">
+                <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,0.04) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:0"></div>
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 0%,rgba(99,102,241,0.13) 0%,transparent 65%);pointer-events:none;z-index:0"></div>
+                <div class="container" style="position:relative;z-index:1;text-align:center">
+                    <span style="display:inline-block;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:20px;padding:4px 16px;font-size:0.78em;font-family:monospace;margin-bottom:16px">{{'home.new.badge' | i18n}}</span>
+                    <h2 style="color:#fff;font-size:2em;font-weight:900;margin-bottom:14px;letter-spacing:0.5px">
+                        {{'home.new.title.pre' | i18n}}
+                        <span style="background:linear-gradient(135deg,#a5b4fc,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text"> × AI</span>
+                    </h2>
+                    <p style="color:rgba(255,255,255,0.52);max-width:580px;margin:0 auto 40px;line-height:1.8;font-size:1em">
+                        {{'home.new.desc' | i18n}}
+                    </p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 col-sm-10 mb-3">
+                            <div class="ai-promo-card ai-promo-card-ai" ng-click="go('#!/ai')">
+                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#8b5cf6)"></div>
+                                <div style="font-size:2em;margin-bottom:10px">🤖</div>
+                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt AI</h4>
+                                <p ng-bind-html="'home.promo.ai.desc' | i18nHtml" style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px"></p>
+                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
+                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">50+ LLMs</span>
+                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">ReAct Agent</span>
+                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">MCP</span>
+                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Tool</span>
+                                </div>
+                                <span style="color:#818cf8;font-weight:700;font-size:0.88em">{{'home.promo.ai.link' | i18n}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-10 mb-3">
+                            <div class="ai-promo-card ai-promo-card-claw" ng-click="go('#!/ai-claw')">
+                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#06b6d4,#22d3ee)"></div>
+                                <div style="font-size:2em;margin-bottom:10px">🦞</div>
+                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">AI Claw</h4>
+                                <p ng-bind-html="'home.promo.claw.desc' | i18nHtml" style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px"></p>
+                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
+                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Skill</span>
+                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Shell</span>
+                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">File I/O</span>
+                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">NLP</span>
+                                </div>
+                                <span style="color:#22d3ee;font-weight:700;font-size:0.88em">{{'home.promo.claw.link' | i18n}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-10 mb-3">
+                            <div class="ai-promo-card ai-promo-card-cube" ng-click="go('#!/cube')">
+                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#10b981,#34d399)"></div>
+                                <div style="font-size:2em;margin-bottom:10px">🧊</div>
+                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt Cube</h4>
+                                <p ng-bind-html="'home.promo.cube.desc' | i18nHtml" style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px"></p>
+                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
+                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@EruptCube</span>
+                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Dimension</span>
+                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Measure</span>
+                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Drag &amp; Drop</span>
+                                </div>
+                                <span style="color:#10b981;font-weight:700;font-size:0.88em">{{'home.promo.cube.link' | i18n}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom nav + DB -->
+            <div style="background: #fff;box-shadow: 0 0 10px #9e9e9e36;padding: 20px 0">
+                <div class="container">
+                    <hr>
+                    <div class="card">
+                        <div class="card-header text-center text-white" style="background: #1d2124 !important">
+                            {{'home.db.title' | i18n}}
+                            <a class="float-right" href="https://www.yuque.com/erupts/erupt/ku7vx4"
+                               style="font-size:1em;color: #fff" target="_blank">
+                                <img alt="" height="20px" src="images/home/right.svg">
+                            </a>
+                        </div>
+                        <div class="row" style="margin-left: 0;margin-right: 0">
+                            <div class="card-item col-lg-2 col-md-4 col-4" ng-repeat="db in dbs" style="padding: 16px">
+                                <div style="padding: 16px;text-align: center">
+                                    <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
+                                </div>
+                                <p class="text-center" style="margin-bottom: 0;margin-top: 8px">{{db.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsor -->
+            <div style="background: #38404e url(images/tile.png) 0 0 repeat;background-attachment: fixed;padding:36px;position: relative;
                 box-shadow: inset 0 0 10px #222">
                 <div class="container sponsor">
                     <p class="text-center" style="color: #fff;font-size: 1.2em;font-weight:500">{{'home.sponsor.title' |
@@ -1082,14 +2122,12 @@ public class DemoErupt extends BaseModel {
                         <div data-placement="bottom" data-toggle="tooltip" style="text-align: center;margin:0 26px"
                              title="{{'home.sponsor.author' | i18n}}">
                             <a href="https://github.com/erupts" target="_blank">
-                                <img alt="" src="/images/sponsor/me.jpeg"
-                                     style="border-radius: 50%;" width="70px">
+                                <img alt="" src="/images/sponsor/me.jpeg" style="border-radius: 50%;" width="70px">
                             </a>
                             <p class="name"><span style="font-weight: 800;color: #ffe807">YuePeng</span></p>
                         </div>
                         <div ng-repeat="s in sponsor">
-                            <div data-placement="bottom" data-toggle="tooltip"
-                                 style="text-align: center;margin: 0 26px"
+                            <div data-placement="bottom" data-toggle="tooltip" style="text-align: center;margin: 0 26px"
                                  title="{{s.toggleText}}">
                                 <a ng-href="{{s.home}}" target="_blank">
                                     <img alt="" ng-src="/images/sponsor/{{s.headImg}}" style="border-radius: 50%"
@@ -1116,40 +2154,76 @@ public class DemoErupt extends BaseModel {
                 </div>
             </div>
 
-            <div style="background: #fff;box-shadow: 0 0 10px #9e9e9e36;padding: 20px 0">
+            <!-- License + git cards -->
+            <div style="margin-top: 30px;padding:16px 0;background: #fff">
                 <div class="container">
-                    <hr>
-                    <div style="text-align: center;">
-                        →
-                        &nbsp;
-                        <button class="btn btn-primary" ng-click="go('#!/component')">{{'home.btn.component' | i18n}}
-                        </button>&nbsp;&nbsp;
-                        <button class="btn btn-success" ng-click="go('#!/module')">{{'home.btn.module' | i18n}}
-                        </button>
-                        &nbsp;
-                        ←
-                    </div>
-                    <hr>
-                    <div class="card">
-                        <div class="card-header text-center text-white" style="background: #1d2124 !important">
-                            {{'home.db.title' | i18n}}
-                            <a class="float-right" href="https://www.yuque.com/erupts/erupt/ku7vx4"
-                               style="font-size:1em;color: #fff" target="_blank">
-                                <img alt="" height="20px" src="images/home/right.svg">
-                            </a>
+                    <div class="row" style="margin-top: 16px">
+                        <div class="col-12">
+                            <div style="margin-bottom: 26px;font-size: 1.6em;text-align: center">
+                                {{'home.license' | i18n}} <a href="http://www.apache.org/licenses/LICENSE-2.0">{{'home.license.link'
+                                | i18n}}</a>
+                                {{'home.license.desc' | i18n}}
+                            </div>
                         </div>
-                        <div class="row" style="margin-left: 0;margin-right: 0">
-                            <div class="card-item col-lg-2 col-md-4 col-4" ng-repeat="db in dbs"
-                                 style="padding: 16px">
-                                <div style="padding: 16px;text-align: center">
-                                    <img alt="db.name" ng-src="images/db/{{db.image}}" style="max-width: 80px">
+                        <div class="col-sm-4">
+                            <div class="card git-card">
+                                <div style="position: absolute;left: 10px;top: 10px">
+                                    <img alt="" src="https://gitee.com/erupt/erupt/badge/star.svg?theme=dark">
                                 </div>
-                                <p class="text-center" style="margin-bottom: 0;margin-top: 8px">{{db.name}}</p>
+                                <div class="card-body" ng-click="go('https://gitee.com/erupt/erupt',true)">
+                                    <div class="text-center">
+                                        <img alt="" class="git-img" src="images/gitee.svg" style="width: 70px">
+                                        <p class="git-name">码云</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card git-card">
+                                <div style="position: absolute;left: 10px;top: 10px">
+                                    <img alt="" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
+                                </div>
+                                <div class="card-body" ng-click="go('https://github.com/erupts/erupt',true)">
+                                    <div class="text-center">
+                                        <img alt="" class="git-img" src="images/github.svg" style="width: 70px">
+                                        <p class="git-name">GitHub</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card git-card">
+                                <div style="position: absolute;left: 10px;top: 10px">
+                                    <img alt="" src="https://gitcode.com/erupts/erupt/star/badge.svg">
+                                </div>
+                                <div class="card-body" ng-click="go('https://gitcode.com/erupts/erupt',true)">
+                                    <div class="text-center">
+                                        <img alt="" class="git-img" src="images/gitcode.svg" style="width: 70px">
+                                        <p class="git-name">GitCode</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    }());
+</script>
