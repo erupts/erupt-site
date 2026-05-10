@@ -42,21 +42,15 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
 
 
     $scope.using = [
-        {name: 'Alibaba', logo: "images/using/ali.png"},
-        {name: '用友政务', logo: "images/using/yongyou.png"},
         {name: 'Meituan', logo: "images/using/meituan.png"},
         {name: '上海银行', logo: "images/using/shanghai_bank.png"},
         {name: '民生银行', logo: "images/using/民生银行.png"},
+        {name: 'Alibaba', logo: "images/using/ali.png"},
+        {name: '用友政务', logo: "images/using/yongyou.png"},
         {name: 'Transsion', logo: "images/using/transsion.png"},
         {name: 'Ideamake', logo: "images/using/ideamake.png"},
-        {name: '招商蛇口', logo: "images/using/zhaoshang.png"},
-        {name: '中海地产', logo: "images/using/中海地产.png"},
-        {name: '龙湖数科', logo: "images/using/longhu.png"},
         {name: 'YashanDB', logo: "images/using/yashan.png"},
         {name: 'China Telecom', logo: "images/using/telecom.png"},
-        {name: 'NETA Auto', logo: "images/using/nezha.webp"},
-        // {name: 'Anker', logo: "images/using/logo-anker-in.png"},
-        {name: 'KYE', logo: "images/using/跨越速运.png"},
         {name: '南开大学', logo: "images/using/南开大学.png"},
         // {name: 'China University of Geosciences', logo: "images/using/geosciences.png"},
         {name: 'Perfect World', logo: "images/using/完美世界.png"},
@@ -79,6 +73,9 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
         {name: '柳钢集团', logo: "images/using/柳钢集团.png"},
         {name: 'CATL', logo: "images/using/宁德时代.svg"},
         {name: 'Tesla', logo: "images/using/tesla.svg"},
+        {name: '招商蛇口', logo: "images/using/zhaoshang.png"},
+        {name: '中海地产', logo: "images/using/中海地产.png"},
+        {name: '龙湖数科', logo: "images/using/longhu.png"},
 
         {name: '...', text: "100+"},
     ]
@@ -148,8 +145,19 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
         {name: i18nService.t('db.custom'), image: "custom.svg"}
     ];
 
+    Prism.highlightAllUnder(document.getElementById("DemoErupt"));
+
+    $("#logo").attr("src", "assets/logo2.svg");
+
+    $.get("assets/logo2.svg", function (res) {
+        var svg = res.getElementById("erupt_logo_svg");
+        svg.style.width = "100px";
+        $("#home-logo").html(svg)
+    })
+
     $scope.$on("$destroy", function () {
         document.onscroll = null;
+        $("#logo").attr("src", "assets/logo.svg");
     })
 
     $timeout(function () {

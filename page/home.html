@@ -1,4 +1,243 @@
 <style>
+    /* ── Hero styles ── */
+    .del-line {
+        text-decoration: line-through;
+        text-decoration-color: #f00;
+        text-decoration-style: dashed;
+    }
+
+    .deg90 {
+        transform: rotate(-90deg);
+    }
+
+    #header {
+        animation: header-in 900ms;
+        background: rgba(39, 38, 43, 0.99);
+        border-bottom: 0;
+        color: #fff;
+    }
+
+    @keyframes header-in {
+        0% {
+            transform: translateY(-50px)
+        }
+        100% {
+            transform: translateY(0)
+        }
+    }
+
+    #header a {
+        color: #aaa;
+    }
+
+    #header .active-link {
+        color: #fff !important;
+    }
+
+    #main {
+        margin-top: 0;
+    }
+
+    @keyframes erupt-fly-in {
+        0% {
+            opacity: 0;
+            transform: translateY(300px);
+        }
+        30% {
+            opacity: .3;
+        }
+        60% {
+            opacity: .8;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .3), 0 0 30px rgba(0, 123, 255, .25);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 123, 255, .2);
+        }
+    }
+
+    #erupt-box {
+        opacity: 0;
+        transform: translateY(300px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 123, 255, .2);
+        border: 2px solid rgba(0, 123, 255, .3);
+        position: relative;
+        animation: erupt-fly-in 1s cubic-bezier(.25, .46, .45, .94) forwards;
+        will-change: transform, opacity;
+    }
+
+    #erupt-box::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 8px;
+        z-index: -1;
+        filter: blur(10px);
+    }
+
+    @keyframes erupt-inner-fade-in {
+        0%, 55% {
+            opacity: 0
+        }
+        100% {
+            opacity: 1
+        }
+    }
+
+    .eb-titlebar {
+        opacity: 0;
+        animation: erupt-inner-fade-in 1s ease-out .1ms forwards;
+        display: flex;
+        align-items: center;
+        height: 38px;
+        background: #2d2d2d;
+        border-bottom: 1px solid #191919;
+        padding: 0 14px;
+        flex-shrink: 0;
+        gap: 8px;
+        user-select: none;
+    }
+
+    .eb-traffic {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        margin-right: 8px;
+    }
+
+    .eb-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .eb-dot-r {
+        background: #ff5f57
+    }
+
+    .eb-dot-y {
+        background: #ffbd2e
+    }
+
+    .eb-dot-g {
+        background: #28c840
+    }
+
+    .eb-titlebar-name {
+        flex: 1;
+        text-align: center;
+        font-size: .78em;
+        color: rgba(255, 255, 255, .45);
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    .eb-titlebar-badge {
+        font-size: .68em;
+        color: rgba(99, 102, 241, .8);
+        background: rgba(99, 102, 241, .1);
+        border: 1px solid rgba(99, 102, 241, .22);
+        border-radius: 4px;
+        padding: 1px 8px;
+    }
+
+    .eb-content {
+        opacity: 0;
+        animation: erupt-inner-fade-in 1.8s ease-out .1ms forwards;
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+        min-height: 0;
+    }
+
+    .eb-sidebar {
+        width: 200px;
+        flex-shrink: 0;
+        background: #252526;
+        color: #cccccc;
+        overflow: auto;
+        border-right: 1px solid #191919;
+        font-family: 'SFMono-Regular', monospace;
+        font-size: .82em;
+    }
+
+    .eb-sidebar-header {
+        padding: 8px 14px 7px;
+        font-size: .72em;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, .35);
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
+        margin-bottom: 6px;
+    }
+
+    .eb-tabs {
+        display: flex;
+        background: #252526;
+        border-bottom: 1px solid #191919;
+        flex-shrink: 0;
+    }
+
+    .eb-tab {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 0 16px;
+        height: 34px;
+        font-size: .8em;
+        color: rgba(255, 255, 255, .78);
+        border-right: 1px solid #191919;
+        background: #1e1e1e;
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    .eb-tab-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #007bff;
+        opacity: .6;
+    }
+
+    .eb-tips {
+        width: 220px;
+        flex-shrink: 0;
+        padding: 16px 14px;
+        overflow: auto;
+        background: #12121f;
+        border-left: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .code-tip-card {
+        border-left: 2px solid;
+        padding: 8px 10px;
+        margin-bottom: 14px;
+        border-radius: 0 6px 6px 0;
+        background: rgba(255, 255, 255, .04);
+    }
+
+    .code-tip-card:last-child {
+        margin-bottom: 0
+    }
+
+    .code-tip-card h5 {
+        font-size: .85em;
+        margin: 0 0 4px;
+        font-weight: 700
+    }
+
+    .code-tip-card p {
+        font-size: .82em;
+        color: rgba(255, 255, 255, .48);
+        margin: 0;
+        line-height: 1.5
+    }
+
     /* ═══════════════════════════════════════
        BLUEPRINT WIREFRAME GRID — vite.dev style
        ═══════════════════════════════════════ */
@@ -242,8 +481,8 @@
         margin: 0;
     }
 
-    /* ── BUTTONS ── */
-    .btn {
+    /* ── BUTTONS (blueprint, not Bootstrap) ── */
+    .wbtn {
         display: inline-flex;
         align-items: center;
         gap: 7px;
@@ -261,17 +500,17 @@
         white-space: nowrap;
     }
 
-    .btn:hover {
+    .wbtn:hover {
         border-color: var(--c-brand);
         color: var(--c-brand);
     }
 
-    .btn-o {
+    .wbtn-o {
         border-color: var(--c-brand);
         color: var(--c-brand);
     }
 
-    .btn-o:hover {
+    .wbtn-o:hover {
         background: var(--c-brand);
         color: #fff !important;
     }
@@ -568,104 +807,157 @@
 </style>
 
 <div ng-controller="home">
-    <div class="fr">
 
-        <!-- ════════════════════════════════════════
-             §1  HERO
-             ════════════════════════════════════════ -->
-        <div class="r g-bg">
-            <div class="spl" style="min-height:500px">
-                <!-- Left: headline + CTA -->
-                <div class="l"
-                     style="flex:0 0 44%;padding:60px 48px;display:flex;flex-direction:column;justify-content:center">
-                    <span class="tag">Open Source · Java · Annotation Driven</span>
-                    <h1 class="h1">Erupt<br><span style="color:var(--c-brand)">Engine</span></h1>
-                    <p class="sub" ng-bind-html="'home.v2.hero.sub'|i18nHtml"
-                       style="font-size:15.5px;max-width:44ch"></p>
-
-                    <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-                        <a class="btn btn-o" href="https://www.erupt.xyz/demo" target="_blank">
-                            <svg fill="currentColor" height="11" viewBox="0 0 24 24" width="11">
-                                <polygon points="5,3 19,12 5,21"/>
-                            </svg>
-                            {{'home.v2.cta.demo'|i18n}}
-                        </a>
-                        <a class="btn" href="https://docs.erupt.xyz" target="_blank">{{'home.v2.cta.docs'|i18n}}</a>
-                        <a href="https://github.com/erupts/erupt" style="display:flex;align-items:center"
-                           target="_blank">
-                            <img src="https://img.shields.io/github/stars/erupts/erupt?style=social"
-                                 style="height:18px;opacity:.8">
-                        </a>
+    <!-- ── HERO (original) ── -->
+    <div>
+        <div style="background:#27262b url(images/tile.png);">
+            <div style="padding-top:60px">
+                <div class="text-center" style="color:#fff">
+                    <div style="margin-top:60px;text-align:center">
+                        <span id="home-logo"><img alt="" src="assets/logo2.svg" width="120px"></span>
                     </div>
-
-                    <!-- inline code hint -->
-                    <div style="margin-top:32px;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--c-border);font-family:var(--c-mono);font-size:12px;color:var(--c-text2);background:rgba(255,255,255,.85);width:fit-content">
-                        <span style="color:var(--c-brand)">@Erupt</span>
-                        <span class="pu">(name = </span>
-                        <span style="color:#059669">"Hello World"</span>
-                        <span class="pu">)</span>
-                        <span style="color:var(--c-brand);opacity:.6;margin:0 4px">→</span>
-                        <span>全栈管理系统</span>
-                    </div>
+                    <h1 style="margin-top:30px">Erupt Engine</h1>
+                    <h4 style="margin-top:18px"><span style="color:#ffc107"> {{'home.subtitle'|i18n}} </span> ⚔
+                        {{'home.subtitle2'|i18n}}</h4>
+                    <p style="margin-top:26px;gap:20px;display:flex;justify-content:center">
+                        <button class="btn btn-primary" ng-click="go('#!/contrast')">{{'home.btn.code'|i18n}}</button>
+                        <button class="btn btn-success" ng-click="go('#!/doc')">{{'home.btn.doc'|i18n}}</button>
+                        <button class="btn btn-danger" ng-click="go('/demo',true)">{{'home.btn.demo'|i18n}}</button>
+                    </p>
                 </div>
+            </div>
+            <div style="position:relative">
+                <div class="container" style="margin-top:60px;padding-bottom:20px;position:relative;z-index:1;">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="erupt-box"
+                                 style="display:flex;flex-direction:column;overflow:hidden;border-radius:8px;position:relative;z-index:2;">
+                                <div class="eb-titlebar">
+                                    <div class="eb-traffic">
+                                        <span class="eb-dot eb-dot-r"></span>
+                                        <span class="eb-dot eb-dot-y"></span>
+                                        <span class="eb-dot eb-dot-g"></span>
+                                    </div>
+                                    <span class="eb-titlebar-name">DemoErupt.java — erupt-demo</span>
+                                    <span class="eb-titlebar-badge">Erupt Engine</span>
+                                </div>
+                                <div class="eb-content">
+                                    <div class="eb-sidebar">
+                                        <div class="eb-sidebar-header" ng-bind-html="'home.code.title'|i18nHtml"></div>
+                                        <div ng-repeat="(key,val) in project" style="padding:0 6px;margin-top:2px">
+                                            <div style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px">
+                                                <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg"
+                                                     width="7px">
+                                                <img alt="" src="images/file/finder.svg" style="width:15px;opacity:0.7">
+                                                <span ng-class="val.active||'del-line'"
+                                                      ng-style="{animationDelay:($index*400)+'ms'}"
+                                                      style="font-size:0.9em">{{key}}</span>
+                                            </div>
+                                            <div ng-if="val.sub">
+                                                <div ng-repeat="(key,val) in val.sub"
+                                                     style="padding-left:20px;margin-top:2px">
+                                                    <div ng-if="val.file"
+                                                         style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px;background:rgba(0,123,255,0.14)">
+                                                        <img alt="" src="images/file/file.svg"
+                                                             style="width:14px;opacity:0.85">
+                                                        <span ng-class="val.active||'del-line'"
+                                                              ng-style="{color:val.active&&'#FFEB3B'}"
+                                                              style="font-size:0.88em">{{key}}</span>
+                                                    </div>
+                                                    <div ng-if="!val.file"
+                                                         style="display:flex;align-items:center;gap:4px;padding:3px 6px">
+                                                        <img alt="" ng-class="val.sub||'deg90'"
+                                                             src="images/file/below.svg" width="7px">
+                                                        <img alt="" src="images/file/finder.svg"
+                                                             style="width:14px;opacity:0.5">
+                                                        <span class="del-line" style="font-size:0.88em">{{key}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;flex-direction:column;width:100%;overflow:hidden;position:relative">
+                                        <div class="eb-tabs">
+                                            <div class="eb-tab"><span class="eb-tab-dot"></span>DemoErupt.java</div>
+                                        </div>
+                                        <pre id="DemoErupt"
+                                             style="margin:0;border-radius:0;height:490px;box-shadow:inset 0 0 10px #2310109e">
+<code class="prism language-java animated bounce">/**
+  *  plug-and-play 🚀
+  *  @Erupt > html + js + css + controller + service + dao + xml + entity + ddl
+  *  Class > API + DB + Web + Flow + UPMS + Log + I18n + ...
+  */
+@Table
+@Entity
+@Erupt(name = "Hello World")
+public class DemoErupt extends BaseModel {
 
-                <!-- Right: code block (flush, no padding) -->
-                <div style="flex:1;overflow:hidden">
-                    <div class="cb" style="min-height:480px">
-                        <div class="cb-hd">
-                            <span class="cb-dot" style="background:#ff5f57"></span>
-                            <span class="cb-dot" style="background:#ffbd2e"></span>
-                            <span class="cb-dot" style="background:#28c840"></span>
-                            <span class="cb-title">DemoErupt.java — erupt-demo</span>
-                        </div>
-                        <div class="cb-body"><span class="cm">/**
- *  {{'home.code.comment'|i18n}}
- *  @Erupt → HTML + CSS + JS + API + DB + RBAC + Audit + i18n
- */</span>
-                            <span class="an">@Table</span> <span class="an">@Entity</span>
-                            <span class="an">@Erupt</span>(name = <span class="st">"Hello World"</span>,
-                            power = <span class="an">@Power</span>(exportable = <span class="nu">true</span>),
-                            filter = <span class="an">@Filter</span>(<span class="st">"dept_id = #{user.deptId}"</span>))
-                            <span class="kw">public class</span> <span class="ty">DemoErupt</span> <span class="kw">extends</span>
-                            <span class="ty">BaseModel</span> {
+    @EruptField(
+            views = @View(title = "Text"),
+            edit = @Edit(title = "Text", notNull = true, search = @Search)
+    )
+    private String input;
 
-                            <span class="an">@EruptField</span>(
-                            views = <span class="an">@View</span>(title = <span class="st">"Text"</span>),
-                            edit = <span class="an">@Edit</span>(title = <span class="st">"Text"</span>, notNull = <span
-                                    class="nu">true</span>,
-                            search = <span class="an">@Search</span>)
-                            )
-                            <span class="kw">private</span> <span class="ty">String</span> input;
+    @EruptField(
+            views = @View(title = "Number", sortable = true),
+            edit = @Edit(title = "Number", search = @Search)
+    )
+    private Float number;
 
-                            <span class="an">@EruptField</span>(
-                            views = <span class="an">@View</span>(title = <span class="st">"Number"</span>, sortable =
-                            <span class="nu">true</span>),
-                            edit = <span class="an">@Edit</span>(title = <span class="st">"Number"</span>, search =
-                            <span class="an">@Search</span>)
-                            )
-                            <span class="kw">private</span> <span class="ty">Float</span> number;
+    @EruptField(
+            views = @View(title = "Date"),
+            edit = @Edit(title = "Date", search = @Search(vague = true))
+    )
+    private Date date;
 
-                            <span class="an">@EruptField</span>(
-                            views = <span class="an">@View</span>(title = <span class="st">"Date"</span>),
-                            edit = <span class="an">@Edit</span>(title = <span class="st">"Date"</span>,
-                            search = <span class="an">@Search</span>(vague = <span class="nu">true</span>))
-                            )
-                            <span class="kw">private</span> <span class="ty">Date</span> date;
+    @EruptField(
+            views = @View(title = "Code", type = ViewType.CODE),
+            edit = @Edit(title = "Code → Java", type = EditType.CODE_EDITOR,
+                codeEditType = @CodeEditorType(language = "java"))
+    )
+    private String code;
 
-                            <span class="an">@EruptField</span>(
-                            views = <span class="an">@View</span>(title = <span class="st">"AI 摘要"</span>, type =
-                            <span class="ty">ViewType</span>.HTML),
-                            edit = <span class="an">@Edit</span>(title = <span class="st">"AI"</span>, type = <span
-                                    class="ty">EditType</span>.AI)
-                            )
-                            <span class="kw">private</span> <span class="ty">String</span> aiSummary;
-
-                            }
+}</code></pre>
+                                        <a class="badge badge-primary" href="#!/contrast"
+                                           style="position:absolute;right:16px;bottom:16px;font-family:initial">{{'home.code.more'|i18n}}</a>
+                                    </div>
+                                    <div class="d-none d-md-block eb-tips">
+                                        <div class="code-tip-card animated bounceInLeft delay-1"
+                                             style="border-color:#007bff">
+                                            <h5 class="text-primary">{{'home.code.tip1.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip1.desc'|i18n}}</p>
+                                        </div>
+                                        <div class="code-tip-card animated bounceInLeft delay-2"
+                                             style="border-color:#ffc107">
+                                            <h5 class="text-warning">{{'home.code.tip2.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip2.desc'|i18n}}</p>
+                                        </div>
+                                        <div class="code-tip-card animated bounceInLeft delay-3"
+                                             style="border-color:#28a745">
+                                            <h5 class="text-success">{{'home.code.tip3.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip3.desc'|i18n}}</p>
+                                        </div>
+                                        <div class="code-tip-card animated bounceInLeft delay-4"
+                                             style="border-color:#dc3545">
+                                            <h5 class="text-danger">{{'home.code.tip4.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip4.desc'|i18n}}</p>
+                                        </div>
+                                        <div class="code-tip-card animated bounceInLeft delay-5"
+                                             style="border-color:#17a2b8">
+                                            <h5 class="text-info">{{'home.code.tip5.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip5.desc'|i18n}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="fr">
 
         <!-- ════════════════════════════════════════
              §2  TRUSTED BY (marquee)
@@ -966,32 +1258,57 @@
             <div class="spl">
                 <!-- code side -->
                 <div class="l" style="flex:0 0 50%;overflow:hidden">
-                    <div class="cb" style="min-height:340px">
+                    <div class="cb" style="min-height:340px;display:flex;flex-direction:column">
                         <div class="cb-hd">
                             <span class="cb-dot" style="background:#ff5f57"></span>
                             <span class="cb-dot" style="background:#ffbd2e"></span>
                             <span class="cb-dot" style="background:#28c840"></span>
                             <span class="cb-title">EruptAI · Conversation</span>
                         </div>
-                        <div class="cb-body" style="font-size:12px"><span class="cm">// 用户提问</span>
-                            <span class="st">"昨天金额 &gt; 1000 的订单有多少？"</span>
-
-                            <span class="cm">// AI 自动推理 + 调用 @Erupt 工具</span>
-                            <span class="an">@Erupt</span>:Order.query
-                            SQL → SELECT * FROM orders
-                            WHERE amount &gt; 1000
-                            AND date = yesterday
-
-                            <span class="cm">// AI 返回</span>
-                            <span style="color:rgba(255,255,255,.55)">昨日订单 &gt; 1000：</span><span
-                                    class="ok">17 条</span>
-                            <span style="color:rgba(255,255,255,.55)">状态异常：</span><span
-                                    style="color:#f97316">3 条</span>
-                            <span class="cm">✓ 0.8s · 1340 tokens</span>
-
-                            <span class="cm">// 批量更新</span>
-                            <span class="an">@Erupt</span>:Order.update → <span class="ok">3 rows</span>
-                            <span class="cm">✓ audit#4821 · 0.3s</span></div>
+                        <!-- chat messages -->
+                        <div style="flex:1;padding:16px 18px;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+                            <!-- user bubble -->
+                            <div style="display:flex;justify-content:flex-end">
+                                <div style="max-width:80%;background:rgba(255,255,255,.09);border-radius:14px 14px 3px 14px;padding:9px 14px;font-size:12px;color:rgba(255,255,255,.85);line-height:1.55">
+                                    {{'home.v2.ai.chat.q'|i18n}}
+                                </div>
+                            </div>
+                            <!-- ai reply -->
+                            <div style="display:flex;flex-direction:column;gap:8px">
+                                <!-- tool chip 1 -->
+                                <div style="display:flex;align-items:center;gap:6px">
+                                    <span style="font-size:11px;background:rgba(139,92,246,.25);color:#c4b5fd;border:1px solid rgba(139,92,246,.4);border-radius:20px;padding:2px 10px;white-space:nowrap">Order@Erupt · query</span>
+                                    <span style="font-size:10px;font-family:monospace;color:rgba(255,255,255,.35);white-space:nowrap">SELECT … WHERE amount&gt;1000 AND date=yesterday</span>
+                                </div>
+                                <!-- ai answer 1 -->
+                                <div style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.6;padding-left:2px">
+                                    {{'home.v2.ai.chat.a1'|i18n}}
+                                </div>
+                                <div style="font-size:11px;color:rgba(255,255,255,.3);font-family:monospace">
+                                    {{'home.v2.ai.chat.a1.s'|i18n}}
+                                </div>
+                                <!-- tool chip 2 -->
+                                <div style="display:flex;align-items:center;gap:6px;margin-top:2px">
+                                    <span style="font-size:11px;background:rgba(34,197,94,.18);color:#86efac;border:1px solid rgba(34,197,94,.35);border-radius:20px;padding:2px 10px;white-space:nowrap">Order@Erupt · update</span>
+                                </div>
+                                <!-- ai answer 2 -->
+                                <div style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.6;padding-left:2px">
+                                    {{'home.v2.ai.chat.a2'|i18n}}
+                                </div>
+                                <div style="font-size:11px;color:rgba(255,255,255,.3);font-family:monospace">
+                                    {{'home.v2.ai.chat.a2.s'|i18n}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- input bar -->
+                        <div style="border-top:1px solid rgba(255,255,255,.08);padding:10px 14px;display:flex;align-items:center;gap:8px">
+                            <div style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 12px;font-size:12px;color:rgba(255,255,255,.25)">
+                                {{'home.v2.ai.chat.ph'|i18n}}
+                            </div>
+                            <div style="font-size:11px;background:rgba(139,92,246,.3);color:#c4b5fd;border:1px solid rgba(139,92,246,.4);border-radius:6px;padding:5px 10px;white-space:nowrap;cursor:default">
+                                {{'home.v2.ai.chat.send'|i18n}}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1016,8 +1333,8 @@
                         </div>
                     </div>
                     <div style="padding:20px 24px;border-top:1px solid var(--c-border);display:flex;gap:10px">
-                        <a class="btn btn-o" ng-click="go('#!/ai')">了解 Erupt AI →</a>
-                        <a class="btn" ng-click="go('#!/ai-claw')">AI Claw →</a>
+                        <a class="wbtn wbtn-o" ng-click="go('#!/ai')">了解 Erupt AI →</a>
+                        <a class="wbtn" ng-click="go('#!/ai-claw')">AI Claw →</a>
                     </div>
                 </div>
             </div>
@@ -1299,10 +1616,10 @@
                 {{'home.license.desc'|i18n}}
             </p>
             <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-                <a class="btn btn-o" href="https://www.erupt.xyz/demo" style="padding:11px 28px;font-size:14px"
+                <a class="wbtn wbtn-o" href="https://www.erupt.xyz/demo" style="padding:11px 28px;font-size:14px"
                    target="_blank">{{'home.v2.cta.demo'|i18n}}</a>
-                <a class="btn" href="https://docs.erupt.xyz" style="padding:11px 28px;font-size:14px" target="_blank">{{'home.v2.cta.docs'|i18n}}</a>
-                <a class="btn" href="#!/contrast" style="padding:11px 28px;font-size:14px">{{'home.btn.code'|i18n}}</a>
+                <a class="wbtn" href="https://docs.erupt.xyz" style="padding:11px 28px;font-size:14px" target="_blank">{{'home.v2.cta.docs'|i18n}}</a>
+                <a class="wbtn" href="#!/contrast" style="padding:11px 28px;font-size:14px">{{'home.btn.code'|i18n}}</a>
             </div>
         </div>
 
