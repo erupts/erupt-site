@@ -28,23 +28,33 @@
                 <a class="btn btn-sm align-self-center btn-link" href="#!/" ng-class="currRouter=='/'?'active-link':''">
                     {{'nav.home' | i18n}}
                 </a>
-                <a class="btn btn-sm align-self-center btn-link" href="#!/ai"
-                   ng-class="currRouter=='/ai'?'active-link':''">
-                    {{'nav.ai' | i18n}}
-                </a>
                 <span class="dropdown show more-dropdown">
                     <a aria-expanded="false" aria-haspopup="true"
                        class="btn btn-sm align-self-center btn-link dropdown-toggle"
                        data-toggle="dropdown"
-                       href="javascript:;" ng-class="['/ai-claw','/cube','/contrast','/component','/module'].indexOf(currRouter)>=0?'active-link':''" role="button">
+                       href="javascript:;"
+                       ng-class="['/ai','/ai-claw','/cube','/flow','/cloud'].indexOf(currRouter)>=0?'active-link':''"
+                       role="button">
+                        {{'nav.products' | i18n}}
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#!/ai">{{'nav.ai' | i18n}}</a>
+                        <a class="dropdown-item" href="#!/ai-claw">{{'nav.aiclaw' | i18n}}</a>
+                        <a class="dropdown-item" href="#!/cloud">{{'nav.cloud' | i18n}}</a>
+                        <a class="dropdown-item" href="#!/flow">{{'nav.flow' | i18n}}</a>
+                        <a class="dropdown-item" href="#!/cube">{{'nav.cube' | i18n}}</a>
+                    </div>
+                </span>
+                <span class="dropdown show more-dropdown">
+                    <a aria-expanded="false" aria-haspopup="true"
+                       class="btn btn-sm align-self-center btn-link dropdown-toggle"
+                       data-toggle="dropdown"
+                       href="javascript:;"
+                       ng-class="['/contrast','/component','/module'].indexOf(currRouter)>=0?'active-link':''"
+                       role="button">
                         {{'nav.more' | i18n}}
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#!/ai-claw">{{'nav.aiclaw' | i18n}}</a>
-                        <a class="dropdown-item" href="#!/cube">{{'nav.cube' | i18n}}</a>
-                        <a class="dropdown-item" href="#!/flow">{{'nav.flow' | i18n}}</a>
-                        <a class="dropdown-item" href="#!/cloud">{{'nav.cloud' | i18n}}</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#!/contrast">{{'nav.contrast' | i18n}}</a>
                         <a class="dropdown-item" href="#!/component">{{'nav.component' | i18n}}</a>
                         <a class="dropdown-item" href="#!/module">{{'nav.module' | i18n}}</a>

@@ -381,6 +381,47 @@
         box-shadow: 0 0 48px rgba(124, 106, 255, .1);
     }
 
+    /* ── Bootstrap logo card (light marquee) ── */
+    .bs-logo-card {
+        flex-shrink: 0;
+        height: 54px;
+        width: 148px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        padding: 8px 14px;
+        transition: border-color .2s, box-shadow .2s;
+        cursor: default;
+    }
+
+    .bs-logo-card:hover {
+        border-color: #007bff;
+        box-shadow: 0 2px 8px rgba(0, 123, 255, .1);
+    }
+
+    .bs-logo-card img {
+        max-height: 22px;
+        max-width: 88px;
+        object-fit: contain;
+        opacity: .55;
+        transition: opacity .2s;
+    }
+
+    .bs-logo-card:hover img {
+        opacity: 1;
+    }
+
+    .bs-logo-card span {
+        font-size: 9.5px;
+        color: #6c757d;
+        font-family: monospace;
+    }
+
     /* ── Stats strip ── */
     .lr-stats {
         background: var(--lr-bg);
@@ -1691,115 +1732,180 @@ public class DemoErupt extends BaseModel {
 
         <div id="erupt-features" style="background:var(--lr-bg)">
 
-            <!-- 1. Using — dark marquee -->
-            <div class="lr-using">
-                <div class="lr-using-label">{{'home.using.title'|i18n}} · 300+</div>
+            <!-- 1. Using — Bootstrap light marquee -->
+            <div style="background:#fff;padding:48px 0;overflow:hidden;position:relative;border-top:1px solid #dee2e6;border-bottom:1px solid #dee2e6">
+                <div style="position:absolute;top:0;bottom:0;left:0;width:120px;background:linear-gradient(to right,#fff,transparent);z-index:2;pointer-events:none"></div>
+                <div style="position:absolute;top:0;bottom:0;right:0;width:120px;background:linear-gradient(to left,#fff,transparent);z-index:2;pointer-events:none"></div>
+                <p class="text-center text-muted mb-4"
+                   style="font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700">
+                    {{'home.using.title'|i18n}} · 300+</p>
                 <div class="lr-track-wrap">
                     <div class="lr-track">
-                        <div class="lr-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                        <div class="bs-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
                             <img alt="{{u.name}}" ng-src="{{u.logo}}"><span>{{u.name}}</span>
                         </div>
-                        <div class="lr-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                        <div class="bs-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
                             <img alt="{{u.name}}" ng-src="{{u.logo}}"><span>{{u.name}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="lr-track-wrap">
+                <div class="lr-track-wrap" style="margin-top:8px">
                     <div class="lr-track-r">
-                        <div class="lr-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                        <div class="bs-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
                             <img alt="{{u.name}}" ng-src="{{u.logo}}"><span>{{u.name}}</span>
                         </div>
-                        <div class="lr-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                        <div class="bs-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
                             <img alt="{{u.name}}" ng-src="{{u.logo}}"><span>{{u.name}}</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 2. Stats strip -->
-            <div class="lr-stats">
-                <div class="lr-stats-inner">
-                    <div class="lr-stat"><span class="num">23+</span><span class="lbl">字段类型</span></div>
-                    <div class="lr-stat"><span class="num">12</span><span class="lbl">种语言</span></div>
-                    <div class="lr-stat"><span class="num">15+</span><span class="lbl">大模型支持</span></div>
-                    <div class="lr-stat"><span class="num">10+</span><span class="lbl">数据库</span></div>
-                    <div class="lr-stat"><span class="num">0</span><span class="lbl">前端代码</span></div>
-                    <div class="lr-stat"><span class="num">Apache 2.0</span><span class="lbl">开源协议</span></div>
+            <!-- 2. Stats strip — Bootstrap -->
+            <div style="background:#f8f9fa;border-top:1px solid #dee2e6;border-bottom:1px solid #dee2e6;padding:36px 0">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-md-2 col-4 mb-4 mb-md-0">
+                            <div style="font-size:2rem;font-weight:800;color:#007bff;letter-spacing:-.03em;line-height:1">
+                                23+
+                            </div>
+                            <div class="text-muted mt-1"
+                                 style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">字段类型
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-4 mb-md-0">
+                            <div style="font-size:2rem;font-weight:800;color:#28a745;letter-spacing:-.03em;line-height:1">
+                                12
+                            </div>
+                            <div class="text-muted mt-1"
+                                 style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">种语言
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-4 mb-md-0">
+                            <div style="font-size:2rem;font-weight:800;color:#6f42c1;letter-spacing:-.03em;line-height:1">
+                                15+
+                            </div>
+                            <div class="text-muted mt-1"
+                                 style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">大模型支持
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-4 mb-md-0">
+                            <div style="font-size:2rem;font-weight:800;color:#fd7e14;letter-spacing:-.03em;line-height:1">
+                                10+
+                            </div>
+                            <div class="text-muted mt-1"
+                                 style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">数据库
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-4 mb-md-0">
+                            <div style="font-size:2rem;font-weight:800;color:#dc3545;letter-spacing:-.03em;line-height:1">
+                                0
+                            </div>
+                            <div class="text-muted mt-1"
+                                 style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">前端代码
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-4 mb-md-0">
+                            <div style="font-size:1.3rem;font-weight:800;color:#20c997;letter-spacing:-.02em;line-height:1">
+                                Apache 2.0
+                            </div>
+                            <div class="text-muted mt-1"
+                                 style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">开源协议
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- 2. How it works -->
-            <section class="lr-section lr-glow-top">
-                <div class="lr-wrap">
-                    <div class="reveal" style="margin-bottom:56px">
-                        <div class="lr-tag">How it works</div>
-                        <h2 class="lr-h2">{{'home.v2.how.title.pre'|i18n}}<span class="lr-grad">Java</span>{{'home.v2.how.title.post'|i18n}}
+            <div style="background:#fff;padding:56px 0">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <small class="text-uppercase text-primary" style="font-weight:700;letter-spacing:.1em">How it
+                            works</small>
+                        <h2 class="mt-2">{{'home.v2.how.title.pre'|i18n}}<b>Java</b>{{'home.v2.how.title.post'|i18n}}
                         </h2>
-                        <p class="lr-lede" style="margin-top:16px">{{'home.v2.how.lede'|i18n}}</p>
+                        <p class="lead text-muted mt-3">{{'home.v2.how.lede'|i18n}}</p>
                     </div>
-                    <div class="lr-grid-box reveal">
-                        <div class="lr-steps" id="how-principle">
-                            <div class="lr-step">
-                                <div class="lr-step-num">01</div>
-                                <h4>{{'home.v2.how.s1.h'|i18n}}</h4>
-                                <p>{{'home.v2.how.s1.p'|i18n}}</p>
-                                <pre class="language-java">// User.java
+                    <div class="row" id="how-principle">
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <span class="badge badge-primary mb-3">01</span>
+                                    <h5>{{'home.v2.how.s1.h'|i18n}}</h5>
+                                    <p class="text-muted">{{'home.v2.how.s1.p'|i18n}}</p>
+                                    <pre style="font-size:11px;border-radius:4px;margin:0"><code class="language-java">// User.java
 @Erupt(name = "用户")
 class User extends BaseModel {
   @EruptField
   private String name;
-}</pre>
+}</code></pre>
+                                </div>
                             </div>
-                            <div class="lr-step">
-                                <div class="lr-step-num">02</div>
-                                <h4>{{'home.v2.how.s2.h'|i18n}}</h4>
-                                <p>{{'home.v2.how.s2.p'|i18n}}</p>
-                                <pre><span style="color:#444">▶ EruptBoot starting...</span>
-<span style="color:#7c6aff">scan</span>  <span style="color:#4ade80">✓</span>  <span style="color:#fb923c">3</span>  entities
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <span class="badge badge-success mb-3">02</span>
+                                    <h5>{{'home.v2.how.s2.h'|i18n}}</h5>
+                                    <p class="text-muted">{{'home.v2.how.s2.p'|i18n}}</p>
+                                    <pre style="font-size:11px;background:#1d2124;color:#aaa;border-radius:4px;padding:10px"><span
+                                            style="color:#7c6aff">scan</span>  <span
+                                            style="color:#4ade80">✓</span>  <span style="color:#fb923c">3</span> entities
 <span style="color:#7c6aff">meta</span>  <span style="color:#4ade80">✓</span>  <span style="color:#fb923c">17</span> fields
-<span style="color:#4ade80">✓ ready</span> <span style="color:#333">in 1.2s</span></pre>
+<span style="color:#4ade80">✓ ready</span> in 1.2s</pre>
+                                </div>
                             </div>
-                            <div class="lr-step">
-                                <div class="lr-step-num">03</div>
-                                <h4>{{'home.v2.how.s3.h'|i18n}}</h4>
-                                <p>{{'home.v2.how.s3.p'|i18n}}</p>
-                                <pre><span style="color:#444">{</span>
-  <span style="color:#f87171">"type"</span>: <span style="color:#86efac">"table"</span>,
-  <span style="color:#f87171">"cols"</span>: [...]<span style="color:#444">,</span>
-  <span style="color:#f87171">"edit"</span>: {...}
-<span style="color:#444">}</span></pre>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <span class="badge badge-warning mb-3">03</span>
+                                    <h5>{{'home.v2.how.s3.h'|i18n}}</h5>
+                                    <p class="text-muted">{{'home.v2.how.s3.p'|i18n}}</p>
+                                    <pre style="font-size:11px;background:#1d2124;color:#aaa;border-radius:4px;padding:10px"><span
+                                            style="color:#f87171">"type"</span>: <span
+                                            style="color:#86efac">"table"</span>,
+<span style="color:#f87171">"cols"</span>: [...],
+<span style="color:#f87171">"edit"</span>: {...}</pre>
+                                </div>
                             </div>
-                            <div class="lr-step">
-                                <div class="lr-step-num">04</div>
-                                <h4>{{'home.v2.how.s4.h'|i18n}}</h4>
-                                <p>{{'home.v2.how.s4.p'|i18n}}</p>
-                                <pre><span style="color:#60a5fa">GET</span> <span
-                                        style="color:#4ade80">/admin/user</span>
-<span style="color:#fb923c">200</span> OK · <span style="color:#fb923c">128</span> rows
-<span style="color:#4ade80">✓ live</span> <span style="color:#333">· hot-reload</span></pre>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <span class="badge badge-danger mb-3">04</span>
+                                    <h5>{{'home.v2.how.s4.h'|i18n}}</h5>
+                                    <p class="text-muted">{{'home.v2.how.s4.p'|i18n}}</p>
+                                    <pre style="font-size:11px;background:#1d2124;color:#aaa;border-radius:4px;padding:10px"><span
+                                            style="color:#60a5fa">GET</span> <span
+                                            style="color:#4ade80">/admin/user</span>
+<span style="color:#fb923c">200</span> OK · 128 rows
+<span style="color:#4ade80">✓ live</span> · hot-reload</pre>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- 3. Annotations -->
-            <section class="lr-section">
-                <div class="lr-wrap">
-                    <div class="reveal" style="margin-bottom:56px">
-                        <div class="lr-tag">Vocabulary</div>
-                        <h2 class="lr-h2">{{'home.v2.anno.title.pre'|i18n}}<span class="lr-grad">{{'home.v2.anno.title.mid'|i18n}}</span>
-                        </h2>
-                        <p class="lr-lede" style="margin-top:16px">{{'home.v2.anno.lede'|i18n}}</p>
+            <div style="background:#f8f9fa;padding:56px 0">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <small class="text-uppercase text-primary" style="font-weight:700;letter-spacing:.1em">Vocabulary</small>
+                        <h2 class="mt-2">{{'home.v2.anno.title.pre'|i18n}}<b>{{'home.v2.anno.title.mid'|i18n}}</b></h2>
+                        <p class="lead text-muted mt-3">{{'home.v2.anno.lede'|i18n}}</p>
                     </div>
-                    <div class="lr-grid-box reveal">
-                        <div class="lr-anno-grid">
-                            <!-- row 1: two wide cards -->
-                            <div class="lr-anno w6">
-                                <span class="lr-anno-cat">Class</span>
-                                <div class="atk">@Erupt <span class="badge">entity</span></div>
-                                <h4>{{'home.v2.anno.erupt.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.erupt.p'|i18n}}</p>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <small class="text-muted float-right">Class</small>
+                                    <code class="text-primary d-block mb-2" style="font-size:13px">@Erupt <span
+                                            class="badge badge-secondary">entity</span></code>
+                                    <h6>{{'home.v2.anno.erupt.h'|i18n}}</h6>
+                                    <p class="text-muted small">{{'home.v2.anno.erupt.p'|i18n}}</p>
                                 <div class="mini"><span style="color:var(--accent)">@Erupt</span>(
                                     name = <span style="color:var(--amber)">"用户管理"</span>,
                                     power = <span style="color:var(--accent)">@Power</span>(importable = <span
@@ -1809,12 +1915,17 @@ class User extends BaseModel {
                                             style="color:var(--amber)">"dept_id = #{user.deptId}"</span>)
                                     )
                                 </div>
+                                </div>
                             </div>
-                            <div class="lr-anno w6">
-                                <span class="lr-anno-cat">Field</span>
-                                <div class="atk">@EruptField <span class="badge">view + edit</span></div>
-                                <h4>{{'home.v2.anno.field.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.field.p'|i18n}}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <small class="text-muted float-right">Field</small>
+                                    <code class="text-primary d-block mb-2" style="font-size:13px">@EruptField <span
+                                            class="badge badge-secondary">view + edit</span></code>
+                                    <h6>{{'home.v2.anno.field.h'|i18n}}</h6>
+                                    <p class="text-muted small">{{'home.v2.anno.field.p'|i18n}}</p>
                                 <div class="mini"><span style="color:var(--accent)">@EruptField</span>(
                                     views = <span style="color:var(--accent)">@View</span>(title = <span
                                             style="color:var(--amber)">"用户名"</span>, sortable = <span
@@ -1823,416 +1934,459 @@ class User extends BaseModel {
                                             style="color:var(--accent)">@Search</span>)
                                     )
                                 </div>
+                                </div>
                             </div>
-                            <!-- row 2: four quarter cards -->
-                            <div class="lr-anno">
-                                <div class="atk">@Edit</div>
-                                <h4>{{'home.v2.anno.edit.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.edit.p'|i18n}}</p></div>
-                            <div class="lr-anno">
-                                <div class="atk">@View</div>
-                                <h4>{{'home.v2.anno.view.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.view.p'|i18n}}</p></div>
-                            <div class="lr-anno">
-                                <div class="atk">@Search</div>
-                                <h4>{{'home.v2.anno.search.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.search.p'|i18n}}</p></div>
-                            <div class="lr-anno">
-                                <div class="atk">@Power</div>
-                                <h4>{{'home.v2.anno.power.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.power.p'|i18n}}</p></div>
-                            <!-- row 3: four quarter cards -->
-                            <div class="lr-anno">
-                                <div class="atk">@Filter</div>
-                                <h4>{{'home.v2.anno.filter.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.filter.p'|i18n}}</p></div>
-                            <div class="lr-anno">
-                                <div class="atk">@RowOperation</div>
-                                <h4>{{'home.v2.anno.rowop.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.rowop.p'|i18n}}</p></div>
-                            <div class="lr-anno">
-                                <div class="atk">@Tree</div>
-                                <h4>{{'home.v2.anno.tree.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.tree.p'|i18n}}</p></div>
-                            <div class="lr-anno">
-                                <div class="atk">@Vis</div>
-                                <h4>{{'home.v2.anno.vis.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.vis.p'|i18n}}</p></div>
-                            <!-- row 4: two wide cards -->
-                            <div class="lr-anno w6">
-                                <div class="atk">@Drill <span class="badge">navigate</span></div>
-                                <h4>{{'home.v2.anno.drill.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.drill.p'|i18n}}</p></div>
-                            <div class="lr-anno w6">
-                                <div class="atk">@LinkTree <span class="badge">layout</span></div>
-                                <h4>{{'home.v2.anno.linktree.h'|i18n}}</h4>
-                                <p>{{'home.v2.anno.linktree.p'|i18n}}</p></div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@Edit</code>
+                                    <h6>{{'home.v2.anno.edit.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.edit.p'|i18n}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@View</code>
+                                    <h6>{{'home.v2.anno.view.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.view.p'|i18n}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@Search</code>
+                                    <h6>{{'home.v2.anno.search.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.search.p'|i18n}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@Power</code>
+                                    <h6>{{'home.v2.anno.power.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.power.p'|i18n}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@Filter</code>
+                                    <h6>{{'home.v2.anno.filter.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.filter.p'|i18n}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@RowOperation</code>
+                                    <h6>{{'home.v2.anno.rowop.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.rowop.p'|i18n}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@Tree</code>
+                                    <h6>{{'home.v2.anno.tree.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.tree.p'|i18n}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@Vis</code>
+                                    <h6>{{'home.v2.anno.vis.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.vis.p'|i18n}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@Drill <span class="badge badge-secondary">navigate</span></code>
+                                    <h6>{{'home.v2.anno.drill.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.drill.p'|i18n}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <code class="text-primary d-block mb-2">@LinkTree <span
+                                            class="badge badge-secondary">layout</span></code>
+                                    <h6>{{'home.v2.anno.linktree.h'|i18n}}</h6>
+                                    <p class="text-muted small mb-0">{{'home.v2.anno.linktree.p'|i18n}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- 4. What you get -->
-            <section class="lr-section lr-glow-top">
-                <div class="lr-wrap">
-                    <div class="reveal" style="margin-bottom:56px">
-                        <div class="lr-tag">What you get</div>
-                        <h2 class="lr-h2">{{'home.v2.out.title.pre'|i18n}}<span class="lr-grad">{{'home.v2.out.title.em'|i18n}}</span>
-                        </h2>
-                        <p class="lr-lede" style="margin-top:16px">{{'home.v2.out.lede'|i18n}}</p>
+            <div style="background:#fff;padding:56px 0">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <small class="text-uppercase text-primary" style="font-weight:700;letter-spacing:.1em">What you
+                            get</small>
+                        <h2 class="mt-2">{{'home.v2.out.title.pre'|i18n}}<b>{{'home.v2.out.title.em'|i18n}}</b></h2>
+                        <p class="lead text-muted mt-3">{{'home.v2.out.lede'|i18n}}</p>
                     </div>
-                    <div class="lr-grid-box reveal">
-                        <div class="lr-out-grid">
-                            <div class="lr-out-item w2">
-                                <div class="lr-oi">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <path d="M3 6h18M3 12h18M3 18h18"/>
-                                    </svg>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.list.h'|i18n}}</h5>
+                                    <p class="text-muted">{{'home.v2.out.list.p'|i18n}}</p>
+                                    <span class="badge badge-secondary mr-1">pagination</span><span
+                                        class="badge badge-secondary mr-1">multi-sort</span><span
+                                        class="badge badge-secondary mr-1">export.csv</span><span
+                                        class="badge badge-secondary">bulk.delete</span>
                                 </div>
-                                <h4>{{'home.v2.out.list.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.list.p'|i18n}}</p>
-                                <div class="lr-chips"><span class="lr-chip">pagination</span><span class="lr-chip">multi-sort</span><span
-                                        class="lr-chip">export.csv</span><span class="lr-chip">bulk.delete</span></div>
                             </div>
-                            <div class="lr-out-item w2">
-                                <div class="lr-oi"
-                                     style="background:rgba(8,145,178,.15);border-color:rgba(8,145,178,.25);color:#67e8f9">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <path d="M5 5h14v14H5zM5 12h14M12 5v14"/>
-                                    </svg>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.form.h'|i18n}}</h5>
+                                    <p class="text-muted">{{'home.v2.out.form.p'|i18n}}</p>
+                                    <span class="badge badge-secondary mr-1">notNull</span><span
+                                        class="badge badge-secondary mr-1">regex</span><span
+                                        class="badge badge-secondary mr-1">unique</span><span
+                                        class="badge badge-secondary mr-1">upload</span><span
+                                        class="badge badge-secondary">cascader</span>
                                 </div>
-                                <h4>{{'home.v2.out.form.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.form.p'|i18n}}</p>
-                                <div class="lr-chips"><span class="lr-chip">notNull</span><span
-                                        class="lr-chip">regex</span><span class="lr-chip">unique</span><span
-                                        class="lr-chip">upload</span><span class="lr-chip">cascader</span></div>
                             </div>
-                            <div class="lr-out-item">
-                                <div class="lr-oi"
-                                     style="background:rgba(22,163,74,.15);border-color:rgba(22,163,74,.25);color:#4ade80">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <rect height="10" rx="2" width="18" x="3" y="11"/>
-                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                                    </svg>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.perm.h'|i18n}}</h5>
+                                    <p class="text-muted mb-0">{{'home.v2.out.perm.p'|i18n}}</p>
                                 </div>
-                                <h4>{{'home.v2.out.perm.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.perm.p'|i18n}}</p>
                             </div>
-                            <div class="lr-out-item">
-                                <div class="lr-oi"
-                                     style="background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.25);color:#c4b5fd">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <path d="M4 7h16M4 12h16M4 17h12"/>
-                                    </svg>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.audit.h'|i18n}}</h5>
+                                    <p class="text-muted mb-0">{{'home.v2.out.audit.p'|i18n}}</p>
                                 </div>
-                                <h4>{{'home.v2.out.audit.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.audit.p'|i18n}}</p>
                             </div>
-                            <div class="lr-out-item">
-                                <div class="lr-oi"
-                                     style="background:rgba(217,119,6,.15);border-color:rgba(217,119,6,.25);color:#fbbf24">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <path d="M8 4h12v12M8 16l12-12M16 20H4V8"/>
-                                    </svg>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.api.h'|i18n}}</h5>
+                                    <p class="text-muted mb-0">{{'home.v2.out.api.p'|i18n}}</p>
                                 </div>
-                                <h4>{{'home.v2.out.api.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.api.p'|i18n}}</p>
                             </div>
-                            <div class="lr-out-item">
-                                <div class="lr-oi"
-                                     style="background:rgba(220,38,38,.15);border-color:rgba(220,38,38,.25);color:#fca5a5">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <path d="M3 17l6-6 4 4 8-8"/>
-                                    </svg>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.dash.h'|i18n}}</h5>
+                                    <p class="text-muted mb-0">{{'home.v2.out.dash.p'|i18n}}</p>
                                 </div>
-                                <h4>{{'home.v2.out.dash.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.dash.p'|i18n}}</p>
                             </div>
-                            <div class="lr-out-item">
-                                <div class="lr-oi">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>
-                                    </svg>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.ai.h'|i18n}}</h5>
+                                    <p class="text-muted mb-0">{{'home.v2.out.ai.p'|i18n}}</p>
                                 </div>
-                                <h4>{{'home.v2.out.ai.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.ai.p'|i18n}}</p>
                             </div>
-                            <div class="lr-out-item">
-                                <div class="lr-oi"
-                                     style="background:rgba(8,145,178,.15);border-color:rgba(8,145,178,.25);color:#67e8f9">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <path d="M3 4h18v16H3z"/>
-                                        <path d="M3 10h18"/>
-                                    </svg>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.tenant.h'|i18n}}</h5>
+                                    <p class="text-muted mb-0">{{'home.v2.out.tenant.p'|i18n}}</p>
                                 </div>
-                                <h4>{{'home.v2.out.tenant.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.tenant.p'|i18n}}</p>
                             </div>
-                            <div class="lr-out-item">
-                                <div class="lr-oi"
-                                     style="background:rgba(234,179,8,.15);border-color:rgba(234,179,8,.25);color:#fde047">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <circle cx="12" cy="12" r="3"/>
-                                        <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
-                                    </svg>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.flow.h'|i18n}}</h5>
+                                    <p class="text-muted mb-0">{{'home.v2.out.flow.p'|i18n}}</p>
                                 </div>
-                                <h4>{{'home.v2.out.flow.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.flow.p'|i18n}}</p>
                             </div>
-                            <div class="lr-out-item">
-                                <div class="lr-oi"
-                                     style="background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.25);color:#a5b4fc">
-                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" width="14">
-                                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
-                                    </svg>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>{{'home.v2.out.cloud.h'|i18n}}</h5>
+                                    <p class="text-muted mb-0">{{'home.v2.out.cloud.p'|i18n}}</p>
                                 </div>
-                                <h4>{{'home.v2.out.cloud.h'|i18n}}</h4>
-                                <p>{{'home.v2.out.cloud.p'|i18n}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- 5. AI Claw -->
-            <section class="lr-section">
-                <div class="lr-wrap">
-                    <div class="lr-ai-wrap reveal">
-                        <div class="lr-ai-left">
-                            <div class="lr-tag">AI Claw</div>
-                            <h3>{{'home.v2.ai.title'|i18n}}</h3>
-                            <p>{{'home.v2.ai.p'|i18n}}</p>
-                            <div class="lr-ai-feat">
-                                <div class="lr-arow"><span class="k">MCP</span>
+            <div style="background:#f8f9fa;padding:56px 0">
+                <div class="container">
+                    <div class="row align-items-stretch">
+                        <div class="col-md-7 mb-4">
+                            <small class="text-uppercase text-primary" style="font-weight:700;letter-spacing:.1em">AI
+                                Claw</small>
+                            <h2 class="mt-2">{{'home.v2.ai.title'|i18n}}</h2>
+                            <p class="text-muted">{{'home.v2.ai.p'|i18n}}</p>
+                            <div class="list-group mt-3">
+                                <div class="list-group-item d-flex" style="gap:12px">
+                                    <code class="text-primary" style="min-width:90px;flex-shrink:0">MCP</code>
                                     <div>
-                                        <div class="t">{{'home.v2.ai.mcp.t'|i18n}}</div>
-                                        <div class="d">{{'home.v2.ai.mcp.d'|i18n}}</div>
-                                    </div>
+                                        <div class="font-weight-bold">{{'home.v2.ai.mcp.t'|i18n}}</div>
+                                        <small class="text-muted">{{'home.v2.ai.mcp.d'|i18n}}</small></div>
                                 </div>
-                                <div class="lr-arow"><span class="k">@AiToolbox</span>
+                                <div class="list-group-item d-flex" style="gap:12px">
+                                    <code class="text-primary" style="min-width:90px;flex-shrink:0">@AiToolbox</code>
                                     <div>
-                                        <div class="t">{{'home.v2.ai.bean.t'|i18n}}</div>
-                                        <div class="d">{{'home.v2.ai.bean.d'|i18n}}</div>
-                                    </div>
+                                        <div class="font-weight-bold">{{'home.v2.ai.bean.t'|i18n}}</div>
+                                        <small class="text-muted">{{'home.v2.ai.bean.d'|i18n}}</small></div>
                                 </div>
-                                <div class="lr-arow"><span class="k">Agent</span>
+                                <div class="list-group-item d-flex" style="gap:12px">
+                                    <code class="text-primary" style="min-width:90px;flex-shrink:0">Agent</code>
                                     <div>
-                                        <div class="t">{{'home.v2.ai.agent.t'|i18n}}</div>
-                                        <div class="d">{{'home.v2.ai.agent.d'|i18n}}</div>
-                                    </div>
+                                        <div class="font-weight-bold">{{'home.v2.ai.agent.t'|i18n}}</div>
+                                        <small class="text-muted">{{'home.v2.ai.agent.d'|i18n}}</small></div>
                                 </div>
-                                <div class="lr-arow"><span class="k" style="color:#a78bfa">Models</span>
+                                <div class="list-group-item d-flex" style="gap:12px">
+                                    <code style="color:#7c3aed;min-width:90px;flex-shrink:0">Models</code>
                                     <div>
-                                        <div class="t">{{'home.v2.ai.models.t'|i18n}}</div>
-                                        <div class="d">{{'home.v2.ai.models.d'|i18n}}</div>
-                                    </div>
+                                        <div class="font-weight-bold">{{'home.v2.ai.models.t'|i18n}}</div>
+                                        <small class="text-muted">{{'home.v2.ai.models.d'|i18n}}</small></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="lr-ai-right">
-                            <div class="lr-msg user">{{'home.v2.ai.chat.q'|i18n}}</div>
-                            <div class="lr-msg bot"><span class="tool">@Erupt:Order.query</span>{{'home.v2.ai.chat.a1'|i18n}}<small>{{'home.v2.ai.chat.a1.s'|i18n}}</small>
-                            </div>
-                            <div class="lr-msg bot"><span class="tool">@Erupt:Order.update</span>{{'home.v2.ai.chat.a2'|i18n}}<small>{{'home.v2.ai.chat.a2.s'|i18n}}</small>
-                            </div>
-                            <div class="lr-chat-bar"><span>{{'home.v2.ai.chat.ph'|i18n}}</span><span class="send">{{'home.v2.ai.chat.send'|i18n}}</span>
+                        <div class="col-md-5 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header d-flex align-items-center"
+                                     style="background:#007bff;color:#fff;font-size:13px;font-weight:600">
+                                    <span>🤖 Erupt AI Claw</span>
+                                    <span class="badge badge-light ml-auto"
+                                          style="font-size:10px;color:#007bff">online</span>
+                                </div>
+                                <div class="card-body d-flex flex-column" style="gap:10px">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="p-2 rounded"
+                                             style="background:#e3f2fd;font-size:12px;max-width:82%">
+                                            {{'home.v2.ai.chat.q'|i18n}}
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="p-2 rounded"
+                                             style="background:#f8f9fa;font-size:12px;max-width:90%;border:1px solid #dee2e6">
+                                            <code class="badge badge-primary mr-1">@Erupt:Order.query</code>{{'home.v2.ai.chat.a1'|i18n}}
+                                            <small class="d-block mt-1 text-muted">{{'home.v2.ai.chat.a1.s'|i18n}}</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="p-2 rounded"
+                                             style="background:#f8f9fa;font-size:12px;max-width:90%;border:1px solid #dee2e6">
+                                            <code class="badge badge-success mr-1">@Erupt:Order.update</code>{{'home.v2.ai.chat.a2'|i18n}}
+                                            <small class="d-block mt-1 text-muted">{{'home.v2.ai.chat.a2.s'|i18n}}</small>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mt-auto">
+                                        <input class="form-control form-control-sm" disabled
+                                               placeholder="{{'home.v2.ai.chat.ph'|i18n}}" type="text">
+                                        <div class="input-group-append"><span class="input-group-text btn-primary"
+                                                                              style="font-size:12px">{{'home.v2.ai.chat.send'|i18n}}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- 6. VS comparison -->
-            <section class="lr-section lr-glow-top">
-                <div class="lr-wrap">
-                    <div class="reveal" style="margin-bottom:48px">
-                        <div class="lr-tag">Comparison</div>
-                        <h2 class="lr-h2">{{'home.vs.title'|i18n}} <span class="lr-grad">vs</span>
+            <div style="background:#fff;padding:56px 0">
+                <div class="container">
+                    <div class="text-center mb-4">
+                        <small class="text-uppercase text-primary" style="font-weight:700;letter-spacing:.1em">Comparison</small>
+                        <h2 class="mt-2">{{'home.vs.title'|i18n}} <span class="text-danger">vs</span>
                             {{'home.vs.erupt'|i18n}}</h2>
                     </div>
-                    <div class="lr-vs-wrap reveal">
-                        <table class="lr-vs">
-                            <thead>
+                    <div class="card">
+                        <div class="card-header text-center text-white" style="background:#1d2124">
+                            {{'home.vs.title'|i18n}} VS {{'home.vs.erupt'|i18n}}
+                        </div>
+                        <table class="table table-bordered table-hover mb-0">
+                            <thead class="thead-dark">
                             <tr>
-                                <th style="width:45%">{{'home.vs.title'|i18n}}</th>
-                                <th style="width:10%">{{'home.vs.vs'|i18n}}</th>
+                                <th style="width:45%;text-align:right">{{'home.vs.title'|i18n}}</th>
+                                <th style="width:10%;text-align:center">{{'home.vs.vs'|i18n}}</th>
                                 <th style="width:45%">{{'home.vs.erupt'|i18n}}</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>{{'home.vs.files.left'|i18n}}</td>
-                                <td>{{'home.vs.files.title'|i18n}}</td>
-                                <td>{{'home.vs.files.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.files.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.files.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.files.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.modify.left'|i18n}}</td>
-                                <td>{{'home.vs.modify.title'|i18n}}</td>
-                                <td>{{'home.vs.modify.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.modify.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.modify.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.modify.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.table.left'|i18n}}</td>
-                                <td>{{'home.vs.table.title'|i18n}}</td>
-                                <td>{{'home.vs.table.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.table.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.table.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.table.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.deploy.left'|i18n}}</td>
-                                <td>{{'home.vs.deploy.title'|i18n}}</td>
-                                <td>{{'home.vs.deploy.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.deploy.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.deploy.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.deploy.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.upgrade.left'|i18n}}</td>
-                                <td>{{'home.vs.upgrade.title'|i18n}}</td>
-                                <td>{{'home.vs.upgrade.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.upgrade.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.upgrade.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.upgrade.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.frontend.left'|i18n}}</td>
-                                <td>{{'home.vs.frontend.title'|i18n}}</td>
-                                <td>{{'home.vs.frontend.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.frontend.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.frontend.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.frontend.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.dev.left'|i18n}}</td>
-                                <td>{{'home.vs.dev.title'|i18n}}</td>
-                                <td>{{'home.vs.dev.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.dev.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.dev.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.dev.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.component.left'|i18n}}</td>
-                                <td>{{'home.vs.component.title'|i18n}}</td>
-                                <td>{{'home.vs.component.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.component.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.component.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.component.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.database.left'|i18n}}</td>
-                                <td>{{'home.vs.database.title'|i18n}}</td>
-                                <td>{{'home.vs.database.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.database.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.database.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.database.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.time.left'|i18n}}</td>
-                                <td>{{'home.vs.time.title'|i18n}}</td>
-                                <td>{{'home.vs.time.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.time.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.time.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.time.right'|i18n}}</td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.logic.left'|i18n}}</td>
-                                <td>{{'home.vs.logic.title'|i18n}}</td>
-                                <td ng-bind-html="'home.vs.logic.right'|i18nHtml"></td>
+                                <td class="text-right text-muted">{{'home.vs.logic.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.logic.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success"
+                                    ng-bind-html="'home.vs.logic.right'|i18nHtml"></td>
                             </tr>
                             <tr>
-                                <td>{{'home.vs.startup.left'|i18n}}</td>
-                                <td>{{'home.vs.startup.title'|i18n}}</td>
-                                <td>{{'home.vs.startup.right'|i18n}}</td>
+                                <td class="text-right text-muted">{{'home.vs.startup.left'|i18n}}</td>
+                                <td class="text-center text-muted small">{{'home.vs.startup.title'|i18n}}</td>
+                                <td class="font-weight-bold text-success">{{'home.vs.startup.right'|i18n}}</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- 7. Family -->
-            <section class="lr-section lr-glow-top">
-                <div class="lr-wrap">
-                    <div class="reveal" style="margin-bottom:56px">
-                        <div class="lr-tag">Family</div>
-                        <h2 class="lr-h2">{{'home.v2.fam.title.pre'|i18n}}<span class="lr-grad">{{'home.v2.fam.title.em'|i18n}}</span>
-                        </h2>
-                        <p class="lr-lede" style="margin-top:16px">{{'home.v2.fam.lede'|i18n}}</p>
+            <div style="background:#f8f9fa;padding:56px 0">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <small class="text-uppercase text-primary"
+                               style="font-weight:700;letter-spacing:.1em">Family</small>
+                        <h2 class="mt-2">{{'home.v2.fam.title.pre'|i18n}}<b>{{'home.v2.fam.title.em'|i18n}}</b></h2>
+                        <p class="lead text-muted mt-3">{{'home.v2.fam.lede'|i18n}}</p>
                     </div>
-                    <div class="lr-grid-box reveal">
-                        <div class="lr-fam">
-                            <div class="lr-fam-card" ng-click="go('https://docs.erupt.xyz/modules/erupt-cloud',true)">
-                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#7c6aff,#a78bfa)">
-                                <div class="lr-fam-body">
-                                    <div class="lr-fam-tag">☁ CLOUD</div>
-                                    <h4>Erupt Cloud</h4>
-                                    <p>{{'home.v2.fam.cloud.p'|i18n}}</p>
-                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
-                                            class="lr-fam-arrow">→</span></span>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100" ng-click="go('https://docs.erupt.xyz/modules/erupt-cloud',true)"
+                                 style="cursor:pointer;border-top:3px solid #7c6aff">
+                                <div class="card-body"><small class="text-muted d-block mb-2">☁ CLOUD</small><h5>Erupt
+                                    Cloud</h5>
+                                    <p class="text-muted small">{{'home.v2.fam.cloud.p'|i18n}}</p><span
+                                            class="text-primary small">{{'home.v2.fam.more'|i18n}} →</span></div>
                             </div>
-                            <div class="lr-fam-card"
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100" style="cursor:pointer;border-top:3px solid #0891b2"
                                  ng-click="go('https://docs.erupt.xyz/modules/pro/erupt-flow',true)">
-                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#0891b2,#06b6d4)">
-                                <div class="lr-fam-body">
-                                    <div class="lr-fam-tag">⚡ FLOW</div>
-                                    <h4>Erupt Flow</h4>
-                                    <p>{{'home.v2.fam.flow.p'|i18n}}</p>
-                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
-                                            class="lr-fam-arrow">→</span></span>
-                                </div>
+                                <div class="card-body"><small class="text-muted d-block mb-2">⚡ FLOW</small><h5>Erupt
+                                    Flow</h5>
+                                    <p class="text-muted small">{{'home.v2.fam.flow.p'|i18n}}</p><span
+                                            class="text-primary small">{{'home.v2.fam.more'|i18n}} →</span></div>
                             </div>
-                            <div class="lr-fam-card" ng-click="go('https://linq.erupt.xyz',true)">
-                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#7c3aed,#a78bfa)">
-                                <div class="lr-fam-body">
-                                    <div class="lr-fam-tag">⎇ LINQ.J</div>
-                                    <h4>Linq.J</h4>
-                                    <p>{{'home.v2.fam.linq.p'|i18n}}</p>
-                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
-                                            class="lr-fam-arrow">→</span></span>
-                                </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100" ng-click="go('https://linq.erupt.xyz',true)"
+                                 style="cursor:pointer;border-top:3px solid #7c3aed">
+                                <div class="card-body"><small class="text-muted d-block mb-2">⎇ LINQ.J</small><h5>
+                                    Linq.J</h5>
+                                    <p class="text-muted small">{{'home.v2.fam.linq.p'|i18n}}</p><span
+                                            class="text-primary small">{{'home.v2.fam.more'|i18n}} →</span></div>
                             </div>
-                            <div class="lr-fam-card" ng-click="go('#!/cube')">
-                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#16a34a,#22c55e)">
-                                <div class="lr-fam-body">
-                                    <div class="lr-fam-tag">⌘ CUBE</div>
-                                    <h4>{{'home.v2.fam.sem.h'|i18n}}</h4>
-                                    <p>{{'home.v2.fam.sem.p'|i18n}}</p>
-                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
-                                            class="lr-fam-arrow">→</span></span>
-                                </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100" ng-click="go('#!/cube')"
+                                 style="cursor:pointer;border-top:3px solid #16a34a">
+                                <div class="card-body"><small class="text-muted d-block mb-2">⌘ CUBE</small><h5>
+                                    {{'home.v2.fam.sem.h'|i18n}}</h5>
+                                    <p class="text-muted small">{{'home.v2.fam.sem.p'|i18n}}</p><span
+                                            class="text-primary small">{{'home.v2.fam.more'|i18n}} →</span></div>
                             </div>
-                            <div class="lr-fam-card" ng-click="go('https://docs.erupt.xyz/modules/erupt-ai',true)">
-                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#a855f7,#ec4899)">
-                                <div class="lr-fam-body">
-                                    <div class="lr-fam-tag">✦ AI</div>
-                                    <h4>Erupt AI</h4>
-                                    <p>{{'home.v2.fam.ai.p'|i18n}}</p>
-                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
-                                            class="lr-fam-arrow">→</span></span>
-                                </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100" ng-click="go('https://docs.erupt.xyz/modules/erupt-ai',true)"
+                                 style="cursor:pointer;border-top:3px solid #a855f7">
+                                <div class="card-body"><small class="text-muted d-block mb-2">✦ AI</small><h5>Erupt
+                                    AI</h5>
+                                    <p class="text-muted small">{{'home.v2.fam.ai.p'|i18n}}</p><span
+                                            class="text-primary small">{{'home.v2.fam.more'|i18n}} →</span></div>
                             </div>
-                            <div class="lr-fam-card"
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100" style="cursor:pointer;border-top:3px solid #f59e0b"
                                  ng-click="go('https://docs.erupt.xyz/modules/pro/erupt-chart',true)">
-                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#f59e0b,#f97316)">
-                                <div class="lr-fam-body">
-                                    <div class="lr-fam-tag">📊 CHART</div>
-                                    <h4>Erupt Chart</h4>
-                                    <p>{{'home.v2.fam.chart.p'|i18n}}</p>
-                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
-                                            class="lr-fam-arrow">→</span></span>
-                                </div>
+                                <div class="card-body"><small class="text-muted d-block mb-2">📊 CHART</small><h5>Erupt
+                                    Chart</h5>
+                                    <p class="text-muted small">{{'home.v2.fam.chart.p'|i18n}}</p><span
+                                            class="text-primary small">{{'home.v2.fam.more'|i18n}} →</span></div>
                             </div>
-                            <div class="lr-fam-card" ng-click="go('https://docs.erupt.xyz/modules/erupt-job',true)">
-                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#10b981,#06b6d4)">
-                                <div class="lr-fam-body">
-                                    <div class="lr-fam-tag">⏱ JOB</div>
-                                    <h4>Erupt Job</h4>
-                                    <p>{{'home.v2.fam.job.p'|i18n}}</p>
-                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
-                                            class="lr-fam-arrow">→</span></span>
-                                </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100" ng-click="go('https://docs.erupt.xyz/modules/erupt-job',true)"
+                                 style="cursor:pointer;border-top:3px solid #10b981">
+                                <div class="card-body"><small class="text-muted d-block mb-2">⏱ JOB</small><h5>Erupt
+                                    Job</h5>
+                                    <p class="text-muted small">{{'home.v2.fam.job.p'|i18n}}</p><span
+                                            class="text-primary small">{{'home.v2.fam.more'|i18n}} →</span></div>
                             </div>
-                            <div class="lr-fam-card" ng-click="go('https://docs.erupt.xyz/modules/erupt-monitor',true)">
-                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#64748b,#94a3b8)">
-                                <div class="lr-fam-body">
-                                    <div class="lr-fam-tag">📡 MONITOR</div>
-                                    <h4>Erupt Monitor</h4>
-                                    <p>{{'home.v2.fam.monitor.p'|i18n}}</p>
-                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
-                                            class="lr-fam-arrow">→</span></span>
-                                </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100" ng-click="go('https://docs.erupt.xyz/modules/erupt-monitor',true)"
+                                 style="cursor:pointer;border-top:3px solid #64748b">
+                                <div class="card-body"><small class="text-muted d-block mb-2">📡 MONITOR</small><h5>Erupt
+                                    Monitor</h5>
+                                    <p class="text-muted small">{{'home.v2.fam.monitor.p'|i18n}}</p><span
+                                            class="text-primary small">{{'home.v2.fam.more'|i18n}} →</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- 8. Database -->
             <div style="background: #fff;box-shadow: 0 0 10px #9e9e9e36;padding: 20px 0">
