@@ -26,18 +26,18 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
     }, {
         name: i18nService.t('home.features.extend.name'),
         desc: i18nService.t('home.features.extend.desc'),
-        url: "https://www.yuque.com/erupts/erupt/nicqg3",
+        url: "https://docs.erupt.xyz/advanced/extend",
         icon: "extend.svg"
     }, {
         name: i18nService.t('home.features.attachment.name'),
         desc: i18nService.t('home.features.attachment.desc'),
         icon: "attachment.svg",
-        url: "https://www.yuque.com/erupts/erupt/famk6i"
+        url: "https://docs.erupt.xyz/field-types/attachment"
     }, {
         name: i18nService.t('home.features.template.name'),
         desc: i18nService.t('home.features.template.desc'),
         icon: "template.svg",
-        url: "https://www.yuque.com/erupts/gd8zod/wzmdu2"
+        url: "https://docs.erupt.xyz/modules/erupt-tpl"
     }];
 
 
@@ -151,6 +151,7 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
     ];
 
     Prism.highlightAllUnder(document.getElementById("DemoErupt"));
+    Prism.highlightAllUnder(document.getElementById("how-principle"));
 
     $("#logo").attr("src", "assets/logo2.svg");
 

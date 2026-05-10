@@ -1,116 +1,54 @@
 <style>
-    /* ── v2 section variables & fonts ── */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
     :root {
-        --bg: #ffffff;
-        --bg-2: #f5f6f8;
-        --panel: #edeef1;
-        --panel-2: #e2e4e9;
-        --line: #cfd1d8;
-        --line-soft: #e5e7ed;
-        --fg: #111827;
-        --fg-dim: #374151;
-        --fg-mute: #6b7280;
-        --accent: #4f46e5;
-        --amber: #d97706;
-        --rose: #dc2626;
-        --cyan: #0891b2;
-        --green: #16a34a;
-        --purple: #7c3aed;
-        --radius: 12px;
-        --serif: "Instrument Serif", Georgia, serif;
+        --lr-bg: #0a0a0a;
+        --lr-bg2: #0d0d10;
+        --lr-surface: #111113;
+        --lr-surface2: #17171b;
+        --lr-border: rgba(255, 255, 255, 0.07);
+        --lr-border-act: rgba(124, 106, 255, 0.38);
+        --lr-accent: #7c6aff;
+        --lr-accent2: #a78bfa;
+        --lr-t1: #ffffff;
+        --lr-t2: rgba(255, 255, 255, 0.58);
+        --lr-t3: rgba(255, 255, 255, 0.28);
+        --lr-t4: rgba(255, 255, 255, 0.10);
+        --lr-sans: 'Inter', -apple-system, system-ui, sans-serif;
+        --lr-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+        --lr-r: 10px;
+        --lr-r-lg: 14px;
+        /* compat for annotation code blocks */
+        --accent: #7c6aff;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
     }
 
-    /* ── original hero & page styles ── */
-    #erupt-features {
-        transition: transform .6s;
-        border-radius: 6px;
-        position: relative;
-        background: #fff;
-    }
-
-    .card {
-        margin-bottom: 12px;
-    }
-
-    .card-item {
-        box-sizing: border-box;
-        cursor: pointer;
-        padding: 36px 16px;
-        border-right: 1px solid #efefef;
-        border-bottom: 1px solid #efefef;
-    }
-
-    .card-item:hover {
-        transition: box-shadow .3s;
-        box-shadow: inset 0 0 30px rgba(0, 0, 0, .06);
-    }
-
-    .indicator-card {
-        box-sizing: border-box;
-        background: rgba(255, 255, 255, 0.8);
-        text-align: center;
-        border-radius: 6px;
-        box-shadow: 0 0 4px #eeeeee;
-        margin-bottom: 26px;
-        border: 1px solid #eee;
-        transition: box-shadow 600ms;
-    }
-
-    .indicator-card .desc {
-        font-size: .95em;
-        text-align: left;
-        margin-bottom: 0;
-        color: #666;
-        height: 55px;
-        overflow: auto;
-        padding-top: 10px;
-        margin-top: 16px;
-    }
-
-    .indicator-card:hover {
-        box-shadow: 0 6px 40px -14px rgba(0, 36, 100, 0.3);
-    }
-
-    .deg90 {
-        transform: rotate(-90deg);
-    }
-
+    /* ── hero-only (unchanged) ── */
     .del-line {
         text-decoration: line-through;
         text-decoration-color: #f00;
         text-decoration-style: dashed;
     }
 
+    .deg90 {
+        transform: rotate(-90deg);
+    }
+
     #header {
         animation: header-in 900ms;
+        background: rgba(39, 38, 43, 0.99);
+        border-bottom: 0;
+        color: #fff;
     }
 
     @keyframes header-in {
         0% {
-            transform: translateY(-50px);
+            transform: translateY(-50px)
         }
         100% {
-            transform: translateY(0);
+            transform: translateY(0)
         }
-    }
-
-    .git-name {
-        margin-bottom: 0;
-        margin-top: 16px;
-        font-size: 1.3em;
-    }
-
-    #main {
-        margin-top: 0;
-    }
-
-    #header {
-        background: none;
-        border-bottom: 0;
-        color: #fff;
-        background: rgba(39, 38, 43, 0.99);
     }
 
     #header a {
@@ -121,91 +59,35 @@
         color: #fff !important;
     }
 
-    .git-card {
-        cursor: pointer;
-        transition: transform 600ms, background 600ms, color 600ms, box-shadow 600ms;
-    }
-
-    .git-card img {
-        transition: transform 600ms;
-    }
-
-    .git-card:hover {
-        background: #38404e;
-        color: #fff;
-        box-shadow: 0 18px 30px -14px rgba(0, 36, 100, 0.4), 0 0 25px rgba(0, 123, 255, 0.2);
-        transform: translateY(-5px) scale(1.05);
-    }
-
-    .git-card:hover .git-img {
-        transform: scale(.9);
-    }
-
-    .table-vs tr:hover {
-        background: rgba(122, 186, 255, .9);
-    }
-
-    .table-vs tr th {
-        border: none;
-    }
-
-    .table-vs tr td:nth-child(2) {
-        text-align: center;
-    }
-
-    .table-vs tr td:nth-child(1) {
-        text-align: right;
-    }
-
-    @keyframes skew-up {
-        0% {
-            transform: skewY(var(--skew-angle, 0deg)) translateY(200px);
-            opacity: 0;
-        }
-        100% {
-            transform: skewY(var(--skew-angle, 0deg)) translateY(0);
-            opacity: 1;
-        }
-    }
-
-    .sponsor .name {
-        margin-top: 12px;
-        margin-bottom: 0;
-        text-align: center;
-        color: #eee;
+    #main {
+        margin-top: 0;
     }
 
     @keyframes erupt-fly-in {
         0% {
             opacity: 0;
             transform: translateY(300px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         30% {
             opacity: 0.3;
         }
         60% {
             opacity: 0.8;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 123, 255, 0.25);
-        }
-        85% {
-            opacity: 0.95;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 123, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .3), 0 0 30px rgba(0, 123, 255, .25);
         }
         100% {
             opacity: 1;
             transform: translateY(0);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 123, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 123, 255, .2);
         }
     }
-
     #erupt-box {
         opacity: 0;
         transform: translateY(300px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 123, 255, 0.2);
-        border: 2px solid rgba(0, 123, 255, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 123, 255, .2);
+        border: 2px solid rgba(0, 123, 255, .3);
         position: relative;
-        animation: erupt-fly-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        animation: erupt-fly-in 1s cubic-bezier(.25, .46, .45, .94) forwards;
         will-change: transform, opacity;
     }
 
@@ -217,18 +99,16 @@
         right: -2px;
         bottom: -2px;
         border-radius: 8px;
-        opacity: 1;
         z-index: -1;
-        -webkit-filter: blur(10px);
         filter: blur(10px);
     }
 
     @keyframes erupt-inner-fade-in {
         0%, 55% {
-            opacity: 0;
+            opacity: 0
         }
         100% {
-            opacity: 1;
+            opacity: 1
         }
     }
 
@@ -261,31 +141,31 @@
     }
 
     .eb-dot-r {
-        background: #ff5f57;
+        background: #ff5f57
     }
 
     .eb-dot-y {
-        background: #ffbd2e;
+        background: #ffbd2e
     }
 
     .eb-dot-g {
-        background: #28c840;
+        background: #28c840
     }
 
     .eb-titlebar-name {
         flex: 1;
         text-align: center;
-        font-size: 0.78em;
-        color: rgba(255, 255, 255, 0.45);
+        font-size: .78em;
+        color: rgba(255, 255, 255, .45);
         font-family: 'SFMono-Regular', monospace;
     }
 
     .eb-titlebar-badge {
-        font-size: 0.68em;
-        color: rgba(99, 102, 241, 0.8);
+        font-size: .68em;
+        color: rgba(99, 102, 241, .8);
         font-family: monospace;
-        background: rgba(99, 102, 241, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.22);
+        background: rgba(99, 102, 241, .1);
+        border: 1px solid rgba(99, 102, 241, .22);
         border-radius: 4px;
         padding: 1px 8px;
     }
@@ -307,17 +187,17 @@
         overflow: auto;
         border-right: 1px solid #191919;
         font-family: 'SFMono-Regular', monospace;
-        font-size: 0.82em;
+        font-size: .82em;
     }
 
     .eb-sidebar-header {
         padding: 8px 14px 7px;
-        font-size: 0.72em;
+        font-size: .72em;
         font-weight: 700;
         letter-spacing: 1.2px;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.35);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, .35);
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
         margin-bottom: 6px;
     }
 
@@ -334,8 +214,8 @@
         gap: 7px;
         padding: 0 16px;
         height: 34px;
-        font-size: 0.8em;
-        color: rgba(255, 255, 255, 0.78);
+        font-size: .8em;
+        color: rgba(255, 255, 255, .78);
         border-right: 1px solid #191919;
         background: #1e1e1e;
         font-family: 'SFMono-Regular', monospace;
@@ -346,7 +226,7 @@
         height: 7px;
         border-radius: 50%;
         background: #007bff;
-        opacity: 0.6;
+        opacity: .6;
     }
 
     .eb-tips {
@@ -355,7 +235,7 @@
         padding: 16px 14px;
         overflow: auto;
         background: #12121f;
-        border-left: 1px solid rgba(255, 255, 255, 0.06);
+        border-left: 1px solid rgba(255, 255, 255, .06);
     }
 
     .code-tip-card {
@@ -363,278 +243,31 @@
         padding: 8px 10px;
         margin-bottom: 14px;
         border-radius: 0 6px 6px 0;
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(255, 255, 255, .04);
     }
 
     .code-tip-card:last-child {
-        margin-bottom: 0;
+        margin-bottom: 0
     }
 
     .code-tip-card h5 {
-        font-size: 0.85em;
+        font-size: .85em;
         margin: 0 0 4px;
-        font-weight: 700;
+        font-weight: 700
     }
 
     .code-tip-card p {
-        font-size: 0.82em;
-        color: rgba(255, 255, 255, 0.48);
+        font-size: .82em;
+        color: rgba(255, 255, 255, .48);
         margin: 0;
-        line-height: 1.5;
+        line-height: 1.5
     }
 
-    /* ── using / logos marquee ── */
-    .using-section {
-        background: #10131a;
-        padding: 38px 0;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .using-section::before, .using-section::after {
-        content: '';
-        position: absolute;
-        top: 0; bottom: 0;
-        width: 180px;
-        z-index: 2;
-        pointer-events: none;
-    }
-
-    .using-section::before { left: 0; background: linear-gradient(to right, #10131a, transparent); }
-    .using-section::after  { right: 0; background: linear-gradient(to left, #10131a, transparent); }
-
-    .using-header {
-        text-align: center;
-        margin-bottom: 18px;
-        padding: 0 20px;
-    }
-
-    .using-header h3 {
-        font-size: 1.7em;
-        font-weight: 800;
-        color: rgba(255, 255, 255, 0.88);
-        margin: 0;
-        letter-spacing: 0.3px;
-    }
-
-    .using-header h3 em {
-        font-style: normal;
-        background: linear-gradient(135deg, #a5b4fc, #67e8f9);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-weight: 800;
-        margin-left: 6px;
-    }
-
-    .using-track-wrap {
-        overflow: hidden;
-        margin-bottom: 14px;
-    }
-
-    .using-track-wrap:last-child {
-        margin-bottom: 0;
-    }
-
-    .using-track {
-        display: flex;
-        gap: 10px;
-        width: max-content;
-        animation: using-ltr 55s linear infinite;
-        padding: 4px 0;
-    }
-
-    .using-track-reverse {
-        display: flex;
-        gap: 10px;
-        width: max-content;
-        animation: using-rtl 55s linear infinite;
-        animation-delay: -20s;
-        padding: 4px 0;
-    }
-
-    .using-track:hover, .using-track-reverse:hover {
-        animation-play-state: paused;
-    }
-
-    @keyframes using-ltr {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-50%);
-        }
-    }
-
-    @keyframes using-rtl {
-        0% {
-            transform: translateX(-50%);
-        }
-        100% {
-            transform: translateX(0);
-        }
-    }
-
-    .using-logo-card {
-        flex-shrink: 0;
-        width: 168px;
-        height: 80px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 7px;
-        padding: 10px 18px;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        background: rgba(255, 255, 255, 0.03);
-        transition: all 0.25s;
-        cursor: default;
-    }
-
-    .using-logo-card:hover {
-        background: rgba(255, 255, 255, 0.07);
-        border-color: rgba(255, 255, 255, 0.15);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .using-logo-card img {
-        max-width: 100%;
-        max-height: 30px;
-        object-fit: contain;
-        opacity: 0.38;
-        transition: opacity 0.25s;
-    }
-
-    .using-logo-card:hover img {
-        opacity: 0.92;
-    }
-
-    .using-logo-card .logo-name {
-        font-size: 0.65em;
-        color: rgba(255, 255, 255, 0.2);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
-        text-align: center;
-        transition: color 0.25s;
-        font-family: 'SFMono-Regular', monospace;
-    }
-
-    .using-logo-card:hover .logo-name {
-        color: rgba(255, 255, 255, 0.65);
-    }
-
-    /* ── AI promo cards ── */
-    .ai-promo-card {
-        cursor: pointer;
-        border-radius: 0;
-        padding: 28px 26px;
-        text-align: left;
-        transition: all 0.22s;
-        position: relative;
-        overflow: hidden;
-        height: 100%;
-    }
-
-    .ai-promo-card-ai {
-        background: rgba(99, 102, 241, 0.08);
-        border: 1px solid rgba(99, 102, 241, 0.22);
-    }
-
-    .ai-promo-card-ai:hover {
-        border-color: rgba(99, 102, 241, 0.5);
-        transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(99, 102, 241, 0.15);
-    }
-
-    .ai-promo-card-cube {
-        background: linear-gradient(135deg, #0b1e16 0%, #071510 100%);
-        border: 1px solid rgba(16, 185, 129, 0.22);
-    }
-
-    .ai-promo-card-cube:hover {
-        border-color: rgba(16, 185, 129, 0.5);
-        transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(16, 185, 129, 0.12);
-    }
-
-    .ai-promo-card-claw {
-        background: rgba(6, 182, 212, 0.06);
-        border: 1px solid rgba(6, 182, 212, 0.18);
-    }
-
-    .ai-promo-card-claw:hover {
-        border-color: rgba(6, 182, 212, 0.45);
-        transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(6, 182, 212, 0.1);
-    }
-
-    /* ── v2 new sections ── */
-    .v2-block {
-        padding: 100px 0;
-        position: relative;
-        z-index: 1;
-    }
-
-    .v2-wrap {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 32px;
-    }
-
-    .v2-sec-head {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 48px;
-        margin-bottom: 64px;
-    }
-
-    .v2-sec-tag {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11.5px;
-        color: var(--accent);
-        letter-spacing: .16em;
-        text-transform: uppercase;
-    }
-
-    .v2-sec-tag::before {
-        content: "// ";
-        color: var(--fg-mute);
-    }
-
-    .v2-sec-title {
-        font-size: clamp(28px, 3.5vw, 48px);
-        line-height: 1.06;
-        letter-spacing: -.03em;
-        font-weight: 600;
-        margin: 12px 0 0;
-        max-width: 22ch;
-        color: var(--fg);
-    }
-
-    .v2-sec-title .s-i {
-        font-family: var(--serif);
-        font-style: italic;
-        font-weight: 400;
-        color: var(--fg-dim);
-    }
-
-    .v2-sec-lede {
-        color: var(--fg-dim);
-        max-width: 48ch;
-        font-size: 15px;
-        line-height: 1.6;
-    }
-
-    /* reveal on scroll */
+    /* ── reveal ── */
     .reveal {
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity .7s ease, transform .7s ease;
+        transform: translateY(18px);
+        transition: opacity .65s ease, transform .65s ease;
     }
 
     .reveal.in {
@@ -642,651 +275,1243 @@
         transform: none;
     }
 
-    /* principle */
-    .principle {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        border: 1px solid var(--line-soft);
-        border-radius: var(--radius);
-        overflow: hidden;
-        background: color-mix(in oklch, var(--panel) 40%, var(--bg-2));
-    }
+    /* ═══════════════════════════════════════
+       LINEAR / RAYCAST DESIGN SYSTEM
+       ═══════════════════════════════════════ */
 
-    .prin-cell {
-        padding: 28px;
+    .lr-section {
+        padding: 100px 0;
         position: relative;
-        border-left: 1px solid var(--line-soft);
+        background: var(--lr-bg);
+        font-family: var(--lr-sans);
+        overflow: hidden;
     }
 
-    .prin-cell:first-child {
-        border-left: 0;
+    .lr-wrap {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 48px;
+        position: relative;
+        z-index: 1;
     }
 
-    .prin-cell .num {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        color: var(--fg-mute);
-        letter-spacing: .15em;
-        margin-bottom: 18px;
+    /* subtle dot-grid on every section */
+    .lr-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(255, 255, 255, .022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .022) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* radial purple glow variants */
+    .lr-glow-top::after {
+        content: '';
+        position: absolute;
+        top: -180px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 900px;
+        height: 600px;
+        background: radial-gradient(ellipse at top, rgba(124, 106, 255, .22) 0%, transparent 65%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* eyebrow tag */
+    .lr-tag {
+        font-family: var(--lr-mono);
+        font-size: 10.5px;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--lr-accent);
+        margin-bottom: 16px;
         display: flex;
         align-items: center;
         gap: 10px;
     }
 
-    .prin-cell .num::after {
-        content: "";
-        flex: 1;
+    .lr-tag::before {
+        content: '';
+        display: inline-block;
+        width: 18px;
         height: 1px;
-        background: var(--line-soft);
+        background: var(--lr-accent);
+        opacity: .55;
+        flex-shrink: 0;
     }
 
-    .prin-cell h4 {
-        margin: 0 0 8px;
-        font-size: 17px;
-        font-weight: 600;
-        color: var(--fg);
+    /* headings */
+    .lr-h2 {
+        font-size: clamp(38px, 5vw, 66px);
+        font-weight: 800;
+        letter-spacing: -.05em;
+        line-height: 1.0;
+        color: var(--lr-t1);
+        margin: 0 0 20px;
     }
 
-    .prin-cell p {
-        margin: 0 0 18px;
-        color: var(--fg-dim);
-        font-size: 13.5px;
-        line-height: 1.55;
+    .lr-grad {
+        background: linear-gradient(120deg, #7c6aff 0%, #a78bfa 55%, #60a5fa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
-    .prin-cell .visual {
-        height: 120px;
-        border-radius: 8px;
-        padding: 14px;
-        background: color-mix(in oklch, var(--bg) 50%, var(--panel));
-        border: 1px solid var(--line-soft);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11.5px;
-        line-height: 1.6;
-        color: var(--fg-dim);
-        white-space: pre;
+    .lr-lede {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--lr-t2);
+        max-width: 54ch;
+        margin: 0;
+    }
+
+    /* shared grid card container — creates unified table look */
+    .lr-grid-box {
+        border: 1px solid var(--lr-border);
+        border-radius: var(--lr-r-lg);
         overflow: hidden;
     }
 
-    .prin-cell .visual b {
-        color: var(--accent);
+    .lr-grid-box.glow {
+        border-color: var(--lr-border-act);
+        box-shadow: 0 0 48px rgba(124, 106, 255, .1);
     }
 
-    .prin-cell .visual .dim {
-        color: var(--fg-mute);
+    /* ── Stats strip ── */
+    .lr-stats {
+        background: var(--lr-bg);
+        border-top: 1px solid var(--lr-border);
+        border-bottom: 1px solid var(--lr-border);
+        padding: 28px 0;
     }
 
-    .prin-cell::after {
-        content: "→";
+    .lr-stats-inner {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        flex-wrap: wrap;
+    }
+
+    .lr-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 0 40px;
+        border-right: 1px solid var(--lr-border);
+    }
+
+    .lr-stat:last-child {
+        border-right: none;
+    }
+
+    .lr-stat .num {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -.04em;
+        background: linear-gradient(120deg, #fff 0%, rgba(255, 255, 255, .6) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-family: var(--lr-sans);
+    }
+
+    .lr-stat .lbl {
+        font-family: var(--lr-mono);
+        font-size: 10px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--lr-t3);
+    }
+
+    @media (max-width: 768px) {
+        .lr-stat {
+            padding: 12px 20px;
+        }
+
+        .lr-stat .num {
+            font-size: 22px;
+        }
+    }
+
+    /* ── Using (dark marquee) ── */
+    .lr-using {
+        background: var(--lr-bg);
+        padding: 56px 0;
+        overflow: hidden;
+        position: relative;
+        border-top: 1px solid var(--lr-border);
+        border-bottom: 1px solid var(--lr-border);
+    }
+
+    .lr-using::before, .lr-using::after {
+        content: '';
         position: absolute;
-        right: -8px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: var(--bg-2);
-        color: var(--accent);
-        width: 18px;
-        height: 18px;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        border: 1px solid var(--line-soft);
-        font-size: 11px;
+        top: 0;
+        bottom: 0;
+        width: 200px;
         z-index: 2;
+        pointer-events: none;
     }
 
-    .prin-cell:last-child::after {
-        display: none;
+    .lr-using::before {
+        left: 0;
+        background: linear-gradient(to right, var(--lr-bg), transparent)
     }
 
-    /* annotations */
-    .anno-grid {
+    .lr-using::after {
+        right: 0;
+        background: linear-gradient(to left, var(--lr-bg), transparent)
+    }
+
+    .lr-using-label {
+        text-align: center;
+        font-family: var(--lr-mono);
+        font-size: 10.5px;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--lr-t3);
+        margin-bottom: 28px;
+    }
+
+    .lr-track-wrap {
+        overflow: hidden;
+        margin-bottom: 8px;
+    }
+
+    .lr-track-wrap:last-child {
+        margin-bottom: 0
+    }
+
+    .lr-track {
+        display: flex;
+        gap: 8px;
+        width: max-content;
+        animation: lr-ltr 60s linear infinite;
+    }
+
+    .lr-track-r {
+        display: flex;
+        gap: 8px;
+        width: max-content;
+        animation: lr-rtl 60s linear infinite;
+        animation-delay: -22s;
+    }
+
+    .lr-track:hover, .lr-track-r:hover {
+        animation-play-state: paused
+    }
+
+    @keyframes lr-ltr {
+        0% {
+            transform: translateX(0)
+        }
+        100% {
+            transform: translateX(-50%)
+        }
+    }
+
+    @keyframes lr-rtl {
+        0% {
+            transform: translateX(-50%)
+        }
+        100% {
+            transform: translateX(0)
+        }
+    }
+
+    .lr-logo-card {
+        flex-shrink: 0;
+        height: 54px;
+        width: 148px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        background: var(--lr-surface);
+        border-radius: 8px;
+        border: 1px solid var(--lr-border);
+        padding: 8px 14px;
+        transition: border-color .2s, background .2s;
+        cursor: default;
+    }
+
+    .lr-logo-card:hover {
+        border-color: var(--lr-border-act);
+        background: var(--lr-surface2);
+    }
+
+    .lr-logo-card img {
+        max-height: 22px;
+        max-width: 88px;
+        object-fit: contain;
+        opacity: .3;
+        transition: opacity .2s;
+        filter: brightness(0) invert(1);
+    }
+
+    .lr-logo-card:hover img {
+        opacity: .7;
+    }
+
+    .lr-logo-card span {
+        font-size: 9.5px;
+        color: var(--lr-t4);
+        font-family: var(--lr-mono);
+    }
+
+    /* ── How it works ── */
+    .lr-steps {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 16px;
+        grid-template-columns:repeat(4, 1fr);
+        gap: 1px;
+        background: var(--lr-border);
     }
 
-    .anno {
+    .lr-step {
+        background: var(--lr-surface);
+        padding: 36px 26px;
+        transition: background .2s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .lr-step:hover {
+        background: var(--lr-surface2);
+    }
+
+    .lr-step::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--lr-accent), var(--lr-accent2));
+        opacity: 0;
+        transition: opacity .2s;
+    }
+
+    .lr-step:hover::after {
+        opacity: 1;
+    }
+
+    .lr-step-num {
+        font-family: var(--lr-mono);
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--lr-t4);
+        line-height: 1;
+        margin-bottom: 22px;
+        letter-spacing: -.05em;
+    }
+
+    .lr-step h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--lr-t1);
+        margin: 0 0 8px;
+    }
+
+    .lr-step > p {
+        font-size: 12.5px;
+        color: var(--lr-t2);
+        margin: 0 0 18px;
+        line-height: 1.65;
+    }
+
+    .lr-step pre {
+        background: var(--lr-bg);
+        border-radius: 6px;
+        padding: 12px 14px;
+        font-family: var(--lr-mono);
+        font-size: 11px;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, .3);
+        margin: 0;
+        overflow: hidden;
+        height: 86px;
+        white-space: pre;
+        border: 1px solid var(--lr-border);
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+    /* ── Annotations ── */
+    .lr-anno-grid {
+        display: grid;
+        grid-template-columns:repeat(12, 1fr);
+        gap: 1px;
+        background: var(--lr-border);
+    }
+
+    .lr-anno {
         grid-column: span 3;
-        padding: 22px;
-        border: 1px solid var(--line-soft);
-        border-radius: var(--radius);
-        background: linear-gradient(180deg, color-mix(in oklch, var(--panel) 70%, transparent), color-mix(in oklch, var(--bg-2) 60%, transparent));
-        transition: border-color .2s;
+        background: var(--lr-surface);
+        padding: 26px 22px;
+        transition: background .2s;
         position: relative;
     }
 
-    .anno:hover {
-        border-color: color-mix(in oklch, var(--accent) 35%, var(--line));
+    .lr-anno:hover {
+        background: var(--lr-surface2);
     }
 
-    .anno.wide {
+    .lr-anno.w6 {
         grid-column: span 6;
     }
 
-    .anno.xl {
-        grid-column: span 6;
-        padding: 28px;
-    }
-
-    .anno .atk {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 15px;
+    .lr-anno .atk {
+        font-family: var(--lr-mono);
+        font-size: 12px;
         font-weight: 600;
-        color: var(--accent);
+        color: var(--lr-accent);
         margin-bottom: 10px;
         display: flex;
         align-items: center;
         gap: 8px;
+        flex-wrap: wrap;
     }
 
-    .anno .atk .badge {
-        font-size: 10px;
+    .lr-anno .badge {
+        font-size: 9.5px;
         padding: 2px 7px;
         border-radius: 4px;
-        background: color-mix(in oklch, var(--accent) 15%, transparent);
-        color: var(--accent);
-        border: 1px solid color-mix(in oklch, var(--accent) 30%, transparent);
+        background: rgba(124, 106, 255, .12);
+        color: var(--lr-accent2);
+        border: 1px solid rgba(124, 106, 255, .25);
         font-weight: 500;
+        font-family: var(--lr-mono);
     }
 
-    .anno h4 {
-        margin: 0 0 6px;
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--fg);
+    .lr-anno h4 {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--lr-t1);
+        margin: 0 0 5px;
     }
 
-    .anno p {
-        margin: 0;
-        color: var(--fg-dim);
-        font-size: 13px;
-        line-height: 1.55;
+    .lr-anno > p {
+        font-size: 12px;
+        color: var(--lr-t2);
+        margin: 0 0 12px;
+        line-height: 1.6;
     }
 
-    .anno .mini {
-        margin-top: 14px;
-        padding: 10px 12px;
-        border-radius: 8px;
-        background: color-mix(in oklch, var(--bg) 50%, var(--panel));
-        border: 1px solid var(--line-soft);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        color: var(--fg-dim);
-        line-height: 1.55;
+    .lr-anno .mini {
+        background: var(--lr-bg);
+        border-radius: 6px;
+        padding: 11px 13px;
+        font-family: var(--lr-mono);
+        font-size: 10.5px;
+        color: var(--lr-t3);
+        line-height: 1.6;
         white-space: pre;
         overflow: auto;
+        border: 1px solid var(--lr-border);
     }
 
-    .anno-cat {
+    .lr-anno-cat {
         position: absolute;
         top: 18px;
-        right: 20px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 10px;
-        color: var(--fg-mute);
-        letter-spacing: .1em;
+        right: 18px;
+        font-family: var(--lr-mono);
+        font-size: 9px;
+        color: var(--lr-t4);
+        letter-spacing: .12em;
         text-transform: uppercase;
     }
 
-    /* output matrix */
-    .out-grid {
+    /* ── What you get ── */
+    .lr-out-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 16px;
+        grid-template-columns:repeat(4, 1fr);
+        gap: 1px;
+        background: var(--lr-border);
     }
 
-    .out-item {
+    .lr-out-item {
+        background: var(--lr-surface);
+        padding: 26px 22px;
+        transition: background .2s;
+    }
+
+    .lr-out-item:hover {
+        background: var(--lr-surface2);
+    }
+
+    .lr-out-item.w2 {
         grid-column: span 2;
-        padding: 22px;
-        border: 1px solid var(--line-soft);
-        border-radius: var(--radius);
-        background: color-mix(in oklch, var(--panel) 55%, var(--bg-2));
     }
 
-    .out-item.wide {
-        grid-column: span 3;
-    }
-
-    .out-item .oi {
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
+    .lr-oi {
+        width: 34px;
+        height: 34px;
+        border-radius: 7px;
         display: grid;
         place-items: center;
-        background: color-mix(in oklch, var(--accent) 15%, var(--panel-2));
-        border: 1px solid color-mix(in oklch, var(--accent) 25%, var(--line));
-        color: var(--accent);
-        margin-bottom: 16px;
+        background: rgba(124, 106, 255, .15);
+        border: 1px solid rgba(124, 106, 255, .25);
+        color: var(--lr-accent2);
+        margin-bottom: 12px;
     }
 
-    .out-item h4 {
-        margin: 0 0 6px;
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--fg);
+    .lr-out-item h4 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--lr-t1);
+        margin: 0 0 5px;
     }
 
-    .out-item p {
+    .lr-out-item > p {
+        font-size: 12px;
+        color: var(--lr-t2);
         margin: 0;
-        color: var(--fg-dim);
-        font-size: 13px;
-        line-height: 1.55;
+        line-height: 1.6;
     }
 
-    .out-item .chiplist {
+    .lr-chips {
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
-        margin-top: 14px;
+        margin-top: 12px;
     }
 
-    .out-item .chip {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 10.5px;
-        padding: 3px 7px;
-        border: 1px solid var(--line);
-        border-radius: 5px;
-        color: var(--fg-dim);
-        background: color-mix(in oklch, var(--panel-2) 50%, transparent);
+    .lr-chip {
+        font-family: var(--lr-mono);
+        font-size: 9.5px;
+        padding: 2px 8px;
+        border: 1px solid var(--lr-border);
+        border-radius: 4px;
+        color: var(--lr-t3);
+        background: var(--lr-bg);
     }
 
-    /* AI section */
-    .ai-wrap {
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        overflow: hidden;
-        background: linear-gradient(180deg, color-mix(in oklch, var(--panel) 80%, transparent), var(--bg-2));
+    /* ── AI section ── */
+    .lr-ai-wrap {
         display: grid;
-        grid-template-columns: 1.15fr 1fr;
-        min-height: 500px;
+        grid-template-columns:1.15fr 1fr;
+        border-radius: var(--lr-r-lg);
+        overflow: hidden;
+        border: 1px solid var(--lr-border-act);
+        box-shadow: 0 0 60px rgba(124, 106, 255, .12);
+        min-height: 460px;
     }
 
-    .ai-left {
+    .lr-ai-left {
         padding: 48px;
-        border-right: 1px solid var(--line-soft);
+        background: var(--lr-surface);
+        border-right: 1px solid var(--lr-border);
     }
 
-    .ai-left h3 {
-        font-size: 36px;
-        letter-spacing: -.03em;
+    .lr-ai-left h3 {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -.04em;
+        color: var(--lr-t1);
+        margin: 12px 0 14px;
         line-height: 1.1;
-        margin: 12px 0 20px;
-        font-weight: 600;
-        color: var(--fg);
     }
 
-    .ai-left > p {
-        color: var(--fg-dim);
-        font-size: 15px;
-        line-height: 1.6;
-        margin: 0 0 28px;
-        max-width: 42ch;
+    .lr-ai-left > p {
+        font-size: 13.5px;
+        color: var(--lr-t2);
+        margin: 0 0 24px;
+        line-height: 1.7;
+        max-width: 40ch;
     }
 
-    .ai-feat {
+    .lr-ai-feat {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 7px;
     }
 
-    .ai-feat .arow {
+    .lr-arow {
         display: flex;
-        gap: 14px;
-        padding: 14px 16px;
-        border: 1px solid var(--line-soft);
-        border-radius: 10px;
-        background: color-mix(in oklch, var(--bg) 50%, transparent);
-        transition: border-color .2s;
+        gap: 12px;
+        padding: 11px 13px;
+        border: 1px solid var(--lr-border);
+        border-radius: 7px;
+        background: var(--lr-bg);
+        transition: border-color .2s, background .2s;
     }
 
-    .ai-feat .arow:hover {
-        border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
+    .lr-arow:hover {
+        border-color: var(--lr-border-act);
+        background: var(--lr-surface2);
     }
 
-    .ai-feat .arow .k {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        color: var(--accent);
-        width: 88px;
+    .lr-arow .k {
+        font-family: var(--lr-mono);
+        font-size: 10px;
+        color: var(--lr-accent);
+        width: 90px;
         flex-shrink: 0;
-        padding-top: 1px;
+        padding-top: 2px;
     }
 
-    .ai-feat .arow .t {
-        color: var(--fg);
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 3px;
+    .lr-arow .t {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--lr-t1);
+        margin-bottom: 2px;
     }
 
-    .ai-feat .arow .d {
-        color: var(--fg-dim);
-        font-size: 12.5px;
+    .lr-arow .d {
+        font-size: 11.5px;
+        color: var(--lr-t3);
         line-height: 1.5;
     }
 
-    .ai-right {
-        padding: 32px;
-        background: color-mix(in oklch, var(--bg) 60%, var(--bg-2));
+    .lr-ai-right {
+        background: var(--lr-bg2);
+        padding: 28px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 9px;
     }
 
-    .ai-msg {
-        padding: 12px 14px;
-        border-radius: 10px;
-        font-size: 13px;
+    .lr-msg {
+        padding: 11px 14px;
+        border-radius: 7px;
+        font-size: 12.5px;
         line-height: 1.55;
-        max-width: 86%;
+        max-width: 90%;
     }
 
-    .ai-msg.user {
-        background: var(--panel-2);
-        color: var(--fg);
+    .lr-msg.user {
+        background: var(--lr-surface2);
+        border: 1px solid var(--lr-border);
+        color: var(--lr-t1);
         align-self: flex-end;
-        border: 1px solid var(--line-soft);
     }
 
-    .ai-msg.bot {
-        background: linear-gradient(180deg, color-mix(in oklch, var(--accent) 14%, transparent), color-mix(in oklch, var(--accent) 6%, transparent));
-        border: 1px solid color-mix(in oklch, var(--accent) 25%, transparent);
-        color: var(--fg);
+    .lr-msg.bot {
+        background: rgba(124, 106, 255, .1);
+        border: 1px solid rgba(124, 106, 255, .25);
+        color: var(--lr-t1);
         align-self: flex-start;
     }
 
-    .ai-msg.bot .tool {
+    .lr-msg.bot .tool {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        padding: 3px 8px;
-        border-radius: 4px;
-        background: color-mix(in oklch, var(--accent) 18%, transparent);
-        color: var(--accent);
-        margin-right: 8px;
-    }
-
-    .ai-msg.bot .tool::before {
-        content: "⚒";
+        gap: 3px;
+        font-family: var(--lr-mono);
         font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        background: rgba(124, 106, 255, .2);
+        color: var(--lr-accent2);
+        margin-right: 5px;
     }
 
-    .ai-msg.bot small {
+    .lr-msg.bot small {
         display: block;
-        margin-top: 6px;
-        color: var(--fg-mute);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
+        margin-top: 5px;
+        font-family: var(--lr-mono);
+        font-size: 10px;
+        color: var(--lr-t3);
     }
 
-    .ai-bar {
+    .lr-chat-bar {
         margin-top: auto;
         display: flex;
-        gap: 8px;
         align-items: center;
-        padding: 10px 14px;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        background: var(--panel);
-        color: var(--fg-mute);
-        font-size: 13px;
+        gap: 8px;
+        padding: 10px 13px;
+        border: 1px solid var(--lr-border-act);
+        border-radius: 7px;
+        background: var(--lr-surface);
+        font-size: 12.5px;
+        color: var(--lr-t3);
+        box-shadow: 0 0 20px rgba(124, 106, 255, .08);
     }
 
-    .ai-bar .send {
+    .lr-chat-bar .send {
         margin-left: auto;
-        background: var(--accent);
+        background: var(--lr-accent);
         color: #fff;
-        padding: 5px 10px;
-        border-radius: 6px;
+        padding: 5px 12px;
+        border-radius: 5px;
         font-size: 12px;
-        font-weight: 600;
+        font-weight: 700;
+        font-family: var(--lr-mono);
     }
 
-    /* family cards */
-    .fam {
+    /* ── Family ── */
+    .lr-fam {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
+        grid-template-columns:repeat(4, 1fr);
+        gap: 1px;
+        background: var(--lr-border);
     }
 
-    .fam-card {
-        padding: 24px;
-        border: 1px solid var(--line-soft);
-        border-radius: var(--radius);
-        background: linear-gradient(180deg, color-mix(in oklch, var(--panel) 70%, transparent), color-mix(in oklch, var(--bg-2) 50%, transparent));
-        position: relative;
-        overflow: hidden;
-        min-height: 190px;
+    .lr-fam-card {
+        background: var(--lr-surface);
+        padding: 0;
         display: flex;
         flex-direction: column;
-        transition: border-color .2s;
-    }
-
-    .fam-card:hover {
-        border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
-    }
-
-    .fam-card .etag {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        padding: 3px 8px;
-        border-radius: 4px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        align-self: flex-start;
-    }
-
-    .fam-card h4 {
-        font-size: 18px;
-        margin: 14px 0 6px;
-        letter-spacing: -.015em;
-        font-weight: 600;
-        color: var(--fg);
-    }
-
-    .fam-card p {
-        color: var(--fg-dim);
-        font-size: 13px;
-        margin: 0 0 auto;
-        line-height: 1.55;
-    }
-
-    .fam-card .more {
-        margin-top: 16px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 12px;
-        color: var(--fg-dim);
+        min-height: 240px;
         cursor: pointer;
+        transition: background .2s;
+        position: relative;
+        overflow: hidden;
     }
 
-    .fam-card .more .arrow {
+    .lr-fam-card:hover {
+        background: var(--lr-surface2);
+    }
+
+    .lr-fam-accent {
+        height: 2px;
+        border: none;
+        margin: 0;
+    }
+
+    .lr-fam-body {
+        padding: 26px 22px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .lr-fam-tag {
+        font-family: var(--lr-mono);
+        font-size: 9.5px;
+        letter-spacing: .14em;
+        color: var(--lr-t3);
+        margin-bottom: 14px;
+    }
+
+    .lr-fam-card h4 {
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: -.03em;
+        color: var(--lr-t1);
+        margin: 0 0 10px;
+    }
+
+    .lr-fam-card > .lr-fam-body > p {
+        font-size: 12px;
+        color: var(--lr-t2);
+        margin: 0 0 auto;
+        line-height: 1.6;
+    }
+
+    .lr-fam-more {
+        margin-top: 22px;
+        font-size: 12px;
+        color: var(--lr-t3);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-family: var(--lr-mono);
+        transition: color .2s;
+    }
+
+    .lr-fam-card:hover .lr-fam-more {
+        color: var(--lr-accent);
+    }
+
+    .lr-fam-arrow {
         transition: transform .2s;
     }
 
-    .fam-card:hover .more .arrow {
-        transform: translateX(3px);
+    .lr-fam-card:hover .lr-fam-arrow {
+        transform: translateX(4px);
     }
 
-    .fam-card .fam-art {
-        position: absolute;
-        right: -20px;
-        bottom: -20px;
-        opacity: .1;
-        font-size: 80px;
-        font-weight: 700;
-        line-height: 1;
-    }
-
-    .fam-1 .etag {
-        background: color-mix(in oklch, var(--accent) 18%, transparent);
-        color: var(--accent);
-        border: 1px solid color-mix(in oklch, var(--accent) 30%, transparent);
-    }
-
-    .fam-2 .etag {
-        background: color-mix(in oklch, var(--cyan) 18%, transparent);
-        color: var(--cyan);
-        border: 1px solid color-mix(in oklch, var(--cyan) 30%, transparent);
-    }
-
-    .fam-3 .etag {
-        background: color-mix(in oklch, var(--purple) 18%, transparent);
-        color: var(--purple);
-        border: 1px solid color-mix(in oklch, var(--purple) 30%, transparent);
-    }
-
-    .fam-4 .etag {
-        background: color-mix(in oklch, var(--green) 18%, transparent);
-        color: var(--green);
-        border: 1px solid color-mix(in oklch, var(--green) 30%, transparent);
-    }
-
-    /* quotes */
-    .quotes {
+    /* ── Quotes ── */
+    .lr-quotes {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
+        grid-template-columns:repeat(3, 1fr);
+        gap: 1px;
+        background: var(--lr-border);
     }
 
-    .quote {
-        padding: 28px;
-        border: 1px solid var(--line-soft);
-        border-radius: var(--radius);
-        background: color-mix(in oklch, var(--panel) 55%, var(--bg-2));
+    .lr-quote {
+        background: var(--lr-surface);
+        padding: 30px 26px;
         display: flex;
         flex-direction: column;
-        gap: 18px;
+        gap: 16px;
+        transition: background .2s;
     }
 
-    .quote blockquote {
+    .lr-quote:hover {
+        background: var(--lr-surface2);
+    }
+
+    .lr-quote blockquote {
         margin: 0;
-        font-size: 15px;
-        line-height: 1.55;
-        color: var(--fg);
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--lr-t2);
     }
 
-    .quote blockquote::before {
-        content: "\201C";
-        font-family: var(--serif);
-        font-size: 60px;
-        color: var(--accent);
+    .lr-quote blockquote::before {
+        content: '"';
+        font-size: 36px;
+        color: var(--lr-accent);
+        opacity: .35;
         display: block;
         line-height: .6;
-        margin-bottom: -8px;
-        opacity: .7;
+        margin-bottom: 14px;
     }
 
-    .quote .who {
+    .lr-quote-who {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 11px;
         margin-top: auto;
-        padding-top: 18px;
-        border-top: 1px solid var(--line-soft);
+        padding-top: 14px;
+        border-top: 1px solid var(--lr-border);
     }
 
-    .quote .who .av {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent), var(--rose));
+    .lr-av {
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
         display: grid;
         place-items: center;
+        font-size: 11px;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+    }
+
+    .lr-av.a1 {
+        background: linear-gradient(135deg, #6366f1, #dc2626)
+    }
+
+    .lr-av.a2 {
+        background: linear-gradient(135deg, #0891b2, #7c3aed)
+    }
+
+    .lr-av.a3 {
+        background: linear-gradient(135deg, #16a34a, #0891b2)
+    }
+
+    .lr-quote-who .n {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--lr-t1);
+    }
+
+    .lr-quote-who .r {
+        font-size: 11px;
+        color: var(--lr-t3);
+        font-family: var(--lr-mono);
+    }
+
+    /* ── VS table ── */
+    .lr-vs-wrap {
+        border-radius: var(--lr-r-lg);
+        overflow: hidden;
+        border: 1px solid var(--lr-border-act);
+        box-shadow: 0 0 48px rgba(124, 106, 255, .1);
+    }
+
+    .lr-vs {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .lr-vs thead th {
+        padding: 13px 22px;
+        font-family: var(--lr-mono);
+        font-size: 10px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--lr-accent);
+        background: rgba(124, 106, 255, .08);
+        border-bottom: 1px solid var(--lr-border-act);
         font-weight: 600;
+    }
+
+    .lr-vs thead th:first-child {
+        text-align: right
+    }
+
+    .lr-vs thead th:nth-child(2) {
+        text-align: center
+    }
+
+    .lr-vs thead th:last-child {
+        text-align: left
+    }
+
+    .lr-vs tbody td {
+        padding: 10px 22px;
+        font-size: 12.5px;
+        border-bottom: 1px solid var(--lr-border);
+        vertical-align: middle;
+    }
+
+    .lr-vs tbody tr:last-child td {
+        border-bottom: none
+    }
+
+    .lr-vs tbody tr:hover td {
+        background: var(--lr-surface2)
+    }
+
+    .lr-vs tbody td:first-child {
+        text-align: right;
+        color: var(--lr-t3);
+        font-size: 12px
+    }
+
+    .lr-vs tbody td:nth-child(2) {
+        text-align: center;
+        font-family: var(--lr-mono);
+        font-size: 9.5px;
+        color: var(--lr-t4)
+    }
+
+    .lr-vs tbody td:last-child {
+        color: var(--lr-t1);
+        font-weight: 600
+    }
+
+    /* ── Features ── */
+    .lr-feat-grid {
+        display: grid;
+        grid-template-columns:repeat(3, 1fr);
+        gap: 1px;
+        background: var(--lr-border);
+    }
+
+    .lr-feat-cell {
+        background: var(--lr-surface);
+        padding: 30px 26px;
+        transition: background .2s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .lr-feat-cell:hover {
+        background: var(--lr-surface2);
+    }
+
+    .lr-feat-num {
+        font-family: var(--lr-mono);
+        font-size: 10.5px;
+        color: var(--lr-accent);
+        margin-bottom: 12px;
+        letter-spacing: .12em;
+        opacity: .65;
+    }
+
+    .lr-feat-cell h4 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--lr-t1);
+        margin: 0 0 6px;
+    }
+
+    .lr-feat-cell > p {
+        font-size: 12.5px;
+        color: var(--lr-t2);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ── DB ── */
+    .lr-db-grid {
+        display: grid;
+        grid-template-columns:repeat(6, 1fr);
+        gap: 1px;
+        background: var(--lr-border);
+    }
+
+    .lr-db-cell {
+        background: var(--lr-surface);
+        padding: 22px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 9px;
+        transition: background .2s;
+    }
+
+    .lr-db-cell:hover {
+        background: var(--lr-surface2);
+    }
+
+    .lr-db-cell img {
+        max-width: 50px;
+        height: 34px;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+        opacity: .35;
+        transition: opacity .2s;
+    }
+
+    .lr-db-cell:hover img {
+        opacity: .72;
+    }
+
+    .lr-db-cell span {
+        font-size: 10px;
+        color: var(--lr-t3);
+        font-family: var(--lr-mono);
+        text-align: center;
+    }
+
+    /* ── Sponsor ── */
+    .lr-sponsor {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+    }
+
+    .lr-sp-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    .lr-sp-avatar {
+        width: 58px;
+        height: 58px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--lr-border);
+        transition: border-color .2s, box-shadow .2s;
+    }
+
+    .lr-sp-item:hover .lr-sp-avatar {
+        border-color: var(--lr-border-act);
+        box-shadow: 0 0 18px rgba(124, 106, 255, .22);
+    }
+
+    .lr-sp-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .lr-sp-name {
+        font-size: 10.5px;
+        color: var(--lr-t3);
+        font-family: var(--lr-mono);
+    }
+
+    /* ── Git cards ── */
+    .lr-git-grid {
+        display: grid;
+        grid-template-columns:repeat(3, 1fr);
+        gap: 1px;
+        background: var(--lr-border-act);
+    }
+
+    .lr-git-card {
+        background: var(--lr-surface);
+        padding: 40px 26px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: background .2s;
+        position: relative;
+    }
+
+    .lr-git-card:hover {
+        background: var(--lr-surface2);
+    }
+
+    .lr-git-card img.git-logo {
+        width: 46px;
+        height: 46px;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+        opacity: .5;
+        transition: opacity .2s;
+    }
+
+    .lr-git-card:hover img.git-logo {
+        opacity: 1;
+    }
+
+    .lr-git-card .git-label {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--lr-t1);
+        font-family: var(--lr-mono);
+    }
+
+    .lr-git-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+    }
+
+    .lr-git-badge img {
+        height: 18px;
+    }
+
+    /* ── Original card-item / git-card / sponsor styles ── */
+    .card-item {
+        box-sizing: border-box;
+        cursor: pointer;
+        padding: 36px 16px;
+        border-right: 1px solid #efefef;
+        border-bottom: 1px solid #efefef;
+    }
+
+    .card-item:hover {
+        transition: box-shadow .3s;
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, .06);
+    }
+
+    .git-name {
+        margin-bottom: 0;
+        margin-top: 16px;
+        font-size: 1.3em;
+    }
+
+    .git-card {
+        cursor: pointer;
+        transition: transform 600ms, background 600ms, color 600ms, box-shadow 600ms;
+    }
+
+    .git-card img {
+        transition: transform 600ms;
+    }
+
+    .git-card:hover {
+        background: #38404e;
         color: #fff;
-        font-size: 13px;
+        box-shadow: 0 18px 30px -14px rgba(0, 36, 100, .4), 0 0 25px rgba(0, 123, 255, .2);
+        transform: translateY(-5px) scale(1.05);
     }
 
-    .quote .who .av.c2 {
-        background: linear-gradient(135deg, var(--cyan), var(--purple));
-        color: #fff;
+    .git-card:hover .git-img {
+        transform: scale(.9);
     }
 
-    .quote .who .av.c3 {
-        background: linear-gradient(135deg, var(--green), var(--cyan));
-        color: #0a1a10;
+    .sponsor .name {
+        margin-top: 12px;
+        margin-bottom: 0;
+        text-align: center;
+        color: #eee;
     }
 
-    .quote .who .n {
-        font-size: 13px;
-        font-weight: 500;
-        color: var(--fg);
-    }
-
-    .quote .who .r {
-        font-size: 12px;
-        color: var(--fg-mute);
-    }
-
-    /* responsive */
+    /* ── Responsive ── */
     @media (max-width: 1100px) {
-        .principle {
-            grid-template-columns: 1fr 1fr;
+        .lr-steps {
+            grid-template-columns:1fr 1fr;
         }
 
-        .prin-cell:nth-child(2n+1) {
-            border-left: 0;
+        .lr-anno-grid {
+            grid-template-columns:repeat(6, 1fr);
         }
 
-        .prin-cell::after {
-            display: none;
-        }
-
-        .anno-grid {
-            grid-template-columns: repeat(6, 1fr);
-        }
-
-        .anno, .anno.wide, .anno.xl {
+        .lr-anno, .lr-anno.w6 {
             grid-column: span 6;
         }
 
-        .out-grid {
-            grid-template-columns: repeat(2, 1fr);
+        .lr-out-grid {
+            grid-template-columns:1fr 1fr;
         }
 
-        .out-item, .out-item.wide {
-            grid-column: span 1;
+        .lr-out-item.w2 {
+            grid-column: span 2;
         }
 
-        .ai-wrap {
-            grid-template-columns: 1fr;
+        .lr-ai-wrap {
+            grid-template-columns:1fr;
         }
 
-        .ai-left {
-            border-right: 0;
-            border-bottom: 1px solid var(--line-soft);
+        .lr-fam {
+            grid-template-columns:1fr 1fr;
         }
 
-        .fam {
-            grid-template-columns: 1fr 1fr;
+        .lr-quotes {
+            grid-template-columns:1fr 1fr;
         }
 
-        .quotes {
-            grid-template-columns: 1fr;
+        .lr-feat-grid {
+            grid-template-columns:1fr 1fr;
         }
 
-        .v2-sec-head {
-            flex-direction: column;
-            gap: 16px;
+        .lr-db-grid {
+            grid-template-columns:repeat(4, 1fr);
+        }
+
+        .lr-git-grid {
+            grid-template-columns:1fr 1fr;
+        }
+
+        .lr-wrap {
+            padding: 0 28px;
         }
     }
 
     @media (max-width: 768px) {
-        .v2-block {
-            padding: 60px 0;
+        .lr-section {
+            padding: 72px 0;
         }
 
-        .v2-wrap {
+        .lr-wrap {
             padding: 0 20px;
         }
 
-        .fam {
-            grid-template-columns: 1fr;
+        .lr-steps {
+            grid-template-columns:1fr;
+        }
+
+        .lr-fam {
+            grid-template-columns:1fr;
+        }
+
+        .lr-quotes {
+            grid-template-columns:1fr;
+        }
+
+        .lr-feat-grid {
+            grid-template-columns:1fr;
+        }
+
+        .lr-db-grid {
+            grid-template-columns:repeat(3, 1fr);
+        }
+
+        .lr-out-grid {
+            grid-template-columns:1fr;
+        }
+
+        .lr-out-item.w2 {
+            grid-column: span 1;
+        }
+
+        .lr-git-grid {
+            grid-template-columns:1fr;
+        }
+
+        .lr-ai-wrap {
+            grid-template-columns:1fr;
+        }
+
+        .lr-h2 {
+            font-size: clamp(32px, 8vw, 48px);
         }
     }
 </style>
@@ -1294,60 +1519,48 @@
 <div ng-controller="home">
 
     <button class="btn btn-success animated zoomIn delay-2"
-            ng-click="go('https://www.yuque.com/erupts/erupt/ggbcv9',true)"
-            style="position: fixed;left: 20px;top: 60px;z-index: 99999999;box-shadow: 1px 1px 10px #333;text-align: left">
+            ng-click="go('https://docs.erupt.xyz/modules/erupt-cloud',true)"
+            style="position:fixed;left:20px;top:60px;z-index:99999999;box-shadow:1px 1px 10px #333;text-align:left">
         <span ng-bind-html="'home.btn.cloud' | i18nHtml"></span>
     </button>
-
     <button class="btn btn-primary animated zoomIn delay-4"
-            ng-click="go('https://www.yuque.com/erupts/erupt/fl0lyrdlrbm9mg0g',true)"
-            style="position: fixed;left: 20px;top: 120px;z-index: 99999999;box-shadow: 1px 1px 10px #333;text-align: left">
+            ng-click="go('https://linq.erupt.xyz',true)"
+            style="position:fixed;left:20px;top:120px;z-index:99999999;box-shadow:1px 1px 10px #333;text-align:left">
         <span ng-bind-html="'home.btn.linq' | i18nHtml"></span>
     </button>
-
     <button class="btn btn-warning animated zoomIn delay-5"
-            ng-click="go('https://www.yuque.com/erupts/erupt/ioqkpssno1wx3dvf',true)"
-            style="position: fixed;left: 20px;top: 180px;z-index: 99999999;box-shadow: 1px 1px 10px #333;text-align: left;color: #fff">
-        <span style="position: absolute;left: -8px;top: -8px;background: #dc3545;
-                    width: 16px;height:16px;border-radius: 100%;box-shadow: 0 0 3px #333"></span>
+            ng-click="go('https://docs.erupt.xyz/modules/pro/erupt-flow',true)"
+            style="position:fixed;left:20px;top:180px;z-index:99999999;box-shadow:1px 1px 10px #333;text-align:left;color:#fff">
+        <span style="position:absolute;left:-8px;top:-8px;background:#dc3545;width:16px;height:16px;border-radius:100%;box-shadow:0 0 3px #333"></span>
         <span ng-bind-html="'home.btn.flow' | i18nHtml"></span>
     </button>
-
     <button class="btn animated zoomIn delay-6"
             ng-click="go('#!/cube')"
-            style="position: fixed;left: 20px;top: 240px;z-index: 99999999;
-                   box-shadow: 1px 1px 10px #333;border: none;font-weight: 600;color: #fff;
-                   background: linear-gradient(135deg, #10b981, #059669)">
-        <span style="position: absolute;left: -8px;top: -8px;background: #dc3545;
-                    width: 16px;height:16px;border-radius: 100%;box-shadow: 0 0 3px #333"></span>
+            style="position:fixed;left:20px;top:240px;z-index:99999999;box-shadow:1px 1px 10px #333;border:none;font-weight:600;color:#fff;background:linear-gradient(135deg,#10b981,#059669)">
+        <span style="position:absolute;left:-8px;top:-8px;background:#dc3545;width:16px;height:16px;border-radius:100%;box-shadow:0 0 3px #333"></span>
         <span ng-bind-html="'home.btn.cube' | i18nHtml"></span>
     </button>
 
-    <!-- ── ORIGINAL HERO ── -->
+    <!-- ── HERO (unchanged) ── -->
     <div>
-        <div style="background: #27262b url(images/tile.png);">
-            <div style="padding-top: 60px">
-                <div class="text-center" style="color: #fff">
-                    <div style="margin-top: 60px;text-align: center">
-                        <span id="home-logo">
-                            <img alt="" src="assets/logo2.svg" width="120px">
-                        </span>
+        <div style="background:#27262b url(images/tile.png);">
+            <div style="padding-top:60px">
+                <div class="text-center" style="color:#fff">
+                    <div style="margin-top:60px;text-align:center">
+                        <span id="home-logo"><img alt="" src="assets/logo2.svg" width="120px"></span>
                     </div>
-                    <h1 style="margin-top: 30px">Erupt Engine</h1>
-                    <h4 style="margin-top: 18px"><span style="color: #ffc107;"> {{'home.subtitle' | i18n}} </span> ⚔
-                        {{'home.subtitle2' | i18n}}</h4>
-                    <p style="margin-top: 26px;gap: 20px;display: flex;justify-content: center">
-                        <button class="btn btn-primary" ng-click="go('#!/contrast')">{{'home.btn.code' | i18n}}
-                        </button>
-                        <button class="btn btn-success" ng-click="go('#!/doc')">{{'home.btn.doc' | i18n}}
-                        </button>
-                        <button class="btn btn-danger" ng-click="go('/demo',true)">{{'home.btn.demo' | i18n}}
-                        </button>
+                    <h1 style="margin-top:30px">Erupt Engine</h1>
+                    <h4 style="margin-top:18px"><span style="color:#ffc107"> {{'home.subtitle'|i18n}} </span> ⚔
+                        {{'home.subtitle2'|i18n}}</h4>
+                    <p style="margin-top:26px;gap:20px;display:flex;justify-content:center">
+                        <button class="btn btn-primary" ng-click="go('#!/contrast')">{{'home.btn.code'|i18n}}</button>
+                        <button class="btn btn-success" ng-click="go('#!/doc')">{{'home.btn.doc'|i18n}}</button>
+                        <button class="btn btn-danger" ng-click="go('/demo',true)">{{'home.btn.demo'|i18n}}</button>
                     </p>
                 </div>
             </div>
-            <div style="position: relative">
-                <div class="container" style="margin-top: 60px;padding-bottom: 20px;position: relative;z-index: 1;">
+            <div style="position:relative">
+                <div class="container" style="margin-top:60px;padding-bottom:20px;position:relative;z-index:1;">
                     <div class="row">
                         <div class="col-12">
                             <div id="erupt-box"
@@ -1363,9 +1576,8 @@
                                 </div>
                                 <div class="eb-content">
                                     <div class="eb-sidebar">
-                                        <div class="eb-sidebar-header"
-                                             ng-bind-html="'home.code.title' | i18nHtml"></div>
-                                        <div ng-repeat="(key,val) in project" style="padding: 0 6px;margin-top: 2px">
+                                        <div class="eb-sidebar-header" ng-bind-html="'home.code.title'|i18nHtml"></div>
+                                        <div ng-repeat="(key,val) in project" style="padding:0 6px;margin-top:2px">
                                             <div style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px">
                                                 <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg"
                                                      width="7px">
@@ -1376,7 +1588,7 @@
                                             </div>
                                             <div ng-if="val.sub">
                                                 <div ng-repeat="(key,val) in val.sub"
-                                                     style="padding-left: 20px;margin-top: 2px">
+                                                     style="padding-left:20px;margin-top:2px">
                                                     <div ng-if="val.file"
                                                          style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px;background:rgba(0,123,255,0.14)">
                                                         <img alt="" src="images/file/file.svg"
@@ -1399,10 +1611,7 @@
                                     </div>
                                     <div style="display:flex;flex-direction:column;width:100%;overflow:hidden;position:relative">
                                         <div class="eb-tabs">
-                                            <div class="eb-tab">
-                                                <span class="eb-tab-dot"></span>
-                                                DemoErupt.java
-                                            </div>
+                                            <div class="eb-tab"><span class="eb-tab-dot"></span>DemoErupt.java</div>
                                         </div>
                                         <pre id="DemoErupt"
                                              style="margin:0;border-radius:0;height:490px;box-shadow:inset 0 0 10px #2310109e">
@@ -1443,35 +1652,33 @@ public class DemoErupt extends BaseModel {
 
 }</code></pre>
                                         <a class="badge badge-primary" href="#!/contrast"
-                                           style="position:absolute;right:16px;bottom:16px;font-family:initial">
-                                            {{'home.code.more' | i18n}}
-                                        </a>
+                                           style="position:absolute;right:16px;bottom:16px;font-family:initial">{{'home.code.more'|i18n}}</a>
                                     </div>
                                     <div class="d-none d-md-block eb-tips">
                                         <div class="code-tip-card animated bounceInLeft delay-1"
                                              style="border-color:#007bff">
-                                            <h5 class="text-primary">{{'home.code.tip1.title' | i18n}}</h5>
-                                            <p>{{'home.code.tip1.desc' | i18n}}</p>
+                                            <h5 class="text-primary">{{'home.code.tip1.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip1.desc'|i18n}}</p>
                                         </div>
                                         <div class="code-tip-card animated bounceInLeft delay-2"
                                              style="border-color:#ffc107">
-                                            <h5 class="text-warning">{{'home.code.tip2.title' | i18n}}</h5>
-                                            <p>{{'home.code.tip2.desc' | i18n}}</p>
+                                            <h5 class="text-warning">{{'home.code.tip2.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip2.desc'|i18n}}</p>
                                         </div>
                                         <div class="code-tip-card animated bounceInLeft delay-3"
                                              style="border-color:#28a745">
-                                            <h5 class="text-success">{{'home.code.tip3.title' | i18n}}</h5>
-                                            <p>{{'home.code.tip3.desc' | i18n}}</p>
+                                            <h5 class="text-success">{{'home.code.tip3.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip3.desc'|i18n}}</p>
                                         </div>
                                         <div class="code-tip-card animated bounceInLeft delay-4"
                                              style="border-color:#dc3545">
-                                            <h5 class="text-danger">{{'home.code.tip4.title' | i18n}}</h5>
-                                            <p>{{'home.code.tip4.desc' | i18n}}</p>
+                                            <h5 class="text-danger">{{'home.code.tip4.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip4.desc'|i18n}}</p>
                                         </div>
                                         <div class="code-tip-card animated bounceInLeft delay-5"
                                              style="border-color:#17a2b8">
-                                            <h5 class="text-info">{{'home.code.tip5.title' | i18n}}</h5>
-                                            <p>{{'home.code.tip5.desc' | i18n}}</p>
+                                            <h5 class="text-info">{{'home.code.tip5.title'|i18n}}</h5>
+                                            <p>{{'home.code.tip5.desc'|i18n}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1482,620 +1689,559 @@ public class DemoErupt extends BaseModel {
             </div>
         </div>
 
-        <!-- ── EXISTING SECTIONS ── -->
-        <div id="erupt-features">
+        <div id="erupt-features" style="background:var(--lr-bg)">
 
-            <!-- Who is using -->
-            <div class="using-section">
-                <div class="using-header">
-                    <h3>{{'home.using.title' | i18n}} <em>300+</em></h3>
-                </div>
-                <div class="using-track-wrap">
-                    <div class="using-track">
-                        <div class="using-logo-card" ng-repeat="u in using" ng-if="u.logo" title="{{u.name}}">
-                            <img ng-src="{{u.logo}}" alt="{{u.name}}">
-                            <span class="logo-name">{{u.name}}</span>
+            <!-- 1. Using — dark marquee -->
+            <div class="lr-using">
+                <div class="lr-using-label">{{'home.using.title'|i18n}} · 300+</div>
+                <div class="lr-track-wrap">
+                    <div class="lr-track">
+                        <div class="lr-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                            <img alt="{{u.name}}" ng-src="{{u.logo}}"><span>{{u.name}}</span>
                         </div>
-                        <div class="using-logo-card" ng-repeat="u in using" ng-if="u.logo" title="{{u.name}}">
-                            <img ng-src="{{u.logo}}" alt="{{u.name}}">
-                            <span class="logo-name">{{u.name}}</span>
+                        <div class="lr-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                            <img alt="{{u.name}}" ng-src="{{u.logo}}"><span>{{u.name}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="using-track-wrap">
-                    <div class="using-track-reverse">
-                        <div class="using-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
-                            <img alt="{{u.name}}" ng-src="{{u.logo}}">
-                            <span class="logo-name">{{u.name}}</span>
+                <div class="lr-track-wrap">
+                    <div class="lr-track-r">
+                        <div class="lr-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                            <img alt="{{u.name}}" ng-src="{{u.logo}}"><span>{{u.name}}</span>
                         </div>
-                        <div class="using-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
-                            <img alt="{{u.name}}" ng-src="{{u.logo}}">
-                            <span class="logo-name">{{u.name}}</span>
+                        <div class="lr-logo-card" ng-if="u.logo" ng-repeat="u in using" title="{{u.name}}">
+                            <img alt="{{u.name}}" ng-src="{{u.logo}}"><span>{{u.name}}</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ══════════════════════════════════════════
-                 NEW v2 CONTENT — below 低代码 × AI
-                 ══════════════════════════════════════════ -->
+            <!-- 2. Stats strip -->
+            <div class="lr-stats">
+                <div class="lr-stats-inner">
+                    <div class="lr-stat"><span class="num">23+</span><span class="lbl">字段类型</span></div>
+                    <div class="lr-stat"><span class="num">12</span><span class="lbl">种语言</span></div>
+                    <div class="lr-stat"><span class="num">15+</span><span class="lbl">大模型支持</span></div>
+                    <div class="lr-stat"><span class="num">10+</span><span class="lbl">数据库</span></div>
+                    <div class="lr-stat"><span class="num">0</span><span class="lbl">前端代码</span></div>
+                    <div class="lr-stat"><span class="num">Apache 2.0</span><span class="lbl">开源协议</span></div>
+                </div>
+            </div>
 
-            <!-- HOW IT WORKS -->
-            <section class="v2-block" id="how" style="background:var(--bg)">
-                <div class="v2-wrap">
-                    <div class="v2-sec-head reveal">
-                        <div>
-                            <div class="v2-sec-tag">How it works</div>
-                            <h2 class="v2-sec-title">{{'home.v2.how.title.pre' | i18n}}<span class="s-i">Java</span>{{'home.v2.how.title.post'
-                                | i18n}}</h2>
-                        </div>
-                        <p class="v2-sec-lede">{{'home.v2.how.lede' | i18n}}</p>
+            <!-- 2. How it works -->
+            <section class="lr-section lr-glow-top">
+                <div class="lr-wrap">
+                    <div class="reveal" style="margin-bottom:56px">
+                        <div class="lr-tag">How it works</div>
+                        <h2 class="lr-h2">{{'home.v2.how.title.pre'|i18n}}<span class="lr-grad">Java</span>{{'home.v2.how.title.post'|i18n}}
+                        </h2>
+                        <p class="lr-lede" style="margin-top:16px">{{'home.v2.how.lede'|i18n}}</p>
                     </div>
-                    <div class="principle reveal">
-                        <div class="prin-cell">
-                            <div class="num">01 · MODEL</div>
-                            <h4>{{'home.v2.how.s1.h' | i18n}}</h4>
-                            <p>{{'home.v2.how.s1.p' | i18n}}</p>
-                            <div class="visual"><span class="dim">// User.java</span>
-                                <b>@Erupt</b>(name=<span style="color:var(--amber)">"用户"</span>)
-                                <b>class</b> User <b>{...}</b></div>
-                        </div>
-                        <div class="prin-cell">
-                            <div class="num">02 · SCAN</div>
-                            <h4>{{'home.v2.how.s2.h' | i18n}}</h4>
-                            <p>{{'home.v2.how.s2.p' | i18n}}</p>
-                            <div class="visual"><span class="dim">▶ EruptBoot</span>
-                                scan <b>✓ 3</b> entities
-                                meta <b>✓ 17</b> fields
+                    <div class="lr-grid-box reveal">
+                        <div class="lr-steps" id="how-principle">
+                            <div class="lr-step">
+                                <div class="lr-step-num">01</div>
+                                <h4>{{'home.v2.how.s1.h'|i18n}}</h4>
+                                <p>{{'home.v2.how.s1.p'|i18n}}</p>
+                                <pre class="language-java">// User.java
+@Erupt(name = "用户")
+class User extends BaseModel {
+  @EruptField
+  private String name;
+}</pre>
                             </div>
-                        </div>
-                        <div class="prin-cell">
-                            <div class="num">03 · COMPILE</div>
-                            <h4>{{'home.v2.how.s3.h' | i18n}}</h4>
-                            <p>{{'home.v2.how.s3.p' | i18n}}</p>
-                            <div class="visual">{
-                                <b>"type"</b>: <span style="color:var(--amber)">"table"</span>,
-                                <b>"cols"</b>: [...],
-                                <b>"edit"</b>: {...}
-                                }
+                            <div class="lr-step">
+                                <div class="lr-step-num">02</div>
+                                <h4>{{'home.v2.how.s2.h'|i18n}}</h4>
+                                <p>{{'home.v2.how.s2.p'|i18n}}</p>
+                                <pre><span style="color:#444">▶ EruptBoot starting...</span>
+<span style="color:#7c6aff">scan</span>  <span style="color:#4ade80">✓</span>  <span style="color:#fb923c">3</span>  entities
+<span style="color:#7c6aff">meta</span>  <span style="color:#4ade80">✓</span>  <span style="color:#fb923c">17</span> fields
+<span style="color:#4ade80">✓ ready</span> <span style="color:#333">in 1.2s</span></pre>
                             </div>
-                        </div>
-                        <div class="prin-cell">
-                            <div class="num">04 · RENDER</div>
-                            <h4>{{'home.v2.how.s4.h' | i18n}}</h4>
-                            <p>{{'home.v2.how.s4.p' | i18n}}</p>
-                            <div class="visual"><span class="dim">◎ GET /admin/user</span>
-                                <b>200</b> OK · 128 rows
-                                <span class="dim">✓ live · hot-reload</span></div>
+                            <div class="lr-step">
+                                <div class="lr-step-num">03</div>
+                                <h4>{{'home.v2.how.s3.h'|i18n}}</h4>
+                                <p>{{'home.v2.how.s3.p'|i18n}}</p>
+                                <pre><span style="color:#444">{</span>
+  <span style="color:#f87171">"type"</span>: <span style="color:#86efac">"table"</span>,
+  <span style="color:#f87171">"cols"</span>: [...]<span style="color:#444">,</span>
+  <span style="color:#f87171">"edit"</span>: {...}
+<span style="color:#444">}</span></pre>
+                            </div>
+                            <div class="lr-step">
+                                <div class="lr-step-num">04</div>
+                                <h4>{{'home.v2.how.s4.h'|i18n}}</h4>
+                                <p>{{'home.v2.how.s4.p'|i18n}}</p>
+                                <pre><span style="color:#60a5fa">GET</span> <span
+                                        style="color:#4ade80">/admin/user</span>
+<span style="color:#fb923c">200</span> OK · <span style="color:#fb923c">128</span> rows
+<span style="color:#4ade80">✓ live</span> <span style="color:#333">· hot-reload</span></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ANNOTATIONS -->
-            <section class="v2-block" id="annotations" style="background:var(--bg-2)">
-                <div class="v2-wrap">
-                    <div class="v2-sec-head reveal">
-                        <div>
-                            <div class="v2-sec-tag">Vocabulary</div>
-                            <h2 class="v2-sec-title">{{'home.v2.anno.title.pre' | i18n}}<span class="s-i">{{'home.v2.anno.title.mid' | i18n}}</span>
-                            </h2>
-                        </div>
-                        <p class="v2-sec-lede">{{'home.v2.anno.lede' | i18n}}</p>
+            <!-- 3. Annotations -->
+            <section class="lr-section">
+                <div class="lr-wrap">
+                    <div class="reveal" style="margin-bottom:56px">
+                        <div class="lr-tag">Vocabulary</div>
+                        <h2 class="lr-h2">{{'home.v2.anno.title.pre'|i18n}}<span class="lr-grad">{{'home.v2.anno.title.mid'|i18n}}</span>
+                        </h2>
+                        <p class="lr-lede" style="margin-top:16px">{{'home.v2.anno.lede'|i18n}}</p>
                     </div>
-                    <div class="anno-grid">
-                        <div class="anno xl reveal">
-                            <span class="anno-cat">Root</span>
-                            <div class="atk">@Erupt <span class="badge">entity</span></div>
-                            <h4>{{'home.v2.anno.erupt.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.erupt.p' | i18n}}</p>
-                            <div class="mini"><span style="color:var(--accent)">@Erupt</span>(
-                                name = <span style="color:var(--amber)">"用户管理"</span>,
-                                power = <span style="color:var(--accent)">@Power</span>(importable = <span
-                                        style="color:var(--purple)">true</span>, exportable = <span
-                                        style="color:var(--purple)">true</span>),
-                                filter = <span style="color:var(--accent)">@Filter</span>(<span
-                                        style="color:var(--amber)">"dept_id = #{user.deptId}"</span>)
-                                )
+                    <div class="lr-grid-box reveal">
+                        <div class="lr-anno-grid">
+                            <!-- row 1: two wide cards -->
+                            <div class="lr-anno w6">
+                                <span class="lr-anno-cat">Class</span>
+                                <div class="atk">@Erupt <span class="badge">entity</span></div>
+                                <h4>{{'home.v2.anno.erupt.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.erupt.p'|i18n}}</p>
+                                <div class="mini"><span style="color:var(--accent)">@Erupt</span>(
+                                    name = <span style="color:var(--amber)">"用户管理"</span>,
+                                    power = <span style="color:var(--accent)">@Power</span>(importable = <span
+                                            style="color:var(--purple)">true</span>, exportable = <span
+                                            style="color:var(--purple)">true</span>),
+                                    filter = <span style="color:var(--accent)">@Filter</span>(<span
+                                            style="color:var(--amber)">"dept_id = #{user.deptId}"</span>)
+                                    )
+                                </div>
                             </div>
-                        </div>
-                        <div class="anno xl reveal">
-                            <span class="anno-cat">Field</span>
-                            <div class="atk">@EruptField <span class="badge">view + edit</span></div>
-                            <h4>{{'home.v2.anno.field.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.field.p' | i18n}}</p>
-                            <div class="mini"><span style="color:var(--accent)">@EruptField</span>(
-                                views = <span style="color:var(--accent)">@View</span>(title = <span
-                                        style="color:var(--amber)">"用户名"</span>, sortable = <span
-                                        style="color:var(--purple)">true</span>),
-                                edit = <span style="color:var(--accent)">@Edit</span>(type = INPUT, search = <span
-                                        style="color:var(--accent)">@Search</span>)
-                                )
+                            <div class="lr-anno w6">
+                                <span class="lr-anno-cat">Field</span>
+                                <div class="atk">@EruptField <span class="badge">view + edit</span></div>
+                                <h4>{{'home.v2.anno.field.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.field.p'|i18n}}</p>
+                                <div class="mini"><span style="color:var(--accent)">@EruptField</span>(
+                                    views = <span style="color:var(--accent)">@View</span>(title = <span
+                                            style="color:var(--amber)">"用户名"</span>, sortable = <span
+                                            style="color:var(--purple)">true</span>),
+                                    edit = <span style="color:var(--accent)">@Edit</span>(type = INPUT, search = <span
+                                            style="color:var(--accent)">@Search</span>)
+                                    )
+                                </div>
                             </div>
-                        </div>
-                        <div class="anno reveal">
-                            <div class="atk">@Edit</div>
-                            <h4>{{'home.v2.anno.edit.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.edit.p' | i18n}}</p>
-                        </div>
-                        <div class="anno reveal">
-                            <div class="atk">@Power</div>
-                            <h4>{{'home.v2.anno.power.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.power.p' | i18n}}</p>
-                        </div>
-                        <div class="anno reveal">
-                            <div class="atk">@Search</div>
-                            <h4>{{'home.v2.anno.search.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.search.p' | i18n}}</p>
-                        </div>
-                        <div class="anno reveal">
-                            <div class="atk">@ReferenceTree</div>
-                            <h4>{{'home.v2.anno.reftree.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.reftree.p' | i18n}}</p>
-                        </div>
-                        <div class="anno wide reveal">
-                            <div class="atk">@Drill <span class="badge">navigate</span></div>
-                            <h4>{{'home.v2.anno.drill.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.drill.p' | i18n}}</p>
-                        </div>
-                        <div class="anno reveal wide">
-                            <div class="atk">@DataProxy</div>
-                            <h4>{{'home.v2.anno.proxy.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.proxy.p' | i18n}}</p>
-                        </div>
-
-                        <div class="anno reveal">
-                            <div class="atk">@Filter</div>
-                            <h4>{{'home.v2.anno.filter.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.filter.p' | i18n}}</p>
-                        </div>
-                        <div class="anno reveal">
-                            <div class="atk">@RowOperation</div>
-                            <h4>{{'home.v2.anno.rowop.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.rowop.p' | i18n}}</p>
-                        </div>
-                        <div class="anno reveal">
-                            <div class="atk">@AiField</div>
-                            <h4>{{'home.v2.anno.ai.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.ai.p' | i18n}}</p>
-                        </div>
-                        <div class="anno reveal">
-                            <div class="atk">@LinkTree</div>
-                            <h4>{{'home.v2.anno.linktree.h' | i18n}}</h4>
-                            <p>{{'home.v2.anno.linktree.p' | i18n}}</p>
+                            <!-- row 2: four quarter cards -->
+                            <div class="lr-anno">
+                                <div class="atk">@Edit</div>
+                                <h4>{{'home.v2.anno.edit.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.edit.p'|i18n}}</p></div>
+                            <div class="lr-anno">
+                                <div class="atk">@View</div>
+                                <h4>{{'home.v2.anno.view.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.view.p'|i18n}}</p></div>
+                            <div class="lr-anno">
+                                <div class="atk">@Search</div>
+                                <h4>{{'home.v2.anno.search.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.search.p'|i18n}}</p></div>
+                            <div class="lr-anno">
+                                <div class="atk">@Power</div>
+                                <h4>{{'home.v2.anno.power.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.power.p'|i18n}}</p></div>
+                            <!-- row 3: four quarter cards -->
+                            <div class="lr-anno">
+                                <div class="atk">@Filter</div>
+                                <h4>{{'home.v2.anno.filter.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.filter.p'|i18n}}</p></div>
+                            <div class="lr-anno">
+                                <div class="atk">@RowOperation</div>
+                                <h4>{{'home.v2.anno.rowop.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.rowop.p'|i18n}}</p></div>
+                            <div class="lr-anno">
+                                <div class="atk">@Tree</div>
+                                <h4>{{'home.v2.anno.tree.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.tree.p'|i18n}}</p></div>
+                            <div class="lr-anno">
+                                <div class="atk">@Vis</div>
+                                <h4>{{'home.v2.anno.vis.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.vis.p'|i18n}}</p></div>
+                            <!-- row 4: two wide cards -->
+                            <div class="lr-anno w6">
+                                <div class="atk">@Drill <span class="badge">navigate</span></div>
+                                <h4>{{'home.v2.anno.drill.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.drill.p'|i18n}}</p></div>
+                            <div class="lr-anno w6">
+                                <div class="atk">@LinkTree <span class="badge">layout</span></div>
+                                <h4>{{'home.v2.anno.linktree.h'|i18n}}</h4>
+                                <p>{{'home.v2.anno.linktree.p'|i18n}}</p></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-
-            <!-- OUTPUT MATRIX -->
-            <section class="v2-block" id="output" style="background:var(--bg)">
-                <div class="v2-wrap">
-                    <div class="v2-sec-head reveal">
-                        <div>
-                            <div class="v2-sec-tag">What you get</div>
-                            <h2 class="v2-sec-title">{{'home.v2.out.title.pre' | i18n}}<span class="s-i">{{'home.v2.out.title.em' | i18n}}</span>
-                            </h2>
-                        </div>
-                        <p class="v2-sec-lede">{{'home.v2.out.lede' | i18n}}</p>
+            <!-- 4. What you get -->
+            <section class="lr-section lr-glow-top">
+                <div class="lr-wrap">
+                    <div class="reveal" style="margin-bottom:56px">
+                        <div class="lr-tag">What you get</div>
+                        <h2 class="lr-h2">{{'home.v2.out.title.pre'|i18n}}<span class="lr-grad">{{'home.v2.out.title.em'|i18n}}</span>
+                        </h2>
+                        <p class="lr-lede" style="margin-top:16px">{{'home.v2.out.lede'|i18n}}</p>
                     </div>
-                    <div class="out-grid">
-                        <div class="out-item wide reveal">
-                            <div class="oi">
-                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                     width="16">
-                                    <path d="M3 6h18M3 12h18M3 18h18"/>
-                                </svg>
+                    <div class="lr-grid-box reveal">
+                        <div class="lr-out-grid">
+                            <div class="lr-out-item w2">
+                                <div class="lr-oi">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <path d="M3 6h18M3 12h18M3 18h18"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.list.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.list.p'|i18n}}</p>
+                                <div class="lr-chips"><span class="lr-chip">pagination</span><span class="lr-chip">multi-sort</span><span
+                                        class="lr-chip">export.csv</span><span class="lr-chip">bulk.delete</span></div>
                             </div>
-                            <h4>{{'home.v2.out.list.h' | i18n}}</h4>
-                            <p>{{'home.v2.out.list.p' | i18n}}</p>
-                            <div class="chiplist"><span class="chip">pagination</span><span
-                                    class="chip">multi-sort</span><span class="chip">export.csv</span><span
-                                    class="chip">bulk.delete</span></div>
-                        </div>
-                        <div class="out-item wide reveal">
-                            <div class="oi"
-                                 style="background:color-mix(in oklch,var(--cyan) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--cyan) 28%,var(--line));color:var(--cyan)">
-                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                     width="16">
-                                    <path d="M5 5h14v14H5zM5 12h14M12 5v14"/>
-                                </svg>
+                            <div class="lr-out-item w2">
+                                <div class="lr-oi"
+                                     style="background:rgba(8,145,178,.15);border-color:rgba(8,145,178,.25);color:#67e8f9">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <path d="M5 5h14v14H5zM5 12h14M12 5v14"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.form.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.form.p'|i18n}}</p>
+                                <div class="lr-chips"><span class="lr-chip">notNull</span><span
+                                        class="lr-chip">regex</span><span class="lr-chip">unique</span><span
+                                        class="lr-chip">upload</span><span class="lr-chip">cascader</span></div>
                             </div>
-                            <h4>{{'home.v2.out.form.h' | i18n}}</h4>
-                            <p>{{'home.v2.out.form.p' | i18n}}</p>
-                            <div class="chiplist"><span class="chip">notNull</span><span class="chip">regex</span><span
-                                    class="chip">unique</span><span class="chip">upload</span><span class="chip">cascader</span>
+                            <div class="lr-out-item">
+                                <div class="lr-oi"
+                                     style="background:rgba(22,163,74,.15);border-color:rgba(22,163,74,.25);color:#4ade80">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <rect height="10" rx="2" width="18" x="3" y="11"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.perm.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.perm.p'|i18n}}</p>
                             </div>
-                        </div>
-                        <div class="out-item reveal">
-                            <div class="oi"
-                                 style="background:color-mix(in oklch,var(--green) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--green) 28%,var(--line));color:var(--green)">
-                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                     width="16">
-                                    <rect height="10" rx="2" width="18" x="3" y="11"/>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                                </svg>
+                            <div class="lr-out-item">
+                                <div class="lr-oi"
+                                     style="background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.25);color:#c4b5fd">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <path d="M4 7h16M4 12h16M4 17h12"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.audit.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.audit.p'|i18n}}</p>
                             </div>
-                            <h4>{{'home.v2.out.perm.h' | i18n}}</h4>
-                            <p>{{'home.v2.out.perm.p' | i18n}}</p>
-                        </div>
-                        <div class="out-item reveal">
-                            <div class="oi"
-                                 style="background:color-mix(in oklch,var(--purple) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--purple) 28%,var(--line));color:var(--purple)">
-                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                     width="16">
-                                    <path d="M4 7h16M4 12h16M4 17h12"/>
-                                </svg>
+                            <div class="lr-out-item">
+                                <div class="lr-oi"
+                                     style="background:rgba(217,119,6,.15);border-color:rgba(217,119,6,.25);color:#fbbf24">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <path d="M8 4h12v12M8 16l12-12M16 20H4V8"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.api.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.api.p'|i18n}}</p>
                             </div>
-                            <h4>{{'home.v2.out.audit.h' | i18n}}</h4>
-                            <p>{{'home.v2.out.audit.p' | i18n}}</p>
-                        </div>
-                        <div class="out-item reveal">
-                            <div class="oi"
-                                 style="background:color-mix(in oklch,var(--amber) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--amber) 28%,var(--line));color:var(--amber)">
-                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                     width="16">
-                                    <path d="M8 4h12v12M8 16l12-12M16 20H4V8M4 20l12-12"/>
-                                </svg>
+                            <div class="lr-out-item">
+                                <div class="lr-oi"
+                                     style="background:rgba(220,38,38,.15);border-color:rgba(220,38,38,.25);color:#fca5a5">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <path d="M3 17l6-6 4 4 8-8"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.dash.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.dash.p'|i18n}}</p>
                             </div>
-                            <h4>{{'home.v2.out.api.h' | i18n}}</h4>
-                            <p>{{'home.v2.out.api.p' | i18n}}</p>
-                        </div>
-                        <div class="out-item reveal">
-                            <div class="oi"
-                                 style="background:color-mix(in oklch,var(--rose) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--rose) 28%,var(--line));color:var(--rose)">
-                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                     width="16">
-                                    <path d="M3 17l6-6 4 4 8-8"/>
-                                </svg>
+                            <div class="lr-out-item">
+                                <div class="lr-oi">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.ai.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.ai.p'|i18n}}</p>
                             </div>
-                            <h4>{{'home.v2.out.dash.h' | i18n}}</h4>
-                            <p>{{'home.v2.out.dash.p' | i18n}}</p>
-                        </div>
-                        <div class="out-item reveal">
-                            <div class="oi">
-                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                     width="16">
-                                    <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>
-                                </svg>
+                            <div class="lr-out-item">
+                                <div class="lr-oi"
+                                     style="background:rgba(8,145,178,.15);border-color:rgba(8,145,178,.25);color:#67e8f9">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <path d="M3 4h18v16H3z"/>
+                                        <path d="M3 10h18"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.tenant.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.tenant.p'|i18n}}</p>
                             </div>
-                            <h4>{{'home.v2.out.ai.h' | i18n}}</h4>
-                            <p>{{'home.v2.out.ai.p' | i18n}}</p>
-                        </div>
-                        <div class="out-item reveal">
-                            <div class="oi"
-                                 style="background:color-mix(in oklch,var(--cyan) 15%,var(--panel-2));border-color:color-mix(in oklch,var(--cyan) 28%,var(--line));color:var(--cyan)">
-                                <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                                     width="16">
-                                    <path d="M3 4h18v16H3z"/>
-                                    <path d="M3 10h18"/>
-                                </svg>
+                            <div class="lr-out-item">
+                                <div class="lr-oi"
+                                     style="background:rgba(234,179,8,.15);border-color:rgba(234,179,8,.25);color:#fde047">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <circle cx="12" cy="12" r="3"/>
+                                        <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.flow.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.flow.p'|i18n}}</p>
                             </div>
-                            <h4>{{'home.v2.out.tenant.h' | i18n}}</h4>
-                            <p>{{'home.v2.out.tenant.p' | i18n}}</p>
+                            <div class="lr-out-item">
+                                <div class="lr-oi"
+                                     style="background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.25);color:#a5b4fc">
+                                    <svg fill="none" height="14" stroke="currentColor" stroke-width="2"
+                                         viewBox="0 0 24 24" width="14">
+                                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                                    </svg>
+                                </div>
+                                <h4>{{'home.v2.out.cloud.h'|i18n}}</h4>
+                                <p>{{'home.v2.out.cloud.p'|i18n}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- AI CLAW DETAIL -->
-            <section class="v2-block" id="ai-detail" style="background:var(--bg-2)">
-                <div class="v2-wrap">
-                    <div class="ai-wrap reveal">
-                        <div class="ai-left">
-                            <div class="v2-sec-tag">AI Claw</div>
-                            <h3>{{'home.v2.ai.title' | i18n}}</h3>
-                            <p>{{'home.v2.ai.p' | i18n}}</p>
-                            <div class="ai-feat">
-                                <div class="arow">
-                                    <span class="k">MCP</span>
+            <!-- 5. AI Claw -->
+            <section class="lr-section">
+                <div class="lr-wrap">
+                    <div class="lr-ai-wrap reveal">
+                        <div class="lr-ai-left">
+                            <div class="lr-tag">AI Claw</div>
+                            <h3>{{'home.v2.ai.title'|i18n}}</h3>
+                            <p>{{'home.v2.ai.p'|i18n}}</p>
+                            <div class="lr-ai-feat">
+                                <div class="lr-arow"><span class="k">MCP</span>
                                     <div>
-                                        <div class="t">{{'home.v2.ai.mcp.t' | i18n}}</div>
-                                        <div class="d">{{'home.v2.ai.mcp.d' | i18n}}</div>
+                                        <div class="t">{{'home.v2.ai.mcp.t'|i18n}}</div>
+                                        <div class="d">{{'home.v2.ai.mcp.d'|i18n}}</div>
                                     </div>
                                 </div>
-                                <div class="arow">
-                                    <span class="k">@AiToolbox</span>
+                                <div class="lr-arow"><span class="k">@AiToolbox</span>
                                     <div>
-                                        <div class="t">{{'home.v2.ai.bean.t' | i18n}}</div>
-                                        <div class="d">{{'home.v2.ai.bean.d' | i18n}}</div>
+                                        <div class="t">{{'home.v2.ai.bean.t'|i18n}}</div>
+                                        <div class="d">{{'home.v2.ai.bean.d'|i18n}}</div>
                                     </div>
                                 </div>
-                                <div class="arow">
-                                    <span class="k">Agent</span>
+                                <div class="lr-arow"><span class="k">Agent</span>
                                     <div>
-                                        <div class="t">{{'home.v2.ai.agent.t' | i18n}}</div>
-                                        <div class="d">{{'home.v2.ai.agent.d' | i18n}}</div>
+                                        <div class="t">{{'home.v2.ai.agent.t'|i18n}}</div>
+                                        <div class="d">{{'home.v2.ai.agent.d'|i18n}}</div>
+                                    </div>
+                                </div>
+                                <div class="lr-arow"><span class="k" style="color:#a78bfa">Models</span>
+                                    <div>
+                                        <div class="t">{{'home.v2.ai.models.t'|i18n}}</div>
+                                        <div class="d">{{'home.v2.ai.models.d'|i18n}}</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="ai-right">
-                            <div class="ai-msg user">{{'home.v2.ai.chat.q' | i18n}}</div>
-                            <div class="ai-msg bot">
-                                <span class="tool">@Erupt:Order.query</span>
-                                {{'home.v2.ai.chat.a1' | i18n}}
-                                <small>{{'home.v2.ai.chat.a1.s' | i18n}}</small>
+                        <div class="lr-ai-right">
+                            <div class="lr-msg user">{{'home.v2.ai.chat.q'|i18n}}</div>
+                            <div class="lr-msg bot"><span class="tool">@Erupt:Order.query</span>{{'home.v2.ai.chat.a1'|i18n}}<small>{{'home.v2.ai.chat.a1.s'|i18n}}</small>
                             </div>
-                            <div class="ai-msg bot">
-                                <span class="tool">@Erupt:Order.update</span>
-                                {{'home.v2.ai.chat.a2' | i18n}}
-                                <small>{{'home.v2.ai.chat.a2.s' | i18n}}</small>
+                            <div class="lr-msg bot"><span class="tool">@Erupt:Order.update</span>{{'home.v2.ai.chat.a2'|i18n}}<small>{{'home.v2.ai.chat.a2.s'|i18n}}</small>
                             </div>
-                            <div class="ai-bar">
-                                <span>{{'home.v2.ai.chat.ph' | i18n}}</span>
-                                <span class="send">{{'home.v2.ai.chat.send' | i18n}}</span>
+                            <div class="lr-chat-bar"><span>{{'home.v2.ai.chat.ph'|i18n}}</span><span class="send">{{'home.v2.ai.chat.send'|i18n}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- FAMILY -->
-            <section class="v2-block" id="family" style="background:var(--bg)">
-                <div class="v2-wrap">
-                    <div class="v2-sec-head reveal">
-                        <div>
-                            <div class="v2-sec-tag">Family</div>
-                            <h2 class="v2-sec-title">{{'home.v2.fam.title.pre' | i18n}}<span class="s-i">{{'home.v2.fam.title.em' | i18n}}</span>
-                            </h2>
-                        </div>
-                        <p class="v2-sec-lede">{{'home.v2.fam.lede' | i18n}}</p>
+            <!-- 6. VS comparison -->
+            <section class="lr-section lr-glow-top">
+                <div class="lr-wrap">
+                    <div class="reveal" style="margin-bottom:48px">
+                        <div class="lr-tag">Comparison</div>
+                        <h2 class="lr-h2">{{'home.vs.title'|i18n}} <span class="lr-grad">vs</span>
+                            {{'home.vs.erupt'|i18n}}</h2>
                     </div>
-                    <div class="fam">
-                        <div class="fam-card fam-1 reveal"
-                             ng-click="go('https://www.yuque.com/erupts/erupt/ggbcv9',true)">
-                            <span class="etag">☁ CLOUD</span>
-                            <h4>Erupt Cloud</h4>
-                            <p>{{'home.v2.fam.cloud.p' | i18n}}</p>
-                            <span class="more">{{'home.v2.fam.more' | i18n}}<span class="arrow">→</span></span>
-                            <div class="fam-art">☁</div>
-                        </div>
-                        <div class="fam-card fam-2 reveal"
-                             ng-click="go('https://www.yuque.com/erupts/erupt/ioqkpssno1wx3dvf',true)">
-                            <span class="etag">⚡ FLOW</span>
-                            <h4>Erupt Flow</h4>
-                            <p>{{'home.v2.fam.flow.p' | i18n}}</p>
-                            <span class="more">{{'home.v2.fam.more' | i18n}}<span class="arrow">→</span></span>
-                            <div class="fam-art">⚡</div>
-                        </div>
-                        <div class="fam-card fam-3 reveal"
-                             ng-click="go('https://www.yuque.com/erupts/erupt/fl0lyrdlrbm9mg0g',true)">
-                            <span class="etag">⎇ LINQ.J</span>
-                            <h4>Linq.J</h4>
-                            <p>{{'home.v2.fam.linq.p' | i18n}}</p>
-                            <span class="more">{{'home.v2.fam.more' | i18n}}<span class="arrow">→</span></span>
-                            <div class="fam-art">λ</div>
-                        </div>
-                        <div class="fam-card fam-4 reveal" ng-click="go('#!/cube')">
-                            <span class="etag">⌘ CUBE</span>
-                            <h4>{{'home.v2.fam.sem.h' | i18n}}</h4>
-                            <p>{{'home.v2.fam.sem.p' | i18n}}</p>
-                            <span class="more">{{'home.v2.fam.more' | i18n}}<span class="arrow">→</span></span>
-                            <div class="fam-art">⌘</div>
+                    <div class="lr-vs-wrap reveal">
+                        <table class="lr-vs">
+                            <thead>
+                            <tr>
+                                <th style="width:45%">{{'home.vs.title'|i18n}}</th>
+                                <th style="width:10%">{{'home.vs.vs'|i18n}}</th>
+                                <th style="width:45%">{{'home.vs.erupt'|i18n}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{'home.vs.files.left'|i18n}}</td>
+                                <td>{{'home.vs.files.title'|i18n}}</td>
+                                <td>{{'home.vs.files.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.modify.left'|i18n}}</td>
+                                <td>{{'home.vs.modify.title'|i18n}}</td>
+                                <td>{{'home.vs.modify.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.table.left'|i18n}}</td>
+                                <td>{{'home.vs.table.title'|i18n}}</td>
+                                <td>{{'home.vs.table.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.deploy.left'|i18n}}</td>
+                                <td>{{'home.vs.deploy.title'|i18n}}</td>
+                                <td>{{'home.vs.deploy.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.upgrade.left'|i18n}}</td>
+                                <td>{{'home.vs.upgrade.title'|i18n}}</td>
+                                <td>{{'home.vs.upgrade.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.frontend.left'|i18n}}</td>
+                                <td>{{'home.vs.frontend.title'|i18n}}</td>
+                                <td>{{'home.vs.frontend.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.dev.left'|i18n}}</td>
+                                <td>{{'home.vs.dev.title'|i18n}}</td>
+                                <td>{{'home.vs.dev.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.component.left'|i18n}}</td>
+                                <td>{{'home.vs.component.title'|i18n}}</td>
+                                <td>{{'home.vs.component.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.database.left'|i18n}}</td>
+                                <td>{{'home.vs.database.title'|i18n}}</td>
+                                <td>{{'home.vs.database.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.time.left'|i18n}}</td>
+                                <td>{{'home.vs.time.title'|i18n}}</td>
+                                <td>{{'home.vs.time.right'|i18n}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.logic.left'|i18n}}</td>
+                                <td>{{'home.vs.logic.title'|i18n}}</td>
+                                <td ng-bind-html="'home.vs.logic.right'|i18nHtml"></td>
+                            </tr>
+                            <tr>
+                                <td>{{'home.vs.startup.left'|i18n}}</td>
+                                <td>{{'home.vs.startup.title'|i18n}}</td>
+                                <td>{{'home.vs.startup.right'|i18n}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. Family -->
+            <section class="lr-section lr-glow-top">
+                <div class="lr-wrap">
+                    <div class="reveal" style="margin-bottom:56px">
+                        <div class="lr-tag">Family</div>
+                        <h2 class="lr-h2">{{'home.v2.fam.title.pre'|i18n}}<span class="lr-grad">{{'home.v2.fam.title.em'|i18n}}</span>
+                        </h2>
+                        <p class="lr-lede" style="margin-top:16px">{{'home.v2.fam.lede'|i18n}}</p>
+                    </div>
+                    <div class="lr-grid-box reveal">
+                        <div class="lr-fam">
+                            <div class="lr-fam-card" ng-click="go('https://docs.erupt.xyz/modules/erupt-cloud',true)">
+                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#7c6aff,#a78bfa)">
+                                <div class="lr-fam-body">
+                                    <div class="lr-fam-tag">☁ CLOUD</div>
+                                    <h4>Erupt Cloud</h4>
+                                    <p>{{'home.v2.fam.cloud.p'|i18n}}</p>
+                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
+                                            class="lr-fam-arrow">→</span></span>
+                                </div>
+                            </div>
+                            <div class="lr-fam-card"
+                                 ng-click="go('https://docs.erupt.xyz/modules/pro/erupt-flow',true)">
+                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#0891b2,#06b6d4)">
+                                <div class="lr-fam-body">
+                                    <div class="lr-fam-tag">⚡ FLOW</div>
+                                    <h4>Erupt Flow</h4>
+                                    <p>{{'home.v2.fam.flow.p'|i18n}}</p>
+                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
+                                            class="lr-fam-arrow">→</span></span>
+                                </div>
+                            </div>
+                            <div class="lr-fam-card" ng-click="go('https://linq.erupt.xyz',true)">
+                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#7c3aed,#a78bfa)">
+                                <div class="lr-fam-body">
+                                    <div class="lr-fam-tag">⎇ LINQ.J</div>
+                                    <h4>Linq.J</h4>
+                                    <p>{{'home.v2.fam.linq.p'|i18n}}</p>
+                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
+                                            class="lr-fam-arrow">→</span></span>
+                                </div>
+                            </div>
+                            <div class="lr-fam-card" ng-click="go('#!/cube')">
+                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#16a34a,#22c55e)">
+                                <div class="lr-fam-body">
+                                    <div class="lr-fam-tag">⌘ CUBE</div>
+                                    <h4>{{'home.v2.fam.sem.h'|i18n}}</h4>
+                                    <p>{{'home.v2.fam.sem.p'|i18n}}</p>
+                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
+                                            class="lr-fam-arrow">→</span></span>
+                                </div>
+                            </div>
+                            <div class="lr-fam-card" ng-click="go('https://docs.erupt.xyz/modules/erupt-ai',true)">
+                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#a855f7,#ec4899)">
+                                <div class="lr-fam-body">
+                                    <div class="lr-fam-tag">✦ AI</div>
+                                    <h4>Erupt AI</h4>
+                                    <p>{{'home.v2.fam.ai.p'|i18n}}</p>
+                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
+                                            class="lr-fam-arrow">→</span></span>
+                                </div>
+                            </div>
+                            <div class="lr-fam-card"
+                                 ng-click="go('https://docs.erupt.xyz/modules/pro/erupt-chart',true)">
+                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#f59e0b,#f97316)">
+                                <div class="lr-fam-body">
+                                    <div class="lr-fam-tag">📊 CHART</div>
+                                    <h4>Erupt Chart</h4>
+                                    <p>{{'home.v2.fam.chart.p'|i18n}}</p>
+                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
+                                            class="lr-fam-arrow">→</span></span>
+                                </div>
+                            </div>
+                            <div class="lr-fam-card" ng-click="go('https://docs.erupt.xyz/modules/erupt-job',true)">
+                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#10b981,#06b6d4)">
+                                <div class="lr-fam-body">
+                                    <div class="lr-fam-tag">⏱ JOB</div>
+                                    <h4>Erupt Job</h4>
+                                    <p>{{'home.v2.fam.job.p'|i18n}}</p>
+                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
+                                            class="lr-fam-arrow">→</span></span>
+                                </div>
+                            </div>
+                            <div class="lr-fam-card" ng-click="go('https://docs.erupt.xyz/modules/erupt-monitor',true)">
+                                <hr class="lr-fam-accent" style="background:linear-gradient(90deg,#64748b,#94a3b8)">
+                                <div class="lr-fam-body">
+                                    <div class="lr-fam-tag">📡 MONITOR</div>
+                                    <h4>Erupt Monitor</h4>
+                                    <p>{{'home.v2.fam.monitor.p'|i18n}}</p>
+                                    <span class="lr-fam-more">{{'home.v2.fam.more'|i18n}}<span
+                                            class="lr-fam-arrow">→</span></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- QUOTES -->
-            <section class="v2-block" style="background:var(--bg-2)">
-                <div class="v2-wrap">
-                    <div class="v2-sec-head reveal">
-                        <div>
-                            <div class="v2-sec-tag">In production</div>
-                            <h2 class="v2-sec-title"><span class="s-i">{{'home.v2.quotes.title.em' | i18n}}</span>{{'home.v2.quotes.title.post'
-                                | i18n}}</h2>
-                        </div>
-                        <p class="v2-sec-lede">{{'home.v2.quotes.lede' | i18n}}</p>
-                    </div>
-                    <div class="quotes">
-                        <div class="quote reveal">
-                            <blockquote>{{'home.v2.q1.text' | i18n}}</blockquote>
-                            <div class="who"><span class="av">G</span>
-                                <div>
-                                    <div class="n">{{'home.v2.q1.name' | i18n}}</div>
-                                    <div class="r">{{'home.v2.q1.role' | i18n}}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quote reveal">
-                            <blockquote>{{'home.v2.q2.text' | i18n}}</blockquote>
-                            <div class="who"><span class="av c2">L</span>
-                                <div>
-                                    <div class="n">{{'home.v2.q2.name' | i18n}}</div>
-                                    <div class="r">{{'home.v2.q2.role' | i18n}}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quote reveal">
-                            <blockquote>{{'home.v2.q3.text' | i18n}}</blockquote>
-                            <div class="who"><span class="av c3">W</span>
-                                <div>
-                                    <div class="n">{{'home.v2.q3.name' | i18n}}</div>
-                                    <div class="r">{{'home.v2.q3.role' | i18n}}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ═══════════════════════════════════════════
-                 ORIGINAL remaining sections
-                 ═══════════════════════════════════════════ -->
-
-            <!-- VS table -->
-            <div style="background: #38404e url(images/tile.png) 0 0 repeat;padding:36px;position: relative;
-                box-shadow: inset 0 0 10px #222">
-                <div class="container">
-                    <table class="table table-bordered table-vs" style="color: #fff;margin-bottom: 0">
-                        <tr>
-                            <th style="width: 45%;text-align: right">{{'home.vs.title' | i18n}}</th>
-                            <th class="text-warning" style="width: 10%;text-align: center">{{'home.vs.vs' | i18n}}</th>
-                            <th style="width: 45%;text-align: left">{{'home.vs.erupt' | i18n}}</th>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.files.left' | i18n}}</td>
-                            <td>{{'home.vs.files.title' | i18n}}</td>
-                            <td>{{'home.vs.files.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.modify.left' | i18n}}</td>
-                            <td>{{'home.vs.modify.title' | i18n}}</td>
-                            <td>{{'home.vs.modify.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.table.left' | i18n}}</td>
-                            <td>{{'home.vs.table.title' | i18n}}</td>
-                            <td>{{'home.vs.table.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.deploy.left' | i18n}}</td>
-                            <td>{{'home.vs.deploy.title' | i18n}}</td>
-                            <td>{{'home.vs.deploy.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.upgrade.left' | i18n}}</td>
-                            <td>{{'home.vs.upgrade.title' | i18n}}</td>
-                            <td>{{'home.vs.upgrade.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.frontend.left' | i18n}}</td>
-                            <td>{{'home.vs.frontend.title' | i18n}}</td>
-                            <td>{{'home.vs.frontend.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.dev.left' | i18n}}</td>
-                            <td>{{'home.vs.dev.title' | i18n}}</td>
-                            <td>{{'home.vs.dev.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.component.left' | i18n}}</td>
-                            <td>{{'home.vs.component.title' | i18n}}</td>
-                            <td>{{'home.vs.component.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.database.left' | i18n}}</td>
-                            <td>{{'home.vs.database.title' | i18n}}</td>
-                            <td>{{'home.vs.database.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.time.left' | i18n}}</td>
-                            <td>{{'home.vs.time.title' | i18n}}</td>
-                            <td>{{'home.vs.time.right' | i18n}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.logic.left' | i18n}}</td>
-                            <td>{{'home.vs.logic.title' | i18n}}</td>
-                            <td ng-bind-html="'home.vs.logic.right' | i18nHtml"></td>
-                        </tr>
-                        <tr>
-                            <td>{{'home.vs.startup.left' | i18n}}</td>
-                            <td>{{'home.vs.startup.title' | i18n}}</td>
-                            <td>{{'home.vs.startup.right' | i18n}}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Features -->
-            <div style="position: relative;box-shadow:0 0 10px #9e9e9e36;padding-top: 20px;background: #fff">
-                <div class="container">
-                    <p class="text-center">{{'home.features.title' | i18n}}</p>
-                    <div class="row">
-                        <div class="col-md-4 col-6" ng-repeat="i in indicator">
-                            <div class="indicator-card">
-                                <p style="margin-top: 0;margin-bottom: 16px;font-size: 1em;color: #333; padding: 8px;border-bottom: 1px solid #eee">
-                                    <span style="line-height: 24px"> {{i.name}}</span>
-                                    <a href="{{i.url}}" ng-if="i.url"
-                                       style="font-size:1em;color: #09f;position: absolute;right: 25px;top: 8px;"
-                                       target="_blank">
-                                        <img alt="" height="20px" src="images/home/right2.svg">
-                                    </a>
-                                </p>
-                                <div ng-click="i.url && go(i.url,true)" style="cursor: pointer; padding: 18px;">
-                                    <img alt="" ng-src="images/home/{{i.icon}}" style="height:120px">
-                                    <p class="desc">{{i.desc}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 低代码 × AI promo cards -->
-            <div style="background: #0d1117; padding: 60px 0; position: relative; overflow: hidden;">
-                <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,0.04) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:0"></div>
-                <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 0%,rgba(99,102,241,0.13) 0%,transparent 65%);pointer-events:none;z-index:0"></div>
-                <div class="container" style="position:relative;z-index:1;text-align:center">
-                    <span style="display:inline-block;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:20px;padding:4px 16px;font-size:0.78em;font-family:monospace;margin-bottom:16px">{{'home.new.badge' | i18n}}</span>
-                    <h2 style="color:#fff;font-size:2em;font-weight:900;margin-bottom:14px;letter-spacing:0.5px">
-                        {{'home.new.title.pre' | i18n}}
-                        <span style="background:linear-gradient(135deg,#a5b4fc,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text"> × AI</span>
-                    </h2>
-                    <p style="color:rgba(255,255,255,0.52);max-width:580px;margin:0 auto 40px;line-height:1.8;font-size:1em">
-                        {{'home.new.desc' | i18n}}
-                    </p>
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 col-sm-10 mb-3">
-                            <div class="ai-promo-card ai-promo-card-ai" ng-click="go('#!/ai')">
-                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#8b5cf6)"></div>
-                                <div style="font-size:2em;margin-bottom:10px">🤖</div>
-                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt AI</h4>
-                                <p ng-bind-html="'home.promo.ai.desc' | i18nHtml" style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px"></p>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
-                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">50+ LLMs</span>
-                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">ReAct Agent</span>
-                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">MCP</span>
-                                    <span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.28);color:#a5b4fc;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Tool</span>
-                                </div>
-                                <span style="color:#818cf8;font-weight:700;font-size:0.88em">{{'home.promo.ai.link' | i18n}}</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-10 mb-3">
-                            <div class="ai-promo-card ai-promo-card-claw" ng-click="go('#!/ai-claw')">
-                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#06b6d4,#22d3ee)"></div>
-                                <div style="font-size:2em;margin-bottom:10px">🦞</div>
-                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">AI Claw</h4>
-                                <p ng-bind-html="'home.promo.claw.desc' | i18nHtml" style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px"></p>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
-                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Skill</span>
-                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Shell</span>
-                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">File I/O</span>
-                                    <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.28);color:#67e8f9;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">NLP</span>
-                                </div>
-                                <span style="color:#22d3ee;font-weight:700;font-size:0.88em">{{'home.promo.claw.link' | i18n}}</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-10 mb-3">
-                            <div class="ai-promo-card ai-promo-card-cube" ng-click="go('#!/cube')">
-                                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#10b981,#34d399)"></div>
-                                <div style="font-size:2em;margin-bottom:10px">🧊</div>
-                                <h4 style="color:#fff;font-weight:800;margin-bottom:8px;font-size:1.15em">Erupt Cube</h4>
-                                <p ng-bind-html="'home.promo.cube.desc' | i18nHtml" style="color:rgba(255,255,255,0.48);font-size:0.87em;line-height:1.7;margin-bottom:14px"></p>
-                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
-                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@EruptCube</span>
-                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Dimension</span>
-                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">@Measure</span>
-                                    <span style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#34d399;border-radius:4px;padding:2px 10px;font-size:0.73em;font-family:monospace">Drag &amp; Drop</span>
-                                </div>
-                                <span style="color:#10b981;font-weight:700;font-size:0.88em">{{'home.promo.cube.link' | i18n}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom nav + DB -->
+            <!-- 8. Database -->
             <div style="background: #fff;box-shadow: 0 0 10px #9e9e9e36;padding: 20px 0">
                 <div class="container">
                     <hr>
                     <div class="card">
                         <div class="card-header text-center text-white" style="background: #1d2124 !important">
                             {{'home.db.title' | i18n}}
-                            <a class="float-right" href="https://www.yuque.com/erupts/erupt/ku7vx4"
+                            <a class="float-right" href="https://docs.erupt.xyz/guide/database"
                                style="font-size:1em;color: #fff" target="_blank">
                                 <img alt="" height="20px" src="images/home/right.svg">
                             </a>
@@ -2155,7 +2301,7 @@ public class DemoErupt extends BaseModel {
             </div>
 
             <!-- License + git cards -->
-            <div style="margin-top: 30px;padding:16px 0;background: #fff">
+            <div style="padding:16px 0;background: #fff">
                 <div class="container">
                     <div class="row" style="margin-top: 16px">
                         <div class="col-12">
@@ -2221,7 +2367,7 @@ public class DemoErupt extends BaseModel {
                     io.unobserve(e.target);
                 }
             });
-        }, {threshold: 0.1});
+        }, {threshold: 0.07});
         document.querySelectorAll('.reveal').forEach(function (n) {
             io.observe(n);
         });
