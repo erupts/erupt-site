@@ -64,13 +64,13 @@
                    ng-class="currRouter=='/about'?'active-link':''">
                     {{'nav.about' | i18n}}
                 </a>
-                <span class="dropdown show">
+                <span class="dropdown show more-dropdown">
                     <a class="btn btn-sm align-self-center btn-link" href="https://docs.erupt.xyz"
                        style="padding-right: 0" target="_blank">
                         {{'nav.doc' | i18n}}
                     </a>
                     <a aria-expanded="false" aria-haspopup="true" class="btn btn-sm align-self-center dropdown-toggle"
-                       data-toggle="dropdown" href="javascript:;" role="button" style="padding: 0"></a>
+                       data-toggle="dropdown" href="javascript:;" role="button" style="padding: 0 4px"></a>
                     <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='LATEST'">
                         <a class="dropdown-item" href="https://docs.erupt.xyz"
                            ng-click="docVersion = 'LATEST'" target="_blank">LATEST</a>

@@ -52,7 +52,6 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
         {name: '招商蛇口', logo: "images/using/zhaoshang.png"},
         {name: '中海地产', logo: "images/using/中海地产.png"},
         {name: '龙湖数科', logo: "images/using/longhu.png"},
-        {name: 'Leapmotor', logo: "images/using/零跑汽车.png"},
         {name: 'YashanDB', logo: "images/using/yashan.png"},
         {name: 'China Telecom', logo: "images/using/telecom.png"},
         {name: 'NETA Auto', logo: "images/using/nezha.webp"},
@@ -64,7 +63,6 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
         {name: 'Hengrui Medicine', logo: "images/using/hengrui.png"},
         {name: '销售易', logo: "images/using/销售易.jpg"},
         {name: '歌华有线', logo: "images/using/gehua.jpg"},
-        {name: '良医汇', logo: "images/using/良医汇.png"},
         {name: '越秀地产', logo: "images/using/yuexiu.png"},
         {name: '金科地产', logo: "images/using/jinke.png"},
 
@@ -150,21 +148,8 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
         {name: i18nService.t('db.custom'), image: "custom.svg"}
     ];
 
-    Prism.highlightAllUnder(document.getElementById("DemoErupt"));
-    Prism.highlightAllUnder(document.getElementById("how-principle"));
-
-    $("#logo").attr("src", "assets/logo2.svg");
-
-    $.get("assets/logo2.svg", function (res) {
-        var svg = res.getElementById("erupt_logo_svg");
-        svg.style.width = "100px";
-        $("#home-logo").html(svg)
-    })
-
     $scope.$on("$destroy", function () {
-        // $rootScope.showHeader = true;
         document.onscroll = null;
-        $("#logo").attr("src", "assets/logo.svg");
     })
 
     $timeout(function () {
