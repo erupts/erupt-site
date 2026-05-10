@@ -655,7 +655,7 @@
     /* logo chip inside marquee */
     .chip {
         flex-shrink: 0;
-        height: 44px;
+        height: 64px;
         min-width: 130px;
         display: flex;
         flex-direction: column;
@@ -963,7 +963,7 @@ public class DemoErupt extends BaseModel {
              §2  TRUSTED BY (marquee)
              ════════════════════════════════════════ -->
         <div class="r">
-            <div class="mq" style="padding:18px 0">
+            <div class="mq" style="padding-top:18px">
                 <div class="mq-fl"></div>
                 <div class="mq-fr"></div>
                 <p style="text-align:center;font-family:var(--c-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-text2);margin-bottom:14px">
@@ -1569,8 +1569,25 @@ public class DemoErupt extends BaseModel {
         </div>
 
         <!-- ════════════════════════════════════════
-             §18 COMMUNITY (3 col git)
+             §18 LICENSE + FINAL CTA
              ════════════════════════════════════════ -->
+        <div class="r g-bg ticks" style="padding:72px 48px;text-align:center">
+            <span class="tag">Get Started</span>
+            <h2 class="h2" style="font-size:clamp(28px,4vw,44px)">准备好了吗？</h2>
+            <p class="sub" style="margin:0 auto 32px;max-width:44ch">
+                {{'home.license'|i18n}}
+                <a href="http://www.apache.org/licenses/LICENSE-2.0" style="color:var(--c-brand);text-decoration:none">{{'home.license.link'|i18n}}</a>
+                {{'home.license.desc'|i18n}}
+            </p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o" href="https://www.erupt.xyz/demo" style="padding:11px 28px;font-size:14px"
+                   target="_blank">{{'home.v2.cta.demo'|i18n}}</a>
+                <a class="wbtn" href="https://docs.erupt.xyz" style="padding:11px 28px;font-size:14px" target="_blank">{{'home.v2.cta.docs'|i18n}}</a>
+                <a class="wbtn" href="#!/contrast" style="padding:11px 28px;font-size:14px">{{'home.btn.code'|i18n}}</a>
+            </div>
+        </div>
+
+        <!-- §19 COMMUNITY (3 col git) -->
         <div class="r g3 reveal">
             <div class="c no-bb" ng-click="go('https://gitee.com/erupt/erupt',true)"
                  style="text-align:center;cursor:pointer;padding:40px 32px">
@@ -1601,25 +1618,6 @@ public class DemoErupt extends BaseModel {
                     <img src="images/gitcode.svg" style="width:24px;object-fit:contain;opacity:.65">
                 </div>
                 <div style="font-size:14px;font-weight:600">GitCode</div>
-            </div>
-        </div>
-
-        <!-- ════════════════════════════════════════
-             §19 LICENSE + FINAL CTA
-             ════════════════════════════════════════ -->
-        <div class="r g-bg ticks" style="padding:72px 48px;text-align:center">
-            <span class="tag">Get Started</span>
-            <h2 class="h2" style="font-size:clamp(28px,4vw,44px)">准备好了吗？</h2>
-            <p class="sub" style="margin:0 auto 32px;max-width:44ch">
-                {{'home.license'|i18n}}
-                <a href="http://www.apache.org/licenses/LICENSE-2.0" style="color:var(--c-brand);text-decoration:none">{{'home.license.link'|i18n}}</a>
-                {{'home.license.desc'|i18n}}
-            </p>
-            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://www.erupt.xyz/demo" style="padding:11px 28px;font-size:14px"
-                   target="_blank">{{'home.v2.cta.demo'|i18n}}</a>
-                <a class="wbtn" href="https://docs.erupt.xyz" style="padding:11px 28px;font-size:14px" target="_blank">{{'home.v2.cta.docs'|i18n}}</a>
-                <a class="wbtn" href="#!/contrast" style="padding:11px 28px;font-size:14px">{{'home.btn.code'|i18n}}</a>
             </div>
         </div>
 
