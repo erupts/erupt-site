@@ -1,6 +1,7 @@
 <style>
     .contrast-wrap {
         height: calc(100vh - 45px);
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         background: var(--c-bg);
@@ -95,16 +96,14 @@
 
     /* View panel */
     #view { overflow: hidden; display: flex; flex-direction: column; }
+
+    #main {
+        margin-bottom: 0 !important;
+    }
 </style>
 
 <div ng-controller="contrast">
     <div class="contrast-wrap">
-
-        <!-- Blueprint header bar -->
-        <div class="contrast-hd">
-            <span class="tag" style="margin:0">{{'nav.contrast' | i18n}}</span>
-            <span style="margin-left:auto;font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-text2);opacity:.4">CODE · PREVIEW</span>
-        </div>
 
         <!-- Split body -->
         <div class="contrast-body">
@@ -134,7 +133,7 @@
                     <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;color:var(--c-text2)">{{'contrast.effect' | i18n}}</span>
                     <span style="margin-left:auto;font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text2);opacity:.35">LIVE</span>
                 </div>
-                <iframe ng-src="{{'https://demo.erupt.xyz' + active.path | trustAsResourceUrl}}"
+                <iframe ng-src="{{'https://demo.erupt.xyz/#' + active.path | trustAsResourceUrl}}"
                         style="width:100%;flex:1;border:0;display:block;height:calc(100% - 36px)"></iframe>
             </div>
 

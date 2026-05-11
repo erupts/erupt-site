@@ -28,5 +28,5 @@ AngularJS、 Jquery、 bootstrap 4、 animate.css、 prism
 
 ![](./history/4.png)
 
-#### 5.0 TODO
+#### 5.0
 ![](./history/5.png)

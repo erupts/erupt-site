@@ -109,6 +109,7 @@ home.code.tip5.title,零 DDL 负担,Zero DDL
 home.code.tip5.desc,"注解即 Schema，自动同步建表结构，无需手写任何 SQL 建表语句","Annotations define your schema, tables sync automatically"
 home.code.more,更多示例 →,More Examples →
 home.code.comment,极简开发，开箱即用 🚀,"Minimal dev, ready to use 🚀"
+home.arch.engine,元数据扫描 · 路由注册,Metadata Scan · Route Register
 home.using.eyebrow,TRUSTED BY,TRUSTED BY
 home.using.title,谁在使用,Trusted by
 home.license,使用,Using

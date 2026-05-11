@@ -17,6 +17,10 @@
         color: #fff;
     }
 
+    .component-item:last-child {
+        border-right: 1px solid rgba(0, 0, 0, .1);
+    }
+
     .component-item img {
         margin: 38px 0;
         max-height: 50px;
@@ -46,8 +50,8 @@
                 </p>
                 <hr style="margin-bottom: 0">
             </div>
-            <div class="row" style="margin-left: 0;margin-right: 0;">
-                <div class="text-center col-sm-3 col-md-2 col-4 component-item" ng-repeat="type in types">
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);">
+                <div class="text-center component-item" ng-repeat="type in types">
                     <div>
                         <img alt="" ng-src="images/component/{{type.image}}">
                         <div style="width: 100%;border: 1px dashed rgba(0, 0, 0, .1)"></div>
@@ -69,8 +73,8 @@
                 </p>
                 <hr style="margin-bottom: 0">
             </div>
-            <div class="row" style="margin-left: 0;margin-right: 0;">
-                <div class="text-center col-sm-3 col-md-2 col-4 component-item" ng-repeat="type in viewTypes">
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);">
+                <div class="text-center component-item" ng-repeat="type in viewTypes">
                     <div>
                         <img alt="" ng-src="images/view/{{type.image}}">
                         <div style="width: 100%;border: 1px dashed rgba(0, 0, 0, .1)"></div>
