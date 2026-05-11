@@ -115,64 +115,61 @@
     </main>
 
     <footer id="footer">
-        <div class="container" style="padding: 26px 36px;height: 250px">
-            <div class="row">
-                <div class="col-md-4">
+        <div class="footer-frame">
+            <div class="footer-inner">
+                <div class="footer-grid">
+                    <div class="footer-cell">
                     <div class="footer-link">
                         <h2>{{'footer.qq' | i18n}}</h2>
                         <h4><a href="https://jq.qq.com/?_wv=1027&k=MCd4plZ0" target="_blank">920854954</a></h4>
                     </div>
                 </div>
-                <div class="col-md-4">
+                    <div class="footer-cell">
                     <div class="footer-link">
                         <h2>{{'footer.email' | i18n}}</h2>
                         <h4><a href="mailto:erupts@126.com" target="_blank">erupts@126.com</a></h4>
                     </div>
                 </div>
-                <div class="col-md-4">
+                    <div class="footer-cell">
                     <div class="footer-link">
                         <h2>{{'footer.doc' | i18n}}</h2>
-                        <h4><a href="https://docs.erupt.xyz" target="_blank">https://docs.erupt.xyz</a></h4>
+                        <h4><a href="https://docs.erupt.xyz" target="_blank">docs.erupt.xyz</a></h4>
                     </div>
                 </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-4">
+                    <div class="footer-cell">
                     <div class="footer-link">
                         <h2>{{'footer.github' | i18n}}</h2>
-                        <h4><a href="https://github.com/erupts/erupt"
-                               target="_blank">https://github.com</a></h4>
+                        <h4><a href="https://github.com/erupts/erupt" target="_blank">github.com/erupts/erupt</a></h4>
                     </div>
                 </div>
-                <div class="col-md-4">
+                    <div class="footer-cell">
                     <div class="footer-link">
                         <h2>{{'footer.gitee' | i18n}}</h2>
-                        <h4><a href="https://gitee.com/erupt/erupt"
-                               target="_blank">https://gitee.com</a></h4>
+                        <h4><a href="https://gitee.com/erupt/erupt" target="_blank">gitee.com/erupt/erupt</a></h4>
                     </div>
                 </div>
-                <div class="col-md-4">
+                    <div class="footer-cell">
                     <div class="footer-link">
                         <h2>{{'footer.gitcode' | i18n}}</h2>
-                        <h4><a href="https://gitcode.com/erupts/erupt"
-                               target="_blank">https://gitcode.com</a></h4>
+                        <h4><a href="https://gitcode.com/erupts/erupt" target="_blank">gitcode.com/erupts/erupt</a></h4>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="background: rgba(0,0,0,0.5);padding: 0 26px;">
-            <div class="d-flex align-items-center">
-                <img alt="" src="assets/logo2.svg" style="width: 45px;"><span class="logo-text">erupt<span
-                    style="font-size: .4em">.xyz</span></span>
-                <div class="ml-auto">
-                    <p style="margin-bottom: 0;font-size: .85em;text-align: right;">
-                        <a href="http://beian.miit.gov.cn" style="color: #fff" target="_blank">京ICP备19044060号-1</a>
-                        <span style="color: rgba(255,255,255,0.7)">|</span>
+            <div class="footer-bar">
+                <div class="footer-bar-inner">
+                    <img alt="" src="assets/logo.svg" style="width:28px;opacity:.7">
+                    <span class="logo-text" style="font-size:16px;margin-left:8px;color:var(--c-text)">erupt<span
+                            style="font-size:.4em">.xyz</span></span>
+                    <div class="ml-auto" style="font-family:var(--c-mono);font-size:11px;color:var(--c-text2)">
+                        <a href="http://beian.miit.gov.cn" style="color:var(--c-text2)"
+                           target="_blank">京ICP备19044060号-1</a>
+                        <span style="margin:0 6px;opacity:.4">|</span>
                         <span>{{getCopyright()}}</span>
-                    </p>
                 </div>
             </div>
         </div>
+        </div><!-- /footer-frame -->
     </footer>
     <!--    <div style="position: fixed;right: 50px;bottom: 50px;">-->
     <!--        <img alt="" ng-click="goTop()" src="images/top.svg" style="width: 28px;cursor: pointer">-->

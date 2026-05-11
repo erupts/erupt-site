@@ -147,9 +147,9 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
 
     Prism.highlightAllUnder(document.getElementById("DemoErupt"));
 
-    $("#logo").attr("src", "assets/logo2.svg");
+    $("#logo").attr("src", "assets/logo.svg");
 
-    $.get("assets/logo2.svg", function (res) {
+    $.get("assets/logo.svg", function (res) {
         var svg = res.getElementById("erupt_logo_svg");
         svg.style.width = "100px";
         $("#home-logo").html(svg)

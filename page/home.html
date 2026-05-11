@@ -10,33 +10,6 @@
         transform: rotate(-90deg);
     }
 
-    #header {
-        animation: header-in 900ms;
-        background: rgba(39, 38, 43, 0.99);
-        border-bottom: 0;
-        color: #fff;
-    }
-
-    @keyframes header-in {
-        0% {
-            transform: translateY(-50px)
-        }
-        100% {
-            transform: translateY(0)
-        }
-    }
-
-    #header a {
-        color: #aaa;
-    }
-
-    #header .active-link {
-        color: #fff !important;
-    }
-
-    #main {
-        margin-top: 0;
-    }
 
     @keyframes erupt-fly-in {
         0% {
@@ -263,72 +236,18 @@
     .fr {
         max-width: 1200px;
         margin: 0 auto;
-        border-left: 1px solid var(--c-border);
-        border-right: 1px solid var(--c-border);
-        border-bottom: 1px solid var(--c-border);
+        border: 1px solid var(--c-border);
+        border-bottom: 0;
+        border-top: 0;
         font-family: var(--c-sans);
         color: var(--c-text);
         background: var(--c-bg);
         position: relative;
     }
 
-    /* top-left corner bracket */
-    .fr::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -1px;
-        width: 14px;
-        height: 14px;
-        border-top: 2px solid var(--c-brand);
-        border-left: 2px solid var(--c-brand);
-        pointer-events: none;
-        z-index: 2;
-    }
 
-    /* top-right corner bracket */
-    .fr::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: -1px;
-        width: 14px;
-        height: 14px;
-        border-top: 2px solid var(--c-brand);
-        border-right: 2px solid var(--c-brand);
-        pointer-events: none;
-        z-index: 2;
-    }
-
-    /* bottom corner brackets via helper div */
-    .fr-corners {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        pointer-events: none;
-    }
-
-    .fr-corners::before {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        left: -1px;
-        width: 14px;
-        height: 14px;
-        border-bottom: 2px solid var(--c-brand);
-        border-left: 2px solid var(--c-brand);
-    }
-
-    .fr-corners::after {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        right: -1px;
-        width: 14px;
-        height: 14px;
-        border-bottom: 2px solid var(--c-brand);
-        border-right: 2px solid var(--c-brand);
+    .git-card:hover {
+        background: rgba(255, 87, 34, .018);
     }
 
     /* ── TICK MARKS: blueprint span arrows on section borders ── */
@@ -348,7 +267,7 @@
         border-top: 7px solid transparent;
         border-bottom: 7px solid transparent;
         border-left: 7px solid var(--c-brand);
-        z-index: 2;
+        z-index: 10;
     }
 
     /* right-side inward arrow (←) sitting on the row's top border */
@@ -363,6 +282,14 @@
         border-bottom: 7px solid transparent;
         border-right: 7px solid var(--c-brand);
         z-index: 2;
+    }
+
+    .ticks.only-after::before {
+        display: none;
+    }
+
+    .ticks.only-before::after {
+        display: none;
     }
 
     /* ── ROW: horizontal section band ── */
@@ -808,30 +735,27 @@
 
 <div ng-controller="home">
 
-    <!-- ── HERO (original) ── -->
-    <div>
-        <div style="background:#27262b url(images/tile.png);">
-            <div style="padding-top:60px">
-                <div class="text-center" style="color:#fff">
-                    <div style="margin-top:60px;text-align:center">
-                        <span id="home-logo"><img alt="" src="assets/logo2.svg" width="120px"></span>
-                    </div>
-                    <h1 style="margin-top:30px">Erupt Engine</h1>
-                    <h4 style="margin-top:18px"><span style="color:#ffc107"> {{'home.subtitle'|i18n}} </span> ⚔
-                        {{'home.subtitle2'|i18n}}</h4>
-                    <p style="margin-top:26px;gap:20px;display:flex;justify-content:center">
-                        <button class="btn btn-primary" ng-click="go('#!/contrast')">{{'home.btn.code'|i18n}}</button>
-                        <button class="btn btn-success" ng-click="go('#!/doc')">{{'home.btn.doc'|i18n}}</button>
-                        <button class="btn btn-danger" ng-click="go('/demo',true)">{{'home.btn.demo'|i18n}}</button>
-                    </p>
-                </div>
+    <div class="fr">
+
+        <!-- §1 HERO TEXT -->
+        <div class="r ticks only-after" style="padding:80px 48px 56px;text-align:center">
+            <div style="text-align:center">
+                <span id="home-logo"><img alt="" src="assets/logo.svg" width="120px"></span>
             </div>
-            <div style="position:relative">
-                <div class="container" style="margin-top:60px;padding-bottom:20px;position:relative;z-index:1;">
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="erupt-box"
-                                 style="display:flex;flex-direction:column;overflow:hidden;border-radius:8px;position:relative;z-index:2;">
+            <h1 style="margin-top:30px">Erupt Engine</h1>
+            <h4 style="margin-top:18px"><span style="color:#ffc107"> {{'home.subtitle'|i18n}} </span> ⚔
+                {{'home.subtitle2'|i18n}}</h4>
+            <p style="margin-top:26px;gap:16px;display:flex;justify-content:center;flex-wrap:wrap">
+                <button class="btn btn-primary" ng-click="go('#!/contrast')">{{'home.btn.code'|i18n}}</button>
+                <button class="btn btn-success" ng-click="go('#!/doc')">{{'home.btn.doc'|i18n}}</button>
+                <button class="btn btn-danger" ng-click="go('/demo',true)">{{'home.btn.demo'|i18n}}</button>
+            </p>
+        </div>
+
+        <!-- §1b HERO EDITOR -->
+        <div class="r ticks only-before" style="padding:32px 32px 48px">
+            <div id="erupt-box"
+                 style="display:flex;flex-direction:column;overflow:hidden;border-radius:8px;position:relative;z-index:2;">
                                 <div class="eb-titlebar">
                                     <div class="eb-traffic">
                                         <span class="eb-dot eb-dot-r"></span>
@@ -951,18 +875,11 @@ public class DemoErupt extends BaseModel {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="fr">
 
         <!-- ════════════════════════════════════════
              §2  TRUSTED BY (marquee)
              ════════════════════════════════════════ -->
-        <div class="r">
+        <div class="r ticks">
             <div class="mq" style="padding-top:18px">
                 <div class="mq-fl"></div>
                 <div class="mq-fr"></div>
@@ -1571,7 +1488,7 @@ public class DemoErupt extends BaseModel {
         <!-- ════════════════════════════════════════
              §18 LICENSE + FINAL CTA
              ════════════════════════════════════════ -->
-        <div class="r g-bg ticks" style="padding:72px 48px;text-align:center">
+        <div class="r g-bg ticks only-before" style="padding:72px 48px;text-align:center">
             <span class="tag">Get Started</span>
             <h2 class="h2" style="font-size:clamp(28px,4vw,44px)">准备好了吗？</h2>
             <p class="sub" style="margin:0 auto 32px;max-width:44ch">
@@ -1589,7 +1506,7 @@ public class DemoErupt extends BaseModel {
 
         <!-- §19 COMMUNITY (3 col git) -->
         <div class="r g3 reveal">
-            <div class="c no-bb" ng-click="go('https://gitee.com/erupt/erupt',true)"
+            <div class="c no-bb git-card" ng-click="go('https://gitee.com/erupt/erupt',true)"
                  style="text-align:center;cursor:pointer;padding:40px 32px">
                 <div style="position:absolute;top:12px;right:12px">
                     <img src="https://gitee.com/erupt/erupt/badge/star.svg?theme=dark" style="height:18px">
@@ -1599,7 +1516,7 @@ public class DemoErupt extends BaseModel {
                 </div>
                 <div style="font-size:14px;font-weight:600">码云 Gitee</div>
             </div>
-            <div class="c no-bb" ng-click="go('https://github.com/erupts/erupt',true)"
+            <div class="c no-bb git-card" ng-click="go('https://github.com/erupts/erupt',true)"
                  style="text-align:center;cursor:pointer;padding:40px 32px">
                 <div style="position:absolute;top:12px;right:12px">
                     <img src="https://img.shields.io/github/stars/erupts/erupt?style=social" style="height:18px">
@@ -1609,7 +1526,7 @@ public class DemoErupt extends BaseModel {
                 </div>
                 <div style="font-size:14px;font-weight:600">GitHub</div>
             </div>
-            <div class="c no-bb" ng-click="go('https://gitcode.com/erupts/erupt',true)"
+            <div class="c no-bb git-card" ng-click="go('https://gitcode.com/erupts/erupt',true)"
                  style="text-align:center;cursor:pointer;padding:40px 32px;border-right:none">
                 <div style="position:absolute;top:12px;right:12px">
                     <img src="https://gitcode.com/erupts/erupt/star/badge.svg" style="height:18px">
@@ -1621,7 +1538,7 @@ public class DemoErupt extends BaseModel {
             </div>
         </div>
 
-        <div class="fr-corners"></div>
+        <div class="ticks"></div>
     </div><!-- /fr -->
 </div><!-- /ng-controller -->
 

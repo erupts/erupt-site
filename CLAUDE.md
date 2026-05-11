@@ -55,6 +55,26 @@ that contain HTML. Language toggle is handled via `i18n.getLang()` / `i18n.setLa
 CSV escaping: fields containing commas or double-quotes must be quoted; literal `"` is escaped as `""`
 (standard RFC 4180).
 
+## Home Page Layout — Blueprint Grid
+
+`page/home.html` uses a **Blueprint-style bordered grid** (工程制图风格有界网格布局), inspired by vite.dev.
+
+Key design elements:
+
+- **`.fr`** — centered 1200px frame with `border: 1px solid var(--c-border)` on all four sides; orange L-shaped corner
+  brackets via `::before` / `::after` and a `<div class="fr-corners">` helper for the bottom two
+- **`.r`** — horizontal row, separated by `border-bottom`; last child has no border
+- **`.g2/.g3/.g4/.g6`** — CSS grid column layouts inside a row; cells (`.c`) use `border-right` + `border-bottom` as
+  dividers (no gap)
+- **`.g-bg`** — light dot-grid graph-paper background for section heading rows
+- **`.ticks`** — orange triangular tick marks (`::before` left, `::after` right) sitting on each row's top border, like
+  engineering drawing measurement indicators
+- **`.wbtn` / `.wbtn-o`** — blueprint-style buttons (not Bootstrap); use these inside `.fr` sections; Bootstrap `.btn-*`
+  is reserved for the hero
+- **`.clickable`** — adds hover tint `rgba(255,87,34,.018)` to `.c` cells; `.git-card` uses the same tint
+
+Hero (§1 + §1b) lives inside `.fr` as the first two rows. All subsequent sections are numbered §2 onward.
+
 ## Development
 
 No build process needed. Open `index.html` in a browser or serve with any static file server:
