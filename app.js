@@ -1,4 +1,4 @@
-var host = "https://www.erupt.xyz/demo"
+var host = "https://demo.erupt.xyz"
 
 // var host = "http://127.0.0.1:9999"
 

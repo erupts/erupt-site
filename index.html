@@ -45,25 +45,6 @@
                         <a class="dropdown-item" href="#!/cube">{{'nav.cube' | i18n}}</a>
                     </div>
                 </span>
-                <span class="dropdown show more-dropdown">
-                    <a aria-expanded="false" aria-haspopup="true"
-                       class="btn btn-sm align-self-center btn-link dropdown-toggle"
-                       data-toggle="dropdown"
-                       href="javascript:;"
-                       ng-class="['/contrast','/component','/module'].indexOf(currRouter)>=0?'active-link':''"
-                       role="button">
-                        {{'nav.more' | i18n}}
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#!/contrast">{{'nav.contrast' | i18n}}</a>
-                        <a class="dropdown-item" href="#!/component">{{'nav.component' | i18n}}</a>
-                        <a class="dropdown-item" href="#!/module">{{'nav.module' | i18n}}</a>
-                    </div>
-                </span>
-                <a class="btn btn-sm align-self-center btn-link" href="#!/about"
-                   ng-class="currRouter=='/about'?'active-link':''">
-                    {{'nav.about' | i18n}}
-                </a>
                 <span class="dropdown show">
                     <a class="btn btn-sm align-self-center btn-link" href="https://docs.erupt.xyz/guide/"
                        style="padding-right: 0" target="_blank">
@@ -92,14 +73,33 @@
                            ng-click="docVersion = '1.6.x'" target="_blank">v 1.6.x</a>
                     </div>
                 </span>
+                <span class="dropdown show more-dropdown">
+                    <a aria-expanded="false" aria-haspopup="true"
+                       class="btn btn-sm align-self-center btn-link dropdown-toggle"
+                       data-toggle="dropdown"
+                       href="javascript:;"
+                       ng-class="['/contrast','/component','/module'].indexOf(currRouter)>=0?'active-link':''"
+                       role="button">
+                        {{'nav.more' | i18n}}
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#!/contrast">{{'nav.contrast' | i18n}}</a>
+                        <a class="dropdown-item" href="#!/component">{{'nav.component' | i18n}}</a>
+                        <a class="dropdown-item" href="#!/module">{{'nav.module' | i18n}}</a>
+                    </div>
+                </span>
+                <a class="btn btn-sm align-self-center btn-link" href="#!/about"
+                   ng-class="currRouter=='/about'?'active-link':''">
+                    {{'nav.about' | i18n}}
+                </a>
+                <a class="btn btn-sm align-self-center btn-link" href="https://demo.erupt.xyz" target="_blank">
+                    {{'nav.demo' | i18n}}
+                </a>
                 <a class="btn btn-sm align-self-center" href="https://start.erupt.xyz" target="_blank"
                    style="border:1px solid #28a745;color:#28a745;border-radius:4px;padding:2px 10px;font-size:.8rem;margin-right:4px"
                    onmouseover="this.style.background='#28a745';this.style.color='#fff'"
                    onmouseout="this.style.background='';this.style.color='#28a745'">
                     {{'home.btn.start' | i18n}}
-                </a>
-                <a class="btn btn-sm align-self-center btn-link" href="https://www.erupt.xyz/demo" target="_blank">
-                    {{'nav.demo' | i18n}}
                 </a>
                 <span class="dropdown lang-dropdown" style="margin-left: 10px;">
                     <a aria-expanded="false" aria-haspopup="true" class="btn btn-sm align-self-center dropdown-toggle btn-link"

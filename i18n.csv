@@ -89,7 +89,7 @@ cloud.faq.q4,本地如何联调？,How to debug locally?
 cloud.faq.a4,一般可本地起多个 Spring Boot 实例模拟多节点，配合文档中的注册与路由示例；具体端口与 profile 以文档为准。,Run multiple local Spring Boot instances to simulate nodes; follow the docs for ports and profiles.
 cloud.demo.title,在线体验,Try the demo
 cloud.demo.desc,官方演示环境已集成 Erupt 能力，可在实际界面中感受注解生成的管理端。,The official demo showcases annotation-driven admin UIs—try it live.
-cloud.demo.btn,打开演示 DEMO,Open demo
+cloud.demo.btn,打开演示DEMO,Open demo
 home.subtitle,开源·低代码,Annotation·Low Code
 home.subtitle2,AI 大模型,AI LLM
 home.btn.start,快速创建项目,Quick Start
