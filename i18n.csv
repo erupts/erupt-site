@@ -1,13 +1,13 @@
 key,zh-CN,en-US
 nav.home,首页,Home
-nav.flow,Erupt Flow,Erupt Flow
+nav.flow,🔀 Erupt Flow,🔀 Erupt Flow
 nav.component,组件支持,Components
 nav.contrast,代码示例,Code Examples
 nav.module,扩展模块,Extensions
 nav.donate,捐赠指南,Donate
 nav.doc,使用文档,Documentation
 nav.demo,演示DEMO,Demo
-nav.cloud,Erupt Cloud,Erupt Cloud
+nav.cloud,☁️ Erupt Cloud,☁️ Erupt Cloud
 cloud.hero.kicker,DISTRIBUTED CONFIG,DISTRIBUTED CONFIG
 cloud.hero.title,Erupt Cloud,Erupt Cloud
 cloud.hero.sub,面向微服务与集群的「多维表」云配置能力：集中管理、轻量依赖，让集群内每个服务都能以注解方式获得一致的数据可视化管理体验。,"Cloud-native multidimensional table configuration for clusters: centralized management, light dependencies, and consistent annotation-driven admin across services."
