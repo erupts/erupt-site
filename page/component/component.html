@@ -6,9 +6,6 @@
         padding-right: 0;
         transition: all 500ms;
         box-sizing: border-box;
-        /*margin-left: -1px;*/
-        /*margin-right: -1px;*/
-        /*margin-bottom: -1px;*/
     }
 
     .component-item:hover {
@@ -28,15 +25,14 @@
     .component-item .text {
         font-size: .9em;
         color: #666;
-        /*transition: all 100ms;*/
         margin-top: 0;
         margin-bottom: 0;
         padding-top: 9px;
         padding-bottom: 9px;
     }
 </style>
-<div ng-controller="component" style="background: #fff">
-    <div class="container" style="padding: 0;border: 1px solid rgba(0,0,0,.1);">
+<div ng-controller="component" style="background:#fff">
+    <div style="max-width:1200px;margin:0 auto;border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);min-height:60vh">
         <div>
             <div>
                 <hr style="margin-top: 0">

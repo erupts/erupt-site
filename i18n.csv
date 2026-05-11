@@ -2,7 +2,7 @@ key,zh-CN,en-US
 nav.home,首页,Home
 nav.flow,Erupt Flow,Erupt Flow
 nav.component,组件支持,Components
-nav.contrast,💻 代码示例,💻 Code Examples
+nav.contrast,代码示例,Code Examples
 nav.module,扩展模块,Extensions
 nav.donate,捐赠指南,Donate
 nav.doc,使用文档,Documentation
@@ -193,13 +193,15 @@ home.promo.claw.link,了解 AI Claw →,Explore AI Claw →
 home.promo.cube.desc,"语义层建模 · 拖拽可视化分析 · 零前端代码<br>注解定义指标，分析师自助完成 BI","Semantic layer · Drag-and-drop analytics · Zero frontend<br>Define metrics with annotations, analysts self-serve BI"
 home.promo.cube.link,了解 Erupt Cube →,Explore Erupt Cube →
 ideamake,思为科技,Ideamake
-footer.qq,QQ 交流群,QQ Group
+footer.qq,微信公众号,WeChat Official
 footer.email,邮箱地址,Email
 footer.doc,使用文档,Documentation
 footer.github,GitHub,GitHub
 footer.gitee,Gitee,Gitee
 footer.gitcode,GitCode,GitCode
 footer.copyright,Copyright © 2019-{{year}} erupt.xyz All rights reserved.,Copyright © 2019-{{year}} erupt.xyz All rights reserved.
+home.components.h2,内置组件一览,Built-in Field Types
+home.components.sub,23 种表单编辑组件 · 18 种数据展示组件，覆盖所有业务场景,23 edit components · 18 view components, covering every business scenario
 component.form.title,表单组件（{{count}}类）,Form Components ({{count}} types)
 component.view.title,数据组件（{{count}}类）,Data Components ({{count}} types)
 component.input,文本输入框,Text Input

@@ -65,14 +65,14 @@
                     {{'nav.about' | i18n}}
                 </a>
                 <span class="dropdown show more-dropdown">
-                    <a class="btn btn-sm align-self-center btn-link" href="https://docs.erupt.xyz"
+                    <a class="btn btn-sm align-self-center btn-link" href="https://docs.erupt.xyz/guide/"
                        style="padding-right: 0" target="_blank">
                         {{'nav.doc' | i18n}}
                     </a>
                     <a aria-expanded="false" aria-haspopup="true" class="btn btn-sm align-self-center dropdown-toggle"
                        data-toggle="dropdown" href="javascript:;" role="button" style="padding: 0 4px"></a>
                     <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='LATEST'">
-                        <a class="dropdown-item" href="https://docs.erupt.xyz"
+                        <a class="dropdown-item" href="https://docs.erupt.xyz/guide/"
                            ng-click="docVersion = 'LATEST'" target="_blank">LATEST</a>
                         <a class="dropdown-item" href="https://www.yuque.com/erupts/1.13.x"
                            ng-click="docVersion = '1.13.x'" target="_blank">v 1.13.x</a>
@@ -125,9 +125,15 @@
             <div class="footer-inner">
                 <div class="footer-grid">
                     <div class="footer-cell">
-                    <div class="footer-link">
+                    <div class="footer-link" style="position:relative">
                         <h2>{{'footer.qq' | i18n}}</h2>
-                        <h4><a href="https://jq.qq.com/?_wv=1027&k=MCd4plZ0" target="_blank">920854954</a></h4>
+                        <h4 class="mp-trigger" style="cursor:pointer;position:relative;display:inline-block">
+                            eruptLab
+                            <div class="mp-qr">
+                                <img src="images/me/mp.jpg" alt="eruptLab" style="width:140px;height:140px;display:block">
+                                <div style="text-align:center;font-size:11px;color:#888;margin-top:6px">微信扫码关注</div>
+                            </div>
+                        </h4>
                     </div>
                 </div>
                     <div class="footer-cell">
@@ -205,7 +211,6 @@
 <script src="page/home.js"></script>
 <script src="page/flow/flow.js"></script>
 <script src="page/cloud/cloud.js"></script>
-<script src="page/doc/doc.js"></script>
 <script src="page/contrast/contrast.js"></script>
 <script src="page/extra/extra.js"></script>
 <script src="page/component/component.js"></script>
@@ -262,6 +267,21 @@
 
     i18n.init().then(function () {
         angular.bootstrap(document.body, ['app']);
+    });
+
+    // 悬停二维码时临时提升 footer z-index，突破 z-index:-1 层叠上下文
+    document.addEventListener('DOMContentLoaded', function () {
+        var footer = document.getElementById('footer');
+        document.addEventListener('mouseover', function (e) {
+            if (e.target.closest && e.target.closest('.mp-trigger')) {
+                footer.style.zIndex = '100';
+            }
+        });
+        document.addEventListener('mouseout', function (e) {
+            if (e.target.closest && e.target.closest('.mp-trigger')) {
+                footer.style.zIndex = '';
+            }
+        });
     });
 </script>
 <script>

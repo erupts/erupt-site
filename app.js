@@ -26,11 +26,6 @@ var app = angular.module('app', [
         templateUrl: function (attr) {
             return "page/home.html";
         }
-    }).when('/doc', {
-        templateUrl: function (attr) {
-            toTemplate();
-            return "page/doc/doc.html";
-        }
     }).when('/flow', {
         templateUrl: function (attr) {
             toTemplate();

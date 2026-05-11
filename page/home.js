@@ -60,7 +60,6 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
         {name: '越秀地产', logo: "images/using/yuexiu.png"},
         {name: '金科地产', logo: "images/using/jinke.png"},
 
-        {name: 'Leke', logo: "images/using/leke.svg"},
         {name: '哥们网', logo: "images/using/game2.png"},
 
         {name: 'QingCloud', logo: "images/using/青云.png"},
@@ -96,35 +95,91 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
     ]
 
     $scope.project = {
-        template: {
+        "view": {
             sub: {
-                "***.html": {
-                    file: true
-                },
-                "***.js": {
-                    file: true
-                },
-                "***.css": {
-                    file: true
-                }
-            },
+                "***.html":  {file: true},
+                "***.js":    {file: true},
+                "***.css":   {file: true}
+            }
         },
-        controller: {},
-        service: {},
-        "service.impl": {},
-        dao: {},
-        mapper: {},
-        model: {
+        "controller": {
+            sub: {
+                "***Controller.java": {file: true}
+            }
+        },
+        "service": {
+            sub: {
+                "***Service.java":     {file: true},
+                "***ServiceImpl.java": {file: true}
+            }
+        },
+        "mapper": {
+            sub: {
+                "***Mapper.java": {file: true},
+                "***.xml":        {file: true}
+            }
+        },
+        "ddl": {
+            sub: {
+                "***_ddl.sql":       {file: true},
+                "***_migration.sql": {file: true}
+            }
+        },
+        "model": {
             active: true,
             sub: {
-                DemoErupt: {
-                    file: true,
-                    active: true
-                }
+                "Task.java": {file: true, active: true}
             }
         }
-
     }
+
+    $scope.editTypes = [
+        {name: i18nService.t('component.input'), image: "input.svg"},
+        {name: i18nService.t('component.textarea'), image: "textarea.svg"},
+        {name: i18nService.t('component.number'), image: "number.svg"},
+        {name: i18nService.t('component.slider'), image: "slider.svg"},
+        {name: i18nService.t('component.date'), image: "date.svg"},
+        {name: i18nService.t('component.boolean'), image: "bool.svg"},
+        {name: i18nService.t('component.choice'), image: "choice.svg"},
+        {name: i18nService.t('component.tags'), image: "tags.svg"},
+        {name: i18nService.t('component.attachment'), image: "attachment.svg"},
+        {name: i18nService.t('component.autocomplete'), image: "autoComplete.svg"},
+        {name: i18nService.t('component.referenceTree'), image: "referenceTree.svg"},
+        {name: i18nService.t('component.referenceTable'), image: "referenceTable.svg"},
+        {name: i18nService.t('component.checkbox'), image: "checkbox.svg"},
+        {name: i18nService.t('component.tabTree'), image: "tabTree.svg"},
+        {name: i18nService.t('component.tabTableRefer'), image: "tabTableRefer.svg"},
+        {name: i18nService.t('component.tabTableAdd'), image: "tabTableAdd.svg"},
+        {name: i18nService.t('component.htmlEditor'), image: "htmlEditor.svg"},
+        {name: i18nService.t('component.codeEditor'), image: "codeEditor.svg"},
+        {name: i18nService.t('component.tpl'), image: "tpl.svg"},
+        {name: i18nService.t('component.map'), image: "map.svg"},
+        {name: i18nService.t('component.divide'), image: "divide.svg"},
+        {name: i18nService.t('component.signature'), image: "sign.svg"},
+        {name: i18nService.t('component.hidden'), image: "hidden.svg"},
+        {name: i18nService.t('component.empty'), image: "empty.svg"},
+    ];
+
+    $scope.viewTypes = [
+        {name: i18nService.t('component.view.text'), image: "text.svg"},
+        {name: i18nService.t('component.view.number'), image: "number.svg"},
+        {name: i18nService.t('component.view.date'), image: "date.svg"},
+        {name: i18nService.t('component.view.image'), image: "image.svg"},
+        {name: i18nService.t('component.view.html'), image: "html.svg"},
+        {name: i18nService.t('component.view.mobileHtml'), image: "mobile-html.svg"},
+        {name: i18nService.t('component.view.link'), image: "link.svg"},
+        {name: i18nService.t('component.view.linkDialog'), image: "link-dialog.svg"},
+        {name: i18nService.t('component.view.download'), image: "download.svg"},
+        {name: i18nService.t('component.view.attachment'), image: "attachment.svg"},
+        {name: i18nService.t('component.view.ovr'), image: "ovr.svg"},
+        {name: i18nService.t('component.view.attachmentDialog'), image: "attachment-dialog.svg"},
+        {name: i18nService.t('component.view.qrCode'), image: "qr.svg"},
+        {name: i18nService.t('component.view.swf'), image: "swf.svg"},
+        {name: i18nService.t('component.view.code'), image: "code.svg"},
+        {name: i18nService.t('component.view.map'), image: "map.svg"},
+        {name: i18nService.t('component.view.base64'), image: "base64.svg"},
+        {name: i18nService.t('component.view.markdown'), image: "markdown.svg"},
+    ];
 
     $scope.javaLayer = ["controller", "service", "service impl", "dao", "dao impl", "model"];
 
