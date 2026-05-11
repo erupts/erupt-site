@@ -97,16 +97,16 @@ home.btn.code,代码示例,Codes
 home.btn.doc,使用文档,Docs
 home.btn.demo,演示DEMO,Demo
 home.code.title,"仅需一个<span style=""color: #ffc107;""> .class </span>文件","Only one<span style=""color: #ffc107;""> .class </span>file"
-home.code.tip1.title,零前端代码,Zero Front-end
-home.code.tip1.desc,不需要懂前端，开发专业且强大的管理后台,"No HTML/JS required, full admin in minutes"
-home.code.tip2.title,易于上手,Easy Start
-home.code.tip2.desc,仅需了解 Spring Boot 基础知识即可上手开发,Spring Boot basics only
-home.code.tip3.title,安全可靠,Secure
-home.code.tip3.desc,细颗粒全方位安全检查，持续保证数据安全,"Fine-grained, always safe"
-home.code.tip4.title,通用数据管理,Any DB
-home.code.tip4.desc,支持市面上所有主流数据库，支持自定义数据源,"MySQL, PG, Oracle, custom sources"
-home.code.tip5.title,表结构自动生成,Auto Table
-home.code.tip5.desc,无需手动建表，不懂SQL也能操作数据库,"No SQL, no DDL, auto-created"
+home.code.tip1.title,零前端代码,Zero Frontend
+home.code.tip1.desc,"纯 Java 注解驱动，无需编写任何 HTML / JS / CSS，专注业务逻辑本身","Pure annotations — no HTML, JS, or CSS ever"
+home.code.tip2.title,分钟级交付,Ship in Minutes
+home.code.tip2.desc,"加依赖 → 写一个类 → 运行，完整增删改查后台立即可用","Add dep → write class → run. Full CRUD admin, instantly"
+home.code.tip3.title,企业级安全,Enterprise Security
+home.code.tip3.desc,"内置 RBAC 权限体系、操作审计日志、行列级数据过滤，开箱可用于生产","Built-in RBAC, audit log & row/column filtering out of the box"
+home.code.tip4.title,多数据库支持,10+ Databases
+home.code.tip4.desc,"MySQL、Oracle、PostgreSQL、MongoDB、达梦等主流数据库全覆盖，支持自定义数据源","MySQL, Oracle, PG, MongoDB, DM & more — or bring your own"
+home.code.tip5.title,零 DDL 负担,Zero DDL
+home.code.tip5.desc,"注解即 Schema，自动同步建表结构，无需手写任何 SQL 建表语句","Annotations define your schema, tables sync automatically"
 home.code.more,更多示例 →,More Examples →
 home.code.comment,极简开发，开箱即用 🚀,"Minimal dev, ready to use 🚀"
 home.using.eyebrow,TRUSTED BY,TRUSTED BY

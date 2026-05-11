@@ -80,7 +80,7 @@ html, body {
 #header > div {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 48px;
+    padding: 0 28px;
     height: 45px;
     align-items: center;
     border-left: 1px solid var(--c-border);
@@ -92,7 +92,7 @@ html, body {
 
 #main {
     min-height: calc(100vh - 190px);
-    margin-bottom: 202px;
+    margin-bottom: 203px;
     margin-top: 45px;
     z-index: 999;
 }
@@ -114,6 +114,8 @@ html, body {
     max-width: 1200px;
     margin: 0 auto;
     height: 100%;
+    /*border: 1px solid var(--c-border);*/
+    /*border-bottom: none;*/
     border-left: 1px solid var(--c-border);
     border-right: 1px solid var(--c-border);
     position: relative;

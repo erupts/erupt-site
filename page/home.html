@@ -1,5 +1,6 @@
 <style>
     /* ── Hero styles ── */
+
     .del-line {
         text-decoration: line-through;
         text-decoration-color: #f00;
@@ -218,9 +219,9 @@
     <div class="fr">
 
         <!-- §1 HERO -->
-        <div class="r" style="display:flex;min-height:480px;overflow:hidden">
+        <div class="r g-bg" style="display:flex;min-height:480px;overflow:hidden">
             <!-- left: text -->
-            <div class="g-bg" style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--c-border)">
+            <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
                 <span id="home-logo"><img alt="" src="assets/logo.svg" width="88px"></span>
                 <div style="margin-top:20px;display:flex;align-items:center;gap:10px">
                     <span class="tag">Open Source · Apache 2.0</span>
@@ -247,10 +248,8 @@
                     Free · Spring Boot · Zero Frontend Code
                 </p>
             </div>
-            <!-- right: annotation orbit canvas -->
-            <div class="g-bg d-none d-lg-block" style="flex:0 0 46%;position:relative;overflow:hidden">
-                <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%"></canvas>
-            </div>
+            <!-- right: 3D annotation interactive -->
+            <div class="d-none d-lg-flex" id="anno3d-wrap" style="flex:0 0 46%;overflow:hidden;position:relative;perspective:750px"></div>
         </div>
 
         <!-- §1b HERO EDITOR -->
@@ -506,7 +505,7 @@ public class Task extends BaseModel {
                 </div>
                 <div class="h3">{{'home.v2.how.s1.h'|i18n}}</div>
                 <p class="sub" style="font-size:12.5px;margin-bottom:14px">{{'home.v2.how.s1.p'|i18n}}</p>
-                <div class="scode"><span style="color:var(--c-brand)">@Erupt</span>(name = <span style="color:#86efac">"用户"</span>)
+                <div class="scode"><span style="color:var(--c-brand)">@Erupt</span>(name = <span style="color:#86efac">"User"</span>)
                     <span style="color:#60a5fa">class</span> User <span style="color:#60a5fa">extends</span> BaseModel {
                     <span style="color:var(--c-brand)">@EruptField</span>
                     <span style="color:#60a5fa">private</span> String name;
@@ -1088,201 +1087,71 @@ public class Task extends BaseModel {
         document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
     }());
 
-    // Isometric card stack
+    // Hero 3D annotation interactive
     (function () {
-        var c = document.getElementById('hero-canvas');
-        if (!c) return;
-        var ctx = c.getContext('2d');
-        var W = 0, H = 0, raf, t = 0;
-        var PI = Math.PI, COS30 = Math.sqrt(3) / 2, SIN30 = 0.5;
-        var SCALE = 60, CW = 2.8, CD = 1.8, THICK = 0.18, GAP = 0.5;
-        var CAM_Y = 0.3, CAM_Z = 1.5;
-        var cx, cy;
+        var wrap  = document.getElementById('anno3d-wrap');
+        if (!wrap) return;
 
-        var LAYERS = [
-            { label: 'DDL.sql',         zi: 0, ghost: false, active: false, a: 0.22 },
-            { label: 'Mapper.java',     zi: 1, ghost: false, active: false, a: 0.32 },
-            { label: 'Task.java',       zi: 2, ghost: false, active: true,  a: 1.0  },
-            { label: 'Service.java',    zi: 3, ghost: true,  active: false, a: 0.18 },
-            { label: 'Controller.java', zi: 4, ghost: true,  active: false, a: 0.12 },
+        var stage = document.createElement('div');
+        stage.style.cssText = 'position:absolute;inset:0;transform-style:preserve-3d';
+        wrap.appendChild(stage);
+
+        var annos = [
+            {text:'@Erupt',        c:[255,112, 67], s:15, x:   0, y: -10, z:110},
+            {text:'@EruptField',   c:[255,184,108], s:13, x:-115, y: -55, z: 55},
+            {text:'@View',         c:[189,147,249], s:13, x: 105, y: -95, z: 35},
+            {text:'@Edit',         c:[255,121,198], s:13, x:  85, y:  85, z: 70},
+            {text:'@Search',       c:[139,233,253], s:12, x: -95, y:  95, z: 15},
+            {text:'@Power',        c:[ 80,250,123], s:12, x:  20, y:-125, z:-10},
+            {text:'@Filter',       c:[241,250,140], s:11, x: -85, y:  30, z:-55},
+            {text:'@DataProxy',    c:[ 98,114,164], s:11, x: 125, y: 115, z:-25},
+            {text:'@RowOperation', c:[255,184,108], s:10, x:-155, y:  -5, z:-75},
+            {text:'@Drill',        c:[139,233,253], s:10, x:  60, y:-150, z:-95},
+            {text:'@EruptI18n',    c:[255,112, 67], s:10, x: -60, y: 145, z:-45},
+            {text:'@OneToMany',    c:[189,147,249], s:10, x: 145, y:  25, z:-65},
         ];
 
-        var BADGES = [
-            { label: '@Erupt',      side: 'L', fy: -0.40 },
-            { label: '@Power',      side: 'L', fy:  0.52 },
-            { label: '@EruptField', side: 'R', fy: -0.28 },
-            { label: '@DataProxy',  side: 'R', fy:  0.56 },
-        ];
+        annos.forEach(function (a) {
+            var r = a.c[0], g = a.c[1], b = a.c[2];
+            var alpha = Math.max(0.28, Math.min(1, (a.z + 110) / 220));
+            var el = document.createElement('div');
+            el.textContent = a.text;
+            el.style.cssText =
+                'position:absolute;top:50%;left:50%;' +
+                'transform:translate3d(calc(-50% + ' + a.x + 'px),calc(-50% + ' + a.y + 'px),' + a.z + 'px);' +
+                'white-space:nowrap;pointer-events:none;user-select:none;' +
+                'font-family:SFMono-Regular,Consolas,monospace;font-size:' + a.s + 'px;' +
+                'color:rgba(' + r + ',' + g + ',' + b + ',' + alpha.toFixed(2) + ');' +
+                'background:rgba(' + r + ',' + g + ',' + b + ',.07);' +
+                'border:1px solid rgba(' + r + ',' + g + ',' + b + ',' + (alpha * 0.4).toFixed(2) + ');' +
+                'border-radius:6px;padding:5px 14px;' +
+                'box-shadow:0 0 22px rgba(' + r + ',' + g + ',' + b + ',' + (alpha * 0.18).toFixed(2) + ');';
+            stage.appendChild(el);
+        });
 
-        function resize() {
-            if (!c.offsetWidth) return;
-            var dpr = window.devicePixelRatio || 1;
-            W = c.offsetWidth; H = c.offsetHeight;
-            c.width = W * dpr; c.height = H * dpr;
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            ctx.scale(dpr, dpr);
-            cx = W / 2; cy = H / 2;
-        }
+        var mouseIn = false, trx = 0, try_ = 0, crx = 0, cry = 0;
 
-        function iso(wx, wy, wz) {
-            var dx = wx, dy = wy - CAM_Y, dz = wz - CAM_Z;
-            return {
-                x: cx + (dx - dy) * SCALE * COS30,
-                y: cy + (dx + dy) * SCALE * SIN30 - dz * SCALE
-            };
-        }
+        wrap.addEventListener('mouseenter', function () { mouseIn = true; });
+        wrap.addEventListener('mouseleave', function () { mouseIn = false; });
+        wrap.addEventListener('mousemove', function (e) {
+            var rect = wrap.getBoundingClientRect();
+            trx  = ((e.clientY - rect.top)  / rect.height - 0.5) * -28;
+            try_ = ((e.clientX - rect.left) / rect.width  - 0.5) *  38;
+        });
 
-        // Rounded polygon path
-        function polyPath(pts, r) {
-            ctx.beginPath();
-            var n = pts.length;
-            for (var i = 0; i < n; i++) {
-                var prev = pts[(i - 1 + n) % n], curr = pts[i], next = pts[(i + 1) % n];
-                var d1x = prev.x - curr.x, d1y = prev.y - curr.y;
-                var d2x = next.x - curr.x, d2y = next.y - curr.y;
-                var l1 = Math.sqrt(d1x * d1x + d1y * d1y) || 1;
-                var l2 = Math.sqrt(d2x * d2x + d2y * d2y) || 1;
-                var cr = Math.min(r, l1 / 2, l2 / 2);
-                var p1x = curr.x + d1x / l1 * cr, p1y = curr.y + d1y / l1 * cr;
-                var p2x = curr.x + d2x / l2 * cr, p2y = curr.y + d2y / l2 * cr;
-                if (i === 0) ctx.moveTo(p1x, p1y); else ctx.lineTo(p1x, p1y);
-                ctx.quadraticCurveTo(curr.x, curr.y, p2x, p2y);
-            }
-            ctx.closePath();
-        }
+        function lerp(a, b, t) { return a + (b - a) * t; }
 
-        function pill(x, y, w, h, r) {
-            ctx.beginPath();
-            ctx.moveTo(x + r, y);
-            ctx.arcTo(x + w, y, x + w, y + h, r);
-            ctx.arcTo(x + w, y + h, x, y + h, r);
-            ctx.arcTo(x, y + h, x, y, r);
-            ctx.arcTo(x, y, x + w, y, r);
-            ctx.closePath();
-        }
-
-        function drawCard(layer, fz) {
-            var z = layer.zi * GAP + fz, T = THICK;
-            var A = iso(-CW / 2, -CD / 2, z + T);
-            var B = iso( CW / 2, -CD / 2, z + T);
-            var C = iso( CW / 2,  CD / 2, z + T);
-            var D = iso(-CW / 2,  CD / 2, z + T);
-            var B0 = iso( CW / 2, -CD / 2, z);
-            var C0 = iso( CW / 2,  CD / 2, z);
-            var D0 = iso(-CW / 2,  CD / 2, z);
-
-            if (layer.active) {
-                polyPath([B, C, C0, B0], 3);
-                ctx.fillStyle = 'rgba(255,100,40,0.18)'; ctx.fill();
-                ctx.strokeStyle = 'rgba(255,87,34,0.55)'; ctx.lineWidth = 1; ctx.stroke();
-
-                polyPath([C, D, D0, C0], 3);
-                ctx.fillStyle = 'rgba(255,80,30,0.28)'; ctx.fill();
-                ctx.strokeStyle = 'rgba(255,87,34,0.60)'; ctx.lineWidth = 1; ctx.stroke();
-
-                ctx.save();
-                ctx.shadowColor = 'rgba(255,120,50,0.9)'; ctx.shadowBlur = 26;
-                ctx.beginPath(); ctx.moveTo(D0.x, D0.y); ctx.lineTo(C0.x, C0.y);
-                ctx.strokeStyle = 'rgba(255,100,40,1)'; ctx.lineWidth = 2.5; ctx.stroke();
-                ctx.restore();
-            } else if (!layer.ghost) {
-                polyPath([B, C, C0, B0], 2);
-                ctx.fillStyle = 'rgba(150,150,180,' + layer.a * 0.07 + ')'; ctx.fill();
-                polyPath([C, D, D0, C0], 2);
-                ctx.fillStyle = 'rgba(150,150,180,' + layer.a * 0.10 + ')'; ctx.fill();
-            }
-
-            ctx.save();
-            polyPath([A, B, C, D], 9);
-            if (layer.active) {
-                var g = ctx.createLinearGradient(A.x, A.y, C.x, C.y);
-                g.addColorStop(0, 'rgba(255,110,55,0.24)');
-                g.addColorStop(1, 'rgba(200,55,10,0.07)');
-                ctx.fillStyle = g; ctx.fill();
-                ctx.shadowColor = 'rgba(255,87,34,0.55)'; ctx.shadowBlur = 18;
-                ctx.strokeStyle = 'rgba(255,90,34,0.92)'; ctx.lineWidth = 1.5; ctx.stroke();
-            } else if (layer.ghost) {
-                ctx.fillStyle = 'rgba(255,255,255,' + layer.a * 0.15 + ')'; ctx.fill();
-                ctx.strokeStyle = 'rgba(255,255,255,' + layer.a + ')'; ctx.lineWidth = 0.7; ctx.stroke();
+        (function tick() {
+            if (mouseIn) {
+                crx = lerp(crx, trx,  0.07);
+                cry = lerp(cry, try_, 0.07);
             } else {
-                ctx.fillStyle = 'rgba(100,110,140,' + layer.a * 0.28 + ')'; ctx.fill();
-                ctx.strokeStyle = 'rgba(200,210,255,' + layer.a * 0.7 + ')'; ctx.lineWidth = 0.9; ctx.stroke();
+                cry += 0.18;
+                crx  = lerp(crx, 8, 0.02);
             }
-            ctx.restore();
-
-            if (layer.active || (!layer.ghost && layer.a >= 0.25)) {
-                var lp = iso(0, CD * 0.18, z + T + 0.005);
-                ctx.font = layer.active ? 'bold 12px monospace' : '10px monospace';
-                ctx.fillStyle = layer.active ? 'rgba(255,175,85,1)' : 'rgba(200,215,255,' + layer.a * 0.8 + ')';
-                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-                ctx.fillText(layer.label, lp.x, lp.y);
-            }
-        }
-
-        function draw() {
-            if (!document.body.contains(c)) { cancelAnimationFrame(raf); return; }
-            if (!W || !H) { raf = requestAnimationFrame(draw); return; }
-            t += 0.006;
-            ctx.clearRect(0, 0, W, H);
-
-            ctx.fillStyle = '#07080f'; ctx.fillRect(0, 0, W, H);
-            var bg = ctx.createRadialGradient(cx, cy + 30, 0, cx, cy + 30, W * 0.6);
-            bg.addColorStop(0, 'rgba(255,87,34,0.055)');
-            bg.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-
-            var af = Math.sin(t * 0.9) * 0.05;
-            LAYERS.forEach(function (layer) {
-                var fz = layer.active ? af : Math.sin(t * 0.7 + layer.zi * 0.9) * 0.02;
-                drawCard(layer, fz);
-            });
-
-            var az = 2 * GAP + af;
-            var Dpt = iso(-CW / 2,  CD / 2, az + THICK);  // leftmost corner
-            var Bpt = iso( CW / 2, -CD / 2, az + THICK);  // rightmost corner
-            var lMargin = Dpt.x;
-            var rMargin = W - Bpt.x;
-            var OFF_L = Math.min(52, lMargin * 0.55);
-            var OFF_R = Math.min(52, rMargin * 0.55);
-
-            BADGES.forEach(function (b, bi) {
-                var anim = Math.sin(t * 1.05 + bi * 1.65) * 5;
-                var anchor = b.side === 'L' ? Dpt : Bpt;
-                var off = b.side === 'L' ? -OFF_L : OFF_R;
-                var bx = anchor.x + off;
-                var by = anchor.y + b.fy * 85 + anim;
-
-                var startX = bx + (b.side === 'L' ? 36 : -36);
-                ctx.beginPath(); ctx.moveTo(startX, by); ctx.lineTo(anchor.x, anchor.y);
-                ctx.strokeStyle = 'rgba(255,87,34,0.22)'; ctx.lineWidth = 0.8;
-                ctx.setLineDash([3, 5]); ctx.stroke(); ctx.setLineDash([]);
-
-                ctx.beginPath(); ctx.arc(anchor.x, anchor.y, 2.5, 0, PI * 2);
-                ctx.fillStyle = 'rgba(255,87,34,0.5)'; ctx.fill();
-
-                ctx.font = '11px monospace';
-                var tw = ctx.measureText(b.label).width;
-                var bw = tw + 18, bh = 24;
-                ctx.save();
-                ctx.shadowColor = 'rgba(255,87,34,0.3)'; ctx.shadowBlur = 10;
-                pill(bx - bw / 2, by - bh / 2, bw, bh, 5);
-                ctx.fillStyle = 'rgba(10,8,20,0.93)'; ctx.fill();
-                ctx.strokeStyle = 'rgba(255,87,34,0.4)'; ctx.lineWidth = 1; ctx.stroke();
-                ctx.restore();
-
-                ctx.fillStyle = 'rgba(255,145,65,1)';
-                ctx.font = '11px monospace';
-                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-                ctx.fillText(b.label, bx, by);
-            });
-
-            raf = requestAnimationFrame(draw);
-        }
-
-        setTimeout(function () {
-            resize();
-            window.addEventListener('resize', resize);
-            draw();
-        }, 120);
+            stage.style.transform = 'rotateX(' + crx + 'deg) rotateY(' + cry + 'deg)';
+            requestAnimationFrame(tick);
+        }());
     }());
+
 </script>
