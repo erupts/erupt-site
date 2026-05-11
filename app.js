@@ -24,6 +24,7 @@ var app = angular.module('app', [
 }).config(function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: function (attr) {
+            toTemplate();
             return "page/home.html";
         }
     }).when('/flow', {

@@ -72,7 +72,9 @@
         padding: 0 16px;
     }
 
-    .panel-bar-dark { background: #0A0A0F; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .panel-bar-dark {
+        background: #0A0A0F;
+    }
     .panel-bar-light { background: var(--c-bg); border-bottom: 1px solid var(--c-border); }
 
     .pb-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
@@ -85,6 +87,10 @@
         font-family: var(--c-mono);
         font-size: 12.5px;
         overflow: auto;
+    }
+
+    #erupt-code code {
+        background: transparent;
     }
 
     /* View panel */
@@ -139,8 +145,8 @@
 <script>
     localStorage.removeItem('split-sizes')
     Split(['#select', '#code', '#view'], {
-        sizes: [15, 25, 60],
-        minSize: [120, 200, 360],
+        sizes: [9, 26, 65],
+        minSize: [90, 200, 360],
         expandToMin: true,
         gutterSize: 4,
     })
