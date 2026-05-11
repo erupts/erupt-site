@@ -222,9 +222,13 @@
             <!-- left: text -->
             <div class="g-bg" style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--c-border)">
                 <span id="home-logo"><img alt="" src="assets/logo.svg" width="88px"></span>
-                <div style="margin-top:20px"><span class="tag">Open Source · Apache 2.0</span></div>
+                <div style="margin-top:20px;display:flex;align-items:center;gap:10px">
+                    <span class="tag">Open Source · Apache 2.0</span>
+                </div>
                 <h1 style="margin-top:14px;letter-spacing:-.03em;font-size:clamp(28px,4vw,50px);line-height:1.1">Erupt Engine</h1>
                 <p style="margin-top:12px;font-size:15px;color:var(--c-text2)">
+                    <span style="color:var(--c-brand)">MDD</span>
+                    <span style="margin:0 8px;opacity:.2">·</span>
                     <span style="color:#ffc107;font-weight:500">{{'home.subtitle'|i18n}}</span>
                     <span style="margin:0 10px;opacity:.2">×</span>
                     {{'home.subtitle2'|i18n}}
@@ -1084,91 +1088,192 @@ public class Task extends BaseModel {
         document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
     }());
 
-    // Hero annotation orbit
+    // Isometric card stack
     (function () {
         var c = document.getElementById('hero-canvas');
         if (!c) return;
         var ctx = c.getContext('2d');
-        var W = 0, H = 0, cx = 0, cy = 0, raf;
-        var PI = Math.PI;
+        var W = 0, H = 0, raf, t = 0;
+        var PI = Math.PI, COS30 = Math.sqrt(3) / 2, SIN30 = 0.5;
+        var SCALE = 60, CW = 2.8, CD = 1.8, THICK = 0.18, GAP = 0.5;
+        var CAM_Y = 0.3, CAM_Z = 1.5;
+        var cx, cy;
 
-        var nodes = [
-            { text: '@Erupt',         r: 0,   angle: 0,              size: 14,   tier: 0 },
-            { text: '@EruptField',    r: 125, angle: 0,              size: 11.5, tier: 1 },
-            { text: '@Power',         r: 125, angle: PI * 2 / 5,     size: 10.5, tier: 1 },
-            { text: '@Filter',        r: 125, angle: PI * 4 / 5,     size: 10.5, tier: 1 },
-            { text: '@DataProxy',     r: 125, angle: PI * 6 / 5,     size: 10.5, tier: 1 },
-            { text: '@Vis',           r: 125, angle: PI * 8 / 5,     size: 10.5, tier: 1 },
-            { text: '@View',          r: 230, angle: PI * 1 / 8,     size: 10,   tier: 2 },
-            { text: '@Edit',          r: 230, angle: PI * 3 / 8,     size: 10,   tier: 2 },
-            { text: '@Search',        r: 230, angle: PI * 6 / 8,     size: 10,   tier: 2 },
-            { text: '@RowOperation',  r: 230, angle: PI * 10 / 8,    size: 9.5,  tier: 2 },
-            { text: '@Drill',         r: 230, angle: PI * 13 / 8,    size: 10,   tier: 2 },
-            { text: '@Tree',          r: 230, angle: PI * 15 / 8,    size: 10,   tier: 2 },
+        var LAYERS = [
+            { label: 'DDL.sql',         zi: 0, ghost: false, active: false, a: 0.22 },
+            { label: 'Mapper.java',     zi: 1, ghost: false, active: false, a: 0.32 },
+            { label: 'Task.java',       zi: 2, ghost: false, active: true,  a: 1.0  },
+            { label: 'Service.java',    zi: 3, ghost: true,  active: false, a: 0.18 },
+            { label: 'Controller.java', zi: 4, ghost: true,  active: false, a: 0.12 },
         ];
 
-        var edges = [
-            [0,1],[0,2],[0,3],[0,4],[0,5],
-            [1,6],[1,7],[1,8],[2,9],[4,10],[5,11]
+        var BADGES = [
+            { label: '@Erupt',      side: 'L', fy: -0.40 },
+            { label: '@Power',      side: 'L', fy:  0.52 },
+            { label: '@EruptField', side: 'R', fy: -0.28 },
+            { label: '@DataProxy',  side: 'R', fy:  0.56 },
         ];
-        var flow = edges.map(function () { return Math.random(); });
-        var t = 0;
 
         function resize() {
             if (!c.offsetWidth) return;
             var dpr = window.devicePixelRatio || 1;
             W = c.offsetWidth; H = c.offsetHeight;
             c.width = W * dpr; c.height = H * dpr;
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(dpr, dpr);
             cx = W / 2; cy = H / 2;
         }
 
-        function pt(node) {
-            if (!node.r) return { x: cx, y: cy };
-            var spd = node.r > 180 ? 0.00013 : 0.00024;
-            var a = node.angle + t * spd;
-            return { x: cx + Math.cos(a) * node.r, y: cy + Math.sin(a) * node.r };
+        function iso(wx, wy, wz) {
+            var dx = wx, dy = wy - CAM_Y, dz = wz - CAM_Z;
+            return {
+                x: cx + (dx - dy) * SCALE * COS30,
+                y: cy + (dx + dy) * SCALE * SIN30 - dz * SCALE
+            };
+        }
+
+        // Rounded polygon path
+        function polyPath(pts, r) {
+            ctx.beginPath();
+            var n = pts.length;
+            for (var i = 0; i < n; i++) {
+                var prev = pts[(i - 1 + n) % n], curr = pts[i], next = pts[(i + 1) % n];
+                var d1x = prev.x - curr.x, d1y = prev.y - curr.y;
+                var d2x = next.x - curr.x, d2y = next.y - curr.y;
+                var l1 = Math.sqrt(d1x * d1x + d1y * d1y) || 1;
+                var l2 = Math.sqrt(d2x * d2x + d2y * d2y) || 1;
+                var cr = Math.min(r, l1 / 2, l2 / 2);
+                var p1x = curr.x + d1x / l1 * cr, p1y = curr.y + d1y / l1 * cr;
+                var p2x = curr.x + d2x / l2 * cr, p2y = curr.y + d2y / l2 * cr;
+                if (i === 0) ctx.moveTo(p1x, p1y); else ctx.lineTo(p1x, p1y);
+                ctx.quadraticCurveTo(curr.x, curr.y, p2x, p2y);
+            }
+            ctx.closePath();
+        }
+
+        function pill(x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y, x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x, y + h, r);
+            ctx.arcTo(x, y + h, x, y, r);
+            ctx.arcTo(x, y, x + w, y, r);
+            ctx.closePath();
+        }
+
+        function drawCard(layer, fz) {
+            var z = layer.zi * GAP + fz, T = THICK;
+            var A = iso(-CW / 2, -CD / 2, z + T);
+            var B = iso( CW / 2, -CD / 2, z + T);
+            var C = iso( CW / 2,  CD / 2, z + T);
+            var D = iso(-CW / 2,  CD / 2, z + T);
+            var B0 = iso( CW / 2, -CD / 2, z);
+            var C0 = iso( CW / 2,  CD / 2, z);
+            var D0 = iso(-CW / 2,  CD / 2, z);
+
+            if (layer.active) {
+                polyPath([B, C, C0, B0], 3);
+                ctx.fillStyle = 'rgba(255,100,40,0.18)'; ctx.fill();
+                ctx.strokeStyle = 'rgba(255,87,34,0.55)'; ctx.lineWidth = 1; ctx.stroke();
+
+                polyPath([C, D, D0, C0], 3);
+                ctx.fillStyle = 'rgba(255,80,30,0.28)'; ctx.fill();
+                ctx.strokeStyle = 'rgba(255,87,34,0.60)'; ctx.lineWidth = 1; ctx.stroke();
+
+                ctx.save();
+                ctx.shadowColor = 'rgba(255,120,50,0.9)'; ctx.shadowBlur = 26;
+                ctx.beginPath(); ctx.moveTo(D0.x, D0.y); ctx.lineTo(C0.x, C0.y);
+                ctx.strokeStyle = 'rgba(255,100,40,1)'; ctx.lineWidth = 2.5; ctx.stroke();
+                ctx.restore();
+            } else if (!layer.ghost) {
+                polyPath([B, C, C0, B0], 2);
+                ctx.fillStyle = 'rgba(150,150,180,' + layer.a * 0.07 + ')'; ctx.fill();
+                polyPath([C, D, D0, C0], 2);
+                ctx.fillStyle = 'rgba(150,150,180,' + layer.a * 0.10 + ')'; ctx.fill();
+            }
+
+            ctx.save();
+            polyPath([A, B, C, D], 9);
+            if (layer.active) {
+                var g = ctx.createLinearGradient(A.x, A.y, C.x, C.y);
+                g.addColorStop(0, 'rgba(255,110,55,0.24)');
+                g.addColorStop(1, 'rgba(200,55,10,0.07)');
+                ctx.fillStyle = g; ctx.fill();
+                ctx.shadowColor = 'rgba(255,87,34,0.55)'; ctx.shadowBlur = 18;
+                ctx.strokeStyle = 'rgba(255,90,34,0.92)'; ctx.lineWidth = 1.5; ctx.stroke();
+            } else if (layer.ghost) {
+                ctx.fillStyle = 'rgba(255,255,255,' + layer.a * 0.15 + ')'; ctx.fill();
+                ctx.strokeStyle = 'rgba(255,255,255,' + layer.a + ')'; ctx.lineWidth = 0.7; ctx.stroke();
+            } else {
+                ctx.fillStyle = 'rgba(100,110,140,' + layer.a * 0.28 + ')'; ctx.fill();
+                ctx.strokeStyle = 'rgba(200,210,255,' + layer.a * 0.7 + ')'; ctx.lineWidth = 0.9; ctx.stroke();
+            }
+            ctx.restore();
+
+            if (layer.active || (!layer.ghost && layer.a >= 0.25)) {
+                var lp = iso(0, CD * 0.18, z + T + 0.005);
+                ctx.font = layer.active ? 'bold 12px monospace' : '10px monospace';
+                ctx.fillStyle = layer.active ? 'rgba(255,175,85,1)' : 'rgba(200,215,255,' + layer.a * 0.8 + ')';
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.fillText(layer.label, lp.x, lp.y);
+            }
         }
 
         function draw() {
             if (!document.body.contains(c)) { cancelAnimationFrame(raf); return; }
             if (!W || !H) { raf = requestAnimationFrame(draw); return; }
+            t += 0.006;
             ctx.clearRect(0, 0, W, H);
-            t++;
-            var pts = nodes.map(pt);
 
-            // edges + flow dots
-            edges.forEach(function (e, i) {
-                var a = pts[e[0]], b = pts[e[1]];
-                ctx.beginPath();
-                ctx.strokeStyle = 'rgba(255,87,34,.1)';
-                ctx.lineWidth = 1;
-                ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
-                ctx.stroke();
-                flow[i] = (flow[i] + 0.003) % 1;
-                var f = flow[i];
-                ctx.beginPath();
-                ctx.arc(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f, 2.2, 0, PI * 2);
-                ctx.fillStyle = 'rgba(255,87,34,.65)';
-                ctx.fill();
+            ctx.fillStyle = '#07080f'; ctx.fillRect(0, 0, W, H);
+            var bg = ctx.createRadialGradient(cx, cy + 30, 0, cx, cy + 30, W * 0.6);
+            bg.addColorStop(0, 'rgba(255,87,34,0.055)');
+            bg.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+            var af = Math.sin(t * 0.9) * 0.05;
+            LAYERS.forEach(function (layer) {
+                var fz = layer.active ? af : Math.sin(t * 0.7 + layer.zi * 0.9) * 0.02;
+                drawCard(layer, fz);
             });
 
-            // annotation labels
-            nodes.forEach(function (node, i) {
-                var p = pts[i];
-                var pulse = 1 + Math.sin(t * 0.018 + i * 1.1) * 0.06;
+            var az = 2 * GAP + af;
+            var Dpt = iso(-CW / 2,  CD / 2, az + THICK);  // leftmost corner
+            var Bpt = iso( CW / 2, -CD / 2, az + THICK);  // rightmost corner
+            var lMargin = Dpt.x;
+            var rMargin = W - Bpt.x;
+            var OFF_L = Math.min(52, lMargin * 0.55);
+            var OFF_R = Math.min(52, rMargin * 0.55);
+
+            BADGES.forEach(function (b, bi) {
+                var anim = Math.sin(t * 1.05 + bi * 1.65) * 5;
+                var anchor = b.side === 'L' ? Dpt : Bpt;
+                var off = b.side === 'L' ? -OFF_L : OFF_R;
+                var bx = anchor.x + off;
+                var by = anchor.y + b.fy * 85 + anim;
+
+                var startX = bx + (b.side === 'L' ? 36 : -36);
+                ctx.beginPath(); ctx.moveTo(startX, by); ctx.lineTo(anchor.x, anchor.y);
+                ctx.strokeStyle = 'rgba(255,87,34,0.22)'; ctx.lineWidth = 0.8;
+                ctx.setLineDash([3, 5]); ctx.stroke(); ctx.setLineDash([]);
+
+                ctx.beginPath(); ctx.arc(anchor.x, anchor.y, 2.5, 0, PI * 2);
+                ctx.fillStyle = 'rgba(255,87,34,0.5)'; ctx.fill();
+
+                ctx.font = '11px monospace';
+                var tw = ctx.measureText(b.label).width;
+                var bw = tw + 18, bh = 24;
+                ctx.save();
+                ctx.shadowColor = 'rgba(255,87,34,0.3)'; ctx.shadowBlur = 10;
+                pill(bx - bw / 2, by - bh / 2, bw, bh, 5);
+                ctx.fillStyle = 'rgba(10,8,20,0.93)'; ctx.fill();
+                ctx.strokeStyle = 'rgba(255,87,34,0.4)'; ctx.lineWidth = 1; ctx.stroke();
+                ctx.restore();
+
+                ctx.fillStyle = 'rgba(255,145,65,1)';
+                ctx.font = '11px monospace';
                 ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-                ctx.font = (node.tier < 2 ? '600 ' : '400 ') + (node.size * pulse) + 'px SFMono-Regular,Menlo,monospace';
-                if (node.tier === 0) {
-                    ctx.shadowColor = 'rgba(255,87,34,.45)'; ctx.shadowBlur = 16;
-                    ctx.fillStyle = 'rgba(255,87,34,.92)';
-                } else if (node.tier === 1) {
-                    ctx.shadowBlur = 0; ctx.fillStyle = 'rgba(255,87,34,.6)';
-                } else {
-                    ctx.shadowBlur = 0; ctx.fillStyle = 'rgba(255,87,34,.32)';
-                }
-                ctx.fillText(node.text, p.x, p.y);
-                ctx.shadowBlur = 0;
+                ctx.fillText(b.label, bx, by);
             });
 
             raf = requestAnimationFrame(draw);
