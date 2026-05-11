@@ -92,6 +92,7 @@ cloud.demo.desc,官方演示环境已集成 Erupt 能力，可在实际界面中
 cloud.demo.btn,打开演示 DEMO,Open demo
 home.subtitle,开源·低代码,Annotation·Low Code
 home.subtitle2,AI 大模型,AI LLM
+home.btn.start,快速创建项目,Quick Start
 home.btn.code,代码示例,Codes
 home.btn.doc,使用文档,Docs
 home.btn.demo,演示DEMO,Demo
@@ -430,6 +431,47 @@ cube.ml.fn.label,自定义函数 — CubeFunction,Custom Function — CubeFuncti
 cube.ml.fn.reg.title,Java — 注册自定义函数,Java — Register Function
 cube.ml.fn.use.title,ML — 调用自定义函数,ML — Call Function
 lang.zh,中文,中文
+partners.eyebrow,ECOSYSTEM,ECOSYSTEM
+partners.hero.title,合作伙伴与集成生态,Partners & Integration Ecosystem
+partners.hero.sub,Erupt 与主流数据库、云平台及 AI 大模型深度集成，构建开放的低代码生态体系。,"Erupt deeply integrates with leading databases, cloud platforms, and AI models — powering an open low-code ecosystem."
+partners.stat.companies,企业用户,Companies
+partners.stat.db,数据库支持,Databases
+partners.stat.cloud,云平台集成,Cloud Platforms
+partners.stat.ai,AI 大模型,AI Models
+partners.stat.stars,GitHub Stars,GitHub Stars
+partners.stat.years,年持续维护,Years Active
+partners.marquee.eyebrow,TRUSTED BY,TRUSTED BY
+partners.marquee.title,生态伙伴,Ecosystem Partners
+partners.marquee.sub,来自全球的企业和开发者正在使用 Erupt 构建业务系统。,Companies and developers worldwide are building with Erupt.
+partners.integrations.eyebrow,INTEGRATIONS,INTEGRATIONS
+partners.integrations.title,技术集成一览,Technology Integrations
+partners.integrations.sub,三大技术方向全面覆盖，开箱即用，无需额外适配层。,Three integration tracks — databases / cloud / AI — all work out of the box.
+partners.cat.db,DATABASE,DATABASE
+partners.cat.db.title,数据库支持,Database Support
+partners.cat.db.desc,涵盖主流关系型数据库、NoSQL 与国产数据库，JPA 注解声明即可切换。,Covers RDBMS / NoSQL / domestic databases. Switch by changing one annotation.
+partners.cat.cloud,CLOUD,CLOUD
+partners.cat.cloud.title,云平台集成,Cloud Platform Integration
+partners.cat.cloud.desc,对象存储、短信通知、容器部署，主流云厂商开箱即用。,"Object storage, SMS, container deployment — plug in any major cloud."
+partners.cat.ai,AI / LLM,AI / LLM
+partners.cat.ai.title,AI 大模型集成,AI & LLM Integration
+partners.cat.ai.desc,统一接口对接多家大模型，可本地部署，无需更改业务代码切换模型。,"Unified API across LLM providers — switch models without touching business code, local inference supported."
+partners.cta.eyebrow,BECOME A PARTNER,BECOME A PARTNER
+partners.cta.title,成为 Erupt 生态伙伴,Become an Erupt Ecosystem Partner
+partners.cta.sub,无论是商业合作、技术集成还是开源共建，我们都欢迎您加入 Erupt 生态。,"Commercial partnership, technical integration, or open-source co-building — join the Erupt ecosystem."
+partners.cta.email,发邮件联系,Send Email
+partners.cta.gitee,Gitee 仓库,Gitee Repo
+partners.cta.github,GitHub 仓库,GitHub Repo
+partners.faq.eyebrow,FAQ,FAQ
+partners.faq.q1,如何申请成为官方集成合作伙伴？,How do I become an official integration partner?
+partners.faq.a1,请通过邮件或 GitHub Issue 与我们联系，说明您的产品/服务类型及集成方式，我们将在 5 个工作日内回复。,"Contact us via email or GitHub Issue with your product/service type and integration approach — we reply within 5 business days."
+partners.faq.q2,集成到 Erupt 有哪些技术要求？,What are the technical requirements for integration?
+partners.faq.a2,推荐基于 Spring Boot Starter 模式封装，提供自动配置类；或通过标准 JDBC / REST 接口对接，具体方案可与我们共同评审。,"Wrap as a Spring Boot Starter with auto-configuration, or integrate via standard JDBC / REST — we can co-review the approach."
+partners.tiers.eyebrow,PARTNERSHIP TIERS,PARTNERSHIP TIERS
+partners.tiers.title,合作等级,Partnership Tiers
+partners.tiers.t1,开源共建 — PR 合并、功能捐赠,Open Source — PR merged / feature donation
+partners.tiers.t2,技术集成 — 官网展示集成 Logo 与文档,Tech Integration — logo & docs on official site
+partners.tiers.t3,生态合作 — 联合案例与推广,Ecosystem Partner — joint case studies & promotion
+partners.tiers.t4,战略合作 — 深度共研与商业授权,Strategic Partner — joint R&D & commercial licensing
 lang.en,English,English
 nav.products,产品,Products
 nav.more,更多,More

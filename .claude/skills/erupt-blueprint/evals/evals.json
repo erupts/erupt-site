@@ -1,0 +1,20 @@
+{
+  "skill_name": "erupt-blueprint",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "用 erupt blueprint 风格帮我设计一个 Erupt Flow 工作流引擎的产品介绍页面。页面需要有：产品介绍标题区、核心特性（3列卡片）、使用步骤（4步横向展示）、一个 CTA 区域。",
+      "expected_output": "一个完整的 HTML 页面片段，使用 .fr/.r/.g3/.g4/.c 骨架，标题行有 .g-bg.ticks，内容行有 .reveal，使用 .wbtn/.wbtn-o 按钮，Eyebrow Tag 用 .tag 类，无实心背景卡片，无阴影。"
+    },
+    {
+      "id": 2,
+      "prompt": "在 erupt-site 项目中新建一个 page/partners.html，展示 Erupt 的合作伙伴和技术集成生态。包含：页面标题、合作伙伴 Logo 滚动展示（marquee）、集成分类（按类型分3列：数据库/云平台/AI大模型）、联系合作的 CTA。",
+      "expected_output": "完整的 AngularJS 页面文件，使用 erupt-blueprint.css，marquee 用 .mq/.mq-track/.chip，内容行用网格布局，风格与 home.html 一致。"
+    },
+    {
+      "id": 3,
+      "prompt": "帮我用 erupt 设计语言写一个代码对比展示区块（section），左侧是深色代码窗口展示一段 Java 注解代码，右侧是 4 个功能说明卡片（2×2 网格）。这是一个独立的 HTML 片段，不是完整页面。",
+      "expected_output": "一个 .r.reveal 区块，内含 .spl 左右分栏，左侧用 .cb/.cb-hd/.cb-body 深色代码窗口，右侧用 .g2 网格+.c 卡片，无阴影无独立圆角卡片，语法高亮用 .an/.kw/.st 等类名。"
+    }
+  ]
+}

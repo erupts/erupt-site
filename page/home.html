@@ -748,6 +748,10 @@
             <p style="margin-top:26px;gap:10px;display:flex;justify-content:center;flex-wrap:wrap">
                 <a class="wbtn wbtn-o" ng-click="go('/demo',true)"
                    style="cursor:pointer;padding:11px 28px;font-size:14px">{{'home.btn.demo'|i18n}}</a>
+                <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank"
+                   style="padding:11px 28px;font-size:14px;border-color:#28a745;color:#28a745"
+                   onmouseover="this.style.background='#28a745';this.style.color='#fff'"
+                   onmouseout="this.style.background='';this.style.color='#28a745'">{{'home.btn.start'|i18n}} ↗</a>
                 <a class="wbtn" ng-click="go('#!/doc')" style="cursor:pointer;padding:11px 28px;font-size:14px">{{'home.btn.doc'|i18n}}</a>
                 <a class="wbtn" ng-click="go('#!/contrast')" style="cursor:pointer;padding:11px 28px;font-size:14px">{{'home.btn.code'|i18n}}</a>
             </p>
@@ -1500,6 +1504,10 @@ public class DemoErupt extends BaseModel {
             <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
                 <a class="wbtn wbtn-o" href="https://www.erupt.xyz/demo" style="padding:11px 28px;font-size:14px"
                    target="_blank">{{'home.v2.cta.demo'|i18n}}</a>
+                <a class="wbtn" href="https://start.erupt.xyz" target="_blank"
+                   style="padding:11px 28px;font-size:14px;border-color:#28a745;color:#28a745"
+                   onmouseover="this.style.background='#28a745';this.style.color='#fff'"
+                   onmouseout="this.style.background='';this.style.color='#28a745'">{{'home.btn.start'|i18n}} ↗</a>
                 <a class="wbtn" href="https://docs.erupt.xyz" style="padding:11px 28px;font-size:14px" target="_blank">{{'home.v2.cta.docs'|i18n}}</a>
                 <a class="wbtn" href="#!/contrast" style="padding:11px 28px;font-size:14px">{{'home.btn.code'|i18n}}</a>
             </div>

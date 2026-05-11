@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn:*)",
+      "Bash(mvnd:*)",
+      "Bash(pnpm:*)",
+      "Bash(npm run *)",
+      "Bash(ng:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)",
+      "Edit(**)",
+      "Write(**)",
+      "Read(**)",
+      "Bash(nohup python:*)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(nohup python3:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(git push:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(mvn deploy:*)",
+      "Bash(npm publish:*)"
+    ]
+  }
+}
