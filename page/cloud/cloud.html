@@ -265,3 +265,14 @@
     <div class="ticks"></div>
 </div>
 </div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
+    }());
+</script>
