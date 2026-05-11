@@ -738,17 +738,18 @@
     <div class="fr">
 
         <!-- §1 HERO TEXT -->
-        <div class="r ticks only-after" style="padding:80px 48px 56px;text-align:center">
+        <div class="r g-bg ticks only-after" style="padding:80px 48px 56px;text-align:center">
             <div style="text-align:center">
                 <span id="home-logo"><img alt="" src="assets/logo.svg" width="120px"></span>
             </div>
             <h1 style="margin-top:30px">Erupt Engine</h1>
             <h4 style="margin-top:18px"><span style="color:#ffc107"> {{'home.subtitle'|i18n}} </span> ⚔
                 {{'home.subtitle2'|i18n}}</h4>
-            <p style="margin-top:26px;gap:16px;display:flex;justify-content:center;flex-wrap:wrap">
-                <button class="btn btn-primary" ng-click="go('#!/contrast')">{{'home.btn.code'|i18n}}</button>
-                <button class="btn btn-success" ng-click="go('#!/doc')">{{'home.btn.doc'|i18n}}</button>
-                <button class="btn btn-danger" ng-click="go('/demo',true)">{{'home.btn.demo'|i18n}}</button>
+            <p style="margin-top:26px;gap:10px;display:flex;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o" ng-click="go('/demo',true)"
+                   style="cursor:pointer;padding:11px 28px;font-size:14px">{{'home.btn.demo'|i18n}}</a>
+                <a class="wbtn" ng-click="go('#!/doc')" style="cursor:pointer;padding:11px 28px;font-size:14px">{{'home.btn.doc'|i18n}}</a>
+                <a class="wbtn" ng-click="go('#!/contrast')" style="cursor:pointer;padding:11px 28px;font-size:14px">{{'home.btn.code'|i18n}}</a>
             </p>
         </div>
 
