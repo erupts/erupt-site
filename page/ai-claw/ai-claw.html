@@ -50,27 +50,30 @@
         position: relative;
     }
 
-    .ac-fr::before, .ac-fr::after {
+    /* ── Interior section dot ticks ── */
+    .ac-fr.mid::before, .ac-fr-light.mid::before,
+    .ac-fr.mid::after, .ac-fr-light.mid::after {
         content: '';
         position: absolute;
-        width: 12px;
-        height: 12px;
-        border-color: var(--ac);
-        border-style: solid;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--ac);
+        border: none;
+        outline: 1.5px solid rgba(0, 255, 136, .28);
+        outline-offset: 2px;
         z-index: 2;
         pointer-events: none;
     }
 
-    .ac-fr::before {
-        top: 0;
-        left: 0;
-        border-width: 2px 0 0 2px;
+    .ac-fr.mid::before, .ac-fr-light.mid::before {
+        top: -4px;
+        left: -4px;
     }
 
-    .ac-fr::after {
-        top: 0;
-        right: 0;
-        border-width: 2px 2px 0 0;
+    .ac-fr.mid::after, .ac-fr-light.mid::after {
+        top: -4px;
+        right: -4px;
     }
 
     /* ── Bounded frame — light ── */
@@ -81,61 +84,6 @@
         border-right: 1px solid var(--ac-lb);
         position: relative;
         background: #fff;
-    }
-
-    .ac-fr-light::before, .ac-fr-light::after {
-        content: '';
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border-color: var(--ac);
-        border-style: solid;
-        z-index: 2;
-        pointer-events: none;
-    }
-
-    .ac-fr-light::before {
-        top: 0;
-        left: 0;
-        border-width: 2px 0 0 2px;
-    }
-
-    .ac-fr-light::after {
-        top: 0;
-        right: 0;
-        border-width: 2px 2px 0 0;
-    }
-
-    /* Corner helpers (bottom two) */
-    .ac-c2::before, .ac-c2::after {
-        content: '';
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border-color: var(--ac);
-        border-style: solid;
-        z-index: 2;
-        pointer-events: none;
-    }
-
-    .ac-c2 {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        pointer-events: none;
-    }
-
-    .ac-c2::before {
-        bottom: 0;
-        left: 0;
-        border-width: 0 0 2px 2px;
-    }
-
-    .ac-c2::after {
-        bottom: 0;
-        right: 0;
-        border-width: 0 2px 2px 0;
     }
 
     /* ── Rows ── */
@@ -799,7 +747,7 @@
     <!-- ── TERMINAL DEMO ── -->
     <div style="background:var(--ac-bg1)">
         <div class="ac-fr mid">
-            <div class="ac-title ac-r" style="background-image:none">
+            <div class="ac-title ac-r" style="background:rgba(0,255,136,0.14);background-image:none">
                 <span class="ac-eyebrow">Demo</span>
                 <h2 class="ac-h2d">{{'claw.demo.title'|i18n}}</h2>
                 <p class="ac-sub-d" style="max-width:540px;margin:8px auto 0">{{'claw.demo.subtitle'|i18n}}</p>
@@ -952,7 +900,6 @@
                     <a class="ac-btn-l" href="#!/ai">{{'claw.cta.also_ai'|i18n}}</a>
                 </div>
             </div>
-            <div class="ac-c2"></div>
         </div>
     </div>
 
