@@ -59,7 +59,7 @@
 
     .cv-stage {
         position: relative;
-        height: 520px;
+        height: 600px;
         overflow: hidden;
         background: radial-gradient(circle at 1px 1px, #ddd 1px, transparent 0);
         background-size: 28px 28px;
@@ -838,9 +838,9 @@
     <div class="r g-bg ticks" style="display:flex; min-height:460px; overflow:visible">
         <div style="flex:1; padding:56px 48px 48px; display:flex; flex-direction:column; justify-content:center; overflow:hidden">
             <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:20px">
-                <span class="tag" style="font-family:monospace; font-size:11px; letter-spacing:.08em">🔀 FLOW</span>
+                <span class="tag" style="font-family:monospace;margin-bottom: 0">🔀 FLOW</span>
                 <span style="font-size:12px; color:var(--c-text-muted)">通用流程引擎 · workflow engine</span>
-                <span style="font-size:12px; color:var(--c-text-muted)">/ MIT</span>
+                <span style="font-size:12px; color:var(--c-text-muted)"></span>
             </div>
             <div class="h1" style="font-size:clamp(42px,5.5vw,80px); line-height:.95; letter-spacing:-.03em; margin-bottom:22px">Erupt Flow</div>
             <div class="sub" style="max-width:58ch; font-size:15px; line-height:1.7; margin-bottom:28px">
@@ -897,73 +897,63 @@
     <!-- DAG Canvas -->
     <div class="r" style="overflow:visible">
         <div class="canvas reveal">
-            <div class="cv-bar">
-                <span class="cv-close">✕</span>
-                <div class="cv-steps">
-                    <span class="cv-step"><span class="num">1</span>基础信息</span>
-                    <span class="cv-step"><span class="num">2</span>表单预览</span>
-                    <span class="cv-step on"><span class="num">3</span>流程设计</span>
-                    <span class="cv-step"><span class="num">4</span>更多设置</span>
-                </div>
-                <button class="cv-publish">发布</button>
-            </div>
             <div class="cv-stage" id="stage">
-                <svg class="wires" preserveAspectRatio="none" viewBox="0 0 1216 520">
-                    <path class="wire" d="M608 76 L608 144"/>
-                    <path class="wire" d="M608 144 L160 144 L160 192"/>
-                    <path class="wire" d="M608 144 L408 144 L408 192"/>
-                    <path class="wire" d="M608 144 L808 144 L808 192"/>
-                    <path class="wire" d="M608 144 L1056 144 L1056 192"/>
+                <svg class="wires" preserveAspectRatio="none" viewBox="0 0 1216 600">
+                    <path class="wire" d="M608 76 L608 168"/>
+                    <path class="wire" d="M608 168 L160 168 L160 192"/>
+                    <path class="wire" d="M608 168 L408 168 L408 192"/>
+                    <path class="wire" d="M608 168 L808 168 L808 192"/>
+                    <path class="wire" d="M608 168 L1056 168 L1056 192"/>
                     <path class="wire" d="M160 252 L160 322"/>
                     <path class="wire flow" d="M408 252 L408 322"/>
                     <path class="wire" d="M808 252 L808 322"/>
                     <path class="wire" d="M1056 252 L1056 322"/>
-                    <path class="wire" d="M408 372 L408 432 L608 432 L608 460"/>
-                    <path class="wire" d="M808 372 L808 432 L608 432"/>
-                    <path class="wire" d="M160 322 L160 432 L608 432"/>
-                    <path class="wire" d="M1056 322 L1056 432 L608 432"/>
+                    <path class="wire" d="M408 372 L408 500 L608 500 L608 530"/>
+                    <path class="wire" d="M808 372 L808 500 L608 500"/>
+                    <path class="wire" d="M160 322 L160 500 L608 500"/>
+                    <path class="wire" d="M1056 322 L1056 500 L608 500"/>
                 </svg>
                 <div class="node start" style="left:50%;top:24px;transform:translateX(-50%);width:200px">
                     <div class="nh">发起人 <span class="x">⋯</span></div>
                     <div class="nb"><b>流程从本节点开始</b><span class="arr">→</span></div>
                 </div>
-                <div class="branch-pill" style="left:50%;top:148px;transform:translateX(-50%)">
+                <div class="branch-pill" style="left:50%;top:168px;transform:translate(-50%,-50%)">
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12"/></svg>
                     添加分支
                 </div>
-                <div class="node cond" style="left:75px;top:198px;width:170px">
+                <div class="node cond" style="left:13.16%;top:198px;transform:translateX(-50%);width:170px">
                     <div class="nh">互斥条件 1 <em>优先级 1</em></div>
                     <div class="nb"><b>请设置</b><span class="arr">→</span></div>
                 </div>
-                <div class="node cond" style="left:323px;top:198px;width:170px">
+                <div class="node cond" style="left:33.55%;top:198px;transform:translateX(-50%);width:170px">
                     <div class="nh">互斥条件 2 <em>优先级 2</em></div>
                     <div class="nb"><b>金额 ≤ ¥5,000</b><span class="arr">→</span></div>
                 </div>
-                <div class="node cond" style="left:723px;top:198px;width:170px">
+                <div class="node cond" style="left:66.45%;top:198px;transform:translateX(-50%);width:170px">
                     <div class="nh">互斥条件 3 <em>优先级 3</em></div>
                     <div class="nb"><b>金额 &gt; ¥5,000</b><span class="arr">→</span></div>
                 </div>
-                <div class="node cond" style="left:971px;top:198px;width:170px">
+                <div class="node cond" style="left:86.84%;top:198px;transform:translateX(-50%);width:170px">
                     <div class="nh">默认条件 <em>优先级 4</em></div>
                     <div class="nb"><b>请设置</b><span class="arr">→</span></div>
                 </div>
-                <div class="node appr" style="left:323px;top:328px;width:170px">
+                <div class="node appr" style="left:33.55%;top:328px;transform:translateX(-50%);width:170px">
                     <div class="nh">审批人 <span class="x">✕</span></div>
                     <div class="nb"><b>财务主管</b><span class="arr">→</span></div>
                 </div>
-                <div class="node delay" style="left:723px;top:328px;width:170px">
+                <div class="node delay" style="left:66.45%;top:328px;transform:translateX(-50%);width:170px">
                     <div class="nh">延时节点 <span class="x">✕</span></div>
                     <div class="nb"><b>延时 24h</b><span class="arr">→</span></div>
                 </div>
-                <div class="node end" style="left:50%;bottom:30px;transform:translateX(-50%)">流程结束</div>
+                <div class="node end" style="left:50%;bottom:28px;transform:translateX(-50%)">流程结束</div>
                 <span class="plus" style="left:calc(50% - 11px);top:108px"></span>
-                <span class="plus" style="left:160px;top:268px;transform:translateX(-11px)"></span>
-                <span class="plus" style="left:408px;top:268px;transform:translateX(-11px)"></span>
-                <span class="plus" style="left:808px;top:268px;transform:translateX(-11px)"></span>
-                <span class="plus" style="left:1056px;top:268px;transform:translateX(-11px)"></span>
-                <span class="plus" style="left:408px;top:388px;transform:translateX(-11px)"></span>
-                <span class="plus" style="left:808px;top:388px;transform:translateX(-11px)"></span>
-                <span class="plus" style="left:calc(50% - 11px);bottom:62px"></span>
+                <span class="plus" style="left:calc(13.16% - 11px);top:268px"></span>
+                <span class="plus" style="left:calc(33.55% - 11px);top:268px"></span>
+                <span class="plus" style="left:calc(66.45% - 11px);top:268px"></span>
+                <span class="plus" style="left:calc(86.84% - 11px);top:268px"></span>
+                <span class="plus" style="left:calc(33.55% - 11px);top:388px"></span>
+                <span class="plus" style="left:calc(66.45% - 11px);top:388px"></span>
+                <span class="plus" style="left:calc(50% - 11px);bottom:96px"></span>
                 <div class="cv-corner">
                     <button>−</button>
                     <span style="font-family:monospace;font-size:12px">100%</span>
@@ -992,7 +982,9 @@
         <div class="c reveal" style="padding:28px 32px">
             <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">01 / 05</div>
             <div class="h3" style="margin-bottom:10px">可视化<br><span style="color:var(--c-brand)">流程设计</span></div>
-            <div class="sub" style="font-size:13px; margin-bottom:18px">钉钉风格画布，9 类节点开箱即用。条件分支、并行审批、延时、抄送、Webhook 通通拖出来，零前端代码。</div>
+            <div class="sub" style="font-size:13px; margin-bottom:18px">钉钉风格画布，9 类节点开箱即用。条件分支、并行审批、延时、抄送、办理
+                通通拖出来，零前端代码。
+            </div>
             <div class="palette">
                 <div class="pal start">● 发起</div>
                 <div class="pal appr">▢ 审批</div>
@@ -1000,7 +992,7 @@
                 <div class="pal cond">◇ 条件</div>
                 <div class="pal delay">⏱ 延时</div>
                 <div class="pal notify">📨 通知</div>
-                <div class="pal web">⚡ Webhook</div>
+                <div class="pal web">⚡ 办理</div>
                 <div class="pal script">⧉ 自定义</div>
                 <div class="pal end">■ 结束</div>
             </div>
@@ -1023,14 +1015,28 @@
             <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">03 / 05</div>
             <div class="h3" style="margin-bottom:10px">结构化<br><span style="color:var(--c-brand)">数据存储</span></div>
             <div class="sub" style="font-size:13px; margin-bottom:16px">7 张关系表完整记录流程定义、实例、任务、评论、表单历史。SQL 直查、接 BI、审计可追溯。</div>
-            <div style="display:flex; flex-wrap:wrap; gap:6px">
-                <span class="tag" style="font-family:monospace; font-size:11px">e_flow</span>
-                <span class="tag" style="font-family:monospace; font-size:11px">e_flow_instance</span>
-                <span class="tag" style="font-family:monospace; font-size:11px">approval_task</span>
-                <span class="tag" style="font-family:monospace; font-size:11px">instance_record</span>
-                <span class="tag" style="font-family:monospace; font-size:11px">form_history</span>
-                <span class="tag" style="font-family:monospace; font-size:11px">comment</span>
-                <span class="tag" style="font-family:monospace; font-size:11px">flow_group</span>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px">
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                    e_flow
+                </div>
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                    flow_instance
+                </div>
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                    approval_task
+                </div>
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                    instance_record
+                </div>
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                    form_history
+                </div>
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                    comment
+                </div>
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; grid-column:span 2">
+                    flow_group
+                </div>
             </div>
         </div>
         <div class="c reveal" style="padding:28px 32px">
@@ -1306,7 +1312,7 @@ private Integer rating;</code></pre>
                             <span class="opt on"><i></i> 邮件</span>
                             <span class="opt"><i></i> 企业微信</span>
                             <span class="opt"><i></i> 飞书</span>
-                            <span class="opt"><i></i> Webhook</span>
+                            <span class="opt"><i></i> 办理</span>
                         </div>
                     </div>
                 </div>
@@ -1349,8 +1355,8 @@ private Integer rating;</code></pre>
                     <b>form_history</b>before / after
                 </div>
                 <div class="archi-cell">
-                    <div class="ac-lab">导出</div>
-                    <b>print template</b>html → pdf
+                    <div class="ac-lab">分析</div>
+                    <b>flow report</b>SQL · BI · 图表
                 </div>
             </div>
         </div>

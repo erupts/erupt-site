@@ -221,9 +221,9 @@
         <!-- §1 HERO -->
         <div class="r g-bg" style="display:flex;min-height:480px;overflow:hidden">
             <!-- left: text -->
-            <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
+            <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
                 <span id="home-logo"><img alt="" src="assets/logo.svg" width="88px"></span>
-                <div style="margin-top:20px;display:flex;align-items:center;gap:10px">
+                <div style="margin-top:20px;display:flex;align-items:center;gap:10px;justify-content:center">
                     <span class="tag">Open Source · Apache 2.0</span>
                 </div>
                 <h1 style="margin-top:14px;letter-spacing:-.03em;font-size:clamp(28px,4vw,50px);line-height:1.1">Erupt Engine</h1>
@@ -234,7 +234,7 @@
                     <span style="margin:0 10px;opacity:.2">×</span>
                     {{'home.subtitle2'|i18n}}
                 </p>
-                <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
+                <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
                     <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank"
                        style="padding:11px 28px;font-size:14px">{{'home.btn.start'|i18n}} ↗</a>
                     <a class="wbtn" ng-click="go('https://demo.erupt.xyz',true)"
@@ -249,84 +249,101 @@
                 </p>
             </div>
             <!-- right: architecture diagram -->
-            <div class="d-none d-lg-flex" style="flex:0 0 46%;align-items:center;justify-content:center;padding:48px 40px">
-                <div style="width:100%;max-width:360px;font-family:var(--c-mono)">
+            <div class="d-none d-lg-flex"
+                 style="flex:0 0 46%;border-left:1px solid var(--c-border);background:#f7fef9;align-items:center;justify-content:center;padding:48px 40px;position:relative;overflow:hidden">
+                <div style="width:100%;max-width:360px;font-family:var(--c-mono);position:relative">
 
                     <!-- layer 1: Spring Boot App -->
-                    <div style="border:1px solid var(--c-border);padding:14px 16px 10px;background:rgba(255,87,34,.02)">
-                        <div style="font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--c-brand);opacity:.5;margin-bottom:10px">Spring Boot Application</div>
+                    <div style="border:1px solid var(--c-border);padding:14px 16px 10px;background:#f0fdf4">
+                        <div style="font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(22,163,74,.6);margin-bottom:10px">
+                            Spring Boot Application
+                        </div>
                         <div style="display:flex;flex-direction:column;gap:6px">
-                            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(255,87,34,.05)">
-                                <div style="width:6px;height:6px;border-radius:50%;background:var(--c-brand);flex-shrink:0"></div>
+                            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--c-border);border-left:2px solid #22c55e;background:#dcfce7">
+                                <div style="width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0"></div>
                                 <div>
-                                    <div style="font-size:11px;font-weight:600;color:var(--c-brand)">@Erupt · Task.java</div>
-                                    <div style="font-size:9px;color:var(--c-text2);margin-top:1px;opacity:.6">@Power · @Filter · @DataProxy · 8 fields</div>
+                                    <div style="font-size:11px;font-weight:600;color:#16a34a">@Erupt · Task.java</div>
+                                    <div style="font-size:9px;color:rgba(0,0,0,.38);margin-top:1px">@Power · @Filter ·
+                                        @DataProxy · 8 fields
+                                    </div>
                                 </div>
                             </div>
-                            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(255,87,34,.05)">
-                                <div style="width:6px;height:6px;border-radius:50%;background:var(--c-brand);flex-shrink:0"></div>
+                            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--c-border);border-left:2px solid #22c55e;background:#dcfce7">
+                                <div style="width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0"></div>
                                 <div>
-                                    <div style="font-size:11px;font-weight:600;color:var(--c-brand)">@Erupt · User.java</div>
-                                    <div style="font-size:9px;color:var(--c-text2);margin-top:1px;opacity:.6">@OneToMany · @Search · 12 fields</div>
+                                    <div style="font-size:11px;font-weight:600;color:#16a34a">@Erupt · User.java</div>
+                                    <div style="font-size:9px;color:rgba(0,0,0,.38);margin-top:1px">@OneToMany · @Search
+                                        · 12 fields
+                                    </div>
                                 </div>
                             </div>
-                            <div style="padding:7px 12px;border:1px dashed rgba(255,87,34,.2)">
-                                <div style="font-size:9px;color:var(--c-text2);opacity:.4">+ N more @Erupt classes…</div>
+                            <div style="padding:7px 12px;border:1px dashed rgba(34,197,94,.25)">
+                                <div style="font-size:9px;color:rgba(0,0,0,.28)">+ N more @Erupt classes…</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- connector -->
                     <div style="display:flex;flex-direction:column;align-items:center;padding:4px 0">
-                        <div style="width:1px;height:16px;background:linear-gradient(to bottom,var(--c-brand),var(--c-brand));opacity:.3"></div>
-                        <div style="font-size:12px;color:var(--c-brand);opacity:.4;line-height:1">▼</div>
+                        <div style="width:1px;height:16px;background:rgba(34,197,94,.3)"></div>
+                        <div style="font-size:12px;color:rgba(34,197,94,.45);line-height:1">▼</div>
                     </div>
 
                     <!-- layer 2: Erupt Engine -->
-                    <div style="border:1px solid var(--c-brand);background:rgba(255,87,34,.07);padding:16px 20px;text-align:center;box-shadow:0 0 24px rgba(255,87,34,.08)">
-                        <div style="font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--c-brand);opacity:.7;margin-bottom:6px">Erupt Engine</div>
+                    <div style="border:1px solid #22c55e;background:#dcfce7;padding:16px 20px;text-align:center;box-shadow:0 0 24px rgba(34,197,94,.12)">
+                        <div style="font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:rgba(22,163,74,.75);margin-bottom:6px">
+                            Erupt Engine
+                        </div>
                         <div style="font-size:15px;font-weight:700;color:var(--c-text);letter-spacing:-.02em">元数据扫描 · 路由注册</div>
                         <div style="display:flex;justify-content:center;gap:0;margin-top:12px">
-                            <span style="font-size:9px;color:var(--c-brand);opacity:.5;padding:3px 10px;border:1px solid rgba(255,87,34,.2)">scan</span>
-                            <span style="font-size:9px;color:var(--c-brand);opacity:.5;padding:3px 10px;border:1px solid rgba(255,87,34,.2);border-left:none">meta</span>
-                            <span style="font-size:9px;color:var(--c-brand);opacity:.5;padding:3px 10px;border:1px solid rgba(255,87,34,.2);border-left:none">permission</span>
-                            <span style="font-size:9px;color:var(--c-brand);opacity:.5;padding:3px 10px;border:1px solid rgba(255,87,34,.2);border-left:none">reload</span>
+                            <span style="font-size:9px;color:rgba(22,163,74,.7);padding:3px 10px;border:1px solid rgba(34,197,94,.25)">scan</span>
+                            <span style="font-size:9px;color:rgba(22,163,74,.7);padding:3px 10px;border:1px solid rgba(34,197,94,.25);border-left:none">meta</span>
+                            <span style="font-size:9px;color:rgba(22,163,74,.7);padding:3px 10px;border:1px solid rgba(34,197,94,.25);border-left:none">permission</span>
+                            <span style="font-size:9px;color:rgba(22,163,74,.7);padding:3px 10px;border:1px solid rgba(34,197,94,.25);border-left:none">reload</span>
                         </div>
                     </div>
 
                     <!-- connector -->
                     <div style="display:flex;flex-direction:column;align-items:center;padding:4px 0">
-                        <div style="width:1px;height:16px;background:var(--c-brand);opacity:.3"></div>
-                        <div style="font-size:12px;color:var(--c-brand);opacity:.4;line-height:1">▼</div>
+                        <div style="width:1px;height:16px;background:rgba(34,197,94,.3)"></div>
+                        <div style="font-size:12px;color:rgba(34,197,94,.45);line-height:1">▼</div>
                     </div>
 
                     <!-- layer 3: outputs -->
                     <div style="display:flex">
                         <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);text-align:center">
-                            <div style="width:5px;height:5px;border-radius:50%;background:#60a5fa;margin:0 auto 6px"></div>
-                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">Table</div>
-                            <div style="font-size:8px;color:var(--c-text2);margin-top:4px;opacity:.5;line-height:1.5">列表·搜索<br>导入导出</div>
-                        </div>
-                        <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);border-left:none;text-align:center">
-                            <div style="width:5px;height:5px;border-radius:50%;background:#fbbf24;margin:0 auto 6px"></div>
-                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">Form</div>
-                            <div style="font-size:8px;color:var(--c-text2);margin-top:4px;opacity:.5;line-height:1.5">23+ 字段<br>校验·联动</div>
-                        </div>
-                        <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);border-left:none;text-align:center">
                             <div style="width:5px;height:5px;border-radius:50%;background:#4ade80;margin:0 auto 6px"></div>
-                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">API</div>
-                            <div style="font-size:8px;color:var(--c-text2);margin-top:4px;opacity:.5;line-height:1.5">REST·权限<br>操作日志</div>
+                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">Table</div>
+                            <div style="font-size:8px;color:rgba(0,0,0,.38);margin-top:4px;line-height:1.5">
+                                列表·搜索<br>导入导出
+                            </div>
                         </div>
                         <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);border-left:none;text-align:center">
-                            <div style="width:5px;height:5px;border-radius:50%;background:#c084fc;margin:0 auto 6px"></div>
+                            <div style="width:5px;height:5px;border-radius:50%;background:#86efac;margin:0 auto 6px"></div>
+                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">Form</div>
+                            <div style="font-size:8px;color:rgba(0,0,0,.38);margin-top:4px;line-height:1.5">23+ 字段<br>校验·联动
+                            </div>
+                        </div>
+                        <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);border-left:none;text-align:center">
+                            <div style="width:5px;height:5px;border-radius:50%;background:#22c55e;margin:0 auto 6px"></div>
+                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">API</div>
+                            <div style="font-size:8px;color:rgba(0,0,0,.38);margin-top:4px;line-height:1.5">
+                                REST·权限<br>操作日志
+                            </div>
+                        </div>
+                        <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);border-left:none;text-align:center">
+                            <div style="width:5px;height:5px;border-radius:50%;background:#bbf7d0;margin:0 auto 6px"></div>
                             <div style="font-size:10px;font-weight:700;color:var(--c-text)">DDL</div>
-                            <div style="font-size:8px;color:var(--c-text2);margin-top:4px;opacity:.5;line-height:1.5">自动建表<br>schema同步</div>
+                            <div style="font-size:8px;color:rgba(0,0,0,.38);margin-top:4px;line-height:1.5">自动建表<br>schema同步
+                            </div>
                         </div>
                     </div>
 
-                    <div style="margin-top:12px;text-align:center;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text2);opacity:.35">
+                    <div style="margin-top:12px;text-align:center;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3)">
                         0 frontend code · 10+ databases · hot-reload
                     </div>
+                    <!-- bottom fade mask -->
+                    <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,#f0fdf4);pointer-events:none"></div>
                 </div>
             </div>
         </div>

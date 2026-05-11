@@ -1,27 +1,62 @@
 <style>
     /* ── Cube Page: Dark Blueprint ── */
-    body { background: #06080f; }
-    #header { background: #06080f; border-bottom: 0; color: #fff; }
-    #header > div { border-left: 0; border-right: 0; }
-    #header a { color: #aaa; }
-    #header .active-link { color: #fff !important; }
+    body {
+        background: #06080f;
+    }
+
+    #header {
+        background: #06080f;
+        border-bottom: 0;
+        color: #fff;
+    }
+
+    #header > div {
+        border-left-color: #1a1b22;
+        border-right-color: #1a1b22;
+    }
+
+    #header a {
+        color: #aaa;
+    }
+
+    #header .active-link {
+        color: #fff !important;
+    }
 
     /* Dark-mode overrides for blueprint tokens */
     .cube-page {
-        --c-bg:     #06080f;
-        --c-text:   #f0f0f0;
-        --c-text2:  rgba(255,255,255,.4);
-        --c-border: rgba(255,255,255,.08);
-        --c-grid:   rgba(255,255,255,.025);
-        --c-brand:  #FF5722;
+        --c-bg: #06080f;
+        --c-text: #f0f0f0;
+        --c-text2: rgba(255, 255, 255, .4);
+        --c-border: rgba(255, 255, 255, .08);
+        --c-grid: rgba(255, 255, 255, .025);
+        --c-brand: #FF5722;
     }
 
     /* Blueprint .fr / .wbtn dark overrides */
-    .cube-page .fr { background: var(--c-bg); }
-    .cube-page .wbtn { color: rgba(255,255,255,.65); border-color: rgba(255,255,255,.15); }
-    .cube-page .wbtn:hover { color: #fff; border-color: var(--c-brand); }
-    .cube-page .wbtn-o { color: var(--c-brand); border-color: var(--c-brand); }
-    .cube-page .wbtn-o:hover { background: var(--c-brand); color: #fff !important; }
+    .cube-page .fr {
+        background: var(--c-bg);
+    }
+
+    .cube-page .wbtn {
+        color: rgba(255, 255, 255, .65);
+        border-color: rgba(255, 255, 255, .15);
+    }
+
+    .cube-page .wbtn:hover {
+        color: #fff;
+        border-color: var(--c-brand);
+    }
+
+    .cube-page .wbtn-o {
+        color: var(--c-brand);
+        border-color: var(--c-brand);
+    }
+
+    .cube-page .wbtn-o:hover {
+        background: var(--c-brand);
+        color: #fff !important;
+    }
 
     /* ── Hero ── */
     .cube-hero-row {
@@ -30,16 +65,17 @@
         position: relative;
         overflow: hidden;
     }
+
     .cube-hero-row::before {
         content: '';
         position: absolute;
         inset: 0;
-        background-image:
-            linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+        background-image: linear-gradient(rgba(255, 255, 255, .02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .02) 1px, transparent 1px);
         background-size: 48px 48px;
         pointer-events: none;
     }
+
     .cube-h1 {
         font-size: clamp(36px, 5vw, 64px);
         font-weight: 900;
@@ -49,20 +85,26 @@
         margin: 0 0 20px;
         position: relative;
     }
-    .cube-h1 em { font-style: normal; color: rgba(255,255,255,.45); }
+
+    .cube-h1 em {
+        font-style: normal;
+        color: rgba(255, 255, 255, .45);
+    }
+
     .cube-hero-sub {
         font-size: 1em;
-        color: rgba(255,255,255,.38);
+        color: rgba(255, 255, 255, .38);
         max-width: 640px;
         margin: 0 auto 28px;
         line-height: 1.85;
         position: relative;
     }
+
     .cube-badge {
         display: inline-block;
-        background: rgba(255,255,255,.04);
-        border: 1px solid rgba(255,255,255,.1);
-        color: rgba(255,255,255,.45);
+        background: rgba(255, 255, 255, .04);
+        border: 1px solid rgba(255, 255, 255, .1);
+        color: rgba(255, 255, 255, .45);
         border-radius: 2px;
         padding: 3px 10px;
         font-size: .75em;
@@ -71,7 +113,11 @@
         letter-spacing: .4px;
         position: relative;
     }
-    .cube-hero-btns { margin: 0 0 40px; position: relative; }
+
+    .cube-hero-btns {
+        margin: 0 0 40px;
+        position: relative;
+    }
 
     /* ── Stats row (g4 cells) ── */
     .cube-stat-num {
@@ -83,208 +129,911 @@
         letter-spacing: -.3px;
         margin-bottom: 5px;
     }
+
     .cube-stat-label {
         font-size: .68em;
-        color: rgba(255,255,255,.25);
+        color: rgba(255, 255, 255, .25);
         text-transform: uppercase;
         letter-spacing: 1.2px;
         font-family: 'SFMono-Regular', monospace;
     }
 
     /* ── Demo tooltip ── */
-    .demo-tip-wrap { position: relative; display: inline-block; }
-    .demo-tip-wrap .demo-tip {
-        visibility: hidden; opacity: 0;
-        position: absolute; bottom: calc(100% + 10px); left: 50%;
-        transform: translateX(-50%);
-        background: rgba(20,20,20,.96); color: #fff;
-        border: 1px solid rgba(255,255,255,.1);
-        padding: 8px 14px; font-size: .82em; white-space: nowrap;
-        z-index: 9999; line-height: 1.9; text-align: left;
-        pointer-events: none; transition: opacity .2s;
+    .demo-tip-wrap {
+        position: relative;
+        display: inline-block;
     }
+
+    .demo-tip-wrap .demo-tip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(20, 20, 20, .96);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, .1);
+        padding: 8px 14px;
+        font-size: .82em;
+        white-space: nowrap;
+        z-index: 9999;
+        line-height: 1.9;
+        text-align: left;
+        pointer-events: none;
+        transition: opacity .2s;
+    }
+
     .demo-tip-wrap .demo-tip::after {
         content: '';
-        position: absolute; top: 100%; left: 50%;
+        position: absolute;
+        top: 100%;
+        left: 50%;
         transform: translateX(-50%);
         border: 6px solid transparent;
-        border-top-color: rgba(20,20,20,.96);
+        border-top-color: rgba(20, 20, 20, .96);
     }
-    .demo-tip-wrap:hover .demo-tip { visibility: visible; opacity: 1; }
+
+    .demo-tip-wrap:hover .demo-tip {
+        visibility: visible;
+        opacity: 1;
+    }
 
     /* ── Visualization shell (keep original dark style) ── */
     .cviz-shell {
         background: #0a0e1a;
-        border: 1px solid rgba(255,255,255,.08);
+        border: 1px solid rgba(255, 255, 255, .08);
         overflow: hidden;
         margin-bottom: 0;
     }
+
     .cviz-titlebar {
         background: #111520;
         padding: 10px 16px;
-        display: flex; align-items: center; gap: 7px;
-        border-bottom: 1px solid rgba(255,255,255,.06);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
     }
-    .cviz-dot { width: 11px; height: 11px; border-radius: 50%; }
-    .cviz-title { font-size: .75em; color: rgba(255,255,255,.3); font-family: 'SFMono-Regular', monospace; margin-left: 10px; flex: 1; }
-    .cviz-toolbar-right { display: flex; gap: 8px; }
-    .cviz-toolbar-btn { font-size: .72em; padding: 3px 10px; border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.5); cursor: default; font-weight: 500; }
-    .cviz-toolbar-btn-primary { background: #6366f1; color: #fff; border-color: transparent; }
+
+    .cviz-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+    }
+
+    .cviz-title {
+        font-size: .75em;
+        color: rgba(255, 255, 255, .3);
+        font-family: 'SFMono-Regular', monospace;
+        margin-left: 10px;
+        flex: 1;
+    }
+
+    .cviz-toolbar-right {
+        display: flex;
+        gap: 8px;
+    }
+
+    .cviz-toolbar-btn {
+        font-size: .72em;
+        padding: 3px 10px;
+        border: 1px solid rgba(255, 255, 255, .12);
+        color: rgba(255, 255, 255, .5);
+        cursor: default;
+        font-weight: 500;
+    }
+
+    .cviz-toolbar-btn-primary {
+        background: #6366f1;
+        color: #fff;
+        border-color: transparent;
+    }
 
     .cviz-filter-bar {
         background: #0c1020;
-        padding: 9px 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-        border-bottom: 1px solid rgba(255,255,255,.05);
+        padding: 9px 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid rgba(255, 255, 255, .05);
     }
-    .cviz-filter-label { font-size: .7em; color: rgba(255,255,255,.22); font-family: 'SFMono-Regular', monospace; letter-spacing: .5px; margin-right: 4px; }
-    .cviz-filter-chip { display: inline-flex; align-items: center; gap: 6px; font-size: .75em; padding: 4px 10px; border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.45); cursor: default; }
-    .cviz-filter-active { border-color: rgba(99,102,241,.4); color: rgba(165,180,252,.9); background: rgba(99,102,241,.08); }
-    .cviz-filter-dot { width: 6px; height: 6px; border-radius: 50%; background: #6366f1; flex-shrink: 0; }
-    .cviz-filter-arrow { opacity: .4; font-size: .85em; }
-    .cviz-filter-add { font-size: .72em; color: rgba(99,102,241,.6); padding: 4px 8px; border: 1px dashed rgba(99,102,241,.25); cursor: default; }
 
-    .cviz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 10px; }
-    @media (max-width: 768px) { .cviz-grid { grid-template-columns: 1fr; } .cviz-span2 { grid-column: span 1 !important; } }
-    .cviz-span2 { grid-column: span 2; }
-    .cviz-card { background: #111520; border: 1px solid rgba(255,255,255,.06); padding: 14px 16px 18px; position: relative; overflow: hidden; }
-    .cviz-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-    .cviz-card-title { font-size: .78em; font-weight: 600; color: rgba(255,255,255,.6); }
-    .cviz-card-type { font-size: .65em; font-family: 'SFMono-Regular', monospace; color: rgba(99,102,241,.7); background: rgba(99,102,241,.1); padding: 2px 7px; border: 1px solid rgba(99,102,241,.2); }
-    .cviz-resize-handle { position: absolute; bottom: 3px; right: 3px; width: 12px; height: 12px; background-image: radial-gradient(circle, rgba(99,102,241,.5) 1.5px, transparent 1.5px); background-size: 4px 4px; opacity: .6; cursor: se-resize; }
+    .cviz-filter-label {
+        font-size: .7em;
+        color: rgba(255, 255, 255, .22);
+        font-family: 'SFMono-Regular', monospace;
+        letter-spacing: .5px;
+        margin-right: 4px;
+    }
 
-    .cviz-kpi-row { display: flex; align-items: center; }
-    .cviz-kpi { flex: 1; text-align: center; padding: 4px 0; }
-    .cviz-kpi-divider { width: 1px; height: 48px; background: rgba(255,255,255,.06); }
-    .cviz-kpi-val { font-size: 1.22em; font-weight: 800; letter-spacing: -.5px; margin-bottom: 4px; }
-    .cviz-kpi-label { font-size: .68em; color: rgba(255,255,255,.28); font-family: 'SFMono-Regular', monospace; }
-    .cviz-kpi-trend { font-size: .7em; font-weight: 600; margin-top: 3px; }
-    .cviz-up { color: #4ade80; }
-    .cviz-down { color: #f87171; }
+    .cviz-filter-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: .75em;
+        padding: 4px 10px;
+        border: 1px solid rgba(255, 255, 255, .1);
+        color: rgba(255, 255, 255, .45);
+        cursor: default;
+    }
 
-    .cviz-bar-chart { display: flex; flex-direction: column; gap: 9px; }
-    .cviz-bar-row { display: flex; align-items: center; gap: 8px; }
-    .cviz-bar-name { font-size: .72em; color: rgba(255,255,255,.38); width: 38px; flex-shrink: 0; text-align: right; }
-    .cviz-bar-track { flex: 1; height: 7px; background: rgba(255,255,255,.05); overflow: hidden; }
-    .cviz-bar { height: 100%; background: linear-gradient(90deg,#6366f1,#818cf8); transition: width .6s ease; }
-    .cviz-bar-val { font-size: .68em; color: rgba(255,255,255,.28); width: 28px; flex-shrink: 0; font-family: 'SFMono-Regular', monospace; }
+    .cviz-filter-active {
+        border-color: rgba(99, 102, 241, .4);
+        color: rgba(165, 180, 252, .9);
+        background: rgba(99, 102, 241, .08);
+    }
 
-    .cviz-pie-wrap { display: flex; align-items: center; gap: 16px; }
-    .cviz-pie { width: 80px; height: 80px; border-radius: 50%; flex-shrink: 0; background: conic-gradient(#6366f1 0% 38%, #22d3ee 38% 65%, #f59e0b 65% 85%, #f87171 85% 100%); }
-    .cviz-pie-legend { display: flex; flex-direction: column; gap: 6px; }
-    .cviz-pie-leg-item { display: flex; align-items: center; gap: 7px; font-size: .72em; color: rgba(255,255,255,.45); }
-    .cviz-pie-leg-item span { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+    .cviz-filter-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #6366f1;
+        flex-shrink: 0;
+    }
 
-    .cviz-line-wrap { padding: 4px 0; }
-    .cviz-line-svg { width: 100%; height: 80px; display: block; }
+    .cviz-filter-arrow {
+        opacity: .4;
+        font-size: .85em;
+    }
 
-    .cviz-feat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 0; }
-    @media (max-width: 768px) { .cviz-feat-row { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .cviz-feat-row { grid-template-columns: 1fr; } }
+    .cviz-filter-add {
+        font-size: .72em;
+        color: rgba(99, 102, 241, .6);
+        padding: 4px 8px;
+        border: 1px dashed rgba(99, 102, 241, .25);
+        cursor: default;
+    }
+
+    .cviz-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .cviz-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .cviz-span2 {
+            grid-column: span 1 !important;
+        }
+    }
+
+    .cviz-span2 {
+        grid-column: span 2;
+    }
+
+    .cviz-card {
+        background: #111520;
+        border: 1px solid rgba(255, 255, 255, .06);
+        padding: 14px 16px 18px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cviz-card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+    }
+
+    .cviz-card-title {
+        font-size: .78em;
+        font-weight: 600;
+        color: rgba(255, 255, 255, .6);
+    }
+
+    .cviz-card-type {
+        font-size: .65em;
+        font-family: 'SFMono-Regular', monospace;
+        color: rgba(99, 102, 241, .7);
+        background: rgba(99, 102, 241, .1);
+        padding: 2px 7px;
+        border: 1px solid rgba(99, 102, 241, .2);
+    }
+
+    .cviz-resize-handle {
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        width: 12px;
+        height: 12px;
+        background-image: radial-gradient(circle, rgba(99, 102, 241, .5) 1.5px, transparent 1.5px);
+        background-size: 4px 4px;
+        opacity: .6;
+        cursor: se-resize;
+    }
+
+    .cviz-kpi-row {
+        display: flex;
+        align-items: center;
+    }
+
+    .cviz-kpi {
+        flex: 1;
+        text-align: center;
+        padding: 4px 0;
+    }
+
+    .cviz-kpi-divider {
+        width: 1px;
+        height: 48px;
+        background: rgba(255, 255, 255, .06);
+    }
+
+    .cviz-kpi-val {
+        font-size: 1.22em;
+        font-weight: 800;
+        letter-spacing: -.5px;
+        margin-bottom: 4px;
+    }
+
+    .cviz-kpi-label {
+        font-size: .68em;
+        color: rgba(255, 255, 255, .28);
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    .cviz-kpi-trend {
+        font-size: .7em;
+        font-weight: 600;
+        margin-top: 3px;
+    }
+
+    .cviz-up {
+        color: #4ade80;
+    }
+
+    .cviz-down {
+        color: #f87171;
+    }
+
+    .cviz-bar-chart {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .cviz-bar-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cviz-bar-name {
+        font-size: .72em;
+        color: rgba(255, 255, 255, .38);
+        width: 38px;
+        flex-shrink: 0;
+        text-align: right;
+    }
+
+    .cviz-bar-track {
+        flex: 1;
+        height: 7px;
+        background: rgba(255, 255, 255, .05);
+        overflow: hidden;
+    }
+
+    .cviz-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #6366f1, #818cf8);
+        transition: width .6s ease;
+    }
+
+    .cviz-bar-val {
+        font-size: .68em;
+        color: rgba(255, 255, 255, .28);
+        width: 28px;
+        flex-shrink: 0;
+        font-family: 'SFMono-Regular', monospace;
+    }
+
+    .cviz-pie-wrap {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .cviz-pie {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: conic-gradient(#6366f1 0% 38%, #22d3ee 38% 65%, #f59e0b 65% 85%, #f87171 85% 100%);
+    }
+
+    .cviz-pie-legend {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .cviz-pie-leg-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: .72em;
+        color: rgba(255, 255, 255, .45);
+    }
+
+    .cviz-pie-leg-item span {
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+
+    .cviz-line-wrap {
+        padding: 4px 0;
+    }
+
+    .cviz-line-svg {
+        width: 100%;
+        height: 80px;
+        display: block;
+    }
+
+    .cviz-feat-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+        .cviz-feat-row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .cviz-feat-row {
+            grid-template-columns: 1fr;
+        }
+    }
 
     /* ── Compare table (dark) ── */
-    .cube-compare-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid rgba(255,255,255,.08); font-size: .92em; }
-    .cube-compare-table th { padding: 13px 18px; font-weight: 700; font-size: .82em; letter-spacing: .5px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .cube-compare-table th:first-child { color: rgba(255,255,255,.35); }
-    .cube-compare-table th:nth-child(2) { color: rgba(255,255,255,.25); }
-    .cube-compare-table th:nth-child(3) { color: rgba(255,255,255,.8); }
-    .cube-compare-table td { padding: 13px 18px; border-top: 1px solid rgba(255,255,255,.05); vertical-align: middle; line-height: 1.6; }
-    .cube-compare-table tr:hover td { background: rgba(255,255,255,.02); }
-    .cube-compare-table td:first-child { color: rgba(255,255,255,.55); font-weight: 600; }
-    .cube-compare-table td:nth-child(2) { color: rgba(255,255,255,.25); }
-    .cube-compare-table td:nth-child(3) { color: rgba(255,255,255,.82); }
+    .cube-compare-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid rgba(255, 255, 255, .08);
+        font-size: .92em;
+    }
+
+    .cube-compare-table th {
+        padding: 13px 18px;
+        font-weight: 700;
+        font-size: .82em;
+        letter-spacing: .5px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .cube-compare-table th:first-child {
+        color: rgba(255, 255, 255, .35);
+    }
+
+    .cube-compare-table th:nth-child(2) {
+        color: rgba(255, 255, 255, .25);
+    }
+
+    .cube-compare-table th:nth-child(3) {
+        color: rgba(255, 255, 255, .8);
+    }
+
+    .cube-compare-table td {
+        padding: 13px 18px;
+        border-top: 1px solid rgba(255, 255, 255, .05);
+        vertical-align: middle;
+        line-height: 1.6;
+    }
+
+    .cube-compare-table tr:hover td {
+        background: rgba(255, 255, 255, .02);
+    }
+
+    .cube-compare-table td:first-child {
+        color: rgba(255, 255, 255, .55);
+        font-weight: 600;
+    }
+
+    .cube-compare-table td:nth-child(2) {
+        color: rgba(255, 255, 255, .25);
+    }
+
+    .cube-compare-table td:nth-child(3) {
+        color: rgba(255, 255, 255, .82);
+    }
 
     /* ── Role list cells ── */
-    .cube-role-list { list-style: none; padding: 0; margin: 12px 0 0; }
-    .cube-role-list li { color: rgba(255,255,255,.5); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: .9em; line-height: 1.5; }
-    .cube-role-list li:last-child { border-bottom: none; }
-    .cube-role-list li::before { content: '— '; color: rgba(255,255,255,.2); }
+    .cube-role-list {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0;
+    }
+
+    .cube-role-list li {
+        color: rgba(255, 255, 255, .5);
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .05);
+        font-size: .9em;
+        line-height: 1.5;
+    }
+
+    .cube-role-list li:last-child {
+        border-bottom: none;
+    }
+
+    .cube-role-list li::before {
+        content: '— ';
+        color: rgba(255, 255, 255, .2);
+    }
 
     /* ── Annotation cards (cells) ── */
     .cube-anno-name {
         display: inline-block;
-        background: rgba(255,255,255,.06);
-        color: rgba(255,255,255,.65);
+        background: rgba(255, 255, 255, .06);
+        color: rgba(255, 255, 255, .65);
         padding: 3px 10px;
         font-family: 'SFMono-Regular', 'Fira Code', monospace;
         font-size: .88em;
         font-weight: 700;
         margin-bottom: 12px;
         letter-spacing: .3px;
-        border: 1px solid rgba(255,255,255,.1);
+        border: 1px solid rgba(255, 255, 255, .1);
     }
 
     /* ── CML vars table ── */
-    .cml-vars-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid rgba(255,255,255,.07); font-size: .9em; }
-    .cml-vars-table th { padding: 11px 18px; font-size: .77em; font-weight: 700; letter-spacing: .5px; text-align: left; background: rgba(255,255,255,.03); color: rgba(255,255,255,.3); border-bottom: 1px solid rgba(255,255,255,.07); }
-    .cml-vars-table td { padding: 12px 18px; border-top: 1px solid rgba(255,255,255,.05); color: rgba(255,255,255,.5); vertical-align: top; line-height: 1.6; }
-    .cml-vars-table tr:hover td { background: rgba(255,255,255,.02); }
-    .cml-kw { display: inline-block; font-family: 'SFMono-Regular', 'Fira Code', monospace; font-size: .9em; color: rgba(255,255,255,.75); background: rgba(255,255,255,.07); padding: 2px 8px; font-weight: 700; white-space: nowrap; border: 1px solid rgba(255,255,255,.1); }
-    .cml-ex { font-family: 'SFMono-Regular', 'Fira Code', monospace; font-size: .86em; color: rgba(255,255,255,.55); background: rgba(255,255,255,.05); padding: 2px 8px; white-space: nowrap; }
-    .cml-code-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 768px) { .cml-code-grid { grid-template-columns: 1fr; } }
-    .cml-code-block { background: #0a0a0f; border: 1px solid rgba(255,255,255,.07); overflow: hidden; }
-    .cml-code-head { background: rgba(255,255,255,.03); padding: 10px 16px; font-size: .78em; font-weight: 700; color: rgba(255,255,255,.35); border-bottom: 1px solid rgba(255,255,255,.06); font-family: 'SFMono-Regular', monospace; letter-spacing: .2px; }
-    .cml-code-block pre { margin: 0; padding: 20px 22px; font-size: .84em; line-height: 1.75; overflow-x: auto; }
+    .cml-vars-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid rgba(255, 255, 255, .07);
+        font-size: .9em;
+    }
+
+    .cml-vars-table th {
+        padding: 11px 18px;
+        font-size: .77em;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: left;
+        background: rgba(255, 255, 255, .03);
+        color: rgba(255, 255, 255, .3);
+        border-bottom: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .cml-vars-table td {
+        padding: 12px 18px;
+        border-top: 1px solid rgba(255, 255, 255, .05);
+        color: rgba(255, 255, 255, .5);
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    .cml-vars-table tr:hover td {
+        background: rgba(255, 255, 255, .02);
+    }
+
+    .cml-kw {
+        display: inline-block;
+        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        font-size: .9em;
+        color: rgba(255, 255, 255, .75);
+        background: rgba(255, 255, 255, .07);
+        padding: 2px 8px;
+        font-weight: 700;
+        white-space: nowrap;
+        border: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .cml-ex {
+        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        font-size: .86em;
+        color: rgba(255, 255, 255, .55);
+        background: rgba(255, 255, 255, .05);
+        padding: 2px 8px;
+        white-space: nowrap;
+    }
+
+    .cml-code-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+        .cml-code-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .cml-code-block {
+        background: #0a0a0f;
+        border: 1px solid rgba(255, 255, 255, .07);
+        overflow: hidden;
+    }
+
+    .cml-code-head {
+        background: rgba(255, 255, 255, .03);
+        padding: 10px 16px;
+        font-size: .78em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, .35);
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
+        font-family: 'SFMono-Regular', monospace;
+        letter-spacing: .2px;
+    }
+
+    .cml-code-block pre {
+        margin: 0;
+        padding: 20px 22px;
+        font-size: .84em;
+        line-height: 1.75;
+        overflow-x: auto;
+    }
 
     /* ── Three-way code comparison ── */
-    .cube-looker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-    @media (max-width: 900px) { .cube-looker-grid { grid-template-columns: 1fr; } }
-    .cube-looker-card { border: 1px solid rgba(255,255,255,.07); overflow: hidden; }
-    .cube-looker-card + .cube-looker-card { border-left: none; }
-    @media (max-width: 900px) { .cube-looker-card + .cube-looker-card { border-left: 1px solid rgba(255,255,255,.07); border-top: none; } }
-    .cube-looker-card-head { padding: 11px 18px; font-size: .8em; font-weight: 700; letter-spacing: .5px; font-family: 'SFMono-Regular', monospace; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.03); color: rgba(255,255,255,.45); border-bottom: 1px solid rgba(255,255,255,.07); }
-    .cube-looker-card-head.ec { color: rgba(255,255,255,.75); background: rgba(255,255,255,.05); }
-    .cube-looker-card pre { margin: 0; padding: 20px; font-size: .82em; line-height: 1.72; background: #0a0a0f; overflow-x: auto; }
-    .cmp-code-wrap { position: relative; max-height: 168px; overflow: hidden; transition: max-height .4s ease; }
-    .cmp-code-wrap.cmp-code-expanded { max-height: 1400px; }
-    .cmp-code-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(transparent, #0a0a0f); pointer-events: none; transition: opacity .25s; }
-    .cmp-code-wrap.cmp-code-expanded .cmp-code-fade { opacity: 0; }
-    .cmp-code-btn { width: 100%; padding: 9px 0; background: rgba(255,255,255,.02); border: none; border-top: 1px solid rgba(255,255,255,.06); color: rgba(255,255,255,.35); cursor: pointer; font-size: .78em; letter-spacing: .04em; text-align: center; transition: background .18s, color .18s; font-family: inherit; }
-    .cmp-code-btn:hover { background: rgba(255,255,255,.05); color: rgba(255,255,255,.75); }
+    .cube-looker-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+    }
+
+    @media (max-width: 900px) {
+        .cube-looker-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .cube-looker-card {
+        border: 1px solid rgba(255, 255, 255, .07);
+        overflow: hidden;
+    }
+
+    .cube-looker-card + .cube-looker-card {
+        border-left: none;
+    }
+
+    @media (max-width: 900px) {
+        .cube-looker-card + .cube-looker-card {
+            border-left: 1px solid rgba(255, 255, 255, .07);
+            border-top: none;
+        }
+    }
+
+    .cube-looker-card-head {
+        padding: 11px 18px;
+        font-size: .8em;
+        font-weight: 700;
+        letter-spacing: .5px;
+        font-family: 'SFMono-Regular', monospace;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, .03);
+        color: rgba(255, 255, 255, .45);
+        border-bottom: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .cube-looker-card-head.ec {
+        color: rgba(255, 255, 255, .75);
+        background: rgba(255, 255, 255, .05);
+    }
+
+    .cube-looker-card pre {
+        margin: 0;
+        padding: 20px;
+        font-size: .82em;
+        line-height: 1.72;
+        background: #0a0a0f;
+        overflow-x: auto;
+    }
+
+    .cmp-code-wrap {
+        position: relative;
+        max-height: 168px;
+        overflow: hidden;
+        transition: max-height .4s ease;
+    }
+
+    .cmp-code-wrap.cmp-code-expanded {
+        max-height: 1400px;
+    }
+
+    .cmp-code-fade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: linear-gradient(transparent, #0a0a0f);
+        pointer-events: none;
+        transition: opacity .25s;
+    }
+
+    .cmp-code-wrap.cmp-code-expanded .cmp-code-fade {
+        opacity: 0;
+    }
+
+    .cmp-code-btn {
+        width: 100%;
+        padding: 9px 0;
+        background: rgba(255, 255, 255, .02);
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, .06);
+        color: rgba(255, 255, 255, .35);
+        cursor: pointer;
+        font-size: .78em;
+        letter-spacing: .04em;
+        text-align: center;
+        transition: background .18s, color .18s;
+        font-family: inherit;
+    }
+
+    .cmp-code-btn:hover {
+        background: rgba(255, 255, 255, .05);
+        color: rgba(255, 255, 255, .75);
+    }
 
     /* ── Feature comparison table ── */
-    .cmp-table { border: 1px solid rgba(255,255,255,.07); overflow: hidden; }
-    .cmp-header, .cmp-row { display: grid; grid-template-columns: 190px 1fr 1fr 1fr; }
-    .cmp-header { background: rgba(255,255,255,.03); }
-    .cmp-row { border-bottom: 1px solid rgba(255,255,255,.04); }
-    .cmp-row:last-child { border-bottom: none; }
-    .cmp-row:nth-child(odd) { background: rgba(255,255,255,.012); }
-    .cmp-cell { padding: 13px 18px; font-size: .855em; line-height: 1.55; }
-    .cmp-col-feature { font-size: .74em; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: rgba(255,255,255,.25); display: flex; align-items: center; }
-    .cmp-col-lk, .cmp-col-cd { color: rgba(255,255,255,.4); font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(255,255,255,.05); }
-    .cmp-col-ec { color: rgba(255,255,255,.88); font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(255,255,255,.05); }
-    .cmp-feature { color: rgba(255,255,255,.6); font-weight: 500; display: flex; align-items: center; }
-    .cmp-lk, .cmp-cd { color: rgba(255,255,255,.3); text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(255,255,255,.04); }
-    .cmp-ec { color: rgba(255,255,255,.85); text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(255,255,255,.04); background: rgba(255,255,255,.02); }
-    @media (max-width: 900px) { .cmp-header, .cmp-row { grid-template-columns: 1fr 1fr 1fr; } .cmp-feature { display: none; } }
+    .cmp-table {
+        border: 1px solid rgba(255, 255, 255, .07);
+        overflow: hidden;
+    }
+
+    .cmp-header, .cmp-row {
+        display: grid;
+        grid-template-columns: 190px 1fr 1fr 1fr;
+    }
+
+    .cmp-header {
+        background: rgba(255, 255, 255, .03);
+    }
+
+    .cmp-row {
+        border-bottom: 1px solid rgba(255, 255, 255, .04);
+    }
+
+    .cmp-row:last-child {
+        border-bottom: none;
+    }
+
+    .cmp-row:nth-child(odd) {
+        background: rgba(255, 255, 255, .012);
+    }
+
+    .cmp-cell {
+        padding: 13px 18px;
+        font-size: .855em;
+        line-height: 1.55;
+    }
+
+    .cmp-col-feature {
+        font-size: .74em;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .07em;
+        color: rgba(255, 255, 255, .25);
+        display: flex;
+        align-items: center;
+    }
+
+    .cmp-col-lk, .cmp-col-cd {
+        color: rgba(255, 255, 255, .4);
+        font-weight: 700;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    .cmp-col-ec {
+        color: rgba(255, 255, 255, .88);
+        font-weight: 700;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    .cmp-feature {
+        color: rgba(255, 255, 255, .6);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+    }
+
+    .cmp-lk, .cmp-cd {
+        color: rgba(255, 255, 255, .3);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255, 255, 255, .04);
+    }
+
+    .cmp-ec {
+        color: rgba(255, 255, 255, .85);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255, 255, 255, .04);
+        background: rgba(255, 255, 255, .02);
+    }
+
+    @media (max-width: 900px) {
+        .cmp-header, .cmp-row {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .cmp-feature {
+            display: none;
+        }
+    }
 
     /* ── Advantage cards (cells) ── */
-    .cmp-adv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-    @media (max-width: 900px) { .cmp-adv-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .cmp-adv-grid { grid-template-columns: 1fr; } }
-    .cmp-adv-icon { font-size: 1.6em; margin-bottom: 12px; }
-    .cmp-adv-title { font-size: .92em; font-weight: 700; color: rgba(255,255,255,.85); margin-bottom: 6px; }
-    .cmp-adv-desc { font-size: .8em; color: rgba(255,255,255,.38); line-height: 1.65; }
+    .cmp-adv-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+    }
+
+    @media (max-width: 900px) {
+        .cmp-adv-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .cmp-adv-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .cmp-adv-icon {
+        font-size: 1.6em;
+        margin-bottom: 12px;
+    }
+
+    .cmp-adv-title {
+        font-size: .92em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, .85);
+        margin-bottom: 6px;
+    }
+
+    .cmp-adv-desc {
+        font-size: .8em;
+        color: rgba(255, 255, 255, .38);
+        line-height: 1.65;
+    }
 
     /* ── Database support ── */
-    .cube-db-wrap { border: 1px solid rgba(255,255,255,.07); }
-    .cube-db-row { display: flex; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,.05); transition: background .15s; }
-    .cube-db-row:last-child { border-bottom: none; }
-    .cube-db-row:hover { background: rgba(255,255,255,.02); }
-    .cube-db-meta { width: 220px; flex-shrink: 0; padding: 20px 24px; border-right: 1px solid rgba(255,255,255,.05); display: flex; align-items: center; gap: 12px; }
-    @media (max-width: 768px) { .cube-db-row { flex-direction: column; } .cube-db-meta { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,.05); padding: 14px 18px; } }
-    .cube-db-accent { width: 2px; height: 28px; flex-shrink: 0; background: rgba(255,255,255,.3); }
-    .cube-db-type { font-size: .88em; font-weight: 700; color: rgba(255,255,255,.75); margin-bottom: 3px; }
-    .cube-db-badge { display: inline-block; font-size: .65em; font-family: 'SFMono-Regular', monospace; font-weight: 700; letter-spacing: .8px; padding: 1px 7px; background: rgba(255,255,255,.07); color: rgba(255,255,255,.35); }
-    .cube-db-chips { flex: 1; padding: 16px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
-    .cube-db-chip { display: inline-block; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09); color: rgba(255,255,255,.6); padding: 4px 12px; font-size: .82em; font-weight: 500; white-space: nowrap; transition: background .15s, border-color .15s, color .15s; }
-    .cube-db-row:hover .cube-db-chip { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.15); color: #fff; }
+    .cube-db-wrap {
+        border: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .cube-db-row {
+        display: flex;
+        align-items: flex-start;
+        border-bottom: 1px solid rgba(255, 255, 255, .05);
+        transition: background .15s;
+    }
+
+    .cube-db-row:last-child {
+        border-bottom: none;
+    }
+
+    .cube-db-row:hover {
+        background: rgba(255, 255, 255, .02);
+    }
+
+    .cube-db-meta {
+        width: 220px;
+        flex-shrink: 0;
+        padding: 20px 24px;
+        border-right: 1px solid rgba(255, 255, 255, .05);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+        .cube-db-row {
+            flex-direction: column;
+        }
+
+        .cube-db-meta {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+            padding: 14px 18px;
+        }
+    }
+
+    .cube-db-accent {
+        width: 2px;
+        height: 28px;
+        flex-shrink: 0;
+        background: rgba(255, 255, 255, .3);
+    }
+
+    .cube-db-type {
+        font-size: .88em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, .75);
+        margin-bottom: 3px;
+    }
+
+    .cube-db-badge {
+        display: inline-block;
+        font-size: .65em;
+        font-family: 'SFMono-Regular', monospace;
+        font-weight: 700;
+        letter-spacing: .8px;
+        padding: 1px 7px;
+        background: rgba(255, 255, 255, .07);
+        color: rgba(255, 255, 255, .35);
+    }
+
+    .cube-db-chips {
+        flex: 1;
+        padding: 16px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .cube-db-chip {
+        display: inline-block;
+        background: rgba(255, 255, 255, .04);
+        border: 1px solid rgba(255, 255, 255, .09);
+        color: rgba(255, 255, 255, .6);
+        padding: 4px 12px;
+        font-size: .82em;
+        font-weight: 500;
+        white-space: nowrap;
+        transition: background .15s, border-color .15s, color .15s;
+    }
+
+    .cube-db-row:hover .cube-db-chip {
+        background: rgba(255, 255, 255, .07);
+        border-color: rgba(255, 255, 255, .15);
+        color: #fff;
+    }
 
     /* ── CTA ── */
-    .cube-cta-row { text-align: center; padding: 72px 48px; }
+    .cube-cta-row {
+        text-align: center;
+        padding: 72px 48px;
+    }
+
+    /* ── Footer dark override ── */
+    #footer {
+        --c-bg: #06080f;
+        --c-text: rgba(255, 255, 255, .65);
+        --c-text2: rgba(255, 255, 255, .28);
+        --c-border: rgba(255, 255, 255, .08);
+        --c-brand: #FF5722;
+        background: #06080f;
+    }
 
     @media (max-width: 576px) {
-        .cube-hero-row { padding: 56px 24px 0; }
+        .cube-hero-row {
+            padding: 56px 24px 0;
+        }
     }
 </style>
 
@@ -353,41 +1102,81 @@
                 </div>
                 <div class="cviz-filter-bar">
                     <span class="cviz-filter-label">Filters</span>
-                    <div class="cviz-filter-chip cviz-filter-active"><span class="cviz-filter-dot"></span>Channel = All<span class="cviz-filter-arrow">▾</span></div>
-                    <div class="cviz-filter-chip cviz-filter-active"><span class="cviz-filter-dot"></span>Order Date = Last 30 days<span class="cviz-filter-arrow">▾</span></div>
-                    <div class="cviz-filter-chip"><span class="cviz-filter-dot" style="background:rgba(255,255,255,.2)"></span>City = All<span class="cviz-filter-arrow">▾</span></div>
+                    <div class="cviz-filter-chip cviz-filter-active"><span class="cviz-filter-dot"></span>Channel =
+                        All<span class="cviz-filter-arrow">▾</span></div>
+                    <div class="cviz-filter-chip cviz-filter-active"><span class="cviz-filter-dot"></span>Order Date =
+                        Last 30 days<span class="cviz-filter-arrow">▾</span></div>
+                    <div class="cviz-filter-chip"><span class="cviz-filter-dot"
+                                                        style="background:rgba(255,255,255,.2)"></span>City = All<span
+                            class="cviz-filter-arrow">▾</span></div>
                     <div class="cviz-filter-add">+ Filter</div>
                 </div>
                 <div class="cviz-grid">
                     <div class="cviz-card cviz-span2">
-                        <div class="cviz-card-head"><span class="cviz-card-title">Core Metrics</span><span class="cviz-card-type">KPI</span></div>
+                        <div class="cviz-card-head"><span class="cviz-card-title">Core Metrics</span><span
+                                class="cviz-card-type">KPI</span></div>
                         <div class="cviz-kpi-row">
-                            <div class="cviz-kpi"><div class="cviz-kpi-val" style="color:#a5b4fc">128,430</div><div class="cviz-kpi-label">Orders</div><div class="cviz-kpi-trend cviz-up">↑ 12.4%</div></div>
+                            <div class="cviz-kpi">
+                                <div class="cviz-kpi-val" style="color:#a5b4fc">128,430</div>
+                                <div class="cviz-kpi-label">Orders</div>
+                                <div class="cviz-kpi-trend cviz-up">↑ 12.4%</div>
+                            </div>
                             <div class="cviz-kpi-divider"></div>
-                            <div class="cviz-kpi"><div class="cviz-kpi-val" style="color:#86efac">$ 3,284,100</div><div class="cviz-kpi-label">Revenue</div><div class="cviz-kpi-trend cviz-up">↑ 8.7%</div></div>
+                            <div class="cviz-kpi">
+                                <div class="cviz-kpi-val" style="color:#86efac">$ 3,284,100</div>
+                                <div class="cviz-kpi-label">Revenue</div>
+                                <div class="cviz-kpi-trend cviz-up">↑ 8.7%</div>
+                            </div>
                             <div class="cviz-kpi-divider"></div>
-                            <div class="cviz-kpi"><div class="cviz-kpi-val" style="color:#fcd34d">$ 25.57</div><div class="cviz-kpi-label">Avg. Order</div><div class="cviz-kpi-trend cviz-down">↓ 3.2%</div></div>
+                            <div class="cviz-kpi">
+                                <div class="cviz-kpi-val" style="color:#fcd34d">$ 25.57</div>
+                                <div class="cviz-kpi-label">Avg. Order</div>
+                                <div class="cviz-kpi-trend cviz-down">↓ 3.2%</div>
+                            </div>
                             <div class="cviz-kpi-divider"></div>
-                            <div class="cviz-kpi"><div class="cviz-kpi-val" style="color:#67e8f9">43,210</div><div class="cviz-kpi-label">Unique Users</div><div class="cviz-kpi-trend cviz-up">↑ 5.1%</div></div>
+                            <div class="cviz-kpi">
+                                <div class="cviz-kpi-val" style="color:#67e8f9">43,210</div>
+                                <div class="cviz-kpi-label">Unique Users</div>
+                                <div class="cviz-kpi-trend cviz-up">↑ 5.1%</div>
+                            </div>
                         </div>
                         <div class="cviz-resize-handle"></div>
                     </div>
                     <div class="cviz-card">
-                        <div class="cviz-card-head"><span class="cviz-card-title">Revenue by Channel</span><span class="cviz-card-type">Bar Chart</span></div>
+                        <div class="cviz-card-head"><span class="cviz-card-title">Revenue by Channel</span><span
+                                class="cviz-card-type">Bar Chart</span></div>
                         <div class="cviz-bar-chart">
-                            <div class="cviz-bar-row"><span class="cviz-bar-name">App</span><div class="cviz-bar-track"><div class="cviz-bar" style="width:82%"></div></div><span class="cviz-bar-val">82%</span></div>
-                            <div class="cviz-bar-row"><span class="cviz-bar-name">Web</span><div class="cviz-bar-track"><div class="cviz-bar" style="width:65%"></div></div><span class="cviz-bar-val">65%</span></div>
-                            <div class="cviz-bar-row"><span class="cviz-bar-name">Mini App</span><div class="cviz-bar-track"><div class="cviz-bar" style="width:47%"></div></div><span class="cviz-bar-val">47%</span></div>
-                            <div class="cviz-bar-row"><span class="cviz-bar-name">Offline</span><div class="cviz-bar-track"><div class="cviz-bar" style="width:31%"></div></div><span class="cviz-bar-val">31%</span></div>
+                            <div class="cviz-bar-row"><span class="cviz-bar-name">App</span>
+                                <div class="cviz-bar-track">
+                                    <div class="cviz-bar" style="width:82%"></div>
+                                </div>
+                                <span class="cviz-bar-val">82%</span></div>
+                            <div class="cviz-bar-row"><span class="cviz-bar-name">Web</span>
+                                <div class="cviz-bar-track">
+                                    <div class="cviz-bar" style="width:65%"></div>
+                                </div>
+                                <span class="cviz-bar-val">65%</span></div>
+                            <div class="cviz-bar-row"><span class="cviz-bar-name">Mini App</span>
+                                <div class="cviz-bar-track">
+                                    <div class="cviz-bar" style="width:47%"></div>
+                                </div>
+                                <span class="cviz-bar-val">47%</span></div>
+                            <div class="cviz-bar-row"><span class="cviz-bar-name">Offline</span>
+                                <div class="cviz-bar-track">
+                                    <div class="cviz-bar" style="width:31%"></div>
+                                </div>
+                                <span class="cviz-bar-val">31%</span></div>
                         </div>
                         <div class="cviz-resize-handle"></div>
                     </div>
                     <div class="cviz-card">
-                        <div class="cviz-card-head"><span class="cviz-card-title">Category Mix</span><span class="cviz-card-type">Pie Chart</span></div>
+                        <div class="cviz-card-head"><span class="cviz-card-title">Category Mix</span><span
+                                class="cviz-card-type">Pie Chart</span></div>
                         <div class="cviz-pie-wrap">
                             <div class="cviz-pie"></div>
                             <div class="cviz-pie-legend">
-                                <div class="cviz-pie-leg-item"><span style="background:#6366f1"></span>Electronics 38%</div>
+                                <div class="cviz-pie-leg-item"><span style="background:#6366f1"></span>Electronics 38%
+                                </div>
                                 <div class="cviz-pie-leg-item"><span style="background:#22d3ee"></span>Apparel 27%</div>
                                 <div class="cviz-pie-leg-item"><span style="background:#f59e0b"></span>Food 20%</div>
                                 <div class="cviz-pie-leg-item"><span style="background:#f87171"></span>Other 15%</div>
@@ -396,7 +1185,8 @@
                         <div class="cviz-resize-handle"></div>
                     </div>
                     <div class="cviz-card cviz-span2">
-                        <div class="cviz-card-head"><span class="cviz-card-title">30-Day Order Trend</span><span class="cviz-card-type">Line Chart</span></div>
+                        <div class="cviz-card-head"><span class="cviz-card-title">30-Day Order Trend</span><span
+                                class="cviz-card-type">Line Chart</span></div>
                         <div class="cviz-line-wrap">
                             <svg class="cviz-line-svg" viewBox="0 0 480 80" preserveAspectRatio="none">
                                 <defs>
@@ -405,8 +1195,10 @@
                                         <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
                                     </linearGradient>
                                 </defs>
-                                <path d="M0,60 L20,52 L48,55 L72,40 L96,44 L120,30 L144,35 L168,22 L192,28 L216,18 L240,25 L264,15 L288,20 L312,10 L336,16 L360,8 L384,14 L408,6 L432,11 L456,4 L480,8" fill="url(#lg1)" stroke="none"/>
-                                <path d="M0,60 L20,52 L48,55 L72,40 L96,44 L120,30 L144,35 L168,22 L192,28 L216,18 L240,25 L264,15 L288,20 L312,10 L336,16 L360,8 L384,14 L408,6 L432,11 L456,4 L480,8" fill="none" stroke="#818cf8" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M0,60 L20,52 L48,55 L72,40 L96,44 L120,30 L144,35 L168,22 L192,28 L216,18 L240,25 L264,15 L288,20 L312,10 L336,16 L360,8 L384,14 L408,6 L432,11 L456,4 L480,8"
+                                      fill="url(#lg1)" stroke="none"/>
+                                <path d="M0,60 L20,52 L48,55 L72,40 L96,44 L120,30 L144,35 L168,22 L192,28 L216,18 L240,25 L264,15 L288,20 L312,10 L336,16 L360,8 L384,14 L408,6 L432,11 L456,4 L480,8"
+                                      fill="none" stroke="#818cf8" stroke-linejoin="round" stroke-width="2"/>
                             </svg>
                         </div>
                         <div class="cviz-resize-handle"></div>
@@ -459,14 +1251,16 @@
         <div class="r g2">
             <div class="c no-bb">
                 <span class="tag">{{'cube.roles.eng.title' | i18n}}</span>
-                <p class="sub" style="margin-bottom:4px;font-size:.8em;font-family:'SFMono-Regular',monospace">Data Engineer</p>
+                <p class="sub" style="margin-bottom:4px;font-size:.8em;font-family:'SFMono-Regular',monospace">Data
+                    Engineer</p>
                 <ul class="cube-role-list">
                     <li ng-repeat="item in engineerPoints">{{item}}</li>
                 </ul>
             </div>
             <div class="c no-bb" style="border-right:none">
                 <span class="tag">{{'cube.roles.ana.title' | i18n}}</span>
-                <p class="sub" style="margin-bottom:4px;font-size:.8em;font-family:'SFMono-Regular',monospace">Data Analyst</p>
+                <p class="sub" style="margin-bottom:4px;font-size:.8em;font-family:'SFMono-Regular',monospace">Data
+                    Analyst</p>
                 <ul class="cube-role-list">
                     <li ng-repeat="item in analystPoints">{{item}}</li>
                 </ul>
@@ -480,7 +1274,9 @@
             <p class="sub">{{'cube.anno.desc' | i18n}}</p>
         </div>
         <div class="r g2">
-            <div class="c no-bb" ng-repeat="a in annotations" ng-class="{'border-right-none': $last && annotations.length % 2 === 1}" ng-style="$index % 2 === 1 ? {'border-right':'none'} : {}">
+            <div class="c no-bb" ng-class="{'border-right-none': $last && annotations.length % 2 === 1}"
+                 ng-repeat="a in annotations"
+                 ng-style="$index % 2 === 1 ? {'border-right':'none'} : {}">
                 <div class="cube-anno-name">{{a.name}}</div>
                 <div class="h3">{{a.title}}</div>
                 <p class="sub">{{a.desc}}</p>
@@ -494,14 +1290,18 @@
             <p class="sub">{{'cube.ml.desc' | i18n}}</p>
         </div>
         <div class="r" style="padding:24px 32px">
-            <p class="sub" style="font-size:.72em;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:12px;font-family:'SFMono-Regular',monospace;color:rgba(255,255,255,.2)">{{'cube.ml.vars.label' | i18n}}</p>
+            <p class="sub"
+               style="font-size:.72em;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:12px;font-family:'SFMono-Regular',monospace;color:rgba(255,255,255,.2)">
+                {{'cube.ml.vars.label' | i18n}}</p>
             <div style="overflow-x:auto;margin-bottom:24px">
                 <table class="cml-vars-table">
-                    <thead><tr>
+                    <thead>
+                    <tr>
                         <th>{{'cube.ml.col.var' | i18n}}</th>
                         <th>{{'cube.ml.col.desc' | i18n}}</th>
                         <th>{{'cube.ml.col.example' | i18n}}</th>
-                    </tr></thead>
+                    </tr>
+                    </thead>
                     <tbody>
                     <tr ng-repeat="v in mlVars">
                         <td><code class="cml-kw">{{v.name}}</code></td>
@@ -669,7 +1469,8 @@ public class OrderCube {
                 </div>
             </div>
             <div style="text-align:center;margin-top:16px">
-                <button class="cmp-code-btn" style="display:inline-block;width:auto;padding:9px 28px;border:1px solid rgba(255,255,255,.1)"
+                <button class="cmp-code-btn"
+                        style="display:inline-block;width:auto;padding:9px 28px;border:1px solid rgba(255,255,255,.1)"
                         ng-click="expanded.code = !expanded.code">
                     {{expanded.code ? '↑ Collapse' : '↓ View full model'}}
                 </button>
@@ -693,7 +1494,8 @@ public class OrderCube {
         <!-- Advantage cards as blueprint grid -->
         <div class="r">
             <div class="cmp-adv-grid">
-                <div class="c no-bb" ng-repeat="a in annoAdvantages" ng-style="$index === annoAdvantages.length-1 ? {'border-right':'none'} : {}">
+                <div class="c no-bb" ng-repeat="a in annoAdvantages"
+                     ng-style="$index === annoAdvantages.length-1 ? {'border-right':'none'} : {}">
                     <div class="cmp-adv-icon">{{a.icon}}</div>
                     <div class="cmp-adv-title">{{a.title}}</div>
                     <div class="cmp-adv-desc">{{a.desc}}</div>
@@ -733,7 +1535,8 @@ public class OrderCube {
                 <a class="wbtn wbtn-o" href="https://demo.erupt.xyz" target="_blank">{{'cube.cta.demo' | i18n}}</a>
                 <span class="demo-tip" ng-bind-html="'cube.demo.tip' | i18nHtml"></span>
             </span>
-            <a class="wbtn" href="https://docs.erupt.xyz/modules/pro/erupt-cube" target="_blank" style="margin-left:8px">{{'cube.cta.doc' | i18n}}</a>
+            <a class="wbtn" href="https://docs.erupt.xyz/modules/pro/erupt-cube" style="margin-left:8px"
+               target="_blank">{{'cube.cta.doc' | i18n}}</a>
         </div>
 
     </div><!-- /.fr -->

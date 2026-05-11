@@ -27,7 +27,6 @@ html {
 
 html, body {
     background: #efefef;
-    border-radius: 6px;
 }
 
 
@@ -92,7 +91,7 @@ html, body {
 
 #main {
     min-height: calc(100vh - 190px);
-    margin-bottom: 204px;
+    margin-bottom: 203px;
     margin-top: 45px;
     z-index: 999;
 }
