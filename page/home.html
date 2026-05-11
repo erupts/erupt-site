@@ -248,8 +248,87 @@
                     Free · Spring Boot · Zero Frontend Code
                 </p>
             </div>
-            <!-- right: 3D annotation interactive -->
-            <div class="d-none d-lg-flex" id="anno3d-wrap" style="flex:0 0 46%;overflow:hidden;position:relative;perspective:750px"></div>
+            <!-- right: architecture diagram -->
+            <div class="d-none d-lg-flex" style="flex:0 0 46%;align-items:center;justify-content:center;padding:48px 40px">
+                <div style="width:100%;max-width:360px;font-family:var(--c-mono)">
+
+                    <!-- layer 1: Spring Boot App -->
+                    <div style="border:1px solid var(--c-border);padding:14px 16px 10px;background:rgba(255,87,34,.02)">
+                        <div style="font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--c-brand);opacity:.5;margin-bottom:10px">Spring Boot Application</div>
+                        <div style="display:flex;flex-direction:column;gap:6px">
+                            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(255,87,34,.05)">
+                                <div style="width:6px;height:6px;border-radius:50%;background:var(--c-brand);flex-shrink:0"></div>
+                                <div>
+                                    <div style="font-size:11px;font-weight:600;color:var(--c-brand)">@Erupt · Task.java</div>
+                                    <div style="font-size:9px;color:var(--c-text2);margin-top:1px;opacity:.6">@Power · @Filter · @DataProxy · 8 fields</div>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(255,87,34,.05)">
+                                <div style="width:6px;height:6px;border-radius:50%;background:var(--c-brand);flex-shrink:0"></div>
+                                <div>
+                                    <div style="font-size:11px;font-weight:600;color:var(--c-brand)">@Erupt · User.java</div>
+                                    <div style="font-size:9px;color:var(--c-text2);margin-top:1px;opacity:.6">@OneToMany · @Search · 12 fields</div>
+                                </div>
+                            </div>
+                            <div style="padding:7px 12px;border:1px dashed rgba(255,87,34,.2)">
+                                <div style="font-size:9px;color:var(--c-text2);opacity:.4">+ N more @Erupt classes…</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- connector -->
+                    <div style="display:flex;flex-direction:column;align-items:center;padding:4px 0">
+                        <div style="width:1px;height:16px;background:linear-gradient(to bottom,var(--c-brand),var(--c-brand));opacity:.3"></div>
+                        <div style="font-size:12px;color:var(--c-brand);opacity:.4;line-height:1">▼</div>
+                    </div>
+
+                    <!-- layer 2: Erupt Engine -->
+                    <div style="border:1px solid var(--c-brand);background:rgba(255,87,34,.07);padding:16px 20px;text-align:center;box-shadow:0 0 24px rgba(255,87,34,.08)">
+                        <div style="font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--c-brand);opacity:.7;margin-bottom:6px">Erupt Engine</div>
+                        <div style="font-size:15px;font-weight:700;color:var(--c-text);letter-spacing:-.02em">元数据扫描 · 路由注册</div>
+                        <div style="display:flex;justify-content:center;gap:0;margin-top:12px">
+                            <span style="font-size:9px;color:var(--c-brand);opacity:.5;padding:3px 10px;border:1px solid rgba(255,87,34,.2)">scan</span>
+                            <span style="font-size:9px;color:var(--c-brand);opacity:.5;padding:3px 10px;border:1px solid rgba(255,87,34,.2);border-left:none">meta</span>
+                            <span style="font-size:9px;color:var(--c-brand);opacity:.5;padding:3px 10px;border:1px solid rgba(255,87,34,.2);border-left:none">permission</span>
+                            <span style="font-size:9px;color:var(--c-brand);opacity:.5;padding:3px 10px;border:1px solid rgba(255,87,34,.2);border-left:none">reload</span>
+                        </div>
+                    </div>
+
+                    <!-- connector -->
+                    <div style="display:flex;flex-direction:column;align-items:center;padding:4px 0">
+                        <div style="width:1px;height:16px;background:var(--c-brand);opacity:.3"></div>
+                        <div style="font-size:12px;color:var(--c-brand);opacity:.4;line-height:1">▼</div>
+                    </div>
+
+                    <!-- layer 3: outputs -->
+                    <div style="display:flex">
+                        <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);text-align:center">
+                            <div style="width:5px;height:5px;border-radius:50%;background:#60a5fa;margin:0 auto 6px"></div>
+                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">Table</div>
+                            <div style="font-size:8px;color:var(--c-text2);margin-top:4px;opacity:.5;line-height:1.5">列表·搜索<br>导入导出</div>
+                        </div>
+                        <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);border-left:none;text-align:center">
+                            <div style="width:5px;height:5px;border-radius:50%;background:#fbbf24;margin:0 auto 6px"></div>
+                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">Form</div>
+                            <div style="font-size:8px;color:var(--c-text2);margin-top:4px;opacity:.5;line-height:1.5">23+ 字段<br>校验·联动</div>
+                        </div>
+                        <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);border-left:none;text-align:center">
+                            <div style="width:5px;height:5px;border-radius:50%;background:#4ade80;margin:0 auto 6px"></div>
+                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">API</div>
+                            <div style="font-size:8px;color:var(--c-text2);margin-top:4px;opacity:.5;line-height:1.5">REST·权限<br>操作日志</div>
+                        </div>
+                        <div style="flex:1;padding:11px 8px;border:1px solid var(--c-border);border-left:none;text-align:center">
+                            <div style="width:5px;height:5px;border-radius:50%;background:#c084fc;margin:0 auto 6px"></div>
+                            <div style="font-size:10px;font-weight:700;color:var(--c-text)">DDL</div>
+                            <div style="font-size:8px;color:var(--c-text2);margin-top:4px;opacity:.5;line-height:1.5">自动建表<br>schema同步</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:12px;text-align:center;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text2);opacity:.35">
+                        0 frontend code · 10+ databases · hot-reload
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- §1b HERO EDITOR -->
@@ -1087,71 +1166,5 @@ public class Task extends BaseModel {
         document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
     }());
 
-    // Hero 3D annotation interactive
-    (function () {
-        var wrap  = document.getElementById('anno3d-wrap');
-        if (!wrap) return;
-
-        var stage = document.createElement('div');
-        stage.style.cssText = 'position:absolute;inset:0;transform-style:preserve-3d';
-        wrap.appendChild(stage);
-
-        var annos = [
-            {text:'@Erupt',        c:[255,112, 67], s:15, x:   0, y: -10, z:110},
-            {text:'@EruptField',   c:[255,184,108], s:13, x:-115, y: -55, z: 55},
-            {text:'@View',         c:[189,147,249], s:13, x: 105, y: -95, z: 35},
-            {text:'@Edit',         c:[255,121,198], s:13, x:  85, y:  85, z: 70},
-            {text:'@Search',       c:[139,233,253], s:12, x: -95, y:  95, z: 15},
-            {text:'@Power',        c:[ 80,250,123], s:12, x:  20, y:-125, z:-10},
-            {text:'@Filter',       c:[241,250,140], s:11, x: -85, y:  30, z:-55},
-            {text:'@DataProxy',    c:[ 98,114,164], s:11, x: 125, y: 115, z:-25},
-            {text:'@RowOperation', c:[255,184,108], s:10, x:-155, y:  -5, z:-75},
-            {text:'@Drill',        c:[139,233,253], s:10, x:  60, y:-150, z:-95},
-            {text:'@EruptI18n',    c:[255,112, 67], s:10, x: -60, y: 145, z:-45},
-            {text:'@OneToMany',    c:[189,147,249], s:10, x: 145, y:  25, z:-65},
-        ];
-
-        annos.forEach(function (a) {
-            var r = a.c[0], g = a.c[1], b = a.c[2];
-            var alpha = Math.max(0.28, Math.min(1, (a.z + 110) / 220));
-            var el = document.createElement('div');
-            el.textContent = a.text;
-            el.style.cssText =
-                'position:absolute;top:50%;left:50%;' +
-                'transform:translate3d(calc(-50% + ' + a.x + 'px),calc(-50% + ' + a.y + 'px),' + a.z + 'px);' +
-                'white-space:nowrap;pointer-events:none;user-select:none;' +
-                'font-family:SFMono-Regular,Consolas,monospace;font-size:' + a.s + 'px;' +
-                'color:rgba(' + r + ',' + g + ',' + b + ',' + alpha.toFixed(2) + ');' +
-                'background:rgba(' + r + ',' + g + ',' + b + ',.07);' +
-                'border:1px solid rgba(' + r + ',' + g + ',' + b + ',' + (alpha * 0.4).toFixed(2) + ');' +
-                'border-radius:6px;padding:5px 14px;' +
-                'box-shadow:0 0 22px rgba(' + r + ',' + g + ',' + b + ',' + (alpha * 0.18).toFixed(2) + ');';
-            stage.appendChild(el);
-        });
-
-        var mouseIn = false, trx = 0, try_ = 0, crx = 0, cry = 0;
-
-        wrap.addEventListener('mouseenter', function () { mouseIn = true; });
-        wrap.addEventListener('mouseleave', function () { mouseIn = false; });
-        wrap.addEventListener('mousemove', function (e) {
-            var rect = wrap.getBoundingClientRect();
-            trx  = ((e.clientY - rect.top)  / rect.height - 0.5) * -28;
-            try_ = ((e.clientX - rect.left) / rect.width  - 0.5) *  38;
-        });
-
-        function lerp(a, b, t) { return a + (b - a) * t; }
-
-        (function tick() {
-            if (mouseIn) {
-                crx = lerp(crx, trx,  0.07);
-                cry = lerp(cry, try_, 0.07);
-            } else {
-                cry += 0.18;
-                crx  = lerp(crx, 8, 0.02);
-            }
-            stage.style.transform = 'rotateX(' + crx + 'deg) rotateY(' + cry + 'deg)';
-            requestAnimationFrame(tick);
-        }());
-    }());
 
 </script>

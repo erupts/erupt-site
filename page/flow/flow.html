@@ -1,1736 +1,38 @@
-<script>
-    const TWEAKS = /*EDITMODE-BEGIN*/{
-        "mood": "paper",
-        "density": 0.75,
-        "energy": "pulse"
-    }/*EDITMODE-END*/;
-</script>
 <style>
-    :root {
-        /* default = paper mood (set as root so first paint matches) */
-        --bg: oklch(0.97 0.005 80);
-        --bg-2: oklch(0.94 0.008 80);
-        --panel: oklch(0.91 0.010 80);
-        --panel-2: oklch(0.87 0.012 80);
-        --line: oklch(0.78 0.012 80);
-        --line-soft: oklch(0.84 0.010 80);
-        --fg: oklch(0.18 0.008 60);
-        --fg-dim: oklch(0.40 0.010 60);
-        --fg-mute: oklch(0.58 0.010 60);
-        --accent: oklch(0.55 0.18 32);
-        --accent-2: oklch(0.82 0.14 58);
-        --amber: oklch(0.65 0.16 70);
-        --rose: oklch(0.50 0.18 18);
-        --cyan: oklch(0.80 0.11 210);
-        --green: oklch(0.80 0.14 150);
-        --purple: oklch(0.75 0.12 300);
-        --maxw: 1280px;
-        --serif: "Instrument Serif", "Noto Serif SC", Georgia, serif;
-    }
-
-    /* Workshop = original dark warm palette */
-    body.mood-workshop {
-        --bg: oklch(0.13 0.008 40);
-        --bg-2: oklch(0.16 0.009 40);
-        --panel: oklch(0.185 0.010 40);
-        --panel-2: oklch(0.215 0.010 40);
-        --line: oklch(0.28 0.010 40);
-        --line-soft: oklch(0.23 0.009 40);
-        --fg: oklch(0.97 0.005 60);
-        --fg-dim: oklch(0.78 0.008 60);
-        --fg-mute: oklch(0.56 0.010 60);
-        --accent: oklch(0.74 0.18 42);
-        --amber: oklch(0.82 0.14 78);
-        --rose: oklch(0.74 0.17 18);
-    }
-
-
-    a {
-        color: inherit;
-        text-decoration: none
-    }
-
-    .mono {
-        font-family: "JetBrains Mono", ui-monospace, monospace
-    }
-
-    .serif {
-        font-family: var(--serif);
-        font-style: italic;
-        font-weight: 400
-    }
-
-    .wrap {
-        max-width: var(--maxw);
-        margin: 0 auto;
-        padding: 0 32px
-    }
-
-    .grid-bg {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
-        background-image: linear-gradient(to right, color-mix(in oklch, var(--line) 55%, transparent) 1px, transparent 1px),
-        linear-gradient(to bottom, color-mix(in oklch, var(--line) 55%, transparent) 1px, transparent 1px);
-        background-size: 64px 64px;
-        mask-image: radial-gradient(ellipse 90% 70% at 50% 10%, black 35%, transparent 92%);
-        opacity: .28;
-    }
-
-    .brand-mark svg {
-        width: 14px;
-        height: 14px
-    }
-
-    .brand small {
-        color: var(--fg-mute);
-        font-weight: 400;
-        font-size: 11px;
-        letter-spacing: .08em;
-        margin-left: 2px
-    }
-
-    .crumb {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        color: var(--fg-mute);
-        font-size: 13px
-    }
-
-    .crumb b {
-        color: var(--fg-dim);
-        font-weight: 500
-    }
-
-
-    .ghost {
-        border: 1px solid var(--line);
-        background: transparent;
-        color: var(--fg-dim);
-        padding: 8px 14px;
-        border-radius: 8px;
-        font: inherit;
-        font-size: 13px;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .ghost:hover {
-        color: var(--fg);
-        border-color: color-mix(in oklch, var(--fg) 30%, var(--line))
-    }
-
-    .star-pill {
-        display: inline-flex;
-        font-size: 12px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        overflow: hidden
-    }
-
-    .star-pill span {
-        padding: 4px 10px;
-        font-family: "JetBrains Mono", monospace
-    }
-
-    .star-pill span + span {
-        background: var(--panel-2);
-        border-left: 1px solid var(--line);
-        color: var(--accent)
-    }
-
-    /* HERO */
-    .hero {
-        position: relative;
-        padding: 88px 0 56px;
-        z-index: 1
-    }
-
-    .glow {
-        position: absolute;
-        left: 50%;
-        top: -12%;
-        transform: translateX(-50%);
-        width: 1200px;
-        height: 760px;
-        pointer-events: none;
-        z-index: -1;
-        background: radial-gradient(ellipse 50% 45% at 50% 50%, color-mix(in oklch, var(--accent) 28%, transparent), transparent 70%),
-        radial-gradient(ellipse 60% 35% at 30% 80%, color-mix(in oklch, var(--rose) 18%, transparent), transparent 70%),
-        radial-gradient(ellipse 60% 35% at 70% 30%, color-mix(in oklch, var(--cyan) 12%, transparent), transparent 70%);
-        filter: blur(50px);
-        opacity: .55;
-    }
-
-    .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        color: var(--fg-dim);
-        border: 1px solid var(--line);
-        padding: 5px 14px 5px 6px;
-        border-radius: 999px;
-        background: color-mix(in oklch, var(--panel) 60%, transparent);
-    }
-
-    .eyebrow .tag {
-        background: color-mix(in oklch, var(--accent) 20%, transparent);
-        color: var(--accent);
-        padding: 3px 9px;
-        border-radius: 999px;
-        font-size: 11px;
-        font-weight: 600;
-        border: 1px solid color-mix(in oklch, var(--accent) 30%, transparent);
-    }
-
-    .eyebrow .sep {
-        color: var(--fg-mute)
-    }
-
-    .eyebrow .ver {
-        color: var(--fg-mute)
-    }
-
-    .hero-grid {
-        display: grid;
-        grid-template-columns: 1.05fr .95fr;
-        gap: 64px;
-        align-items: end;
-        margin-top: 28px
-    }
-
-    h1.hero-title {
-        font-size: clamp(52px, 6.6vw, 96px);
-        line-height: 0.96;
-        letter-spacing: -0.04em;
-        margin: 0;
-        font-weight: 700;
-    }
-
-    h1.hero-title .line {
-        display: block
-    }
-
-    h1.hero-title .accent {
-        background: linear-gradient(100deg, var(--accent) 0%, var(--amber) 60%, var(--rose) 110%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    h1.hero-title .serif {
-        font-family: var(--serif);
-        font-style: italic;
-        font-weight: 400;
-        color: var(--fg-dim);
-        letter-spacing: -.01em;
-    }
-
-    .hero-sub {
-        margin: 30px 0 0;
-        max-width: 54ch;
-        color: var(--fg-dim);
-        font-size: 18px;
-        line-height: 1.65;
-    }
-
-    .hero-sub b {
-        color: var(--fg);
-        font-weight: 500
-    }
-
-    .hero-sub mark {
-        background: color-mix(in oklch, var(--accent) 18%, transparent);
-        color: var(--fg);
-        padding: 1px 6px;
-        border-radius: 4px;
-        border-bottom: 1px solid color-mix(in oklch, var(--accent) 50%, transparent)
-    }
-
-    .cta-row {
-        display: flex;
-        gap: 12px;
-        margin-top: 36px;
-        flex-wrap: wrap;
-        align-items: center
-    }
-
-
-    /* hero side credentials card */
-    .creds {
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        padding: 18px 20px;
-        background: color-mix(in oklch, var(--panel) 80%, var(--bg-2));
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12.5px;
-        box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7);
-    }
-
-    .creds h4 {
-        margin: 0 0 10px;
-        font-family: "Inter", sans-serif;
-        font-size: 12px;
-        letter-spacing: .16em;
-        color: var(--fg-mute);
-        text-transform: uppercase;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 8px
-    }
-
-    .creds h4::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--green);
-        box-shadow: 0 0 8px var(--green)
-    }
-
-    .creds .row {
-        display: grid;
-        grid-template-columns: 80px 1fr auto;
-        gap: 10px;
-        padding: 8px 0;
-        border-bottom: 1px dashed var(--line-soft);
-        align-items: center
-    }
-
-    .creds .row:last-child {
-        border: 0
-    }
-
-    .creds .k {
-        color: var(--fg-mute)
-    }
-
-    .creds .v {
-        color: var(--fg)
-    }
-
-    .creds .v.url {
-        color: var(--cyan)
-    }
-
-    .creds .copy {
-        font-size: 10px;
-        color: var(--fg-mute);
-        border: 1px solid var(--line);
-        padding: 3px 7px;
-        border-radius: 5px;
-        cursor: pointer
-    }
-
-    .creds .copy:hover {
-        color: var(--fg)
-    }
-
-    .hero-stats {
-        margin-top: 18px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        overflow: hidden;
-        background: color-mix(in oklch, var(--panel) 60%, var(--bg-2));
-    }
-
-    .hero-stats > div {
-        padding: 18px 20px;
-        border-right: 1px solid var(--line-soft)
-    }
-
-    .hero-stats > div:last-child {
-        border-right: 0
-    }
-
-    .hero-stats .num {
-        font-family: "Instrument Serif", serif;
-        font-style: italic;
-        font-size: 38px;
-        line-height: 1;
-        color: var(--fg)
-    }
-
-    .hero-stats .num em {
-        font-style: normal;
-        color: var(--accent);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 18px;
-        vertical-align: 6px;
-        margin-left: 2px
-    }
-
-    .hero-stats .lab {
-        margin-top: 6px;
-        font-size: 12px;
-        color: var(--fg-mute);
-        font-family: "JetBrains Mono", monospace
-    }
-
-    /* DAG canvas (hero visual) */
+    /* ── DAG canvas ── */
     .canvas {
-        margin-top: 64px;
-        position: relative;
-        border: 1px solid var(--line);
-        border-radius: 18px;
+        border: 1px solid var(--c-border);
+        border-radius: 0;
+        background: #fafafa;
         overflow: hidden;
-        background: linear-gradient(180deg, color-mix(in oklch, var(--panel) 70%, var(--bg-2)), var(--bg-2));
-        box-shadow: 0 50px 100px -40px rgba(0, 0, 0, .7), 0 0 0 1px var(--line-soft);
     }
 
     .cv-bar {
         display: flex;
         align-items: center;
-        gap: 14px;
-        padding: 0 18px;
-        height: 48px;
-        border-bottom: 1px solid var(--line-soft);
-        background: color-mix(in oklch, var(--panel) 70%, transparent);
+        gap: 10px;
+        padding: 10px 16px;
+        border-bottom: 1px solid #e8e8e8;
+        background: #f5f5f5;
     }
 
-    .cv-close {
-        width: 24px;
-        height: 24px;
-        display: grid;
-        place-items: center;
-        color: var(--fg-mute);
-        cursor: pointer
-    }
+    .cv-close { color: #bbb; font-size: 13px; }
 
     .cv-steps {
         display: flex;
         gap: 6px;
-        margin-left: auto;
-        margin-right: auto
+        margin: 0 auto;
+        font-size: 12px;
+        color: #888;
     }
 
     .cv-step {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 8px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        color: var(--fg-mute);
-        padding: 4px 12px;
-        border-radius: 999px;
-        border: 1px solid transparent;
+        gap: 5px;
     }
 
     .cv-step .num {
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        font-size: 10px;
-        background: var(--panel-2);
-        color: var(--fg-mute);
-        border: 1px solid var(--line);
-    }
-
-    .cv-step.on {
-        color: var(--fg);
-        border-color: color-mix(in oklch, var(--accent) 30%, var(--line))
-    }
-
-    .cv-step.on .num {
-        background: var(--accent);
-        color: #1a0600;
-        border-color: var(--accent);
-        box-shadow: 0 0 12px color-mix(in oklch, var(--accent) 40%, transparent)
-    }
-
-    .cv-publish {
-        background: linear-gradient(145deg, var(--accent), var(--rose));
-        color: #1a0600;
-        font-weight: 600;
-        padding: 7px 16px;
-        border-radius: 8px;
-        font-size: 12.5px;
-        cursor: pointer;
-        border: 0;
-    }
-
-    .cv-stage {
-        position: relative;
-        padding: 36px 24px 56px;
-        min-height: 520px;
-        background: radial-gradient(ellipse 60% 50% at 50% 0%, color-mix(in oklch, var(--accent) 8%, transparent), transparent 70%),
-        radial-gradient(circle at 1px 1px, color-mix(in oklch, var(--line) 90%, transparent) 1px, transparent 0);
-        background-size: auto, 24px 24px;
-        background-position: center, 0 0;
-    }
-
-    .cv-stage .watermark {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background-image: repeating-linear-gradient(-22deg, transparent 0 80px, color-mix(in oklch, var(--fg-mute) 15%, transparent) 80px 80px);
-        opacity: 0;
-    }
-
-    /* Node primitives */
-    .node {
-        position: absolute;
-        min-width: 160px;
-        border-radius: 8px;
-        overflow: hidden;
-        background: oklch(0.97 0.005 60);
-        color: #1a1a1a;
-        border: 1px solid color-mix(in oklch, var(--line) 80%, transparent);
-        box-shadow: 0 14px 28px -14px rgba(0, 0, 0, .55);
-        font-size: 13px;
-    }
-
-    .node .nh {
-        padding: 6px 10px;
-        font-size: 11.5px;
-        font-weight: 600;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: space-between
-    }
-
-    .node .nh .x {
-        opacity: .7;
-        font-weight: 400;
-        cursor: pointer
-    }
-
-    .node .nb {
-        padding: 8px 10px;
-        color: #444;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px
-    }
-
-    .node .nb b {
-        color: #1a1a1a;
-        font-weight: 500
-    }
-
-    .node .nb .arr {
-        color: #aaa
-    }
-
-    .node.start .nh {
-        background: #5a6473
-    }
-
-    .node.cond .nh {
-        background: #fff;
-        color: #3b6ac4;
-        border-bottom: 1px solid #e6ebf3;
-        font-weight: 500;
-        font-size: 11px
-    }
-
-    .node.cond {
-        background: #fff;
-        border-color: #dbe3ee
-    }
-
-    .node.cond .nh em {
-        font-style: normal;
-        color: #9aa6b8;
-        font-weight: 400;
-        margin-left: 8px
-    }
-
-    .node.cond .nb {
-        color: #1a1a1a
-    }
-
-    .node.appr .nh {
-        background: oklch(0.74 0.16 42)
-    }
-
-    .node.delay .nh {
-        background: oklch(0.72 0.14 150)
-    }
-
-    .node.notify .nh {
-        background: oklch(0.65 0.13 240)
-    }
-
-    .node.cc .nh {
-        background: oklch(0.62 0.10 300)
-    }
-
-    .node.end {
-        background: oklch(0.93 0.005 60);
-        color: #555;
-        padding: 8px 18px;
-        font-size: 12.5px;
-        font-weight: 500;
-        text-align: center;
-        border-radius: 6px;
-        min-width: auto;
-    }
-
-    /* Plus button between nodes */
-    .plus {
-        position: absolute;
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: #fff;
-        border: 1px solid #d4dae4;
-        color: #5a8be7;
-        display: grid;
-        place-items: center;
-        font-size: 14px;
-        line-height: 1;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
-    }
-
-    .branch-pill {
-        position: absolute;
-        padding: 5px 14px;
-        border-radius: 999px;
-        background: #fff;
-        border: 1px solid #d4dae4;
-        color: #5a8be7;
-        font-size: 12px;
-        font-weight: 500;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .branch-pill svg {
-        width: 11px;
-        height: 11px
-    }
-
-    /* Wires */
-    .cv-stage svg.wires {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none
-    }
-
-    .wire {
-        stroke: #c8d0db;
-        stroke-width: 1.5;
-        fill: none
-    }
-
-    .wire.flow {
-        stroke: var(--accent);
-        stroke-width: 1.6;
-        stroke-dasharray: 4 4;
-        animation: dash 1.6s linear infinite
-    }
-
-    @keyframes dash {
-        to {
-            stroke-dashoffset: -32
-        }
-    }
-
-    .cv-corner {
-        position: absolute;
-        left: 18px;
-        bottom: 18px;
-        display: flex;
-        gap: 6px;
-        align-items: center;
-        background: #fff;
-        border: 1px solid #dde2ea;
-        border-radius: 8px;
-        padding: 4px 6px;
-        font-size: 12px;
-        color: #444;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, .1)
-    }
-
-    .cv-corner span {
-        padding: 2px 8px
-    }
-
-    .cv-corner button {
-        background: transparent;
-        border: 0;
-        cursor: pointer;
-        color: #666;
-        font: inherit;
-        font-size: 14px;
-        padding: 0 6px
-    }
-
-    /* SECTION primitives */
-    section {
-        position: relative;
-        z-index: 1;
-        padding: 96px 0
-    }
-
-    .section-head {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 32px;
-        margin-bottom: 44px
-    }
-
-    .section-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11.5px;
-        color: var(--fg-mute);
-        letter-spacing: .16em;
-        text-transform: uppercase;
-    }
-
-    .section-eyebrow::before {
-        content: "";
-        width: 18px;
-        height: 1px;
-        background: var(--accent)
-    }
-
-    h2.section-title {
-        margin: 14px 0 0;
-        font-size: clamp(36px, 4.4vw, 56px);
-        letter-spacing: -.025em;
-        line-height: 1.05;
-        max-width: 18ch;
-        font-weight: 600;
-    }
-
-    h2.section-title .serif {
-        color: var(--fg-dim)
-    }
-
-    .section-lead {
-        color: var(--fg-dim);
-        max-width: 46ch;
-        font-size: 16px;
-        line-height: 1.65;
-        margin-top: 4px
-    }
-
-    /* Capabilities — feature grid */
-    .caps {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 1px;
-        background: var(--line-soft);
-        border: 1px solid var(--line-soft);
-        border-radius: 16px;
-        overflow: hidden;
-    }
-
-    .cap {
-        grid-column: span 4;
-        background: var(--bg-2);
-        padding: 30px 28px;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        min-height: 240px;
-        position: relative;
-    }
-
-    .cap.wide {
-        grid-column: span 6
-    }
-
-    .cap.full {
-        grid-column: span 12
-    }
-
-    .cap-num {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        color: var(--fg-mute);
-        letter-spacing: .1em
-    }
-
-    .cap h3 {
-        margin: 0;
-        font-size: 21px;
-        letter-spacing: -.015em;
-        font-weight: 600;
-        line-height: 1.25
-    }
-
-    .cap h3 .accent {
-        color: var(--accent)
-    }
-
-    .cap p {
-        margin: 0;
-        color: var(--fg-dim);
-        font-size: 14px;
-        line-height: 1.6
-    }
-
-    .cap .ill {
-        margin-top: auto
-    }
-
-    .cap .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: auto
-    }
-
-    .cap .tag {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        color: var(--fg-dim);
-        border: 1px solid var(--line);
-        padding: 3px 8px;
-        border-radius: 5px
-    }
-
-    /* Node palette mini-illustration */
-    .palette {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
-        margin-top: auto
-    }
-
-    .pal {
-        border-radius: 6px;
-        padding: 8px 10px;
-        font-size: 11.5px;
-        color: #fff;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        border: 1px solid color-mix(in oklch, var(--line) 50%, transparent);
-    }
-
-    .pal.start {
-        background: #5a6473
-    }
-
-    .pal.appr {
-        background: oklch(0.66 0.16 42)
-    }
-
-    .pal.cc {
-        background: oklch(0.58 0.10 300)
-    }
-
-    .pal.cond {
-        background: #fff;
-        color: #3b6ac4
-    }
-
-    .pal.delay {
-        background: oklch(0.62 0.14 150)
-    }
-
-    .pal.notify {
-        background: oklch(0.55 0.13 240)
-    }
-
-    .pal.web {
-        background: oklch(0.55 0.10 30)
-    }
-
-    .pal.script {
-        background: oklch(0.40 0.02 260)
-    }
-
-    .pal.end {
-        background: #999
-    }
-
-    /* Form preview */
-    .pv-grid {
-        display: grid;
-        grid-template-columns: 360px 1fr;
-        gap: 32px;
-        align-items: stretch
-    }
-
-    .phone {
-        border-radius: 36px;
-        padding: 10px;
-        background: linear-gradient(160deg, oklch(0.32 0.005 280), oklch(0.18 0.005 280));
-        border: 1px solid var(--line);
-        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .55), 0 0 0 1px var(--line-soft);
-        width: 340px;
-        height: 680px;
-        position: relative;
-    }
-
-    .phone .notch {
-        position: absolute;
-        left: 50%;
-        top: 18px;
-        transform: translateX(-50%);
-        width: 90px;
-        height: 24px;
-        background: #0d0d10;
-        border-radius: 14px;
-    }
-
-    .phone .screen {
-        background: #fff;
-        color: #1a1a1a;
-        border-radius: 28px;
-        height: 100%;
-        padding: 46px 18px 18px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .field {
-        margin-bottom: 14px
-    }
-
-    .field label {
-        display: block;
-        font-size: 12.5px;
-        color: #333;
-        margin-bottom: 6px;
-        font-weight: 500
-    }
-
-    .field label.req::before {
-        content: "* ";
-        color: #e23a3a
-    }
-
-    .field input, .field select, .field .fx {
-        display: block;
-        width: 100%;
-        padding: 9px 10px;
-        border: 1px solid #e3e3e3;
-        border-radius: 5px;
-        font-size: 13px;
-        color: #222;
-        background: #fff;
-        font-family: inherit;
-    }
-
-    .field .fx {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: #555
-    }
-
-    .field .fx svg {
-        width: 14px;
-        height: 14px;
-        color: #888
-    }
-
-    .field .row2 {
-        display: grid;
-        grid-template-columns:1fr 1fr;
-        gap: 12px
-    }
-
-    .field .stars {
-        display: flex;
-        gap: 5px;
-        color: #e6e6e6;
-        font-size: 18px
-    }
-
-    .field .stars i:nth-child(-n+3) {
-        color: oklch(0.78 0.15 70)
-    }
-
-    .field .radio {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        color: #444;
-        font-size: 13px
-    }
-
-    .field .radio i {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        border: 1px solid #c8c8c8;
-        display: inline-block
-    }
-
-    .field .radio.on i {
-        border-color: #3b6ac4;
-        background: radial-gradient(circle, #3b6ac4 30%, transparent 35%)
-    }
-
-    .field .colorbar {
-        height: 34px;
-        border-radius: 5px;
-        background: linear-gradient(90deg, #f00, #ff8a00, #fff100, #00d8ff, #2255ff, #b400ff);
-        border: 1px solid #e3e3e3;
-        position: relative
-    }
-
-    .field .colorbar::after {
-        content: "";
-        position: absolute;
-        left: 62%;
-        top: -3px;
-        bottom: -3px;
-        width: 3px;
-        background: #1a1a1a;
-        border-radius: 2px
-    }
-
-    .field .slider {
-        height: 6px;
-        background: #eee;
-        border-radius: 3px;
-        position: relative;
-        margin-top: 14px
-    }
-
-    .field .slider::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 18%;
-        background: #3b6ac4;
-        border-radius: 3px
-    }
-
-    .field .slider::after {
-        content: "";
-        position: absolute;
-        left: 18%;
-        top: 50%;
-        width: 14px;
-        height: 14px;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        background: #fff;
-        border: 2px solid #3b6ac4
-    }
-
-    .field .switch {
-        display: flex;
-        gap: 14px
-    }
-
-    /* schema panel right of phone */
-    .schema {
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        background: var(--panel);
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        font-family: "JetBrains Mono", monospace;
-    }
-
-    .schema h4 {
-        margin: 0;
-        font-family: "Inter", sans-serif;
-        font-size: 14px;
-        color: var(--fg);
-        display: flex;
-        align-items: center;
-        gap: 8px
-    }
-
-    .schema h4 .pill {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 10px;
-        padding: 2px 8px;
-        border-radius: 5px;
-        background: color-mix(in oklch, var(--cyan) 18%, transparent);
-        color: var(--cyan);
-        border: 1px solid color-mix(in oklch, var(--cyan) 30%, transparent)
-    }
-
-    .field-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px
-    }
-
-    .field-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 8px 12px;
-        font-size: 12px;
-        border: 1px solid var(--line-soft);
-        border-radius: 7px;
-        background: color-mix(in oklch, var(--bg-2) 80%, transparent);
-    }
-
-    .field-row .k {
-        color: var(--fg)
-    }
-
-    .field-row .t {
-        color: var(--cyan)
-    }
-
-    .field-row .t.req {
-        color: var(--rose)
-    }
-
-    .schema .note {
-        font-family: "Inter", sans-serif;
-        color: var(--fg-mute);
-        font-size: 12.5px;
-        line-height: 1.55;
-        padding-top: 8px;
-        border-top: 1px dashed var(--line-soft)
-    }
-
-    .schema .note b {
-        color: var(--fg-dim)
-    }
-
-    .schema .pre {
-        font-size: 12px;
-        color: var(--fg-dim);
-        background: var(--bg-2);
-        border: 1px solid var(--line-soft);
-        border-radius: 8px;
-        padding: 14px;
-        line-height: 1.7;
-        overflow: auto;
-        white-space: pre;
-    }
-
-    .schema .pre .a {
-        color: var(--accent)
-    }
-
-    .schema .pre .k {
-        color: var(--purple)
-    }
-
-    .schema .pre .s {
-        color: var(--amber)
-    }
-
-    .schema .pre .c {
-        color: var(--fg-mute);
-        font-style: italic
-    }
-
-    /* Approval inbox */
-    .inbox {
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        overflow: hidden;
-        background: oklch(0.985 0.003 60);
-        color: #1a1a1a;
-        box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .6), 0 0 0 1px var(--line-soft);
-    }
-
-    .ix-bar {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 10px 16px;
-        border-bottom: 1px solid #ececec;
-        background: #fafaf9
-    }
-
-    .ix-bar .ttl {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 600;
-        color: #111;
-        font-size: 13.5px
-    }
-
-    .ix-bar .ttl::before {
-        content: "";
-        width: 16px;
-        height: 16px;
-        border-radius: 4px;
-        background: linear-gradient(145deg, var(--accent), var(--rose))
-    }
-
-    .ix-bar .crumb {
-        color: #888;
-        font-size: 12px
-    }
-
-    .ix-bar .right {
-        margin-left: auto;
-        display: flex;
-        gap: 6px
-    }
-
-    .ix-bar .icon {
-        width: 28px;
-        height: 28px;
-        display: grid;
-        place-items: center;
-        border-radius: 6px;
-        color: #666
-    }
-
-    .ix-bar .icon:hover {
-        background: #eee
-    }
-
-    .ix {
-        display: grid;
-        grid-template-columns: 200px 320px 1fr
-    }
-
-    .ix-side {
-        border-right: 1px solid #ececec;
-        background: #fafaf9;
-        padding: 14px 8px
-    }
-
-    .ix-side .grp {
-        font-size: 11px;
-        letter-spacing: .1em;
-        color: #999;
-        padding: 8px 10px;
-        text-transform: uppercase
-    }
-
-    .ix-side .it {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 8px 10px;
-        border-radius: 6px;
-        color: #444;
-        font-size: 13px;
-        cursor: pointer;
-        white-space: nowrap
-    }
-
-    .ix-side .it > span:first-child {
-        white-space: nowrap
-    }
-
-    .ix-side .it.on {
-        background: #fff;
-        color: #111;
-        border: 1px solid #e6e6e6;
-        font-weight: 500;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, .04)
-    }
-
-    .ix-side .it .b {
-        font-size: 11px;
-        background: var(--rose);
-        color: #fff;
-        padding: 1px 7px;
-        border-radius: 10px;
-        font-weight: 500;
-        font-family: "JetBrains Mono", monospace
-    }
-
-    .ix-side .it.on .b {
-        background: color-mix(in oklch, var(--accent) 95%, black)
-    }
-
-    .ix-list {
-        border-right: 1px solid #ececec;
-        background: #fff
-    }
-
-    .ix-list .hd {
-        display: flex;
-        padding: 10px 14px;
-        border-bottom: 1px solid #ececec;
-        gap: 10px;
-        align-items: center
-    }
-
-    .ix-list .search {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 10px;
-        border: 1px solid #e8e8e8;
-        border-radius: 6px;
-        color: #999;
-        font-size: 12px
-    }
-
-    .ix-list .filter {
-        font-size: 12px;
-        color: #666;
-        padding: 6px 10px;
-        border: 1px solid #e8e8e8;
-        border-radius: 6px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px
-    }
-
-    .ix-row {
-        padding: 14px;
-        border-bottom: 1px solid #f3f3f3;
-        cursor: pointer
-    }
-
-    .ix-row.on {
-        background: oklch(0.97 0.014 42);
-        border-left: 3px solid var(--accent);
-        padding-left: 11px
-    }
-
-    .ix-row .top {
-        display: flex;
-        justify-content: space-between;
-        gap: 8px;
-        align-items: center
-    }
-
-    .ix-row .ttl {
-        font-weight: 600;
-        color: #111;
-        font-size: 13.5px
-    }
-
-    .badge {
-        font-size: 10px;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-family: "JetBrains Mono", monospace;
-        font-weight: 600;
-        letter-spacing: .04em
-    }
-
-    .b-pending {
-        background: oklch(0.92 0.10 78);
-        color: oklch(0.42 0.12 70)
-    }
-
-    .b-rejected {
-        background: oklch(0.93 0.06 18);
-        color: oklch(0.45 0.18 18)
-    }
-
-    .b-approved {
-        background: oklch(0.92 0.08 150);
-        color: oklch(0.40 0.13 150)
-    }
-
-    .ix-row .meta {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 8px;
-        font-size: 12px;
-        color: #666
-    }
-
-    .ix-row .av {
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: oklch(0.7 0.16 42);
-        color: #fff;
-        font-size: 10px;
-        display: grid;
-        place-items: center;
-        font-weight: 600
-    }
-
-    .ix-detail {
-        padding: 18px 22px;
-        background: #fff
-    }
-
-    .ix-detail .num {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11.5px;
-        color: #888;
-        margin-bottom: 14px;
-        display: flex;
-        align-items: center;
-        gap: 6px
-    }
-
-    .ix-detail .ttl-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 6px
-    }
-
-    .ix-detail .ttl-row h5 {
-        margin: 0;
-        font-size: 18px;
-        color: #111;
-        font-weight: 600
-    }
-
-    .ix-detail .who {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: #666;
-        font-size: 12.5px;
-        margin-bottom: 14px
-    }
-
-    .ix-tabs {
-        display: flex;
-        gap: 18px;
-        border-bottom: 1px solid #ececec;
-        margin-bottom: 14px
-    }
-
-    .ix-tabs span {
-        padding: 8px 0;
-        font-size: 13px;
-        color: #666;
-        cursor: pointer
-    }
-
-    .ix-tabs span.on {
-        color: #111;
-        font-weight: 500;
-        border-bottom: 2px solid var(--accent);
-        margin-bottom: -1px
-    }
-
-    .ix-form {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px 18px
-    }
-
-    .ix-form .f label {
-        display: block;
-        font-size: 12px;
-        color: #333;
-        margin-bottom: 5px
-    }
-
-    .ix-form .f input, .ix-form .f .fx {
-        width: 100%;
-        border: 1px solid #e3e3e3;
-        border-radius: 5px;
-        padding: 7px 10px;
-        font-size: 12.5px;
-        color: #222;
-        background: #fcfcfc
-    }
-
-    .ix-form .f input {
-        font-family: inherit
-    }
-
-    .ix-form .f.req label::before {
-        content: "* ";
-        color: #e23a3a
-    }
-
-    .ix-form .f .colorbar {
-        height: 26px;
-        border-radius: 5px;
-        background: linear-gradient(90deg, #f00, #ff8a00, #fff100, #00d8ff, #2255ff, #b400ff);
-        border: 1px solid #e3e3e3
-    }
-
-    .ix-detail .actions {
-        display: flex;
-        gap: 10px;
-        margin-top: 22px;
-        padding-top: 16px;
-        border-top: 1px solid #ececec
-    }
-
-    .ix-detail .act {
-        padding: 8px 14px;
-        font-size: 12.5px;
-        border: 1px solid #e3e3e3;
-        border-radius: 6px;
-        background: #fff;
-        color: #222;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px
-    }
-
-    .ix-detail .act.primary {
-        background: #1a1a1a;
-        color: #fff;
-        border-color: #1a1a1a
-    }
-
-    .ix-detail .act.danger {
-        color: oklch(0.45 0.18 18);
-        border-color: color-mix(in oklch, var(--rose) 40%, #e3e3e3)
-    }
-
-    /* Schema / ER section */
-    .er {
-        display: grid;
-        grid-template-columns: 1.1fr .9fr;
-        gap: 32px;
-        align-items: start;
-    }
-
-    .er-canvas {
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        background: radial-gradient(circle at 1px 1px, color-mix(in oklch, var(--line) 80%, transparent) 1px, transparent 0),
-        var(--bg-2);
-        background-size: 22px 22px;
-        padding: 32px;
-        position: relative;
-        min-height: 540px;
-        overflow: hidden;
-    }
-
-    .tbl {
-        position: absolute;
-        min-width: 200px;
-        border-radius: 8px;
-        overflow: hidden;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11.5px;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .55);
-    }
-
-    .tbl .hd {
-        padding: 7px 10px;
-        font-weight: 600;
-        font-size: 12px;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        gap: 7px
-    }
-
-    .tbl .hd::before {
-        content: "";
-        width: 12px;
-        height: 12px;
-        background: currentColor;
-        mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect x='1' y='2' width='14' height='12' rx='2' fill='none' stroke='currentColor' stroke-width='1.5'/><path d='M1 6h14M1 10h14' stroke='currentColor' stroke-width='1.2'/></svg>") no-repeat center / contain
-    }
-
-    .tbl.flow .hd {
-        background: color-mix(in oklch, var(--accent) 60%, var(--panel-2))
-    }
-
-    .tbl.inst .hd {
-        background: color-mix(in oklch, var(--cyan) 35%, var(--panel-2))
-    }
-
-    .tbl.task .hd {
-        background: color-mix(in oklch, var(--green) 35%, var(--panel-2))
-    }
-
-    .tbl.cmt .hd {
-        background: color-mix(in oklch, var(--purple) 50%, var(--panel-2))
-    }
-
-    .tbl.rec .hd {
-        background: color-mix(in oklch, var(--amber) 35%, var(--panel-2))
-    }
-
-    .tbl.grp .hd {
-        background: color-mix(in oklch, var(--rose) 40%, var(--panel-2))
-    }
-
-    .tbl.hist .hd {
-        background: color-mix(in oklch, var(--fg-mute) 60%, var(--panel-2))
-    }
-
-    .tbl ul {
-        margin: 0;
-        padding: 0;
-        list-style: none
-    }
-
-    .tbl li {
-        padding: 5px 10px;
-        color: var(--fg-dim);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        border-top: 1px solid var(--line-soft)
-    }
-
-    .tbl li .pk {
-        color: var(--amber);
-        width: 10px;
-        display: inline-block
-    }
-
-    .tbl li .fk {
-        color: var(--cyan);
-        width: 10px;
-        display: inline-block
-    }
-
-    .tbl li.pkrow .name {
-        color: var(--amber);
-        font-weight: 600
-    }
-
-    .tbl li .name {
-        flex: 1
-    }
-
-    .tbl li .typ {
-        color: var(--fg-mute);
-        font-size: 10.5px
-    }
-
-    .er-canvas svg.ercon {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none
-    }
-
-    .ercon path {
-        stroke: color-mix(in oklch, var(--accent) 70%, transparent);
-        stroke-width: 1.4;
-        fill: none;
-        stroke-dasharray: 3 4
-    }
-
-    .ercon .ep {
-        fill: color-mix(in oklch, var(--accent) 70%, transparent)
-    }
-
-    .er-side {
-        display: flex;
-        flex-direction: column;
-        gap: 14px
-    }
-
-    .er-card {
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        padding: 20px 22px;
-        background: var(--bg-2)
-    }
-
-    .er-card h4 {
-        margin: 0 0 8px;
-        font-size: 15px;
-        color: var(--fg);
-        font-weight: 600;
-        display: flex;
-        align-items: baseline;
-        gap: 10px;
-        flex-wrap: wrap
-    }
-
-    .er-card h4 > span:first-child {
-        white-space: nowrap;
-        flex: 0 0 auto
-    }
-
-    .er-card h4 .ix {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        color: var(--fg-mute);
-        font-weight: 400
-    }
-
-    .er-card p {
-        margin: 0;
-        color: var(--fg-dim);
-        font-size: 13.5px;
-        line-height: 1.6
-    }
-
-    .er-card code {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        color: var(--accent);
-        background: color-mix(in oklch, var(--accent) 12%, transparent);
-        padding: 1px 6px;
-        border-radius: 4px
-    }
-
-    /* Settings step */
-    .settings {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-        align-items: start;
-    }
-
-    .settings-card {
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        overflow: hidden;
-        background: oklch(0.985 0.003 60);
-        color: #1a1a1a;
-    }
-
-    .settings-card .hd {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 10px 16px;
-        border-bottom: 1px solid #ececec;
-        background: #fafaf9
-    }
-
-    .settings-card .hd .x {
-        color: #888
-    }
-
-    .settings-card .hd .steps {
-        display: flex;
-        gap: 8px;
-        margin: 0 auto;
-        font-size: 12px;
-        color: #666
-    }
-
-    .settings-card .hd .steps span {
-        display: flex;
-        align-items: center;
-        gap: 6px
-    }
-
-    .settings-card .hd .steps span.on {
-        color: #111;
-        font-weight: 500
-    }
-
-    .settings-card .hd .steps span .num {
         width: 18px;
         height: 18px;
         border-radius: 50%;
@@ -1738,528 +40,844 @@
         color: #888;
         display: grid;
         place-items: center;
-        font-size: 10px
+        font-size: 10px;
     }
 
-    .settings-card .hd .steps span.on .num {
-        background: var(--accent);
-        color: #fff
-    }
+    .cv-step.on { color: #222; font-weight: 500; }
+    .cv-step.on .num { background: var(--c-brand); color: #fff; }
 
-    .settings-card .hd .pub {
-        padding: 6px 14px;
-        background: linear-gradient(145deg, var(--accent), var(--rose));
-        color: #1a0600;
-        border-radius: 6px;
+    .cv-publish {
+        padding: 5px 14px;
+        background: var(--c-brand);
+        color: #fff;
+        border: 0;
+        border-radius: 5px;
         font-size: 12px;
-        font-weight: 600
+        font-weight: 600;
+        cursor: pointer;
     }
 
-    .settings-card .body {
-        padding: 36px 36px 60px;
+    .cv-stage {
+        position: relative;
+        height: 520px;
+        overflow: hidden;
+        background: radial-gradient(circle at 1px 1px, #ddd 1px, transparent 0);
+        background-size: 28px 28px;
+    }
+
+    .wires {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .wire {
+        stroke: #ccc;
+        stroke-width: 1.5;
+        fill: none;
+    }
+
+    .wire.flow {
+        stroke: var(--c-brand);
+        stroke-dasharray: 5 4;
+        animation: dash 1.6s linear infinite;
+    }
+
+    @keyframes dash { to { stroke-dashoffset: -18; } }
+
+    .node {
+        position: absolute;
+        border-radius: 8px;
+        font-size: 12px;
+        border: 1px solid #ddd;
         background: #fff;
-        min-height: 380px
+        box-shadow: 0 4px 12px rgba(0,0,0,.08);
+        overflow: hidden;
     }
 
-    .form-block {
-        margin-bottom: 28px
+    .node .nh {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7px 10px;
+        font-weight: 600;
+        font-size: 11.5px;
+        color: #fff;
     }
+
+    .node .nh .x { font-weight: 400; color: rgba(255,255,255,.7); }
+    .node .nh em { font-style: normal; font-weight: 400; font-size: 10px; color: rgba(255,255,255,.7); }
+
+    .node .nb {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7px 10px;
+        color: #555;
+    }
+
+    .node .nb .arr { color: #bbb; }
+
+    .node.start .nh { background: #5a6473; }
+    .node.appr .nh { background: #FF5722; }
+    .node.cond .nh { background: #3b6ac4; }
+    .node.delay .nh { background: #3a9e6e; }
+    .node.end {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        background: #f0f0f0;
+        color: #888;
+        font-size: 12px;
+        border-radius: 8px;
+        border: 1px dashed #ccc;
+    }
+
+    .branch-pill {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: #fff;
+        border: 1.5px dashed #3b6ac4;
+        color: #3b6ac4;
+        border-radius: 18px;
+        padding: 5px 12px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    .branch-pill svg { width: 12px; height: 12px; }
+
+    .plus {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+        color: #aaa;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .cv-corner {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+
+    .cv-corner button {
+        border: 0; background: 0; font-size: 14px; cursor: pointer; color: #666;
+    }
+
+    /* ── Node palette ── */
+    .palette {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+    }
+
+    .pal {
+        border-radius: 5px;
+        padding: 7px 9px;
+        font-size: 11px;
+        color: #fff;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid rgba(0,0,0,.1);
+    }
+
+    .pal.start  { background: #5a6473; }
+    .pal.appr   { background: #FF5722; }
+    .pal.cc     { background: #7c5cbf; }
+    .pal.cond   { background: #3b6ac4; color: #fff; }
+    .pal.delay  { background: #3a9e6e; }
+    .pal.notify { background: #2979c8; }
+    .pal.web    { background: #b35c2e; }
+    .pal.script { background: #3a3f52; }
+    .pal.end    { background: #999; }
+
+    /* ── Phone mockup ── */
+    .phone {
+        border-radius: 32px;
+        padding: 9px;
+        background: linear-gradient(160deg, #2c2c3e, #111117);
+        border: 1px solid #333;
+        box-shadow: 0 20px 50px -15px rgba(0,0,0,.5);
+        width: 300px;
+        height: 600px;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .phone .notch {
+        position: absolute;
+        left: 50%;
+        top: 16px;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 22px;
+        background: #0d0d10;
+        border-radius: 12px;
+    }
+
+    .phone .screen {
+        background: #fff;
+        color: #1a1a1a;
+        border-radius: 24px;
+        height: 100%;
+        padding: 40px 16px 16px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .pv-field { margin-bottom: 12px; }
+
+    .pv-field label {
+        display: block;
+        font-size: 11.5px;
+        color: #333;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .pv-field label.req::before { content: "* "; color: #e23a3a; }
+
+    .pv-field input, .pv-field .pfx {
+        display: block;
+        width: 100%;
+        padding: 8px 9px;
+        border: 1px solid #e3e3e3;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #222;
+        background: #fff;
+        font-family: inherit;
+        box-sizing: border-box;
+    }
+
+    .pv-field .pfx {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #555;
+    }
+
+    .pv-field .pfx svg { width: 13px; height: 13px; color: #888; flex-shrink: 0; }
+
+    .pv-field .slider {
+        height: 4px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--c-brand) 30%, #eee 30%);
+        margin-top: 8px;
+        position: relative;
+    }
+
+    .pv-field .slider::after {
+        content: "";
+        position: absolute;
+        left: 30%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid var(--c-brand);
+    }
+
+    .pv-field .stars { color: #f5a623; font-size: 13px; letter-spacing: 1px; }
+
+    .pv-field .switch {
+        display: flex;
+        gap: 12px;
+        font-size: 12px;
+        color: #555;
+        align-items: center;
+    }
+
+    .pv-field .radio { display: flex; align-items: center; gap: 5px; }
+
+    .pv-field .radio i {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        border: 1.5px solid #c8c8c8;
+        display: inline-block;
+    }
+
+    .pv-field .radio.on i {
+        border-color: var(--c-brand);
+        background: radial-gradient(circle, var(--c-brand) 32%, transparent 35%);
+    }
+
+    .pv-field .colorbar {
+        height: 22px;
+        border-radius: 4px;
+        background: linear-gradient(90deg, #f00, #ff8a00, #fff100, #00d8ff, #2255ff, #b400ff);
+        border: 1px solid #e3e3e3;
+    }
+
+    /* ── Schema panel ── */
+    .schema-panel {
+        font-size: 13px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .schema-panel h4 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .schema-panel h4 .pill {
+        font-size: 10px;
+        background: rgba(255,87,34,.1);
+        color: var(--c-brand);
+        border: 1px solid rgba(255,87,34,.3);
+        padding: 2px 7px;
+        border-radius: 3px;
+        font-weight: 500;
+    }
+
+    .field-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .field-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 8px;
+        border-radius: 3px;
+        background: #fafafa;
+        border: 1px solid #f0f0f0;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+    }
+
+    .field-row .k { color: #333; }
+    .field-row .t { color: #888; }
+    .field-row .t.req { color: var(--c-brand); }
+
+    .schema-pre {
+        border-radius: 5px;
+        font-size: 11.5px;
+        line-height: 1.75;
+        overflow: auto;
+        margin: 0;
+        background: #282c34;
+    }
+
+    .schema-note {
+        font-size: 12.5px;
+        color: #666;
+        line-height: 1.6;
+        padding: 10px 12px;
+        background: rgba(255,87,34,.04);
+        border-left: 3px solid var(--c-brand);
+        border-radius: 0 4px 4px 0;
+    }
+
+    .schema-note b { color: #333; }
+
+    /* ── Inbox ── */
+    .inbox {
+        border: 1px solid var(--c-border);
+        border-radius: 0;
+        background: #fff;
+        overflow: hidden;
+    }
+
+    .ix-bar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 16px;
+        border-bottom: 1px solid #ececec;
+        background: #fafaf9;
+        font-size: 13px;
+    }
+
+    .ix-bar .ttl { font-weight: 600; color: #111; }
+    .ix-bar .crumb { color: #888; font-size: 12px; }
+
+    .ix-bar .right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .ix-bar .icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #f0f0f0;
+        display: grid;
+        place-items: center;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    .ix {
+        display: grid;
+        grid-template-columns: 180px 260px 1fr;
+    }
+
+    .ix-side {
+        border-right: 1px solid #ececec;
+        padding: 12px 0;
+        background: #fafaf9;
+    }
+
+    .ix-side .grp {
+        padding: 8px 14px 4px;
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: #aaa;
+    }
+
+    .ix-side .it {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7px 14px;
+        font-size: 12.5px;
+        color: #555;
+        cursor: pointer;
+    }
+
+    .ix-side .it .b {
+        background: var(--c-brand);
+        color: #fff;
+        font-size: 10px;
+        padding: 1px 6px;
+        border-radius: 9px;
+    }
+
+    .ix-side .it.on { background: rgba(255,87,34,.08); color: var(--c-brand); font-weight: 500; }
+
+    .ix-list {
+        border-right: 1px solid #ececec;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ix-list .hd {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-bottom: 1px solid #ececec;
+        background: #f8f8f8;
+    }
+
+    .ix-list .hd .search {
+        flex: 1;
+        font-size: 12px;
+        color: #bbb;
+        border: 1px solid #e8e8e8;
+        border-radius: 4px;
+        padding: 5px 8px;
+        background: #fff;
+    }
+
+    .ix-list .hd .filter { font-size: 12px; color: #666; }
+
+    .ix-row {
+        padding: 10px 14px;
+        border-bottom: 1px solid #f0f0f0;
+        cursor: pointer;
+    }
+
+    .ix-row.on { background: rgba(255,87,34,.04); border-left: 2px solid var(--c-brand); }
+
+    .ix-row .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    .ix-row .top .ttl { font-size: 12.5px; font-weight: 500; color: #222; }
+
+    .ix-row .meta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11.5px;
+        color: #888;
+    }
+
+    .ix-row .av {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--c-brand);
+        color: #fff;
+        font-size: 9px;
+        display: grid;
+        place-items: center;
+        font-weight: 600;
+    }
+
+    .badge {
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: 600;
+    }
+
+    .b-pending  { background: rgba(255,165,0,.12); color: #b37400; }
+    .b-rejected { background: rgba(200,50,50,.1);  color: #b33; }
+    .b-approved { background: rgba(50,160,90,.1);  color: #2a7a4a; }
+
+    .ix-detail { padding: 16px 20px; background: #fff; overflow: auto; }
+
+    .ix-detail .num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: #888;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .ix-detail .ttl-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 5px;
+    }
+
+    .ix-detail .ttl-row h5 { margin: 0; font-size: 17px; color: #111; font-weight: 600; }
+
+    .ix-detail .who {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #666;
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .ix-tabs {
+        display: flex;
+        gap: 16px;
+        border-bottom: 1px solid #ececec;
+        margin-bottom: 12px;
+    }
+
+    .ix-tabs span {
+        padding: 7px 0;
+        font-size: 12.5px;
+        color: #888;
+        cursor: pointer;
+    }
+
+    .ix-tabs span.on {
+        color: #111;
+        font-weight: 500;
+        border-bottom: 2px solid var(--c-brand);
+        margin-bottom: -1px;
+    }
+
+    .ix-form {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px 14px;
+    }
+
+    .ix-form .f label {
+        display: block;
+        font-size: 11px;
+        color: #555;
+        margin-bottom: 4px;
+    }
+
+    .ix-form .f input, .ix-form .f .pfx {
+        width: 100%;
+        border: 1px solid #e8e8e8;
+        border-radius: 4px;
+        padding: 6px 8px;
+        font-size: 11.5px;
+        color: #333;
+        background: #fcfcfc;
+        box-sizing: border-box;
+    }
+
+    .ix-form .f .pfx {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: #555;
+    }
+
+    .ix-form .f.req label::before { content: "* "; color: #e23a3a; }
+
+    .ix-form .colorbar {
+        height: 22px;
+        border-radius: 4px;
+        background: linear-gradient(90deg, #f00, #ff8a00, #fff100, #00d8ff, #2255ff, #b400ff);
+        border: 1px solid #e3e3e3;
+    }
+
+    .ix-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 16px;
+        padding-top: 12px;
+        border-top: 1px solid #ececec;
+        flex-wrap: wrap;
+    }
+
+    .ix-act {
+        padding: 6px 12px;
+        font-size: 11.5px;
+        border: 1px solid #e3e3e3;
+        border-radius: 5px;
+        background: #fff;
+        color: #333;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    .ix-act.primary { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+    .ix-act.approve { background: #2a7a4a; color: #fff; border-color: #2a7a4a; }
+    .ix-act.danger  { color: #b33; border-color: rgba(180,50,50,.3); }
+
+    /* ── Settings ── */
+    .settings-card {
+        border: 1px solid var(--c-border);
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .settings-card .s-hd {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 9px 14px;
+        border-bottom: 1px solid #ececec;
+        background: #fafaf9;
+    }
+
+    .settings-card .s-hd .x { color: #bbb; font-size: 13px; }
+
+    .settings-card .s-steps {
+        display: flex;
+        gap: 8px;
+        margin: 0 auto;
+        font-size: 11.5px;
+        color: #888;
+    }
+
+    .settings-card .s-steps span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .settings-card .s-steps span.on { color: #111; font-weight: 500; }
+
+    .settings-card .s-steps .snum {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        background: #e6e6e6;
+        color: #888;
+        display: grid;
+        place-items: center;
+        font-size: 9.5px;
+    }
+
+    .settings-card .s-steps span.on .snum { background: var(--c-brand); color: #fff; }
+
+    .settings-card .s-pub {
+        padding: 5px 12px;
+        background: var(--c-brand);
+        color: #fff;
+        border-radius: 5px;
+        font-size: 11.5px;
+        font-weight: 600;
+    }
+
+    .settings-card .s-body {
+        padding: 28px 28px 40px;
+        background: #fff;
+    }
+
+    .form-block { margin-bottom: 22px; }
 
     .form-block .lab {
-        font-size: 13.5px;
+        font-size: 13px;
         color: #222;
-        margin-bottom: 10px;
-        font-weight: 500
+        margin-bottom: 8px;
+        font-weight: 500;
     }
 
     .selectbox {
-        padding: 10px 12px;
+        padding: 9px 11px;
         border: 1px solid #e3e3e3;
-        border-radius: 5px;
-        color: #999;
-        font-size: 13px;
+        border-radius: 4px;
+        color: #aaa;
+        font-size: 12.5px;
         background: #fff;
         display: flex;
         justify-content: space-between;
-        align-items: center
+        align-items: center;
     }
 
-    .opt-row {
-        display: flex;
-        gap: 24px;
-        align-items: center;
-        font-size: 13px
-    }
+    .opt-row { display: flex; gap: 18px; align-items: center; font-size: 12.5px; flex-wrap: wrap; }
 
-    .opt {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px
-    }
+    .opt { display: inline-flex; align-items: center; gap: 6px; }
 
     .opt i {
-        width: 14px;
-        height: 14px;
+        width: 13px; height: 13px;
         border-radius: 50%;
-        border: 1px solid #c8c8c8
+        border: 1.5px solid #c8c8c8;
     }
 
     .opt.on i {
         border-color: #3b6ac4;
-        background: radial-gradient(circle, #3b6ac4 32%, transparent 35%)
+        background: radial-gradient(circle, #3b6ac4 32%, transparent 35%);
     }
 
-    .opt-row .lk {
-        color: #3b6ac4;
-        font-size: 12.5px;
-        margin-left: 8px
-    }
+    .opt-row .lk { color: #3b6ac4; font-size: 12px; }
 
-    /* Architecture diagram */
-    .archi {
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 36px;
-        background: linear-gradient(180deg, var(--panel), var(--bg-2));
-        position: relative;
-        overflow: hidden;
-    }
-
-    .archi h3 {
-        margin: 0 0 8px;
-        font-size: 18px;
-        font-weight: 600
-    }
-
-    .archi p {
-        margin: 0 0 22px;
-        color: var(--fg-dim);
-        font-size: 13.5px;
-        max-width: 48ch
-    }
-
-    .archi-row {
+    /* ── Archi diagram ── */
+    .archi-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        margin-bottom: 14px
+        gap: 1px;
+        background: var(--c-border);
+        margin-bottom: 1px;
     }
 
     .archi-cell {
-        border: 1px solid var(--line-soft);
-        border-radius: 10px;
-        padding: 14px;
-        background: color-mix(in oklch, var(--bg-2) 70%, transparent);
+        padding: 14px 16px;
+        background: #fafafa;
         font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        color: var(--fg-dim);
-        position: relative;
+        font-size: 11.5px;
+        color: #666;
     }
 
-    .archi-cell .lab {
-        font-size: 10.5px;
-        color: var(--fg-mute);
+    .archi-cell .ac-lab {
+        font-size: 10px;
+        color: #aaa;
         letter-spacing: .1em;
         text-transform: uppercase;
-        margin-bottom: 6px
+        margin-bottom: 5px;
     }
 
-    .archi-cell b {
-        color: var(--fg);
-        font-weight: 500
-    }
+    .archi-cell b { color: #333; font-weight: 600; display: block; }
 
     .archi-cell.accent {
-        border-color: color-mix(in oklch, var(--accent) 50%, var(--line));
-        background: color-mix(in oklch, var(--accent) 10%, var(--bg-2))
+        background: rgba(255,87,34,.06);
     }
 
-    .archi-cell.accent b {
-        color: var(--accent)
-    }
+    .archi-cell.accent b { color: var(--c-brand); }
 
-    /* CTA */
-    .cta-end {
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 64px 56px;
-        background: radial-gradient(ellipse 70% 100% at 0% 100%, color-mix(in oklch, var(--accent) 18%, transparent), transparent 70%),
-        radial-gradient(ellipse 60% 80% at 100% 0%, color-mix(in oklch, var(--rose) 14%, transparent), transparent 70%),
-        var(--bg-2);
-        display: grid;
-        grid-template-columns: 1.1fr .9fr;
-        gap: 48px;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .cta-end h3 {
-        margin: 0;
-        font-size: clamp(34px, 4vw, 52px);
-        letter-spacing: -.025em;
-        line-height: 1.05;
-        font-weight: 600
-    }
-
-    .cta-end h3 .serif {
-        color: var(--fg-dim)
-    }
-
-    .cta-end p {
-        margin: 18px 0 0;
-        color: var(--fg-dim);
-        font-size: 16px;
-        max-width: 42ch
-    }
-
-    .cta-end .creds {
-        margin-top: 0;
-        max-width: none
-    }
-
-    footer {
-        padding: 48px 0 64px;
-        border-top: 1px solid var(--line-soft);
-        margin-top: 64px;
-        color: var(--fg-mute);
-        font-size: 12.5px
-    }
-
-    footer .row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 32px;
-        flex-wrap: wrap
-    }
-
-    footer .links {
-        display: flex;
-        gap: 22px
-    }
-
-    /* ───── TWEAKS: MOOD ───── */
-    body {
-        transition: background-color .4s ease, color .4s ease
-    }
-
-    body.mood-blueprint {
-        --bg: oklch(0.16 0.02 240);
-        --bg-2: oklch(0.20 0.025 235);
-        --panel: oklch(0.23 0.028 235);
-        --panel-2: oklch(0.27 0.030 235);
-        --line: oklch(0.34 0.030 230);
-        --line-soft: oklch(0.29 0.025 230);
-        --fg: oklch(0.97 0.012 220);
-        --fg-dim: oklch(0.82 0.020 220);
-        --fg-mute: oklch(0.62 0.025 220);
-        --accent: oklch(0.78 0.13 215);
-        --amber: oklch(0.85 0.10 195);
-        --rose: oklch(0.72 0.14 280);
-        --cyan: oklch(0.86 0.10 200);
-        --green: oklch(0.82 0.12 175);
-        --purple: oklch(0.74 0.13 295);
-    }
-
-    body.mood-blueprint .grid-bg {
-        opacity: .5;
-        background-image: linear-gradient(to right, color-mix(in oklch, var(--accent) 30%, transparent) 1px, transparent 1px),
-        linear-gradient(to bottom, color-mix(in oklch, var(--accent) 30%, transparent) 1px, transparent 1px),
-        linear-gradient(to right, color-mix(in oklch, var(--accent) 12%, transparent) 1px, transparent 1px),
-        linear-gradient(to bottom, color-mix(in oklch, var(--accent) 12%, transparent) 1px, transparent 1px);
-        background-size: 256px 256px, 256px 256px, 32px 32px, 32px 32px;
-    }
-
-    body.mood-blueprint h1.hero-title .accent,
-    body.mood-blueprint .cap h3 .accent,
-    body.mood-blueprint h2.section-title .serif {
-        background: linear-gradient(100deg, var(--accent) 0%, var(--cyan) 60%, var(--purple) 110%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    body.mood-blueprint .brand-mark,
-    body.mood-blueprint .btn.accent,
-    body.mood-blueprint .settings-card .hd .pub,
-    body.mood-blueprint .cv-publish {
-        background: linear-gradient(145deg, var(--accent), var(--purple));
-        color: #001a26;
-    }
-
-    body.mood-paper {
-        --bg: oklch(0.97 0.005 80);
-        --bg-2: oklch(0.94 0.008 80);
-        --panel: oklch(0.91 0.010 80);
-        --panel-2: oklch(0.87 0.012 80);
-        --line: oklch(0.78 0.012 80);
-        --line-soft: oklch(0.84 0.010 80);
-        --fg: oklch(0.18 0.008 60);
-        --fg-dim: oklch(0.40 0.010 60);
-        --fg-mute: oklch(0.58 0.010 60);
-        --accent: oklch(0.55 0.18 32);
-        --rose: oklch(0.50 0.18 18);
-        --amber: oklch(0.65 0.16 70);
-    }
-
-    body.mood-paper .grid-bg {
-        opacity: .45;
-        background-image: linear-gradient(to right, color-mix(in oklch, var(--fg) 12%, transparent) 1px, transparent 1px),
-        linear-gradient(to bottom, color-mix(in oklch, var(--fg) 12%, transparent) 1px, transparent 1px);
-    }
-
-    body.mood-paper .glow {
-        opacity: .25;
-        filter: blur(70px)
-    }
-
-    body.mood-paper .nav {
-        background: color-mix(in oklch, var(--bg) 88%, transparent)
-    }
-
-    body.mood-paper .btn.accent {
-        color: #fff
-    }
-
-    body.mood-paper .hero-stats .num em,
-    body.mood-paper .schema h4 .pill {
-        filter: brightness(.85)
-    }
-
-    body.mood-paper .footer {
-        color: var(--fg-mute)
-    }
-
-    /* ───── TWEAKS: DENSITY ───── */
-    body {
-        --density: 1
-    }
-
-    .hero {
-        padding: calc(88px * var(--density)) 0 calc(56px * var(--density))
-    }
-
-    section {
-        padding: calc(96px * var(--density)) 0
-    }
-
-    .canvas {
-        margin-top: calc(64px * var(--density))
-    }
-
-    .section-head {
-        margin-bottom: calc(44px * var(--density))
-    }
-
-    .cap {
-        padding: calc(30px * var(--density)) calc(28px * var(--density));
-        min-height: calc(240px * var(--density))
-    }
-
-    .creds, .er-card, .archi {
-        padding: calc(20px * var(--density)) calc(22px * var(--density))
-    }
-
-    .archi {
-        padding: calc(36px * var(--density))
-    }
-
-    h2.section-title {
-        font-size: clamp(calc(30px * var(--density)), calc(4.4vw * var(--density)), calc(56px * var(--density)))
-    }
-
-    h1.hero-title {
-        font-size: clamp(calc(46px * var(--density)), calc(6.6vw * var(--density)), calc(96px * var(--density)))
-    }
-
-    .cta-end {
-        padding: calc(64px * var(--density)) calc(56px * var(--density))
-    }
-
-    /* ───── TWEAKS: FLOW ENERGY ───── */
-    body.energy-static .wire.flow {
-        animation: none;
-        stroke-dasharray: 0;
-        stroke: color-mix(in oklch, var(--accent) 60%, transparent)
-    }
-
-    body.energy-static .wire {
-        stroke-dasharray: 0;
-        opacity: .7
-    }
-
-    body.energy-static .glow {
-        opacity: .2;
-        filter: blur(80px)
-    }
-
-    body.energy-static .eyebrow .dot,
-    body.energy-static .creds h4::before,
-    body.energy-static .comp-live::before {
-        animation: none
-    }
-
-    body.energy-pulse .wire.flow {
-        animation: dash 1.6s linear infinite
-    }
-
-    /* (default state — keeps existing settings) */
-
-    body.energy-storm .glow {
-        opacity: .85;
-        filter: blur(40px)
-    }
-
-    body.energy-storm .wire {
-        stroke: color-mix(in oklch, var(--accent) 55%, transparent);
-        stroke-dasharray: 2 5;
-        animation: dash 0.9s linear infinite
-    }
-
-    body.energy-storm .wire.flow {
-        stroke: var(--accent);
-        stroke-width: 2;
-        filter: drop-shadow(0 0 6px var(--accent));
-        stroke-dasharray: 2 4;
-        animation: dash 0.55s linear infinite
-    }
-
-    body.energy-storm .canvas {
-        box-shadow: 0 50px 100px -40px rgba(0, 0, 0, .7),
-        0 0 0 1px var(--line-soft),
-        0 0 80px -10px color-mix(in oklch, var(--accent) 40%, transparent);
-    }
-
-    body.energy-storm .node.appr,
-    body.energy-storm .node.delay {
-        animation: nodepulse 2s ease-in-out infinite;
-    }
-
-    @keyframes nodepulse {
-        0%, 100% {
-            transform: translateY(0);
-            box-shadow: 0 14px 28px -14px rgba(0, 0, 0, .55)
-        }
-        50% {
-            transform: translateY(-2px);
-            box-shadow: 0 18px 32px -10px color-mix(in oklch, var(--accent) 45%, transparent)
-        }
-    }
-
-    body.energy-storm .branch-pill {
-        box-shadow: 0 2px 6px rgba(0, 0, 0, .12), 0 0 0 4px color-mix(in oklch, var(--accent) 18%, transparent);
-    }
-
-    /* Flow particles — visible on pulse + storm */
-    .particles {
-        position: absolute;
-        inset: 0;
-        pointer-events: none
-    }
-
+    /* ── Flow particles ── */
+    .particles { position: absolute; inset: 0; pointer-events: none; }
     .particles .p {
         position: absolute;
-        width: 6px;
-        height: 6px;
+        width: 6px; height: 6px;
         border-radius: 50%;
-        background: var(--accent);
-        box-shadow: 0 0 12px var(--accent), 0 0 24px color-mix(in oklch, var(--accent) 50%, transparent);
+        background: var(--c-brand);
+        box-shadow: 0 0 8px var(--c-brand);
         opacity: 0;
     }
-
-    body.energy-storm .particles .p {
-        width: 8px;
-        height: 8px
-    }
-
-    @media (max-width: 980px) {
-        .hero-grid, .pv-grid, .er, .settings, .cta-end {
-            grid-template-columns:1fr
-        }
-
-        .cap {
-            grid-column: span 12 !important
-        }
-
-        .ix {
-            grid-template-columns: 1fr
-        }
-    }
 </style>
-<div class="grid-bg"></div>
 
 <!-- HERO -->
-<section class="hero">
-    <div class="glow"></div>
-    <div class="wrap">
-        <div class="eyebrow">
-            <span class="tag">FLOW</span>
-            <span>通用流程引擎 · workflow engine</span>
-            <span class="sep">/</span>
-            <span class="ver">build 2026.04 · MIT</span>
+<div class="fr">
+    <div class="r g-bg ticks" style="display:flex; min-height:460px; overflow:visible">
+        <div style="flex:1; padding:56px 48px 48px; display:flex; flex-direction:column; justify-content:center; overflow:hidden">
+            <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:20px">
+                <span class="tag" style="font-family:monospace; font-size:11px; letter-spacing:.08em">🔀 FLOW</span>
+                <span style="font-size:12px; color:var(--c-text-muted)">通用流程引擎 · workflow engine</span>
+                <span style="font-size:12px; color:var(--c-text-muted)">/ MIT</span>
+            </div>
+            <div class="h1" style="font-size:clamp(42px,5.5vw,80px); line-height:.95; letter-spacing:-.03em; margin-bottom:22px">Erupt Flow</div>
+            <div class="sub" style="max-width:58ch; font-size:15px; line-height:1.7; margin-bottom:28px">
+                一套<strong>通用流程引擎解决方案</strong>，完整覆盖<span style="background:rgba(255,87,34,.1); color:var(--c-brand); padding:1px 5px; border-radius:3px; font-size:13.5px; white-space:nowrap">流程配置 · 发起 · 审批 · 通知</span>全链路。零前端代码定义节点，可视化画布设计流程，<strong>10 分钟</strong>搭建企业级流程系统。
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+                <a class="wbtn" href="http://www.erupt.xyz/demo" target="_blank">体验在线演示 →</a>
+                <a class="wbtn wbtn-o" href="https://github.com/erupts/erupt" target="_blank">⭐ Star on GitHub</a>
+                <span style="font-family:monospace; font-size:12px; color:var(--c-text-muted); margin-left:4px">Spring Boot 3</span>
+            </div>
         </div>
-
-        <div class="hero-grid">
-            <div>
-                <h1 class="hero-title">
-                    Erupt Flow
-                </h1>
-                <p class="hero-sub">
-                    一套 <b>通用流程引擎解决方案</b>，完整覆盖
-                    <mark>流程配置 · 发起 · 审批 · 通知</mark>
-                    全链路。
-                    通过零前端代码方式定义节点，配合可视化流程设计画布，
-                    <b>10 分钟</b>搭建企业级流程系统 —— 流程数据结构化存储，发起数据动态关联 <code class="mono"
-                                                                                                  style="color:var(--accent); padding:1px 6px; background: color-mix(in oklch, var(--accent) 10%, transparent); border-radius:4px">@erupt</code>
-                    类，
-                    支持自定义节点扩展。
-                </p>
-                <div class="cta-row">
-                    <button class="btn accent">体验在线演示 <span class="arrow">→</span></button>
-                    <button class="btn secondary">
-                        <svg fill="currentColor" height="14" viewBox="0 0 16 16" width="14">
-                            <path d="M8 0a8 8 0 0 0-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.6 7.6 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.5.8 1.2.8 2.1 0 3.1-1.8 3.8-3.6 4 .3.2.5.7.5 1.4v2.1c0 .2.1.4.5.4A8 8 0 0 0 8 0z"/>
-                        </svg>
-                        Star on GitHub
-                    </button>
-                    <span class="mono"
-                          style="color:var(--fg-mute); font-size:13px; margin-left:8px">Spring Boot 3</span>
+        <div style="flex:0 0 42%; border-left:1px solid var(--c-border); padding:32px 36px; display:flex; flex-direction:column; gap:16px; justify-content:center; background:rgba(255,87,34,.018)">
+            <div style="font-family:monospace; font-size:10.5px; color:var(--c-text-muted); letter-spacing:.12em; text-transform:uppercase; margin-bottom:4px; display:flex; align-items:center; gap:8px">
+                <span style="width:7px; height:7px; border-radius:50%; background:#4caf50; box-shadow:0 0 6px #4caf50; display:inline-block"></span>
+                在线演示 · 现在可访问
+            </div>
+            <div class="mini" style="font-size:12px; display:flex; flex-direction:column; gap:6px">
+                <div style="display:grid; grid-template-columns:60px 1fr; gap:8px; padding:7px 0; border-bottom:1px dashed var(--c-border)">
+                    <span style="color:var(--c-text-muted)">URL</span>
+                    <a href="https://www.erupt.xyz/demo" target="_blank" style="color:#2979c8; font-family:monospace; text-decoration:none">www.erupt.xyz/demo</a>
+                </div>
+                <div style="display:grid; grid-template-columns:60px 1fr; gap:8px; padding:7px 0; border-bottom:1px dashed var(--c-border)">
+                    <span style="color:var(--c-text-muted)">账号</span>
+                    <span style="font-family:monospace">flow</span>
+                </div>
+                <div style="display:grid; grid-template-columns:60px 1fr; gap:8px; padding:7px 0; border-bottom:1px dashed var(--c-border)">
+                    <span style="color:var(--c-text-muted)">密码</span>
+                    <span style="font-family:monospace">flow</span>
+                </div>
+                <div style="display:grid; grid-template-columns:60px 1fr; gap:8px; padding:7px 0">
+                    <span style="color:var(--c-text-muted)">入口</span>
+                    <span style="font-family:monospace">/#!/flow</span>
                 </div>
             </div>
-
-            <div>
-                <div class="creds">
-                    <h4>在线演示 · 现在可访问</h4>
-                    <div class="row"><span class="k">URL</span><span class="v url">www.erupt.xyz/demo</span><span
-                            class="copy">copy</span></div>
-                    <div class="row"><span class="k">账号</span><span class="v">flow</span><span
-                            class="copy">copy</span></div>
-                    <div class="row"><span class="k">密码</span><span class="v">flow</span><span
-                            class="copy">copy</span></div>
-                    <div class="row"><span class="k">入口</span><span class="v">/#!/flow</span><span class="copy"
-                                                                                                     style="opacity:.5">—</span>
-                    </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--c-border); border:1px solid var(--c-border); margin-top:4px">
+                <div style="padding:14px 12px; background:#fff; text-align:center">
+                    <div style="font-size:26px; font-weight:700; color:var(--c-brand); font-family:monospace">9<span style="font-size:16px">+</span></div>
+                    <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">node types</div>
                 </div>
-                <div class="hero-stats">
-                    <div>
-                        <div class="num">9<em>+</em></div>
-                        <div class="lab">node types</div>
-                    </div>
-                    <div>
-                        <div class="num">0<em>fe</em></div>
-                        <div class="lab">前端代码</div>
-                    </div>
-                    <div>
-                        <div class="num">7<em>tbl</em></div>
-                        <div class="lab">structured tables</div>
-                    </div>
+                <div style="padding:14px 12px; background:#fff; text-align:center">
+                    <div style="font-size:26px; font-weight:700; color:var(--c-brand); font-family:monospace">0<span style="font-size:16px">fe</span></div>
+                    <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">前端代码</div>
+                </div>
+                <div style="padding:14px 12px; background:#fff; text-align:center">
+                    <div style="font-size:26px; font-weight:700; color:var(--c-brand); font-family:monospace">7<span style="font-size:16px">tbl</span></div>
+                    <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">structured tables</div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- DAG canvas -->
-        <div class="canvas">
+    <!-- DAG Canvas -->
+    <div class="r" style="overflow:visible">
+        <div class="canvas reveal">
             <div class="cv-bar">
                 <span class="cv-close">✕</span>
                 <div class="cv-steps">
@@ -2270,283 +888,230 @@
                 </div>
                 <button class="cv-publish">发布</button>
             </div>
-
             <div class="cv-stage" id="stage">
-                <!-- WIRES -->
                 <svg class="wires" preserveAspectRatio="none" viewBox="0 0 1216 520">
-                    <!-- start to branch hub -->
                     <path class="wire" d="M608 76 L608 144"/>
                     <path class="wire" d="M608 144 L160 144 L160 192"/>
                     <path class="wire" d="M608 144 L408 144 L408 192"/>
                     <path class="wire" d="M608 144 L808 144 L808 192"/>
                     <path class="wire" d="M608 144 L1056 144 L1056 192"/>
-
-                    <!-- branches down to second-row nodes -->
                     <path class="wire" d="M160 252 L160 322"/>
                     <path class="wire flow" d="M408 252 L408 322"/>
                     <path class="wire" d="M808 252 L808 322"/>
                     <path class="wire" d="M1056 252 L1056 322"/>
-
-                    <!-- flow node down to merge -->
                     <path class="wire" d="M408 372 L408 432 L608 432 L608 460"/>
                     <path class="wire" d="M808 372 L808 432 L608 432"/>
                     <path class="wire" d="M160 322 L160 432 L608 432"/>
                     <path class="wire" d="M1056 322 L1056 432 L608 432"/>
                 </svg>
-
-                <!-- Nodes -->
-                <div class="node start" style="left:50%; top:24px; transform:translateX(-50%); width:200px">
+                <div class="node start" style="left:50%;top:24px;transform:translateX(-50%);width:200px">
                     <div class="nh">发起人 <span class="x">⋯</span></div>
                     <div class="nb"><b>流程从本节点开始</b><span class="arr">→</span></div>
                 </div>
-
-                <div class="branch-pill" style="left:50%; top:148px; transform:translateX(-50%)">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"
-                         viewBox="0 0 16 16">
-                        <path d="M8 2v12M2 8h12"/>
-                    </svg>
+                <div class="branch-pill" style="left:50%;top:148px;transform:translateX(-50%)">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12"/></svg>
                     添加分支
                 </div>
-
-                <div class="node cond" style="left:96px; top:198px; width:170px">
+                <div class="node cond" style="left:96px;top:198px;width:170px">
                     <div class="nh">互斥条件 1 <em>优先级 1</em></div>
                     <div class="nb"><b>请设置</b><span class="arr">→</span></div>
                 </div>
-                <div class="node cond" style="left:344px; top:198px; width:170px">
+                <div class="node cond" style="left:344px;top:198px;width:170px">
                     <div class="nh">互斥条件 2 <em>优先级 2</em></div>
                     <div class="nb"><b>金额 ≤ ¥5,000</b><span class="arr">→</span></div>
                 </div>
-                <div class="node cond" style="left:744px; top:198px; width:170px">
+                <div class="node cond" style="left:744px;top:198px;width:170px">
                     <div class="nh">互斥条件 3 <em>优先级 3</em></div>
                     <div class="nb"><b>金额 &gt; ¥5,000</b><span class="arr">→</span></div>
                 </div>
-                <div class="node cond" style="left:992px; top:198px; width:170px">
+                <div class="node cond" style="left:992px;top:198px;width:170px">
                     <div class="nh">默认条件 <em>优先级 4</em></div>
                     <div class="nb"><b>请设置</b><span class="arr">→</span></div>
                 </div>
-
-                <!-- second row -->
-                <div class="node appr" style="left:344px; top:328px; width:170px">
+                <div class="node appr" style="left:344px;top:328px;width:170px">
                     <div class="nh">审批人 <span class="x">✕</span></div>
                     <div class="nb"><b>财务主管</b><span class="arr">→</span></div>
                 </div>
-                <div class="node delay" style="left:744px; top:328px; width:170px">
+                <div class="node delay" style="left:744px;top:328px;width:170px">
                     <div class="nh">延时节点 <span class="x">✕</span></div>
                     <div class="nb"><b>延时 24h</b><span class="arr">→</span></div>
                 </div>
-
-                <!-- end -->
-                <div class="node end" style="left:50%; bottom:30px; transform:translateX(-50%)">流程结束</div>
-
-                <!-- plus glyphs -->
-                <span class="plus" style="left:calc(50% - 11px); top:108px">+</span>
-                <span class="plus" style="left:160px; top:268px; transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:408px; top:268px; transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:808px; top:268px; transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:1056px; top:268px; transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:408px; top:388px; transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:808px; top:388px; transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:calc(50% - 11px); bottom:62px">+</span>
-
+                <div class="node end" style="left:50%;bottom:30px;transform:translateX(-50%)">流程结束</div>
+                <span class="plus" style="left:calc(50% - 11px);top:108px">+</span>
+                <span class="plus" style="left:160px;top:268px;transform:translateX(-11px)">+</span>
+                <span class="plus" style="left:408px;top:268px;transform:translateX(-11px)">+</span>
+                <span class="plus" style="left:808px;top:268px;transform:translateX(-11px)">+</span>
+                <span class="plus" style="left:1056px;top:268px;transform:translateX(-11px)">+</span>
+                <span class="plus" style="left:408px;top:388px;transform:translateX(-11px)">+</span>
+                <span class="plus" style="left:808px;top:388px;transform:translateX(-11px)">+</span>
+                <span class="plus" style="left:calc(50% - 11px);bottom:62px">+</span>
                 <div class="cv-corner">
                     <button>−</button>
-                    <span class="mono">100%</span>
+                    <span style="font-family:monospace;font-size:12px">100%</span>
                     <button>+</button>
                 </div>
-
-                <!-- flow particles overlay -->
                 <div class="particles">
-                    <span class="p"></span>
-                    <span class="p"></span>
-                    <span class="p"></span>
-                    <span class="p"></span>
-                    <span class="p"></span>
+                    <span class="p"></span><span class="p"></span><span class="p"></span>
+                    <span class="p"></span><span class="p"></span>
                 </div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- CAPABILITIES -->
-<section id="flow">
-    <div class="wrap">
-        <div class="section-head">
-            <div>
-                <span class="section-eyebrow">01 · CAPABILITIES</span>
-                <h2 class="section-title">完整覆盖流程的 <span class="serif">每一段</span>。</h2>
-            </div>
-            <p class="section-lead">从画布拖拽到生产部署，配置 → 发起 → 审批 → 通知
-                全链路在同一引擎内闭环。结构化存储让每一次审批都可被查询、复用、复盘。</p>
+    <!-- §01 CAPABILITIES -->
+    <div class="r g-bg ticks g2">
+        <div class="c" style="padding:32px 40px">
+            <div style="font-family:monospace; font-size:11px; color:var(--c-text-muted); letter-spacing:.12em; margin-bottom:10px">01 · CAPABILITIES</div>
+            <div class="h2">完整覆盖流程的每一段。</div>
         </div>
+        <div class="c" style="padding:32px 40px; display:flex; align-items:center">
+            <div class="sub">从画布拖拽到生产部署，配置 → 发起 → 审批 → 通知 全链路在同一引擎内闭环。结构化存储让每一次审批都可被查询、复用、复盘。</div>
+        </div>
+    </div>
 
-        <div class="caps">
-            <div class="cap">
-                <span class="cap-num">01 / 04</span>
-                <h3>可视化 <span class="accent">流程设计</span></h3>
-                <p>钉钉风格画布，9 类节点开箱即用。条件分支、并行审批、延时、抄送、Webhook 通通拖出来，零前端代码。</p>
-                <div class="palette">
-                    <div class="pal start">● 发起</div>
-                    <div class="pal appr">▢ 审批</div>
-                    <div class="pal cc">↗ 抄送</div>
-                    <div class="pal cond">◇ 条件</div>
-                    <div class="pal delay">⏱ 延时</div>
-                    <div class="pal notify">📨 通知</div>
-                    <div class="pal web">⚡ Webhook</div>
-                    <div class="pal script">⧉ 自定义</div>
-                    <div class="pal end">■ 结束</div>
-                </div>
+    <div class="r g4">
+        <div class="c reveal" style="padding:28px 32px">
+            <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">01 / 05</div>
+            <div class="h3" style="margin-bottom:10px">可视化<br><span style="color:var(--c-brand)">流程设计</span></div>
+            <div class="sub" style="font-size:13px; margin-bottom:18px">钉钉风格画布，9 类节点开箱即用。条件分支、并行审批、延时、抄送、Webhook 通通拖出来，零前端代码。</div>
+            <div class="palette">
+                <div class="pal start">● 发起</div>
+                <div class="pal appr">▢ 审批</div>
+                <div class="pal cc">↗ 抄送</div>
+                <div class="pal cond">◇ 条件</div>
+                <div class="pal delay">⏱ 延时</div>
+                <div class="pal notify">📨 通知</div>
+                <div class="pal web">⚡ Webhook</div>
+                <div class="pal script">⧉ 自定义</div>
+                <div class="pal end">■ 结束</div>
             </div>
-
-            <div class="cap">
-                <span class="cap-num">02 / 04</span>
-                <h3>动态关联 <span class="accent">@erupt 类</span></h3>
-                <p>已发起的流程数据 <code class="mono"
-                                          style="color:var(--accent); padding:1px 6px; background:color-mix(in oklch, var(--accent) 10%, transparent); border-radius:4px">@Erupt</code>
-                    注解即表单 —— 字段类型、校验、关联查询全部沿用，无需重复定义。</p>
-                <div class="ill mono"
-                     style="font-size:12px; line-height:1.85; color:var(--fg-dim); border:1px solid var(--line-soft); border-radius:8px; padding:14px; background:var(--bg-2)">
-                    <span style="color:var(--purple)">@Erupt</span>(name = <span
-                        style="color:var(--amber)">"报销申请"</span>)<br/>
-                    <span style="color:var(--purple)">@Table</span>(name = <span
-                        style="color:var(--amber)">"reimburse"</span>)<br/>
-                    <span style="color:var(--purple)">public class</span> <span
-                        style="color:var(--cyan)">Reimburse</span> {<br/>
-                    &nbsp;&nbsp;<span style="color:var(--fg-mute)">// 流程引擎自动接管 ↓</span><br/>
-                    &nbsp;&nbsp;<span style="color:var(--purple)">@EruptField</span>(views = ...)<br/>
-                    &nbsp;&nbsp;<span style="color:var(--purple)">private</span> <span style="color:var(--cyan)">BigDecimal</span>
-                    amount;<br/>
-                    }
-                </div>
+        </div>
+        <div class="c reveal" style="padding:28px 32px">
+            <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">02 / 05</div>
+            <div class="h3" style="margin-bottom:10px">动态关联<br><span style="color:var(--c-brand)">@erupt 类</span></div>
+            <div class="sub" style="font-size:13px; margin-bottom:16px">已发起的流程数据 <code style="font-family:monospace; color:var(--c-brand); background:rgba(255,87,34,.1); padding:1px 5px; border-radius:3px">@Erupt</code> 注解即表单 —— 字段类型、校验、关联查询全部沿用，无需重复定义。</div>
+            <div class="mini" style="font-size:11.5px; line-height:1.8">
+                <span style="color:#9c7fd6">@Erupt</span>(name = <span style="color:#7dbb8a">"报销申请"</span>)<br>
+                <span style="color:#9c7fd6">@Table</span>(name = <span style="color:#7dbb8a">"reimburse"</span>)<br>
+                <span style="color:#9c7fd6">public class</span> <span style="color:#6eb0c8">Reimburse</span> {<br>
+                &nbsp;&nbsp;<span style="color:#888">// 流程引擎自动接管 ↓</span><br>
+                &nbsp;&nbsp;<span style="color:#9c7fd6">@EruptField</span>(views = ...)<br>
+                &nbsp;&nbsp;<span style="color:#9c7fd6">private</span> <span style="color:#6eb0c8">BigDecimal</span> amount;<br>
+                }
             </div>
-
-            <div class="cap">
-                <span class="cap-num">03 / 04</span>
-                <h3>结构化 <span class="accent">数据存储</span></h3>
-                <p>7 张关系表完整记录流程定义、实例、任务、评论、表单历史。SQL 直查、报表直接接 BI、审计完整可追溯。</p>
-                <div class="tags">
-                    <span class="tag">e_flow</span>
-                    <span class="tag">e_flow_instance</span>
-                    <span class="tag">approval_task</span>
-                    <span class="tag">instance_record</span>
-                    <span class="tag">form_history</span>
-                    <span class="tag">comment</span>
-                    <span class="tag">flow_group</span>
-                </div>
+        </div>
+        <div class="c reveal" style="padding:28px 32px">
+            <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">03 / 05</div>
+            <div class="h3" style="margin-bottom:10px">结构化<br><span style="color:var(--c-brand)">数据存储</span></div>
+            <div class="sub" style="font-size:13px; margin-bottom:16px">7 张关系表完整记录流程定义、实例、任务、评论、表单历史。SQL 直查、接 BI、审计可追溯。</div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px">
+                <span class="tag" style="font-family:monospace; font-size:11px">e_flow</span>
+                <span class="tag" style="font-family:monospace; font-size:11px">e_flow_instance</span>
+                <span class="tag" style="font-family:monospace; font-size:11px">approval_task</span>
+                <span class="tag" style="font-family:monospace; font-size:11px">instance_record</span>
+                <span class="tag" style="font-family:monospace; font-size:11px">form_history</span>
+                <span class="tag" style="font-family:monospace; font-size:11px">comment</span>
+                <span class="tag" style="font-family:monospace; font-size:11px">flow_group</span>
             </div>
-
-            <div class="cap wide">
-                <span class="cap-num">04 / 04</span>
-                <h3>自定义 <span class="accent">节点扩展</span> · 双重身份</h3>
-                <p>Erupt 既是 <b>流程表单引擎</b>，也是 <b>流程配置平台</b>。继承 NodeHandler 实现自定义节点 ——
-                    风控审核、合同盖章、企业微信审批，把组织里特有的环节也带进画布。</p>
-                <div class="ill"
-                     style="display:grid; grid-template-columns: 1fr auto 1fr; gap:18px; align-items:center">
-                    <div style="border:1px solid var(--line-soft); border-radius:10px; padding:14px; background:var(--bg-2)">
-                        <div class="mono"
-                             style="font-size:11px; color:var(--fg-mute); letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px">
-                            作为 表单引擎
-                        </div>
-                        <div style="color:var(--fg); font-size:14px">复用 @Erupt 实体即可获得审批表单 + 数据持久化 +
-                            审批历史
-                        </div>
-                    </div>
-                    <div class="mono" style="color:var(--fg-mute); font-size:18px; transform:rotate(0deg)">⇄</div>
-                    <div style="border:1px solid var(--line-soft); border-radius:10px; padding:14px; background:var(--bg-2)">
-                        <div class="mono"
-                             style="font-size:11px; color:var(--fg-mute); letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px">
-                            作为 配置平台
-                        </div>
-                        <div style="color:var(--fg); font-size:14px">把现有业务流程接入引擎，沿用既有审批策略与组织架构
-                        </div>
-                    </div>
+        </div>
+        <div class="c reveal" style="padding:28px 32px">
+            <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">04 / 05</div>
+            <div class="h3" style="margin-bottom:10px">自定义<br><span style="color:var(--c-brand)">节点扩展</span></div>
+            <div class="sub" style="font-size:13px; margin-bottom:16px">继承 NodeHandler 实现自定义节点 —— 风控审核、合同盖章、企业微信审批，把组织里特有的环节带进画布。</div>
+            <div style="display:grid; grid-template-columns:1fr; gap:8px">
+                <div style="border:1px solid var(--c-border); padding:11px 13px; background:#fafafa">
+                    <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px">作为 表单引擎</div>
+                    <div style="font-size:12.5px; color:#333">复用 @Erupt 实体 → 审批表单 + 持久化 + 历史</div>
                 </div>
-            </div>
-
-            <div class="cap" style="grid-column:span 6 !important;">
-                <span class="cap-num">+ 通知</span>
-                <h3>多通道 <span class="accent">流程通知</span></h3>
-                <p>邮件、企业微信、钉钉、飞书、站内信 —— 每个节点独立配置触达方式与模板。</p>
-                <div class="tags">
-                    <span class="tag">📧 mail</span>
-                    <span class="tag">💬 wechat</span>
-                    <span class="tag">🔔 inbox</span>
-                    <span class="tag">📲 dingtalk</span>
-                    <span class="tag">🛰 webhook</span>
+                <div style="border:1px solid var(--c-border); padding:11px 13px; background:#fafafa">
+                    <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px">作为 配置平台</div>
+                    <div style="font-size:12.5px; color:#333">把现有业务流程接入引擎，沿用既有审批策略</div>
                 </div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- FORM PREVIEW + SCHEMA -->
-<section>
-    <div class="wrap">
-        <div class="section-head">
+    <div class="r reveal" style="padding:28px 40px; overflow:hidden">
+        <div style="display:flex; align-items:start; gap:24px; flex-wrap:wrap">
             <div>
-                <span class="section-eyebrow">02 · FORM PREVIEW</span>
-                <h2 class="section-title">表单 <span class="serif">即</span> 实体。</h2>
+                <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:8px">05 / 05 · 通知</div>
+                <div class="h3" style="margin-bottom:8px">多通道 <span style="color:var(--c-brand)">流程通知</span></div>
+                <div class="sub" style="font-size:13px">邮件、企业微信、钉钉、飞书、站内信 —— 每个节点独立配置触达方式与模板。</div>
             </div>
-            <p class="section-lead">表单不是再画一遍，而是直接读取 @Erupt
-                实体的字段元信息，自动渲染移动端预览与桌面审批表单。一份模型，两端可用。</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:auto; padding-top:8px">
+                <span class="tag" style="font-size:12px">📧 mail</span>
+                <span class="tag" style="font-size:12px">💬 wechat</span>
+                <span class="tag" style="font-size:12px">🔔 inbox</span>
+                <span class="tag" style="font-size:12px">📲 dingtalk</span>
+                <span class="tag" style="font-size:12px">✈️ feishu</span>
+                <span class="tag" style="font-size:12px">🛰 webhook</span>
+            </div>
         </div>
+    </div>
 
-        <div class="pv-grid">
-            <div style="display:flex; justify-content:center">
-                <div class="phone">
-                    <span class="notch"></span>
-                    <div class="screen">
-                        <div class="field">
-                            <label>文本</label>
-                            <div class="fx">
-                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path d="M4 6h16M4 12h16M4 18h10"/>
-                                </svg>
-                                <span style="flex:1">China🇨🇳</span>
-                                <span style="color:#bbb">⊗</span>
-                            </div>
+    <!-- §02 FORM PREVIEW -->
+    <div class="r g-bg ticks g2">
+        <div class="c" style="padding:32px 40px">
+            <div style="font-family:monospace; font-size:11px; color:var(--c-text-muted); letter-spacing:.12em; margin-bottom:10px">02 · FORM PREVIEW</div>
+            <div class="h2">表单即实体。</div>
+        </div>
+        <div class="c" style="padding:32px 40px; display:flex; align-items:center">
+            <div class="sub">表单不是再画一遍，而是直接读取 @Erupt 实体的字段元信息，自动渲染移动端预览与桌面审批表单。一份模型，两端可用。</div>
+        </div>
+    </div>
+
+    <div class="r g2 reveal">
+        <div class="c" style="padding:32px; display:flex; justify-content:center; align-items:center; background:rgba(0,0,0,.02)">
+            <div class="phone">
+                <span class="notch"></span>
+                <div class="screen">
+                    <div class="pv-field">
+                        <label>文本</label>
+                        <div class="pfx">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+                            <span style="flex:1">China🇨🇳</span>
+                            <span style="color:#bbb">⊗</span>
                         </div>
-                        <div class="field">
-                            <label>数字</label>
-                            <input value="3.1415926"/>
+                    </div>
+                    <div class="pv-field">
+                        <label>数字</label>
+                        <input value="3.1415926" readonly>
+                    </div>
+                    <div class="pv-field">
+                        <label>数字滑块</label>
+                        <div class="slider"></div>
+                    </div>
+                    <div class="pv-field">
+                        <label class="req">评分</label>
+                        <div class="stars">★★★☆☆☆☆☆☆☆</div>
+                    </div>
+                    <div class="pv-field">
+                        <label>布尔</label>
+                        <div class="switch">
+                            <span class="radio"><i></i> 是</span>
+                            <span class="radio on"><i></i> 否</span>
                         </div>
-                        <div class="field">
-                            <label>数字滑块</label>
-                            <div class="slider"></div>
-                        </div>
-                        <div class="field">
-                            <label class="req">评分</label>
-                            <div class="stars">
-                                <i>★</i><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></div>
-                        </div>
-                        <div class="field">
-                            <label>布尔</label>
-                            <div class="switch">
-                                <span class="radio"><i></i> 是</span>
-                                <span class="radio on"><i></i> 否</span>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label>自动完成</label>
-                            <input value=""/>
-                        </div>
-                        <div class="field">
-                            <label class="req">颜色选择</label>
-                            <div class="colorbar"></div>
-                        </div>
-                        <div class="field">
-                            <label>周选择器</label>
-                            <div class="fx">
-                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <rect height="16" rx="2" width="18" x="3" y="5"/>
-                                    <path d="M3 10h18M9 3v4M15 3v4"/>
-                                </svg>
-                                <span style="color:#aaa">---- 年第 -- 周</span></div>
+                    </div>
+                    <div class="pv-field">
+                        <label>自动完成</label>
+                        <input value="" readonly>
+                    </div>
+                    <div class="pv-field">
+                        <label class="req">颜色选择</label>
+                        <div class="colorbar"></div>
+                    </div>
+                    <div class="pv-field">
+                        <label>周选择器</label>
+                        <div class="pfx">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"/><path d="M3 10h18M9 3v4M15 3v4"/></svg>
+                            <span style="color:#aaa">---- 年第 -- 周</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="schema">
+        </div>
+        <div class="c" style="padding:32px 36px">
+            <div class="schema-panel">
                 <h4>fields <span class="pill">@Erupt 实体反射</span></h4>
                 <div class="field-list">
                     <div class="field-row"><span class="k">country</span><span class="t">String</span></div>
@@ -2560,39 +1125,34 @@
                     <div class="field-row"><span class="k">article</span><span class="t">Reference</span></div>
                     <div class="field-row"><span class="k">tags</span><span class="t">List&lt;Tag&gt;</span></div>
                 </div>
-
-                <pre class="pre"><span class="a">@EruptField</span>(
-  views = <span class="s">"评分"</span>,
-  <span class="k">edit</span> = <span class="a">@Edit</span>(
-    type = <span class="k">EditType</span>.<span class="s">RATE</span>,
-    title = <span class="s">"评分"</span>,
-    notNull = <span class="k">true</span>,
-    <span class="c">// 同时作为表单和审批字段</span>
-    rateType = <span class="a">@RateType</span>(max = <span class="s">10</span>)
+                <pre class="schema-pre"><code class="prism language-java">@EruptField(
+  views = "评分",
+  edit = @Edit(
+    type = EditType.RATE,
+    title = "评分",
+    notNull = true,
+    // 同时作为表单和审批字段
+    rateType = @RateType(max = 10)
   )
 )
-<span class="k">private</span> <span class="k">Integer</span> rating;</pre>
-
-                <div class="note">同一份字段定义同时驱动
-                    <b>表单预览</b>、<b>移动端发起</b>、<b>桌面审批</b>、<b>历史快照</b>，无需任何前端代码。
-                </div>
+private Integer rating;</code></pre>
+                <div class="schema-note">同一份字段定义同时驱动 <b>表单预览</b>、<b>移动端发起</b>、<b>桌面审批</b>、<b>历史快照</b>，无需任何前端代码。</div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- APPROVAL INBOX -->
-<section>
-    <div class="wrap">
-        <div class="section-head">
-            <div>
-                <span class="section-eyebrow">03 · APPROVAL INBOX</span>
-                <h2 class="section-title">审批工作台 — <span class="serif">待办、已办、抄送、已发起</span>。</h2>
-            </div>
-            <p class="section-lead">
-                管理后台一站式工作台。同一界面同时是发起入口、审批入口、催办与撤回入口；表单字段在审批面板里只读回显并保留历史快照。</p>
+    <!-- §03 APPROVAL INBOX -->
+    <div class="r g-bg ticks g2">
+        <div class="c" style="padding:32px 40px">
+            <div style="font-family:monospace; font-size:11px; color:var(--c-text-muted); letter-spacing:.12em; margin-bottom:10px">03 · APPROVAL INBOX</div>
+            <div class="h2">审批工作台。</div>
         </div>
+        <div class="c" style="padding:32px 40px; display:flex; align-items:center">
+            <div class="sub">管理后台一站式工作台。同一界面同时是发起入口、审批入口、催办与撤回入口；表单字段在审批面板里只读回显并保留历史快照。</div>
+        </div>
+    </div>
 
+    <div class="r reveal" style="overflow:hidden">
         <div class="inbox">
             <div class="ix-bar">
                 <span class="ttl">Erupt · 流程审批</span>
@@ -2601,7 +1161,7 @@
                     <span class="icon">🔔</span>
                     <span class="icon">⛶</span>
                     <span class="icon">⚙</span>
-                    <span class="icon" style="background:var(--accent); color:#1a0600; font-weight:600">YP</span>
+                    <span class="icon" style="background:var(--c-brand);color:#fff;font-weight:600;font-size:11px">YP</span>
                 </div>
             </div>
             <div class="ix">
@@ -2623,116 +1183,90 @@
                         <div class="filter">所有时间 ▾</div>
                     </div>
                     <div class="ix-row on">
-                        <div class="top"><span class="ttl">报销申请 · test</span><span
-                                class="badge b-pending">PENDING</span></div>
+                        <div class="top"><span class="ttl">报销申请 · test</span><span class="badge b-pending">PENDING</span></div>
                         <div class="meta"><span class="av">YP</span> YuePeng · 2025-08-26 23:02</div>
                     </div>
                     <div class="ix-row">
-                        <div class="top"><span class="ttl">合同盖章流程</span><span
-                                class="badge b-pending">PENDING</span></div>
+                        <div class="top"><span class="ttl">合同盖章流程</span><span class="badge b-pending">PENDING</span></div>
                         <div class="meta"><span class="av">YP</span> YuePeng · 2025-08-25 18:11</div>
                     </div>
                     <div class="ix-row">
-                        <div class="top"><span class="ttl">采购单 #ER_3401</span><span
-                                class="badge b-rejected">REJECTED</span></div>
-                        <div class="meta"><span class="av" style="background: oklch(0.62 0.10 240)">JL</span> JackLi ·
-                            2025-08-22 09:48
-                        </div>
+                        <div class="top"><span class="ttl">采购单 #ER_3401</span><span class="badge b-rejected">REJECTED</span></div>
+                        <div class="meta"><span class="av" style="background:#2979c8">JL</span> JackLi · 2025-08-22 09:48</div>
                     </div>
                     <div class="ix-row">
-                        <div class="top"><span class="ttl">差旅申请 · 上海</span><span
-                                class="badge b-approved">APPROVED</span></div>
-                        <div class="meta"><span class="av" style="background: oklch(0.65 0.14 150)">RW</span> RanWang ·
-                            2025-08-19 14:21
-                        </div>
+                        <div class="top"><span class="ttl">差旅申请 · 上海</span><span class="badge b-approved">APPROVED</span></div>
+                        <div class="meta"><span class="av" style="background:#3a9e6e">RW</span> RanWang · 2025-08-19 14:21</div>
                     </div>
                 </div>
 
                 <div class="ix-detail">
-                    <div class="num">编号 <b style="color:#222">ER_1JB3AQQU</b> 📋 <span
-                            style="margin-left:auto; color:#aaa">⤴  ⟳  🖶</span></div>
+                    <div class="num">编号 <b style="color:#222">ER_1JB3AQQU</b> 📋 <span style="margin-left:auto;color:#aaa">⤴ ⟳ 🖶</span></div>
                     <div class="ttl-row"><h5>test</h5><span class="badge b-pending">PENDING</span></div>
-                    <div class="who"><span class="av" style="width:22px; height:22px; font-size:11px">YP</span> YuePeng
-                        · <span style="color:#999">部门</span> · 提交于 2025-08-26 23:02:37
+                    <div class="who">
+                        <span class="av" style="width:22px;height:22px;font-size:10px">YP</span>
+                        YuePeng · <span style="color:#aaa">部门</span> · 提交于 2025-08-26 23:02:37
                     </div>
-
                     <div class="ix-tabs">
                         <span class="on">审批信息</span>
                         <span>审批记录</span>
                         <span>评论列表 (0)</span>
                     </div>
-
                     <div class="ix-form">
-                        <div class="f"><label>文本</label>
-                            <div class="fx">🌐 China</div>
-                        </div>
-                        <div class="f"><label>数字</label><input disabled value="3.1415926"/></div>
+                        <div class="f"><label>文本</label><div class="pfx">🌐 China</div></div>
+                        <div class="f"><label>数字</label><input disabled value="3.1415926"></div>
                         <div class="f"><label>数字滑块</label>
-                            <div class="fx" style="position:relative; padding:14px 10px">
-                                <span style="position:absolute; left:12%; top:50%; transform:translate(-50%,-50%); width:10px; height:10px; border-radius:50%; background:#3b6ac4"></span>
-                                <span style="display:block; height:4px; border-radius:2px; background:#eee; width:100%"></span>
+                            <div class="pfx" style="position:relative;padding:12px 8px">
+                                <span style="position:absolute;left:12%;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;background:#3b6ac4"></span>
+                                <span style="display:block;height:4px;border-radius:2px;background:#eee;width:100%"></span>
                             </div>
                         </div>
-                        <div class="f req"><label>评分</label>
-                            <div class="fx" style="color: oklch(0.78 0.15 70); letter-spacing:2px">★★★☆☆☆☆☆☆☆</div>
-                        </div>
-                        <div class="f"><label>布尔</label>
-                            <div class="fx" style="display:flex; gap:14px">○ 是 &nbsp; ◉ 否</div>
-                        </div>
-                        <div class="f"><label>自动完成</label><input disabled value=""/></div>
-                        <div class="f req"><label>颜色选择</label>
-                            <div class="colorbar"></div>
-                        </div>
-                        <div class="f"><label>周选择器</label>
-                            <div class="fx">🗓 ---- 年第 -- 周</div>
-                        </div>
-                        <div class="f"><label>文章选择</label><input disabled value=""/></div>
+                        <div class="f req"><label>评分</label><div class="pfx" style="color:#f5a623;letter-spacing:2px">★★★☆☆☆☆☆☆☆</div></div>
+                        <div class="f"><label>布尔</label><div class="pfx" style="gap:12px">○ 是 &nbsp; ◉ 否</div></div>
+                        <div class="f"><label>自动完成</label><input disabled value=""></div>
+                        <div class="f req"><label>颜色选择</label><div class="colorbar"></div></div>
+                        <div class="f"><label>周选择器</label><div class="pfx">🗓 ---- 年第 -- 周</div></div>
+                        <div class="f"><label>文章选择</label><input disabled value=""></div>
                     </div>
-
-                    <div class="actions">
-                        <button class="act">🎧 撤销</button>
-                        <button class="act primary">↻ 再次提交</button>
-                        <button class="act">✎ 评论</button>
-                        <button class="act">🖶 自定义打印</button>
-                        <button class="act danger" style="margin-left:auto">驳回</button>
-                        <button class="act primary"
-                                style="background: oklch(0.74 0.16 150); border-color: oklch(0.74 0.16 150); color:#0a1a0a">
-                            ✓ 同意
-                        </button>
+                    <div class="ix-actions">
+                        <button class="ix-act">🎧 撤销</button>
+                        <button class="ix-act primary">↻ 再次提交</button>
+                        <button class="ix-act">✎ 评论</button>
+                        <button class="ix-act">🖶 自定义打印</button>
+                        <button class="ix-act danger" style="margin-left:auto">驳回</button>
+                        <button class="ix-act approve">✓ 同意</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- SETTINGS / MORE CONFIG -->
-<section>
-    <div class="wrap">
-        <div class="section-head">
-            <div>
-                <span class="section-eyebrow">04 · MORE SETTINGS</span>
-                <h2 class="section-title">第四步：审批子标题 + <span class="serif">自定义打印</span>。</h2>
-            </div>
-            <p class="section-lead">把流程接入企业的物料清单 ——
-                子标题字段、打印模板、复制配置一键迁移。一个流程从测试到生产，只需要一次发布。</p>
+    <!-- §04 MORE SETTINGS -->
+    <div class="r g-bg ticks g2">
+        <div class="c" style="padding:32px 40px">
+            <div style="font-family:monospace; font-size:11px; color:var(--c-text-muted); letter-spacing:.12em; margin-bottom:10px">04 · MORE SETTINGS</div>
+            <div class="h2">审批子标题 + 自定义打印。</div>
         </div>
+        <div class="c" style="padding:32px 40px; display:flex; align-items:center">
+            <div class="sub">把流程接入企业的物料清单 —— 子标题字段、打印模板、复制配置一键迁移。一个流程从测试到生产，只需要一次发布。</div>
+        </div>
+    </div>
 
-        <div class="settings">
+    <div class="r g2 reveal">
+        <div class="c" style="padding:32px">
             <div class="settings-card">
-                <div class="hd">
+                <div class="s-hd">
                     <span class="x">✕</span>
-                    <div class="steps">
-                        <span><span class="num">1</span>基础信息</span>
-                        <span><span class="num">2</span>表单预览</span>
-                        <span><span class="num">3</span>流程设计</span>
-                        <span class="on"><span class="num">4</span>更多设置</span>
+                    <div class="s-steps">
+                        <span><span class="snum">1</span>基础信息</span>
+                        <span><span class="snum">2</span>表单预览</span>
+                        <span><span class="snum">3</span>流程设计</span>
+                        <span class="on"><span class="snum">4</span>更多设置</span>
                     </div>
-                    <span class="ghost"
-                          style="color:#444; border:1px solid #ddd; padding:6px 12px; font-size:12px; border-radius:6px">复制配置</span>
-                    <span class="pub">发布</span>
+                    <span style="padding:5px 10px;border:1px solid #ddd;border-radius:4px;font-size:11.5px;color:#555">复制配置</span>
+                    <span class="s-pub">发布</span>
                 </div>
-                <div class="body">
+                <div class="s-body">
                     <div class="form-block">
                         <div class="lab">审批子标题字段设置</div>
                         <div class="selectbox">请选择字段 <span style="color:#bbb">▾</span></div>
@@ -2748,7 +1282,7 @@
                     </div>
                     <div class="form-block">
                         <div class="lab">通知渠道</div>
-                        <div class="opt-row" style="flex-wrap:wrap; gap:12px">
+                        <div class="opt-row">
                             <span class="opt on"><i></i> 站内信</span>
                             <span class="opt on"><i></i> 邮件</span>
                             <span class="opt"><i></i> 企业微信</span>
@@ -2758,160 +1292,61 @@
                     </div>
                 </div>
             </div>
-
-            <div class="archi">
-                <h3>流程发布管线</h3>
-                <p>一次发布，结构化存储 + 通知通道 + 历史快照 自动就位。每条审批走过的路径都可被回放。</p>
-                <div class="archi-row">
-                    <div class="archi-cell">
-                        <div class="lab">配置</div>
-                        <b>flow.config</b><br/>JSON DAG
-                    </div>
-                    <div class="archi-cell accent">
-                        <div class="lab">引擎</div>
-                        <b>EruptFlow</b><br/>Spring runtime
-                    </div>
-                    <div class="archi-cell">
-                        <div class="lab">实例</div>
-                        <b>e_flow_instance</b><br/>relational
-                    </div>
-                    <div class="archi-cell">
-                        <div class="lab">任务</div>
-                        <b>approval_task</b><br/>per assignee
-                    </div>
+        </div>
+        <div class="c" style="padding:32px">
+            <div style="margin-bottom:14px">
+                <div class="h3" style="margin-bottom:6px">流程发布管线</div>
+                <div class="sub" style="font-size:13px">一次发布，结构化存储 + 通知通道 + 历史快照 自动就位。每条审批走过的路径都可被回放。</div>
+            </div>
+            <div class="archi-grid">
+                <div class="archi-cell">
+                    <div class="ac-lab">配置</div>
+                    <b>flow.config</b>JSON DAG
                 </div>
-                <div class="archi-row">
-                    <div class="archi-cell">
-                        <div class="lab">通知</div>
-                        <b>NotifyBus</b><br/>SMTP / WX / Webhook
-                    </div>
-                    <div class="archi-cell">
-                        <div class="lab">表单</div>
-                        <b>@Erupt → form</b><br/>auto-render
-                    </div>
-                    <div class="archi-cell">
-                        <div class="lab">历史</div>
-                        <b>form_history</b><br/>before / after
-                    </div>
-                    <div class="archi-cell">
-                        <div class="lab">导出</div>
-                        <b>print template</b><br/>html → pdf
-                    </div>
+                <div class="archi-cell accent">
+                    <div class="ac-lab">引擎</div>
+                    <b>EruptFlow</b>Spring runtime
+                </div>
+                <div class="archi-cell">
+                    <div class="ac-lab">实例</div>
+                    <b>e_flow_instance</b>relational
+                </div>
+                <div class="archi-cell">
+                    <div class="ac-lab">任务</div>
+                    <b>approval_task</b>per assignee
+                </div>
+            </div>
+            <div class="archi-grid" style="margin-bottom:0">
+                <div class="archi-cell">
+                    <div class="ac-lab">通知</div>
+                    <b>NotifyBus</b>SMTP / WX / DingTalk
+                </div>
+                <div class="archi-cell">
+                    <div class="ac-lab">表单</div>
+                    <b>@Erupt → form</b>auto-render
+                </div>
+                <div class="archi-cell">
+                    <div class="ac-lab">历史</div>
+                    <b>form_history</b>before / after
+                </div>
+                <div class="archi-cell">
+                    <div class="ac-lab">导出</div>
+                    <b>print template</b>html → pdf
                 </div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- CTA -->
-<section>
-    <div class="wrap">
-        <div class="cta-end">
-            <div>
-                <h3>把下一个流程，<span class="serif">画</span> 出来。</h3>
-                <p>登录在线演示，10 分钟从空白画布到一条可发起、可审批、可通知的真实流程。</p>
-                <div class="cta-row" style="margin-top:30px">
-                    <button class="btn accent">打开演示 <span class="arrow">→</span></button>
-                    <button class="btn secondary">查看文档</button>
-                </div>
-            </div>
-            <div class="creds" style="background: color-mix(in oklch, var(--panel) 90%, var(--bg-2))">
-                <h4>credentials</h4>
-                <div class="row"><span class="k">URL</span><span class="v url">www.erupt.xyz/demo</span><span
-                        class="copy">copy</span></div>
-                <div class="row"><span class="k">账号</span><span class="v">flow</span><span class="copy">copy</span>
-                </div>
-                <div class="row"><span class="k">密码</span><span class="v">flow</span><span class="copy">copy</span>
-                </div>
-                <div class="row"><span class="k">入口</span><span class="v">/#!/flow</span><span class="copy"
-                                                                                                 style="opacity:.5">—</span>
-                </div>
+    <!-- CTA -->
+    <div class="r g-bg ticks">
+        <div class="c no-bb" style="padding:56px 48px; border-right:0">
+            <div class="h2" style="margin-bottom:12px">把下一个流程，<span style="color:var(--c-brand)">画</span>出来。</div>
+            <div class="sub" style="max-width:46ch; margin-bottom:28px">登录在线演示，10 分钟从空白画布到一条可发起、可审批、可通知的真实流程。</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+                <a class="wbtn" href="http://www.erupt.xyz/demo" target="_blank">打开演示 →</a>
+                <a class="wbtn wbtn-o" href="https://www.yuque.com/erupts/erupt" target="_blank">查看文档</a>
             </div>
         </div>
     </div>
-</section>
-
-
-<script>
-    (function () {
-        var stage = document.getElementById('stage');
-        if (!stage) return;
-        var dots = Array.from(stage.querySelectorAll('.particles .p'));
-        if (!dots.length) return;
-
-        // Waypoints in SVG coordinate space (viewBox 0 0 1216 520)
-        var PATHS = [
-            [[608, 76], [608, 144], [408, 144], [408, 198], [408, 252], [408, 328], [408, 432], [608, 432], [608, 510]],
-            [[608, 76], [608, 144], [808, 144], [808, 198], [808, 252], [808, 328], [808, 432], [608, 432], [608, 510]],
-            [[608, 76], [608, 144], [160, 144], [160, 198], [160, 252], [160, 432], [608, 432], [608, 510]]
-        ];
-        // p0→path0, p1→path1, p2→path2, p3→path0, p4→path0
-        var DOT_PATH = [0, 1, 2, 0, 0];
-        // phase offsets in ms (mirror the original CSS negative animation-delays)
-        var DOT_DELAY = [0, 500, 1200, 2000, 2700];
-        var SVG_W = 1216, SVG_H = 520;
-
-        // Pre-build cumulative segment lengths for each path
-        var BUILT = PATHS.map(function (pts) {
-            var segs = [], cum = 0;
-            for (var i = 1; i < pts.length; i++) {
-                var dx = pts[i][0] - pts[i - 1][0], dy = pts[i][1] - pts[i - 1][1];
-                var len = Math.sqrt(dx * dx + dy * dy);
-                cum += len;
-                segs.push({x0: pts[i - 1][0], y0: pts[i - 1][1], x1: pts[i][0], y1: pts[i][1], len: len, cum: cum});
-            }
-            return {segs: segs, total: cum};
-        });
-
-        function pointAt(built, t) {
-            var target = t * built.total;
-            var segs = built.segs;
-            for (var i = 0; i < segs.length; i++) {
-                if (segs[i].cum >= target - 0.001) {
-                    var prev = i === 0 ? 0 : segs[i - 1].cum;
-                    var f = segs[i].len > 0 ? (target - prev) / segs[i].len : 0;
-                    f = Math.max(0, Math.min(1, f));
-                    return [
-                        segs[i].x0 + (segs[i].x1 - segs[i].x0) * f,
-                        segs[i].y0 + (segs[i].y1 - segs[i].y0) * f
-                    ];
-                }
-            }
-            var last = segs[segs.length - 1];
-            return [last.x1, last.y1];
-        }
-
-        var t0 = null;
-
-        function tick(ts) {
-            if (t0 === null) t0 = ts;
-            var body = document.body;
-            var isStatic = body.classList.contains('energy-static');
-            var isStorm = body.classList.contains('energy-storm');
-            var dur = isStorm ? 1600 : 3800;
-
-            for (var i = 0; i < dots.length; i++) {
-                var el = dots[i];
-                if (isStatic) {
-                    el.style.opacity = 0;
-                    continue;
-                }
-
-                var elapsed = (ts - t0 + DOT_DELAY[i]) % dur;
-                var t = elapsed / dur;
-                var pt = pointAt(BUILT[DOT_PATH[i]], t);
-
-                // half-size offset so the dot centres on the wire
-                var r = isStorm ? 4 : 3;
-                el.style.left = 'calc(' + (pt[0] / SVG_W * 100).toFixed(3) + '% - ' + r + 'px)';
-                el.style.top = 'calc(' + (pt[1] / SVG_H * 100).toFixed(3) + '% - ' + r + 'px)';
-                // fade in 0-8%, full 8-92%, fade out 92-100%
-                el.style.opacity = (t < 0.08 ? t / 0.08 : t > 0.92 ? (1 - t) / 0.08 : 1).toFixed(3);
-            }
-
-            requestAnimationFrame(tick);
-        }
-
-        requestAnimationFrame(tick);
-    })();
-</script>
+    <div class="fr-corners"></div>
+</div>

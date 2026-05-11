@@ -30,7 +30,8 @@ var app = angular.module('app', [
         templateUrl: function (attr) {
             toTemplate();
             return "page/flow/flow.html";
-        }
+        },
+        controller: 'flow'
     }).when('/cloud', {
         templateUrl: function (attr) {
             toTemplate();

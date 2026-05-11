@@ -3,61 +3,74 @@ app.controller('flow', ['$scope', '$timeout', function ($scope, $timeout) {
         // Reveal on scroll
         var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
-                if (e.isIntersecting) {
-                    e.target.classList.add('in');
-                    io.unobserve(e.target);
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, {threshold: 0.08});
+        document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
+
+        // Flow particles animation
+        var stage = document.getElementById('stage');
+        if (!stage) return;
+        var dots = Array.from(stage.querySelectorAll('.particles .p'));
+        if (!dots.length) return;
+
+        var PATHS = [
+            [[608,76],[608,144],[408,144],[408,198],[408,252],[408,328],[408,432],[608,432],[608,510]],
+            [[608,76],[608,144],[808,144],[808,198],[808,252],[808,328],[808,432],[608,432],[608,510]],
+            [[608,76],[608,144],[160,144],[160,198],[160,252],[160,432],[608,432],[608,510]]
+        ];
+        var DOT_PATH = [0, 1, 2, 0, 0];
+        var DOT_DELAY = [0, 500, 1200, 2000, 2700];
+        var SVG_W = 1216, SVG_H = 520;
+
+        var BUILT = PATHS.map(function (pts) {
+            var segs = [], cum = 0;
+            for (var i = 1; i < pts.length; i++) {
+                var dx = pts[i][0] - pts[i-1][0], dy = pts[i][1] - pts[i-1][1];
+                var len = Math.sqrt(dx*dx + dy*dy);
+                cum += len;
+                segs.push({x0:pts[i-1][0],y0:pts[i-1][1],x1:pts[i][0],y1:pts[i][1],len:len,cum:cum});
+            }
+            return {segs:segs, total:cum};
+        });
+
+        function pointAt(built, t) {
+            var target = t * built.total;
+            var segs = built.segs;
+            for (var i = 0; i < segs.length; i++) {
+                if (segs[i].cum >= target - 0.001) {
+                    var prev = i === 0 ? 0 : segs[i-1].cum;
+                    var f = segs[i].len > 0 ? (target - prev) / segs[i].len : 0;
+                    f = Math.max(0, Math.min(1, f));
+                    return [segs[i].x0 + (segs[i].x1 - segs[i].x0) * f, segs[i].y0 + (segs[i].y1 - segs[i].y0) * f];
                 }
-            });
-        }, {threshold: 0.1});
-        document.querySelectorAll('.reveal').forEach(function (n) {
-            io.observe(n);
-        });
-
-        // Apply current lang to data-zh/data-en elements
-        function applyLang(lang) {
-            document.querySelectorAll('[data-zh],[data-en]').forEach(function (el) {
-                var v = el.getAttribute('data-' + lang);
-                if (v != null) el.innerHTML = v;
-            });
+            }
+            var last = segs[segs.length - 1];
+            return [last.x1, last.y1];
         }
 
-        applyLang(i18n.getLang());
+        var t0 = null;
+        var DUR = 3800;
 
-        // Accent switching
-        var ACCENTS = {
-            'hot-orange': {a: 'oklch(0.74 0.18 42)', b: 'oklch(0.82 0.14 58)', r: 'oklch(0.74 0.17 18)'},
-            'cyber-cyan': {a: 'oklch(0.78 0.15 200)', b: 'oklch(0.85 0.12 180)', r: 'oklch(0.72 0.17 230)'},
-            'terminal-green': {a: 'oklch(0.78 0.18 145)', b: 'oklch(0.85 0.14 130)', r: 'oklch(0.74 0.17 170)'},
-            'amethyst': {a: 'oklch(0.72 0.18 290)', b: 'oklch(0.80 0.14 310)', r: 'oklch(0.74 0.17 340)'}
-        };
-
-        function setAccent(name) {
-            var col = ACCENTS[name] || ACCENTS['hot-orange'];
-            document.documentElement.style.setProperty('--accent', col.a);
-            document.documentElement.style.setProperty('--accent-2', col.b);
-            document.documentElement.style.setProperty('--rose', col.r);
-            document.querySelectorAll('.sw').forEach(function (s) {
-                s.classList.toggle('on', s.dataset.accent === name);
-            });
+        function tick(ts) {
+            if (t0 === null) t0 = ts;
+            var stageRect = stage.getBoundingClientRect();
+            var sw = stageRect.width, sh = stageRect.height;
+            for (var i = 0; i < dots.length; i++) {
+                var el = dots[i];
+                var elapsed = (ts - t0 + DOT_DELAY[i]) % DUR;
+                var t = elapsed / DUR;
+                var built = BUILT[DOT_PATH[i]];
+                var pt = pointAt(built, t);
+                var px = pt[0] / SVG_W * sw;
+                var py = pt[1] / SVG_H * sh;
+                var fade = t < 0.05 ? t / 0.05 : t > 0.9 ? (1 - t) / 0.1 : 1;
+                el.style.left = (px - 3) + 'px';
+                el.style.top = (py - 3) + 'px';
+                el.style.opacity = fade * 0.9;
+            }
+            requestAnimationFrame(tick);
         }
-
-        document.querySelectorAll('.sw').forEach(function (s) {
-            s.addEventListener('click', function () {
-                setAccent(s.dataset.accent);
-            });
-        });
-
-        // Tweaks toggles
-        document.querySelectorAll('.tw-toggle').forEach(function (t) {
-            t.addEventListener('click', function () {
-                t.classList.toggle('on');
-                var on = t.classList.contains('on');
-                if (t.dataset.key === 'showGrid') document.body.classList.toggle('no-grid', !on);
-                if (t.dataset.key === 'showGlow') document.body.classList.toggle('no-glow', !on);
-                if (t.dataset.key === 'showFlow') document.body.classList.toggle('no-flow', !on);
-            });
-        });
-
-        setAccent('hot-orange');
+        requestAnimationFrame(tick);
     }, 0);
-}])
+}]);

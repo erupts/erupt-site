@@ -21,7 +21,10 @@
       "Read(**)",
       "Bash(nohup python:*)",
       "Bash(echo \"PID: $!\")",
-      "Bash(nohup python3:*)"
+      "Bash(nohup python3:*)",
+      "Bash(lsof -iTCP -sTCP:LISTEN -n -P)",
+      "Bash(python3 -m http.server 9900)",
+      "Bash(echo \"Server PID: $!\")"
     ],
     "deny": [
       "Bash(rm -rf:*)",
