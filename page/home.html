@@ -217,22 +217,36 @@
 
     <div class="fr">
 
-        <!-- §1 HERO TEXT -->
-        <div class="r g-bg" style="padding:80px 48px 56px;text-align:center">
-            <div style="text-align:center">
-                <span id="home-logo"><img alt="" src="assets/logo.svg" width="120px"></span>
+        <!-- §1 HERO -->
+        <div class="r" style="display:flex;min-height:480px;overflow:hidden">
+            <!-- left: text -->
+            <div class="g-bg" style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--c-border)">
+                <span id="home-logo"><img alt="" src="assets/logo.svg" width="88px"></span>
+                <div style="margin-top:20px"><span class="tag">Open Source · Apache 2.0</span></div>
+                <h1 style="margin-top:14px;letter-spacing:-.03em;font-size:clamp(28px,4vw,50px);line-height:1.1">Erupt Engine</h1>
+                <p style="margin-top:12px;font-size:15px;color:var(--c-text2)">
+                    <span style="color:#ffc107;font-weight:500">{{'home.subtitle'|i18n}}</span>
+                    <span style="margin:0 10px;opacity:.2">×</span>
+                    {{'home.subtitle2'|i18n}}
+                </p>
+                <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
+                    <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank"
+                       style="padding:11px 28px;font-size:14px">{{'home.btn.start'|i18n}} ↗</a>
+                    <a class="wbtn" ng-click="go('https://www.erupt.xyz/demo',true)"
+                       style="cursor:pointer;padding:11px 28px;font-size:14px">{{'home.btn.demo'|i18n}}</a>
+                    <a class="wbtn" href="https://docs.erupt.xyz/guide/" target="_blank"
+                       style="padding:11px 28px;font-size:14px;border-color:#28a745;color:#28a745"
+                       onmouseover="this.style.background='#28a745';this.style.color='#fff'"
+                       onmouseout="this.style.background='';this.style.color='#28a745'">{{'home.btn.doc'|i18n}}</a>
+                </div>
+                <p style="margin-top:16px;font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text2);opacity:.45">
+                    Free · Spring Boot · Zero Frontend Code
+                </p>
             </div>
-            <h1 style="margin-top:30px">Erupt Engine</h1>
-            <h4 style="margin-top:18px"><span style="color:#ffc107"> {{'home.subtitle'|i18n}} </span> ⚔
-                {{'home.subtitle2'|i18n}}</h4>
-            <p style="margin-top:26px;gap:10px;display:flex;justify-content:center;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank"
-                   style="padding:11px 28px;font-size:14px">{{'home.btn.start'|i18n}} ↗</a>
-                <a class="wbtn" ng-click="go('https://www.erupt.xyz/demo',true)"
-                   style="cursor:pointer;padding:11px 28px;font-size:14px">{{'home.btn.demo'|i18n}}</a>
-                <a class="wbtn" href="https://docs.erupt.xyz/guide/" target="_blank"
-                   style="padding:11px 28px;font-size:14px">{{'home.btn.doc'|i18n}}</a>
-            </p>
+            <!-- right: annotation orbit canvas -->
+            <div class="g-bg d-none d-lg-block" style="flex:0 0 46%;position:relative;overflow:hidden">
+                <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%"></canvas>
+            </div>
         </div>
 
         <!-- §1b HERO EDITOR -->
@@ -245,7 +259,7 @@
                         <span class="eb-dot eb-dot-y"></span>
                         <span class="eb-dot eb-dot-g"></span>
                     </div>
-                    <span class="eb-titlebar-name">User.java — erupt-demo</span>
+                    <span class="eb-titlebar-name">Task.java — erupt-demo</span>
                     <span class="eb-titlebar-badge">Erupt Engine</span>
                 </div>
                 <!-- body -->
@@ -1013,7 +1027,7 @@ public class Task extends BaseModel {
             </p>
             <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
                 <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank"
-                   style="padding:11px 28px;font-size:14px">{{'home.btn.start'|i18n}} ↗</a>
+                   style="padding:11px 28px;font-size:14px">{{'home.btn.start'|i18n}}</a>
                 <a class="wbtn" href="https://www.erupt.xyz/demo" target="_blank"
                    style="padding:11px 28px;font-size:14px">{{'home.v2.cta.demo'|i18n}}</a>
                 <a class="wbtn" href="https://docs.erupt.xyz/guide/" target="_blank"
@@ -1060,17 +1074,110 @@ public class Task extends BaseModel {
 </div><!-- /ng-controller -->
 
 <script>
+    // .reveal scroll animation
     (function () {
         var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
-                if (e.isIntersecting) {
-                    e.target.classList.add('in');
-                    io.unobserve(e.target);
-                }
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
             });
         }, {threshold: 0.05});
-        document.querySelectorAll('.reveal').forEach(function (n) {
-            io.observe(n);
-        });
+        document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
+    }());
+
+    // Hero annotation orbit
+    (function () {
+        var c = document.getElementById('hero-canvas');
+        if (!c) return;
+        var ctx = c.getContext('2d');
+        var W = 0, H = 0, cx = 0, cy = 0, raf;
+        var PI = Math.PI;
+
+        var nodes = [
+            { text: '@Erupt',         r: 0,   angle: 0,              size: 14,   tier: 0 },
+            { text: '@EruptField',    r: 125, angle: 0,              size: 11.5, tier: 1 },
+            { text: '@Power',         r: 125, angle: PI * 2 / 5,     size: 10.5, tier: 1 },
+            { text: '@Filter',        r: 125, angle: PI * 4 / 5,     size: 10.5, tier: 1 },
+            { text: '@DataProxy',     r: 125, angle: PI * 6 / 5,     size: 10.5, tier: 1 },
+            { text: '@Vis',           r: 125, angle: PI * 8 / 5,     size: 10.5, tier: 1 },
+            { text: '@View',          r: 230, angle: PI * 1 / 8,     size: 10,   tier: 2 },
+            { text: '@Edit',          r: 230, angle: PI * 3 / 8,     size: 10,   tier: 2 },
+            { text: '@Search',        r: 230, angle: PI * 6 / 8,     size: 10,   tier: 2 },
+            { text: '@RowOperation',  r: 230, angle: PI * 10 / 8,    size: 9.5,  tier: 2 },
+            { text: '@Drill',         r: 230, angle: PI * 13 / 8,    size: 10,   tier: 2 },
+            { text: '@Tree',          r: 230, angle: PI * 15 / 8,    size: 10,   tier: 2 },
+        ];
+
+        var edges = [
+            [0,1],[0,2],[0,3],[0,4],[0,5],
+            [1,6],[1,7],[1,8],[2,9],[4,10],[5,11]
+        ];
+        var flow = edges.map(function () { return Math.random(); });
+        var t = 0;
+
+        function resize() {
+            if (!c.offsetWidth) return;
+            var dpr = window.devicePixelRatio || 1;
+            W = c.offsetWidth; H = c.offsetHeight;
+            c.width = W * dpr; c.height = H * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            cx = W / 2; cy = H / 2;
+        }
+
+        function pt(node) {
+            if (!node.r) return { x: cx, y: cy };
+            var spd = node.r > 180 ? 0.00013 : 0.00024;
+            var a = node.angle + t * spd;
+            return { x: cx + Math.cos(a) * node.r, y: cy + Math.sin(a) * node.r };
+        }
+
+        function draw() {
+            if (!document.body.contains(c)) { cancelAnimationFrame(raf); return; }
+            if (!W || !H) { raf = requestAnimationFrame(draw); return; }
+            ctx.clearRect(0, 0, W, H);
+            t++;
+            var pts = nodes.map(pt);
+
+            // edges + flow dots
+            edges.forEach(function (e, i) {
+                var a = pts[e[0]], b = pts[e[1]];
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(255,87,34,.1)';
+                ctx.lineWidth = 1;
+                ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+                ctx.stroke();
+                flow[i] = (flow[i] + 0.003) % 1;
+                var f = flow[i];
+                ctx.beginPath();
+                ctx.arc(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f, 2.2, 0, PI * 2);
+                ctx.fillStyle = 'rgba(255,87,34,.65)';
+                ctx.fill();
+            });
+
+            // annotation labels
+            nodes.forEach(function (node, i) {
+                var p = pts[i];
+                var pulse = 1 + Math.sin(t * 0.018 + i * 1.1) * 0.06;
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.font = (node.tier < 2 ? '600 ' : '400 ') + (node.size * pulse) + 'px SFMono-Regular,Menlo,monospace';
+                if (node.tier === 0) {
+                    ctx.shadowColor = 'rgba(255,87,34,.45)'; ctx.shadowBlur = 16;
+                    ctx.fillStyle = 'rgba(255,87,34,.92)';
+                } else if (node.tier === 1) {
+                    ctx.shadowBlur = 0; ctx.fillStyle = 'rgba(255,87,34,.6)';
+                } else {
+                    ctx.shadowBlur = 0; ctx.fillStyle = 'rgba(255,87,34,.32)';
+                }
+                ctx.fillText(node.text, p.x, p.y);
+                ctx.shadowBlur = 0;
+            });
+
+            raf = requestAnimationFrame(draw);
+        }
+
+        setTimeout(function () {
+            resize();
+            window.addEventListener('resize', resize);
+            draw();
+        }, 120);
     }());
 </script>
