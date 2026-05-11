@@ -159,12 +159,29 @@
         background: #fff;
         border: 1px solid #ddd;
         border-radius: 50%;
-        display: grid;
-        place-items: center;
-        font-size: 14px;
-        color: #aaa;
         cursor: pointer;
         z-index: 2;
+    }
+
+    .plus::before,
+    .plus::after {
+        content: '';
+        position: absolute;
+        background: #aaa;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 1px;
+    }
+
+    .plus::before {
+        width: 10px;
+        height: 1.5px;
+    }
+
+    .plus::after {
+        width: 1.5px;
+        height: 10px;
     }
 
     .cv-corner {
@@ -860,7 +877,8 @@
             </div>
             <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--c-border); border:1px solid var(--c-border); margin-top:4px">
                 <div style="padding:14px 12px; background:#fff; text-align:center">
-                    <div style="font-size:26px; font-weight:700; color:var(--c-brand); font-family:monospace">9<span style="font-size:16px">+</span></div>
+                    <div style="font-size:26px; font-weight:700; color:var(--c-brand); font-family:monospace">9<span
+                            style="font-size:16px"></span></div>
                     <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">node types</div>
                 </div>
                 <div style="padding:14px 12px; background:#fff; text-align:center">
@@ -912,39 +930,39 @@
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12"/></svg>
                     添加分支
                 </div>
-                <div class="node cond" style="left:96px;top:198px;width:170px">
+                <div class="node cond" style="left:75px;top:198px;width:170px">
                     <div class="nh">互斥条件 1 <em>优先级 1</em></div>
                     <div class="nb"><b>请设置</b><span class="arr">→</span></div>
                 </div>
-                <div class="node cond" style="left:344px;top:198px;width:170px">
+                <div class="node cond" style="left:323px;top:198px;width:170px">
                     <div class="nh">互斥条件 2 <em>优先级 2</em></div>
                     <div class="nb"><b>金额 ≤ ¥5,000</b><span class="arr">→</span></div>
                 </div>
-                <div class="node cond" style="left:744px;top:198px;width:170px">
+                <div class="node cond" style="left:723px;top:198px;width:170px">
                     <div class="nh">互斥条件 3 <em>优先级 3</em></div>
                     <div class="nb"><b>金额 &gt; ¥5,000</b><span class="arr">→</span></div>
                 </div>
-                <div class="node cond" style="left:992px;top:198px;width:170px">
+                <div class="node cond" style="left:971px;top:198px;width:170px">
                     <div class="nh">默认条件 <em>优先级 4</em></div>
                     <div class="nb"><b>请设置</b><span class="arr">→</span></div>
                 </div>
-                <div class="node appr" style="left:344px;top:328px;width:170px">
+                <div class="node appr" style="left:323px;top:328px;width:170px">
                     <div class="nh">审批人 <span class="x">✕</span></div>
                     <div class="nb"><b>财务主管</b><span class="arr">→</span></div>
                 </div>
-                <div class="node delay" style="left:744px;top:328px;width:170px">
+                <div class="node delay" style="left:723px;top:328px;width:170px">
                     <div class="nh">延时节点 <span class="x">✕</span></div>
                     <div class="nb"><b>延时 24h</b><span class="arr">→</span></div>
                 </div>
                 <div class="node end" style="left:50%;bottom:30px;transform:translateX(-50%)">流程结束</div>
-                <span class="plus" style="left:calc(50% - 11px);top:108px">+</span>
-                <span class="plus" style="left:160px;top:268px;transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:408px;top:268px;transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:808px;top:268px;transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:1056px;top:268px;transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:408px;top:388px;transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:808px;top:388px;transform:translateX(-11px)">+</span>
-                <span class="plus" style="left:calc(50% - 11px);bottom:62px">+</span>
+                <span class="plus" style="left:calc(50% - 11px);top:108px"></span>
+                <span class="plus" style="left:160px;top:268px;transform:translateX(-11px)"></span>
+                <span class="plus" style="left:408px;top:268px;transform:translateX(-11px)"></span>
+                <span class="plus" style="left:808px;top:268px;transform:translateX(-11px)"></span>
+                <span class="plus" style="left:1056px;top:268px;transform:translateX(-11px)"></span>
+                <span class="plus" style="left:408px;top:388px;transform:translateX(-11px)"></span>
+                <span class="plus" style="left:808px;top:388px;transform:translateX(-11px)"></span>
+                <span class="plus" style="left:calc(50% - 11px);bottom:62px"></span>
                 <div class="cv-corner">
                     <button>−</button>
                     <span style="font-family:monospace;font-size:12px">100%</span>

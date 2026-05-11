@@ -1,20 +1,148 @@
 <style>
+    /* ─── Blueprint: About Page ─── */
     .ab-page {
         background: #fff;
-        color: #111;
+        color: #0A0A0F;
+        font-family: Inter, -apple-system, "PingFang SC", system-ui, sans-serif;
     }
 
-    /* ── Hero ── */
-    .ab-hero {
-        background: #080c14;
-        padding: 100px 0 80px;
+    /* ── Frame container ── */
+    .ab-fr {
+        max-width: 1200px;
+        margin: 0 auto;
+        border-left: 1px solid #E5E7EB;
+        border-right: 1px solid #E5E7EB;
+        position: relative;
+    }
+
+    .ab-fr::before,
+    .ab-fr::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-color: #FF5722;
+        border-style: solid;
+        z-index: 10;
+    }
+
+    .ab-fr::before {
+        top: -1px;
+        left: -1px;
+        border-width: 2px 0 0 2px;
+    }
+
+    .ab-fr::after {
+        top: -1px;
+        right: -1px;
+        border-width: 2px 2px 0 0;
+    }
+
+    .ab-fr-corners {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+    }
+
+    .ab-fr-corners::before,
+    .ab-fr-corners::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-color: #FF5722;
+        border-style: solid;
+        bottom: -1px;
+    }
+
+    .ab-fr-corners::before {
+        left: -1px;
+        border-width: 0 0 2px 2px;
+    }
+
+    .ab-fr-corners::after {
+        right: -1px;
+        border-width: 0 2px 2px 0;
+    }
+
+    /* ── Rows ── */
+    .ab-r {
+        border-bottom: 1px solid #E5E7EB;
+    }
+
+    .ab-r:last-child {
+        border-bottom: none;
+    }
+
+    /* ── Section heading row (dot-grid) ── */
+    .ab-r-hd {
+        background-image: radial-gradient(circle, rgba(0, 0, 0, 0.038) 1px, transparent 1px);
+        background-size: 24px 24px;
+        padding: 52px 40px;
+        text-align: center;
+        position: relative;
+    }
+
+    /* Ticks — only middle rows */
+    .ab-r-hd.ticks::before,
+    .ab-r-hd.ticks::after {
+        content: '';
+        position: absolute;
+        top: -1px;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid #FF5722;
+    }
+
+    .ab-r-hd.ticks::before {
+        left: 40px;
+    }
+
+    .ab-r-hd.ticks::after {
+        right: 40px;
+    }
+
+    .ab-eyebrow {
+        font-family: "JetBrains Mono", SFMono-Regular, Consolas, monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #FF5722;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .ab-hd-title {
+        font-size: clamp(22px, 3vw, 32px);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #0A0A0F;
+        margin: 0 0 10px;
+        line-height: 1.2;
+    }
+
+    .ab-hd-lead {
+        font-size: 14.5px;
+        color: #6B7280;
+        line-height: 1.65;
+        max-width: 560px;
+        margin: 0 auto;
+    }
+
+    /* ── Hero row ── */
+    .ab-hero-row {
+        background: #0A0A0F;
+        padding: 88px 40px 80px;
         text-align: center;
         position: relative;
         overflow: hidden;
     }
 
-    /* fine grid */
-    .ab-hero::before {
+    .ab-hero-row::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -24,223 +152,146 @@
         pointer-events: none;
     }
 
-    /* center fade-out mask */
-    .ab-hero::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(ellipse 70% 60% at 50% 100%, #080c14 0%, transparent 100%);
-        pointer-events: none;
-    }
-
-    /* accent line at top */
-    .ab-hero-line {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #3b5bdb 30%, #7048e8 60%, transparent);
-    }
-
-    .ab-hero-inner {
-        position: relative;
-        z-index: 1;
-        max-width: 680px;
-        margin: 0 auto;
-        padding: 0 32px;
-    }
-
     .ab-hero-kicker {
-        font-size: .68em;
-        letter-spacing: .2em;
+        font-family: "JetBrains Mono", SFMono-Regular, Consolas, monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, .35);
+        color: #FF5722;
         margin-bottom: 24px;
         display: block;
+        position: relative;
+        z-index: 1;
     }
 
-    .ab-hero h1 {
-        font-size: 3.2em;
-        font-weight: 800;
+    .ab-hero-h1 {
+        font-size: clamp(38px, 5vw, 62px);
+        font-weight: 700;
+        letter-spacing: -0.025em;
         color: #fff;
         line-height: 1.08;
-        letter-spacing: -.03em;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
     }
 
-    .ab-hero h1 em {
+    .ab-hero-accent {
+        color: #FF5722;
         font-style: normal;
-        color: transparent;
-        -webkit-text-stroke: 1px rgba(255, 255, 255, .5);
     }
 
     .ab-hero-sub {
-        font-size: .97em;
-        color: rgba(255, 255, 255, .42);
-        line-height: 1.8;
-    }
-
-    /* ── Stats ── */
-    .ab-stats {
-        border-bottom: 1px solid #e8e8e8;
-    }
-
-    .ab-stats-inner {
-        max-width: 1100px;
+        font-size: 14.5px;
+        color: rgba(255, 255, 255, .45);
+        line-height: 1.65;
+        max-width: 560px;
         margin: 0 auto;
-        padding: 0 40px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ── Stats row ── */
+    .ab-stats-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .ab-stat {
-        padding: 28px 0;
-        border-right: 1px solid #e8e8e8;
-        padding-left: 32px;
+    .ab-stat-c {
+        padding: 32px 40px;
+        border-right: 1px solid #E5E7EB;
     }
 
-    .ab-stat:first-child {
-        padding-left: 0;
-    }
-
-    .ab-stat:last-child {
+    .ab-stat-c:last-child {
         border-right: none;
     }
 
     .ab-stat-num {
-        font-size: 1.5em;
-        font-weight: 800;
-        color: #111;
-        letter-spacing: -.02em;
+        font-family: "JetBrains Mono", SFMono-Regular, Consolas, monospace;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: #0A0A0F;
         line-height: 1;
+        margin-bottom: 6px;
     }
 
     .ab-stat-label {
-        font-size: .72em;
-        color: #aaa;
-        margin-top: 5px;
-        letter-spacing: .08em;
+        font-family: "JetBrains Mono", SFMono-Regular, Consolas, monospace;
+        font-size: 10px;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
+        color: #6B7280;
     }
 
-    /* ── Shared section ── */
-    .ab-section {
-        padding: 72px 0;
-    }
-
-    .ab-section-alt {
-        background: #f9f9fb;
-    }
-
-    .ab-section-dark {
-        background: #080c14;
-        color: #fff;
-    }
-
-    .ab-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 40px;
-    }
-
-    .ab-eyebrow {
-        font-size: .68em;
-        letter-spacing: .2em;
-        text-transform: uppercase;
-        color: #3b5bdb;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-
-    .ab-section-dark .ab-eyebrow {
-        color: #748ffc;
-    }
-
-    .ab-heading {
-        font-size: 1.9em;
-        font-weight: 800;
-        letter-spacing: -.025em;
-        color: #111;
-        margin-bottom: 10px;
-        line-height: 1.2;
-    }
-
-    .ab-section-dark .ab-heading {
-        color: #fff;
-    }
-
-    .ab-lead {
-        font-size: .9em;
-        color: #888;
-        line-height: 1.85;
-    }
-
-    .ab-section-dark .ab-lead {
-        color: rgba(255, 255, 255, .38);
-    }
-
-    /* ── Cards ── */
-    .ab-cards {
+    /* ── 3-col cards ── */
+    .ab-g3 {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1px;
-        background: #e8e8e8;
-        border: 1px solid #e8e8e8;
-        border-radius: 8px;
-        overflow: hidden;
-        margin-top: 48px;
     }
 
-    .ab-card {
-        background: #fff;
-        padding: 32px 28px;
+    .ab-c {
+        padding: 36px 40px;
+        border-right: 1px solid #E5E7EB;
+        position: relative;
+        overflow: hidden;
         transition: background .15s;
     }
 
-    .ab-card:hover {
-        background: #fafafa;
+    .ab-c:last-child {
+        border-right: none;
     }
 
-    .ab-card-dot {
-        width: 8px;
-        height: 8px;
+    .ab-c:hover {
+        background: rgba(255, 87, 34, .018);
+    }
+
+    /* Ghost step number */
+    .ab-ghost {
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        font-family: "JetBrains Mono", SFMono-Regular, Consolas, monospace;
+        font-size: 56px;
+        font-weight: 700;
+        color: #0A0A0F;
+        opacity: 0.045;
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .ab-c-dot {
+        width: 6px;
+        height: 6px;
         border-radius: 50%;
-        background: var(--dot, #3b5bdb);
+        background: #FF5722;
         margin-bottom: 20px;
     }
 
-    .ab-card h3 {
-        font-size: .95em;
-        font-weight: 700;
-        color: #111;
-        margin-bottom: 8px;
+    .ab-c h3 {
+        font-size: 15px;
+        font-weight: 600;
+        color: #0A0A0F;
+        margin-bottom: 10px;
+        letter-spacing: -0.01em;
     }
 
-    .ab-card p {
-        font-size: .85em;
-        color: #888;
-        line-height: 1.75;
+    .ab-c p {
+        font-size: 14.5px;
+        color: #6B7280;
+        line-height: 1.65;
         margin: 0;
     }
 
-    /* ── WeChat + Donate ── */
-    .ab-duo {
+    /* ── Connect: 2-col ── */
+    .ab-g2 {
         display: grid;
         grid-template-columns: 5fr 7fr;
-        gap: 1px;
-        background: rgba(255, 255, 255, .07);
-        border: 1px solid rgba(255, 255, 255, .07);
-        border-radius: 8px;
-        overflow: hidden;
-        margin-top: 48px;
     }
 
-    /* WeChat */
-    .ab-wx {
-        padding: 48px 40px;
-        background: rgba(255, 255, 255, .03);
-        border-right: 1px solid rgba(255, 255, 255, .06);
+    .ab-wx-c {
+        padding: 56px 40px;
+        border-right: 1px solid #E5E7EB;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -248,222 +299,266 @@
     }
 
     .ab-wx-label {
-        font-size: .68em;
-        letter-spacing: .18em;
+        font-family: "JetBrains Mono", SFMono-Regular, Consolas, monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, .3);
+        color: #6B7280;
         margin-bottom: 28px;
     }
 
     .ab-wx-qr {
-        width: 148px;
-        height: 148px;
-        background: #fff;
-        border-radius: 6px;
+        width: 140px;
+        height: 140px;
+        border: 1px solid #E5E7EB;
         padding: 8px;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
+        flex-shrink: 0;
     }
-
     .ab-wx-qr img {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        border-radius: 3px;
         display: block;
     }
 
     .ab-wx-name {
-        font-size: .92em;
+        font-size: 14.5px;
         font-weight: 600;
-        color: rgba(255, 255, 255, .75);
-        margin-bottom: 4px;
+        color: #0A0A0F;
+        margin-bottom: 6px;
     }
 
     .ab-wx-tip {
-        font-size: .78em;
-        color: rgba(255, 255, 255, .28);
+        font-size: 13px;
+        color: #6B7280;
+        line-height: 1.65;
+        max-width: 240px;
     }
 
-    /* Donate */
-    .ab-donate {
-        padding: 52px 48px;
-        background: rgba(255, 255, 255, .02);
+    /* Donate cell */
+    .ab-donate-c {
+        padding: 56px 48px;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
 
-    .ab-donate-eyebrow {
-        font-size: .68em;
-        letter-spacing: .2em;
-        text-transform: uppercase;
-        color: #748ffc;
+    .ab-donate-c h3 {
+        font-size: clamp(22px, 2.5vw, 30px);
         font-weight: 700;
-        margin-bottom: 16px;
+        letter-spacing: -0.025em;
+        color: #0A0A0F;
+        line-height: 1.2;
+        margin-bottom: 12px;
     }
 
-    .ab-donate h3 {
-        font-size: 1.7em;
-        font-weight: 800;
-        color: #fff;
-        letter-spacing: -.025em;
-        line-height: 1.15;
-        margin-bottom: 14px;
-    }
-
-    .ab-donate p {
-        font-size: .87em;
-        color: rgba(255, 255, 255, .38);
-        line-height: 1.85;
-        margin-bottom: 32px;
+    .ab-donate-c p {
+        font-size: 14.5px;
+        color: #6B7280;
+        line-height: 1.65;
+        margin-bottom: 28px;
         max-width: 380px;
     }
 
-    .ab-donate-btn {
+    /* Blueprint buttons */
+    .wbtn-o {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: #fff;
-        color: #111;
-        border-radius: 4px;
-        padding: 11px 26px;
-        font-size: .85em;
-        font-weight: 700;
+        padding: 9px 20px;
+        font-size: 13px;
+        font-weight: 500;
+        border: 1px solid #FF5722;
+        color: #FF5722;
         text-decoration: none;
-        letter-spacing: .01em;
-        width: fit-content;
-        transition: opacity .15s, transform .15s;
+        background: transparent;
+        cursor: pointer;
+        transition: background .15s, color .15s;
+        letter-spacing: 0;
     }
 
-    .ab-donate-btn:hover {
-        opacity: .88;
-        color: #111;
+    .wbtn-o:hover {
+        background: #FF5722;
+        color: #fff;
         text-decoration: none;
-        transform: translateY(-1px);
     }
 
     .ab-donate-methods {
         display: flex;
         gap: 8px;
         flex-wrap: wrap;
-        margin-top: 24px;
+        margin-top: 16px;
     }
 
     .ab-donate-method {
-        font-size: .72em;
-        color: rgba(255, 255, 255, .25);
-        border: 1px solid rgba(255, 255, 255, .08);
-        border-radius: 3px;
+        font-family: "JetBrains Mono", SFMono-Regular, Consolas, monospace;
+        font-size: 11px;
+        color: #6B7280;
+        border: 1px solid #E5E7EB;
         padding: 3px 10px;
+        letter-spacing: 0.05em;
+    }
+
+    /* ── Reveal ── */
+    .ab-reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .ab-reveal.visible {
+        opacity: 1;
+        transform: none;
     }
 
     /* ── Responsive ── */
-    @media (max-width: 768px) {
-        .ab-hero h1 {
-            font-size: 2.1em;
+    @media (max-width: 1000px) {
+        .ab-fr {
+            border-left: none;
+            border-right: none;
         }
 
-        .ab-stats-inner {
+        .ab-stats-grid {
             grid-template-columns: repeat(2, 1fr);
         }
 
-        .ab-stat:nth-child(2) {
+        .ab-stat-c:nth-child(2) {
             border-right: none;
         }
 
-        .ab-stat:nth-child(3) {
-            border-top: 1px solid #e8e8e8;
+        .ab-stat-c:nth-child(3) {
+            border-top: 1px solid #E5E7EB;
         }
 
-        .ab-stat:nth-child(4) {
-            border-top: 1px solid #e8e8e8;
+        .ab-stat-c:nth-child(4) {
+            border-top: 1px solid #E5E7EB;
         }
 
-        .ab-cards {
+        .ab-g3 {
             grid-template-columns: 1fr;
         }
 
-        .ab-duo {
-            grid-template-columns: 1fr;
-        }
-
-        .ab-wx {
+        .ab-c {
             border-right: none;
-            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .ab-c:last-child {
+            border-bottom: none;
+        }
+
+        .ab-g2 {
+            grid-template-columns: 1fr;
+        }
+
+        .ab-wx-c {
+            border-right: none;
+            border-bottom: 1px solid #E5E7EB;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .ab-hero-row {
+            padding: 64px 24px 56px;
+        }
+
+        .ab-r-hd {
+            padding: 36px 24px;
+        }
+
+        .ab-stat-c {
+            padding: 24px;
+        }
+
+        .ab-c {
+            padding: 24px;
+        }
+
+        .ab-wx-c, .ab-donate-c {
+            padding: 36px 24px;
         }
     }
 </style>
 
 <div class="ab-page" ng-controller="about">
 
-    <!-- Hero -->
-    <div class="ab-hero">
-        <div class="ab-hero-line"></div>
-        <div class="ab-hero-inner">
+    <div class="ab-fr">
+        <div class="ab-fr-corners"></div>
+
+        <!-- Hero -->
+        <div class="ab-hero-row ab-r">
             <span class="ab-hero-kicker">OPEN SOURCE · LOW CODE · JAVA</span>
-            <h1>{{'about.hero.title.pre' | i18n}}<em>{{'about.hero.title.highlight' | i18n}}</em></h1>
+            <h1 class="ab-hero-h1">
+                {{'about.hero.title.pre' | i18n}}<em class="ab-hero-accent">{{'about.hero.title.highlight' | i18n}}</em>
+            </h1>
             <p class="ab-hero-sub">{{'about.hero.sub' | i18n}}</p>
         </div>
-    </div>
 
-    <!-- Stats -->
-    <div class="ab-stats">
-        <div class="ab-stats-inner">
-            <div class="ab-stat">
-                <div class="ab-stat-num">2019</div>
-                <div class="ab-stat-label">{{'about.stat.founded' | i18n}}</div>
-            </div>
-            <div class="ab-stat">
-                <div class="ab-stat-num">Apache 2.0</div>
-                <div class="ab-stat-label">{{'about.stat.license' | i18n}}</div>
-            </div>
-            <div class="ab-stat">
-                <div class="ab-stat-num">GitHub / Gitee</div>
-                <div class="ab-stat-label">{{'about.stat.platform' | i18n}}</div>
-            </div>
-            <div class="ab-stat">
-                <div class="ab-stat-num">Spring Boot</div>
-                <div class="ab-stat-label">{{'about.stat.stack' | i18n}}</div>
+        <!-- Stats -->
+        <div class="ab-r ab-reveal">
+            <div class="ab-stats-grid">
+                <div class="ab-stat-c">
+                    <div class="ab-stat-num">2019</div>
+                    <div class="ab-stat-label">{{'about.stat.founded' | i18n}}</div>
+                </div>
+                <div class="ab-stat-c">
+                    <div class="ab-stat-num">Apache 2.0</div>
+                    <div class="ab-stat-label">{{'about.stat.license' | i18n}}</div>
+                </div>
+                <div class="ab-stat-c">
+                    <div class="ab-stat-num">GitHub / Gitee</div>
+                    <div class="ab-stat-label">{{'about.stat.platform' | i18n}}</div>
+                </div>
+                <div class="ab-stat-c">
+                    <div class="ab-stat-num">Spring Boot</div>
+                    <div class="ab-stat-label">{{'about.stat.stack' | i18n}}</div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Intro -->
-    <div class="ab-section ab-section-alt">
-        <div class="ab-container">
-            <div class="ab-eyebrow">{{'about.intro.eyebrow' | i18n}}</div>
-            <div class="ab-heading">{{'about.intro.title' | i18n}}</div>
-            <p class="ab-lead">{{'about.intro.sub' | i18n}}</p>
+        <!-- Intro heading -->
+        <div class="ab-r ab-r-hd ticks">
+            <span class="ab-eyebrow">{{'about.intro.eyebrow' | i18n}}</span>
+            <h2 class="ab-hd-title">{{'about.intro.title' | i18n}}</h2>
+            <p class="ab-hd-lead">{{'about.intro.sub' | i18n}}</p>
+        </div>
 
-            <div class="ab-cards">
-                <div class="ab-card">
-                    <div class="ab-card-dot" style="--dot:#3b5bdb"></div>
+        <!-- Intro cards -->
+        <div class="ab-r ab-reveal">
+            <div class="ab-g3">
+                <div class="ab-c">
+                    <div class="ab-ghost">01</div>
+                    <div class="ab-c-dot"></div>
                     <h3>{{'about.intro.c1.title' | i18n}}</h3>
                     <p>{{'about.intro.c1.desc' | i18n}}</p>
                 </div>
-                <div class="ab-card">
-                    <div class="ab-card-dot" style="--dot:#0ca678"></div>
+                <div class="ab-c">
+                    <div class="ab-ghost">02</div>
+                    <div class="ab-c-dot"></div>
                     <h3>{{'about.intro.c2.title' | i18n}}</h3>
                     <p>{{'about.intro.c2.desc' | i18n}}</p>
                 </div>
-                <div class="ab-card">
-                    <div class="ab-card-dot" style="--dot:#7048e8"></div>
+                <div class="ab-c">
+                    <div class="ab-ghost">03</div>
+                    <div class="ab-c-dot"></div>
                     <h3>{{'about.intro.c3.title' | i18n}}</h3>
                     <p>{{'about.intro.c3.desc' | i18n}}</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- WeChat + Donate -->
-    <div class="ab-section ab-section-dark">
-        <div class="ab-container">
-            <div class="ab-eyebrow">{{'about.connect.eyebrow' | i18n}}</div>
-            <div class="ab-heading">{{'about.connect.title' | i18n}}</div>
-            <p class="ab-lead">{{'about.connect.sub' | i18n}}</p>
+        <!-- Connect heading -->
+        <div class="ab-r ab-r-hd ticks">
+            <span class="ab-eyebrow">{{'about.connect.eyebrow' | i18n}}</span>
+            <h2 class="ab-hd-title">{{'about.connect.title' | i18n}}</h2>
+            <p class="ab-hd-lead">{{'about.connect.sub' | i18n}}</p>
+        </div>
 
-            <div class="ab-duo">
-                <div class="ab-wx">
+        <!-- WeChat + Donate -->
+        <div class="ab-r ab-reveal">
+            <div class="ab-g2">
+                <div class="ab-wx-c">
                     <div class="ab-wx-label">{{'about.wechat.title' | i18n}}</div>
                     <div class="ab-wx-qr">
                         <img alt="Erupt 公众号" src="images/me/mp.jpg">
@@ -472,13 +567,15 @@
                     <div class="ab-wx-tip">{{'about.wechat.desc' | i18n}}</div>
                 </div>
 
-                <div class="ab-donate">
-                    <div class="ab-donate-eyebrow">{{'about.donate.title' | i18n}}</div>
+                <div class="ab-donate-c">
+                    <span class="ab-eyebrow">{{'about.donate.title' | i18n}}</span>
                     <h3>{{'about.donate.card.title' | i18n}}</h3>
                     <p>{{'about.donate.card.desc' | i18n}}</p>
-                    <a class="ab-donate-btn" href="https://docs.erupt.xyz/guide/donate" target="_blank">
-                        {{'about.donate.btn' | i18n}} &nbsp;→
-                    </a>
+                    <div>
+                        <a class="wbtn-o" href="https://docs.erupt.xyz/guide/donate" target="_blank">
+                            {{'about.donate.btn' | i18n}} →
+                        </a>
+                    </div>
                     <div class="ab-donate-methods">
                         <span class="ab-donate-method">微信</span>
                         <span class="ab-donate-method">支付宝</span>
@@ -487,6 +584,30 @@
                 </div>
             </div>
         </div>
-    </div>
+
+    </div><!-- /ab-fr -->
 
 </div>
+
+<script>
+    (function () {
+        var els = document.querySelectorAll('.ab-reveal');
+        if (!('IntersectionObserver' in window)) {
+            els.forEach(function (el) {
+                el.classList.add('visible');
+            });
+            return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        els.forEach(function (el) {
+            io.observe(el);
+        });
+    })();
+</script>

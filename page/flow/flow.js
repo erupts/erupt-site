@@ -1,5 +1,7 @@
 app.controller('flow', ['$scope', '$timeout', function ($scope, $timeout) {
     $timeout(function () {
+        Prism.highlightAll();
+
         // Reveal on scroll
         var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {

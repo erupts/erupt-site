@@ -1,37 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mvn:*)",
-      "Bash(mvnd:*)",
+      "Bash(npm:*)",
       "Bash(pnpm:*)",
-      "Bash(npm run *)",
-      "Bash(ng:*)",
-      "Bash(git status)",
-      "Bash(git diff:*)",
-      "Bash(git log:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
+      "Bash(mvn:*)",
+      "Bash(git:*)",
       "Bash(ls:*)",
       "Bash(cat:*)",
       "Bash(grep:*)",
-      "Bash(rg:*)",
       "Bash(find:*)",
-      "Edit(**)",
-      "Write(**)",
-      "Read(**)",
-      "Bash(nohup python:*)",
-      "Bash(echo \"PID: $!\")",
-      "Bash(nohup python3:*)",
-      "Bash(lsof -iTCP -sTCP:LISTEN -n -P)",
-      "Bash(python3 -m http.server 9900)",
-      "Bash(echo \"Server PID: $!\")"
-    ],
-    "deny": [
-      "Bash(rm -rf:*)",
-      "Bash(git push:*)",
-      "Bash(git reset --hard:*)",
-      "Bash(mvn deploy:*)",
-      "Bash(npm publish:*)"
+      "Edit",
+      "Write",
+      "Read"
     ]
   }
 }
