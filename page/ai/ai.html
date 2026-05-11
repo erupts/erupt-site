@@ -1,19 +1,18 @@
 <style>
-    /* ────────────────────────────────────────────────────
-       Vercel-inspired AI page  |  prefix: v-
-       Palette: #000 / #111 / #333 / #666 / #999 / #eaeaea / #fafafa / #fff
-       Accent : #6366f1 (indigo, used sparingly)
-    ──────────────────────────────────────────────────── */
+    /* ── AI Page · Dark overrides ── */
+    body {
+        background: #0c0c12;
+    }
 
     #header {
-        background: rgb(0, 0, 0);
+        background: #0c0c12;
         border-bottom: 0;
         color: #fff;
     }
 
     #header > div {
-        border-left: 0;
-        border-right: 0;
+        border-left-color: #1c1c24;
+        border-right-color: #1c1c24;
     }
 
     #header a {
@@ -24,1573 +23,904 @@
         color: #fff !important;
     }
 
+    #footer {
+        --c-bg: #0c0c12;
+        --c-text: rgba(255, 255, 255, .65);
+        --c-text2: rgba(255, 255, 255, .28);
+        --c-border: rgba(255, 255, 255, .08);
+        --c-brand: #8b5cf6;
+        background: #0c0c12;
+    }
 
-    /* ── Hero ── */
-    .v-hero {
-        background: #000;
-        color: #fff;
-        padding: 96px 0 0;
-        text-align: center;
-        position: relative;
+    /* ── AI Page · Blueprint style ── */
+
+    /* ── Code window (dark) ── */
+    .ai-code-win {
+        background: #0a0a0f;
+        border: 1px solid var(--c-border);
         overflow: hidden;
     }
 
-    /* Dot grid */
-    .v-hero-dots {
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-        background-size: 28px 28px;
-        pointer-events: none;
-        -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, #000 20%, transparent 100%);
-        mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, #000 20%, transparent 100%);
-    }
-
-    /* Ambient glow blobs */
-    .v-hero-glow {
-        position: absolute;
-        border-radius: 50%;
-        pointer-events: none;
-        filter: blur(70px);
-    }
-
-    .v-hero-glow-center {
-        width: 900px;
-        height: 500px;
-        background: radial-gradient(ellipse, rgba(99, 102, 241, 0.18) 0%, transparent 65%);
-        top: -160px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .v-hero-glow-left {
-        width: 440px;
-        height: 440px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-        top: 40px;
-        left: -120px;
-    }
-
-    .v-hero-glow-right {
-        width: 380px;
-        height: 380px;
-        background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
-        top: 60px;
-        right: -100px;
-    }
-
-    .v-hero .container {
-        position: relative;
-        z-index: 1;
-    }
-
-    /* Eyebrow pill badge */
-    .v-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.72em;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.45);
-        letter-spacing: 0.4px;
-        margin-bottom: 24px;
-        font-family: 'SFMono-Regular', 'Fira Code', monospace;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 5px 14px 5px 6px;
-    }
-
-    .v-eyebrow-tag {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        color: #fff;
-        font-size: 0.82em;
-        font-weight: 800;
-        padding: 2px 8px;
-        border-radius: 14px;
-        letter-spacing: 0.8px;
-        line-height: 1.5;
-    }
-
-    .v-eyebrow-dot {
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        flex-shrink: 0;
-    }
-
-    /* H1 */
-    .v-hero h1 {
-        font-size: 4.8em;
-        font-weight: 900;
-        line-height: 1.04;
-        letter-spacing: -3px;
-        margin-bottom: 20px;
-        color: #fff;
-    }
-
-    .v-hero h1 em {
-        font-style: normal;
-        background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 45%, #818cf8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    @media (max-width: 768px) {
-        .v-hero {
-            padding: 64px 0 0;
-        }
-
-        .v-hero h1 {
-            font-size: 2.8em;
-            letter-spacing: -1.5px;
-        }
-    }
-
-    .v-hero-sub {
-        font-size: 1.05em;
-        color: rgba(255, 255, 255, 0.4);
-        max-width: 500px;
-        margin: 0 auto 32px;
-        line-height: 1.85;
-    }
-
-    .v-hero-actions {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-    }
-
-    .v-btn-white {
-        background: #fff;
-        color: #000 !important;
-        border: 1px solid #fff;
-        padding: 9px 20px;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.875em;
-        text-decoration: none;
-        display: inline-block;
-        transition: background 0.15s, border-color 0.15s;
-        letter-spacing: 0.1px;
-    }
-
-    .v-btn-white:hover {
-        background: #e5e5e5;
-        border-color: #e5e5e5;
-        color: #000 !important;
-        text-decoration: none;
-    }
-
-    .v-btn-ghost {
-        background: transparent;
-        color: rgba(255, 255, 255, 0.65) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        padding: 9px 20px;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.875em;
-        text-decoration: none;
-        display: inline-block;
-        transition: border-color 0.15s, color 0.15s;
-    }
-
-    .v-btn-ghost:hover {
-        border-color: rgba(255, 255, 255, 0.35);
-        color: #fff !important;
-        text-decoration: none;
-    }
-
-    /* Stats pill row */
-    .v-hero-stats {
-        display: inline-flex;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 4px;
-        gap: 0;
-        margin-bottom: 52px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .v-hero-stat {
-        padding: 14px 28px;
-        text-align: center;
-        border-right: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    .v-hero-stat:last-child {
-        border-right: none;
-    }
-
-    .v-hero-stat-num {
-        display: block;
-        font-size: 1.3em;
-        font-weight: 800;
-        color: #fff;
-        letter-spacing: -0.5px;
-        line-height: 1;
-        margin-bottom: 4px;
-    }
-
-    .v-hero-stat-label {
-        font-size: 0.64em;
-        color: rgba(255, 255, 255, 0.28);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-family: 'SFMono-Regular', monospace;
-    }
-
-    @media (max-width: 576px) {
-        .v-hero-stat {
-            padding: 12px 16px;
-            flex: 1 1 50%;
-        }
-
-        .v-hero-stats {
-            width: 100%;
-        }
-    }
-
-    /* Hero demo console window */
-    .v-hero-demo {
-        margin: 0 auto;
-        max-width: 680px;
-        border-radius: 10px 10px 0 0;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-bottom: none;
-        text-align: left;
-        position: relative;
-        background: #080808;
-        box-shadow: 0 -20px 60px rgba(99, 102, 241, 0.1), 0 0 0 1px rgba(99, 102, 241, 0.08);
-    }
-
-    .v-hero-demo-bar {
-        background: #111;
-        padding: 10px 16px;
+    .ai-code-bar {
+        background: #131318;
+        padding: 10px 14px;
         display: flex;
         align-items: center;
         gap: 6px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid rgba(255, 255, 255, .07);
     }
 
-    .v-hero-demo-title {
-        font-size: 0.74em;
-        color: rgba(255, 255, 255, 0.28);
-        font-family: 'SFMono-Regular', monospace;
-        margin-left: 8px;
-        flex: 1;
-    }
-
-    .v-hero-demo-status {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 0.65em;
-        color: #4ade80;
-        font-family: 'SFMono-Regular', monospace;
-    }
-
-    .v-hero-demo-status::before {
-        content: '';
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #4ade80;
-        display: inline-block;
-        animation: pulse-green 2s infinite;
-    }
-
-    @keyframes pulse-green {
-        0%, 100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0.3;
-        }
-    }
-
-    .v-hero-demo-body {
-        padding: 16px 20px 24px;
-    }
-
-    .v-hero-demo-row {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-
-    .v-hero-demo-row:last-child {
-        margin-bottom: 0;
-    }
-
-    .v-hero-demo-tag {
-        flex-shrink: 0;
-        padding: 2px 8px;
-        border-radius: 3px;
-        font-size: 0.6em;
-        font-weight: 700;
-        min-width: 44px;
-        text-align: center;
-        font-family: 'SFMono-Regular', monospace;
-        letter-spacing: 0.3px;
-        margin-top: 2px;
-    }
-
-    .v-hero-demo-text {
-        font-size: 0.79em;
-        color: rgba(255, 255, 255, 0.45);
-        line-height: 1.65;
-        font-family: 'SFMono-Regular', 'Fira Code', monospace;
-    }
-
-    .v-hero-demo-fade {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 56px;
-        background: linear-gradient(to bottom, transparent, #000);
-        pointer-events: none;
-    }
-
-    /* ── Section base ── */
-    .v-section {
-        padding: 33px 0;
-    }
-
-    .v-section-white {
-        background: #fff;
-    }
-
-    .v-section-faint {
-        background: #fafafa;
-        border-top: 1px solid #eaeaea;
-        border-bottom: 1px solid #eaeaea;
-    }
-
-    .v-section-dark {
-        background: #0a0a0a;
-        color: #fff;
-    }
-
-    .v-section-dark2 {
-        background: #111;
-        color: #fff;
-    }
-
-    .v-section-eyebrow {
-        display: block;
-        font-size: 0.7em;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #999;
-        margin-bottom: 10px;
-        font-family: 'SFMono-Regular', monospace;
-    }
-
-    .v-section-dark .v-section-eyebrow,
-    .v-section-dark2 .v-section-eyebrow {
-        color: rgba(255, 255, 255, 0.28);
-    }
-
-    .v-section-heading {
-        font-size: 1.85em;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        color: #111;
-        margin-bottom: 10px;
-        line-height: 1.2;
-    }
-
-    .v-section-dark .v-section-heading,
-    .v-section-dark2 .v-section-heading {
-        color: #fff;
-    }
-
-    .v-section-desc {
-        font-size: 0.95em;
-        color: #666;
-        max-width: 560px;
-        line-height: 1.8;
-        margin: 0;
-    }
-
-    .v-section-dark .v-section-desc,
-    .v-section-dark2 .v-section-desc {
-        color: rgba(255, 255, 255, 0.4);
-    }
-
-    .v-section-title-block {
-        margin-bottom: 48px;
-        text-align: center;
-    }
-
-    .v-section-title-block .v-section-desc {
-        margin: 0 auto;
-    }
-
-    /* ── Capabilities: table-grid ── */
-    .v-caps-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        border: 1px solid #eaeaea;
-        border-radius: 8px;
-        overflow: hidden;
-        gap: 0;
-    }
-
-    .v-cap-cell {
-        background: #fff;
-        padding: 26px 24px;
-        border-right: 1px solid #eaeaea;
-        border-bottom: 1px solid #eaeaea;
-        transition: background 0.12s;
-    }
-
-    .v-cap-cell:hover {
-        background: #fafafa;
-    }
-
-    /* Remove extra borders on edges */
-    .v-cap-cell:nth-child(3n) {
-        border-right: none;
-    }
-
-    .v-cap-cell:nth-last-child(-n+3) {
-        border-bottom: none;
-    }
-
-    /* Wide LLM cell spans full row */
-    .v-cap-wide {
-        grid-column: 1 / -1;
-        display: flex;
-        gap: 40px;
-        align-items: center;
-        border-right: none;
-    }
-
-    .v-cap-wide-text {
-        flex: 0 0 270px;
-    }
-
-    .v-cap-chips {
-        flex: 1;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 7px;
-        align-content: center;
-    }
-
-    .v-cap-chip {
-        background: #fafafa;
-        border: 1px solid #eaeaea;
-        border-radius: 4px;
-        padding: 4px 11px;
-        font-size: 0.79em;
-        color: #555;
-        transition: border-color 0.12s, color 0.12s;
-    }
-
-    .v-cap-chip:hover {
-        border-color: #6366f1;
-        color: #4f46e5;
-    }
-
-    .v-cap-label {
-        display: block;
-        font-size: 0.63em;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #aaa;
-        margin-bottom: 6px;
-        font-family: 'SFMono-Regular', monospace;
-    }
-
-    .v-cap-icon {
-        font-size: 1.35em;
-        margin-bottom: 10px;
-        display: block;
-        line-height: 1;
-    }
-
-    .v-cap-cell h3 {
-        font-size: 0.94em;
-        font-weight: 700;
-        color: #111;
-        margin-bottom: 6px;
-        letter-spacing: -0.1px;
-        line-height: 1.35;
-    }
-
-    .v-cap-cell p {
-        font-size: 0.85em;
-        color: #666;
-        line-height: 1.65;
-        margin: 0;
-    }
-
-    @media (max-width: 768px) {
-        .v-caps-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .v-cap-wide {
-            grid-column: span 2;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .v-cap-wide-text {
-            flex: none;
-        }
-
-        .v-cap-cell:nth-child(3n) {
-            border-right: 1px solid #eaeaea;
-        }
-
-        .v-cap-cell:nth-child(2n) {
-            border-right: none;
-        }
-
-        .v-cap-cell:nth-last-child(-n+2) {
-            border-bottom: none;
-        }
-
-        .v-cap-cell:nth-last-child(-n+3) {
-            border-bottom: 1px solid #eaeaea;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .v-caps-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .v-cap-wide {
-            grid-column: span 1;
-        }
-
-        .v-cap-cell {
-            border-right: none !important;
-        }
-
-        .v-cap-cell:last-child {
-            border-bottom: none;
-        }
-
-        .v-cap-cell:nth-last-child(-n+3) {
-            border-bottom: 1px solid #eaeaea;
-        }
-    }
-
-    /* ── Split layout ── */
-    .v-split {
-        display: grid;
-        grid-template-columns: 1fr 1.5fr;
-        gap: 60px;
-        align-items: center;
-    }
-
-    @media (max-width: 768px) {
-        .v-split {
-            grid-template-columns: 1fr;
-            gap: 28px;
-        }
-
-        .v-section {
-            padding: 48px 0;
-        }
-    }
-
-    /* ── Code window ── */
-    .v-code-win {
-        background: #0a0a0a;
-        border: 1px solid #222;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .v-code-titlebar {
-        background: #111;
-        padding: 10px 16px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        border-bottom: 1px solid #222;
-    }
-
-    .v-code-dot {
+    .ai-code-dot {
         width: 11px;
         height: 11px;
         border-radius: 50%;
         flex-shrink: 0;
     }
 
-    .v-code-name {
-        color: rgba(255, 255, 255, 0.28);
-        font-size: 0.77em;
-        font-family: 'SFMono-Regular', monospace;
+    .ai-code-name {
+        font-size: .78em;
+        color: rgba(255, 255, 255, .28);
+        font-family: 'JetBrains Mono', monospace;
         margin-left: 8px;
+        flex: 1;
     }
 
-    .v-code-win pre {
+    .ai-code-win pre {
         margin: 0;
-        padding: 20px 24px;
-        font-size: 0.84em;
-        line-height: 1.8;
+        padding: 20px 22px;
+        font-size: .84em;
+        line-height: 1.78;
         overflow-x: auto;
+        background: #0a0a0f;
     }
 
-    /* ── Architecture ── */
-    .v-arch {
-        border: 1px solid #222;
-        border-radius: 8px;
+    .ai-code-win pre code {
+        background: transparent !important;
+    }
+
+    /* ── Architecture diagram ── */
+    .ai-arch {
+        border: 1px solid var(--c-border);
         overflow: hidden;
     }
 
-    .v-arch-row {
+    .ai-arch-row {
         display: flex;
         align-items: stretch;
-        border-bottom: 1px solid #222;
+        border-bottom: 1px solid var(--c-border);
     }
 
-    .v-arch-row:last-child {
+    .ai-arch-row:last-child {
         border-bottom: none;
     }
 
-    .v-arch-label {
-        flex: 0 0 130px;
-        background: #111;
-        color: rgba(255, 255, 255, 0.35);
+    .ai-arch-label {
+        flex: 0 0 140px;
         padding: 14px 16px;
-        font-size: 0.68em;
+        font-size: .7em;
         font-weight: 700;
-        letter-spacing: 0.8px;
+        letter-spacing: .08em;
         text-transform: uppercase;
-        font-family: 'SFMono-Regular', monospace;
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--c-text2);
         display: flex;
         align-items: center;
-        border-right: 1px solid #222;
+        border-right: 1px solid var(--c-border);
+        background: rgba(0, 0, 0, .018);
         line-height: 1.4;
     }
 
-    .v-arch-chips {
+    .ai-arch-chips {
         flex: 1;
         padding: 12px 16px;
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
         align-items: center;
-        background: #0a0a0a;
     }
 
-    .v-arch-chip {
-        border: 1px solid #222;
-        border-radius: 3px;
+    .ai-arch-chip {
+        border: 1px solid var(--c-border);
         padding: 3px 10px;
-        font-size: 0.76em;
-        color: rgba(255, 255, 255, 0.38);
-        transition: border-color 0.12s, color 0.12s;
+        font-size: .8em;
+        color: var(--c-text2);
+        font-family: 'JetBrains Mono', monospace;
+        transition: border-color .12s, color .12s;
     }
 
-    .v-arch-chip:hover {
-        border-color: #444;
-        color: rgba(255, 255, 255, 0.65);
+    .ai-arch-chip:hover {
+        border-color: var(--c-brand);
+        color: var(--c-brand);
     }
 
-    .v-arch-chip-hl {
-        border-color: rgba(99, 102, 241, 0.4);
-        color: #a5b4fc;
-        background: rgba(99, 102, 241, 0.07);
-    }
-
-    @media (max-width: 600px) {
-        .v-arch-row {
-            flex-direction: column;
-        }
-
-        .v-arch-label {
-            flex: none;
-            border-right: none;
-            border-bottom: 1px solid #222;
-        }
-    }
-
-    /* ── Model grid ── */
-    .v-model-group {
-        margin-bottom: 32px;
-    }
-
-    .v-model-label {
-        font-size: 0.7em;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #999;
-        margin-bottom: 12px;
-        font-family: 'SFMono-Regular', monospace;
-        padding-left: 10px;
-        border-left: 2px solid #eaeaea;
-    }
-
-    .v-model-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .v-model-pill {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        border: 1px solid #eaeaea;
-        border-radius: 6px;
-        padding: 7px 13px;
-        background: #fff;
-        transition: border-color 0.12s;
-    }
-
-    .v-model-pill:hover {
-        border-color: #aaa;
-    }
-
-    .v-model-badge {
-        width: 26px;
-        height: 26px;
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.72em;
-        font-weight: 800;
-        flex-shrink: 0;
-    }
-
-    .v-model-name {
-        font-size: 0.82em;
-        font-weight: 600;
-        color: #111;
-        line-height: 1.25;
-    }
-
-    .v-model-co {
-        font-size: 0.68em;
-        color: #999;
+    .ai-arch-chip-hl {
+        border-color: rgba(255, 87, 34, .3);
+        color: var(--c-brand);
+        background: rgba(255, 87, 34, .04);
     }
 
     /* ── MCP flow ── */
-    .v-mcp-flow {
+    .ai-mcp-flow {
         display: flex;
-        align-items: center;
-        margin: 32px 0;
-        overflow-x: auto;
-        gap: 0;
+        border: 1px solid var(--c-border);
+        overflow: hidden;
+        margin-bottom: 0;
     }
 
-    .v-mcp-node {
-        border: 1px solid #eaeaea;
-        border-radius: 6px;
-        padding: 14px 18px;
+    .ai-mcp-node {
+        flex: 1;
+        padding: 22px 16px;
         text-align: center;
-        background: #fff;
-        min-width: 118px;
-        transition: border-color 0.12s;
-        flex-shrink: 0;
+        border-right: 1px solid var(--c-border);
     }
 
-    .v-mcp-node:hover {
-        border-color: #999;
+    .ai-mcp-node:last-child {
+        border-right: none;
     }
 
-    .v-mcp-node-hl {
-        border-color: #c7d2fe;
-        background: #f5f3ff;
+    .ai-mcp-node-hl {
+        background: rgba(255, 87, 34, .03);
     }
 
-    .v-mcp-node h5 {
-        font-size: 0.86em;
+    .ai-mcp-node h5 {
+        font-size: .88em;
         font-weight: 700;
-        color: #111;
-        margin: 0 0 3px;
+        color: var(--c-text);
+        margin: 0 0 4px;
+        font-family: 'JetBrains Mono', monospace;
     }
 
-    .v-mcp-node p {
-        font-size: 0.7em;
-        color: #999;
+    .ai-mcp-node-hl h5 {
+        color: var(--c-brand);
+    }
+
+    .ai-mcp-node p {
+        font-size: .75em;
+        color: var(--c-text2);
         margin: 0;
+        font-family: 'JetBrains Mono', monospace;
     }
 
-    .v-mcp-node-hl h5 {
-        color: #4f46e5;
+    /* ── ReAct step items ── */
+    .ai-step {
+        display: flex;
+        gap: 16px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--c-border);
     }
 
-    .v-mcp-arr {
-        flex-shrink: 0;
-        color: #d4d4d4;
-        font-size: 0.9em;
-        padding: 0 10px;
-    }
-
-    @media (max-width: 600px) {
-        .v-mcp-flow {
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .v-mcp-arr {
-            transform: rotate(90deg);
-            padding: 0;
-        }
-    }
-
-    /* Info cells (MCP features) */
-    .v-info-grid-2 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        border: 1px solid #eaeaea;
-        border-radius: 8px;
-        overflow: hidden;
-        margin-top: 28px;
-    }
-
-    .v-info-grid-3 {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        border: 1px solid #eaeaea;
-        border-radius: 8px;
-        overflow: hidden;
-        margin-top: 1px;
-    }
-
-    .v-info-cell {
-        background: #fff;
-        padding: 22px 22px;
-        border-right: 1px solid #eaeaea;
-        border-bottom: 1px solid #eaeaea;
-        transition: background 0.12s;
-    }
-
-    .v-info-cell:hover {
-        background: #fafafa;
-    }
-
-    .v-info-grid-2 .v-info-cell:nth-child(2n) {
-        border-right: none;
-    }
-
-    .v-info-grid-3 .v-info-cell:nth-child(3n) {
-        border-right: none;
-    }
-
-    .v-info-grid-2 .v-info-cell:nth-last-child(-n+2),
-    .v-info-grid-3 .v-info-cell:last-child {
+    .ai-step:last-child {
         border-bottom: none;
     }
 
-    .v-info-badge {
-        display: inline-block;
-        font-size: 0.63em;
+    .ai-step-num {
+        font-size: 2.4em;
+        font-weight: 800;
+        font-family: 'JetBrains Mono', monospace;
+        color: rgba(0, 0, 0, .055);
+        line-height: 1;
+        flex-shrink: 0;
+        width: 44px;
+    }
+
+    .ai-step-tag {
+        font-size: .68em;
         font-weight: 700;
-        letter-spacing: 1.2px;
+        letter-spacing: .14em;
         text-transform: uppercase;
-        color: #6366f1;
-        font-family: 'SFMono-Regular', monospace;
-        margin-bottom: 7px;
+        color: var(--c-brand);
+        font-family: 'JetBrains Mono', monospace;
+        margin-bottom: 5px;
     }
 
-    .v-info-cell h4 {
-        font-size: 0.91em;
+    .ai-step h4 {
+        font-size: .93em;
         font-weight: 700;
-        color: #111;
-        margin-bottom: 6px;
+        margin: 0 0 5px;
+        color: var(--c-text);
     }
 
-    .v-info-cell p {
-        font-size: 0.84em;
-        color: #666;
-        margin: 0;
-        line-height: 1.65;
-    }
-
-    @media (max-width: 600px) {
-        .v-info-grid-2, .v-info-grid-3 {
-            grid-template-columns: 1fr;
-        }
-
-        .v-info-cell {
-            border-right: none !important;
-        }
-
-        .v-info-cell:last-child {
-            border-bottom: none !important;
-        }
-    }
-
-    /* ── ReAct timeline ── */
-    .v-timeline {
-        padding-left: 20px;
-    }
-
-    .v-timeline-step {
-        position: relative;
-        padding: 0 0 24px 20px;
-        border-left: 1px solid #222;
-    }
-
-    .v-timeline-step:last-child {
-        border-left-color: transparent;
-        padding-bottom: 0;
-    }
-
-    .v-timeline-step::before {
-        content: '';
-        position: absolute;
-        left: -5px;
-        top: 3px;
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: #0a0a0a;
-        border: 1.5px solid #818cf8;
-    }
-
-    .v-timeline-step-tag {
-        font-size: 0.63em;
-        font-weight: 700;
-        color: #818cf8;
-        letter-spacing: 1px;
-        font-family: 'SFMono-Regular', monospace;
-        text-transform: uppercase;
-        margin-bottom: 4px;
-    }
-
-    .v-timeline-step h5 {
-        font-size: 0.9em;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.85);
-        margin-bottom: 4px;
-    }
-
-    .v-timeline-step p {
-        font-size: 0.83em;
-        color: rgba(255, 255, 255, 0.38);
+    .ai-step p {
+        font-size: .84em;
+        color: var(--c-text2);
         margin: 0;
         line-height: 1.6;
     }
 
-    /* ── Chat/console window ── */
-    .v-console {
-        background: #0a0a0a;
-        border: 1px solid #222;
-        border-radius: 8px;
+    /* ── Console window ── */
+    .ai-console {
+        background: #0a0a0f;
+        border: 1px solid var(--c-border);
         overflow: hidden;
     }
 
-    .v-console-bar {
-        background: #111;
-        padding: 10px 16px;
+    .ai-console-bar {
+        background: #131318;
+        padding: 10px 14px;
         display: flex;
         align-items: center;
         gap: 6px;
-        border-bottom: 1px solid #1a1a1a;
+        border-bottom: 1px solid rgba(255, 255, 255, .07);
     }
 
-    .v-console-body {
+    .ai-console-body {
         padding: 18px 20px 22px;
     }
 
-    .v-console-row {
+    .ai-console-row {
         display: flex;
         align-items: flex-start;
         gap: 10px;
         margin-bottom: 10px;
     }
 
-    .v-console-tag {
+    .ai-console-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .ai-ctag {
         flex-shrink: 0;
         padding: 2px 7px;
-        border-radius: 3px;
-        font-size: 0.62em;
+        font-size: .62em;
         font-weight: 700;
-        min-width: 42px;
+        min-width: 44px;
         text-align: center;
-        font-family: 'SFMono-Regular', monospace;
-        letter-spacing: 0.3px;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: .3px;
         margin-top: 1px;
     }
 
-    .v-t-user {
-        background: #1e3a5f;
+    .ai-t-user {
+        background: rgba(41, 121, 200, .22);
         color: #93c5fd;
     }
 
-    .v-t-think {
-        background: #2e1065;
+    .ai-t-think {
+        background: rgba(139, 92, 246, .18);
         color: #c4b5fd;
     }
 
-    .v-t-act {
-        background: #451a03;
+    .ai-t-act {
+        background: rgba(245, 158, 11, .18);
         color: #fcd34d;
     }
 
-    .v-t-obs {
-        background: #052e16;
+    .ai-t-obs {
+        background: rgba(52, 211, 153, .16);
         color: #86efac;
     }
 
-    .v-t-done {
-        background: #450a0a;
-        color: #fca5a5;
+    .ai-t-done {
+        background: rgba(255, 87, 34, .2);
+        color: #ffab91;
     }
 
-    .v-console-text {
-        font-size: 0.82em;
-        color: rgba(255, 255, 255, 0.5);
+    .ai-console-text {
+        font-size: .82em;
+        color: rgba(255, 255, 255, .5);
         line-height: 1.65;
-        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+        font-family: 'JetBrains Mono', monospace;
     }
 
-    /* ── CTA ── */
-    .v-cta {
-        text-align: center;
-        padding: 80px 0;
-        border-top: 1px solid #eaeaea;
-        background: #fff;
-    }
-
-    .v-cta h2 {
-        font-size: 1.85em;
-        font-weight: 800;
-        color: #111;
-        letter-spacing: -0.5px;
-        margin-bottom: 12px;
-    }
-
-    .v-cta p {
-        color: #666;
-        font-size: 0.95em;
-        max-width: 420px;
-        margin: 0 auto 28px;
-        line-height: 1.8;
-    }
-
-    .v-cta-btn {
-        background: #000;
-        color: #fff !important;
-        border: 1px solid #000;
-        padding: 10px 22px;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.875em;
-        margin: 4px;
+    /* ── LLM chips ── */
+    .ai-chip {
         display: inline-block;
-        text-decoration: none;
-        transition: background 0.15s;
-    }
-
-    .v-cta-btn:hover {
-        background: #333;
-        border-color: #333;
-        color: #fff !important;
-        text-decoration: none;
-    }
-
-    .v-cta-btn-outline {
-        background: #fff;
-        color: #555 !important;
-        border: 1px solid #eaeaea;
-        padding: 10px 22px;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.875em;
-        margin: 4px;
-        display: inline-block;
-        text-decoration: none;
-        transition: border-color 0.15s, color 0.15s;
-    }
-
-    .v-cta-btn-outline:hover {
-        border-color: #aaa;
-        color: #111 !important;
-        text-decoration: none;
-    }
-
-    /* ── AI Claw promo ── */
-    .v-claw-promo {
-        display: grid;
-        grid-template-columns: 1fr 1.4fr;
-        gap: 64px;
-        align-items: start;
-    }
-
-    .v-claw-feats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1px;
-        background: rgba(0, 255, 136, 0.12);
-        border: 1px solid rgba(0, 255, 136, 0.18);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .v-claw-feat {
-        background: #0d1117;
-        padding: 22px 20px;
-        display: flex;
-        gap: 14px;
-        align-items: flex-start;
-        transition: background .12s;
-    }
-
-    .v-claw-feat:hover {
-        background: #121a1a;
-    }
-
-    .v-claw-feat-icon {
-        font-size: 1.3em;
-        line-height: 1;
-        flex-shrink: 0;
-        margin-top: 2px;
-    }
-
-    .v-claw-feat-title {
-        font-size: .88em;
-        font-weight: 700;
-        color: #00ff88;
-        margin-bottom: 4px;
-    }
-
-    .v-claw-feat-desc {
+        border: 1px solid var(--c-border);
+        padding: 4px 11px;
         font-size: .8em;
-        color: rgba(255, 255, 255, 0.38);
-        line-height: 1.65;
+        color: var(--c-text2);
+        font-family: 'JetBrains Mono', monospace;
+        transition: border-color .12s, color .12s;
     }
 
-    @media (max-width: 768px) {
-        .v-claw-promo {
-            grid-template-columns: 1fr;
-            gap: 28px;
+    .ai-chip:hover {
+        border-color: var(--c-brand);
+        color: var(--c-brand);
+    }
+
+    @media (max-width: 900px) {
+        .ai-arch-row {
+            flex-direction: column;
         }
 
-        .v-claw-feats {
-            grid-template-columns: 1fr;
+        .ai-arch-label {
+            flex: none;
+            border-right: none;
+            border-bottom: 1px solid var(--c-border);
         }
+
+        .ai-mcp-flow {
+            flex-direction: column;
+        }
+
+        .ai-mcp-node {
+            border-right: none;
+            border-bottom: 1px solid var(--c-border);
+        }
+
+        .ai-mcp-node:last-child {
+            border-bottom: none;
+        }
+    }
+
+    /* ── AI Claw section: green accent ── */
+    .ai-claw-sec {
+        --c-brand: #00ff88;
+    }
+
+    .ai-claw-sec .wbtn-o {
+        border-color: #00ff88;
+        color: #00ff88;
+    }
+
+    .ai-claw-sec .wbtn-o:hover {
+        background: #00ff88;
+        color: #0c0c12 !important;
+    }
+
+    .ai-claw-sec .c.clickable:hover {
+        background: rgba(0, 255, 136, .04) !important;
+    }
+
+    /* ── Dark theme ── */
+    .ai-dark {
+        --c-bg: #0c0c12;
+        --c-border: rgba(255, 255, 255, .1);
+        --c-text: rgba(255, 255, 255, .88);
+        --c-text2: rgba(255, 255, 255, .42);
+        --c-grid: rgba(255, 255, 255, .05);
+        --c-brand: #8b5cf6;
+        background: #0c0c12;
+    }
+
+    .ai-dark .ai-step-num {
+        color: rgba(255, 255, 255, .07);
+    }
+
+    .ai-dark .ai-arch-label {
+        background: rgba(255, 255, 255, .03);
+    }
+
+    .ai-dark .ai-arch-chip-hl {
+        border-color: rgba(139, 92, 246, .35);
+        color: #8b5cf6;
+        background: rgba(139, 92, 246, .07);
+    }
+
+    .ai-dark .ai-mcp-node-hl {
+        background: rgba(139, 92, 246, .08);
+    }
+
+    .ai-dark .c.clickable:hover {
+        background: rgba(139, 92, 246, .05) !important;
+    }
+
+    .ai-grad {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 </style>
 
-<div ng-controller="ai">
+<div class="ai-dark" ng-controller="ai">
+    <div class="fr">
 
-    <!-- ══ Hero ══════════════════════════════════════ -->
-    <div class="v-hero">
-        <div class="v-hero-dots"></div>
-        <div class="v-hero-glow v-hero-glow-center"></div>
-        <div class="v-hero-glow v-hero-glow-left"></div>
-        <div class="v-hero-glow v-hero-glow-right"></div>
-        <div class="container">
-            <div class="v-eyebrow">
-                <span class="v-eyebrow-tag">NEW</span>
-                xyz.erupt
-                <span class="v-eyebrow-dot"></span>
-                Apache 2.0
-            </div>
-            <h1>Erupt <em>AI</em></h1>
-            <p class="v-hero-sub">{{'ai.hero.subtitle' | i18n}}</p>
-            <div class="v-hero-actions">
-                <a class="v-btn-white" href="https://docs.erupt.xyz/modules/erupt-ai"
-                   target="_blank">{{'ai.hero.btn.doc' | i18n}}</a>
-                <a class="v-btn-ghost" href="https://demo.erupt.xyz/#/ai/chat"
-                   target="_blank">{{'ai.hero.btn.demo' | i18n}}</a>
-            </div>
-            <div class="v-hero-stats">
-                <div class="v-hero-stat">
-                    <span class="v-hero-stat-num">50+</span>
-                    <span class="v-hero-stat-label">{{'ai.stat.llms' | i18n}}</span>
+        <!-- ── §0 HERO ── -->
+        <div class="r g-bg" style="display:flex; min-height:420px; overflow:visible">
+            <div style="flex:1; padding:56px 48px 48px; display:flex; flex-direction:column; justify-content:center">
+                <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:20px">
+                    <span class="tag" style="font-family:monospace">🤖 AI</span>
+                    <span style="font-size:12px; color:var(--c-text2)">AI 能力框架 · Apache 2.0</span>
                 </div>
-                <div class="v-hero-stat">
-                    <span class="v-hero-stat-num">5 min</span>
-                    <span class="v-hero-stat-label">{{'ai.stat.quickstart' | i18n}}</span>
+                <div class="h1"
+                     style="font-size:clamp(42px,5.5vw,78px); line-height:.95; letter-spacing:-.03em; margin-bottom:22px">
+                    Erupt <span style="color:var(--c-brand)">AI</span></div>
+                <div class="sub" style="max-width:54ch; font-size:15px; line-height:1.7; margin-bottom:28px">
+                    {{'ai.hero.subtitle' | i18n}}
                 </div>
-                <div class="v-hero-stat">
-                    <span class="v-hero-stat-num">ReAct</span>
-                    <span class="v-hero-stat-label">{{'ai.stat.agent' | i18n}}</span>
-                </div>
-                <div class="v-hero-stat">
-                    <span class="v-hero-stat-num">MCP</span>
-                    <span class="v-hero-stat-label">{{'ai.stat.mcp' | i18n}}</span>
+                <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+                    <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/erupt-ai" target="_blank">{{'ai.hero.btn.doc'
+                        | i18n}}</a>
+                    <a class="wbtn" href="https://demo.erupt.xyz/#/ai/chat" target="_blank">{{'ai.hero.btn.demo' |
+                        i18n}}</a>
+                    <span style="font-family:monospace; font-size:12px; color:var(--c-text2); margin-left:4px">Apache 2.0</span>
                 </div>
             </div>
-            <!-- ReAct demo console -->
-            <div class="v-hero-demo">
-                <div class="v-hero-demo-bar">
-                    <div class="v-code-dot" style="background:#ff5f56"></div>
-                    <div class="v-code-dot" style="background:#ffbd2e"></div>
-                    <div class="v-code-dot" style="background:#27c93f"></div>
-                    <span class="v-hero-demo-title">AI Agent — ReAct Loop</span>
-                    <span class="v-hero-demo-status">running</span>
-                </div>
-                <div class="v-hero-demo-body">
-                    <div class="v-hero-demo-row">
-                        <span class="v-hero-demo-tag v-t-user">User</span>
-                        <span class="v-hero-demo-text">{{'ai.react.example.user' | i18n}}</span>
-                    </div>
-                    <div class="v-hero-demo-row">
-                        <span class="v-hero-demo-tag v-t-think">Think</span>
-                        <span class="v-hero-demo-text">{{'ai.react.example.thought1' | i18n}}</span>
-                    </div>
-                    <div class="v-hero-demo-row">
-                        <span class="v-hero-demo-tag v-t-act">Act</span>
-                        <span class="v-hero-demo-text">{{'ai.react.example.action1' | i18n}}</span>
-                    </div>
-                    <div class="v-hero-demo-row">
-                        <span class="v-hero-demo-tag v-t-obs">Obs</span>
-                        <span class="v-hero-demo-text">{{'ai.react.example.observe1' | i18n}}</span>
-                    </div>
-                    <div class="v-hero-demo-row">
-                        <span class="v-hero-demo-tag v-t-done">Done</span>
-                        <span class="v-hero-demo-text">{{'ai.react.example.result' | i18n}}</span>
-                    </div>
-                </div>
-                <div class="v-hero-demo-fade"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ══ Core Capabilities ═════════════════════════ -->
-    <div class="v-section v-section-faint">
-        <div class="container">
-            <div class="v-section-title-block">
-                <span class="v-section-eyebrow">{{'ai.core.title' | i18n}}</span>
-                <h2 class="v-section-heading">{{'ai.core.subtitle' | i18n}}</h2>
-            </div>
-            <div class="v-caps-grid">
-
-                <!-- LLM — wide row -->
-                <div class="v-cap-cell v-cap-wide">
-                    <div class="v-cap-wide-text">
-                        <span class="v-cap-icon">🌐</span>
-                        <span class="v-cap-label">LLM</span>
-                        <h3>{{'ai.core.multillm.title' | i18n}}</h3>
-                        <p>{{'ai.core.multillm.desc' | i18n}}</p>
-                    </div>
-                    <div class="v-cap-chips">
-                        <span class="v-cap-chip">GPT-4o</span>
-                        <span class="v-cap-chip">Claude 3.5</span>
-                        <span class="v-cap-chip">Gemini</span>
-                        <span class="v-cap-chip">DeepSeek</span>
-                        <span class="v-cap-chip">Qwen</span>
-                        <span class="v-cap-chip">GLM</span>
-                        <span class="v-cap-chip">Doubao</span>
-                        <span class="v-cap-chip">Kimi</span>
-                        <span class="v-cap-chip">Spark</span>
-                        <span class="v-cap-chip">Llama</span>
-                        <span class="v-cap-chip">Ollama</span>
-                        <span class="v-cap-chip">Open Router</span>
-                        <span class="v-cap-chip">···</span>
-                    </div>
-                </div>
-
-                <div class="v-cap-cell">
-                    <span class="v-cap-icon">🤖</span>
-                    <span class="v-cap-label">AGENT</span>
-                    <h3>{{'ai.core.agent.title' | i18n}}</h3>
-                    <p>{{'ai.core.agent.desc' | i18n}}</p>
-                </div>
-
-                <div class="v-cap-cell">
-                    <span class="v-cap-icon">💬</span>
-                    <span class="v-cap-label">CONTEXT</span>
-                    <h3>{{'ai.core.context.title' | i18n}}</h3>
-                    <p>{{'ai.core.context.desc' | i18n}}</p>
-                </div>
-
-                <div class="v-cap-cell">
-                    <span class="v-cap-icon">🔗</span>
-                    <span class="v-cap-label">PROTOCOL</span>
-                    <h3>{{'ai.core.mcp.title' | i18n}}</h3>
-                    <p>{{'ai.core.mcp.desc' | i18n}}</p>
-                </div>
-
-                <div class="v-cap-cell">
-                    <span class="v-cap-icon">🗨️</span>
-                    <span class="v-cap-label">CHAT</span>
-                    <h3>{{'ai.core.interactive.title' | i18n}}</h3>
-                    <p>{{'ai.core.interactive.desc' | i18n}}</p>
-                </div>
-
-                <div class="v-cap-cell">
-                    <span class="v-cap-icon">⚙️</span>
-                    <span class="v-cap-label">PROMPT</span>
-                    <h3>{{'ai.core.systemprompt.title' | i18n}}</h3>
-                    <p>{{'ai.core.systemprompt.desc' | i18n}}</p>
-                </div>
-
-                <div class="v-cap-cell">
-                    <span class="v-cap-icon">🔓</span>
-                    <span class="v-cap-label">APACHE 2.0</span>
-                    <h3>{{'ai.core.opensource.title' | i18n}}</h3>
-                    <p>{{'ai.core.opensource.desc' | i18n}}</p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- ══ @Tool Code ════════════════════════════════ -->
-    <div class="v-section v-section-dark">
-        <div class="container">
-            <div class="v-split">
+            <!-- Erupt Harness architecture diagram -->
+            <div style="flex:0 0 44%; border-left:1px solid rgba(255,255,255,.08); background:#080d1c; display:flex; flex-direction:column; justify-content:center; padding:36px 40px; gap:20px;">
+                <!-- Harness headline -->
                 <div>
-                    <span class="v-section-eyebrow">TOOLS</span>
-                    <h2 class="v-section-heading">{{'ai.core.tools.title' | i18n}}</h2>
-                    <p class="v-section-desc">{{'ai.core.tools.desc' | i18n}}</p>
+                    <div style="font-family:monospace; font-size:9px; letter-spacing:.2em; color:rgba(255,255,255,.22); text-transform:uppercase; margin-bottom:8px">
+                        AI Framework
+                    </div>
+                    <div style="font-family:monospace; font-weight:900; line-height:1; letter-spacing:-.02em;">
+                        <span class="ai-grad" style="font-size:32px;">ERUPT</span><br>
+                        <span style="font-size:32px; color:#fff;">HARNESS</span>
+                    </div>
+                    <div style="margin-top:10px; font-size:11px; color:rgba(255,255,255,.35); font-family:monospace; letter-spacing:.05em; line-height:1.6">
+                        LLM 接入层 · ReAct Agent · MCP Protocol
+                    </div>
                 </div>
-                <div class="v-code-win">
-                    <div class="v-code-titlebar">
-                        <div class="v-code-dot" style="background:#ff5f56"></div>
-                        <div class="v-code-dot" style="background:#ffbd2e"></div>
-                        <div class="v-code-dot" style="background:#27c93f"></div>
-                        <span class="v-code-name">ToolService.java</span>
+                <!-- Divider -->
+                <div style="height:1px; background:rgba(255,255,255,.07);"></div>
+                <!-- Capabilities grid -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px;">
+                    <div style="border:1px solid rgba(139,92,246,.3); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(255,255,255,.7); background:rgba(139,92,246,.08)">
+                        ReAct Agent
+                    </div>
+                    <div style="border:1px solid rgba(139,92,246,.3); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(255,255,255,.7); background:rgba(139,92,246,.08)">
+                        MCP Protocol
+                    </div>
+                    <div style="border:1px solid rgba(255,255,255,.07); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(255,255,255,.4)">
+                        Context Memory
+                    </div>
+                    <div style="border:1px solid rgba(255,255,255,.07); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(255,255,255,.4)">
+                        Streaming SSE
+                    </div>
+                    <div style="border:1px solid rgba(255,255,255,.07); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(255,255,255,.4)">
+                        Tool Registry
+                    </div>
+                    <div style="border:1px solid rgba(255,255,255,.07); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(255,255,255,.4)">
+                        Prompt Engine
+                    </div>
+                </div>
+                <!-- Divider -->
+                <div style="height:1px; background:rgba(255,255,255,.07);"></div>
+                <!-- LLM Adapter -->
+                <div>
+                    <div style="font-family:monospace; font-size:9px; letter-spacing:.16em; color:rgba(255,255,255,.22); text-transform:uppercase; margin-bottom:9px">
+                        LLM Adapter · 50+
+                    </div>
+                    <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                        <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">GPT-4o</span>
+                        <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">Claude</span>
+                        <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">DeepSeek</span>
+                        <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">Qwen</span>
+                        <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">Gemini</span>
+                        <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">ERNIE</span>
+                        <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">Ollama</span>
+                        <span style="border:1px dashed rgba(139,92,246,.4); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(139,92,246,.75)">OpenAI Compatible ···</span>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── §01 CAPABILITIES ── -->
+        <div class="r ticks g2">
+            <div class="c" style="padding:32px 40px">
+                <div style="font-family:monospace; font-size:11px; color:var(--c-text2); letter-spacing:.12em; margin-bottom:10px">
+                    01 · CAPABILITIES
+                </div>
+                <div class="h2">{{'ai.core.title' | i18n}}</div>
+            </div>
+            <div class="c" style="padding:32px 40px; display:flex; align-items:center">
+                <div class="sub">{{'ai.core.subtitle' | i18n}}</div>
+            </div>
+        </div>
+
+        <!-- LLM full-width row -->
+        <div class="r reveal" style="padding:28px 40px">
+            <div style="display:grid; grid-template-columns:200px 1fr; gap:36px; align-items:start">
+                <div>
+                    <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.12em; margin-bottom:8px">
+                        01 · LLM
+                    </div>
+                    <div class="h3" style="margin-bottom:8px">{{'ai.core.multillm.title' | i18n}}</div>
+                    <div class="sub" style="font-size:13px">{{'ai.core.multillm.desc' | i18n}}</div>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:6px; padding-top:4px">
+                    <span class="ai-chip">GPT-4o</span>
+                    <span class="ai-chip">Claude 3.5</span>
+                    <span class="ai-chip">Gemini</span>
+                    <span class="ai-chip">DeepSeek</span>
+                    <span class="ai-chip">Qwen</span>
+                    <span class="ai-chip">文心 ERNIE</span>
+                    <span class="ai-chip">GLM</span>
+                    <span class="ai-chip">Doubao</span>
+                    <span class="ai-chip">Kimi</span>
+                    <span class="ai-chip">Spark</span>
+                    <span class="ai-chip">Llama</span>
+                    <span class="ai-chip">Mistral</span>
+                    <span class="ai-chip">Ollama</span>
+                    <span class="ai-chip" style="border-style:dashed; color:var(--c-brand)">OpenAI Compatible ···</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature cells g3 × 2 rows -->
+        <div class="r g3 reveal">
+            <div class="c clickable" style="padding:28px 32px">
+                <div style="font-family:monospace; font-size:10px; color:var(--c-text2); margin-bottom:12px">02 /
+                    AGENT
+                </div>
+                <div class="h3" style="margin-bottom:8px">{{'ai.core.agent.title' | i18n}}</div>
+                <div class="sub" style="font-size:13px">{{'ai.core.agent.desc' | i18n}}</div>
+        </div>
+            <div class="c clickable" style="padding:28px 32px">
+                <div style="font-family:monospace; font-size:10px; color:var(--c-text2); margin-bottom:12px">03 /
+                    CONTEXT
+                </div>
+                <div class="h3" style="margin-bottom:8px">{{'ai.core.context.title' | i18n}}</div>
+                <div class="sub" style="font-size:13px">{{'ai.core.context.desc' | i18n}}</div>
+            </div>
+            <div class="c clickable" style="padding:28px 32px; border-right:0">
+                <div style="font-family:monospace; font-size:10px; color:var(--c-text2); margin-bottom:12px">04 /
+                    PROTOCOL
+                </div>
+                <div class="h3" style="margin-bottom:8px">{{'ai.core.mcp.title' | i18n}}</div>
+                <div class="sub" style="font-size:13px">{{'ai.core.mcp.desc' | i18n}}</div>
+            </div>
+        </div>
+        <div class="r g3 reveal">
+            <div class="c no-bb clickable" style="padding:28px 32px">
+                <div style="font-family:monospace; font-size:10px; color:var(--c-text2); margin-bottom:12px">05 / CHAT
+                </div>
+                <div class="h3" style="margin-bottom:8px">{{'ai.core.interactive.title' | i18n}}</div>
+                <div class="sub" style="font-size:13px">{{'ai.core.interactive.desc' | i18n}}</div>
+            </div>
+            <div class="c no-bb clickable" style="padding:28px 32px">
+                <div style="font-family:monospace; font-size:10px; color:var(--c-text2); margin-bottom:12px">06 /
+                    PROMPT
+                </div>
+                <div class="h3" style="margin-bottom:8px">{{'ai.core.systemprompt.title' | i18n}}</div>
+                <div class="sub" style="font-size:13px">{{'ai.core.systemprompt.desc' | i18n}}</div>
+            </div>
+            <div class="c no-bb clickable" style="padding:28px 32px; border-right:0">
+                <div style="font-family:monospace; font-size:10px; color:var(--c-text2); margin-bottom:12px">07 / OPEN
+                    SOURCE
+                </div>
+                <div class="h3" style="margin-bottom:8px">{{'ai.core.opensource.title' | i18n}}</div>
+                <div class="sub" style="font-size:13px">{{'ai.core.opensource.desc' | i18n}}</div>
+            </div>
+        </div>
+
+        <!-- ── §02 @TOOL CODE ── -->
+        <div class="r g-bg ticks g2">
+            <div class="c" style="padding:32px 40px">
+                <div style="font-family:monospace; font-size:11px; color:var(--c-text2); letter-spacing:.12em; margin-bottom:10px">
+                    02 · TOOLS
+                </div>
+                <div class="h2">{{'ai.core.tools.title' | i18n}}</div>
+            </div>
+            <div class="c" style="padding:32px 40px; display:flex; align-items:center">
+                <div class="sub">{{'ai.core.tools.desc' | i18n}}</div>
+            </div>
+        </div>
+
+        <div class="r g2 reveal">
+            <div class="c" style="padding:32px 36px">
+                <div class="h3" style="margin-bottom:12px">{{'ai.core.tools.title' | i18n}}</div>
+                <div class="sub" style="font-size:13.5px; line-height:1.75; margin-bottom:24px">{{'ai.core.tools.desc' |
+                    i18n}}
+                </div>
+                <div style="display:flex; flex-direction:column; gap:8px">
+                    <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(139,92,246,.06)">
+                        <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px">
+                            注解驱动
+                        </div>
+                        <div style="font-size:12.5px; color:var(--c-text)">用 <code
+                                style="font-family:monospace; color:var(--c-brand); background:rgba(139,92,246,.15); padding:1px 5px; border-radius:2px">@Tool</code>
+                            标注方法，用 <code
+                                    style="font-family:monospace; color:var(--c-brand); background:rgba(139,92,246,.15); padding:1px 5px; border-radius:2px">@P</code>
+                            描述参数，Agent 自动感知并按需调用
+                        </div>
+                </div>
+                    <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(139,92,246,.06)">
+                        <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px">
+                            流式返回
+                        </div>
+                        <div style="font-size:12.5px; color:var(--c-text)">工具调用结果流式输出，ReAct
+                            循环在同一次请求内完整闭环，无需轮询
+                        </div>
+                    </div>
+                    <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(139,92,246,.06)">
+                        <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px">
+                            零配置
+                        </div>
+                        <div style="font-size:12.5px; color:var(--c-text)">注解即注册，框架自动扫描 <code
+                                style="font-family:monospace; color:var(--c-brand); background:rgba(139,92,246,.15); padding:1px 5px; border-radius:2px">@Tool</code>
+                            方法，无需手动维护工具列表
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c" style="padding:0">
+                <div class="ai-code-win" style="height:100%; border:none">
+                    <div class="ai-code-bar">
+                        <span class="ai-code-dot" style="background:#ff5f56"></span>
+                        <span class="ai-code-dot" style="background:#ffbd2e"></span>
+                        <span class="ai-code-dot" style="background:#27c93f"></span>
+                        <span class="ai-code-name">ToolService.java</span>
                     </div>
                     <pre><code class="language-java" ng-bind="capabilities[7].code"></code></pre>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- ══ Architecture ══════════════════════════════ -->
-    <div class="v-section v-section-dark2">
-        <div class="container">
-            <div class="v-section-title-block">
-                <span class="v-section-eyebrow">{{'ai.arch.title' | i18n}}</span>
-                <h2 class="v-section-heading">{{'ai.arch.desc' | i18n}}</h2>
+        <!-- ── §03 ARCHITECTURE ── -->
+        <div class="r g-bg ticks g2">
+            <div class="c" style="padding:32px 40px">
+                <div style="font-family:monospace; font-size:11px; color:var(--c-text2); letter-spacing:.12em; margin-bottom:10px">
+                    03 · ARCHITECTURE
+                </div>
+                <div class="h2">{{'ai.arch.desc' | i18n}}</div>
             </div>
-            <div class="v-arch">
-                <div class="v-arch-row">
-                    <div class="v-arch-label">Application</div>
-                    <div class="v-arch-chips">
-                        <span class="v-arch-chip" ng-bind-html="getI18nHtml('ai.core.multillm.title')"></span>
-                        <span class="v-arch-chip" ng-bind-html="getI18nHtml('ai.core.agent.title')"></span>
-                        <span class="v-arch-chip" ng-bind-html="getI18nHtml('ai.core.mcp.title')"></span>
-                        <span class="v-arch-chip" ng-bind-html="getI18nHtml('ai.core.interactive.title')"></span>
-                        <span class="v-arch-chip" ng-bind-html="getI18nHtml('ai.core.context.title')"></span>
-                        <span class="v-arch-chip" ng-bind-html="getI18nHtml('ai.core.tools.title')"></span>
-                        <span class="v-arch-chip" ng-bind-html="getI18nHtml('ai.core.systemprompt.title')"></span>
-                    </div>
+            <div class="c" style="padding:32px 40px; display:flex; align-items:center">
+                <div class="sub">三层架构清晰解耦：应用功能层、引擎能力层、LLM
+                    适配层。模型切换对上层业务零感知，每层均可独立扩展。
                 </div>
-                <div class="v-arch-row">
-                    <div class="v-arch-label">Engine</div>
-                    <div class="v-arch-chips">
-                        <span class="v-arch-chip v-arch-chip-hl">ReAct Agent</span>
-                        <span class="v-arch-chip v-arch-chip-hl">MCP Protocol</span>
-                        <span class="v-arch-chip">Prompt Engineering</span>
-                        <span class="v-arch-chip">Context Management</span>
-                        <span class="v-arch-chip">Tool Registry</span>
-                        <span class="v-arch-chip">RAG Pipeline</span>
-                        <span class="v-arch-chip">Memory Store</span>
-                        <span class="v-arch-chip">Streaming Response</span>
-                    </div>
-                </div>
-                <div class="v-arch-row">
-                    <div class="v-arch-label">LLM Adapter</div>
-                    <div class="v-arch-chips">
-                        <span class="v-arch-chip">OpenAI / GPT</span>
-                        <span class="v-arch-chip">Claude</span>
-                        <span class="v-arch-chip">Gemini</span>
-                        <span class="v-arch-chip">DeepSeek</span>
-                        <span class="v-arch-chip">Qwen</span>
-                        <span class="v-arch-chip">ERNIE</span>
-                        <span class="v-arch-chip">GLM</span>
-                        <span class="v-arch-chip">Doubao</span>
-                        <span class="v-arch-chip">Kimi</span>
-                        <span class="v-arch-chip">Spark</span>
-                        <span class="v-arch-chip">Llama</span>
-                        <span class="v-arch-chip">Mistral</span>
-                        <span class="v-arch-chip">Ollama</span>
-                        <span class="v-arch-chip v-arch-chip-hl">OpenAI Compatible</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
-    <!-- ══ MCP Protocol ══════════════════════════════ -->
-    <div class="v-section v-section-faint">
-        <div class="container">
-            <div class="v-section-title-block">
-                <span class="v-section-eyebrow">{{'ai.mcp.title' | i18n}}</span>
-                <h2 class="v-section-heading">{{'ai.mcp.subtitle' | i18n}}</h2>
+        <div class="r reveal" style="padding:28px 40px">
+            <div class="ai-arch">
+                <div class="ai-arch-row">
+                    <div class="ai-arch-label">Application</div>
+                    <div class="ai-arch-chips">
+                        <span class="ai-arch-chip" ng-bind-html="getI18nHtml('ai.core.multillm.title')"></span>
+                        <span class="ai-arch-chip" ng-bind-html="getI18nHtml('ai.core.agent.title')"></span>
+                        <span class="ai-arch-chip" ng-bind-html="getI18nHtml('ai.core.mcp.title')"></span>
+                        <span class="ai-arch-chip" ng-bind-html="getI18nHtml('ai.core.interactive.title')"></span>
+                        <span class="ai-arch-chip" ng-bind-html="getI18nHtml('ai.core.context.title')"></span>
+                        <span class="ai-arch-chip" ng-bind-html="getI18nHtml('ai.core.tools.title')"></span>
+                        <span class="ai-arch-chip" ng-bind-html="getI18nHtml('ai.core.systemprompt.title')"></span>
+                    </div>
+                </div>
+                <div class="ai-arch-row">
+                    <div class="ai-arch-label">Engine</div>
+                    <div class="ai-arch-chips">
+                        <span class="ai-arch-chip ai-arch-chip-hl">ReAct Agent</span>
+                        <span class="ai-arch-chip ai-arch-chip-hl">MCP Protocol</span>
+                        <span class="ai-arch-chip">Prompt Engineering</span>
+                        <span class="ai-arch-chip">Context Management</span>
+                        <span class="ai-arch-chip">Tool Registry</span>
+                        <span class="ai-arch-chip">RAG Pipeline</span>
+                        <span class="ai-arch-chip">Memory Store</span>
+                        <span class="ai-arch-chip">Streaming Response</span>
+                </div>
+                </div>
+                <div class="ai-arch-row">
+                    <div class="ai-arch-label">LLM Adapter</div>
+                    <div class="ai-arch-chips">
+                        <span class="ai-arch-chip">OpenAI / GPT</span>
+                        <span class="ai-arch-chip">Claude</span>
+                        <span class="ai-arch-chip">Gemini</span>
+                        <span class="ai-arch-chip">DeepSeek</span>
+                        <span class="ai-arch-chip">Qwen</span>
+                        <span class="ai-arch-chip">ERNIE</span>
+                        <span class="ai-arch-chip">GLM</span>
+                        <span class="ai-arch-chip">Doubao</span>
+                        <span class="ai-arch-chip">Kimi</span>
+                        <span class="ai-arch-chip">Spark</span>
+                        <span class="ai-arch-chip">Llama</span>
+                        <span class="ai-arch-chip">Mistral</span>
+                        <span class="ai-arch-chip">Ollama</span>
+                        <span class="ai-arch-chip ai-arch-chip-hl">OpenAI Compatible</span>
+                </div>
+                </div>
             </div>
-            <div class="v-mcp-flow">
-                <div class="v-mcp-node">
+        </div>
+
+        <!-- ── §04 MCP PROTOCOL ── -->
+        <div class="r g-bg ticks g2">
+            <div class="c" style="padding:32px 40px">
+                <div style="font-family:monospace; font-size:11px; color:var(--c-text2); letter-spacing:.12em; margin-bottom:10px">
+                    04 · MCP
+                </div>
+                <div class="h2">{{'ai.mcp.subtitle' | i18n}}</div>
+        </div>
+            <div class="c" style="padding:32px 40px; display:flex; align-items:center">
+                <div class="sub">Model Context Protocol——Erupt 同时扮演 MCP Server 与 MCP Client，让 AI
+                    客户端与外部服务双向连通。
+                </div>
+            </div>
+        </div>
+
+        <div class="r reveal" style="padding:28px 40px 0">
+            <div class="ai-mcp-flow">
+                <div class="ai-mcp-node">
                     <h5>AI Client</h5>
                     <p>ChatGPT / Cursor</p>
                 </div>
-                <span class="v-mcp-arr">⇄</span>
-                <div class="v-mcp-node v-mcp-node-hl">
+                <div class="ai-mcp-node ai-mcp-node-hl">
                     <h5>MCP Protocol</h5>
                     <p>JSON-RPC / SSE</p>
                 </div>
-                <span class="v-mcp-arr">⇄</span>
-                <div class="v-mcp-node">
+                <div class="ai-mcp-node">
                     <h5>Erupt Server</h5>
                     <p>Tools / Resources</p>
                 </div>
-                <span class="v-mcp-arr">⇄</span>
-                <div class="v-mcp-node">
+                <div class="ai-mcp-node">
                     <h5>External MCP</h5>
                     <p>Search / KB / APIs</p>
                 </div>
             </div>
-            <div class="v-info-grid-2">
-                <div class="v-info-cell">
-                    <span class="v-info-badge">SERVER</span>
-                    <h4>{{'ai.mcp.server.title' | i18n}}</h4>
-                    <p>{{'ai.mcp.server.desc' | i18n}}</p>
+        </div>
+
+        <div class="r g2 reveal">
+            <div class="c no-bb clickable" style="padding:26px 32px">
+                <div style="font-family:monospace; font-size:10px; color:var(--c-brand); text-transform:uppercase; letter-spacing:.12em; margin-bottom:8px">
+                    SERVER
                 </div>
-                <div class="v-info-cell">
-                    <span class="v-info-badge">CLIENT</span>
-                    <h4>{{'ai.mcp.client.title' | i18n}}</h4>
-                    <p>{{'ai.mcp.client.desc' | i18n}}</p>
-                </div>
+                <div class="h3" style="margin-bottom:6px">{{'ai.mcp.server.title' | i18n}}</div>
+                <div class="sub" style="font-size:13px">{{'ai.mcp.server.desc' | i18n}}</div>
             </div>
-            <div class="v-info-grid-3">
-                <div class="v-info-cell" ng-repeat="feat in mcpFeatures">
-                    <h4>{{feat.title}}</h4>
-                    <p>{{feat.desc}}</p>
+            <div class="c no-bb clickable" style="padding:26px 32px; border-right:0">
+                <div style="font-family:monospace; font-size:10px; color:var(--c-brand); text-transform:uppercase; letter-spacing:.12em; margin-bottom:8px">
+                    CLIENT
                 </div>
+                <div class="h3" style="margin-bottom:6px">{{'ai.mcp.client.title' | i18n}}</div>
+                <div class="sub" style="font-size:13px">{{'ai.mcp.client.desc' | i18n}}</div>
             </div>
         </div>
-    </div>
 
-    <!-- ══ ReAct Agent ═══════════════════════════════ -->
-    <div class="v-section v-section-dark">
-        <div class="container">
-            <div class="v-section-title-block">
-                <span class="v-section-eyebrow">{{'ai.react.title' | i18n}}</span>
-                <h2 class="v-section-heading">{{'ai.react.subtitle' | i18n}}</h2>
+        <div class="r g3 reveal">
+            <div class="c no-bb clickable" ng-repeat="feat in mcpFeatures"
+                 ng-style="$last ? {'border-right':'none'} : {}"
+                 style="padding:26px 32px">
+                <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.12em; margin-bottom:8px">
+                    0{{$index+1}}
+                </div>
+                <div class="h3" style="margin-bottom:6px">{{feat.title}}</div>
+                <div class="sub" style="font-size:13px">{{feat.desc}}</div>
             </div>
-            <div class="v-split">
+        </div>
+
+        <!-- ── §05 REACT AGENT ── -->
+        <div class="r g-bg ticks g2">
+            <div class="c" style="padding:32px 40px">
+                <div style="font-family:monospace; font-size:11px; color:var(--c-text2); letter-spacing:.12em; margin-bottom:10px">
+                    05 · REACT
+                </div>
+                <div class="h2">{{'ai.react.subtitle' | i18n}}</div>
+        </div>
+            <div class="c" style="padding:32px 40px; display:flex; align-items:center">
+                <div class="sub">{{'ai.react.desc' | i18n}}</div>
+            </div>
+        </div>
+
+        <div class="r g2 reveal">
+            <!-- Timeline steps -->
+            <div class="c" style="padding:32px 36px">
+                <div class="ai-step" ng-repeat="step in reactSteps">
+                    <div class="ai-step-num">0{{$index+1}}</div>
                 <div>
-                    <p style="color:rgba(255,255,255,0.38);font-size:0.88em;line-height:1.85;margin-bottom:28px">
-                        {{'ai.react.desc' | i18n}}
-                    </p>
-                    <div class="v-timeline">
-                        <div class="v-timeline-step" ng-repeat="step in reactSteps">
-                            <div class="v-timeline-step-tag">STEP {{$index + 1}}</div>
-                            <h5>{{step.title}}</h5>
-                            <p>{{step.desc}}</p>
-                        </div>
-                    </div>
+                    <div class="ai-step-tag">STEP {{$index+1}}</div>
+                    <h4>{{step.title}}</h4>
+                    <p>{{step.desc}}</p>
                 </div>
-                <div class="v-console">
-                    <div class="v-console-bar">
-                        <div class="v-code-dot" style="background:#ff5f56"></div>
-                        <div class="v-code-dot" style="background:#ffbd2e"></div>
-                        <div class="v-code-dot" style="background:#27c93f"></div>
-                        <span class="v-code-name">{{'ai.react.example.title' | i18n}}</span>
+                </div>
+            </div>
+            <!-- Console demo -->
+            <div class="c" style="padding:0">
+                <div class="ai-console" style="height:100%; border:none">
+                    <div class="ai-console-bar">
+                        <span class="ai-code-dot" style="background:#ff5f56"></span>
+                        <span class="ai-code-dot" style="background:#ffbd2e"></span>
+                        <span class="ai-code-dot" style="background:#27c93f"></span>
+                        <span class="ai-code-name">{{'ai.react.example.title' | i18n}}</span>
+                        <span style="font-family:monospace; font-size:.65em; color:#4ade80; display:flex; align-items:center; gap:5px">
+                        <span style="width:6px; height:6px; border-radius:50%; background:#4ade80; display:inline-block; animation:pulse-ai 2s infinite"></span>
+                        running
+                    </span>
                     </div>
-                    <div class="v-console-body">
-                        <div class="v-console-row">
-                            <span class="v-console-tag v-t-user">User</span>
-                            <span class="v-console-text">{{'ai.react.example.user' | i18n}}</span>
+                    <div class="ai-console-body">
+                        <div class="ai-console-row">
+                            <span class="ai-ctag ai-t-user">User</span>
+                            <span class="ai-console-text">{{'ai.react.example.user' | i18n}}</span>
                         </div>
-                        <div class="v-console-row">
-                            <span class="v-console-tag v-t-think">Think</span>
-                            <span class="v-console-text">{{'ai.react.example.thought1' | i18n}}</span>
+                        <div class="ai-console-row">
+                            <span class="ai-ctag ai-t-think">Think</span>
+                            <span class="ai-console-text">{{'ai.react.example.thought1' | i18n}}</span>
                         </div>
-                        <div class="v-console-row">
-                            <span class="v-console-tag v-t-act">Act</span>
-                            <span class="v-console-text">{{'ai.react.example.action1' | i18n}}</span>
+                        <div class="ai-console-row">
+                            <span class="ai-ctag ai-t-act">Act</span>
+                            <span class="ai-console-text">{{'ai.react.example.action1' | i18n}}</span>
                         </div>
-                        <div class="v-console-row">
-                            <span class="v-console-tag v-t-obs">Obs</span>
-                            <span class="v-console-text">{{'ai.react.example.observe1' | i18n}}</span>
+                        <div class="ai-console-row">
+                            <span class="ai-ctag ai-t-obs">Obs</span>
+                            <span class="ai-console-text">{{'ai.react.example.observe1' | i18n}}</span>
+                    </div>
+                        <div class="ai-console-row">
+                            <span class="ai-ctag ai-t-think">Think</span>
+                            <span class="ai-console-text">{{'ai.react.example.thought2' | i18n}}</span>
                         </div>
-                        <div class="v-console-row">
-                            <span class="v-console-tag v-t-think">Think</span>
-                            <span class="v-console-text">{{'ai.react.example.thought2' | i18n}}</span>
+                        <div class="ai-console-row">
+                            <span class="ai-ctag ai-t-act">Act</span>
+                            <span class="ai-console-text">{{'ai.react.example.action2' | i18n}}</span>
                         </div>
-                        <div class="v-console-row">
-                            <span class="v-console-tag v-t-act">Act</span>
-                            <span class="v-console-text">{{'ai.react.example.action2' | i18n}}</span>
-                        </div>
-                        <div class="v-console-row">
-                            <span class="v-console-tag v-t-done">Done</span>
-                            <span class="v-console-text">{{'ai.react.example.result' | i18n}}</span>
+                        <div class="ai-console-row">
+                            <span class="ai-ctag ai-t-done">Done</span>
+                            <span class="ai-console-text">{{'ai.react.example.result' | i18n}}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- ══ AI Claw Cross-promo ══════════════════════ -->
-    <div class="v-section v-section-dark" style="background:#0d1117;border-top:1px solid rgba(0,255,136,0.12)">
-        <div class="container">
-            <div class="v-claw-promo">
-                <div class="v-claw-promo-text">
-                    <span class="v-section-eyebrow" style="color:#00ff88;font-family:'SFMono-Regular',monospace">🦞 AI CLAW</span>
-                    <h2 class="v-section-heading" style="color:#fff">{{'claw.feat.title' | i18n}}</h2>
-                    <p class="v-section-desc" style="color:rgba(255,255,255,0.38)">{{'claw.hero.subtitle' | i18n}}</p>
-                    <a class="v-cta-btn" href="#!/ai-claw"
-                       style="margin-top:24px;display:inline-block;background:#00ff88;border-color:#00ff88;color:#000!important">
-                        {{'claw.hero.btn.doc' | i18n}} &nbsp;→
-                    </a>
+        <!-- ── §06 AI CLAW CROSS-PROMO ── -->
+        <div class="ai-claw-sec">
+            <div class="r g-bg ticks g2">
+                <div class="c" style="padding:32px 40px">
+                    <div style="font-family:monospace; font-size:11px; color:#00ff88; letter-spacing:.12em; margin-bottom:10px; opacity:.8">
+                        06 · AI CLAW
+                    </div>
+                    <div class="h2">{{'claw.feat.title' | i18n}}</div>
                 </div>
-                <div class="v-claw-feats">
-                    <div class="v-claw-feat">
-                        <span class="v-claw-feat-icon">🗣️</span>
-                        <div>
-                            <div class="v-claw-feat-title">{{'claw.feat.f1.title' | i18n}}</div>
-                            <div class="v-claw-feat-desc">{{'claw.feat.f1.desc' | i18n}}</div>
-                        </div>
-                    </div>
-                    <div class="v-claw-feat">
-                        <span class="v-claw-feat-icon">💾</span>
-                        <div>
-                            <div class="v-claw-feat-title">{{'claw.feat.f2.title' | i18n}}</div>
-                            <div class="v-claw-feat-desc">{{'claw.feat.f2.desc' | i18n}}</div>
-                        </div>
-                    </div>
-                    <div class="v-claw-feat">
-                        <span class="v-claw-feat-icon">⚡</span>
-                        <div>
-                            <div class="v-claw-feat-title">{{'claw.feat.f3.title' | i18n}}</div>
-                            <div class="v-claw-feat-desc">{{'claw.feat.f3.desc' | i18n}}</div>
-                        </div>
-                    </div>
-                    <div class="v-claw-feat">
-                        <span class="v-claw-feat-icon">🧠</span>
-                        <div>
-                            <div class="v-claw-feat-title">{{'claw.feat.f6.title' | i18n}}</div>
-                            <div class="v-claw-feat-desc">{{'claw.feat.f6.desc' | i18n}}</div>
-                        </div>
-                    </div>
+                <div class="c" style="padding:32px 40px; display:flex; align-items:center; gap:12px">
+                    <div class="sub" style="flex:1">{{'claw.hero.subtitle' | i18n}}</div>
+                    <a class="wbtn wbtn-o" href="#!/ai-claw" style="flex-shrink:0">{{'claw.hero.btn.doc' | i18n}} →</a>
+                </div>
+            </div>
+
+            <div class="r g4 reveal">
+                <div class="c no-bb clickable" style="padding:28px 28px">
+                    <div style="font-size:1.5em; margin-bottom:12px; line-height:1">🗣️</div>
+                    <div class="h3" style="margin-bottom:6px">{{'claw.feat.f1.title' | i18n}}</div>
+                    <div class="sub" style="font-size:13px">{{'claw.feat.f1.desc' | i18n}}</div>
+                </div>
+                <div class="c no-bb clickable" style="padding:28px 28px">
+                    <div style="font-size:1.5em; margin-bottom:12px; line-height:1">💾</div>
+                    <div class="h3" style="margin-bottom:6px">{{'claw.feat.f2.title' | i18n}}</div>
+                    <div class="sub" style="font-size:13px">{{'claw.feat.f2.desc' | i18n}}</div>
+                </div>
+                <div class="c no-bb clickable" style="padding:28px 28px">
+                    <div style="font-size:1.5em; margin-bottom:12px; line-height:1">⚡</div>
+                    <div class="h3" style="margin-bottom:6px">{{'claw.feat.f3.title' | i18n}}</div>
+                    <div class="sub" style="font-size:13px">{{'claw.feat.f3.desc' | i18n}}</div>
+                </div>
+                <div class="c no-bb clickable" style="padding:28px 28px; border-right:0">
+                    <div style="font-size:1.5em; margin-bottom:12px; line-height:1">🧠</div>
+                    <div class="h3" style="margin-bottom:6px">{{'claw.feat.f6.title' | i18n}}</div>
+                    <div class="sub" style="font-size:13px">{{'claw.feat.f6.desc' | i18n}}</div>
+                </div>
+            </div>
+        </div><!-- /.ai-claw-sec -->
+
+        <!-- ── CTA ── -->
+        <div class="r g-bg ticks">
+            <div class="c no-bb" style="padding:56px 48px; border-right:0; text-align:center">
+                <div class="h2" style="margin-bottom:12px">把下一个 AI 功能，<span
+                        style="color:var(--c-brand)">注解</span>出来。
+                </div>
+                <div class="sub" style="max-width:46ch; margin:0 auto 28px">{{'ai.hero.subtitle' | i18n}}</div>
+                <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center">
+                    <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/erupt-ai" target="_blank">{{'ai.hero.btn.doc'
+                        | i18n}}</a>
+                    <a class="wbtn" href="https://demo.erupt.xyz/#/ai/chat" target="_blank">{{'ai.hero.btn.demo' |
+                        i18n}}</a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- ══ CTA ═══════════════════════════════════════ -->
-    <div class="v-cta">
-        <div class="container">
-            <h2>{{'ai.hero.title' | i18n}}</h2>
-            <p>{{'ai.hero.subtitle' | i18n}}</p>
-            <a class="v-cta-btn" href="https://docs.erupt.xyz/modules/erupt-ai"
-               target="_blank">{{'ai.hero.btn.doc' | i18n}}</a>
-        </div>
+        <div class="fr-corners"></div>
     </div>
-
 </div>
+
+<style>
+    @keyframes pulse-ai {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: .3;
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    }());
+</script>

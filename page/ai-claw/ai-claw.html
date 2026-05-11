@@ -1,811 +1,938 @@
 <style>
+    /* ── Header override: green theme ── */
     #header {
-        background: rgb(12, 35, 32);
-        border-bottom: 0;
+        background: rgba(8, 18, 14, 0.96);
+        border-bottom: 1px solid rgba(0, 255, 136, 0.14);
         color: #fff;
     }
 
     #header > div {
-        border-left: 0;
-        border-right: 0;
+        border-left-color: rgba(0, 255, 136, 0.14);
+        border-right-color: rgba(0, 255, 136, 0.14);
     }
 
     #header a {
-        color: #aaa;
+        color: rgba(255, 255, 255, 0.55);
+    }
+
+    #header a:hover, #header a:focus {
+        color: #00ff88;
     }
 
     #header .active-link {
-        color: #fff !important;
+        color: #00ff88 !important;
     }
 
+    /* ── AI Claw — Blueprint × Black-Green ── */
+    .ac {
+        --ac: #00ff88;
+        --ac-dim: rgba(0, 255, 136, .09);
+        --ac-border: rgba(0, 255, 136, .16);
+        --ac-grid: rgba(0, 255, 136, .032);
+        --ac-bg0: #0d1117;
+        --ac-bg1: #0a0f1a;
+        --ac-bg2: #161b22;
+        --ac-bg3: #21262d;
+        --ac-t1: #ffffff;
+        --ac-t2: rgba(255, 255, 255, .50);
+        --ac-t3: rgba(255, 255, 255, .28);
+        --ac-lb: #E5E7EB;
+        background: var(--ac-bg0);
+        font-family: var(--c-sans);
+    }
 
-    .claw-hero {
-        background: #0d1117;
-        color: #fff;
-        padding: 80px 0 60px;
-        text-align: center;
+    /* ── Bounded frame — dark ── */
+    .ac-fr {
+        max-width: 1200px;
+        margin: 0 auto;
+        border-left: 1px solid var(--ac-border);
+        border-right: 1px solid var(--ac-border);
         position: relative;
-        overflow: hidden;
     }
 
-    .claw-hero-grid {
-        position: absolute;
-        inset: 0;
-        background-image: linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
-        background-size: 44px 44px;
-        pointer-events: none;
-    }
-
-    .claw-hero::before {
+    .ac-fr::before, .ac-fr::after {
         content: '';
         position: absolute;
-        inset: 0;
-        background: radial-gradient(ellipse 80% 55% at 50% -5%, rgba(0, 255, 136, 0.10) 0%, transparent 65%);
+        width: 12px;
+        height: 12px;
+        border-color: var(--ac);
+        border-style: solid;
+        z-index: 2;
         pointer-events: none;
     }
 
-    .claw-hero .container {
+    .ac-fr::before {
+        top: 0;
+        left: 0;
+        border-width: 2px 0 0 2px;
+    }
+
+    .ac-fr::after {
+        top: 0;
+        right: 0;
+        border-width: 2px 2px 0 0;
+    }
+
+    /* ── Bounded frame — light ── */
+    .ac-fr-light {
+        max-width: 1200px;
+        margin: 0 auto;
+        border-left: 1px solid var(--ac-lb);
+        border-right: 1px solid var(--ac-lb);
         position: relative;
-        z-index: 1;
-    }
-
-    .claw-hero h1 {
-        font-size: 3em;
-        font-weight: 900;
-        margin-bottom: 18px;
-        letter-spacing: 1px;
-    }
-
-    @media (max-width: 768px) {
-        .claw-hero h1 {
-            font-size: 2.1em;
-        }
-    }
-
-    .claw-green {
-        color: #00ff88;
-    }
-
-    .claw-cursor {
-        display: inline-block;
-        width: 3px;
-        height: 0.85em;
-        background: #00ff88;
-        margin-left: 4px;
-        vertical-align: middle;
-        border-radius: 1px;
-        animation: claw-blink 1s step-end infinite;
-    }
-
-    @keyframes claw-blink {
-        0%, 100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0;
-        }
-    }
-
-    .claw-hero p.subtitle {
-        font-size: 1.12em;
-        color: rgba(255, 255, 255, 0.58);
-        max-width: 660px;
-        margin: 0 auto 28px;
-        line-height: 1.75;
-    }
-
-    .claw-badge {
-        display: inline-block;
-        background: rgba(0, 255, 136, 0.09);
-        border: 1px solid rgba(0, 255, 136, 0.22);
-        color: #00ff88;
-        border-radius: 20px;
-        padding: 4px 13px;
-        font-size: 0.8em;
-        font-family: 'SFMono-Regular', 'Fira Code', 'Consolas', monospace;
-        margin: 4px 3px;
-    }
-
-    .claw-hero-btns {
-        margin-top: 28px;
-    }
-
-    .claw-btn-primary {
-        background: #00ff88;
-        color: #0d1117 !important;
-        border: none;
-        padding: 10px 28px;
-        border-radius: 4px;
-        font-weight: 700;
-        font-size: 0.95em;
-        margin: 6px;
-        cursor: pointer;
-        transition: all 0.2s;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .claw-btn-primary:hover {
-        background: #00e678;
-        color: #0d1117 !important;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 255, 136, 0.3);
-        text-decoration: none;
-    }
-
-    .claw-btn-outline {
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: rgba(255, 255, 255, 0.7) !important;
-        padding: 10px 28px;
-        border-radius: 4px;
-        font-weight: 600;
-        margin: 6px;
-        background: transparent;
-        transition: all 0.2s;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .claw-btn-outline:hover {
-        border-color: rgba(255, 255, 255, 0.4);
-        color: #fff !important;
-        background: rgba(255, 255, 255, 0.06);
-        transform: translateY(-2px);
-        text-decoration: none;
-    }
-
-    /* ── Sections ── */
-    .claw-section {
-        padding: 60px 0;
         background: #fff;
     }
 
-    .claw-section-dark {
-        padding: 60px 0;
-        background: #0d1117;
-        color: #fff;
+    .ac-fr-light::before, .ac-fr-light::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-color: var(--ac);
+        border-style: solid;
+        z-index: 2;
+        pointer-events: none;
     }
 
-    .claw-section-gray {
-        padding: 60px 0;
-        background: #f6f8fa;
+    .ac-fr-light::before {
+        top: 0;
+        left: 0;
+        border-width: 2px 0 0 2px;
     }
 
-    .claw-section-term {
-        padding: 50px 0;
-        background: #161b22;
+    .ac-fr-light::after {
+        top: 0;
+        right: 0;
+        border-width: 2px 2px 0 0;
     }
 
-    .claw-section-title {
+    /* Corner helpers (bottom two) */
+    .ac-c2::before, .ac-c2::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-color: var(--ac);
+        border-style: solid;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .ac-c2 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+    }
+
+    .ac-c2::before {
+        bottom: 0;
+        left: 0;
+        border-width: 0 0 2px 2px;
+    }
+
+    .ac-c2::after {
+        bottom: 0;
+        right: 0;
+        border-width: 0 2px 2px 0;
+    }
+
+    /* ── Rows ── */
+    .ac-r {
+        border-bottom: 1px solid var(--ac-border);
+    }
+
+    .ac-rl {
+        border-bottom: 1px solid var(--ac-lb);
+    }
+
+    .ac-r:last-child, .ac-rl:last-child {
+        border-bottom: none;
+    }
+
+    /* ── Grids ── */
+    .ac-g3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0;
+    }
+
+    .ac-g2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+    }
+
+    /* ── Dark cells ── */
+    .ac-c {
+        padding: 32px;
+        border-right: 1px solid var(--ac-border);
+        border-bottom: 1px solid var(--ac-border);
+        position: relative;
+        background: var(--ac-bg1);
+    }
+
+    .ac-g3 > .ac-c:nth-child(3n) {
+        border-right: none;
+    }
+
+    .ac-g2 > .ac-c:nth-child(2n) {
+        border-right: none;
+    }
+
+    /* ── Light cells ── */
+    .ac-cl {
+        padding: 32px;
+        border-right: 1px solid var(--ac-lb);
+        border-bottom: 1px solid var(--ac-lb);
+        position: relative;
+        background: #fff;
+        transition: background .15s;
+    }
+
+    .ac-cl:hover {
+        background: rgba(0, 255, 136, .018);
+    }
+
+    .ac-g3 > .ac-cl:nth-child(3n) {
+        border-right: none;
+    }
+
+    .ac-g3 > .ac-cl:nth-child(n+4) {
+        border-bottom: none;
+    }
+
+    /* ── Title rows ── */
+    .ac-title {
+        padding: 44px 40px;
         text-align: center;
-        margin-bottom: 40px;
+        background-image: linear-gradient(var(--ac-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--ac-grid) 1px, transparent 1px);
+        background-size: 24px 24px;
+        background-color: var(--ac-bg1);
     }
 
-    .claw-section-title h2 {
-        font-size: 2em;
-        font-weight: 800;
+    .ac-title-light {
+        padding: 44px 40px;
+        text-align: center;
+        background-image: linear-gradient(rgba(0, 0, 0, .038) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, .038) 1px, transparent 1px);
+        background-size: 24px 24px;
+        background-color: #fff;
+        border-bottom: 1px solid var(--ac-lb);
+    }
+
+    /* ── Section boundary dot ticks (middle frames only) ── */
+    .ac-fr.mid::before, .ac-fr-light.mid::before,
+    .ac-fr.mid::after, .ac-fr-light.mid::after {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--ac);
+        border: none;
+        outline: 1.5px solid rgba(0, 255, 136, .28);
+        outline-offset: 2px;
+    }
+
+    .ac-fr.mid::before, .ac-fr-light.mid::before {
+        top: -4px;
+        left: -4px;
+    }
+
+    .ac-fr.mid::after, .ac-fr-light.mid::after {
+        top: -4px;
+        right: -4px;
+    }
+
+    /* ── Typography ── */
+    .ac-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--ac);
+        display: block;
         margin-bottom: 12px;
     }
 
-    .claw-section-title p {
-        color: #888;
-        font-size: 1.03em;
-        max-width: 620px;
-        margin: 0 auto;
-    }
-
-    .claw-section-dark .claw-section-title p,
-    .claw-section-term .claw-section-title p {
-        color: rgba(255, 255, 255, 0.48);
-    }
-
-    .claw-section-dark .claw-section-title h2,
-    .claw-section-term .claw-section-title h2 {
+    .ac-h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -.025em;
         color: #fff;
+        margin: 0 0 14px;
     }
 
-    /* ── Terminal window ── */
-    .claw-terminal {
-        background: #0d1117;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
-        max-width: 820px;
-        margin: 0 auto;
+    .ac-h2d {
+        font-size: clamp(22px, 3.5vw, 36px);
+        font-weight: 600;
+        letter-spacing: -.02em;
+        color: #fff;
+        margin: 0 0 10px;
     }
 
-    .claw-term-bar {
-        background: #21262d;
-        padding: 11px 16px;
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    .ac-h2l {
+        font-size: clamp(22px, 3.5vw, 36px);
+        font-weight: 600;
+        letter-spacing: -.02em;
+        color: #0A0A0F;
+        margin: 0 0 10px;
     }
 
-    .claw-term-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
+    .ac-h3d {
+        font-size: 15px;
+        font-weight: 600;
+        color: #fff;
+        margin: 0 0 6px;
     }
 
-    .claw-term-bar .term-title {
-        color: rgba(255, 255, 255, 0.35);
-        font-size: 0.8em;
-        font-family: 'SFMono-Regular', 'Fira Code', monospace;
-        margin-left: 10px;
+    .ac-h3l {
+        font-size: 15px;
+        font-weight: 600;
+        color: #0A0A0F;
+        margin: 0 0 6px;
     }
 
-    .claw-term-body {
-        padding: 22px 26px 26px;
-        font-family: 'SFMono-Regular', 'Fira Code', 'Consolas', monospace;
-        font-size: 0.87em;
-        line-height: 1.75;
-    }
-
-    .claw-msg-user {
-        color: #79c0ff;
-        margin-top: 18px;
-        margin-bottom: 4px;
-    }
-
-    .claw-msg-user::before {
-        content: '$ ';
-        color: #00ff88;
-        font-weight: 700;
-    }
-
-    .claw-msg-think {
-        color: rgba(255, 255, 255, 0.38);
-        font-style: italic;
-        padding-left: 16px;
-        border-left: 2px solid rgba(0, 255, 136, 0.25);
-        margin: 5px 0;
-        font-size: 0.95em;
-    }
-
-    .claw-msg-action {
-        color: #ffa657;
-        padding-left: 16px;
-        margin: 3px 0;
-    }
-
-    .claw-msg-result {
-        color: #00ff88;
-        padding-left: 16px;
-        margin-top: 3px;
-    }
-
-    /* ── Feature Cards ── */
-    .claw-section-gray {
-        padding: 70px 0;
-        background: #fff;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .claw-section-gray::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(0, 204, 110, 0.055) 0%, transparent 65%);
-        pointer-events: none;
-    }
-
-    .claw-feat-card {
-        background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.07);
-        border-radius: 10px;
-        padding: 28px 22px;
-        transition: all 0.24s;
-        height: 100%;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .claw-feat-card::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #00ff88, #00cc6e);
-        opacity: 0;
-        transition: opacity 0.24s;
-    }
-
-    .claw-feat-card:hover {
-        border-color: rgba(0, 204, 110, 0.22);
-        box-shadow: 0 10px 36px rgba(0, 204, 110, 0.1);
-        transform: translateY(-4px);
-    }
-
-    .claw-feat-card:hover::after {
-        opacity: 1;
-    }
-
-    .claw-feat-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 14px;
-    }
-
-    .claw-feat-icon {
-        font-size: 1.7em;
-        line-height: 1;
-        flex-shrink: 0;
-    }
-
-    .claw-feat-tag {
-        display: inline-block;
-        background: #f0fdf4;
-        color: #15803d;
-        border: 1px solid #bbf7d0;
-        border-radius: 4px;
-        padding: 2px 8px;
-        font-size: 0.7em;
-        font-weight: 700;
-        font-family: 'SFMono-Regular', monospace;
-        letter-spacing: 0.5px;
-    }
-
-    .claw-feat-card h3 {
-        font-size: 1.02em;
-        font-weight: 700;
-        margin-bottom: 8px;
-        color: #111;
-    }
-
-    .claw-feat-card p {
-        color: #666;
-        font-size: 0.89em;
-        line-height: 1.68;
+    .ac-sub-d {
+        font-size: 14.5px;
+        line-height: 1.65;
+        color: var(--ac-t2);
         margin: 0;
     }
 
-    /* ── Skills ── */
-    .claw-section-skills {
-        padding: 70px 0;
-        background: #0a0f1a;
-        position: relative;
+    .ac-sub-l {
+        font-size: 14.5px;
+        line-height: 1.65;
+        color: #6B7280;
+        margin: 0;
+    }
+
+    /* ── Cursor ── */
+    .ac-cursor {
+        display: inline-block;
+        width: 3px;
+        height: .82em;
+        background: var(--ac);
+        margin-left: 4px;
+        vertical-align: middle;
+        animation: ac-blink 1s step-end infinite;
+    }
+
+    @keyframes ac-blink {
+        0%, 100% {
+            opacity: 1
+        }
+        50% {
+            opacity: 0
+        }
+    }
+
+    /* ── Badges ── */
+    .ac-badge {
+        display: inline-block;
+        background: var(--ac-dim);
+        border: 1px solid var(--ac-border);
+        color: var(--ac);
+        padding: 3px 9px;
+        font-size: 10.5px;
+        font-family: var(--c-mono);
+        letter-spacing: .10em;
+        text-transform: uppercase;
+        margin: 3px 2px;
+    }
+
+    /* ── Tag (feature type label) ── */
+    .ac-tag {
+        display: inline-block;
+        background: rgba(0, 0, 0, .05);
+        border: 1px solid var(--ac-lb);
+        color: #6B7280;
+        padding: 1px 7px;
+        font-size: 9.5px;
+        font-family: var(--c-mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        vertical-align: middle;
+        margin-left: 4px;
+    }
+
+    /* ── Buttons ── */
+    .ac-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 22px;
+        border: 1px solid var(--ac);
+        color: var(--ac) !important;
+        font-size: 13px;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        text-decoration: none !important;
+        transition: background .15s, color .15s;
+        font-family: var(--c-sans);
+        line-height: 1;
+        white-space: nowrap;
+        margin: 4px;
+    }
+
+    .ac-btn:hover {
+        background: var(--ac);
+        color: #0d1117 !important;
+        text-decoration: none !important;
+    }
+
+    .ac-btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 22px;
+        border: 1px solid rgba(255, 255, 255, .20);
+        color: rgba(255, 255, 255, .65) !important;
+        font-size: 13px;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        text-decoration: none !important;
+        transition: border-color .15s, color .15s, background .15s;
+        font-family: var(--c-sans);
+        line-height: 1;
+        white-space: nowrap;
+        margin: 4px;
+    }
+
+    .ac-btn-ghost:hover {
+        border-color: rgba(255, 255, 255, .45);
+        color: #fff !important;
+        background: rgba(255, 255, 255, .06);
+        text-decoration: none !important;
+    }
+
+    .ac-btn-l {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 9px 22px;
+        border: 1px solid var(--ac-lb);
+        color: #0A0A0F !important;
+        font-size: 13px;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        text-decoration: none !important;
+        transition: border-color .15s, color .15s;
+        font-family: var(--c-sans);
+        line-height: 1;
+        white-space: nowrap;
+        margin: 4px;
+    }
+
+    .ac-btn-l:hover {
+        border-color: var(--ac);
+        color: var(--ac) !important;
+        text-decoration: none !important;
+    }
+
+    .ac-btn-l-o {
+        border-color: var(--ac);
+        color: var(--ac) !important;
+    }
+
+    .ac-btn-l-o:hover {
+        background: var(--ac);
+        color: #0d1117 !important;
+    }
+
+    /* ── Terminal ── */
+    .ac-terminal {
+        background: var(--ac-bg0);
+        border: 1px solid var(--ac-border);
         overflow: hidden;
     }
 
-    .claw-section-skills::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: linear-gradient(rgba(0, 255, 136, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 136, 0.025) 1px, transparent 1px);
-        background-size: 40px 40px;
-        pointer-events: none;
-    }
-
-    .claw-skill-prop {
+    .ac-term-bar {
+        background: var(--ac-bg3);
+        padding: 10px 16px;
         display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        background: rgba(0, 255, 136, 0.04);
-        border: 1px solid rgba(0, 255, 136, 0.12);
-        border-radius: 10px;
-        padding: 18px 20px;
-        height: 100%;
-        transition: border-color 0.2s, box-shadow 0.2s;
+        align-items: center;
+        gap: 7px;
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
     }
 
-    .claw-skill-prop:hover {
-        border-color: rgba(0, 255, 136, 0.3);
-        box-shadow: 0 0 20px rgba(0, 255, 136, 0.06);
-    }
-
-    .claw-sp-icon {
-        font-size: 1.4em;
+    .ac-term-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
         flex-shrink: 0;
-        line-height: 1;
+    }
+
+    .ac-term-title {
+        color: rgba(255, 255, 255, .32);
+        font-size: 11px;
+        font-family: var(--c-mono);
+        margin-left: 10px;
+    }
+
+    .ac-term-body {
+        padding: 20px 24px;
+        font-family: var(--c-mono);
+        font-size: 12.5px;
+        line-height: 1.8;
+    }
+
+    .ac-msg-user {
+        color: #79c0ff;
+        margin-top: 16px;
+        margin-bottom: 3px;
+    }
+
+    .ac-msg-user::before {
+        content: '$ ';
+        color: var(--ac);
+        font-weight: 700;
+    }
+
+    .ac-msg-think {
+        color: var(--ac-t3);
+        font-style: italic;
+        padding-left: 14px;
+        border-left: 2px solid var(--ac-border);
+        margin: 4px 0;
+    }
+
+    .ac-msg-action {
+        color: #ffa657;
+        padding-left: 14px;
+        margin: 2px 0;
+    }
+
+    .ac-msg-result {
+        color: var(--ac);
+        padding-left: 14px;
         margin-top: 2px;
     }
 
-    .claw-sp-title {
+    /* ── Feature icon ── */
+    .ac-feat-icon {
+        font-size: 1.5em;
+        line-height: 1;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    /* ── Ghost step numbers ── */
+    .ac-ghost {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 48px;
+        font-weight: 700;
+        font-family: var(--c-mono);
+        color: var(--ac);
+        opacity: .045;
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -.04em;
+    }
+
+    /* ── Skills: prop cards ── */
+    .ac-sp-icon {
+        font-size: 1.3em;
+        line-height: 1;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .ac-sp-title {
         color: #fff;
         font-weight: 700;
-        font-size: 0.93em;
+        font-size: 14px;
         margin-bottom: 5px;
     }
 
-    .claw-sp-desc {
-        color: rgba(255, 255, 255, 0.42);
-        font-size: 0.82em;
-        line-height: 1.55;
+    .ac-sp-desc {
+        color: var(--ac-t2);
+        font-size: 12.5px;
+        line-height: 1.6;
     }
 
-    /* file explorer */
-    .claw-file-explorer {
-        background: #161b22;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 10px;
+    /* ── File explorer ── */
+    .ac-fe {
+        border: 1px solid var(--ac-border);
+        background: var(--ac-bg2);
         overflow: hidden;
-        height: 100%;
         display: flex;
         flex-direction: column;
+        height: 100%;
+        min-height: 280px;
     }
 
-    .claw-fe-titlebar {
-        background: #21262d;
-        padding: 9px 14px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        font-size: 0.72em;
-        letter-spacing: 1px;
-        color: rgba(255, 255, 255, 0.35);
-        font-family: 'SFMono-Regular', 'Fira Code', monospace;
+    .ac-fe-bar {
+        background: var(--ac-bg3);
+        padding: 8px 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
+        font-size: 10px;
+        letter-spacing: 1.2px;
+        color: var(--ac-t3);
+        font-family: var(--c-mono);
         text-transform: uppercase;
     }
 
-    .claw-fe-body {
-        padding: 10px 0;
+    .ac-fe-body {
+        padding: 8px 0;
     }
 
-    .claw-fe-row {
+    .ac-fe-row {
         display: flex;
         align-items: center;
         gap: 7px;
         padding: 5px 16px;
-        font-family: 'SFMono-Regular', 'Fira Code', monospace;
-        font-size: 0.84em;
-        color: rgba(255, 255, 255, 0.5);
+        font-family: var(--c-mono);
+        font-size: 12px;
+        color: var(--ac-t2);
         cursor: pointer;
-        transition: background 0.15s;
+        transition: background .12s;
         user-select: none;
     }
 
-    .claw-fe-row:hover {
-        background: rgba(255, 255, 255, 0.04);
+    .ac-fe-row:hover {
+        background: rgba(255, 255, 255, .04);
     }
 
-    .claw-fe-dir {
-        color: rgba(255, 255, 255, 0.65);
+    .ac-fe-active {
+        background: rgba(0, 255, 136, .07) !important;
+        color: var(--ac) !important;
+    }
+
+    .ac-fe-dir {
+        color: rgba(255, 255, 255, .65);
         font-weight: 600;
     }
 
-    .claw-fe-active {
-        background: rgba(0, 255, 136, 0.07) !important;
-        color: #00ff88 !important;
-    }
-
-    .claw-fe-arrow {
-        font-size: 0.65em;
-        color: rgba(255, 255, 255, 0.25);
+    .ac-fe-arrow {
+        font-size: .65em;
+        color: var(--ac-t3);
         width: 10px;
     }
 
-    .claw-fe-dot {
-        width: 6px;
-        height: 6px;
+    .ac-fe-dot {
+        width: 5px;
+        height: 5px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, .2);
         flex-shrink: 0;
     }
 
-    .claw-fe-active .claw-fe-dot {
-        background: #00ff88;
-        box-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
+    .ac-fe-active .ac-fe-dot {
+        background: var(--ac);
+        box-shadow: 0 0 5px rgba(0, 255, 136, .5);
     }
 
-    .claw-fe-preview {
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 16px 18px;
+    .ac-fe-preview {
+        border-top: 1px solid rgba(255, 255, 255, .06);
+        padding: 14px 16px;
         margin-top: auto;
-        background: rgba(0, 255, 136, 0.025);
+        background: var(--ac-dim);
     }
 
-    .claw-fe-preview-name {
-        font-family: monospace;
-        font-size: 0.78em;
-        color: #00ff88;
-        margin-bottom: 8px;
-        opacity: 0.8;
+    .ac-fe-preview-name {
+        font-family: var(--c-mono);
+        font-size: 11px;
+        color: var(--ac);
+        opacity: .8;
+        margin-bottom: 6px;
     }
 
-    .claw-fe-preview-content {
-        font-size: 0.86em;
-        color: rgba(255, 255, 255, 0.5);
+    .ac-fe-preview-content {
+        font-size: 12.5px;
+        color: var(--ac-t2);
         line-height: 1.65;
     }
 
-    /* invoke panel */
-    .claw-skill-invoke {
-        background: #161b22;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 10px;
+    /* ── Skill invoke panel ── */
+    .ac-si {
+        border: 1px solid var(--ac-border);
+        background: var(--ac-bg2);
         padding: 24px;
-        height: 100%;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 14px;
+        height: 100%;
+        min-height: 280px;
     }
 
-    .claw-si-label {
-        font-size: 0.7em;
-        color: rgba(255, 255, 255, 0.28);
+    .ac-si-label {
+        font-size: 10px;
+        color: var(--ac-t3);
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        font-family: monospace;
+        font-family: var(--c-mono);
     }
 
-    .claw-si-user {
-        background: rgba(99, 102, 241, 0.08);
-        border: 1px solid rgba(99, 102, 241, 0.18);
-        border-radius: 6px;
+    .ac-si-user {
+        background: rgba(99, 102, 241, .08);
+        border: 1px solid rgba(99, 102, 241, .2);
         padding: 10px 14px;
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 0.9em;
+        color: rgba(255, 255, 255, .75);
+        font-size: 13px;
         line-height: 1.5;
     }
 
-    .claw-si-step {
+    .ac-si-step {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 0.82em;
+        gap: 9px;
+        font-size: 12px;
     }
 
-    .claw-si-step-dot {
-        width: 6px;
-        height: 6px;
+    .ac-si-dot {
+        width: 5px;
+        height: 5px;
         border-radius: 50%;
-        background: rgba(0, 255, 136, 0.55);
+        background: var(--ac);
+        opacity: .6;
         flex-shrink: 0;
     }
 
-    .claw-si-step-label {
-        color: rgba(255, 255, 255, 0.35);
+    .ac-si-step-label {
+        color: var(--ac-t3);
     }
 
-    .claw-si-step-val {
-        color: #00ff88;
-        font-family: monospace;
+    .ac-si-step-val {
+        color: var(--ac);
+        font-family: var(--c-mono);
     }
 
-    .claw-si-result {
-        background: rgba(0, 255, 136, 0.05);
-        border: 1px solid rgba(0, 255, 136, 0.14);
-        border-radius: 6px;
+    .ac-si-result {
+        background: var(--ac-dim);
+        border: 1px solid var(--ac-border);
         padding: 12px 14px;
-        font-family: 'SFMono-Regular', 'Fira Code', monospace;
-        font-size: 0.8em;
-        color: rgba(255, 255, 255, 0.6);
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        color: var(--ac-t2);
         line-height: 1.7;
         margin-top: auto;
     }
 
-    .claw-code-wrap {
-        background: #161b22;
-        border-radius: 8px;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.07);
+    /* ── Reveal ── */
+    .ac-reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity .6s ease, transform .6s ease;
     }
 
-    .claw-code-wrap pre {
-        margin: 0;
-        padding: 22px 24px;
-        font-size: 0.87em;
-        line-height: 1.7;
-        overflow-x: auto;
+    .ac-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    /* ── CTA ── */
-    .claw-cta-link {
-        display: inline-block;
-        background: #0d1117;
-        color: #00ff88 !important;
-        border: 1px solid rgba(0, 255, 136, 0.35);
-        padding: 11px 32px;
-        border-radius: 4px;
-        font-weight: 700;
-        font-size: 0.95em;
-        margin: 6px;
-        transition: all 0.2s;
-        text-decoration: none;
+    /* ── Responsive ── */
+    @media (max-width: 1000px) {
+        .ac-fr, .ac-fr-light {
+            border-left: none;
+            border-right: none;
+        }
     }
 
-    .claw-cta-link:hover {
-        background: rgba(0, 255, 136, 0.08);
-        border-color: #00ff88;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 255, 136, 0.2);
-        text-decoration: none;
-        color: #00ff88 !important;
-    }
+    @media (max-width: 768px) {
+        .ac-g3, .ac-g2 {
+            grid-template-columns: 1fr;
+        }
 
-    .claw-cta-secondary {
-        display: inline-block;
-        border: 1px solid #d0d7de;
-        color: #555 !important;
-        padding: 11px 28px;
-        border-radius: 4px;
-        font-weight: 600;
-        margin: 6px;
-        transition: all 0.2s;
-        text-decoration: none;
-    }
+        .ac-g3 > .ac-c, .ac-g3 > .ac-cl, .ac-g2 > .ac-c {
+            border-right: none;
+        }
 
-    .claw-cta-secondary:hover {
-        border-color: #999;
-        color: #222 !important;
-        transform: translateY(-2px);
-        text-decoration: none;
+        .ac-g3 > .ac-cl:nth-child(n+4) {
+            border-bottom: 1px solid var(--ac-lb);
+        }
+
+        .ac-g3 > .ac-cl:last-child {
+            border-bottom: none;
+        }
+
+        .ac-title, .ac-title-light {
+            padding: 32px 20px;
+        }
+
+        .ac-c, .ac-cl {
+            padding: 24px;
+        }
+
+        .ac-h1 {
+            font-size: 2em;
+        }
     }
 </style>
 
-<div ng-controller="aiClaw">
+<div class="ac" ng-controller="aiClaw">
 
-    <!-- ── Hero ── -->
-    <div class="claw-hero">
-        <div class="claw-hero-grid"></div>
-        <div class="container">
-            <div style="margin-bottom:14px">
-                <span class="claw-badge">Apache 2.0</span>
-                <span class="claw-badge">xyz.erupt</span>
-            </div>
-            <h1>🦞 Erupt<span class="claw-green"> AI Claw</span><span class="claw-cursor"></span></h1>
-            <p class="subtitle">{{'claw.hero.subtitle' | i18n}}</p>
-            <div style="margin-bottom:8px">
-                <span class="claw-badge">{{'claw.badge.nlp' | i18n}}</span>
-                <span class="claw-badge">{{'claw.badge.shell' | i18n}}</span>
-                <span class="claw-badge">{{'claw.badge.file' | i18n}}</span>
-                <span class="claw-badge">{{'claw.badge.data' | i18n}}</span>
-                <span class="claw-badge">{{'claw.badge.skills' | i18n}}</span>
-            </div>
-            <div class="claw-hero-btns">
-                <a class="claw-btn-primary"
-                   href="https://docs.erupt.xyz/modules/erupt-ai-claw"
-                   target="_blank">{{'claw.hero.btn.doc' | i18n}}</a>
-                <a class="claw-btn-outline" href="https://github.com/erupts/erupt"
-                   target="_blank">GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── Terminal Demo ── -->
-    <div class="claw-section-term">
-        <div class="container">
-            <div class="claw-section-title">
-                <h2>{{'claw.demo.title' | i18n}}</h2>
-                <p>{{'claw.demo.subtitle' | i18n}}</p>
-            </div>
-            <div class="claw-terminal">
-                <div class="claw-term-bar">
-                    <div class="claw-term-dot" style="background:#ff5f56"></div>
-                    <div class="claw-term-dot" style="background:#ffbd2e"></div>
-                    <div class="claw-term-dot" style="background:#27c93f"></div>
-                    <span class="term-title">erupt-ai-claw — natural language console</span>
-                </div>
-                <div class="claw-term-body">
-                    <div ng-repeat="msg in demoMessages">
-                        <div class="claw-msg-user" ng-if="msg.type==='user'">{{msg.text}}</div>
-                        <div class="claw-msg-think" ng-if="msg.type==='think'">💭 {{msg.text}}</div>
-                        <div class="claw-msg-action" ng-if="msg.type==='action'">⚡ {{msg.text}}</div>
-                        <div class="claw-msg-result" ng-if="msg.type==='result'">✓ {{msg.text}}</div>
+    <!-- ── HERO ── -->
+    <div style="background:var(--ac-bg0)">
+        <div class="ac-fr">
+            <div class="ac-r" style="padding:72px 40px 56px;text-align:center;position:relative;background:var(--ac-bg0);
+                background-image:linear-gradient(var(--ac-grid) 1px,transparent 1px),linear-gradient(90deg,var(--ac-grid) 1px,transparent 1px);
+                background-size:24px 24px">
+                <div style="position:relative;z-index:1">
+                    <span class="ac-eyebrow">Apache 2.0 · xyz.erupt</span>
+                    <h1 class="ac-h1">🦞 Erupt<span style="color:var(--ac)"> AI Claw</span><span
+                            class="ac-cursor"></span></h1>
+                    <p class="ac-sub-d" style="max-width:620px;margin:0 auto 24px">{{'claw.hero.subtitle'|i18n}}</p>
+                    <div style="margin-bottom:22px">
+                        <span class="ac-badge">{{'claw.badge.nlp'|i18n}}</span>
+                        <span class="ac-badge">{{'claw.badge.shell'|i18n}}</span>
+                        <span class="ac-badge">{{'claw.badge.file'|i18n}}</span>
+                        <span class="ac-badge">{{'claw.badge.data'|i18n}}</span>
+                        <span class="ac-badge">{{'claw.badge.skills'|i18n}}</span>
+                    </div>
+                    <div>
+                        <a class="ac-btn" href="https://docs.erupt.xyz/modules/erupt-ai-claw" target="_blank">{{'claw.hero.btn.doc'|i18n}}</a>
+                        <a class="ac-btn-ghost" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ── Core Features ── -->
-    <div class="claw-section-gray">
-        <div class="container" style="position:relative;z-index:1">
-            <div class="claw-section-title">
-                <h2>{{'claw.feat.title' | i18n}}</h2>
-                <p>{{'claw.feat.subtitle' | i18n}}</p>
+    <!-- ── TERMINAL DEMO ── -->
+    <div style="background:var(--ac-bg1)">
+        <div class="ac-fr mid">
+            <div class="ac-title ac-r" style="background-image:none">
+                <span class="ac-eyebrow">Demo</span>
+                <h2 class="ac-h2d">{{'claw.demo.title'|i18n}}</h2>
+                <p class="ac-sub-d" style="max-width:540px;margin:8px auto 0">{{'claw.demo.subtitle'|i18n}}</p>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-md-4 col-sm-6 mb-4" ng-repeat="f in features">
-                    <div class="claw-feat-card">
-                        <div class="claw-feat-header">
-                            <span class="claw-feat-icon">{{f.icon}}</span>
-                            <span class="claw-feat-tag">{{f.tag}}</span>
+            <div class="ac-r ac-reveal" style="padding:40px;background:var(--ac-bg1)">
+                <div class="ac-terminal">
+                    <div class="ac-term-bar">
+                        <div class="ac-term-dot" style="background:#ff5f56"></div>
+                        <div class="ac-term-dot" style="background:#ffbd2e"></div>
+                        <div class="ac-term-dot" style="background:#27c93f"></div>
+                        <span class="ac-term-title">erupt-ai-claw — natural language console</span>
+                    </div>
+                    <div class="ac-term-body">
+                        <div ng-repeat="msg in demoMessages">
+                            <div class="ac-msg-user" ng-if="msg.type==='user'">{{msg.text}}</div>
+                            <div class="ac-msg-think" ng-if="msg.type==='think'">💭 {{msg.text}}</div>
+                            <div class="ac-msg-action" ng-if="msg.type==='action'">⚡ {{msg.text}}</div>
+                            <div class="ac-msg-result" ng-if="msg.type==='result'">✓ {{msg.text}}</div>
                         </div>
-                        <h3>{{f.title}}</h3>
-                        <p>{{f.desc}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ── Skills Extension ── -->
-    <div class="claw-section-skills">
-        <div class="container" style="position:relative;z-index:1">
-            <div class="claw-section-title">
-                <h2 style="color:#fff">{{'claw.skills.title' | i18n}}</h2>
-                <p style="color:rgba(255,255,255,0.45)">{{'claw.skills.subtitle' | i18n}}</p>
+    <!-- ── CORE FEATURES ── -->
+    <div style="background:#fff">
+        <div class="ac-fr-light mid">
+            <div class="ac-title-light">
+                <span class="ac-eyebrow">{{'claw.feat.title'|i18n}}</span>
+                <h2 class="ac-h2l" style="margin-top:4px">{{'claw.feat.subtitle'|i18n}}</h2>
+            </div>
+            <div class="ac-g3 ac-reveal">
+                <div class="ac-cl" ng-repeat="f in features">
+                    <span class="ac-ghost">0{{$index+1}}</span>
+                    <span class="ac-feat-icon">{{f.icon}}</span>
+                    <div style="display:flex;align-items:center;gap:0;margin-bottom:8px">
+                        <h3 class="ac-h3l" style="margin:0">{{f.title}}</h3>
+                        <span class="ac-tag">{{f.tag}}</span>
+                    </div>
+                    <p class="ac-sub-l">{{f.desc}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SKILLS EXTENSION ── -->
+    <div style="background:var(--ac-bg1)">
+        <div class="ac-fr mid">
+            <div class="ac-title ac-r">
+                <span class="ac-eyebrow">Skills System</span>
+                <h2 class="ac-h2d">{{'claw.skills.title'|i18n}}</h2>
+                <p class="ac-sub-d" style="max-width:540px;margin:8px auto 0">{{'claw.skills.subtitle'|i18n}}</p>
             </div>
 
             <!-- 3 property cards -->
-            <div class="row justify-content-center" style="margin-bottom:44px">
-                <div class="col-md-4 col-sm-6 mb-3">
-                    <div class="claw-skill-prop">
-                        <span class="claw-sp-icon">⚡</span>
+            <div class="ac-g3 ac-r ac-reveal">
+                <div class="ac-c">
+                    <div style="display:flex;align-items:flex-start;gap:12px">
+                        <span class="ac-sp-icon">⚡</span>
                         <div>
-                            <div class="claw-sp-title">{{'claw.skills.p1.title' | i18n}}</div>
-                            <div class="claw-sp-desc">{{'claw.skills.p1.desc' | i18n}}</div>
+                            <div class="ac-sp-title">{{'claw.skills.p1.title'|i18n}}</div>
+                            <div class="ac-sp-desc">{{'claw.skills.p1.desc'|i18n}}</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3">
-                    <div class="claw-skill-prop">
-                        <span class="claw-sp-icon">🔄</span>
+                <div class="ac-c">
+                    <div style="display:flex;align-items:flex-start;gap:12px">
+                        <span class="ac-sp-icon">🔄</span>
                         <div>
-                            <div class="claw-sp-title">{{'claw.skills.p2.title' | i18n}}</div>
-                            <div class="claw-sp-desc">{{'claw.skills.p2.desc' | i18n}}</div>
+                            <div class="ac-sp-title">{{'claw.skills.p2.title'|i18n}}</div>
+                            <div class="ac-sp-desc">{{'claw.skills.p2.desc'|i18n}}</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3">
-                    <div class="claw-skill-prop">
-                        <span class="claw-sp-icon">∞</span>
+                <div class="ac-c">
+                    <div style="display:flex;align-items:flex-start;gap:12px">
+                        <span class="ac-sp-icon">∞</span>
                         <div>
-                            <div class="claw-sp-title">{{'claw.skills.p3.title' | i18n}}</div>
-                            <div class="claw-sp-desc">{{'claw.skills.p3.desc' | i18n}}</div>
+                            <div class="ac-sp-title">{{'claw.skills.p3.title'|i18n}}</div>
+                            <div class="ac-sp-desc">{{'claw.skills.p3.desc'|i18n}}</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- file explorer + invocation -->
-            <div class="row justify-content-center">
-                <div class="col-md-5 mb-4">
-                    <div class="claw-file-explorer">
-                        <div class="claw-fe-titlebar">Explorer — .erupt/skills</div>
-                        <div class="claw-fe-body">
-                            <div class="claw-fe-row claw-fe-dir">
-                                <span class="claw-fe-arrow">▾</span> .erupt/skills
+            <!-- File explorer + invocation panel -->
+            <div class="ac-g2 ac-reveal">
+                <div class="ac-c" style="border-bottom:none">
+                    <div class="ac-fe">
+                        <div class="ac-fe-bar">Explorer — .erupt/skills</div>
+                        <div class="ac-fe-body">
+                            <div class="ac-fe-row ac-fe-dir">
+                                <span class="ac-fe-arrow">▾</span>.erupt/skills
                             </div>
-                            <div class="claw-fe-row claw-fe-dir" style="padding-left:24px">
-                                <span class="claw-fe-arrow">▸</span> send-alert
+                            <div class="ac-fe-row ac-fe-dir" style="padding-left:28px">
+                                <span class="ac-fe-arrow">▸</span>send-alert
                             </div>
-                            <div class="claw-fe-row claw-fe-dir claw-fe-active" style="padding-left:24px">
-                                <span class="claw-fe-arrow">▾</span> check-service
+                            <div class="ac-fe-row ac-fe-dir ac-fe-active" style="padding-left:28px">
+                                <span class="ac-fe-arrow">▾</span>check-service
                             </div>
-                            <div class="claw-fe-row claw-fe-file claw-fe-active" style="padding-left:48px">
-                                <span class="claw-fe-dot"></span> SKILL.md
+                            <div class="ac-fe-row ac-fe-active" style="padding-left:52px">
+                                <span class="ac-fe-dot"></span>SKILL.md
                             </div>
-                            <div class="claw-fe-row" style="padding-left:48px">
-                                <span class="claw-fe-dot"></span> references
+                            <div class="ac-fe-row" style="padding-left:52px">
+                                <span class="ac-fe-dot"></span>references
                             </div>
-                            <div class="claw-fe-row claw-fe-dir" style="padding-left:24px">
-                                <span class="claw-fe-arrow">▸</span> backup-db
+                            <div class="ac-fe-row ac-fe-dir" style="padding-left:28px">
+                                <span class="ac-fe-arrow">▸</span>backup-db
                             </div>
                         </div>
-                        <div class="claw-fe-preview">
-                            <div class="claw-fe-preview-name">▸ check-service / SKILL.md</div>
-                            <div class="claw-fe-preview-content">查询指定服务的健康状态，返回 UP / DOWN 及各组件状态。
-                            </div>
+                        <div class="ac-fe-preview">
+                            <div class="ac-fe-preview-name">▸ check-service / SKILL.md</div>
+                            <div class="ac-fe-preview-content">查询指定服务的健康状态，返回 UP / DOWN 及各组件状态。</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-5 mb-4">
-                    <div class="claw-skill-invoke">
-                        <div class="claw-si-label">{{'claw.skills.invoke.label' | i18n}}</div>
-                        <div class="claw-si-user">检查 payment 服务是否正常</div>
-                        <div class="claw-si-step">
-                            <span class="claw-si-step-dot"></span>
-                            <span class="claw-si-step-label">{{'claw.skills.invoke.discover' | i18n}}</span>
-                            <code class="claw-si-step-val">check-service.md</code>
+                <div class="ac-c" style="border-bottom:none">
+                    <div class="ac-si">
+                        <div class="ac-si-label">{{'claw.skills.invoke.label'|i18n}}</div>
+                        <div class="ac-si-user">检查 payment 服务是否正常</div>
+                        <div class="ac-si-step">
+                            <span class="ac-si-dot"></span>
+                            <span class="ac-si-step-label">{{'claw.skills.invoke.discover'|i18n}}</span>
+                            <code class="ac-si-step-val">check-service.md</code>
                         </div>
-                        <div class="claw-si-step">
-                            <span class="claw-si-step-dot"></span>
-                            <span class="claw-si-step-label">{{'claw.skills.invoke.call' | i18n}}</span>
-                            <code class="claw-si-step-val">payment-service</code>
+                        <div class="ac-si-step">
+                            <span class="ac-si-dot"></span>
+                            <span class="ac-si-step-label">{{'claw.skills.invoke.call'|i18n}}</span>
+                            <code class="ac-si-step-val">payment-service</code>
                         </div>
-                        <div class="claw-si-result">
-                            <span style="color:#00ff88">✓</span>&nbsp;
-                            {"status":"UP","db":"UP","cache":"UP"}
+                        <div class="ac-si-result">
+                            <span style="color:var(--ac)">✓</span>&nbsp;{"status":"UP","db":"UP","cache":"UP"}
                         </div>
                     </div>
                 </div>
@@ -814,17 +941,35 @@
     </div>
 
     <!-- ── CTA ── -->
-    <div class="claw-section" style="text-align:center">
-        <div class="container">
-            <div style="font-size:2.6em;margin-bottom:14px">🦞</div>
-            <h2 style="font-size:1.9em;font-weight:800;margin-bottom:12px">{{'claw.cta.title' | i18n}}</h2>
-            <p style="color:#888;margin-bottom:30px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7">
-                {{'claw.cta.subtitle' | i18n}}
-            </p>
-            <a class="claw-cta-link" href="https://docs.erupt.xyz/modules/erupt-ai-claw"
-               target="_blank">{{'claw.cta.doc' | i18n}}</a>
-            <a class="claw-cta-secondary" href="#!/ai">{{'claw.cta.also_ai' | i18n}}</a>
+    <div style="background:#fff">
+        <div class="ac-fr-light mid">
+            <div class="ac-title-light" style="border-bottom:none;padding-bottom:56px">
+                <div style="font-size:2.4em;margin-bottom:12px">🦞</div>
+                <h2 class="ac-h2l">{{'claw.cta.title'|i18n}}</h2>
+                <p class="ac-sub-l" style="max-width:440px;margin:0 auto 24px">{{'claw.cta.subtitle'|i18n}}</p>
+                <div>
+                    <a class="ac-btn-l ac-btn-l-o" href="https://docs.erupt.xyz/modules/erupt-ai-claw" target="_blank">{{'claw.cta.doc'|i18n}}</a>
+                    <a class="ac-btn-l" href="#!/ai">{{'claw.cta.also_ai'|i18n}}</a>
+                </div>
+            </div>
+            <div class="ac-c2"></div>
         </div>
     </div>
 
 </div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.ac-reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    })();
+</script>
