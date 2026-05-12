@@ -72,6 +72,7 @@ Key design elements:
 - **`.wbtn` / `.wbtn-o`** — blueprint-style buttons (not Bootstrap); use these inside `.fr` sections; Bootstrap `.btn-*`
   is reserved for the hero
 - **`.clickable`** — adds hover tint `rgba(255,87,34,.018)` to `.c` cells; `.git-card` uses the same tint
+- **`.bleed-lines`** — top & bottom 1px `var(--c-border)` lines that extend full viewport width (`width:100vw`) beyond the `.fr` container, creating a 井字 (hashtag-frame) effect; combine with `.r` on the same element
 
 Hero (§1 + §1b) lives inside `.fr` as the first two rows. All subsequent sections are numbered §2 onward.
 
