@@ -20,37 +20,19 @@
         30% {
             opacity: .3;
         }
-        60% {
-            opacity: .8;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, .3), 0 0 30px rgba(0, 123, 255, .25);
-        }
         100% {
             opacity: 1;
             transform: translateY(0);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 123, 255, .2);
         }
     }
 
     #erupt-box {
         opacity: 0;
-        transform: translateY(300px);
-        box-shadow: 0 20px 48px rgba(0, 0, 0, .5), 0 0 30px rgba(0, 123, 255, .15);
-        border: 1px solid rgba(255, 255, 255, .08);
+        border: 1px solid #ff5722;
+        border-top: 2px solid #ff5722;
         position: relative;
         animation: erupt-fly-in 1s cubic-bezier(.25, .46, .45, .94) forwards;
         will-change: transform, opacity;
-    }
-
-    #erupt-box::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        border-radius: 8px;
-        z-index: -1;
-        filter: blur(10px);
     }
 
     @keyframes erupt-inner-fade-in {
@@ -67,9 +49,9 @@
         animation: erupt-inner-fade-in 1s ease-out .1ms forwards;
         display: flex;
         align-items: center;
-        height: 38px;
-        background: #252526;
-        border-bottom: 1px solid #1e1e1e;
+        height: 34px;
+        background: #1a1a1a;
+        border-bottom: 1px solid rgba(255,87,34,.3);
         padding: 0 14px;
         flex-shrink: 0;
         gap: 8px;
@@ -131,10 +113,10 @@
     .eb-sidebar {
         width: 200px;
         flex-shrink: 0;
-        background: #252526;
+        background: #1a1a1a;
         color: #ccc;
         overflow: auto;
-        border-right: 1px solid #1e1e1e;
+        border-right: 1px solid rgba(255,87,34,.2);
         font-family: 'SFMono-Regular', monospace;
         font-size: .82em;
     }
@@ -152,8 +134,8 @@
 
     .eb-tabs {
         display: flex;
-        background: #2d2d2d;
-        border-bottom: 1px solid #1e1e1e;
+        background: #1a1a1a;
+        border-bottom: 1px solid rgba(255,87,34,.2);
         flex-shrink: 0;
     }
 
@@ -165,8 +147,8 @@
         height: 34px;
         font-size: .8em;
         color: rgba(255, 255, 255, .72);
-        border-right: 1px solid #1e1e1e;
-        background: #1e1e1e;
+        border-right: 1px solid rgba(255,87,34,.15);
+        background: #141414;
         font-family: 'SFMono-Regular', monospace;
     }
 
@@ -183,8 +165,8 @@
         flex-shrink: 0;
         padding: 16px 14px;
         overflow: auto;
-        background: #252526;
-        border-left: 1px solid #1e1e1e;
+        background: #1a1a1a;
+        border-left: 1px solid rgba(255,87,34,.2);
     }
 
     .code-tip-card {
@@ -358,15 +340,11 @@
         </div>
 
         <!-- §1b HERO EDITOR -->
-        <div class="r ticks" style="padding:28px 48px 36px">
-            <div id="erupt-box" style="display:flex;flex-direction:column;overflow:hidden;border-radius:10px;height:600px">
+        <div class="r ticks">
+            <div id="erupt-box" style="display:flex;flex-direction:column;overflow:hidden;height:600px">
                 <!-- titlebar -->
                 <div class="eb-titlebar">
-                    <div class="eb-traffic">
-                        <span class="eb-dot eb-dot-r"></span>
-                        <span class="eb-dot eb-dot-y"></span>
-                        <span class="eb-dot eb-dot-g"></span>
-                    </div>
+                    <span style="display:inline-block;width:7px;height:7px;background:#ff5722;transform:rotate(45deg);flex-shrink:0"></span>
                     <span class="eb-titlebar-name">Task.java — erupt-demo</span>
                     <span class="eb-titlebar-badge">Erupt Engine</span>
                 </div>
@@ -456,10 +434,10 @@ public class Task extends BaseModel {
 
 }</code></pre>
                         <!-- status bar -->
-                        <div style="flex-shrink:0;height:22px;background:#007acc;border-top:1px solid #005f9e;display:flex;align-items:center;padding:0 14px;gap:16px">
-                            <span style="font-size:10px;color:rgba(255,255,255,.7);font-family:'SFMono-Regular',monospace">Java</span>
-                            <span style="font-size:10px;color:rgba(255,255,255,.7);font-family:'SFMono-Regular',monospace">UTF-8</span>
-                            <span style="font-size:10px;color:rgba(255,255,255,.7);font-family:'SFMono-Regular',monospace">Spring Boot</span>
+                        <div style="flex-shrink:0;height:22px;background:#ff5722;border-top:1px solid rgba(255,87,34,.4);display:flex;align-items:center;padding:0 14px;gap:16px">
+                            <span style="font-size:10px;color:rgba(255,255,255,.85);font-family:'SFMono-Regular',monospace">Java</span>
+                            <span style="font-size:10px;color:rgba(255,255,255,.85);font-family:'SFMono-Regular',monospace">UTF-8</span>
+                            <span style="font-size:10px;color:rgba(255,255,255,.85);font-family:'SFMono-Regular',monospace">Spring Boot</span>
                             <span style="margin-left:auto;font-size:10px;color:rgba(99,102,241,.7);font-family:'SFMono-Regular',monospace">annotation-driven ✦</span>
                         </div>
                         <a class="badge badge-primary" href="#!/contrast"
