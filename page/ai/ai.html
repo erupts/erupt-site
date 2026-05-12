@@ -447,8 +447,8 @@
         <div class="r g-bg ai-hero-row" style="display:flex; min-height:420px; overflow:visible">
             <div style="flex:1; padding:56px 48px 48px; display:flex; flex-direction:column; justify-content:center">
                 <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:20px">
-                    <span class="tag" style="font-family:monospace">🤖 AI</span>
-                    <span style="font-size:12px; color:var(--c-text2)">AI 能力框架 · Apache 2.0</span>
+                    <span class="tag" style="font-family:monospace;margin-bottom: 0">🤖 AI</span>
+                    <span style="font-size:12px; color:var(--c-text2)"> Capability Framework · Apache 2.0</span>
                 </div>
                 <div class="h1"
                      style="font-size:clamp(42px,5.5vw,78px); line-height:.95; letter-spacing:-.03em; margin-bottom:22px">
@@ -476,7 +476,7 @@
                         <span style="font-size:32px; color:#fff;">HARNESS</span>
                     </div>
                     <div style="margin-top:10px; font-size:11px; color:rgba(255,255,255,.35); font-family:monospace; letter-spacing:.05em; line-height:1.6">
-                        LLM 接入层 · ReAct Agent · MCP Protocol
+                        LLM Adapter · ReAct Agent · MCP Protocol
                     </div>
                 </div>
                 <!-- Divider -->
@@ -552,7 +552,7 @@
                     <span class="ai-chip">Gemini</span>
                     <span class="ai-chip">DeepSeek</span>
                     <span class="ai-chip">Qwen</span>
-                    <span class="ai-chip">文心 ERNIE</span>
+                    <span class="ai-chip">ERNIE</span>
                     <span class="ai-chip">GLM</span>
                     <span class="ai-chip">Doubao</span>
                     <span class="ai-chip">Kimi</span>
@@ -634,31 +634,21 @@
                 <div style="display:flex; flex-direction:column; gap:8px">
                     <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(139,92,246,.06)">
                         <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px">
-                            注解驱动
+                            {{'ai.tools.annotation.label' | i18n}}
                         </div>
-                        <div style="font-size:12.5px; color:var(--c-text)">用 <code
-                                style="font-family:monospace; color:var(--c-brand); background:rgba(139,92,246,.15); padding:1px 5px; border-radius:2px">@Tool</code>
-                            标注方法，用 <code
-                                    style="font-family:monospace; color:var(--c-brand); background:rgba(139,92,246,.15); padding:1px 5px; border-radius:2px">@P</code>
-                            描述参数，Agent 自动感知并按需调用
-                        </div>
+                        <div style="font-size:12.5px; color:var(--c-text)" ng-bind-html="'ai.tools.annotation.desc' | i18nHtml"></div>
                 </div>
                     <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(139,92,246,.06)">
                         <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px">
-                            流式返回
+                            {{'ai.tools.streaming.label' | i18n}}
                         </div>
-                        <div style="font-size:12.5px; color:var(--c-text)">工具调用结果流式输出，ReAct
-                            循环在同一次请求内完整闭环，无需轮询
-                        </div>
+                        <div style="font-size:12.5px; color:var(--c-text)">{{'ai.tools.streaming.desc' | i18n}}</div>
                     </div>
                     <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(139,92,246,.06)">
                         <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px">
-                            零配置
+                            {{'ai.tools.zeroconfig.label' | i18n}}
                         </div>
-                        <div style="font-size:12.5px; color:var(--c-text)">注解即注册，框架自动扫描 <code
-                                style="font-family:monospace; color:var(--c-brand); background:rgba(139,92,246,.15); padding:1px 5px; border-radius:2px">@Tool</code>
-                            方法，无需手动维护工具列表
-                        </div>
+                        <div style="font-size:12.5px; color:var(--c-text)" ng-bind-html="'ai.tools.zeroconfig.desc' | i18nHtml"></div>
                     </div>
                 </div>
             </div>
@@ -684,9 +674,7 @@
                 <div class="h2">{{'ai.arch.desc' | i18n}}</div>
             </div>
             <div class="c" style="padding:32px 40px; display:flex; align-items:center">
-                <div class="sub">三层架构清晰解耦：应用功能层、引擎能力层、LLM
-                    适配层。模型切换对上层业务零感知，每层均可独立扩展。
-                </div>
+                <div class="sub">{{'ai.arch.layer.desc' | i18n}}</div>
         </div>
     </div>
 
@@ -748,9 +736,7 @@
                 <div class="h2">{{'ai.mcp.subtitle' | i18n}}</div>
         </div>
             <div class="c" style="padding:32px 40px; display:flex; align-items:center">
-                <div class="sub">Model Context Protocol——Erupt 同时扮演 MCP Server 与 MCP Client，让 AI
-                    客户端与外部服务双向连通。
-                </div>
+                <div class="sub">{{'ai.mcp.bridge.desc' | i18n}}</div>
             </div>
         </div>
 
@@ -839,7 +825,7 @@
                         <span class="ai-code-name">{{'ai.react.example.title' | i18n}}</span>
                         <span style="font-family:monospace; font-size:.65em; color:#4ade80; display:flex; align-items:center; gap:5px">
                         <span style="width:6px; height:6px; border-radius:50%; background:#4ade80; display:inline-block; animation:pulse-ai 2s infinite"></span>
-                        running
+                        {{'ai.console.running' | i18n}}
                     </span>
                     </div>
                     <div class="ai-console-body">
@@ -918,9 +904,7 @@
         <!-- ── CTA ── -->
         <div class="r g-bg ticks">
             <div class="c no-bb" style="padding:56px 48px; border-right:0; text-align:center">
-                <div class="h2" style="margin-bottom:12px">把下一个 AI 功能，<span
-                        style="color:var(--c-brand)">注解</span>出来。
-                </div>
+                <div class="h2" style="margin-bottom:12px" ng-bind-html="'ai.cta.title' | i18nHtml"></div>
                 <div class="sub" style="max-width:46ch; margin:0 auto 28px">{{'ai.hero.subtitle' | i18n}}</div>
                 <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center">
                     <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/erupt-ai" target="_blank">{{'ai.hero.btn.doc'

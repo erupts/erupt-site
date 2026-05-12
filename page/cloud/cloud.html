@@ -5,16 +5,16 @@
     <div class="r g-bg" style="display:flex;min-height:420px;overflow:hidden">
         <!-- left -->
         <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
-            <span class="tag">Distributed Config · Microservices</span>
-            <h1 style="margin-top:16px;letter-spacing:-.03em;font-size:clamp(28px,4vw,52px);line-height:1.1">Erupt Cloud</h1>
+            <span class="tag">{{'cloud.hero.kicker' | i18n}}</span>
+            <h1 style="margin-top:16px;letter-spacing:-.03em;font-size:clamp(28px,4vw,52px);line-height:1.1">{{'cloud.hero.title' | i18n}}</h1>
             <p class="sub" style="margin-top:14px;max-width:44ch">
-                以数据库表替代 yml 配置文件，注解驱动，集群内任意微服务零前端对接即可获得完整的可视化配置管理能力。
+                {{'cloud.hero.sub' | i18n}}
             </p>
             <p style="margin-top:10px;font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);opacity:.75">
-                对比 Nacos / Apollo → 多行数据 · 行列级权限 · 可视化编辑 · 操作审计
+                {{'cloud.hero.tagline' | i18n}}
             </p>
             <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/erupt-cloud" target="_blank" style="padding:11px 28px;font-size:13px">阅读文档 ↗</a>
+                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/erupt-cloud" target="_blank" style="padding:11px 28px;font-size:13px">{{'cloud.cta.docs' | i18n}}</a>
                 <a class="wbtn" href="https://github.com/erupts/erupt" target="_blank" style="padding:11px 28px;font-size:13px">GitHub</a>
             </div>
         </div>
@@ -25,19 +25,19 @@
                 <div style="display:flex;align-items:stretch;gap:0">
                     <div style="flex:1;display:flex;flex-direction:column;gap:8px">
                         <div style="padding:9px 14px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(255,87,34,.04)">
-                            <div style="font-size:10px;font-weight:600;color:var(--c-brand)">Node · 通知服务</div>
+                            <div style="font-size:10px;font-weight:600;color:var(--c-brand)">{{'cloud.diagram.notify' | i18n}}</div>
                             <div style="font-size:9px;color:var(--c-text2);margin-top:2px;opacity:.7">erupt-cloud-node</div>
                         </div>
                         <div style="padding:9px 14px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(255,87,34,.04)">
-                            <div style="font-size:10px;font-weight:600;color:var(--c-brand)">Node · 网关服务</div>
+                            <div style="font-size:10px;font-weight:600;color:var(--c-brand)">{{'cloud.diagram.gateway' | i18n}}</div>
                             <div style="font-size:9px;color:var(--c-text2);margin-top:2px;opacity:.7">erupt-cloud-node</div>
                         </div>
                         <div style="padding:9px 14px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(255,87,34,.04)">
-                            <div style="font-size:10px;font-weight:600;color:var(--c-brand)">Node · 算法服务</div>
+                            <div style="font-size:10px;font-weight:600;color:var(--c-brand)">{{'cloud.diagram.algo' | i18n}}</div>
                             <div style="font-size:9px;color:var(--c-text2);margin-top:2px;opacity:.7">erupt-cloud-node</div>
                         </div>
                         <div style="padding:9px 14px;border:1px solid var(--c-border);border-left:2px dashed rgba(255,87,34,.35);background:rgba(255,87,34,.02)">
-                            <div style="font-size:9px;color:var(--c-text2);opacity:.55">更多服务节点…</div>
+                            <div style="font-size:9px;color:var(--c-text2);opacity:.55">{{'cloud.diagram.more' | i18n}}</div>
                         </div>
                     </div>
                     <!-- arrow -->
@@ -46,19 +46,19 @@
                     <div style="flex:0 0 auto;display:flex;flex-direction:column;gap:8px;min-width:110px">
                         <div style="padding:16px 14px;border:1px solid var(--c-brand);background:rgba(255,87,34,.06);text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
                             <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-brand);opacity:.6">Cloud</div>
-                            <div style="font-size:15px;font-weight:700;color:var(--c-text);margin-top:2px">Server</div>
-                            <div style="font-size:9px;color:var(--c-text2);margin-top:6px;line-height:1.5">注册 · 调度<br>权限 · 路由</div>
+                            <div style="font-size:15px;font-weight:700;color:var(--c-text);margin-top:2px">{{'cloud.diagram.server' | i18n}}</div>
+                            <div style="font-size:9px;color:var(--c-text2);margin-top:6px;line-height:1.5" ng-bind-html="'cloud.diagram.dispatch' | i18nHtml"></div>
                         </div>
                         <div style="text-align:center;color:var(--c-brand);opacity:.4;font-size:14px">↓</div>
                         <div style="padding:10px 14px;border:1px solid var(--c-border);background:var(--c-bg);text-align:center">
-                            <div style="font-size:10px;font-weight:600;color:var(--c-text)">Admin Console</div>
-                            <div style="font-size:9px;color:var(--c-text2);margin-top:2px;opacity:.7">统一管理台</div>
+                            <div style="font-size:10px;font-weight:600;color:var(--c-text)">{{'cloud.diagram.console' | i18n}}</div>
+                            <div style="font-size:9px;color:var(--c-text2);margin-top:2px;opacity:.7">{{'cloud.diagram.unified' | i18n}}</div>
                         </div>
                     </div>
                 </div>
                 <!-- heartbeat label -->
                 <div style="margin-top:10px;text-align:center;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2);opacity:.5">
-                    ← heartbeat / config pull →
+                    {{'cloud.diagram.heartbeat' | i18n}}
                 </div>
             </div>
         </div>
@@ -68,27 +68,27 @@
     <div class="r g4">
         <div class="c no-bb" style="text-align:center;padding:26px 16px">
             <div style="font-size:26px;font-weight:700;color:var(--c-brand);line-height:1;margin-bottom:6px">0</div>
-            <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2)">Frontend Code</div>
+            <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2)">{{'cloud.feat.zerofrontend.label' | i18n}}</div>
         </div>
         <div class="c no-bb" style="text-align:center;padding:26px 16px">
-            <div style="font-size:15px;font-weight:700;color:var(--c-text);line-height:1.2;margin-bottom:6px">无 Nacos</div>
-            <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2)">复用现有数据库</div>
+            <div style="font-size:15px;font-weight:700;color:var(--c-text);line-height:1.2;margin-bottom:6px">No Nacos</div>
+            <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2)">{{'cloud.feat.dbconfig.label' | i18n}}</div>
         </div>
         <div class="c no-bb" style="text-align:center;padding:26px 16px">
-            <div style="font-size:15px;font-weight:700;color:var(--c-text);line-height:1.2;margin-bottom:6px">行列级权限</div>
-            <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2)">Row / Column RBAC</div>
+            <div style="font-size:15px;font-weight:700;color:var(--c-text);line-height:1.2;margin-bottom:6px">{{'cloud.feat.rbac.label' | i18n}}</div>
+            <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2)">{{'cloud.feat.rbac.title' | i18n}}</div>
         </div>
         <div class="c no-bb" style="text-align:center;padding:26px 16px;border-right:none">
-            <div style="font-size:15px;font-weight:700;color:var(--c-text);line-height:1.2;margin-bottom:6px">k8s 友好</div>
+            <div style="font-size:15px;font-weight:700;color:var(--c-text);line-height:1.2;margin-bottom:6px">{{'cloud.feat.cloudnative.label' | i18n}}</div>
             <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2)">IP Drift · Docker</div>
         </div>
     </div>
 
     <!-- §3 WHY CLOUD heading -->
     <div class="r g-bg ticks" style="padding:48px;text-align:center">
-        <span class="tag">Why Erupt Cloud</span>
-        <h2 class="h2">不只是配置中心</h2>
-        <p class="sub" style="margin:0 auto;max-width:52ch">Nacos / Apollo 擅长 yml 键值对；Erupt Cloud 擅长多行结构化数据，二者可以共存、各司其职。</p>
+        <span class="tag">{{'cloud.why.kicker' | i18n}}</span>
+        <h2 class="h2">{{'cloud.why.title' | i18n}}</h2>
+        <p class="sub" style="margin:0 auto;max-width:52ch">{{'cloud.why.desc' | i18n}}</p>
     </div>
 
     <!-- §4 COMPARISON TABLE -->
@@ -102,42 +102,42 @@
             </colgroup>
             <thead>
             <tr>
-                <th style="padding:11px 24px;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-weight:400;text-align:left">维度</th>
-                <th style="padding:11px 24px;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2);border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);font-weight:400;text-align:left">Nacos / Apollo</th>
-                <th style="padding:11px 24px;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2);border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);font-weight:400;text-align:left">传统管理后台</th>
+                <th style="padding:11px 24px;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-weight:400;text-align:left">{{'cloud.cmp.dim.format' | i18n}}</th>
+                <th style="padding:11px 24px;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2);border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);font-weight:400;text-align:left">{{'cloud.cmp.nacos' | i18n}}</th>
+                <th style="padding:11px 24px;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2);border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);font-weight:400;text-align:left">{{'cloud.cmp.admin' | i18n}}</th>
                 <th style="padding:11px 24px;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-brand);border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);font-weight:600;text-align:left">Erupt Cloud ✦</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;font-weight:600">配置形态</td>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">yml / properties 键值对</td>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">接口 + 前端页面</td>
-                <td style="padding:10px 24px;color:var(--c-text);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">数据库表，支持多行结构化数据</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;font-weight:600">{{'cloud.cmp.dim.format' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.nacos.format' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.admin.format' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">{{'cloud.cmp.cloud.format' | i18n}}</td>
             </tr>
             <tr>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;font-weight:600">前端工作量</td>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">无（纯配置文件）</td>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">大量前端开发</td>
-                <td style="padding:10px 24px;color:var(--c-text);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">零，纯注解驱动</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;font-weight:600">{{'cloud.cmp.dim.frontend' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.nacos.frontend' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.admin.frontend' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">{{'cloud.cmp.cloud.frontend' | i18n}}</td>
             </tr>
             <tr>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;font-weight:600">权限控制</td>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">用户 / 角色级别</td>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">需自行实现</td>
-                <td style="padding:10px 24px;color:var(--c-text);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">行、列、按钮级精细控制</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;font-weight:600">{{'cloud.cmp.dim.access' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.nacos.access' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.admin.access' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">{{'cloud.cmp.cloud.access' | i18n}}</td>
             </tr>
             <tr>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;font-weight:600">基础设施依赖</td>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">需独立部署 Nacos / Apollo</td>
-                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">全套前后端脚手架</td>
-                <td style="padding:10px 24px;color:var(--c-text);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">复用现有数据库，无额外中间件</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;font-weight:600">{{'cloud.cmp.dim.infra' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.nacos.infra' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.admin.infra' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text);border-bottom:1px solid var(--c-border);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">{{'cloud.cmp.cloud.infra' | i18n}}</td>
             </tr>
             <tr>
-                <td style="padding:10px 24px;color:var(--c-text2);font-size:13px;font-weight:600">面向群体</td>
-                <td style="padding:10px 24px;color:var(--c-text2);font-size:13px;border-left:1px solid var(--c-border)">研发</td>
-                <td style="padding:10px 24px;color:var(--c-text2);font-size:13px;border-left:1px solid var(--c-border)">研发 + 大量前端资源</td>
-                <td style="padding:10px 24px;color:var(--c-text);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">研发、运营、产品均可操作</td>
+                <td style="padding:10px 24px;color:var(--c-text2);font-size:13px;font-weight:600">{{'cloud.cmp.dim.users' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.nacos.users' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text2);font-size:13px;border-left:1px solid var(--c-border)">{{'cloud.cmp.admin.users' | i18n}}</td>
+                <td style="padding:10px 24px;color:var(--c-text);font-size:13px;border-left:1px solid var(--c-border);font-weight:500">{{'cloud.cmp.cloud.users' | i18n}}</td>
             </tr>
             </tbody>
         </table>
@@ -145,121 +145,120 @@
 
     <!-- §5 ARCHITECTURE heading -->
     <div class="r g-bg ticks" style="padding:48px;text-align:center">
-        <span class="tag">Architecture</span>
-        <h2 class="h2">Server + Node 双端架构</h2>
-        <p class="sub" style="margin:0 auto;max-width:48ch">Server 为调度中心，Node 为轻量微节点，接入即注册，不依赖 Nacos，不依赖 Eureka，部署极简。</p>
+        <span class="tag">{{'cloud.arch.kicker' | i18n}}</span>
+        <h2 class="h2">{{'cloud.arch.title2' | i18n}}</h2>
+        <p class="sub" style="margin:0 auto;max-width:48ch">{{'cloud.arch.desc2' | i18n}}</p>
     </div>
 
     <!-- §6 SERVER + NODE g2 -->
     <div class="r g2 reveal">
         <div class="c no-bb" style="padding:40px 48px">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-brand)">erupt-cloud-server</span>
-            <div class="h2" style="margin-top:12px;margin-bottom:0">Cloud Server</div>
-            <p class="sub" style="margin-top:12px">调度中心，负责节点注册、请求路由、权限校验与统一管理台。提供官方 Docker 镜像，无需自行编码，拉起即用。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-brand)">{{'cloud.server.label' | i18n}}</span>
+            <div class="h2" style="margin-top:12px;margin-bottom:0">{{'cloud.server.title' | i18n}}</div>
+            <p class="sub" style="margin-top:12px">{{'cloud.server.desc' | i18n}}</p>
             <div class="mini" style="margin-top:20px">&lt;dependency&gt;
   &lt;groupId&gt;xyz.erupt&lt;/groupId&gt;
   &lt;artifactId&gt;<span style="color:var(--c-brand)">erupt-cloud-server</span>&lt;/artifactId&gt;
   &lt;version&gt;${erupt.version}&lt;/version&gt;
 &lt;/dependency&gt;</div>
-            <div style="margin-top:8px;font-family:var(--c-mono);font-size:10px;color:var(--c-text2);opacity:.6">或 Docker：erupts/erupt-cloud-server:latest</div>
+            <div style="margin-top:8px;font-family:var(--c-mono);font-size:10px;color:var(--c-text2);opacity:.6">{{'cloud.server.docker' | i18n}}</div>
             <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/cloud-server" target="_blank" style="font-size:12px;padding:7px 18px">Server 文档 →</a>
+                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/cloud-server" target="_blank" style="font-size:12px;padding:7px 18px">{{'cloud.server.docs' | i18n}}</a>
             </div>
         </div>
         <div class="c no-bb" style="padding:40px 48px">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-brand)">erupt-cloud-node</span>
-            <div class="h2" style="margin-top:12px;margin-bottom:0">Cloud Node</div>
-            <p class="sub" style="margin-top:12px">轻量微节点，接入任意 Spring Boot 服务。仅需一个依赖 + 三行配置即可向 Server 注册，并在该服务内获得完整 Erupt 注解能力。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-brand)">{{'cloud.node.label' | i18n}}</span>
+            <div class="h2" style="margin-top:12px;margin-bottom:0">{{'cloud.node.title' | i18n}}</div>
+            <p class="sub" style="margin-top:12px">{{'cloud.node.desc' | i18n}}</p>
             <div class="mini" style="margin-top:20px">erupt:
   cloud-node:
     server-addresses: <span style="color:var(--c-brand)">['http://cloud-server:9999']</span>
     access-token: <span style="color:#059669">9y1pa7eHksHWBTQC</span>
     node-name: <span style="color:#2563eb">myService</span></div>
             <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/cloud-node" target="_blank" style="font-size:12px;padding:7px 18px">Node 文档 →</a>
+                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/cloud-node" target="_blank" style="font-size:12px;padding:7px 18px">{{'cloud.node.docs' | i18n}}</a>
             </div>
         </div>
     </div>
 
     <!-- §7 FEATURES heading -->
     <div class="r g-bg ticks" style="padding:48px;text-align:center">
-        <span class="tag">Features</span>
-        <h2 class="h2">核心特性</h2>
+        <span class="tag">{{'cloud.feat.kicker' | i18n}}</span>
+        <h2 class="h2">{{'cloud.feat.title2' | i18n}}</h2>
     </div>
 
     <!-- §8 FEATURES row 1 (g3) -->
     <div class="r g3 reveal">
         <div class="c">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">DB-backed Config</span>
-            <div class="h3">数据库驱动配置</div>
-            <p class="sub" style="font-size:12.5px;margin-top:6px">以数据表替代 yml，后台可视化编辑，节点实时拉取生效，无需重启或维护配置文件。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">{{'cloud.feat.dbconfig.label' | i18n}}</span>
+            <div class="h3">{{'cloud.feat.dbconfig.title' | i18n}}</div>
+            <p class="sub" style="font-size:12.5px;margin-top:6px">{{'cloud.feat.dbconfig.desc' | i18n}}</p>
         </div>
         <div class="c">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Zero Frontend</span>
-            <div class="h3">零前端对接</div>
-            <p class="sub" style="font-size:12.5px;margin-top:6px">纯 @Erupt / @EruptField 注解描述界面，各服务无需单独搭建前端脚手架。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">{{'cloud.feat.zerofrontend.label' | i18n}}</span>
+            <div class="h3">{{'cloud.feat.zerofrontend.title' | i18n}}</div>
+            <p class="sub" style="font-size:12.5px;margin-top:6px">{{'cloud.feat.zerofrontend.desc' | i18n}}</p>
         </div>
         <div class="c" style="border-right:none">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Full Isolation</span>
-            <div class="h3">资源完全隔离</div>
-            <p class="sub" style="font-size:12.5px;margin-top:6px">数据库连接池隔离、代码逻辑隔离，各节点独立运行，天然适合大规模团队协作。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">{{'cloud.feat.isolation.label' | i18n}}</span>
+            <div class="h3">{{'cloud.feat.isolation.title' | i18n}}</div>
+            <p class="sub" style="font-size:12.5px;margin-top:6px">{{'cloud.feat.isolation.desc' | i18n}}</p>
         </div>
     </div>
 
     <!-- §9 FEATURES row 2 (g3) -->
     <div class="r g3 reveal">
         <div class="c no-bb">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Row / Col RBAC</span>
-            <div class="h3">行列级权限</div>
-            <p class="sub" style="font-size:12.5px;margin-top:6px">继承完整 Erupt 权限体系，权限可精细到表、行、列、按钮级别，满足企业级数据安全需求。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">{{'cloud.feat.rbac.label' | i18n}}</span>
+            <div class="h3">{{'cloud.feat.rbac.title' | i18n}}</div>
+            <p class="sub" style="font-size:12.5px;margin-top:6px">{{'cloud.feat.rbac.desc' | i18n}}</p>
         </div>
         <div class="c no-bb">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Cloud Native</span>
-            <div class="h3">云原生友好</div>
-            <p class="sub" style="font-size:12.5px;margin-top:6px">支持 IP 漂移与 k8s svc 映射，不依赖 Nacos / Eureka，Server 端提供官方 Docker 镜像。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">{{'cloud.feat.cloudnative.label' | i18n}}</span>
+            <div class="h3">{{'cloud.feat.cloudnative.title' | i18n}}</div>
+            <p class="sub" style="font-size:12.5px;margin-top:6px">{{'cloud.feat.cloudnative.desc' | i18n}}</p>
         </div>
         <div class="c no-bb" style="border-right:none">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Audit Trail</span>
-            <div class="h3">操作审计追溯</div>
-            <p class="sub" style="font-size:12.5px;margin-top:6px">任何配置变更均在平台留下痕迹，基于审计可追溯历史操作，比版本回退更精细。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">{{'cloud.feat.audit.label' | i18n}}</span>
+            <div class="h3">{{'cloud.feat.audit.title' | i18n}}</div>
+            <p class="sub" style="font-size:12.5px;margin-top:6px">{{'cloud.feat.audit.desc' | i18n}}</p>
         </div>
     </div>
 
     <!-- §10 SCENARIOS heading -->
     <div class="r g-bg ticks" style="padding:48px;text-align:center">
-        <span class="tag">Scenarios</span>
-        <h2 class="h2">典型应用场景</h2>
-        <p class="sub" style="margin:0 auto;max-width:44ch">集群内任意服务都可接入，把「后台管理能力」变成可编排的集群基础设施。</p>
+        <span class="tag">{{'cloud.scenario.kicker' | i18n}}</span>
+        <h2 class="h2">{{'cloud.scenario.title2' | i18n}}</h2>
+        <p class="sub" style="margin:0 auto;max-width:44ch">{{'cloud.scenario.desc2' | i18n}}</p>
     </div>
 
     <!-- §11 SCENARIOS g3 -->
     <div class="r g3 reveal">
         <div class="c no-bb">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Notification / Message</span>
-            <div class="h3">通知 / 消息服务</div>
-            <p class="sub" style="font-size:12.5px;margin-top:6px">通知模板、发送渠道、推送策略等由运营可视化管理，研发无需重复开发后台页面。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">{{'cloud.scenario.notify.label' | i18n}}</span>
+            <div class="h3">{{'cloud.scenario.notify.title' | i18n}}</div>
+            <p class="sub" style="font-size:12.5px;margin-top:6px">{{'cloud.scenario.notify.desc' | i18n}}</p>
         </div>
         <div class="c no-bb">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Gateway / Algorithm</span>
-            <div class="h3">网关 / 算法服务</div>
-            <p class="sub" style="font-size:12.5px;margin-top:6px">限流规则、GPT Prompt、超时配置等复杂多行数据，用表结构比 yml 更易管理与审计。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">{{'cloud.scenario.gateway.label' | i18n}}</span>
+            <div class="h3">{{'cloud.scenario.gateway.title' | i18n}}</div>
+            <p class="sub" style="font-size:12.5px;margin-top:6px">{{'cloud.scenario.gateway.desc' | i18n}}</p>
         </div>
         <div class="c no-bb" style="border-right:none">
-            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Multi-team Collab</span>
-            <div class="h3">多团队协作</div>
-            <p class="sub" style="font-size:12.5px;margin-top:6px">不同微服务归属不同团队，通过 Cloud Server 统一收口，数据库级别隔离，互不干扰。</p>
+            <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">{{'cloud.scenario.collab.label' | i18n}}</span>
+            <div class="h3">{{'cloud.scenario.collab.title' | i18n}}</div>
+            <p class="sub" style="font-size:12.5px;margin-top:6px">{{'cloud.scenario.collab.desc' | i18n}}</p>
         </div>
     </div>
 
     <!-- §12 CTA -->
     <div class="r g-bg ticks" style="padding:72px 48px;text-align:center">
-        <span class="tag">Get Started</span>
-        <h2 class="h2" style="margin-top:14px">{{'home.ready'|i18n}}</h2>
-        <p class="sub" style="margin:14px auto 0;max-width:40ch">查阅完整文档快速接入，或在线 Demo 直接感受注解驱动的分布式配置管理。</p>
+        <span class="tag">{{'cloud.cta.kicker' | i18n}}</span>
+        <h2 class="h2" style="margin-top:14px">{{'cloud.cta.title2' | i18n}}</h2>
+        <p class="sub" style="margin:14px auto 0;max-width:40ch">{{'cloud.cta.desc2' | i18n}}</p>
         <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-            <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/erupt-cloud" target="_blank" style="padding:12px 36px;font-size:14px">阅读文档 ↗</a>
-            <a class="wbtn" href="https://demo.erupt.xyz" style="padding:12px 36px;font-size:14px" target="_blank">在线
-                Demo</a>
+            <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/erupt-cloud" target="_blank" style="padding:12px 36px;font-size:14px">{{'cloud.cta.docs' | i18n}}</a>
+            <a class="wbtn" href="https://demo.erupt.xyz" style="padding:12px 36px;font-size:14px" target="_blank">{{'cloud.cta.demo' | i18n}}</a>
         </div>
     </div>
 

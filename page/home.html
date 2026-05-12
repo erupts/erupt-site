@@ -805,7 +805,7 @@ public class Task extends BaseModel {
                     <span style="font-family:var(--c-mono);font-size:14px;color:var(--c-brand);font-weight:500;display:block;margin-bottom:8px">@Erupt</span>
                     <div class="h3">{{'home.v2.anno.erupt.h'|i18n}}</div>
                     <p class="sub" style="font-size:12px;margin-bottom:0">{{'home.v2.anno.erupt.p'|i18n}}</p>
-                    <div class="mini"><span class="an">@Erupt</span>(name = <span class="st">"用户管理"</span>,
+                    <div class="mini"><span class="an">@Erupt</span>(name = <span class="st">"User Management"</span>,
                         power = <span class="an">@Power</span>(exportable = <span class="kw">true</span>),
                         filter = <span class="an">@Filter</span>(<span class="st">"dept_id = #{user.deptId}"</span>))
                     </div>
@@ -815,7 +815,7 @@ public class Task extends BaseModel {
                     <div class="h3">{{'home.v2.anno.field.h'|i18n}}</div>
                     <p class="sub" style="font-size:12px;margin-bottom:0">{{'home.v2.anno.field.p'|i18n}}</p>
                     <div class="mini"><span class="an">@EruptField</span>(
-                        views = <span class="an">@View</span>(title = <span class="st">"用户名"</span>, sortable = <span
+                        views = <span class="an">@View</span>(title = <span class="st">"Username"</span>, sortable = <span
                                 class="kw">true</span>),
                         edit = <span class="an">@Edit</span>(type = INPUT, search = <span class="an">@Search</span>))
                     </div>
@@ -1020,8 +1020,8 @@ public class Task extends BaseModel {
                         </div>
                     </div>
                     <div style="padding:20px 24px;border-top:1px solid var(--c-border);display:flex;gap:10px">
-                        <a class="wbtn wbtn-o" ng-click="go('#!/ai')">了解 Erupt AI →</a>
-                        <a class="wbtn" ng-click="go('#!/ai-claw')">AI Claw →</a>
+                        <a class="wbtn wbtn-o" ng-click="go('#!/ai')">{{'home.ai.learnmore' | i18n}}</a>
+                        <a class="wbtn" ng-click="go('#!/ai-claw')">{{'home.ai.claw.btn' | i18n}}</a>
                     </div>
                 </div>
             </div>
@@ -1146,7 +1146,7 @@ public class Task extends BaseModel {
         <div class="r g3 reveal">
             <div class="c clickable" ng-click="go('#!/ai')">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Erupt AI</span>
-                <div class="h3">AI 大模型深度集成</div>
+                <div class="h3">{{'home.fam.ai.title' | i18n}}</div>
                 <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.v2.fam.ai.p'|i18n}}</p>
                 <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
                     {{'home.v2.fam.more'|i18n}} →
@@ -1154,7 +1154,7 @@ public class Task extends BaseModel {
             </div>
             <div class="c clickable" ng-click="go('#!/ai-claw')">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">AI Claw</span>
-                <div class="h3">自然语言控制服务器</div>
+                <div class="h3">{{'home.fam.claw.title' | i18n}}</div>
                 <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.promo.claw.desc'|i18n}}</p>
                 <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
                     {{'home.v2.fam.more'|i18n}} →
@@ -1162,7 +1162,7 @@ public class Task extends BaseModel {
             </div>
             <div class="c clickable" ng-click="go('#!/flow')" style="border-right:none">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Erupt Flow</span>
-                <div class="h3">通用流程引擎</div>
+                <div class="h3">{{'home.fam.flow.title' | i18n}}</div>
                 <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.v2.fam.flow.p'|i18n}}</p>
                 <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
                     {{'home.v2.fam.more'|i18n}} →
@@ -1170,7 +1170,7 @@ public class Task extends BaseModel {
             </div>
             <div class="c clickable no-bb" ng-click="go('#!/cloud')">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Erupt Cloud</span>
-                <div class="h3">分布式配置管理</div>
+                <div class="h3">{{'home.fam.cloud.title' | i18n}}</div>
                 <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.v2.fam.cloud.p'|i18n}}</p>
                 <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
                     {{'home.v2.fam.more'|i18n}} →
@@ -1178,7 +1178,7 @@ public class Task extends BaseModel {
             </div>
             <div class="c clickable no-bb" ng-click="go('#!/cube')">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Erupt Cube</span>
-                <div class="h3">语义建模分析平台</div>
+                <div class="h3">{{'home.fam.cube.title' | i18n}}</div>
                 <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.promo.cube.desc'|i18n}}</p>
                 <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
                     {{'home.v2.fam.more'|i18n}} →
@@ -1186,7 +1186,7 @@ public class Task extends BaseModel {
             </div>
             <div class="c clickable no-bb" ng-click="go('https://linq.erupt.xyz',true)" style="border-right:none">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Linq.J</span>
-                <div class="h3">SQL 思维操作 Java 集合</div>
+                <div class="h3">{{'home.fam.linq.title' | i18n}}</div>
                 <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.v2.fam.linq.p'|i18n}}</p>
                 <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
                     {{'home.v2.fam.more'|i18n}} →

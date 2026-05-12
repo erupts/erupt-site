@@ -170,7 +170,7 @@
                             eruptLab
                             <div class="mp-qr">
                                 <img src="images/me/mp.jpg" alt="eruptLab" style="width:140px;height:140px;display:block">
-                                <div style="text-align:center;font-size:11px;color:#888;margin-top:6px">微信扫码关注</div>
+                                <div style="text-align:center;font-size:11px;color:#888;margin-top:6px">Scan to follow on WeChat</div>
                             </div>
                         </h4>
                     </div>
@@ -293,11 +293,11 @@
         $scope.switchLang = function(lang) {
             i18nService.setLang(lang);
             $scope.currentLang = lang;
-            // 刷新页面以应用所有更改
+            // reload to apply all changes
             location.reload();
         }
 
-        // 获取版权信息
+        // get copyright string
         $scope.getCopyright = function() {
             var copyright = i18nService.t('footer.copyright');
             return copyright.replace('{{year}}', $rootScope.year);
@@ -308,7 +308,7 @@
         angular.bootstrap(document.body, ['app']);
     });
 
-    // 悬停二维码时临时提升 footer z-index，突破 z-index:-1 层叠上下文
+    // temporarily elevate footer z-index on QR hover to escape z-index:-1 stacking context
     document.addEventListener('DOMContentLoaded', function () {
         var footer = document.getElementById('footer');
         document.addEventListener('mouseover', function (e) {

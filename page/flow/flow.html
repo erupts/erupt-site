@@ -836,7 +836,7 @@
         .flow-hero-row { flex-direction: column !important; min-height: 0 !important; }
         .flow-hero-right { display: none !important; }
         .flow-hero-row > div:first-child { padding: 36px 24px 28px !important; }
-        /* DAG canvas: hide on mobile (绝对定位节点在小屏幕重叠) */
+        /* DAG canvas: hide on mobile (absolutely-positioned nodes overlap on small screens) */
         .canvas { display: none !important; }
         /* Approval inbox */
         .ix { grid-template-columns: 1fr !important; }
@@ -861,40 +861,39 @@
         <div style="flex:1; padding:56px 48px 48px; display:flex; flex-direction:column; justify-content:center; overflow:hidden">
             <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:20px">
                 <span class="tag" style="font-family:monospace;margin-bottom: 0">🔀 FLOW</span>
-                <span style="font-size:12px; color:var(--c-text-muted)">通用流程引擎 · workflow engine</span>
+                <span style="font-size:12px; color:var(--c-text-muted)">{{'flow.hero.kicker' | i18n}}</span>
                 <span style="font-size:12px; color:var(--c-text-muted)"></span>
             </div>
             <div class="h1" style="font-size:clamp(42px,5.5vw,80px); line-height:.95; letter-spacing:-.03em; margin-bottom:22px">Erupt Flow</div>
-            <div class="sub" style="max-width:58ch; font-size:15px; line-height:1.7; margin-bottom:28px">
-                一套<strong>通用流程引擎解决方案</strong>，完整覆盖<span style="background:rgba(255,87,34,.1); color:var(--c-brand); padding:1px 5px; border-radius:3px; font-size:13.5px; white-space:nowrap">流程配置 · 发起 · 审批 · 通知</span>全链路。零前端代码定义节点，可视化画布设计流程，<strong>10 分钟</strong>搭建企业级流程系统。
+            <div class="sub" style="max-width:58ch; font-size:15px; line-height:1.7; margin-bottom:28px" ng-bind-html="'flow.hero.desc' | i18nHtml">
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
-                <a class="wbtn" href="http://demo.erupt.xyz" target="_blank">体验在线演示 →</a>
-                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/pro/erupt-flow" target="_blank">查看文档</a>
+                <a class="wbtn" href="http://demo.erupt.xyz" target="_blank">{{'flow.hero.demo' | i18n}}</a>
+                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/pro/erupt-flow" target="_blank">{{'flow.hero.docs' | i18n}}</a>
                 <span style="font-family:monospace; font-size:12px; color:var(--c-text-muted); margin-left:4px">Spring Boot 3</span>
             </div>
         </div>
         <div class="flow-hero-right" style="flex:0 0 42%; border-left:1px solid var(--c-border); padding:32px 36px; display:flex; flex-direction:column; gap:16px; justify-content:center; background:rgba(255,87,34,.018)">
             <div style="font-family:monospace; font-size:10.5px; color:var(--c-text-muted); letter-spacing:.12em; text-transform:uppercase; margin-bottom:4px; display:flex; align-items:center; gap:8px">
                 <span style="width:7px; height:7px; border-radius:50%; background:#4caf50; box-shadow:0 0 6px #4caf50; display:inline-block"></span>
-                在线演示 · 现在可访问
+                {{'flow.hero.live' | i18n}}
             </div>
             <div class="mini" style="font-size:12px; display:flex; flex-direction:column; gap:6px">
                 <div style="display:grid; grid-template-columns:60px 1fr; gap:8px; padding:7px 0; border-bottom:1px dashed var(--c-border)">
-                    <span style="color:var(--c-text-muted)">URL</span>
+                    <span style="color:var(--c-text-muted)">{{'flow.hero.demo.url' | i18n}}</span>
                     <a href="https://demo.erupt.xyz" style="color:#2979c8; font-family:monospace; text-decoration:none"
                        target="_blank">demo.erupt.xyz</a>
                 </div>
                 <div style="display:grid; grid-template-columns:60px 1fr; gap:8px; padding:7px 0; border-bottom:1px dashed var(--c-border)">
-                    <span style="color:var(--c-text-muted)">账号</span>
+                    <span style="color:var(--c-text-muted)">{{'flow.hero.demo.account' | i18n}}</span>
                     <span style="font-family:monospace">flow</span>
                 </div>
                 <div style="display:grid; grid-template-columns:60px 1fr; gap:8px; padding:7px 0; border-bottom:1px dashed var(--c-border)">
-                    <span style="color:var(--c-text-muted)">密码</span>
+                    <span style="color:var(--c-text-muted)">{{'flow.hero.demo.password' | i18n}}</span>
                     <span style="font-family:monospace">flow</span>
                 </div>
                 <div style="display:grid; grid-template-columns:60px 1fr; gap:8px; padding:7px 0">
-                    <span style="color:var(--c-text-muted)">入口</span>
+                    <span style="color:var(--c-text-muted)">{{'flow.hero.demo.entry' | i18n}}</span>
                     <span style="font-family:monospace">/#!/flow</span>
                 </div>
             </div>
@@ -902,15 +901,15 @@
                 <div style="padding:14px 12px; background:#fff; text-align:center">
                     <div style="font-size:26px; font-weight:700; color:var(--c-brand); font-family:monospace">9<span
                             style="font-size:16px"></span></div>
-                    <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">node types</div>
+                    <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">{{'flow.hero.stat.nodes' | i18n}}</div>
                 </div>
                 <div style="padding:14px 12px; background:#fff; text-align:center">
                     <div style="font-size:26px; font-weight:700; color:var(--c-brand); font-family:monospace">0<span style="font-size:16px">fe</span></div>
-                    <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">前端代码</div>
+                    <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">{{'flow.hero.stat.frontend' | i18n}}</div>
                 </div>
                 <div style="padding:14px 12px; background:#fff; text-align:center">
                     <div style="font-size:26px; font-weight:700; color:var(--c-brand); font-family:monospace">7<span style="font-size:16px">tbl</span></div>
-                    <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">structured tables</div>
+                    <div style="font-size:10.5px; color:var(--c-text-muted); margin-top:3px">{{'flow.hero.stat.tables' | i18n}}</div>
                 </div>
             </div>
         </div>
@@ -936,38 +935,38 @@
                     <path class="wire" d="M1056 322 L1056 500 L608 500"/>
                 </svg>
                 <div class="node start" style="left:50%;top:24px;transform:translateX(-50%);width:200px">
-                    <div class="nh">发起人 <span class="x">⋯</span></div>
-                    <div class="nb"><b>流程从本节点开始</b><span class="arr">→</span></div>
+                    <div class="nh">{{'flow.dag.initiator' | i18n}} <span class="x">⋯</span></div>
+                    <div class="nb"><b>{{'flow.dag.start' | i18n}}</b><span class="arr">→</span></div>
                 </div>
                 <div class="branch-pill" style="left:50%;top:168px;transform:translate(-50%,-50%)">
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12"/></svg>
-                    添加分支
+                    {{'flow.dag.addbranch' | i18n}}
                 </div>
                 <div class="node cond" style="left:13.16%;top:198px;transform:translateX(-50%);width:170px">
-                    <div class="nh">互斥条件 1 <em>优先级 1</em></div>
-                    <div class="nb"><b>请设置</b><span class="arr">→</span></div>
+                    <div class="nh">{{'flow.dag.cond1' | i18n}} <em>{{'flow.inbox.priority' | i18n}} 1</em></div>
+                    <div class="nb"><b>{{'flow.dag.notconfigured' | i18n}}</b><span class="arr">→</span></div>
                 </div>
                 <div class="node cond" style="left:33.55%;top:198px;transform:translateX(-50%);width:170px">
-                    <div class="nh">互斥条件 2 <em>优先级 2</em></div>
-                    <div class="nb"><b>金额 ≤ ¥5,000</b><span class="arr">→</span></div>
+                    <div class="nh">{{'flow.dag.cond2' | i18n}} <em>{{'flow.inbox.priority' | i18n}} 2</em></div>
+                    <div class="nb"><b>{{'flow.dag.amount.low' | i18n}}</b><span class="arr">→</span></div>
                 </div>
                 <div class="node cond" style="left:66.45%;top:198px;transform:translateX(-50%);width:170px">
-                    <div class="nh">互斥条件 3 <em>优先级 3</em></div>
-                    <div class="nb"><b>金额 &gt; ¥5,000</b><span class="arr">→</span></div>
+                    <div class="nh">{{'flow.dag.cond3' | i18n}} <em>{{'flow.inbox.priority' | i18n}} 3</em></div>
+                    <div class="nb"><b>{{'flow.dag.amount.high' | i18n}}</b><span class="arr">→</span></div>
                 </div>
                 <div class="node cond" style="left:86.84%;top:198px;transform:translateX(-50%);width:170px">
-                    <div class="nh">默认条件 <em>优先级 4</em></div>
-                    <div class="nb"><b>请设置</b><span class="arr">→</span></div>
+                    <div class="nh">{{'flow.dag.default' | i18n}} <em>{{'flow.inbox.priority' | i18n}} 4</em></div>
+                    <div class="nb"><b>{{'flow.dag.notconfigured' | i18n}}</b><span class="arr">→</span></div>
                 </div>
                 <div class="node appr" style="left:33.55%;top:328px;transform:translateX(-50%);width:170px">
-                    <div class="nh">审批人 <span class="x">✕</span></div>
-                    <div class="nb"><b>财务主管</b><span class="arr">→</span></div>
+                    <div class="nh">{{'flow.dag.approver' | i18n}} <span class="x">✕</span></div>
+                    <div class="nb"><b>{{'flow.dag.finance' | i18n}}</b><span class="arr">→</span></div>
                 </div>
                 <div class="node delay" style="left:66.45%;top:328px;transform:translateX(-50%);width:170px">
-                    <div class="nh">延时节点 <span class="x">✕</span></div>
-                    <div class="nb"><b>延时 24h</b><span class="arr">→</span></div>
+                    <div class="nh">{{'flow.dag.delay' | i18n}} <span class="x">✕</span></div>
+                    <div class="nb"><b>{{'flow.dag.delay24h' | i18n}}</b><span class="arr">→</span></div>
                 </div>
-                <div class="node end" style="left:50%;bottom:28px;transform:translateX(-50%)">流程结束</div>
+                <div class="node end" style="left:50%;bottom:28px;transform:translateX(-50%)">{{'flow.dag.end' | i18n}}</div>
                 <span class="plus" style="left:calc(50% - 11px);top:108px"></span>
                 <span class="plus" style="left:calc(13.16% - 11px);top:268px"></span>
                 <span class="plus" style="left:calc(33.55% - 11px);top:268px"></span>
@@ -993,41 +992,40 @@
     <div class="r g-bg ticks g2">
         <div class="c" style="padding:32px 40px">
             <div style="font-family:monospace; font-size:11px; color:var(--c-text-muted); letter-spacing:.12em; margin-bottom:10px">01 · CAPABILITIES</div>
-            <div class="h2">完整覆盖流程的每一段。</div>
+            <div class="h2">{{'flow.cap.title' | i18n}}</div>
         </div>
         <div class="c" style="padding:32px 40px; display:flex; align-items:center">
-            <div class="sub">从画布拖拽到生产部署，配置 → 发起 → 审批 → 通知 全链路在同一引擎内闭环。结构化存储让每一次审批都可被查询、复用、复盘。</div>
+            <div class="sub">{{'flow.cap.desc' | i18n}}</div>
         </div>
     </div>
 
     <div class="r g4">
         <div class="c reveal" style="padding:28px 32px">
             <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">01 / 05</div>
-            <div class="h3" style="margin-bottom:10px">可视化<br><span style="color:var(--c-brand)">流程设计</span></div>
-            <div class="sub" style="font-size:13px; margin-bottom:18px">钉钉风格画布，9 类节点开箱即用。条件分支、并行审批、延时、抄送、办理
-                通通拖出来，零前端代码。
+            <div class="h3" style="margin-bottom:10px" ng-bind-html="'flow.node.designer.title' | i18nHtml"></div>
+            <div class="sub" style="font-size:13px; margin-bottom:18px">{{'flow.node.designer.desc' | i18n}}
             </div>
             <div class="palette">
-                <div class="pal start">● 发起</div>
-                <div class="pal appr">▢ 审批</div>
-                <div class="pal cc">↗ 抄送</div>
-                <div class="pal cond">◇ 条件</div>
-                <div class="pal delay">⏱ 延时</div>
-                <div class="pal notify">📨 通知</div>
-                <div class="pal web">⚡ 办理</div>
-                <div class="pal script">⧉ 自定义</div>
-                <div class="pal end">■ 结束</div>
+                <div class="pal start">● {{'flow.node.initiate' | i18n}}</div>
+                <div class="pal appr">▢ {{'flow.node.approve' | i18n}}</div>
+                <div class="pal cc">↗ {{'flow.node.cc' | i18n}}</div>
+                <div class="pal cond">◇ {{'flow.node.condition' | i18n}}</div>
+                <div class="pal delay">⏱ {{'flow.node.delay' | i18n}}</div>
+                <div class="pal notify">📨 {{'flow.node.notify' | i18n}}</div>
+                <div class="pal web">⚡ {{'flow.node.process' | i18n}}</div>
+                <div class="pal script">⧉ {{'flow.node.custom' | i18n}}</div>
+                <div class="pal end">■ {{'flow.node.end' | i18n}}</div>
             </div>
         </div>
         <div class="c reveal" style="padding:28px 32px">
             <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">02 / 05</div>
-            <div class="h3" style="margin-bottom:10px">动态关联<br><span style="color:var(--c-brand)">@erupt 类</span></div>
-            <div class="sub" style="font-size:13px; margin-bottom:16px">已发起的流程数据 <code style="font-family:monospace; color:var(--c-brand); background:rgba(255,87,34,.1); padding:1px 5px; border-radius:3px">@Erupt</code> 注解即表单 —— 字段类型、校验、关联查询全部沿用，无需重复定义。</div>
+            <div class="h3" style="margin-bottom:10px" ng-bind-html="'flow.node.binding.title' | i18nHtml"></div>
+            <div class="sub" style="font-size:13px; margin-bottom:16px" ng-bind-html="'flow.node.binding.desc' | i18nHtml"></div>
             <div class="mini" style="font-size:11.5px; line-height:1.8">
-                <span style="color:#9c7fd6">@Erupt</span>(name = <span style="color:#7dbb8a">"报销申请"</span>)<br>
+                <span style="color:#9c7fd6">@Erupt</span>(name = <span style="color:#7dbb8a">"Expense Report"</span>)<br>
                 <span style="color:#9c7fd6">@Table</span>(name = <span style="color:#7dbb8a">"reimburse"</span>)<br>
                 <span style="color:#9c7fd6">public class</span> <span style="color:#6eb0c8">Reimburse</span> {<br>
-                &nbsp;&nbsp;<span style="color:#888">// 流程引擎自动接管 ↓</span><br>
+                &nbsp;&nbsp;<span style="color:#888">// Workflow engine takes over ↓</span><br>
                 &nbsp;&nbsp;<span style="color:#9c7fd6">@EruptField</span>(views = ...)<br>
                 &nbsp;&nbsp;<span style="color:#9c7fd6">private</span> <span style="color:#6eb0c8">BigDecimal</span> amount;<br>
                 }
@@ -1035,8 +1033,8 @@
         </div>
         <div class="c reveal" style="padding:28px 32px">
             <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">03 / 05</div>
-            <div class="h3" style="margin-bottom:10px">结构化<br><span style="color:var(--c-brand)">数据存储</span></div>
-            <div class="sub" style="font-size:13px; margin-bottom:16px">7 张关系表完整记录流程定义、实例、任务、评论、表单历史。SQL 直查、接 BI、审计可追溯。</div>
+            <div class="h3" style="margin-bottom:10px" ng-bind-html="'flow.node.storage.title' | i18nHtml"></div>
+            <div class="sub" style="font-size:13px; margin-bottom:16px">{{'flow.node.storage.desc' | i18n}}</div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px">
                 <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
                     e_flow
@@ -1063,16 +1061,16 @@
         </div>
         <div class="c reveal" style="padding:28px 32px">
             <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:12px">04 / 05</div>
-            <div class="h3" style="margin-bottom:10px">自定义<br><span style="color:var(--c-brand)">节点扩展</span></div>
-            <div class="sub" style="font-size:13px; margin-bottom:16px">继承 NodeHandler 实现自定义节点 —— 风控审核、合同盖章、企业微信审批，把组织里特有的环节带进画布。</div>
+            <div class="h3" style="margin-bottom:10px" ng-bind-html="'flow.node.extension.title' | i18nHtml"></div>
+            <div class="sub" style="font-size:13px; margin-bottom:16px">{{'flow.node.extension.desc' | i18n}}</div>
             <div style="display:grid; grid-template-columns:1fr; gap:8px">
                 <div style="border:1px solid var(--c-border); padding:11px 13px; background:#fafafa">
-                    <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px">作为 表单引擎</div>
-                    <div style="font-size:12.5px; color:#333">复用 @Erupt 实体 → 审批表单 + 持久化 + 历史</div>
+                    <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px">{{'flow.node.asform' | i18n}}</div>
+                    <div style="font-size:12.5px; color:#333">{{'flow.node.asform.desc' | i18n}}</div>
                 </div>
                 <div style="border:1px solid var(--c-border); padding:11px 13px; background:#fafafa">
-                    <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px">作为 配置平台</div>
-                    <div style="font-size:12.5px; color:#333">把现有业务流程接入引擎，沿用既有审批策略</div>
+                    <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px">{{'flow.node.asplatform' | i18n}}</div>
+                    <div style="font-size:12.5px; color:#333">{{'flow.node.asplatform.desc' | i18n}}</div>
                 </div>
             </div>
         </div>
@@ -1081,9 +1079,9 @@
     <div class="r reveal" style="padding:28px 40px; overflow:hidden">
         <div style="display:flex; align-items:start; gap:24px; flex-wrap:wrap">
             <div>
-                <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:8px">05 / 05 · 通知</div>
-                <div class="h3" style="margin-bottom:8px">多通道 <span style="color:var(--c-brand)">流程通知</span></div>
-                <div class="sub" style="font-size:13px">邮件、企业微信、钉钉、飞书、站内信 —— 每个节点独立配置触达方式与模板。</div>
+                <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); margin-bottom:8px">05 / 05 · Notify</div>
+                <div class="h3" style="margin-bottom:8px" ng-bind-html="'flow.notify.title' | i18nHtml"></div>
+                <div class="sub" style="font-size:13px">{{'flow.notify.desc' | i18n}}</div>
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:auto; padding-top:8px">
                 <span class="tag" style="font-size:12px">📧 mail</span>
@@ -1100,10 +1098,10 @@
     <div class="r g-bg ticks g2">
         <div class="c" style="padding:32px 40px">
             <div style="font-family:monospace; font-size:11px; color:var(--c-text-muted); letter-spacing:.12em; margin-bottom:10px">02 · FORM PREVIEW</div>
-            <div class="h2">表单即实体。</div>
+            <div class="h2">{{'flow.form.title' | i18n}}</div>
         </div>
         <div class="c" style="padding:32px 40px; display:flex; align-items:center">
-            <div class="sub">表单不是再画一遍，而是直接读取 @Erupt 实体的字段元信息，自动渲染移动端预览与桌面审批表单。一份模型，两端可用。</div>
+            <div class="sub">{{'flow.form.desc' | i18n}}</div>
         </div>
     </div>
 
@@ -1113,7 +1111,7 @@
                 <span class="notch"></span>
                 <div class="screen">
                     <div class="pv-field">
-                        <label>文本</label>
+                        <label>Text</label>
                         <div class="pfx">
                             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
                             <span style="flex:1">China🇨🇳</span>
@@ -1121,37 +1119,37 @@
                         </div>
                     </div>
                     <div class="pv-field">
-                        <label>数字</label>
+                        <label>Number</label>
                         <input value="3.1415926" readonly>
                     </div>
                     <div class="pv-field">
-                        <label>数字滑块</label>
+                        <label>Number Slider</label>
                         <div class="slider"></div>
                     </div>
                     <div class="pv-field">
-                        <label class="req">评分</label>
+                        <label class="req">Rating</label>
                         <div class="stars">★★★☆☆☆☆☆☆☆</div>
                     </div>
                     <div class="pv-field">
-                        <label>布尔</label>
+                        <label>Boolean</label>
                         <div class="switch">
-                            <span class="radio"><i></i> 是</span>
-                            <span class="radio on"><i></i> 否</span>
+                            <span class="radio"><i></i> Yes</span>
+                            <span class="radio on"><i></i> No</span>
                         </div>
                     </div>
                     <div class="pv-field">
-                        <label>自动完成</label>
+                        <label>Autocomplete</label>
                         <input value="" readonly>
                     </div>
                     <div class="pv-field">
-                        <label class="req">颜色选择</label>
+                        <label class="req">Color Picker</label>
                         <div class="colorbar"></div>
                     </div>
                     <div class="pv-field">
-                        <label>周选择器</label>
+                        <label>Week Picker</label>
                         <div class="pfx">
                             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"/><path d="M3 10h18M9 3v4M15 3v4"/></svg>
-                            <span style="color:#aaa">---- 年第 -- 周</span>
+                            <span style="color:#aaa">---- Week --</span>
                         </div>
                     </div>
                 </div>
@@ -1159,7 +1157,7 @@
         </div>
         <div class="c" style="padding:32px 36px">
             <div class="schema-panel">
-                <h4>fields <span class="pill">@Erupt 实体反射</span></h4>
+                <h4>fields <span class="pill">@Erupt Entity Reflection</span></h4>
                 <div class="field-list">
                     <div class="field-row"><span class="k">country</span><span class="t">String</span></div>
                     <div class="field-row"><span class="k">amount</span><span class="t">BigDecimal</span></div>
@@ -1173,17 +1171,17 @@
                     <div class="field-row"><span class="k">tags</span><span class="t">List&lt;Tag&gt;</span></div>
                 </div>
                 <pre class="schema-pre"><code class="prism language-java">@EruptField(
-  views = "评分",
+  views = "Rating",
   edit = @Edit(
     type = EditType.RATE,
-    title = "评分",
+    title = "Rating",
     notNull = true,
-    // 同时作为表单和审批字段
+    // Used as both form and approval field
     rateType = @RateType(max = 10)
   )
 )
 private Integer rating;</code></pre>
-                <div class="schema-note">同一份字段定义同时驱动 <b>表单预览</b>、<b>移动端发起</b>、<b>桌面审批</b>、<b>历史快照</b>，无需任何前端代码。</div>
+                <div class="schema-note" ng-bind-html="'flow.form.note' | i18nHtml"></div>
             </div>
         </div>
     </div>
@@ -1192,18 +1190,18 @@ private Integer rating;</code></pre>
     <div class="r g-bg ticks g2">
         <div class="c" style="padding:32px 40px">
             <div style="font-family:monospace; font-size:11px; color:var(--c-text-muted); letter-spacing:.12em; margin-bottom:10px">03 · APPROVAL INBOX</div>
-            <div class="h2">审批工作台。</div>
+            <div class="h2">{{'flow.inbox.title' | i18n}}</div>
         </div>
         <div class="c" style="padding:32px 40px; display:flex; align-items:center">
-            <div class="sub">管理后台一站式工作台。同一界面同时是发起入口、审批入口、催办与撤回入口；表单字段在审批面板里只读回显并保留历史快照。</div>
+            <div class="sub">{{'flow.inbox.desc' | i18n}}</div>
         </div>
     </div>
 
     <div class="r reveal" style="overflow:hidden">
         <div class="inbox">
             <div class="ix-bar">
-                <span class="ttl">Erupt · 流程审批</span>
-                <span class="crumb">/ 流程工作台 / 审批</span>
+                <span class="ttl">{{'flow.inbox.header' | i18n}}</span>
+                <span class="crumb">/ Workflow / Approval</span>
                 <div class="right">
                     <span class="icon">🔔</span>
                     <span class="icon">⛶</span>
@@ -1213,75 +1211,75 @@ private Integer rating;</code></pre>
             </div>
             <div class="ix">
                 <aside class="ix-side">
-                    <div class="grp">流程审批</div>
-                    <div class="it"><span>📥 待办</span><span class="b">4</span></div>
-                    <div class="it"><span>✓ 已办</span></div>
-                    <div class="it"><span>↗ 抄送我</span></div>
-                    <div class="it on"><span>📤 已发起</span><span class="b">3</span></div>
-                    <div class="grp">管理</div>
-                    <div class="it"><span>⚙ 流程管理</span></div>
-                    <div class="it"><span>📊 流程报表</span></div>
-                    <div class="it"><span>📜 历史归档</span></div>
+                    <div class="grp">{{'flow.node.approve' | i18n}}</div>
+                    <div class="it"><span>📥 {{'flow.inbox.pending' | i18n}}</span><span class="b">4</span></div>
+                    <div class="it"><span>✓ {{'flow.inbox.completed' | i18n}}</span></div>
+                    <div class="it"><span>↗ {{'flow.inbox.cc' | i18n}}</span></div>
+                    <div class="it on"><span>📤 {{'flow.inbox.initiated' | i18n}}</span><span class="b">3</span></div>
+                    <div class="grp">{{'flow.inbox.mgmt' | i18n}}</div>
+                    <div class="it"><span>⚙ {{'flow.inbox.flowmgmt' | i18n}}</span></div>
+                    <div class="it"><span>📊 {{'flow.inbox.reports' | i18n}}</span></div>
+                    <div class="it"><span>📜 {{'flow.inbox.archive' | i18n}}</span></div>
                 </aside>
 
                 <div class="ix-list">
                     <div class="hd">
-                        <div class="search">🔎 搜索审批</div>
-                        <div class="filter">所有时间 ▾</div>
+                        <div class="search">🔎 {{'flow.inbox.search' | i18n}}</div>
+                        <div class="filter">{{'flow.inbox.alltime' | i18n}} ▾</div>
                     </div>
                     <div class="ix-row on">
-                        <div class="top"><span class="ttl">报销申请 · test</span><span class="badge b-pending">PENDING</span></div>
+                        <div class="top"><span class="ttl">{{'flow.inbox.item1' | i18n}}</span><span class="badge b-pending">PENDING</span></div>
                         <div class="meta"><span class="av">YP</span> YuePeng · 2025-08-26 23:02</div>
                     </div>
                     <div class="ix-row">
-                        <div class="top"><span class="ttl">合同盖章流程</span><span class="badge b-pending">PENDING</span></div>
+                        <div class="top"><span class="ttl">{{'flow.inbox.item2' | i18n}}</span><span class="badge b-pending">PENDING</span></div>
                         <div class="meta"><span class="av">YP</span> YuePeng · 2025-08-25 18:11</div>
                     </div>
                     <div class="ix-row">
-                        <div class="top"><span class="ttl">采购单 #ER_3401</span><span class="badge b-rejected">REJECTED</span></div>
+                        <div class="top"><span class="ttl">{{'flow.inbox.item3' | i18n}}</span><span class="badge b-rejected">REJECTED</span></div>
                         <div class="meta"><span class="av" style="background:#2979c8">JL</span> JackLi · 2025-08-22 09:48</div>
                     </div>
                     <div class="ix-row">
-                        <div class="top"><span class="ttl">差旅申请 · 上海</span><span class="badge b-approved">APPROVED</span></div>
+                        <div class="top"><span class="ttl">{{'flow.inbox.item4' | i18n}}</span><span class="badge b-approved">APPROVED</span></div>
                         <div class="meta"><span class="av" style="background:#3a9e6e">RW</span> RanWang · 2025-08-19 14:21</div>
                     </div>
                 </div>
 
                 <div class="ix-detail">
-                    <div class="num">编号 <b style="color:#222">ER_1JB3AQQU</b> 📋 <span style="margin-left:auto;color:#aaa">⤴ ⟳ 🖶</span></div>
+                    <div class="num">{{'flow.inbox.no' | i18n}} <b style="color:#222">ER_1JB3AQQU</b> 📋 <span style="margin-left:auto;color:#aaa">⤴ ⟳ 🖶</span></div>
                     <div class="ttl-row"><h5>test</h5><span class="badge b-pending">PENDING</span></div>
                     <div class="who">
                         <span class="av" style="width:22px;height:22px;font-size:10px">YP</span>
-                        YuePeng · <span style="color:#aaa">部门</span> · 提交于 2025-08-26 23:02:37
+                        YuePeng · <span style="color:#aaa">{{'flow.inbox.dept' | i18n}}</span> · {{'flow.inbox.submitted' | i18n}} 2025-08-26 23:02:37
                     </div>
                     <div class="ix-tabs">
-                        <span class="on">审批信息</span>
-                        <span>审批记录</span>
-                        <span>评论列表 (0)</span>
+                        <span class="on">{{'flow.inbox.tab.info' | i18n}}</span>
+                        <span>{{'flow.inbox.tab.history' | i18n}}</span>
+                        <span>{{'flow.inbox.tab.comments' | i18n}} (0)</span>
                     </div>
                     <div class="ix-form">
-                        <div class="f"><label>文本</label><div class="pfx">🌐 China</div></div>
-                        <div class="f"><label>数字</label><input disabled value="3.1415926"></div>
-                        <div class="f"><label>数字滑块</label>
+                        <div class="f"><label>Text</label><div class="pfx">🌐 China</div></div>
+                        <div class="f"><label>Number</label><input disabled value="3.1415926"></div>
+                        <div class="f"><label>Number Slider</label>
                             <div class="pfx" style="position:relative;padding:12px 8px">
                                 <span style="position:absolute;left:12%;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;background:#3b6ac4"></span>
                                 <span style="display:block;height:4px;border-radius:2px;background:#eee;width:100%"></span>
                             </div>
                         </div>
-                        <div class="f req"><label>评分</label><div class="pfx" style="color:#f5a623;letter-spacing:2px">★★★☆☆☆☆☆☆☆</div></div>
-                        <div class="f"><label>布尔</label><div class="pfx" style="gap:12px">○ 是 &nbsp; ◉ 否</div></div>
-                        <div class="f"><label>自动完成</label><input disabled value=""></div>
-                        <div class="f req"><label>颜色选择</label><div class="colorbar"></div></div>
-                        <div class="f"><label>周选择器</label><div class="pfx">🗓 ---- 年第 -- 周</div></div>
-                        <div class="f"><label>文章选择</label><input disabled value=""></div>
+                        <div class="f req"><label>Rating</label><div class="pfx" style="color:#f5a623;letter-spacing:2px">★★★☆☆☆☆☆☆☆</div></div>
+                        <div class="f"><label>Boolean</label><div class="pfx" style="gap:12px">○ Yes &nbsp; ◉ No</div></div>
+                        <div class="f"><label>Autocomplete</label><input disabled value=""></div>
+                        <div class="f req"><label>Color Picker</label><div class="colorbar"></div></div>
+                        <div class="f"><label>Week Picker</label><div class="pfx">🗓 ---- Week --</div></div>
+                        <div class="f"><label>Article</label><input disabled value=""></div>
                     </div>
                     <div class="ix-actions">
-                        <button class="ix-act">🎧 撤销</button>
-                        <button class="ix-act primary">↻ 再次提交</button>
-                        <button class="ix-act">✎ 评论</button>
-                        <button class="ix-act">🖶 自定义打印</button>
-                        <button class="ix-act danger" style="margin-left:auto">驳回</button>
-                        <button class="ix-act approve">✓ 同意</button>
+                        <button class="ix-act">🎧 {{'flow.inbox.withdraw' | i18n}}</button>
+                        <button class="ix-act primary">↻ {{'flow.inbox.resubmit' | i18n}}</button>
+                        <button class="ix-act">✎ {{'flow.inbox.comment' | i18n}}</button>
+                        <button class="ix-act">🖶 {{'flow.inbox.print' | i18n}}</button>
+                        <button class="ix-act danger" style="margin-left:auto">{{'flow.inbox.reject' | i18n}}</button>
+                        <button class="ix-act approve">✓ {{'flow.inbox.approve' | i18n}}</button>
                     </div>
                 </div>
             </div>
@@ -1292,10 +1290,10 @@ private Integer rating;</code></pre>
     <div class="r g-bg ticks g2">
         <div class="c" style="padding:32px 40px">
             <div style="font-family:monospace; font-size:11px; color:var(--c-text-muted); letter-spacing:.12em; margin-bottom:10px">04 · MORE SETTINGS</div>
-            <div class="h2">审批子标题 + 自定义打印。</div>
+            <div class="h2">{{'flow.settings.title' | i18n}}</div>
         </div>
         <div class="c" style="padding:32px 40px; display:flex; align-items:center">
-            <div class="sub">把流程接入企业的物料清单 —— 子标题字段、打印模板、复制配置一键迁移。一个流程从测试到生产，只需要一次发布。</div>
+            <div class="sub">{{'flow.settings.desc' | i18n}}</div>
         </div>
     </div>
 
@@ -1305,36 +1303,36 @@ private Integer rating;</code></pre>
                 <div class="s-hd">
                     <span class="x">✕</span>
                     <div class="s-steps">
-                        <span><span class="snum">1</span>基础信息</span>
-                        <span><span class="snum">2</span>表单预览</span>
-                        <span><span class="snum">3</span>流程设计</span>
-                        <span class="on"><span class="snum">4</span>更多设置</span>
+                        <span><span class="snum">1</span>{{'flow.settings.basic' | i18n}}</span>
+                        <span><span class="snum">2</span>{{'flow.settings.form' | i18n}}</span>
+                        <span><span class="snum">3</span>{{'flow.settings.design' | i18n}}</span>
+                        <span class="on"><span class="snum">4</span>{{'flow.settings.more' | i18n}}</span>
                     </div>
-                    <span style="padding:5px 10px;border:1px solid #ddd;border-radius:4px;font-size:11.5px;color:#555">复制配置</span>
-                    <span class="s-pub">发布</span>
+                    <span style="padding:5px 10px;border:1px solid #ddd;border-radius:4px;font-size:11.5px;color:#555">{{'flow.settings.copy' | i18n}}</span>
+                    <span class="s-pub">{{'flow.settings.publish' | i18n}}</span>
                 </div>
                 <div class="s-body">
                     <div class="form-block">
-                        <div class="lab">审批子标题字段设置</div>
-                        <div class="selectbox">请选择字段 <span style="color:#bbb">▾</span></div>
+                        <div class="lab">{{'flow.settings.subtitle' | i18n}}</div>
+                        <div class="selectbox">{{'flow.settings.subtitle.ph' | i18n}} <span style="color:#bbb">▾</span></div>
                     </div>
                     <div class="form-block">
-                        <div class="lab">打印设置</div>
+                        <div class="lab">{{'flow.settings.print' | i18n}}</div>
                         <div class="opt-row">
-                            <span class="opt"><i></i> 关闭</span>
-                            <span class="opt"><i></i> 系统默认模板</span>
-                            <span class="opt on"><i></i> 自定义配置</span>
-                            <a class="lk">配置模板 →</a>
+                            <span class="opt"><i></i> {{'flow.settings.print.disabled' | i18n}}</span>
+                            <span class="opt"><i></i> {{'flow.settings.print.default' | i18n}}</span>
+                            <span class="opt on"><i></i> {{'flow.settings.print.custom' | i18n}}</span>
+                            <a class="lk">{{'flow.settings.print.configure' | i18n}}</a>
                         </div>
                     </div>
                     <div class="form-block">
-                        <div class="lab">通知渠道</div>
+                        <div class="lab">{{'flow.settings.notify' | i18n}}</div>
                         <div class="opt-row">
-                            <span class="opt on"><i></i> 站内信</span>
-                            <span class="opt on"><i></i> 邮件</span>
-                            <span class="opt"><i></i> 企业微信</span>
-                            <span class="opt"><i></i> 飞书</span>
-                            <span class="opt"><i></i> 办理</span>
+                            <span class="opt on"><i></i> {{'flow.settings.notify.inbox' | i18n}}</span>
+                            <span class="opt on"><i></i> {{'flow.settings.notify.email' | i18n}}</span>
+                            <span class="opt"><i></i> {{'flow.settings.notify.wecom' | i18n}}</span>
+                            <span class="opt"><i></i> {{'flow.settings.notify.feishu' | i18n}}</span>
+                            <span class="opt"><i></i> {{'flow.settings.notify.process' | i18n}}</span>
                         </div>
                     </div>
                 </div>
@@ -1342,43 +1340,43 @@ private Integer rating;</code></pre>
         </div>
         <div class="c" style="padding:32px">
             <div style="margin-bottom:14px">
-                <div class="h3" style="margin-bottom:6px">流程发布管线</div>
-                <div class="sub" style="font-size:13px">一次发布，结构化存储 + 通知通道 + 历史快照 自动就位。每条审批走过的路径都可被回放。</div>
+                <div class="h3" style="margin-bottom:6px">{{'flow.publish.title' | i18n}}</div>
+                <div class="sub" style="font-size:13px">{{'flow.publish.desc' | i18n}}</div>
             </div>
             <div class="archi-grid">
                 <div class="archi-cell">
-                    <div class="ac-lab">配置</div>
+                    <div class="ac-lab">Config</div>
                     <b>flow.config</b>JSON DAG
                 </div>
                 <div class="archi-cell accent">
-                    <div class="ac-lab">引擎</div>
+                    <div class="ac-lab">Engine</div>
                     <b>EruptFlow</b>Spring runtime
                 </div>
                 <div class="archi-cell">
-                    <div class="ac-lab">实例</div>
+                    <div class="ac-lab">Instance</div>
                     <b>e_flow_instance</b>relational
                 </div>
                 <div class="archi-cell">
-                    <div class="ac-lab">任务</div>
+                    <div class="ac-lab">Task</div>
                     <b>approval_task</b>per assignee
                 </div>
             </div>
             <div class="archi-grid" style="margin-bottom:0">
                 <div class="archi-cell">
-                    <div class="ac-lab">通知</div>
+                    <div class="ac-lab">Notify</div>
                     <b>NotifyBus</b>SMTP / WX / DingTalk
                 </div>
                 <div class="archi-cell">
-                    <div class="ac-lab">表单</div>
+                    <div class="ac-lab">Form</div>
                     <b>@Erupt → form</b>auto-render
                 </div>
                 <div class="archi-cell">
-                    <div class="ac-lab">历史</div>
+                    <div class="ac-lab">History</div>
                     <b>form_history</b>before / after
                 </div>
                 <div class="archi-cell">
-                    <div class="ac-lab">分析</div>
-                    <b>flow report</b>SQL · BI · 图表
+                    <div class="ac-lab">Analytics</div>
+                    <b>flow report</b>SQL · BI · Charts
                 </div>
             </div>
         </div>
@@ -1387,11 +1385,11 @@ private Integer rating;</code></pre>
     <!-- CTA -->
     <div class="r g-bg ticks">
         <div class="c no-bb" style="padding:56px 48px; border-right:0">
-            <div class="h2" style="margin-bottom:12px">把下一个流程，<span style="color:var(--c-brand)">画</span>出来。</div>
-            <div class="sub" style="max-width:46ch; margin-bottom:28px">登录在线演示，10 分钟从空白画布到一条可发起、可审批、可通知的真实流程。</div>
+            <div class="h2" style="margin-bottom:12px" ng-bind-html="'flow.cta.title' | i18nHtml"></div>
+            <div class="sub" style="max-width:46ch; margin-bottom:28px">{{'flow.cta.desc' | i18n}}</div>
             <div style="display:flex; gap:10px; flex-wrap:wrap">
-                <a class="wbtn" href="http://demo.erupt.xyz" target="_blank">打开演示 →</a>
-                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/pro/erupt-flow" target="_blank">查看文档</a>
+                <a class="wbtn" href="http://demo.erupt.xyz" target="_blank">{{'flow.cta.demo' | i18n}}</a>
+                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/pro/erupt-flow" target="_blank">{{'flow.cta.docs' | i18n}}</a>
             </div>
         </div>
     </div>

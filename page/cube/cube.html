@@ -1341,13 +1341,13 @@
                 <div class="cml-code-block">
                     <div class="cml-code-head">{{'cube.ml.cond.title' | i18n}}</div>
                     <pre><code class="language-velocity">#if(${query.parameter["role"]} == "admin")
-    -- 管理员：全量数据
+    -- admin: full data
     1 = 1
 #elseif(${query.parameter["role"]} == "manager")
-    -- 主管：按部门过滤
+    -- manager: filter by department
     dept_id = ${filter["deptId"]}
 #else
-    -- 普通用户：按本人过滤
+    -- user: filter by self
     user_id = '${query.parameter["userId"]}'
 #end</code></pre>
                 </div>
@@ -1372,7 +1372,7 @@
                     <div class="cml-code-head">{{'cube.ml.fn.reg.title' | i18n}}</div>
                     <pre><code class="language-java">@CubeFunction("fn")
 public class SqlFunctions {
-    // 调用：${fn.inClause(ids)} → 'a', 'b', 'c'
+    // usage: ${fn.inClause(ids)} → 'a', 'b', 'c'
     public String inClause(List&lt;String&gt; ids) {
         return ids.stream()
             .map(id -> "'" + id + "'")
