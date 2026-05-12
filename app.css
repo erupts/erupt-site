@@ -41,11 +41,14 @@ html, body {
     }
 
     #footer .footer-inner {
-        padding: 24px 20px 0;
+        padding: 0;
     }
 
     #footer .footer-bar-inner {
-        padding: 0 20px;
+        padding: 12px 20px;
+        height: auto;
+        flex-wrap: wrap;
+        gap: 6px;
     }
 
     #header > div {
@@ -57,8 +60,33 @@ html, body {
         border-right: none;
     }
 
-.logo-text {
-        display: none;
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 覆盖桌面端所有 nth-child 边框规则，统一单列分隔线 */
+    .footer-cell,
+    .footer-cell:nth-child(3n),
+    .footer-cell:nth-child(n+4) {
+        border-right: none;
+        border-bottom: 1px solid var(--c-border);
+        padding: 16px 20px;
+    }
+
+    .footer-cell:last-child {
+        border-bottom: none;
+    }
+
+    #footer .footer-link h4 {
+        word-break: break-all;
+    }
+
+    .header-nav-desktop {
+        display: none !important;
+    }
+
+    .hamburger-btn {
+        display: flex !important;
     }
 }
 
@@ -264,6 +292,84 @@ html, body {
 
 .annotation {
     color: #FFEB3B !important;
+}
+
+/* Hamburger button */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+    margin-right: -6px;
+    padding: 0 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 44px;
+    height: 45px;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--c-text);
+    border-radius: 1px;
+    transition: all 200ms ease;
+    transform-origin: center;
+}
+
+.hamburger-btn span.hb-open:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger-btn span.hb-open:nth-child(2) { opacity: 0; }
+.hamburger-btn span.hb-open:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile nav panel */
+.mobile-nav {
+    border-top: 1px solid var(--c-border);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0 16px;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 10px 20px;
+    font-family: var(--c-sans);
+    font-size: 14px;
+    color: var(--c-text);
+    text-decoration: none;
+}
+
+.mobile-nav a:active {
+    background: rgba(255,87,34,.06);
+}
+
+.mobile-nav a.mobile-nav-sub {
+    padding-left: 36px;
+    color: var(--c-text2);
+    font-size: 13px;
+}
+
+.mobile-nav .mobile-nav-group {
+    padding: 10px 20px 4px;
+    font-family: var(--c-mono);
+    font-size: 10px;
+    letter-spacing: .12em;
+    color: var(--c-text2);
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.mobile-nav .mobile-nav-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px 0;
+    margin-top: 8px;
+    border-top: 1px solid var(--c-border);
 }
 
 .active-link {

@@ -237,6 +237,32 @@
         animation: center-pulse 2.4s ease-in-out infinite;
     }
 
+    @media (max-width: 768px) {
+        .hero-row {
+            flex-direction: column !important;
+            min-height: 0 !important;
+        }
+        .hero-left {
+            padding: 40px 24px 28px !important;
+        }
+        .hero-diagram-panel {
+            display: flex !important;
+            flex: none !important;
+            width: 100% !important;
+            border-left: none !important;
+            border-top: 1px solid var(--c-border) !important;
+            height: 250px !important;
+            padding: 0 16px !important;
+            overflow: hidden;
+            justify-content: flex-start !important;
+        }
+.hero-diagram-inner {
+            transform: scale(0.82);
+            transform-origin: top left;
+            flex-shrink: 0;
+        }
+    }
+
 </style>
 
 <div ng-controller="home">
@@ -244,9 +270,9 @@
     <div class="fr">
 
         <!-- §1 HERO -->
-        <div class="g-bg" style="display:flex;min-height:480px;overflow:hidden">
+        <div class="g-bg hero-row" style="display:flex;min-height:480px;overflow:hidden">
             <!-- left: text -->
-            <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+            <div class="hero-left" style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
                 <span id="home-logo"><img alt="" src="assets/logo.svg" width="88px"></span>
                 <div style="margin-top:20px;display:flex;align-items:center;gap:10px;justify-content:center">
                     <span class="tag">Open Source · Apache 2.0</span>
@@ -275,10 +301,10 @@
                 </p>
             </div>
             <!-- right: @Erupt capability diagram -->
-            <div class="d-none d-lg-flex"
-                 style="flex:0 0 46%;border-left:1px solid var(--c-border);background:#f8f9fb;background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1px);background-size:18px 18px;align-items:center;justify-content:center;padding:24px 20px;position:relative;overflow:hidden">
+            <div class="d-none d-lg-flex hero-diagram-panel"
+                 style="flex:0 0 46%;border-left:1px solid var(--c-border);background:#f8f9fb;background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1px);background-size:18px 18px;align-items:center;justify-content:center;padding:0 20px;position:relative;overflow:hidden">
                 <!-- tree layout: java class card + SVG connector + capability items -->
-                <div style="display:flex;align-items:center;gap:0;width:100%;height:428px">
+                <div class="hero-diagram-inner" style="display:flex;align-items:center;gap:0;width:100%;height:428px">
 
                     <!-- Java class card (centered vertically) -->
                     <div style="width:96px;flex-shrink:0;align-self:center;background:white;border:1.5px solid #ff5722;padding:14px 10px 12px;text-align:center;box-shadow:0 2px 16px rgba(255,87,34,.1)">

@@ -10,6 +10,10 @@
         color: #fff;
     }
 
+    #header .hamburger-btn span {
+        background: rgba(255, 255, 255, .75);
+    }
+
     #header > div {
         border-left-color: #1c1c24;
         border-right-color: #1c1c24;
@@ -21,6 +25,28 @@
 
     #header .active-link {
         color: #fff !important;
+    }
+
+    #header .mobile-nav {
+        background: rgba(12, 12, 18, 0.98);
+        border-top-color: #1c1c24;
+    }
+
+    #header .mobile-nav a {
+        color: #aaa;
+    }
+
+    #header .mobile-nav a:hover, #header .mobile-nav a:active {
+        color: #fff;
+        background: rgba(139, 92, 246, 0.08);
+    }
+
+    #header .mobile-nav .mobile-nav-group {
+        color: rgba(255, 255, 255, 0.28);
+    }
+
+    #header .mobile-nav .mobile-nav-footer {
+        border-top-color: #1c1c24;
     }
 
     #footer {
@@ -343,6 +369,17 @@
         }
     }
 
+    @media (max-width: 700px) {
+        .ai-hero-row { flex-direction: column !important; min-height: 0 !important; }
+        .ai-hero-right { display: none !important; }
+        .ai-hero-row > div:first-child { padding: 36px 24px 28px !important; }
+        .ai-llm-inner { grid-template-columns: 1fr !important; gap: 16px !important; }
+        .ai-dark .r-padded { padding: 0 20px 16px !important; }
+        .ai-dark .c { padding: 20px 24px !important; min-width: 0; }
+        .ai-dark .ai-code-win { overflow: hidden; }
+        .ai-dark .ai-code-win pre { overflow-x: auto; max-width: 100%; }
+    }
+
     /* ── AI Claw section: green accent ── */
     .ai-claw-sec {
         --c-brand: #00ff88;
@@ -407,7 +444,7 @@
     <div class="fr">
 
         <!-- ── §0 HERO ── -->
-        <div class="r g-bg" style="display:flex; min-height:420px; overflow:visible">
+        <div class="r g-bg ai-hero-row" style="display:flex; min-height:420px; overflow:visible">
             <div style="flex:1; padding:56px 48px 48px; display:flex; flex-direction:column; justify-content:center">
                 <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:20px">
                     <span class="tag" style="font-family:monospace">🤖 AI</span>
@@ -428,7 +465,7 @@
                 </div>
             </div>
             <!-- Erupt Harness architecture diagram -->
-            <div style="flex:0 0 44%; border-left:1px solid rgba(255,255,255,.08); background:#080d1c; display:flex; flex-direction:column; justify-content:center; padding:36px 40px; gap:20px;">
+            <div class="ai-hero-right" style="flex:0 0 44%; border-left:1px solid rgba(255,255,255,.08); background:#080d1c; display:flex; flex-direction:column; justify-content:center; padding:36px 40px; gap:20px;">
                 <!-- Harness headline -->
                 <div>
                     <div style="font-family:monospace; font-size:9px; letter-spacing:.2em; color:rgba(255,255,255,.22); text-transform:uppercase; margin-bottom:8px">
@@ -500,8 +537,8 @@
         </div>
 
         <!-- LLM full-width row -->
-        <div class="r reveal" style="padding:28px 40px">
-            <div style="display:grid; grid-template-columns:200px 1fr; gap:36px; align-items:start">
+        <div class="r reveal r-padded" style="padding:28px 40px">
+            <div class="ai-llm-inner" style="display:grid; grid-template-columns:200px 1fr; gap:36px; align-items:start">
                 <div>
                     <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.12em; margin-bottom:8px">
                         01 · LLM
@@ -653,7 +690,7 @@
         </div>
     </div>
 
-        <div class="r reveal" style="padding:28px 40px">
+        <div class="r reveal r-padded" style="padding:28px 40px">
             <div class="ai-arch">
                 <div class="ai-arch-row">
                     <div class="ai-arch-label">Application</div>
@@ -717,7 +754,7 @@
             </div>
         </div>
 
-        <div class="r reveal" style="padding:28px 40px 0">
+        <div class="r reveal r-padded" style="padding:28px 40px 0">
             <div class="ai-mcp-flow">
                 <div class="ai-mcp-node">
                     <h5>AI Client</h5>

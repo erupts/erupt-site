@@ -831,11 +831,33 @@
         box-shadow: 0 0 8px var(--c-brand);
         opacity: 0;
     }
+    @media (max-width: 700px) {
+        /* Hero */
+        .flow-hero-row { flex-direction: column !important; min-height: 0 !important; }
+        .flow-hero-right { display: none !important; }
+        .flow-hero-row > div:first-child { padding: 36px 24px 28px !important; }
+        /* DAG canvas: hide on mobile (绝对定位节点在小屏幕重叠) */
+        .canvas { display: none !important; }
+        /* Approval inbox */
+        .ix { grid-template-columns: 1fr !important; }
+        .ix-side { display: none !important; }
+        .ix-list { border-right: none !important; max-height: 260px !important; overflow-y: auto; }
+        .ix-detail { padding: 14px 12px !important; }
+        .ix-form { grid-template-columns: 1fr 1fr !important; }
+        /* Settings card header */
+        .settings-card .s-hd { flex-wrap: wrap; gap: 6px; padding: 8px 10px; }
+        .settings-card .s-steps { flex-wrap: wrap; gap: 4px !important; font-size: 10px !important; }
+        /* Archi grid */
+        .archi-grid { grid-template-columns: 1fr 1fr !important; }
+        /* Cell paddings */
+        .fr .c { padding: 20px 24px !important; }
+        .fr .r.reveal { padding: 0 !important; }
+    }
 </style>
 
 <!-- HERO -->
 <div class="fr">
-    <div class="r g-bg ticks" style="display:flex; min-height:460px; overflow:visible">
+    <div class="r g-bg ticks flow-hero-row" style="display:flex; min-height:460px; overflow:visible">
         <div style="flex:1; padding:56px 48px 48px; display:flex; flex-direction:column; justify-content:center; overflow:hidden">
             <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:20px">
                 <span class="tag" style="font-family:monospace;margin-bottom: 0">🔀 FLOW</span>
@@ -852,7 +874,7 @@
                 <span style="font-family:monospace; font-size:12px; color:var(--c-text-muted); margin-left:4px">Spring Boot 3</span>
             </div>
         </div>
-        <div style="flex:0 0 42%; border-left:1px solid var(--c-border); padding:32px 36px; display:flex; flex-direction:column; gap:16px; justify-content:center; background:rgba(255,87,34,.018)">
+        <div class="flow-hero-right" style="flex:0 0 42%; border-left:1px solid var(--c-border); padding:32px 36px; display:flex; flex-direction:column; gap:16px; justify-content:center; background:rgba(255,87,34,.018)">
             <div style="font-family:monospace; font-size:10.5px; color:var(--c-text-muted); letter-spacing:.12em; text-transform:uppercase; margin-bottom:4px; display:flex; align-items:center; gap:8px">
                 <span style="width:7px; height:7px; border-radius:50%; background:#4caf50; box-shadow:0 0 6px #4caf50; display:inline-block"></span>
                 在线演示 · 现在可访问

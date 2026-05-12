@@ -34,9 +34,20 @@
         padding-top: 9px;
         padding-bottom: 9px;
     }
+    @media (max-width: 900px) {
+        .comp-grid { grid-template-columns: repeat(5, 1fr) !important; }
+    }
+    @media (max-width: 700px) {
+        .comp-wrap { border-left: none !important; border-right: none !important; }
+        .comp-grid { grid-template-columns: repeat(4, 1fr) !important; }
+        .component-item img { margin: 20px 0 !important; }
+    }
+    @media (max-width: 480px) {
+        .comp-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    }
 </style>
 <div ng-controller="component" style="background:#fff">
-    <div style="max-width:1200px;margin:0 auto;border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);min-height:60vh">
+    <div class="comp-wrap" style="max-width:1200px;margin:0 auto;border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);min-height:60vh">
         <div>
             <div>
                 <hr style="margin-top: 0">
@@ -50,7 +61,7 @@
                 </p>
                 <hr style="margin-bottom: 0">
             </div>
-            <div style="display:grid;grid-template-columns:repeat(8,1fr);">
+            <div class="comp-grid" style="display:grid;grid-template-columns:repeat(8,1fr);">
                 <div class="text-center component-item" ng-repeat="type in types">
                     <div>
                         <img alt="" ng-src="images/component/{{type.image}}">
@@ -73,7 +84,7 @@
                 </p>
                 <hr style="margin-bottom: 0">
             </div>
-            <div style="display:grid;grid-template-columns:repeat(8,1fr);">
+            <div class="comp-grid" style="display:grid;grid-template-columns:repeat(8,1fr);">
                 <div class="text-center component-item" ng-repeat="type in viewTypes">
                     <div>
                         <img alt="" ng-src="images/view/{{type.image}}">

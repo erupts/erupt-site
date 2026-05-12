@@ -5,7 +5,7 @@
     <meta content="Open source low-code framework, zero frontend code, pure annotation development admin system!" name="description">
     <meta content="Erupt,Annotation,CURD,Low Code,DDD,Spring Boot,JPA,VORM,Admin"
           name="keyword">
-    <meta content="width=device-width, initial-scale=.7" name="viewport">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Erupt</title>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
     <link href="assets/prism/prism-one-dark.min.css" rel="stylesheet">
@@ -18,10 +18,10 @@
     <header id="header" ng-show="showHeader">
         <div class="d-flex">
             <div ng-click="goHome()" style="cursor: pointer">
-<!--                <img alt="" id="logo" src="assets/logo.svg" style="width: 45px;">-->
                 <span class="logo-text">Erupt<span style="font-size: .4em">.xyz</span></span>
             </div>
-            <div style="line-height: 45px;margin-left: auto">
+            <!-- Desktop nav -->
+            <div class="header-nav-desktop" style="line-height: 45px;margin-left: auto">
                 <a href="https://github.com/erupts/erupt" target="_blank">
                     <img alt="" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
                 </a>
@@ -112,7 +112,46 @@
                     </div>
                 </span>
             </div>
+            <!-- Mobile hamburger -->
+            <button class="hamburger-btn" ng-click="mobileMenuOpen=!mobileMenuOpen" aria-label="menu">
+                <span ng-class="mobileMenuOpen?'hb-open':''"></span>
+                <span ng-class="mobileMenuOpen?'hb-open':''"></span>
+                <span ng-class="mobileMenuOpen?'hb-open':''"></span>
+            </button>
         </div>
+        <!-- Mobile nav panel -->
+        <nav class="mobile-nav" ng-show="mobileMenuOpen">
+            <a href="#!/" ng-click="mobileMenuOpen=false" ng-class="currRouter=='/'?'active-link':''">
+                {{'nav.home' | i18n}}
+            </a>
+            <div class="mobile-nav-group">{{'nav.products' | i18n}}</div>
+            <a class="mobile-nav-sub" href="#!/ai" ng-click="mobileMenuOpen=false">{{'nav.ai' | i18n}}</a>
+            <a class="mobile-nav-sub" href="#!/ai-claw" ng-click="mobileMenuOpen=false">{{'nav.aiclaw' | i18n}}</a>
+            <a class="mobile-nav-sub" href="#!/cloud" ng-click="mobileMenuOpen=false">{{'nav.cloud' | i18n}}</a>
+            <a class="mobile-nav-sub" href="#!/flow" ng-click="mobileMenuOpen=false">{{'nav.flow' | i18n}}</a>
+            <a class="mobile-nav-sub" href="#!/cube" ng-click="mobileMenuOpen=false">{{'nav.cube' | i18n}}</a>
+            <a href="https://docs.erupt.xyz/guide/" target="_blank" ng-click="mobileMenuOpen=false">
+                {{'nav.doc' | i18n}}
+            </a>
+            <div class="mobile-nav-group">{{'nav.more' | i18n}}</div>
+            <a class="mobile-nav-sub" href="#!/contrast" ng-click="mobileMenuOpen=false">{{'nav.contrast' | i18n}}</a>
+            <a class="mobile-nav-sub" href="#!/component" ng-click="mobileMenuOpen=false">{{'nav.component' | i18n}}</a>
+            <a class="mobile-nav-sub" href="#!/module" ng-click="mobileMenuOpen=false">{{'nav.module' | i18n}}</a>
+            <a href="#!/about" ng-click="mobileMenuOpen=false">{{'nav.about' | i18n}}</a>
+            <a href="https://demo.erupt.xyz" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.demo' | i18n}}</a>
+            <div class="mobile-nav-footer">
+                <a href="https://start.erupt.xyz" target="_blank"
+                   style="border:1px solid #28a745;color:#28a745;border-radius:4px;padding:6px 18px;font-size:.85rem;text-decoration:none;font-family:var(--c-sans)">
+                    {{'home.btn.start' | i18n}}
+                </a>
+                <span style="display:flex;gap:12px;font-family:var(--c-sans);font-size:.85rem">
+                    <a href="javascript:;" ng-click="switchLang('zh-CN');mobileMenuOpen=false"
+                       style="color:var(--c-text2);text-decoration:none" ng-style="currentLang==='zh-CN'?{'color':'var(--c-brand)'}:{}">中文</a>
+                    <a href="javascript:;" ng-click="switchLang('en-US');mobileMenuOpen=false"
+                       style="color:var(--c-text2);text-decoration:none" ng-style="currentLang==='en-US'?{'color':'var(--c-brand)'}:{}">English</a>
+                </span>
+            </div>
+        </nav>
     </header>
     <main id="main">
         <div ng-view>
