@@ -216,6 +216,25 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
     })
 
     $timeout(function () {
+        var card = document.querySelector('.dia-card');
+        if (card) {
+            card.addEventListener('mouseenter', function () {
+                card.style.transition = 'box-shadow .25s, border-color .25s';
+            });
+            card.addEventListener('mousemove', function (e) {
+                var r = card.getBoundingClientRect();
+                var x = (e.clientX - r.left) / r.width - .5;
+                var y = (e.clientY - r.top) / r.height - .5;
+                card.style.transform = 'perspective(260px) rotateY(' + (x * 22) + 'deg) rotateX(' + (-y * 22) + 'deg) scale(1.07)';
+            });
+            card.addEventListener('mouseleave', function () {
+                card.style.transition = 'box-shadow .25s, border-color .25s, transform .5s cubic-bezier(.23,1,.32,1)';
+                card.style.transform = '';
+            });
+        }
+    }, 400);
+
+    $timeout(function () {
         $('[data-toggle="tooltip"]').tooltip()
     }, 1000);
 
