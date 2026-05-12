@@ -403,48 +403,48 @@
 @Table
 @Entity
 @Erupt(
-    name = "任务管理",
+    name = "Task Management",
     power = @Power(export = true, importable = true),
     filter = @Filter("dept_id = #{user.deptId}"),
     dataProxy = TaskProxy.class,
-    rowOperation = @RowOperation(title = "重置状态"),
-    vis = @Vis(title = "看板", type = Vis.Type.CARD, cardView = @CardView)
+    rowOperation = @RowOperation(title = "Reset Status"),
+    vis = @Vis(title = "Board", type = Vis.Type.CARD, cardView = @CardView)
 )
 public class Task extends BaseModel {
 
     @EruptField(
-        views = @View(title = "优先级"),
-        edit  = @Edit(title = "优先级", type = EditType.CHOICE,
+        views = @View(title = "Priority"),
+        edit  = @Edit(title = "Priority", type = EditType.CHOICE,
                       choiceType = @ChoiceType(vl = {
-                          @VL(label = "高", value = "high", color = "#ef4444"),
-                          @VL(label = "中", value = "mid",  color = "#f59e0b"),
-                          @VL(label = "低", value = "low",  color = "#22c55e")
+                          @VL(label = "High",   value = "high", color = "#ef4444"),
+                          @VL(label = "Medium", value = "mid",  color = "#f59e0b"),
+                          @VL(label = "Low",    value = "low",  color = "#22c55e")
                       }))
     )
     private String priority;
 
     @EruptField(
-        views = @View(title = "位置", type = ViewType.MAP),
-        edit  = @Edit(title = "位置", type = EditType.MAP)
+        views = @View(title = "Location", type = ViewType.MAP),
+        edit  = @Edit(title = "Location", type = EditType.MAP)
     )
     private String location;
 
     @EruptField(
-        edit = @Edit(title = "脚本", type = EditType.CODE_EDITOR,
+        edit = @Edit(title = "Script", type = EditType.CODE_EDITOR,
                      codeEditType = @CodeEditorType(language = "sql"))
     )
     private String script;
 
     @EruptField(
-        views = @View(title = "审批签名", type = ViewType.IMAGE_BASE64),
-        edit  = @Edit(title = "审批签名", type = EditType.SIGNATURE)
+        views = @View(title = "Approval Sign", type = ViewType.IMAGE_BASE64),
+        edit  = @Edit(title = "Approval Sign", type = EditType.SIGNATURE)
     )
     private String signature;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "task_id")
     @EruptField(
-        edit = @Edit(title = "子任务", type = EditType.TAB_TABLE_ADD)
+        edit = @Edit(title = "Sub Tasks", type = EditType.TAB_TABLE_ADD)
     )
     private Set&lt;SubTask&gt; children;
 
@@ -1120,7 +1120,7 @@ public class Task extends BaseModel {
              ════════════════════════════════════════ -->
         <div class="r g-bg ticks only-before" style="padding:72px 48px;text-align:center">
             <span class="tag">Get Started</span>
-            <h2 class="h2" style="font-size:clamp(28px,4vw,44px)">准备好了吗？</h2>
+            <h2 class="h2" style="font-size:clamp(28px,4vw,44px)">{{'home.ready'|i18n}}</h2>
             <p class="sub" style="margin:0 auto 32px;max-width:44ch">
                 {{'home.license'|i18n}}
                 <a href="http://www.apache.org/licenses/LICENSE-2.0" style="color:var(--c-brand);text-decoration:none">{{'home.license.link'|i18n}}</a>
@@ -1146,7 +1146,7 @@ public class Task extends BaseModel {
                 <div style="width:46px;height:46px;border:1px solid var(--c-border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
                     <img src="images/gitee.svg" style="width:24px;object-fit:contain;opacity:.65">
                 </div>
-                <div style="font-size:14px;font-weight:600">码云 Gitee</div>
+                <div style="font-size:14px;font-weight:600">Gitee</div>
             </div>
             <div class="c no-bb git-card" ng-click="go('https://github.com/erupts/erupt',true)"
                  style="text-align:center;cursor:pointer;padding:40px 32px">
