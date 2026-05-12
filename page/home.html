@@ -1,5 +1,8 @@
 <style>
     /* ── Hero styles ── */
+    #DemoErupt, #DemoErupt code {
+        background: #1a1a1a !important;
+    }
 
     .del-line {
         text-decoration: line-through;
@@ -132,7 +135,7 @@
         letter-spacing: 1.2px;
         text-transform: uppercase;
         color: rgba(255, 255, 255, .38);
-        border-bottom: 1px solid rgba(255, 255, 255, .07);
+        border-bottom: 1px solid rgb(72 38 28);
         margin-bottom: 6px;
     }
 
@@ -237,6 +240,87 @@
         animation: center-pulse 2.4s ease-in-out infinite;
     }
 
+    .dia-card {
+        transition: box-shadow .25s, transform .25s, border-color .25s;
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* diagonal shine sweep */
+    .dia-card::before {
+        content: '';
+        position: absolute;
+        top: -80%;
+        left: -60%;
+        width: 50%;
+        height: 220%;
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 87, 34, .13) 50%, transparent 60%);
+        pointer-events: none;
+        transition: left .45s ease;
+    }
+
+    .dia-card:hover::before {
+        left: 140%;
+    }
+
+    /* scan line */
+    .dia-card::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(255, 87, 34, .35), transparent);
+        top: -4px;
+        pointer-events: none;
+    }
+
+    .dia-card:hover::after {
+        animation: dia-scan .55s ease-out forwards;
+    }
+
+    @keyframes dia-scan {
+        from {
+            top: -4px;
+            opacity: 1;
+        }
+        to {
+            top: 108%;
+            opacity: 0;
+        }
+    }
+
+    /* pin lines & chip body glow */
+    .dia-card svg line {
+        transition: opacity .2s;
+    }
+
+    .dia-card:hover svg line {
+        opacity: .9 !important;
+    }
+
+    .dia-card:hover svg rect:first-of-type {
+        fill: rgba(255, 87, 34, .12) !important;
+    }
+
+    .dia-card:hover {
+        box-shadow: 0 8px 32px rgba(255, 87, 34, .35) !important;
+        transform: scale(1.06);
+        border-color: #ff5722 !important;
+    }
+
+    .dia-items > div {
+        transition: transform .15s, filter .15s, border-color .15s;
+        cursor: default;
+    }
+
+    .dia-items > div:hover {
+        transform: translateX(5px);
+        filter: brightness(1.06);
+        border-color: currentColor;
+    }
+
     @media (max-width: 768px) {
         .hero-row {
             flex-direction: column !important;
@@ -246,20 +330,7 @@
             padding: 40px 24px 28px !important;
         }
         .hero-diagram-panel {
-            display: flex !important;
-            flex: none !important;
-            width: 100% !important;
-            border-left: none !important;
-            border-top: 1px solid var(--c-border) !important;
-            height: 250px !important;
-            padding: 0 16px !important;
-            overflow: hidden;
-            justify-content: flex-start !important;
-        }
-.hero-diagram-inner {
-            transform: scale(0.82);
-            transform-origin: top left;
-            flex-shrink: 0;
+            display: none !important;
         }
     }
 
@@ -307,7 +378,8 @@
                 <div class="hero-diagram-inner" style="display:flex;align-items:center;gap:0;width:100%;height:428px">
 
                     <!-- Java class card (centered vertically) -->
-                    <div style="width:96px;flex-shrink:0;align-self:center;background:white;border:1.5px solid #ff5722;padding:14px 10px 12px;text-align:center;box-shadow:0 2px 16px rgba(255,87,34,.1)">
+                    <div class="dia-card"
+                         style="width:96px;flex-shrink:0;align-self:center;background:white;border:1.5px solid #ff5722;padding:14px 10px 12px;text-align:center;box-shadow:0 2px 16px rgba(255,87,34,.1)">
                         <div style="font-size:7px;letter-spacing:.18em;color:#ff5722;font-family:'SFMono-Regular',monospace;margin-bottom:10px">
                             @Erupt
                         </div>
@@ -383,7 +455,7 @@
                     </svg>
 
                     <!-- Capability items: 9 × flex:1, gap:4px → each 44px, centers match SVG branches -->
-                    <div style="flex:1;display:flex;flex-direction:column;gap:4px;height:428px">
+                    <div class="dia-items" style="flex:1;display:flex;flex-direction:column;gap:4px;height:428px">
                         <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:1px solid rgba(239,68,68,.2)">
                             <div style="width:2px;align-self:stretch;margin:8px 0;background:#ef4444;border-radius:1px;flex-shrink:0"></div>
                             <div>
@@ -529,8 +601,9 @@
                         </div>
                     </div>
                     <!-- editor -->
-                    <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;position:relative">
-                            <pre id="DemoErupt" style="margin:0;border-radius:0;flex:1;overflow:auto">
+                    <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;position:relative;background: #1a1a1a">
+                            <pre id="DemoErupt"
+                                 style="margin:0;border-radius:0;flex:1;overflow:auto;background:#1a1a1a">
 <code class="prism language-java animated bounce">/**
  * plug-and-play 🚀  1 class replaces:
  * html / js / css / controller / service / dao / mapper / ddl
@@ -583,24 +656,20 @@ public class Task extends BaseModel {
     private Set&lt;SubTask&gt; children;
 
 }</code></pre>
-                        <!-- status bar -->
-                        <div style="flex-shrink:0;height:22px;background:#ff5722;border-top:1px solid rgba(255,87,34,.4);display:flex;align-items:center;padding:0 14px;gap:16px">
-                            <span style="font-size:10px;color:rgba(255,255,255,.85);font-family:'SFMono-Regular',monospace">Java</span>
-                            <span style="font-size:10px;color:rgba(255,255,255,.85);font-family:'SFMono-Regular',monospace">UTF-8</span>
-                            <span style="font-size:10px;color:rgba(255,255,255,.85);font-family:'SFMono-Regular',monospace">Spring Boot</span>
-                            <span style="margin-left:auto;font-size:10px;color:rgba(99,102,241,.7);font-family:'SFMono-Regular',monospace">annotation-driven ✦</span>
-                        </div>
-                        <a class="badge badge-primary" href="#!/contrast"
-                           style="position:absolute;right:16px;bottom:38px;font-family:initial">{{'home.code.more'|i18n}}</a>
+                        <a href="#!/contrast"
+                           onmouseout="this.style.background='rgba(255,87,34,.08)';this.style.borderColor='rgba(255,87,34,.3)'"
+                           onmouseover="this.style.background='rgba(255,87,34,.16)';this.style.borderColor='rgba(255,87,34,.6)'"
+                           style="position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:5px;padding:5px 12px;font-family:'SFMono-Regular',monospace;font-size:11px;color:var(--c-brand);background:rgba(255,87,34,.08);border:1px solid rgba(255,87,34,.3);text-decoration:none;transition:background .15s,border-color .15s"
+                        >{{'home.code.more'|i18n}}</a>
                     </div>
                     <!-- tips -->
                     <div class="d-none d-lg-flex eb-tips"
-                         style="flex-direction:column;gap:0;padding:0;width:230px;background:#252526">
-                        <div style="padding:10px 14px 8px;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);border-bottom:1px solid rgba(255,255,255,.07)">
+                         style="flex-direction:column;gap:0;padding:0;width:230px;background:#1a1a1a">
+                        <div style="padding:10px 14px 8px;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);border-bottom:1px solid rgb(72 38 28)">
                             Why Erupt
                         </div>
                         <div style="flex:1;overflow:auto;padding:12px 0">
-                            <div style="padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.05)">
+                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
                                 <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
                                     <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;flex-shrink:0"></span>
                                     <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip1.title'|i18n}}</span>
@@ -608,7 +677,7 @@ public class Task extends BaseModel {
                                 <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
                                     {{'home.code.tip1.desc'|i18n}}</p>
                             </div>
-                            <div style="padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.05)">
+                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
                                 <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
                                     <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span>
                                     <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip2.title'|i18n}}</span>
@@ -616,7 +685,7 @@ public class Task extends BaseModel {
                                 <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
                                     {{'home.code.tip2.desc'|i18n}}</p>
                             </div>
-                            <div style="padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.05)">
+                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
                                 <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
                                     <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0"></span>
                                     <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip3.title'|i18n}}</span>
@@ -624,7 +693,7 @@ public class Task extends BaseModel {
                                 <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
                                     {{'home.code.tip3.desc'|i18n}}</p>
                             </div>
-                            <div style="padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.05)">
+                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
                                 <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
                                     <span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span>
                                     <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip4.title'|i18n}}</span>
