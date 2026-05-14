@@ -21,8 +21,11 @@
     scrollbar-width: thin;
 }
 
-html, body {
+html {
     overflow-x: hidden;
+}
+
+html, body {
     background: #fff;
 }
 
@@ -839,7 +842,7 @@ html, body {
 .reveal.in { opacity: 1; transform: none; }
 
 @media (max-width: 1000px) {
-    .fr { border-left: none; border-right: none; }
+    .fr { border-left: none; border-right: none; overflow-x: hidden; }
     .spl { flex-direction: column !important; }
     .spl > .l { border-right: none !important; border-bottom: 1px solid var(--c-border); }
     .g4 { grid-template-columns: 1fr 1fr; }
