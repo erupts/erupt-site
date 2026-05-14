@@ -21,11 +21,8 @@
     scrollbar-width: thin;
 }
 
-html {
-    overflow-x: hidden;
-}
-
 html, body {
+    overflow-x: hidden;
     background: #fff;
 }
 
