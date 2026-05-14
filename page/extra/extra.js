@@ -75,6 +75,12 @@ app.controller("extra", function ($scope, $window) {
             link: "https://docs.erupt.xyz/modules/erupt-monitor"
         },
         {
+            name: "erupt-terminal",
+            title: "服务终端",
+            remark: "通过 WebSocket + PTY 技术将服务器 Shell 直接桥接到浏览器，无需 SSH 客户端即可在后台管理界面中操作服务器终端",
+            link: "https://docs.erupt.xyz/modules/erupt-terminal"
+        },
+        {
             name: "erupt-websocket",
             title: "WebSocket 实时交互",
             remark: "与前端保持长连接，支持后端实时向前端推送数据，适用于实时通知、进度反馈等场景",
