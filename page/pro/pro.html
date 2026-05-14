@@ -1,0 +1,632 @@
+<style>
+    /* ── Pro Page · Light Blueprint ── */
+
+    .pro-page .pro-hero-row {
+        padding: 80px 48px 48px;
+        text-align: center;
+        position: relative;
+    }
+
+    .pro-page .pro-hero-row::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 24px 24px;
+        opacity: .6;
+        pointer-events: none;
+    }
+
+    .pro-page .pro-hero-row > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .pro-page .pro-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-brand);
+        display: inline-block;
+        margin-bottom: 18px;
+    }
+
+    .pro-page .pro-h1 {
+        font-size: clamp(38px, 5vw, 62px);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -.025em;
+        color: var(--c-text);
+        margin: 0 0 16px;
+    }
+
+    .pro-page .pro-h1 em {
+        font-style: normal;
+        color: var(--c-brand);
+    }
+
+    .pro-page .pro-hero-sub {
+        font-size: 15.5px;
+        line-height: 1.7;
+        color: var(--c-text2);
+        max-width: 680px;
+        margin: 0 auto 18px;
+    }
+
+    .pro-page .pro-oss-note {
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        line-height: 1.6;
+        color: var(--c-text2);
+        max-width: 640px;
+        margin: 0 auto 28px;
+        padding: 8px 16px;
+        border: 1px dashed var(--c-border);
+        background: rgba(0, 0, 0, .015);
+    }
+
+    .pro-page .pro-oss-note strong {
+        color: var(--c-text);
+        font-weight: 600;
+    }
+
+    .pro-page .pro-hero-btns {
+        display: inline-flex;
+        gap: 8px;
+    }
+
+    /* Stats strip */
+    .pro-page .pro-stat-num {
+        display: block;
+        font-family: var(--c-mono);
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -.02em;
+        color: var(--c-text);
+        margin-bottom: 4px;
+    }
+
+    .pro-page .pro-stat-label {
+        display: block;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+    }
+
+    /* Module card */
+    .pro-page .pro-card {
+        padding: 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        min-height: 460px;
+    }
+
+    /* Card screenshot strip */
+    .pro-page .pro-card-shot {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: rgba(0, 0, 0, .025);
+        border-bottom: 1px solid var(--c-border);
+        overflow: hidden;
+    }
+
+    .pro-page .pro-card-shot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+        transition: transform .4s ease, opacity .2s ease;
+        opacity: .88;
+    }
+
+    .pro-page .pro-card.clickable:hover .pro-card-shot img {
+        transform: scale(1.02);
+        opacity: 1;
+    }
+
+    .pro-page .pro-card-body {
+        padding: 28px 28px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        flex: 1;
+    }
+
+    .pro-page .pro-card-ghost {
+        position: absolute;
+        top: 8px;
+        right: 14px;
+        font-family: var(--c-mono);
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        opacity: .55;
+        letter-spacing: -.04em;
+        line-height: 1;
+        pointer-events: none;
+        z-index: 2;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    }
+
+    .pro-page .pro-card-name {
+        font-family: var(--c-mono);
+        font-size: 11px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--c-brand);
+    }
+
+    .pro-page .pro-card-title {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1.25;
+        color: var(--c-text);
+        margin: 0;
+        letter-spacing: -.01em;
+    }
+
+    .pro-page .pro-card-sub {
+        font-size: 13.5px;
+        line-height: 1.6;
+        color: var(--c-text2);
+        margin: 0;
+    }
+
+    .pro-page .pro-card-price {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        padding: 10px 0;
+        border-top: 1px solid var(--c-border);
+        border-bottom: 1px solid var(--c-border);
+    }
+
+    .pro-page .pro-card-price-num {
+        font-family: var(--c-mono);
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--c-text);
+        letter-spacing: -.03em;
+    }
+
+    .pro-page .pro-card-price-unit {
+        font-family: var(--c-mono);
+        font-size: 11px;
+        color: var(--c-text2);
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    .pro-page .pro-card-feats {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 13px;
+        color: var(--c-text2);
+        line-height: 1.65;
+        flex: 1;
+    }
+
+    .pro-page .pro-card-feats li {
+        padding-left: 16px;
+        position: relative;
+        margin-bottom: 4px;
+    }
+
+    .pro-page .pro-card-feats li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: .65em;
+        width: 6px;
+        height: 1px;
+        background: var(--c-brand);
+    }
+
+    .pro-page .pro-card-cta {
+        display: flex;
+        gap: 6px;
+        margin-top: 8px;
+    }
+
+    .pro-page .pro-card-cta .wbtn {
+        flex: 1;
+        justify-content: center;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    /* Buy steps */
+    .pro-page .pro-step {
+        padding: 36px 28px;
+        position: relative;
+        min-height: 180px;
+    }
+
+    .pro-page .pro-step-ghost {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        font-family: var(--c-mono);
+        font-size: 56px;
+        font-weight: 700;
+        color: var(--c-text);
+        opacity: .05;
+        line-height: 1;
+    }
+
+    .pro-page .pro-step-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--c-brand);
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .pro-page .pro-step-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--c-text);
+        margin: 0 0 6px;
+    }
+
+    .pro-page .pro-step-desc {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--c-text2);
+        margin: 0;
+    }
+
+    /* Contact section */
+    .pro-page .pro-contact-row {
+        padding: 56px 32px;
+        text-align: center;
+    }
+
+    .pro-page .pro-contact-qr {
+        width: 240px;
+        height: auto;
+        max-width: 80vw;
+        margin: 24px auto 18px;
+        display: block;
+        border: 1px solid var(--c-border);
+        object-fit: contain;
+    }
+
+    /* Demo credentials note under cta row */
+    .pro-page .pro-card-demo {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .06em;
+        color: var(--c-text2);
+        margin-top: 6px;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .pro-page .pro-card-demo .k {
+        color: var(--c-brand);
+    }
+
+    .pro-page .pro-card-demo a {
+        color: var(--c-brand);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--c-brand);
+    }
+
+    .pro-page .pro-card-demo a:hover {
+        border-bottom-style: solid;
+    }
+
+    /* Multi-tenant demo list */
+    .pro-page .pro-card-demos {
+        margin-top: 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .pro-page .pro-card-demos .pro-card-demo {
+        margin-top: 0;
+        padding: 4px 0;
+        border-top: 1px dashed var(--c-border);
+        font-size: 10px;
+    }
+
+    .pro-page .pro-card-demos .pro-card-demo:first-child {
+        border-top: none;
+    }
+
+    .pro-page .pro-contact-email {
+        font-family: var(--c-mono);
+        font-size: 14px;
+        color: var(--c-text2);
+        margin-top: 8px;
+    }
+
+    .pro-page .pro-contact-email a {
+        color: var(--c-brand);
+        text-decoration: none;
+        border-bottom: 1px dashed var(--c-brand);
+    }
+
+    @media (max-width: 1000px) {
+        .pro-page .pro-card {
+            min-height: 0;
+        }
+
+        .pro-page .pro-hero-row {
+            padding: 56px 24px 32px;
+        }
+
+        .pro-page .pro-contact-row {
+            padding: 40px 24px;
+        }
+    }
+</style>
+
+<div class="pro-page">
+
+    <div class="fr">
+
+        <!-- ── §1 Hero ── -->
+        <div class="r pro-hero-row">
+            <span class="pro-eyebrow">{{'pro.hero.eyebrow' | i18n}}</span>
+            <h1 class="pro-h1" ng-bind-html="'pro.hero.title' | i18nHtml"></h1>
+            <p class="pro-hero-sub" ng-bind-html="'pro.hero.sub' | i18nHtml"></p>
+            <div class="pro-oss-note" ng-bind-html="'pro.hero.oss' | i18nHtml"></div>
+            <div class="pro-hero-btns">
+                <a class="wbtn wbtn-o" href="https://demo.erupt.xyz" target="_blank">{{'pro.hero.btn.demo' | i18n}}</a>
+                <a class="wbtn" href="#!/about" style="margin-left:8px">{{'pro.hero.btn.contact' | i18n}}</a>
+            </div>
+        </div>
+
+        <!-- ── §1b Stats strip ── -->
+        <div class="r g4">
+            <div class="c no-bb" style="text-align:center;padding:22px 16px">
+                <span class="pro-stat-num">{{'pro.stat1.num' | i18n}}</span>
+                <span class="pro-stat-label">{{'pro.stat1.label' | i18n}}</span>
+            </div>
+            <div class="c no-bb" style="text-align:center;padding:22px 16px">
+                <span class="pro-stat-num">{{'pro.stat2.num' | i18n}}</span>
+                <span class="pro-stat-label">{{'pro.stat2.label' | i18n}}</span>
+            </div>
+            <div class="c no-bb" style="text-align:center;padding:22px 16px">
+                <span class="pro-stat-num">{{'pro.stat3.num' | i18n}}</span>
+                <span class="pro-stat-label">{{'pro.stat3.label' | i18n}}</span>
+            </div>
+            <div class="c no-bb" style="text-align:center;padding:22px 16px;border-right:none">
+                <span class="pro-stat-num">{{'pro.stat4.num' | i18n}}</span>
+                <span class="pro-stat-label">{{'pro.stat4.label' | i18n}}</span>
+            </div>
+        </div>
+
+        <!-- ── §2 Modules title ── -->
+        <div class="r g-bg ticks" style="padding:48px 48px 40px;text-align:center">
+            <span class="tag">{{'pro.modules.tag' | i18n}}</span>
+            <p class="h2">{{'pro.modules.title' | i18n}}</p>
+            <p class="sub" style="max-width:640px;margin:0 auto">{{'pro.modules.sub' | i18n}}</p>
+        </div>
+
+        <!-- ── §2b Modules grid (4 columns) ── -->
+        <div class="r g4 reveal">
+
+            <!-- Card 1 · erupt-chart -->
+            <div class="c clickable pro-card">
+                <span class="pro-card-ghost">01</span>
+                <div class="pro-card-shot">
+                    <img src="images/pro/chart.png" alt="Erupt Chart">
+                </div>
+                <div class="pro-card-body">
+                    <span class="pro-card-name">erupt-chart</span>
+                    <h3 class="pro-card-title">{{'pro.card.chart.title' | i18n}}</h3>
+                    <p class="pro-card-sub">{{'pro.card.chart.sub' | i18n}}</p>
+                    <div class="pro-card-price">
+                        <span class="pro-card-price-num">¥3,000</span>
+                        <span class="pro-card-price-unit">{{'pro.card.unit' | i18n}}</span>
+                    </div>
+                    <ul class="pro-card-feats">
+                        <li>{{'pro.card.chart.f1' | i18n}}</li>
+                        <li>{{'pro.card.chart.f2' | i18n}}</li>
+                        <li>{{'pro.card.chart.f3' | i18n}}</li>
+                        <li>{{'pro.card.chart.f4' | i18n}}</li>
+                    </ul>
+                    <div class="pro-card-cta">
+                        <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/pro/erupt-chart" target="_blank">{{'pro.cta.doc' | i18n}}</a>
+                        <a class="wbtn" href="https://demo.erupt.xyz" target="_blank">{{'pro.cta.demo' | i18n}}</a>
+                    </div>
+                    <div class="pro-card-demo" ng-bind-html="'pro.card.chart.demo' | i18nHtml"></div>
+                </div>
+            </div>
+
+            <!-- Card 2 · erupt-flow -->
+            <div class="c clickable pro-card">
+                <span class="pro-card-ghost">02</span>
+                <div class="pro-card-shot">
+                    <img src="https://docs.erupt.xyz/flow/ui1.png" alt="Erupt Flow">
+                </div>
+                <div class="pro-card-body">
+                    <span class="pro-card-name">erupt-flow</span>
+                    <h3 class="pro-card-title">{{'pro.card.flow.title' | i18n}}</h3>
+                    <p class="pro-card-sub">{{'pro.card.flow.sub' | i18n}}</p>
+                    <div class="pro-card-price">
+                        <span class="pro-card-price-num">¥8,000</span>
+                        <span class="pro-card-price-unit">{{'pro.card.unit' | i18n}}</span>
+                    </div>
+                    <ul class="pro-card-feats">
+                        <li>{{'pro.card.flow.f1' | i18n}}</li>
+                        <li>{{'pro.card.flow.f2' | i18n}}</li>
+                        <li>{{'pro.card.flow.f3' | i18n}}</li>
+                        <li>{{'pro.card.flow.f4' | i18n}}</li>
+                    </ul>
+                    <div class="pro-card-cta">
+                        <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/pro/erupt-flow" target="_blank">{{'pro.cta.doc' | i18n}}</a>
+                        <a class="wbtn" href="#!/flow">{{'pro.cta.detail' | i18n}}</a>
+                    </div>
+                    <div class="pro-card-demo" ng-bind-html="'pro.card.flow.demo' | i18nHtml"></div>
+                </div>
+            </div>
+
+            <!-- Card 3 · erupt-tenant -->
+            <div class="c clickable pro-card">
+                <span class="pro-card-ghost">03</span>
+                <div class="pro-card-shot">
+                    <img src="https://docs.erupt.xyz/tenant/login1.png" alt="Erupt Tenant">
+                </div>
+                <div class="pro-card-body">
+                    <span class="pro-card-name">erupt-tenant</span>
+                    <h3 class="pro-card-title">{{'pro.card.tenant.title' | i18n}}</h3>
+                    <p class="pro-card-sub">{{'pro.card.tenant.sub' | i18n}}</p>
+                    <div class="pro-card-price">
+                        <span class="pro-card-price-num">¥8,000</span>
+                        <span class="pro-card-price-unit">{{'pro.card.unit' | i18n}}</span>
+                    </div>
+                    <ul class="pro-card-feats">
+                        <li>{{'pro.card.tenant.f1' | i18n}}</li>
+                        <li>{{'pro.card.tenant.f2' | i18n}}</li>
+                        <li>{{'pro.card.tenant.f3' | i18n}}</li>
+                        <li>{{'pro.card.tenant.f4' | i18n}}</li>
+                    </ul>
+                    <div class="pro-card-cta">
+                        <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/pro/erupt-tenant" target="_blank">{{'pro.cta.doc' | i18n}}</a>
+                        <a class="wbtn" href="http://tenant.erupt.xyz/demo" target="_blank">{{'pro.cta.demo' | i18n}}</a>
+                    </div>
+                    <div class="pro-card-demo" ng-bind-html="'pro.card.tenant.demo' | i18nHtml"></div>
+                </div>
+            </div>
+
+            <!-- Card 4 · erupt-cube -->
+            <div class="c clickable pro-card" style="border-right:none">
+                <span class="pro-card-ghost">04</span>
+                <div class="pro-card-shot">
+                    <img src="https://docs.erupt.xyz/cube/overview.png" alt="Erupt Cube">
+                </div>
+                <div class="pro-card-body">
+                    <span class="pro-card-name">erupt-cube</span>
+                    <h3 class="pro-card-title">{{'pro.card.cube.title' | i18n}}</h3>
+                    <p class="pro-card-sub">{{'pro.card.cube.sub' | i18n}}</p>
+                    <div class="pro-card-price">
+                        <span class="pro-card-price-num">¥10,000</span>
+                        <span class="pro-card-price-unit">{{'pro.card.unit' | i18n}}</span>
+                    </div>
+                    <ul class="pro-card-feats">
+                        <li>{{'pro.card.cube.f1' | i18n}}</li>
+                        <li>{{'pro.card.cube.f2' | i18n}}</li>
+                        <li>{{'pro.card.cube.f3' | i18n}}</li>
+                        <li>{{'pro.card.cube.f4' | i18n}}</li>
+                    </ul>
+                    <div class="pro-card-cta">
+                        <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/pro/erupt-cube" target="_blank">{{'pro.cta.doc' | i18n}}</a>
+                        <a class="wbtn" href="#!/cube">{{'pro.cta.detail' | i18n}}</a>
+                    </div>
+                    <div class="pro-card-demo" ng-bind-html="'pro.card.cube.demo' | i18nHtml"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ── §3 Why commercial title ── -->
+        <div class="r g-bg ticks" style="padding:48px 48px 40px;text-align:center">
+            <span class="tag">{{'pro.why.tag' | i18n}}</span>
+            <p class="h2">{{'pro.why.title' | i18n}}</p>
+            <p class="sub" style="max-width:640px;margin:0 auto">{{'pro.why.sub' | i18n}}</p>
+        </div>
+
+        <!-- ── §3b Why grid ── -->
+        <div class="r g4 reveal">
+            <div class="c">
+                <span class="tag">{{'pro.why.s1.tag' | i18n}}</span>
+                <h3 class="h3">{{'pro.why.s1.title' | i18n}}</h3>
+                <p class="sub">{{'pro.why.s1.desc' | i18n}}</p>
+            </div>
+            <div class="c">
+                <span class="tag">{{'pro.why.s2.tag' | i18n}}</span>
+                <h3 class="h3">{{'pro.why.s2.title' | i18n}}</h3>
+                <p class="sub">{{'pro.why.s2.desc' | i18n}}</p>
+            </div>
+            <div class="c">
+                <span class="tag">{{'pro.why.s3.tag' | i18n}}</span>
+                <h3 class="h3">{{'pro.why.s3.title' | i18n}}</h3>
+                <p class="sub">{{'pro.why.s3.desc' | i18n}}</p>
+            </div>
+            <div class="c" style="border-right:none">
+                <span class="tag">{{'pro.why.s4.tag' | i18n}}</span>
+                <h3 class="h3">{{'pro.why.s4.title' | i18n}}</h3>
+                <p class="sub">{{'pro.why.s4.desc' | i18n}}</p>
+            </div>
+        </div>
+
+        <!-- ── §4 Buying process title ── -->
+        <div class="r g-bg ticks" style="padding:48px 48px 40px;text-align:center">
+            <span class="tag">{{'pro.steps.tag' | i18n}}</span>
+            <p class="h2">{{'pro.steps.title' | i18n}}</p>
+            <p class="sub" style="max-width:640px;margin:0 auto">{{'pro.steps.sub' | i18n}}</p>
+        </div>
+
+        <!-- ── §4b Steps grid ── -->
+        <div class="r g4 reveal">
+            <div class="c pro-step">
+                <span class="pro-step-ghost">01</span>
+                <span class="pro-step-eyebrow">{{'pro.steps.s1.eyebrow' | i18n}}</span>
+                <h3 class="pro-step-title">{{'pro.steps.s1.title' | i18n}}</h3>
+                <p class="pro-step-desc" ng-bind-html="'pro.steps.s1.desc' | i18nHtml"></p>
+            </div>
+            <div class="c pro-step">
+                <span class="pro-step-ghost">02</span>
+                <span class="pro-step-eyebrow">{{'pro.steps.s2.eyebrow' | i18n}}</span>
+                <h3 class="pro-step-title">{{'pro.steps.s2.title' | i18n}}</h3>
+                <p class="pro-step-desc">{{'pro.steps.s2.desc' | i18n}}</p>
+            </div>
+            <div class="c pro-step">
+                <span class="pro-step-ghost">03</span>
+                <span class="pro-step-eyebrow">{{'pro.steps.s3.eyebrow' | i18n}}</span>
+                <h3 class="pro-step-title">{{'pro.steps.s3.title' | i18n}}</h3>
+                <p class="pro-step-desc">{{'pro.steps.s3.desc' | i18n}}</p>
+            </div>
+            <div class="c pro-step" style="border-right:none">
+                <span class="pro-step-ghost">04</span>
+                <span class="pro-step-eyebrow">{{'pro.steps.s4.eyebrow' | i18n}}</span>
+                <h3 class="pro-step-title">{{'pro.steps.s4.title' | i18n}}</h3>
+                <p class="pro-step-desc">{{'pro.steps.s4.desc' | i18n}}</p>
+            </div>
+        </div>
+
+        <!-- ── §5 Contact ── -->
+        <div class="r pro-contact-row">
+            <span class="pro-eyebrow">{{'pro.contact.eyebrow' | i18n}}</span>
+            <h2 class="h2" style="margin-top:8px">{{'pro.contact.title' | i18n}}</h2>
+            <p class="sub" style="max-width:520px;margin:8px auto 0">{{'pro.contact.sub' | i18n}}</p>
+            <img class="pro-contact-qr" src="https://docs.erupt.xyz/me.jpg" alt="WeChat QR">
+            <div class="pro-contact-email">
+                {{'pro.contact.email' | i18n}}<a href="mailto:erupts@126.com">erupts@126.com</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.pro-page .reveal').forEach(function (el) {
+            io.observe(el);
+        });
+    })();
+</script>

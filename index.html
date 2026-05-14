@@ -33,7 +33,7 @@
                        class="btn btn-sm align-self-center btn-link dropdown-toggle"
                        data-toggle="dropdown"
                        href="javascript:;"
-                       ng-class="['/ai','/ai-claw','/cube','/flow','/cloud'].indexOf(currRouter)>=0?'active-link':''"
+                       ng-class="['/ai','/ai-claw','/cube','/flow','/cloud','/pro'].indexOf(currRouter)>=0?'active-link':''"
                        role="button">
                         {{'nav.products' | i18n}}
                     </a>
@@ -43,6 +43,7 @@
                         <a class="dropdown-item" href="#!/cloud">{{'nav.cloud' | i18n}}</a>
                         <a class="dropdown-item" href="#!/flow">{{'nav.flow' | i18n}}</a>
                         <a class="dropdown-item" href="#!/cube">{{'nav.cube' | i18n}}</a>
+                        <a class="dropdown-item" href="#!/pro" style="color:#FF5722">{{'nav.pro' | i18n}}</a>
                     </div>
                 </span>
                 <span class="dropdown show">
@@ -130,6 +131,7 @@
             <a class="mobile-nav-sub" href="#!/cloud" ng-click="mobileMenuOpen=false">{{'nav.cloud' | i18n}}</a>
             <a class="mobile-nav-sub" href="#!/flow" ng-click="mobileMenuOpen=false">{{'nav.flow' | i18n}}</a>
             <a class="mobile-nav-sub" href="#!/cube" ng-click="mobileMenuOpen=false">{{'nav.cube' | i18n}}</a>
+            <a class="mobile-nav-sub" href="#!/pro" ng-click="mobileMenuOpen=false" style="color:#FF5722">{{'nav.pro' | i18n}}</a>
             <a href="https://docs.erupt.xyz/guide/" target="_blank" ng-click="mobileMenuOpen=false">
                 {{'nav.doc' | i18n}}
             </a>

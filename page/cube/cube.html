@@ -1558,11 +1558,13 @@ public class OrderCube {
             <p class="h2">{{'cube.cta.title' | i18n}}</p>
             <p class="sub" style="max-width:480px;margin:0 auto 28px">{{'cube.cta.desc' | i18n}}</p>
             <span class="demo-tip-wrap">
-                <a class="wbtn wbtn-o" href="https://demo.erupt.xyz" target="_blank">{{'cube.cta.demo' | i18n}}</a>
+                <a class="wbtn" href="https://demo.erupt.xyz" target="_blank">{{'cube.cta.demo' | i18n}}</a>
                 <span class="demo-tip" ng-bind-html="'cube.demo.tip' | i18nHtml"></span>
             </span>
             <a class="wbtn" href="https://docs.erupt.xyz/modules/pro/erupt-cube" style="margin-left:8px"
                target="_blank">{{'cube.cta.doc' | i18n}}</a>
+            <a class="wbtn wbtn-o" href="#!/pro"
+               style="margin-left:8px">{{ ($root.currentLang === 'zh-CN') ? '查看定价 →' : 'View Pricing →' }}</a>
         </div>
 
     </div><!-- /.fr -->
