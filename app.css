@@ -344,7 +344,7 @@ html, body {
 }
 
 .mobile-nav a:active {
-    background: rgba(255,87,34,.06);
+    background: rgba(var(--c-brand-rgb), .06);
 }
 
 .mobile-nav a.mobile-nav-sub {
@@ -527,7 +527,7 @@ html, body {
 
 
 .dropdown-item.active, .dropdown-item:active {
-    background: rgba(255, 87, 34, .04);
+    background: rgba(var(--c-brand-rgb), .04);
     color: var(--c-brand);
     border-left-color: var(--c-brand);
 }
@@ -575,7 +575,7 @@ html, body {
 }
 
 #header .dropdown-item:hover {
-    background: rgba(255, 87, 34, .04);
+    background: rgba(var(--c-brand-rgb), .04);
     color: var(--c-brand);
     border-left-color: var(--c-brand);
 }
@@ -723,7 +723,9 @@ html, body {
     position: relative;
 }
 
-.git-card:hover { background: rgba(255, 87, 34, .018); }
+.git-card:hover {
+    background: rgba(var(--c-brand-rgb), .018);
+}
 
 .ticks { position: relative; overflow: visible; }
 .ticks::before {
@@ -760,7 +762,10 @@ html, body {
     position: relative;
 }
 .c.clickable { cursor: pointer; }
-.c.clickable:hover { background: rgba(255, 87, 34, .018); }
+
+.c.clickable:hover {
+    background: rgba(var(--c-brand-rgb), .018);
+}
 .c.no-bb { border-bottom: none; }
 
 .g2 > .c:nth-child(2n),
@@ -801,7 +806,9 @@ html, body {
 .cb-title { flex: 1; text-align: center; font-size: 11px; color: rgba(255,255,255,.22); }
 .cb-body { padding: 22px 26px; color: rgba(255,255,255,.6); white-space: pre; overflow-x: auto; }
 
-.an { color: #FF5722; }
+.an {
+    color: var(--c-brand);
+}
 .kw { color: #60a5fa; }
 .st { color: #86efac; }
 .cm { color: rgba(255,255,255,.28); font-style: italic; }
@@ -826,7 +833,10 @@ html, body {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: 3px; border-right: 1px solid var(--c-border); padding: 8px 22px; transition: background .15s; cursor: default;
 }
-.chip:hover { background: rgba(255,87,34,.02); }
+
+.chip:hover {
+    background: rgba(var(--c-brand-rgb), .02);
+}
 .chip img { max-height: 18px; max-width: 72px; object-fit: contain; opacity: .44; transition: opacity .2s; }
 .chip:hover img { opacity: .75; }
 .chip span { font-size: 9px; color: var(--c-text2); font-family: var(--c-mono); }

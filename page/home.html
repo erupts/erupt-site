@@ -58,7 +58,7 @@
         align-items: center;
         height: 34px;
         background: #1a1a1a;
-        border-bottom: 1px solid rgba(255, 87, 34, .3);
+        border-bottom: 1px solid rgba(var(--c-brand-rgb), .3);
         padding: 0 14px;
         flex-shrink: 0;
         gap: 8px;
@@ -123,7 +123,7 @@
         background: #1a1a1a;
         color: #ccc;
         overflow: auto;
-        border-right: 1px solid rgba(255, 87, 34, .2);
+        border-right: 1px solid rgba(var(--c-brand-rgb), .2);
         font-family: 'SFMono-Regular', monospace;
         font-size: .82em;
     }
@@ -142,7 +142,7 @@
     .eb-tabs {
         display: flex;
         background: #1a1a1a;
-        border-bottom: 1px solid rgba(255, 87, 34, .2);
+        border-bottom: 1px solid rgba(var(--c-brand-rgb), .2);
         flex-shrink: 0;
     }
 
@@ -154,7 +154,7 @@
         height: 34px;
         font-size: .8em;
         color: rgba(255, 255, 255, .72);
-        border-right: 1px solid rgba(255, 87, 34, .15);
+        border-right: 1px solid rgba(var(--c-brand-rgb), .15);
         background: #141414;
         font-family: 'SFMono-Regular', monospace;
     }
@@ -173,7 +173,7 @@
         padding: 16px 14px;
         overflow: auto;
         background: #1a1a1a;
-        border-left: 1px solid rgba(255, 87, 34, .2);
+        border-left: 1px solid rgba(var(--c-brand-rgb), .2);
     }
 
     .code-tip-card {
@@ -229,10 +229,10 @@
 
     @keyframes center-pulse {
         0%, 100% {
-            filter: drop-shadow(0 0 3px rgba(255, 87, 34, .2));
+            filter: drop-shadow(0 0 3px rgba(var(--c-brand-rgb), .2));
         }
         50% {
-            filter: drop-shadow(0 0 8px rgba(255, 87, 34, .5));
+            filter: drop-shadow(0 0 8px rgba(var(--c-brand-rgb), .5));
         }
     }
 
@@ -272,7 +272,7 @@
         left: 0;
         right: 0;
         height: 2px;
-        background: linear-gradient(90deg, transparent, rgba(255, 87, 34, .7), transparent);
+        background: linear-gradient(90deg, transparent, rgba(var(--c-brand-rgb), .7), transparent);
         top: -4px;
         pointer-events: none;
         z-index: 3;
@@ -296,18 +296,18 @@
     /* pulsing ring */
     @keyframes dia-pulse {
         0% {
-            box-shadow: 0 0 0 0 rgba(255, 87, 34, .55), 0 10px 36px rgba(255, 87, 34, .4);
+            box-shadow: 0 0 0 0 rgba(var(--c-brand-rgb), .55), 0 10px 36px rgba(var(--c-brand-rgb), .4);
         }
         70% {
-            box-shadow: 0 0 0 14px rgba(255, 87, 34, 0), 0 10px 36px rgba(255, 87, 34, .4);
+            box-shadow: 0 0 0 14px rgba(var(--c-brand-rgb), 0), 0 10px 36px rgba(var(--c-brand-rgb), .4);
         }
         100% {
-            box-shadow: 0 0 0 0 rgba(255, 87, 34, 0), 0 10px 36px rgba(255, 87, 34, .4);
+            box-shadow: 0 0 0 0 rgba(var(--c-brand-rgb), 0), 0 10px 36px rgba(var(--c-brand-rgb), .4);
         }
     }
     .dia-card:hover {
         animation: dia-pulse 1.1s ease-out infinite;
-        border-color: #ff5722 !important;
+        border-color: var(--c-brand) !important;
     }
 
     /* sequential pin flash */
@@ -374,11 +374,11 @@
     }
 
     .dia-card:hover svg rect:first-of-type {
-        fill: rgba(255, 87, 34, .14) !important;
+        fill: rgba(var(--c-brand-rgb), .14) !important;
     }
 
     .dia-card:hover svg rect:last-of-type {
-        stroke: rgba(255, 87, 34, .65) !important;
+        stroke: rgba(var(--c-brand-rgb), .65) !important;
     }
 
     .dia-items > div {
@@ -450,37 +450,51 @@
 
                     <!-- Java class card (centered vertically) -->
                     <div class="dia-card"
-                         style="width:96px;flex-shrink:0;align-self:center;background:white;border:1.5px solid #ff5722;padding:14px 10px 12px;text-align:center;box-shadow:0 2px 16px rgba(255,87,34,.1)">
-                        <div style="font-size:7px;letter-spacing:.18em;color:#ff5722;font-family:'SFMono-Regular',monospace;margin-bottom:10px">
+                         style="width:96px;flex-shrink:0;align-self:center;background:white;border:1.5px solid var(--c-brand);padding:14px 10px 12px;text-align:center;box-shadow:0 2px 16px rgba(var(--c-brand-rgb),.1)">
+                        <div style="font-size:7px;letter-spacing:.18em;color:var(--c-brand);font-family:'SFMono-Regular',monospace;margin-bottom:10px">
                             @Erupt
                         </div>
                         <!-- Chip / processor icon -->
                         <svg width="44" height="44" viewBox="0 0 44 44" style="display:block;margin:0 auto 10px"
                              fill="none">
                             <!-- pins top -->
-                            <line x1="13" y1="0" x2="13" y2="8" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
-                            <line x1="22" y1="0" x2="22" y2="8" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
-                            <line x1="31" y1="0" x2="31" y2="8" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="13" x2="13" y1="0"
+                                  y2="8"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="22" x2="22" y1="0"
+                                  y2="8"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="31" x2="31" y1="0"
+                                  y2="8"/>
                             <!-- pins bottom -->
-                            <line x1="13" y1="36" x2="13" y2="44" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
-                            <line x1="22" y1="36" x2="22" y2="44" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
-                            <line x1="31" y1="36" x2="31" y2="44" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="13" x2="13" y1="36"
+                                  y2="44"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="22" x2="22" y1="36"
+                                  y2="44"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="31" x2="31" y1="36"
+                                  y2="44"/>
                             <!-- pins left -->
-                            <line x1="0" y1="13" x2="8" y2="13" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
-                            <line x1="0" y1="22" x2="8" y2="22" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
-                            <line x1="0" y1="31" x2="8" y2="31" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="0" x2="8" y1="13"
+                                  y2="13"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="0" x2="8" y1="22"
+                                  y2="22"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="0" x2="8" y1="31"
+                                  y2="31"/>
                             <!-- pins right -->
-                            <line x1="36" y1="13" x2="44" y2="13" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
-                            <line x1="36" y1="22" x2="44" y2="22" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
-                            <line x1="36" y1="31" x2="44" y2="31" stroke="#ff5722" stroke-width="1.2" opacity=".5"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="36" x2="44" y1="13"
+                                  y2="13"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="36" x2="44" y1="22"
+                                  y2="22"/>
+                            <line opacity=".5" stroke="var(--c-brand)" stroke-width="1.2" x1="36" x2="44" y1="31"
+                                  y2="31"/>
                             <!-- chip body -->
-                            <rect x="8" y="8" width="28" height="28" fill="rgba(255,87,34,.05)" stroke="#ff5722"
+                            <rect fill="rgba(var(--c-brand-rgb),.05)" height="28" stroke="var(--c-brand)" width="28" x="8"
+                                  y="8"
                                   stroke-width="1.5"/>
                             <!-- inner circuit lines -->
-                            <rect x="14" y="14" width="16" height="16" fill="none" stroke="rgba(255,87,34,.3)"
+                            <rect fill="none" height="16" stroke="rgba(var(--c-brand-rgb),.3)" width="16" x="14" y="14"
                                   stroke-width="1"/>
                             <!-- @ symbol -->
-                            <text x="22" y="25" text-anchor="middle" font-size="9" font-weight="700" fill="#ff5722"
+                            <text fill="var(--c-brand)" font-size="9" font-weight="700" text-anchor="middle" x="22"
+                                  y="25"
                                   font-family="'SFMono-Regular',monospace">@
                             </text>
                         </svg>
@@ -495,24 +509,24 @@
                         <line x1="0" y1="214" x2="20" y2="214" stroke="rgba(0,0,0,.18)" stroke-width="1.5"
                               stroke-dasharray="3 3"/>
                         <line x1="20" y1="22" x2="20" y2="406" stroke="rgba(0,0,0,.1)" stroke-width="1"/>
-                        <circle cx="20" cy="214" r="2.5" fill="#ff5722" opacity=".7"/>
+                        <circle cx="20" cy="214" fill="var(--c-brand)" opacity=".7" r="2.5"/>
                         <circle cx="20" cy="22" r="2" fill="#ef4444"/>
                         <line x1="20" y1="22" x2="60" y2="22" stroke="#ef4444" stroke-width="1.5"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:0s"/>
                         <circle cx="20" cy="70" r="2" fill="#a855f7"/>
                         <line x1="20" y1="70" x2="60" y2="70" stroke="#a855f7" stroke-width="1.5"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.15s"/>
-                        <circle cx="20" cy="118" r="2" fill="#3b82f6"/>
-                        <line x1="20" y1="118" x2="60" y2="118" stroke="#3b82f6" stroke-width="1.5"
+                        <circle cx="20" cy="118" fill="var(--c-brand)" r="2"/>
+                        <line stroke="var(--c-brand)" stroke-width="1.5" x1="20" x2="60" y1="118" y2="118"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.3s"/>
-                        <circle cx="20" cy="166" r="2" fill="#06b6d4"/>
-                        <line x1="20" y1="166" x2="60" y2="166" stroke="#06b6d4" stroke-width="1.5"
+                        <circle cx="20" cy="166" fill="var(--c-brand)" r="2"/>
+                        <line stroke="var(--c-brand)" stroke-width="1.5" x1="20" x2="60" y1="166" y2="166"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.45s"/>
-                        <circle cx="20" cy="214" r="2" fill="#22c55e"/>
-                        <line x1="20" y1="214" x2="60" y2="214" stroke="#22c55e" stroke-width="1.5"
+                        <circle cx="20" cy="214" fill="var(--c-brand)" r="2"/>
+                        <line stroke="var(--c-brand)" stroke-width="1.5" x1="20" x2="60" y1="214" y2="214"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.6s"/>
-                        <circle cx="20" cy="262" r="2" fill="#f59e0b"/>
-                        <line x1="20" y1="262" x2="60" y2="262" stroke="#f59e0b" stroke-width="1.5"
+                        <circle cx="20" cy="262" fill="var(--c-brand)" r="2"/>
+                        <line stroke="var(--c-brand)" stroke-width="1.5" x1="20" x2="60" y1="262" y2="262"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.75s"/>
                         <circle cx="20" cy="310" r="2" fill="#6366f1"/>
                         <line x1="20" y1="310" x2="60" y2="310" stroke="#6366f1" stroke-width="1.5"
@@ -549,8 +563,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:1px solid rgba(59,130,246,.2)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#3b82f6;border-radius:1px;flex-shrink:0"></div>
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:1px solid rgba(var(--c-brand-rgb),.2)">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:var(--c-brand);border-radius:1px;flex-shrink:0"></div>
                             <div>
                                 <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
                                     REST API
@@ -560,8 +574,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:1px solid rgba(6,182,212,.2)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#06b6d4;border-radius:1px;flex-shrink:0"></div>
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:1px solid rgba(var(--c-brand-rgb),.2)">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:var(--c-brand);border-radius:1px;flex-shrink:0"></div>
                             <div>
                                 <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
                                     DataProxy
@@ -571,8 +585,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:1px solid rgba(34,197,94,.2)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#22c55e;border-radius:1px;flex-shrink:0"></div>
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:1px solid rgba(var(--c-brand-rgb),.2)">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:var(--c-brand);border-radius:1px;flex-shrink:0"></div>
                             <div>
                                 <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
                                     Auto DDL
@@ -582,8 +596,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:1px solid rgba(245,158,11,.2)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#f59e0b;border-radius:1px;flex-shrink:0"></div>
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:1px solid rgba(var(--c-brand-rgb),.2)">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:var(--c-brand);border-radius:1px;flex-shrink:0"></div>
                             <div>
                                 <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
                                     Flow Engine
@@ -637,7 +651,7 @@
             <div id="erupt-box">
                 <!-- titlebar -->
                 <div class="eb-titlebar">
-                    <span style="display:inline-block;width:7px;height:7px;background:#ff5722;transform:rotate(45deg);flex-shrink:0"></span>
+                    <span style="display:inline-block;width:7px;height:7px;background:var(--c-brand);transform:rotate(45deg);flex-shrink:0"></span>
                     <span class="eb-titlebar-name">Task.java — erupt-demo</span>
                     <span class="eb-titlebar-badge">Erupt Engine</span>
                 </div>
@@ -695,8 +709,8 @@ public class Task extends BaseModel {
         edit  = @Edit(title = "Priority", type = EditType.CHOICE,
                       choiceType = @ChoiceType(vl = {
                           @VL(label = "High",   value = "high", color = "#ef4444"),
-                          @VL(label = "Medium", value = "mid",  color = "#f59e0b"),
-                          @VL(label = "Low",    value = "low",  color = "#22c55e")
+                          @VL(label = "Medium", value = "mid",  color = "#3b82f6"),
+                          @VL(label = "Low",    value = "low",  color = "#3b82f6")
                       }))
     )
     private String priority;
@@ -728,45 +742,45 @@ public class Task extends BaseModel {
 
 }</code></pre>
                         <a href="#!/contrast"
-                           onmouseout="this.style.background='rgba(255,87,34,.08)';this.style.borderColor='rgba(255,87,34,.3)'"
-                           onmouseover="this.style.background='rgba(255,87,34,.16)';this.style.borderColor='rgba(255,87,34,.6)'"
-                           style="position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:5px;padding:5px 12px;font-family:'SFMono-Regular',monospace;font-size:11px;color:var(--c-brand);background:rgba(255,87,34,.08);border:1px solid rgba(255,87,34,.3);text-decoration:none;transition:background .15s,border-color .15s"
+                           onmouseout="this.style.background='rgba(var(--c-brand-rgb),.08)';this.style.borderColor='rgba(var(--c-brand-rgb),.3)'"
+                           onmouseover="this.style.background='rgba(var(--c-brand-rgb),.16)';this.style.borderColor='rgba(var(--c-brand-rgb),.6)'"
+                           style="position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:5px;padding:5px 12px;font-family:'SFMono-Regular',monospace;font-size:11px;color:var(--c-brand);background:rgba(var(--c-brand-rgb),.08);border:1px solid rgba(var(--c-brand-rgb),.3);text-decoration:none;transition:background .15s,border-color .15s"
                         >{{'home.code.more'|i18n}}</a>
                     </div>
                     <!-- tips -->
                     <div class="d-none d-lg-flex eb-tips"
                          style="flex-direction:column;gap:0;padding:0;width:230px;background:#1a1a1a">
-                        <div style="padding:10px 14px 8px;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);border-bottom:1px solid rgb(72 38 28)">
+                        <div style="padding:10px 14px 8px;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);border-bottom:1px solid rgba(var(--c-brand-rgb),.2)">
                             Why Erupt
                         </div>
                         <div style="flex:1;overflow:auto;padding:12px 0">
-                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
+                            <div style="padding:10px 16px;border-bottom:1px solid rgba(var(--c-brand-rgb),.2)">
                                 <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;flex-shrink:0"></span>
+                                    <span style="width:6px;height:6px;border-radius:50%;background:var(--c-brand);flex-shrink:0"></span>
                                     <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip1.title'|i18n}}</span>
                                 </div>
                                 <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
                                     {{'home.code.tip1.desc'|i18n}}</p>
                             </div>
-                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
+                            <div style="padding:10px 16px;border-bottom:1px solid rgba(var(--c-brand-rgb),.2)">
                                 <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span>
+                                    <span style="width:6px;height:6px;border-radius:50%;background:var(--c-brand);flex-shrink:0"></span>
                                     <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip2.title'|i18n}}</span>
                                 </div>
                                 <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
                                     {{'home.code.tip2.desc'|i18n}}</p>
                             </div>
-                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
+                            <div style="padding:10px 16px;border-bottom:1px solid rgba(var(--c-brand-rgb),.2)">
                                 <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0"></span>
+                                    <span style="width:6px;height:6px;border-radius:50%;background:var(--c-brand);flex-shrink:0"></span>
                                     <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip3.title'|i18n}}</span>
                                 </div>
                                 <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
                                     {{'home.code.tip3.desc'|i18n}}</p>
                             </div>
-                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
+                            <div style="padding:10px 16px;border-bottom:1px solid rgba(var(--c-brand-rgb),.2)">
                                 <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span>
+                                    <span style="width:6px;height:6px;border-radius:50%;background:var(--c-brand);flex-shrink:0"></span>
                                     <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip4.title'|i18n}}</span>
                                 </div>
                                 <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
@@ -774,7 +788,7 @@ public class Task extends BaseModel {
                             </div>
                             <div style="padding:10px 16px">
                                 <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#a855f7;flex-shrink:0"></span>
+                                    <span style="width:6px;height:6px;border-radius:50%;background:var(--c-brand);flex-shrink:0"></span>
                                     <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip5.title'|i18n}}</span>
                                 </div>
                                 <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
@@ -1087,7 +1101,7 @@ public class Task extends BaseModel {
                 <div class="l" style="flex:0 0 50%;overflow:hidden">
                     <div class="cb" style="min-height:340px;display:flex;flex-direction:column">
                         <div class="cb-hd">
-                            <span class="cb-dot" style="background:#ff5f57"></span>
+                            <span class="cb-dot" style="background:var(--c-brand)"></span>
                             <span class="cb-dot" style="background:#ffbd2e"></span>
                             <span class="cb-dot" style="background:#28c840"></span>
                             <span class="cb-title">EruptAI · Conversation</span>
@@ -1116,7 +1130,7 @@ public class Task extends BaseModel {
                                 </div>
                                 <!-- tool chip 2 -->
                                 <div style="display:flex;align-items:center;gap:6px;margin-top:2px">
-                                    <span style="font-size:11px;background:rgba(34,197,94,.18);color:#86efac;border:1px solid rgba(34,197,94,.35);border-radius:20px;padding:2px 10px;white-space:nowrap">Order@Erupt · update</span>
+                                    <span style="font-size:11px;background:rgba(var(--c-brand-rgb),.18);color:#86efac;border:1px solid rgba(var(--c-brand-rgb),.35);border-radius:20px;padding:2px 10px;white-space:nowrap">Order@Erupt · update</span>
                                 </div>
                                 <!-- ai answer 2 -->
                                 <div style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.6;padding-left:2px">
