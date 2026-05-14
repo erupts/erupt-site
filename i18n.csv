@@ -507,6 +507,90 @@ about.donate.sub,开源不易，你的支持是我们持续前行的动力。,Op
 about.donate.card.title,支持 Erupt 开源,Support Erupt Open Source
 about.donate.card.desc,如果 Erupt 帮助了你的项目，欢迎通过捐赠表达支持。每一份捐赠都将用于项目的持续维护与改进。,If Erupt has helped your project, consider showing your support through a donation. Every contribution goes toward ongoing maintenance and improvement.
 about.donate.btn,查看捐赠指南,View Donation Guide
+nav.pro,商业模块 ★,Pro Modules ★
+pro.hero.eyebrow,Commercial Modules,Commercial Modules
+pro.hero.title,商业 <em>扩展模块</em>,Commercial <em>Pro Modules</em>
+pro.hero.sub,"建立在 Erupt 注解驱动核心之上的 4 个企业级模块。<strong style=""color:var(--c-text)"">源码交付 · 一次买断 · 长期可控</strong>。无 License 限制，无项目数量限制，无商用限制。","4 enterprise modules built on Erupt's annotation-driven core. <strong style=""color:var(--c-text)"">Source delivery · One-time · Full control</strong>. No license limits, no project limits, no commercial restrictions."
+pro.hero.oss,"本页内容为商业扩展模块。<strong>开源 Erupt 框架核心（erupt-core / jpa / upms / web / ai / cloud 等 20+ 模块）永久 Apache 2.0，与商业模块独立演进，不受任何商业化影响</strong>。","This page covers commercial extension modules. <strong>The open-source Erupt core (erupt-core / jpa / upms / web / ai / cloud and 20+ more) is and will always be Apache 2.0, evolving independently from commercial modules.</strong>"
+pro.hero.btn.demo,在线演示,Live Demo
+pro.hero.btn.contact,联系作者,Contact
+pro.stat1.num,4,4
+pro.stat1.label,商业模块,Pro Modules
+pro.stat2.num,一次买断,One-time
+pro.stat2.label,永久使用,Perpetual
+pro.stat3.num,含源码,With Source
+pro.stat3.label,长期可控,Full Control
+pro.stat4.num,无限制,Unlimited
+pro.stat4.label,License · 项目数 · 商用,License · Projects · Commerce
+pro.modules.tag,MODULES,MODULES
+pro.modules.title,四个模块，覆盖企业级核心场景,Four modules for core enterprise scenarios
+pro.modules.sub,"每个模块独立销售，也可任意组合。所有模块均深度集成 Erupt UPMS 权限体系，无需重新对接用户/角色/数据权限。","Each module is sold separately or in any combination. All modules deeply integrate with Erupt UPMS — no need to rewire users, roles, or data permissions."
+pro.card.unit,一次买断,one-time
+pro.card.chart.title,报表图表,Reports & Charts
+pro.card.chart.sub,SQL 即图表 · 零前端代码 · 适合有 SQL 能力的开发者快速搭建固定报表。,SQL as charts · zero frontend code · ideal for SQL-savvy developers building fixed reports fast.
+pro.card.chart.f1,十几种图表组件 + 查询维度,Dozens of chart components + query dimensions
+pro.card.chart.f2,动态函数 / 钻取 / 联动,Dynamic functions / drill-down / linkage
+pro.card.chart.f3,菜单 · 行 · 列三级权限,Menu · row · column 3-level permissions
+pro.card.chart.f4,多数据源 · 国产数据库支持,Multi-datasource · domestic DB support
+pro.card.chart.demo,"演示账号 <span class=""k"">bi</span> / 密码 <span class=""k"">bi</span>","Demo: <span class=""k"">bi</span> / <span class=""k"">bi</span>"
+pro.card.flow.title,流程引擎,Workflow Engine
+pro.card.flow.sub,表单 + 流程 + 节点 · 钉钉风格设计器 · 企业级 OA / 审批 / 流转一体化方案。,Form + flow + nodes · DingTalk-style designer · all-in-one OA / approval / routing.
+pro.card.flow.f1,可视化流程设计器,Visual workflow designer
+pro.card.flow.f2,自定义节点 / 按钮,Custom nodes / buttons
+pro.card.flow.f3,抄送 / 转办 / 撤回 / 加签,CC / delegate / revoke / countersign
+pro.card.flow.f4,私有部署 · 数据不出域,Private deployment · data sovereignty
+pro.card.flow.demo,"演示账号 <span class=""k"">flow</span> / 密码 <span class=""k"">flow</span>","Demo: <span class=""k"">flow</span> / <span class=""k"">flow</span>"
+pro.card.tenant.title,SaaS 多租户,SaaS Multi-tenant
+pro.card.tenant.sub,一个注解切多租户 · 数据隔离 + 请求路由 + 按租户配置 · 适合 SaaS 与白标交付。,One annotation for multi-tenancy · data isolation + request routing + per-tenant config · ideal for SaaS and white-label.
+pro.card.tenant.f1,表级数据隔离 + 业务隔离,Table-level data + business isolation
+pro.card.tenant.f2,租户菜单 / 套餐 / 主题独立,Per-tenant menu / plan / theme
+pro.card.tenant.f3,子域名 / Header / Token 路由,Subdomain / Header / Token routing
+pro.card.tenant.f4,多租户感知的 UPMS 权限,Tenant-aware UPMS permissions
+pro.card.tenant.demo,"企业 <span class=""k"">erupt</span> · 账号 <span class=""k"">test</span> / 密码 <span class=""k"">test</span>","Org <span class=""k"">erupt</span> · user <span class=""k"">test</span> / pw <span class=""k"">test</span>"
+pro.card.cube.title,BI 平台,BI Platform
+pro.card.cube.sub,"语义层 + 拖拽分析 · 借鉴 Looker 理念，Java 注解替代 LookML，分析师自助分析。","Semantic layer + drag-and-drop analytics · Looker-inspired — Java annotations replace LookML for self-service analysis."
+pro.card.cube.f1,@EruptCube 注解定义语义模型,@EruptCube annotation defines semantic models
+pro.card.cube.f2,注解（主）+ 可视化建模（辅）,Annotation-first + visual modeling (supplemental)
+pro.card.cube.f3,OLAP / OLTP / 国产 / 云数仓,OLAP / OLTP / domestic / cloud warehouses
+pro.card.cube.f4,权限继承 Erupt UPMS,Inherits Erupt UPMS permissions
+pro.card.cube.demo,"演示账号 <span class=""k"">cube</span> / 密码 <span class=""k"">cube</span>","Demo: <span class=""k"">cube</span> / <span class=""k"">cube</span>"
+pro.cta.doc,文档,Docs
+pro.cta.demo,演示,Demo
+pro.cta.detail,详情 ↗,Detail ↗
+pro.why.tag,Why Commercial,Why Commercial
+pro.why.title,为什么选商业模块,Why Choose Commercial
+pro.why.sub,不是把开源版砍掉重卖一遍，而是补齐企业场景下开源版做不到的能力。,Not a castrated open-source edition — these fill the enterprise gaps open-source cannot cover.
+pro.why.s1.tag,SOURCE,SOURCE
+pro.why.s1.title,源码交付，长期可控,Source Code Delivery
+pro.why.s1.desc,"付款即获得完整源码访问权。即便作者后续不维护，你也保有继续开发的权利。这是相对所有 SaaS 与闭源方案的根本差异。","Full source access upon payment. Even if the author stops maintaining, you retain the right to keep developing — a fundamental edge over SaaS or closed-source."
+pro.why.s2.tag,DIRECT,DIRECT
+pro.why.s2.title,作者即销售，无中间环节,Author = Sales. No Middlemen.
+pro.why.s2.desc,"没有渠道商、没有售前 SDR。买家与作者直接通过微信沟通需求，技术问题最短路径解决，合理需求快速反馈。","No resellers, no SDRs. Buyers communicate directly with the author on WeChat — shortest path to answers and rapid feature feedback."
+pro.why.s3.tag,INTEGRATED,INTEGRATED
+pro.why.s3.title,与 Erupt 核心深度集成,Deep Core Integration
+pro.why.s3.desc,"复用 Erupt UPMS 权限、Erupt 注解体系、Erupt 表单引擎，零成本对接。其它外部 BI / 工作流工具需要重新搭一遍权限体系。","Reuse Erupt UPMS, annotation system, and form engine at zero integration cost. External BI / workflow tools require rebuilding the entire permission stack."
+pro.why.s4.tag,BUY ONCE,BUY ONCE
+pro.why.s4.title,一次买断，无隐藏约束,Buy Once. No Hidden Strings.
+pro.why.s4.desc,"无 License 数量限制 · 无项目数量限制 · 无商用限制 · 免费版本升级。唯一约束：禁止二次开源与分发。","No license count · no project count · no commercial restrictions · free version upgrades. One rule: no re-licensing or redistribution."
+pro.steps.tag,Buying Process,Buying Process
+pro.steps.title,四步完成购买,Four Steps to Purchase
+pro.steps.sub,"流程透明、节奏可控、最快当天上手。","Transparent, controlled, and as fast as same-day onboarding."
+pro.steps.s1.eyebrow,Step One,Step One
+pro.steps.s1.title,在线体验演示,Try the Live Demo
+pro.steps.s1.desc,"访问 <a href=""https://demo.erupt.xyz"" target=""_blank"" style=""color:var(--c-brand)"">demo.erupt.xyz</a>，使用对应模块账号充分体验功能。","Visit <a href=""https://demo.erupt.xyz"" target=""_blank"" style=""color:var(--c-brand)"">demo.erupt.xyz</a> and explore each module with the provided demo accounts."
+pro.steps.s2.eyebrow,Step Two,Step Two
+pro.steps.s2.title,微信沟通需求,Chat on WeChat
+pro.steps.s2.desc,"扫描下方二维码添加作者微信，备注「erupt-xxx 购买」，确认模块、价格与授权范围。","Scan the QR code below to add the author on WeChat. Note the module you want, and confirm price and license scope."
+pro.steps.s3.eyebrow,Step Three,Step Three
+pro.steps.s3.title,微信转账付款,Pay via WeChat
+pro.steps.s3.desc,"微信直接转账，无需走对公（如需对公开票请提前说明）。一次买断、永久使用。","Transfer directly via WeChat — no corporate bank transfer needed (mention it if you need an official invoice). One-time payment, perpetual use."
+pro.steps.s4.eyebrow,Step Four,Step Four
+pro.steps.s4.title,开通 GitHub 仓库,Get GitHub Access
+pro.steps.s4.desc,"提供 GitHub 用户名，作者将你加入私有仓库 collaborator，clone 即用，并发一份接入文档。","Share your GitHub username; the author adds you as a repo collaborator. Clone and start — integration docs included."
+pro.contact.eyebrow,Contact,Contact
+pro.contact.title,售前咨询请扫码加微信,Scan to Add WeChat for Inquiries
+pro.contact.sub,"备注您要咨询的模块名称，我会尽快回复。技术问题也可通过邮件咨询。","Note the module name when adding — I'll reply promptly. Technical questions are welcome via email too."
+pro.contact.email,邮箱：,Email:
 home.v2.hero.sub,"<b>Erupt</b> 是注解驱动的企业级低代码引擎。用几行 <mark>@Erupt</mark> 注解描述你的领域模型，框架自动生成管理界面、API、权限、审计与大模型能力——<b>一个文件，一套系统</b>。","<b>Erupt</b> is an annotation-driven low-code engine. Describe your domain with a few <mark>@Erupt</mark> annotations and the framework generates the admin UI, APIs, permissions, audit trail and LLM capabilities — <b>one file, one system</b>."
 home.v2.cta.demo,查看实时 Demo,Launch live demo
 home.v2.cta.docs,阅读文档,Read the docs

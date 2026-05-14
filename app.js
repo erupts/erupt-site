@@ -68,6 +68,11 @@ var app = angular.module('app', [
             toTemplate();
             return "page/cube/cube.html";
         }
+    }).when('/pro', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/pro/pro.html";
+        }
     }).when('/about', {
         templateUrl: function (attr) {
             toTemplate();
