@@ -42,6 +42,8 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
 
 
     $scope.using = [
+        {name: '中海地产', logo: "images/using/中海地产.png"},
+        {name: '龙湖数科', logo: "images/using/longhu.png"},
         {name: 'Meituan', logo: "images/using/meituan.png"},
         {name: '上海银行', logo: "images/using/shanghai_bank.png"},
         {name: '民生银行', logo: "images/using/民生银行.png"},
@@ -52,7 +54,6 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
         {name: 'YashanDB', logo: "images/using/yashan.png"},
         {name: 'China Telecom', logo: "images/using/telecom.png"},
         {name: '南开大学', logo: "images/using/南开大学.png"},
-        // {name: 'China University of Geosciences', logo: "images/using/geosciences.png"},
         {name: 'Perfect World', logo: "images/using/完美世界.png"},
         {name: 'Hengrui Medicine', logo: "images/using/hengrui.png"},
         {name: '销售易', logo: "images/using/销售易.jpg"},
@@ -70,13 +71,9 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
         {name: 'China Comservice', logo: "images/using/chinaccs.png"},
         {name: '合智互联', logo: "images/using/合智互联.png"},
         {name: '柳钢集团', logo: "images/using/柳钢集团.png"},
-        {name: 'CATL', logo: "images/using/宁德时代.svg"},
+        {name: 'CATL', logo: "images/using/catl.svg"},
         {name: 'Tesla', logo: "images/using/tesla.svg"},
         {name: '招商蛇口', logo: "images/using/zhaoshang.png"},
-        {name: '中海地产', logo: "images/using/中海地产.png"},
-        {name: '龙湖数科', logo: "images/using/longhu.png"},
-
-        {name: '...', text: "100+"},
     ]
 
     $scope.sponsor = [

@@ -837,7 +837,7 @@ html, body {
 .chip:hover {
     background: rgba(var(--c-brand-rgb), .02);
 }
-.chip img { max-height: 18px; max-width: 72px; object-fit: contain; opacity: .44; transition: opacity .2s; }
+.chip img { max-height: 26px; max-width: 100px; object-fit: contain; opacity: .44; transition: opacity .2s; }
 .chip:hover img { opacity: .75; }
 .chip span { font-size: 9px; color: var(--c-text2); font-family: var(--c-mono); }
 
