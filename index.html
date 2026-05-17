@@ -155,6 +155,7 @@
             </div>
         </nav>
     </header>
+    <div id="route-loader"></div>
     <main id="main">
         <div ng-view>
 
@@ -304,6 +305,19 @@
             var copyright = i18nService.t('footer.copyright');
             return copyright.replace('{{year}}', $rootScope.year);
         };
+
+        var loader = document.getElementById('route-loader');
+        $rootScope.$on('$routeChangeStart', function () {
+            loader.className = '';
+            loader.offsetWidth; // reflow to restart transition
+            loader.className = 'loading';
+        });
+        $rootScope.$on('$routeChangeSuccess', function () {
+            loader.className = 'done';
+        });
+        $rootScope.$on('$routeChangeError', function () {
+            loader.className = 'done';
+        });
     });
 
     i18n.init().then(function () {
