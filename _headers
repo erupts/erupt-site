@@ -9,6 +9,7 @@
 
 /*.csv
   Cache-Control: no-cache, must-revalidate
+  Content-Type: text/csv; charset=utf-8
 
 /page/*
   Cache-Control: no-cache, must-revalidate
