@@ -29,6 +29,30 @@ html, body {
     background: #fff;
 }
 
+#route-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--c-brand);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#route-loader.loading {
+    opacity: 1;
+    width: 75%;
+    transition: width 2.5s cubic-bezier(.1, .05, .1, 1);
+}
+
+#route-loader.done {
+    width: 100%;
+    opacity: 0;
+    transition: width .15s ease, opacity .3s ease .1s;
+}
+
 
 @media (max-width: 768px) {
     #main {

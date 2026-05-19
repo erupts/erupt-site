@@ -288,6 +288,12 @@ ai.core.opensource.title,完全开源,Open Source
 ai.core.opensource.desc,基于 Apache 2.0 协议完全开源，社区驱动持续迭代，源码透明无商业限制,"Fully open source under Apache 2.0 license, community-driven continuous iteration, transparent source code with no commercial restrictions"
 ai.core.tools.title,自定义 Tools,Custom Tools
 ai.core.tools.desc,通过注解声明即可将 Java 方法注册为 AI 工具，支持运行时动态注册，按需扩展 AI 能力,"Register Java methods as AI tools via annotation declarations, support runtime dynamic registration, extend AI capabilities on demand"
+ai.core.a2a.title,多 Agent 协作,Multi-Agent Collaboration
+ai.core.a2a.desc,支持 A2A（Agent-to-Agent）协议，多个 AI 智能体可相互通信与协作分工，构建复杂的多 Agent 工作流,"Supports A2A (Agent-to-Agent) protocol — multiple AI agents communicate and collaborate, building complex multi-agent workflows"
+ai.core.memory.title,跨会话记忆,Cross-session Memory
+ai.core.memory.desc,AI 具备持久化记忆能力，跨会话保留用户偏好与对话上下文，打造真正有记忆的个性化 AI 助手,"AI maintains persistent memory across sessions, retaining user preferences and context for truly personalized assistants"
+ai.core.rbac.title,Tool 权限管控,Tool Permission Control
+ai.core.rbac.desc,为每个 AI Tool 配置角色权限策略，不同角色可调用不同工具集，精细化管控 AI 能力边界与安全边界,"Configure role-based permission policies per AI Tool — different roles access different tool sets for fine-grained capability and security boundaries"
 ai.arch.title,技术架构,Technical Architecture
 ai.arch.desc,Erupt AI 采用分层架构设计，将大模型能力与低代码框架深度融合,"Erupt AI uses layered architecture design, deeply integrating LLM capabilities with the low-code framework"
 ai.mcp.title,MCP 协议支持,MCP Protocol Support
@@ -345,8 +351,8 @@ claw.feat.f4.title,文件读写操作,File Operations
 claw.feat.f4.desc,读取与写入服务器文件，支持日志分析、配置修改等常见运维场景，开箱即用,"Read and write server files. Analyze logs, modify configs and more, all through natural language"
 claw.feat.f5.title,自定义 Skills,Custom Skills
 claw.feat.f5.desc,通过 Skills 扩展机制注册自定义能力，无限扩展 AI Claw 的操作边界,Register custom capabilities via the Skills extension — expand AI Claw's boundaries without limits
-claw.feat.f6.title,上下文记忆,Context Memory
-claw.feat.f6.desc,AI Claw 保持多轮对话上下文，理解前序操作意图，实现连贯的运维对话体验。,AI Claw retains multi-turn conversation context — understanding prior actions for coherent ops sessions.
+claw.feat.f6.title,运行时诊断,Runtime Diagnostics
+claw.feat.f6.desc,"内置 JVM 内存、线程、GC、Spring 配置与定时任务等诊断工具，AI 可实时洞察应用运行状态，无需额外监控系统","Built-in JVM memory, threads, GC, Spring config and scheduled task tools — AI queries your app's live runtime state without extra monitoring infrastructure"
 claw.skills.title,Skills 扩展体系,Skills Extension System
 claw.skills.subtitle,通过注解声明自定义技能，将任意 Java 方法注册为 AI 可调用的操作,Declare custom skills via annotations — register any Java method as an AI-callable operation
 claw.skills.how,一个注解，注册自定义技能,"One annotation, one skill"

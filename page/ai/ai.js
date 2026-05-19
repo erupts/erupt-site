@@ -79,10 +79,6 @@ app.controller("ai", function ($scope, $sce, $timeout, i18nService) {
             desc: i18nService.t('ai.mcp.feature1.desc')
         },
         {
-            title: i18nService.t('ai.mcp.feature2.title'),
-            desc: i18nService.t('ai.mcp.feature2.desc')
-        },
-        {
             title: i18nService.t('ai.mcp.feature3.title'),
             desc: i18nService.t('ai.mcp.feature3.desc')
         }
