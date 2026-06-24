@@ -249,6 +249,85 @@ component.view.base64,BASE64,BASE64
 component.view.markdown,MARKDOWN,MARKDOWN
 contrast.java,Java代码,Java Code
 contrast.effect,运行效果,Running Effect
+contrast.menu.simple,入门示例,Simple Example
+contrast.menu.student,学生管理,Student Management
+contrast.menu.menu,菜单管理,Menu Management
+contrast.menu.role,角色管理,Role Management
+contrast.menu.org,组织管理,Organization Management
+contrast.menu.user,用户管理,User Management
+contrast.menu.dict,字典管理,Dictionary Management
+contrast.menu.table,表格组件,Table Component
+contrast.menu.article,文章发布,Article Publishing
+contrast.menu.serverGroup,服务器组别,Server Group
+contrast.menu.treeView,树视图配置,Tree View Config
+contrast.menu.report,在线报表,Online Report
+extra.erupt-ai.title,低代码 × 大模型,Low-Code × LLM
+extra.erupt-ai.remark,与当下主流大模型深度集成，一键接入 GPT、Claude、通义等，低代码构建 AI 驱动的管理应用,"Deep integration with mainstream LLMs — connect GPT, Claude, Qwen and more with one click to build AI-powered admin apps with low-code"
+extra.erupt-ai-claw.title,自然语言驱动服务器,Natural Language Server Control
+extra.erupt-ai-claw.remark,通过自然语言直接操作注解驱动的数据与业务、执行 Shell 命令、读写文件，并支持自定义 Skills 扩展,"Operate annotation-driven data and business logic, run Shell commands, and read/write files via natural language; supports custom Skills extensions"
+extra.erupt-cube.title,大数据语义建模与可视化分析,Big-Data Semantic Modeling & Visual Analytics
+extra.erupt-cube.remark,借鉴 Google Looker 语义层理念，统一指标口径与业务含义，配合灵活的可视化分析方式，降低数据使用门槛（开发中）,"Inspired by Google Looker's semantic layer, unifies metric definitions and business meaning with flexible visual analytics — lowering the barrier to data consumption (under development)"
+extra.erupt-chart.title,低代码数据可视化,Low-Code Data Visualization
+extra.erupt-chart.remark,零前端代码，仅需配置即可完成数据分析，支持 20+ 图表类型、动态 SQL、多维混译与自定义数据看板,"Zero frontend code — configure dashboards with 20+ chart types, dynamic SQL, multi-dimensional mixing, and custom data boards"
+extra.erupt-flow.title,通用流程引擎,General-Purpose Workflow Engine
+extra.erupt-flow.remark,完整的流程解决方案，涵盖流程设计、发起、审批、通知与打印，开箱即用,"A complete workflow solution covering design, initiation, approval, notification, and printing — ready out of the box"
+extra.erupt-print.title,打印模块,Print Module
+extra.erupt-print.remark,为流程单据提供模板化打印功能，支持自定义打印模板，配合 erupt-flow 使用,"Template-based printing for workflow documents; supports custom print templates, designed to work alongside erupt-flow"
+extra.erupt-upms.title,用户权限管理系统,User Permission Management System
+extra.erupt-upms.remark,提供完整的 UPMS 能力，涵盖用户、角色、菜单、组织架构等核心功能，细粒度数据权限控制,"Full UPMS capabilities: users, roles, menus, org structures, and fine-grained data permission control"
+extra.erupt-tenant.title,SaaS 多租户,SaaS Multi-Tenancy
+extra.erupt-tenant.remark,低代码开发多租户应用，页面功能多租户复用，数据完全隔离，快速构建 SaaS 平台,"Build multi-tenant apps with low-code — shared UI, fully isolated data, perfect for SaaS platforms"
+extra.erupt-cloud.title,微服务云配置中台,Microservice Cloud Config Hub
+extra.erupt-cloud.remark,分布式架构下统一管理集群内任意服务节点，构建通用云配置中心，支持多节点服务注册与调度,"Centrally manage any service node in a distributed cluster, build a universal cloud config center with multi-node registration and scheduling"
+extra.erupt-job.title,定时任务调度,Scheduled Task Scheduler
+extra.erupt-job.remark,可视化管理定时任务，支持 Cron 表达式配置、动态启停与任务执行日志查看,"Visually manage cron jobs with Cron expression support, dynamic start/stop, and execution log viewer"
+extra.erupt-monitor.title,服务监控,Service Monitor
+extra.erupt-monitor.remark,实时监控服务器 CPU、内存、磁盘、JVM 状态及 Redis 运行情况，支持在线踢出登录用户,"Real-time monitoring of CPU, memory, disk, JVM, and Redis; supports kicking out online users"
+extra.erupt-terminal.title,服务终端,Server Terminal
+extra.erupt-terminal.remark,通过 WebSocket + PTY 技术将服务器 Shell 直接桥接到浏览器，无需 SSH 客户端即可在后台管理界面中操作服务器终端,"Bridge the server shell directly to the browser via WebSocket + PTY — manage your server terminal from the admin UI without an SSH client"
+extra.erupt-websocket.title,WebSocket 实时交互,WebSocket Real-Time Interaction
+extra.erupt-websocket.remark,与前端保持长连接，支持后端实时向前端推送数据，适用于实时通知、进度反馈等场景,"Maintain persistent connections with the frontend; push data from the backend in real time for notifications, progress feedback, and more"
+extra.erupt-notice.title,消息通知,Message Notification
+extra.erupt-notice.remark,提供全员广播与点对点消息推送，支持站内 WebSocket 推送，可扩展短信、邮件等第三方通知渠道,"Broadcast to all users or send point-to-point messages via in-app WebSocket push; extensible to SMS, email, and other third-party channels"
+extra.erupt-jpa.title,JPA 数据库扩展,JPA Database Extension
+extra.erupt-jpa.remark,在标准 Spring Data JPA 基础上深度扩展，支持 Lambda 链式查询，简化复杂数据操作,"Deep extension on top of Spring Data JPA with Lambda-style chained queries for simpler, safer data operations"
+extra.erupt-mongodb.title,MongoDB 数据源,MongoDB Data Source
+extra.erupt-mongodb.remark,为 Erupt 框架提供 MongoDB 数据源支持，用注解驱动的方式管理 NoSQL 数据,"Adds MongoDB data source support to the Erupt framework — manage NoSQL data with annotation-driven ease"
+extra.erupt-generator.title,代码生成器,Code Generator
+extra.erupt-generator.remark,可视化界面快速生成 Erupt 实体类代码，降低重复编码成本，提升开发效率,"Quickly generate Erupt entity class code via a visual interface — reduce repetitive coding and boost development efficiency"
+extra.erupt-tpl.title,自定义页面模板,Custom Page Templates
+extra.erupt-tpl.remark,在菜单中嵌入自定义 HTML 模板页面，支持自定义组件、图表与按钮，突破注解边界,"Embed custom HTML template pages in menus with support for custom components, charts, and buttons — beyond annotation limits"
+extra.erupt-magic-api.title,在线 API 开发 IDE,Online API Development IDE
+extra.erupt-magic-api.remark,集成 magic-api，在浏览器中编写脚本并立即发布 HTTP 接口，极速敏捷开发,"Integrates magic-api; write scripts in the browser and publish HTTP APIs instantly for rapid agile development"
+extra.erupt-i18n.title,国际化支持,Internationalization Support
+extra.erupt-i18n.remark,通过 @EruptI18n 注解与 CSV 配置快速实现多语言国际化，轻松支持全球化业务,"Quickly achieve multi-language i18n via @EruptI18n annotation and CSV config — easily support global business"
+extra.linqj.title,Java 集合查询语言,Java Collection Query Language
+extra.linqj.remark,用 SQL 思维操作 Java 集合，基于 Lambda 实现高效类型安全的对象查询与聚合,"Query Java collections with SQL-style thinking — Lambda-based, type-safe object querying and aggregation"
+extra.zeta-api.title,配置式 API 接口开发,Config-Driven API Development
+extra.zeta-api.remark,通过配置 XML 快速创建 API 接口与接口文档，零代码发布数据接口,"Create API interfaces and documentation with XML config — publish data APIs with zero code"
+extra.more.title,持续构想中,Continuously Envisioning
+extra.more.remark,如果你也有有趣的想法，欢迎联系作者共建，或自己动手让 Erupt 生态越来越好,"Have a cool idea? Reach out to collaborate with the author, or contribute to make the Erupt ecosystem even better"
+home.pro.h,需要更多企业能力？,Need more enterprise capabilities?
+home.pro.sub,4 个商业扩展模块 · 源码交付 · 一次买断 · 与开源核心独立演进,4 commercial extension modules · source-code delivery · one-time purchase · independent from the open-source core
+home.pro.pricing,查看定价,View pricing
+home.pro.chart.title,报表图表,Chart
+home.pro.chart.sub,SQL 即图表 · 零前端代码 · 多数据源,SQL → chart · zero frontend code · multi-DB
+home.pro.flow.title,流程引擎,Flow
+home.pro.flow.sub,表单 + 流程 + 节点 · 钉钉风格设计器,Forms + workflow + nodes · visual designer
+home.pro.tenant.title,SaaS 多租户,SaaS
+home.pro.tenant.sub,一个注解切多租户 · 数据 + 路由 + 配置隔离,Multi-tenant via one annotation · isolation · routing
+home.pro.cube.title,BI 平台,Cube
+home.pro.cube.sub,语义层 + 拖拽分析 · Looker for JVM,Semantic layer + drag-drop · Looker for JVM
+pro.btn.pricing,查看定价 →,View Pricing →
+claw.demo.1.user,查询今天新注册的用户数量,Query the number of new users registered today
+claw.demo.1.think,需要查询 sys_user 表，按今天日期过滤,Need to query the sys_user table filtered by today's date
+claw.demo.1.result,今天共有 127 名新用户注册,127 new users registered today
+claw.demo.2.user,查看 /var/log/app.log 最近 50 行，找 ERROR 信息,Read the last 50 lines of /var/log/app.log and find ERROR entries
+claw.demo.2.think,调用文件读取技能，过滤 ERROR 关键词,Invoking file-read skill and filtering for ERROR keyword
+claw.demo.2.result,发现 3 处 ERROR：[14:22:01] Connection pool exhausted (pool=db-main)...,Found 3 ERRORs: [14:22:01] Connection pool exhausted (pool=db-main)...
+claw.demo.3.user,重启 payment-service，然后检查健康状态,Restart payment-service then check its health status
+claw.demo.3.think,先重启服务，再调用 actuator/health 确认状态,Restarting service first then calling actuator/health to confirm status
+claw.demo.3.result,服务已重启，健康检查通过 {"status":"UP"\,"db":"UP"},Service restarted and health check passed {"status":"UP"\,"db":"UP"}
 db.mysql,MySQL,MySQL
 db.oracle,Oracle,Oracle
 db.sqlserver,SQL Server,SQL Server

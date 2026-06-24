@@ -1,24 +1,14 @@
 <style>
     .contrast-wrap {
         height: calc(100vh - 45px);
+        max-width: 1200px;
+        margin: 0 auto;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         background: var(--c-bg);
-    }
-
-    .contrast-hd {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        padding: 0 24px;
-        height: 42px;
-        border-bottom: 1px solid var(--c-border);
-        border-left: 3px solid var(--c-brand);
-        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
-            linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
-        background-size: 24px 24px;
-        font-family: var(--c-sans);
+        border-left: 1px solid var(--c-border);
+        border-right: 1px solid var(--c-border);
     }
 
     .contrast-body {
@@ -76,7 +66,6 @@
     .panel-bar-dark {
         background: #0A0A0F;
     }
-    .panel-bar-light { background: var(--c-bg); border-bottom: 1px solid var(--c-border); }
 
     .pb-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
@@ -94,8 +83,32 @@
         background: transparent;
     }
 
-    /* View panel */
-    #view { overflow: hidden; display: flex; flex-direction: column; }
+    .demo-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 3px 10px;
+        border: 1px solid rgba(255, 87, 34, .45);
+        border-radius: 3px;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .08em;
+        color: var(--c-brand);
+        text-decoration: none;
+        transition: all .15s;
+        white-space: nowrap;
+    }
+
+    .demo-btn:hover {
+        background: rgba(255, 87, 34, .1);
+        border-color: var(--c-brand);
+        color: var(--c-brand);
+        text-decoration: none;
+    }
+
+    .demo-btn svg {
+        flex-shrink: 0;
+    }
 
     #main {
         margin-bottom: 0 !important;
@@ -104,14 +117,12 @@
 
 <div ng-controller="contrast">
     <div class="contrast-wrap">
-
-        <!-- Split body -->
         <div class="contrast-body">
 
             <div class="split split-horizontal" id="select">
                 <ul class="menus">
                     <li ng-class="active.id==p.id?'active':''" ng-click="choicePage(p)" ng-repeat="p in pages">
-                        {{p.name}}
+                        {{p.key | i18n}}
                     </li>
                 </ul>
             </div>
@@ -122,19 +133,15 @@
                     <span class="pb-dot" style="background:#ffbd2e"></span>
                     <span class="pb-dot" style="background:#28c840"></span>
                     <span style="flex:1;text-align:center;font-family:var(--c-mono);font-size:10px;color:rgba(255,255,255,.22);letter-spacing:.1em">{{'contrast.java' | i18n}}</span>
-                    <span style="font-family:var(--c-mono);font-size:10px;color:rgba(255,255,255,.15);letter-spacing:.08em">.java</span>
+                    <a class="demo-btn" ng-href="{{'https://demo.erupt.xyz/#' + active.path}}" target="_blank">
+                        <svg fill="none" height="11" viewBox="0 0 12 12" width="11" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 2h4v1H3v6h6V7h1v3H2V2z" fill="currentColor"/>
+                            <path d="M7 2h3v3h-1V3.7L5.85 6.85l-.7-.7L8.3 3H7V2z" fill="currentColor"/>
+                        </svg>
+                        {{'contrast.effect' | i18n}}
+                    </a>
                 </div>
                 <pre id="erupt-code"><code class="prism language-java"></code></pre>
-            </div>
-
-            <div class="split split-horizontal" id="view">
-                <div class="panel-bar panel-bar-light">
-                    <span style="width:8px;height:8px;border-radius:50%;background:var(--c-brand);opacity:.75;flex-shrink:0"></span>
-                    <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;color:var(--c-text2)">{{'contrast.effect' | i18n}}</span>
-                    <span style="margin-left:auto;font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text2);opacity:.35">LIVE</span>
-                </div>
-                <iframe ng-src="{{'https://demo.erupt.xyz/#' + active.path | trustAsResourceUrl}}"
-                        style="width:100%;flex:1;border:0;display:block;height:calc(100% - 36px)"></iframe>
             </div>
 
         </div>
@@ -143,9 +150,9 @@
 
 <script>
     localStorage.removeItem('split-sizes')
-    Split(['#select', '#code', '#view'], {
-        sizes: [9, 26, 65],
-        minSize: [90, 200, 360],
+    Split(['#select', '#code'], {
+        sizes: [15, 85],
+        minSize: [90, 300],
         expandToMin: true,
         gutterSize: 4,
     })

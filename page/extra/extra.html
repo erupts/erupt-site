@@ -15,8 +15,8 @@
                  ng-click="module.link && window.open(module.link,'_blank')"
                  style="display:flex;flex-direction:column;gap:10px">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-brand)">{{module.name}}</span>
-                <div class="h3" style="margin:0">{{module.title}}</div>
-                <p class="sub" style="font-size:12.5px;margin:0;flex:1">{{module.remark}}</p>
+                <div class="h3" style="margin:0">{{module.title | i18n}}</div>
+                <p class="sub" style="font-size:12.5px;margin:0;flex:1">{{module.remark | i18n}}</p>
                 <div ng-if="module.link" style="margin-top:6px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
                     {{'home.v2.fam.more'|i18n}} →
                 </div>

@@ -788,10 +788,10 @@
                     </div>
                     <div class="ac-term-body">
                         <div ng-repeat="msg in demoMessages">
-                            <div class="ac-msg-user" ng-if="msg.type==='user'">{{msg.text}}</div>
-                            <div class="ac-msg-think" ng-if="msg.type==='think'">💭 {{msg.text}}</div>
+                            <div class="ac-msg-user" ng-if="msg.type==='user'">{{msg.text | i18n}}</div>
+                            <div class="ac-msg-think" ng-if="msg.type==='think'">💭 {{msg.text | i18n}}</div>
                             <div class="ac-msg-action" ng-if="msg.type==='action'">⚡ {{msg.text}}</div>
-                            <div class="ac-msg-result" ng-if="msg.type==='result'">✓ {{msg.text}}</div>
+                            <div class="ac-msg-result" ng-if="msg.type==='result'">✓ {{msg.text | i18n}}</div>
                         </div>
                     </div>
                 </div>

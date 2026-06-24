@@ -1339,8 +1339,8 @@ public class Task extends BaseModel {
              ════════════════════════════════════════ -->
         <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">Commercial Extensions</span>
-            <h2 class="h2">{{ ($root.currentLang === 'zh-CN') ? '需要更多企业能力？' : 'Need more enterprise capabilities?' }}</h2>
-            <p class="sub" style="margin:0 auto;max-width:52ch">{{ ($root.currentLang === 'zh-CN') ? '4 个商业扩展模块 · 源码交付 · 一次买断 · 与开源核心独立演进' : '4 commercial extension modules · source-code delivery · one-time purchase · independent from the open-source core' }}</p>
+            <h2 class="h2">{{'home.pro.h' | i18n}}</h2>
+            <p class="sub" style="margin:0 auto;max-width:52ch">{{'home.pro.sub' | i18n}}</p>
         </div>
 
         <!-- ════════════════════════════════════════
@@ -1349,27 +1349,35 @@ public class Task extends BaseModel {
         <div class="r g4 reveal">
             <div class="c clickable" ng-click="go('#!/pro')">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">erupt-chart</span>
-                <div class="h3">{{ ($root.currentLang === 'zh-CN') ? '报表图表' : 'Chart' }}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{ ($root.currentLang === 'zh-CN') ? 'SQL 即图表 · 零前端代码 · 多数据源' : 'SQL → chart · zero frontend code · multi-DB' }}</p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">{{ ($root.currentLang === 'zh-CN') ? '查看定价' : 'View pricing' }} →</div>
+                <div class="h3">{{'home.pro.chart.title' | i18n}}</div>
+                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.pro.chart.sub' | i18n}}</p>
+                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
+                    {{'home.pro.pricing' | i18n}} →
+                </div>
             </div>
             <div class="c clickable" ng-click="go('#!/pro')">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">erupt-flow</span>
-                <div class="h3">{{ ($root.currentLang === 'zh-CN') ? '流程引擎' : 'Flow' }}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{ ($root.currentLang === 'zh-CN') ? '表单 + 流程 + 节点 · 钉钉风格设计器' : 'Forms + workflow + nodes · visual designer' }}</p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">{{ ($root.currentLang === 'zh-CN') ? '查看定价' : 'View pricing' }} →</div>
+                <div class="h3">{{'home.pro.flow.title' | i18n}}</div>
+                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.pro.flow.sub' | i18n}}</p>
+                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
+                    {{'home.pro.pricing' | i18n}} →
+                </div>
             </div>
             <div class="c clickable" ng-click="go('#!/pro')">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">erupt-tenant</span>
-                <div class="h3">{{ ($root.currentLang === 'zh-CN') ? 'SaaS 多租户' : 'SaaS' }}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{ ($root.currentLang === 'zh-CN') ? '一个注解切多租户 · 数据 + 路由 + 配置隔离' : 'Multi-tenant via one annotation · isolation · routing' }}</p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">{{ ($root.currentLang === 'zh-CN') ? '查看定价' : 'View pricing' }} →</div>
+                <div class="h3">{{'home.pro.tenant.title' | i18n}}</div>
+                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.pro.tenant.sub' | i18n}}</p>
+                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
+                    {{'home.pro.pricing' | i18n}} →
+                </div>
             </div>
             <div class="c clickable" ng-click="go('#!/pro')" style="border-right:none">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">erupt-cube</span>
-                <div class="h3">{{ ($root.currentLang === 'zh-CN') ? 'BI 平台' : 'Cube' }}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{ ($root.currentLang === 'zh-CN') ? '语义层 + 拖拽分析 · Looker for JVM' : 'Semantic layer + drag-drop · Looker for JVM' }}</p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">{{ ($root.currentLang === 'zh-CN') ? '查看定价' : 'View pricing' }} →</div>
+                <div class="h3">{{'home.pro.cube.title' | i18n}}</div>
+                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.pro.cube.sub' | i18n}}</p>
+                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
+                    {{'home.pro.pricing' | i18n}} →
+                </div>
             </div>
         </div>
 
