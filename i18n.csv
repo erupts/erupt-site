@@ -642,6 +642,18 @@ pro.card.cube.demo,"演示账号 <span class=""k"">cube</span> / 密码 <span cl
 pro.cta.doc,文档,Docs
 pro.cta.demo,演示,Demo
 pro.cta.detail,详情 ↗,Detail ↗
+pro.guarantee.tag,授权保障,Guarantee
+pro.guarantee.title,一次授权，终身权益,One-Time License. Lifetime Benefits.
+pro.guarantee.sub,授权即享以下全部权益，无附加条件。,All rights included in your license — no conditions attached.
+pro.guarantee.s1.tag,FREE UPGRADES
+pro.guarantee.s1.title,新增内容永久免费,All Updates Free Forever
+pro.guarantee.s1.desc,版本更新、功能新增，无二次收费。,Version upgrades and new features — no extra charges.
+pro.guarantee.s2.tag,FULL SOURCE
+pro.guarantee.s2.title,100% 源码 Git 授权,100% Source Code via Git
+pro.guarantee.s2.desc,完整源码仓库访问权，商用无限制。,Full repo access. Unrestricted commercial use.
+pro.guarantee.s3.tag,LIFETIME
+pro.guarantee.s3.title,终身迭代更新,Lifetime Updates
+pro.guarantee.s3.desc,授权永不过期，持续跟进框架演进。,License never expires. Follows the framework roadmap.
 pro.why.tag,Why Commercial,Why Commercial
 pro.why.title,为什么选商业模块,Why Choose Commercial
 pro.why.sub,不是把开源版砍掉重卖一遍，而是补齐企业场景下开源版做不到的能力。,Not a castrated open-source edition — these fill the enterprise gaps open-source cannot cover.
