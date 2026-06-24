@@ -11,48 +11,58 @@
         border-right: 1px solid var(--c-border);
     }
 
-    .contrast-body {
-        flex: 1;
+    /* Tab strip */
+    .contrast-tabs {
+        flex-shrink: 0;
         display: flex;
-        overflow: hidden;
-        min-height: 0;
+        align-items: stretch;
+        overflow-x: auto;
+        border-bottom: 1px solid var(--c-border);
+        background: var(--c-bg);
+        scrollbar-width: none;
     }
 
-    .split { position: relative; }
-    .split.split-horizontal, .gutter-horizontal { height: 100%; }
+    .contrast-tabs::-webkit-scrollbar {
+        display: none;
+    }
 
-    .gutter { background: var(--c-border); transition: background .15s; }
-    .gutter:hover { background: rgba(255, 87, 34, .35); }
-    .gutter-horizontal { cursor: ew-resize; }
-
-    /* Menu panel */
-    #select { background: var(--c-bg); overflow: hidden; }
-
-    .menus { list-style: none; margin: 0; padding: 0; height: 100%; overflow-y: auto; }
-
-    .menus li {
-        padding: 11px 18px;
+    .contrast-tab {
+        flex-shrink: 0;
+        padding: 0 18px;
+        height: 40px;
+        display: flex;
+        align-items: center;
         cursor: pointer;
-        border-bottom: 1px solid var(--c-border);
-        border-left: 3px solid transparent;
         font-family: var(--c-mono);
         font-size: 11.5px;
         color: var(--c-text2);
+        border-bottom: 2px solid transparent;
+        border-right: 1px solid var(--c-border);
         transition: all .15s;
         user-select: none;
-        line-height: 1.4;
+        white-space: nowrap;
     }
 
-    .menus li.active {
-        border-left-color: var(--c-brand);
+    .contrast-tab:hover {
+        color: var(--c-text);
+        background: rgba(255, 87, 34, .025);
+    }
+
+    .contrast-tab.active {
         color: var(--c-brand);
+        border-bottom-color: var(--c-brand);
         background: rgba(255, 87, 34, .04);
     }
 
-    .menus li:hover { background: rgba(255, 87, 34, .025); color: var(--c-text); }
-
     /* Code panel */
-    #code { overflow: hidden; display: flex; flex-direction: column; background: #0A0A0F; }
+    .contrast-code {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background: #0A0A0F;
+        min-height: 0;
+    }
 
     .panel-bar {
         flex-shrink: 0;
@@ -61,9 +71,6 @@
         gap: 6px;
         height: 36px;
         padding: 0 16px;
-    }
-
-    .panel-bar-dark {
         background: #0A0A0F;
     }
 
@@ -87,22 +94,23 @@
         display: inline-flex;
         align-items: center;
         gap: 5px;
-        padding: 3px 10px;
-        border: 1px solid rgba(255, 87, 34, .45);
+        padding: 5px 12px;
+        background: var(--c-brand);
+        border: none;
         border-radius: 3px;
         font-family: var(--c-mono);
-        font-size: 10px;
-        letter-spacing: .08em;
-        color: var(--c-brand);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .06em;
+        color: #fff;
         text-decoration: none;
-        transition: all .15s;
+        transition: opacity .15s;
         white-space: nowrap;
     }
 
     .demo-btn:hover {
-        background: rgba(255, 87, 34, .1);
-        border-color: var(--c-brand);
-        color: var(--c-brand);
+        opacity: .85;
+        color: #fff;
         text-decoration: none;
     }
 
@@ -117,43 +125,34 @@
 
 <div ng-controller="contrast">
     <div class="contrast-wrap">
-        <div class="contrast-body">
 
-            <div class="split split-horizontal" id="select">
-                <ul class="menus">
-                    <li ng-class="active.id==p.id?'active':''" ng-click="choicePage(p)" ng-repeat="p in pages">
-                        {{p.key | i18n}}
-                    </li>
-                </ul>
+        <!-- Tab strip -->
+        <div class="contrast-tabs">
+            <div class="contrast-tab"
+                 ng-class="{active: active.id === p.id}"
+                 ng-click="choicePage(p)"
+                 ng-repeat="p in pages">
+                {{p.key | i18n}}
             </div>
-
-            <div class="split split-horizontal" id="code">
-                <div class="panel-bar panel-bar-dark">
-                    <span class="pb-dot" style="background:#ff5f57"></span>
-                    <span class="pb-dot" style="background:#ffbd2e"></span>
-                    <span class="pb-dot" style="background:#28c840"></span>
-                    <span style="flex:1;text-align:center;font-family:var(--c-mono);font-size:10px;color:rgba(255,255,255,.22);letter-spacing:.1em">{{'contrast.java' | i18n}}</span>
-                    <a class="demo-btn" ng-href="{{'https://demo.erupt.xyz/#' + active.path}}" target="_blank">
-                        <svg fill="none" height="11" viewBox="0 0 12 12" width="11" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 2h4v1H3v6h6V7h1v3H2V2z" fill="currentColor"/>
-                            <path d="M7 2h3v3h-1V3.7L5.85 6.85l-.7-.7L8.3 3H7V2z" fill="currentColor"/>
-                        </svg>
-                        {{'contrast.effect' | i18n}}
-                    </a>
-                </div>
-                <pre id="erupt-code"><code class="prism language-java"></code></pre>
-            </div>
-
         </div>
+
+        <!-- Code panel -->
+        <div class="contrast-code">
+            <div class="panel-bar">
+                <span class="pb-dot" style="background:#ff5f57"></span>
+                <span class="pb-dot" style="background:#ffbd2e"></span>
+                <span class="pb-dot" style="background:#28c840"></span>
+                <span style="flex:1;text-align:center;font-family:var(--c-mono);font-size:10px;color:rgba(255,255,255,.22);letter-spacing:.1em">{{'contrast.java' | i18n}}</span>
+                <a class="demo-btn" ng-href="{{'https://demo.erupt.xyz/#' + active.path}}" target="_blank">
+                    <svg fill="none" height="11" viewBox="0 0 12 12" width="11" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 2h4v1H3v6h6V7h1v3H2V2z" fill="currentColor"/>
+                        <path d="M7 2h3v3h-1V3.7L5.85 6.85l-.7-.7L8.3 3H7V2z" fill="currentColor"/>
+                    </svg>
+                    {{'contrast.effect' | i18n}}
+                </a>
+            </div>
+            <pre id="erupt-code"><code class="prism language-java"></code></pre>
+        </div>
+
     </div>
 </div>
-
-<script>
-    localStorage.removeItem('split-sizes')
-    Split(['#select', '#code'], {
-        sizes: [15, 85],
-        minSize: [90, 300],
-        expandToMin: true,
-        gutterSize: 4,
-    })
-</script>

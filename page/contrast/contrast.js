@@ -587,21 +587,44 @@ public class Article extends HyperModel {
 }`
         },
         {
-            id: 8, key: "contrast.menu.serverGroup", path: "/fill/build/tree/OpsServerGroup",
+            id: 15, key: "contrast.menu.gantt", path: "/fill/build/table/GanttDemo",
             code: `@Entity
-@Table(name = "demo_ops_server_group")
+@Table(name = "t_gantt")
 @Erupt(
-        name = "Server Group",
-        orderBy = "OpsServerGroup.sort",
-        tree = @Tree(pid = "parent.id")
+        name = "Gantt",
+//        visRawTable = false,
+        power = @Power(importable = true, export = true),
+        orderBy = "startDate",
+        vis = {
+                @Vis(
+                        title = "Gantt Chart",
+                        desc = "Gantt",
+                        orderBy = @Sort(field = "name"),
+                        fieldVisibility = Vis.FieldVisibility.EXCLUDE,
+                        fields = {"parent_id", "parent_parent_name", "updateUser_name"},
+                        ganttView = @GanttView(
+                                startDateField = "startDate",
+                                endDateField = "endDate",
+                                pidField = "parent.id",
+                                colorField = "color",
+                                progressField = "progress",
+                                groupField = "type"
+                        ),
+                        type = Vis.Type.GANTT
+                ),
+                @Vis(
+                        title = "CALENDAR",
+                        type = Vis.Type.CALENDAR,
+                        calendarView = @CalendarView(
+                                dateField = "startDate",
+                                endDateField = "endDate",
+                                colorField = "color"
+                        )
+                )
+        }
 )
-public class OpsServerGroup extends HyperModel {
-
-    @EruptField(
-            views = @View(title = "Code"),
-            edit = @Edit(title = "Code", notNull = true)
-    )
-    private String code;
+@AllowModify
+public class GanttDemo extends BaseModel {
 
     @EruptField(
             views = @View(title = "Name"),
@@ -609,33 +632,352 @@ public class OpsServerGroup extends HyperModel {
     )
     private String name;
 
+    @EruptField(
+            views = @View(title = "Group"),
+            edit = @Edit(title = "Group", type = EditType.CHOICE, choiceType = @ChoiceType(vl = {
+                    @VL(label = "Group 1", value = "1"),
+                    @VL(label = "Group 2", value = "2"),
+                    @VL(label = "Group 1", value = "3"),
+                    @VL(label = "Group 2", value = "4")
+            }))
+    )
+    private String type;
+
+    @EruptField(
+            views = @View(title = "Start Date", sortable = true),
+            edit = @Edit(title = "Start Date", notNull = true)
+    )
+    private Date startDate;
+
+    @EruptField(
+            views = @View(title = "End Date", sortable = true),
+            edit = @Edit(title = "End Date", notNull = true)
+    )
+    private LocalDateTime endDate;
+
+    @EruptField(
+            views = @View(title = "Color"),
+            edit = @Edit(title = "Color", type = EditType.COLOR)
+    )
+    private String color;
+
+    @EruptField(
+            views = @View(title = "Progress"),
+            edit = @Edit(title = "Progress", type = EditType.SLIDER, sliderType = @SliderType(max = 100))
+    )
+    private Integer progress;
+
     @ManyToOne
     @EruptField(
+            views = {
+                    @View(title = "pid", column = "id", show = false),
+                    @View(title = "pname", column = "parent.name", show = false),
+            },
             edit = @Edit(
-                    title = "Parent Group",
+                    title = "Parent Node",
                     type = EditType.REFERENCE_TREE,
-                    referenceTreeType = @ReferenceTreeType(pid = "parent.id")
+                    referenceTreeType = @ReferenceTreeType(pid = "parent.id", expandLevel = 2)
             )
     )
-    private OpsServerGroup parent;
-
-    @EruptField(
-            views = @View(title = "Sort"),
-            edit = @Edit(title = "Sort")
-    )
-    private Integer sort;
-
-    @Lob
-    @EruptField(
-            views = @View(title = "Remark"),
-            edit = @Edit(title = "Remark")
-    )
-    private String remark;
+    private GanttDemo parent;
 
 }`
         },
-        {id: 6, key: "contrast.menu.treeView", path: "/build/tree/TreeDemo", code: ""},
-        {id: 14, key: "contrast.menu.report", path: "/fill/bi/3XjnHCxb", code: ""}
+        {
+            id: 16, key: "contrast.menu.complex", path: "/fill/build/table/Complex",
+            code: `@AllowModify
+@Erupt(
+        name = "Complex Example",
+        desc = "Complex Example: <a href=\"https://www.erupt.xyz\">erupt</a>",
+        power = @Power(export = true, importable = true),
+        dataProxy = ComplexDataProxy.class,
+        dataProxyParams = {"a", "b", "c"},
+        vis = {
+                @Vis(
+                        title = "Table View",
+                        type = Vis.Type.TABLE
+                ),
+                @Vis(
+                        title = "Board View",
+                        desc = "BOARD",
+                        type = Vis.Type.BOARD,
+                        boardView = @BoardView(groupField = "choice"),
+                        fieldVisibility = Vis.FieldVisibility.INCLUDE,
+                        fields = {"text", "bool", "color"}
+                ),
+                @Vis(
+                        title = "Card View",
+                        desc = "card",
+                        type = Vis.Type.CARD,
+                        cardView = @CardView(coverField = "img"),
+                        orderBy = @Sort(field = "img", direction = Direction.DESC),
+                        fieldVisibility = Vis.FieldVisibility.INCLUDE,
+                        fields = {"complexTab", "articleTab"}
+                ),
+                @Vis(
+                        title = "Card View 2",
+                        desc = "card",
+                        fieldVisibility = Vis.FieldVisibility.INCLUDE,
+                        cardView = @CardView(coverField = "img"),
+                        type = Vis.Type.CARD
+                ),
+                @Vis(
+                        title = "Gantt Chart",
+                        fields = {"text", "bool", "color"},
+                        fieldVisibility = Vis.FieldVisibility.INCLUDE,
+                        ganttView = @GanttView(
+                                startDateField = "startDate",
+                                endDateField = "endDate"
+                        ),
+                        type = Vis.Type.GANTT
+                ),
+                @Vis(
+                        title = "Custom Template",
+                        type = Vis.Type.TPL,
+                        tplView = @Tpl(path = "/tpl/vis.html", engine = Tpl.Engine.Native)
+                ),
+        },
+        drills = {
+                @Drill(title = "Drill A", show = @ExprBool(exprHandler = ViaMenuValueCtrl.class, params = "ComplexBtn"), link = @Link(joinColumn = "id", linkErupt = Article.class)),
+                @Drill(title = "Drill B", show = @ExprBool(exprHandler = ViaMenuValueCtrl.class, params = "ComplexBtn"), link = @Link(joinColumn = "id", linkErupt = Complex.class, linkCondition = "1 = 1 and Complex.bool = true"), fold = true)
+        },
+        rowOperation = {
+                @RowOperation(operationHandler = OperationHandlerImpl.class,
+                        show = @ExprBool(exprHandler = ViaMenuValueCtrl.class, params = "ComplexBtn"),
+                        ifExpr = "item.img",
+                        callHint = "",
+                        fold = true,
+                        ifExprBehavior = RowOperation.IfExprBehavior.DISABLE,
+                        mode = RowOperation.Mode.SINGLE, title = "Single Row", icon = "fa fa-toggle-on"),
+//                @RowOperation(title = "Erupt Role",
+//                        eruptClass = EruptRole.class, operationHandler = EruptRoleFormHandler.class),
+                @RowOperation(title = "Multi Row",
+                        icon = "",
+                        tip = "Tip",
+                        eruptClass = SimpleDialog.class,
+                        show = @ExprBool(exprHandler = ViaMenuValueCtrl.class, params = "ComplexBtn"), operationHandler = DialogFormHandler.class),
+                @RowOperation(operationHandler = OperationHandlerImpl.class,
+                        eruptClass = SimpleDialog.class,
+                        show = @ExprBool(exprHandler = ViaMenuValueCtrl.class, params = "ComplexBtn"),
+                        mode = RowOperation.Mode.BUTTON, tip = "Executes without depending on any row data", title = "Button Action", icon = "fa fa-google-wallet"),
+                @RowOperation(type = RowOperation.Type.TPL, mode = RowOperation.Mode.MULTI, fold = true,
+                        show = @ExprBool(exprHandler = ViaMenuValueCtrl.class, params = "ComplexBtn"),
+                        tpl = @Tpl(path = "/tpl/operation.html?id=xxx&c=xxx", openWay = OpenWay.MODAL,
+                                drawerPlacement = Placement.BOTTOM,
+                                tplHandler = HtmlHandler.class,
+                                height = "80vh",
+                                engine = Tpl.Engine.Thymeleaf),
+                        title = "Custom Template", icon = "fa fa-pagelines"
+                )
+        },
+//        header = @Tpl(path = "/"),
+        orderBy = "id",
+        layout = @Layout(tableLeftFixed = 3, tableOperatorWidth = "290px", collapseActionButton = true),
+        linkTree = @LinkTree(field = "treeDemo")
+)
+@EruptFlow
+@Table(name = "demo_complex")
+@Entity
+@Getter
+@Setter
+public class Complex extends BaseModel implements ChoiceFetchHandler<Complex>, Readonly.ReadonlyHandler {
+
+    @EruptField(
+            edit = @Edit(title = "Embedded Template", type = EditType.TPL,
+                    tplType = @Tpl(path = "/tpl/demo.html",
+                            engine = Tpl.Engine.Thymeleaf, tplHandler = HtmlHandler.class,
+                            params = {"Supports various template engines", "Inject backend data via TplHandler", "params are passed from annotations"}))
+    )
+    private String tpl;
+
+    @EruptField(
+            views = @View(title = "Text"),
+            edit = @Edit(title = "Text", search = @Search)
+    )
+    private String text;
+
+    @EruptField(
+            views = @View(title = "Boolean", sortable = true),
+            edit = @Edit(title = "Boolean")
+    )
+    private Boolean bool;
+
+    @EruptField(
+            views = @View(title = "Color", sortable = true),
+            edit = @Edit(title = "Color", search = @Search, type = EditType.COLOR, onchange = ComplexOnChange.class)
+    )
+    private String color = "#f00";
+
+    @ManyToOne
+    private EruptUser eruptUser;
+
+    @EruptField(
+            views = @View(title = "Start Date", sortable = true),
+            edit = @Edit(title = "Start Date", dateType = @DateType(type = DateType.Type.DATE_TIME))
+    )
+    private LocalDateTime startDate;
+
+    @EruptField(
+            views = @View(title = "End Date", sortable = true),
+            edit = @Edit(title = "End Date", dateType = @DateType(type = DateType.Type.DATE_TIME))
+    )
+    private LocalDateTime endDate;
+
+    @EruptField(
+            views = @View(title = "Cover Image", sortable = true),
+            edit = @Edit(title = "Cover Image", type = EditType.ATTACHMENT,
+                    readonly = @Readonly(exprHandler = Complex.class),
+                    attachmentType = @AttachmentType(type = AttachmentType.Type.IMAGE, maxLimit = 3))
+    )
+    private String img;
+
+    @EruptField(
+            views = @View(title = "RADIO"),
+            edit = @Edit(
+                    search = @Search,
+                    title = "RADIO", type = EditType.CHOICE, desc = "Dynamically fetched values",
+                    choiceType = @ChoiceType(
+                            dependField = "text",
+                            type = ChoiceType.Type.RADIO,
+                            fetchHandler = ComplexChoiceFilter.class
+                    ))
+    )
+    private String choice;
+
+    @EruptField(
+            views = @View(title = "Dict Selection"),
+            edit = @Edit(
+                    search = @Search,
+                    title = "Dict Selection", type = EditType.CHOICE, desc = "Dynamically fetched dict values",
+                    choiceType = @ChoiceType(
+                            fetchHandler = DictChoiceFetchHandler.class,
+                            fetchHandlerParams = {"bi-chart", "10000"}
+                    ))
+    )
+    private Long fromDict;
+
+    @ElementCollection
+    @CollectionTable(name = "complex_dicts", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "multi_dict")
+    @EruptField(
+            views = @View(title = "Multi Select"),
+            edit = @Edit(
+                    search = @Search,
+                    title = "Multi Select", type = EditType.MULTI_CHOICE,
+                    multiChoiceType = @MultiChoiceType(
+                            type = MultiChoiceType.Type.SELECT,
+                            fetchHandler = Complex.class
+                    ))
+    )
+    private Set<Integer> multiDict;
+
+    @ElementCollection
+    @CollectionTable(name = "complex_dicts2", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "multi_dict")
+    @EruptField(
+            views = @View(title = "Multi Select"),
+            edit = @Edit(
+                    search = @Search,
+                    title = "Multi Select", type = EditType.MULTI_CHOICE,
+                    multiChoiceType = @MultiChoiceType(
+                            type = MultiChoiceType.Type.CHECKBOX,
+                            dependField = "multiDict",
+                            fetchHandler = Complex.class
+                    ))
+    )
+    private Set<Integer> multiDict2;
+
+    @ManyToOne
+    @JoinColumn(name = "role_code2")
+    @EruptField(
+            views = { @View(title = "ManyToOne Table", column = "title") },
+            edit = @Edit(title = "ManyToOne Table", type = EditType.REFERENCE_TABLE, search = @Search,
+                    referenceTableType = @ReferenceTableType(label = "title"))
+    )
+    private Article article2;
+
+    @ManyToOne
+    @EruptField(
+            views = { @View(title = "ManyToOne Tree", column = "name") },
+            edit = @Edit(
+                    title = "ManyToOne Tree", type = EditType.REFERENCE_TREE,
+                    referenceTreeType = @ReferenceTreeType(pid = "parent.id", expandLevel = 1))
+    )
+    private TreeDemo treeDemo;
+
+    @ManyToOne
+    @EruptField(
+            edit = @Edit(title = "ManyToOne Gantt", type = EditType.REFERENCE_TABLE)
+    )
+    private GanttDemo ganttDemo;
+
+    @Column(length = AnnotationConst.CONFIG_LENGTH)
+    @EruptField(
+            views = @View(title = "Python Code", type = ViewType.CODE),
+            edit = @Edit(title = "Python Code Editor", type = EditType.CODE_EDITOR,
+                    codeEditType = @CodeEditorType(language = "python"))
+    )
+    private String code;
+
+    @ManyToMany
+    @JoinTable(
+            name = "demo_complex_gantt",
+            joinColumns = @JoinColumn(name = "complex_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "gantt_id", referencedColumnName = "id"))
+    @EruptField(
+            edit = @Edit(title = "Gantt ManyToMany", type = EditType.TAB_TABLE_REFER)
+    )
+    private Set<GanttDemo> ganttDemos2;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "complex_id")
+    @EruptField(
+            views = @View(title = "OneToMany Add"),
+            edit = @Edit(title = "OneToMany Add", type = EditType.TAB_TABLE_ADD)
+    )
+    private Set<ComplexTab> complexTab;
+
+    @ManyToMany
+    @JoinTable(
+            name = "demo_complex_article",
+            joinColumns = @JoinColumn(name = "complex_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "article_id", referencedColumnName = "id"))
+    @EruptField(
+            views = @View(title = "ManyToMany Articles"),
+            edit = @Edit(title = "ManyToMany Articles", type = EditType.TAB_TABLE_REFER,
+                    referenceTableType = @ReferenceTableType(label = "title"))
+    )
+    private Set<Article> articleTab;
+
+    @Override
+    public List<VLModel> fetch(String[] params) {
+        List<VLModel> list = new ArrayList<>();
+        int c = 65;
+        for (int i = 0; i < 20; i++) {
+            VLModel vlModel = new VLModel(i + "", (char) (c + i) + " → " + (char) (c + i + 5) + " → " + (char) (c + i + 10), i % 2 == 0);
+            vlModel.setColor(ComplexChoiceFilter.generateRandomColor());
+            list.add(vlModel);
+        }
+        return list;
+    }
+
+    @Override
+    public List<VLModel> fetchFilter(Complex complex, String[] params) {
+        if (null != complex.getMultiDict()) {
+            return this.fetch(params).stream()
+                    .filter(it -> complex.getMultiDict().contains(Long.valueOf(it.getValue())))
+                    .toList();
+        }
+        return this.fetch(params);
+    }
+
+    @Override
+    public boolean add(boolean add, String[] params) { return true; }
+
+    @Override
+    public boolean edit(boolean edit, String[] params) { return false; }
+}`
+        },
     ];
 
     window.scrollTo(0, 0);

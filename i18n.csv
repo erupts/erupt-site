@@ -258,9 +258,8 @@ contrast.menu.user,用户管理,User Management
 contrast.menu.dict,字典管理,Dictionary Management
 contrast.menu.table,表格组件,Table Component
 contrast.menu.article,文章发布,Article Publishing
-contrast.menu.serverGroup,服务器组别,Server Group
-contrast.menu.treeView,树视图配置,Tree View Config
-contrast.menu.report,在线报表,Online Report
+contrast.menu.gantt,甘特图,Gantt Chart
+contrast.menu.complex,复杂示例,Complex Example
 extra.erupt-ai.title,低代码 × 大模型,Low-Code × LLM
 extra.erupt-ai.remark,与当下主流大模型深度集成，一键接入 GPT、Claude、通义等，低代码构建 AI 驱动的管理应用,"Deep integration with mainstream LLMs — connect GPT, Claude, Qwen and more with one click to build AI-powered admin apps with low-code"
 extra.erupt-ai-claw.title,自然语言驱动服务器,Natural Language Server Control
