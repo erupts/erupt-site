@@ -386,6 +386,64 @@
         cursor: default;
     }
 
+    .contrib-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 18px 8px 8px;
+        border-radius: 0;
+        border: 1px solid var(--c-border);
+        text-decoration: none;
+        transition: border-color .15s, background .15s;
+    }
+
+    .contrib-chip:hover {
+        border-color: var(--c-brand);
+        background: rgba(255, 87, 34, .04);
+    }
+
+    .contrib-chip img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .contrib-chip .chip-logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .contrib-chip .chip-logo img {
+        width: 26px;
+        height: 26px;
+        border-radius: 0;
+    }
+
+    .contrib-chip .chip-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--c-text);
+    }
+
+    .contrib-chip.primary .chip-name {
+        color: var(--c-brand);
+    }
+
+    .contrib-chip .chip-role {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        color: var(--c-text2);
+        margin-top: 1px;
+    }
+
     .dia-items > div:hover {
         transform: translateX(5px);
         filter: brightness(1.06);
@@ -1063,7 +1121,11 @@ public class Task extends BaseModel {
                 <div class="h3">{{'home.v2.out.cloud.h'|i18n}}</div>
                 <p class="sub" style="font-size:12.5px">{{'home.v2.out.cloud.p'|i18n}}</p>
             </div>
-            <div class="c no-bb" style="grid-column:span 2;border-right:none">
+            <div class="c no-bb">
+                <div class="h3">{{'home.v2.out.designer.h'|i18n}}</div>
+                <p class="sub" style="font-size:12.5px">{{'home.v2.out.designer.p'|i18n}}</p>
+            </div>
+            <div class="c no-bb" style="border-right:none">
                 <div class="h3">{{'home.features.db.name'|i18n}}</div>
                 <p class="sub" style="font-size:12.5px">{{'home.features.db.desc'|i18n}}</p>
             </div>
@@ -1463,7 +1525,44 @@ public class Task extends BaseModel {
             </div>
         </div>
 
-        <!-- §19 COMMUNITY (3 col git) -->
+        <!-- §19 CONTRIBUTORS -->
+        <div class="r ticks reveal" style="padding:24px 48px;text-align:center">
+            <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-text2);margin-bottom:16px">
+                {{'home.sponsor.title'|i18n}}
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px">
+                <a class="contrib-chip primary" href="https://github.com/erupts" target="_blank">
+                    <img src="/images/sponsor/me.jpeg">
+                    <div>
+                        <div class="chip-name">YuePeng</div>
+                        <div class="chip-role">{{'home.sponsor.author'|i18n}}</div>
+                    </div>
+                </a>
+                <a class="contrib-chip" ng-href="{{s.home}}" ng-repeat="s in sponsor" target="_blank">
+                    <img ng-src="/images/sponsor/{{s.headImg}}">
+                    <div>
+                        <div class="chip-name">{{s.nickname}}</div>
+                        <div class="chip-role">{{s.role}}</div>
+                    </div>
+                </a>
+                <a class="contrib-chip" href="https://www.jetbrains.com" target="_blank">
+                    <div class="chip-logo"><img src="/images/sponsor/idea.svg"></div>
+                    <div>
+                        <div class="chip-name">JetBrains</div>
+                        <div class="chip-role">{{'home.sponsor.ide'|i18n}}</div>
+                    </div>
+                </a>
+                <a class="contrib-chip" href="https://www.ideamake.cn/" target="_blank">
+                    <img src="/images/sponsor/sw.png">
+                    <div>
+                        <div class="chip-name">{{'ideamake'|i18n}}</div>
+                        <div class="chip-role">{{'home.sponsor.thanks'|i18n}}</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- §20 COMMUNITY (3 col git) -->
         <div class="r g3 reveal">
             <div class="c no-bb git-card" ng-click="go('https://gitee.com/erupt/erupt',true)"
                  style="text-align:center;cursor:pointer;padding:40px 32px">

@@ -79,15 +79,17 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
     $scope.sponsor = [
         {
             toggleText: "每天还在写代码的，写了20多年的代码民工,希望到60岁时还能运指如飞的敲键盘",
+            role: "Core Contributor",
             headImg: "baishi.png",
             home: "https://github.com/wjw465150",
             nickname: "W.Stone",
         },
         {
             toggleText: "magic-api 作者",
+            role: "magic-api Author",
             headImg: "xiaodong.jpeg",
             home: "https://gitee.com/jmxd",
-            nickname: "小东",
+            nickname: "jmxd",
         }
     ]
 

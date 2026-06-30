@@ -1186,6 +1186,75 @@ private Integer rating;</code></pre>
         </div>
     </div>
 
+    <!-- §02.5 DESIGNER -->
+    <div class="r g2 reveal"
+         style="background:rgba(255,87,34,.025); border-top:1px solid rgba(255,87,34,.12); border-bottom:1px solid rgba(255,87,34,.12)">
+        <div class="c" style="padding:32px 40px; display:flex; flex-direction:column; justify-content:center; gap:16px">
+            <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); letter-spacing:.12em; text-transform:uppercase">
+                {{'flow.designer.label' | i18n}}
+            </div>
+            <div class="h3" ng-bind-html="'flow.designer.title' | i18nHtml" style="margin-bottom:0"></div>
+            <div class="sub" style="font-size:13.5px; line-height:1.7">{{'flow.designer.desc' | i18n}}</div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap">
+                <span class="tag"
+                      style="font-size:12px; padding:5px 12px; background:rgba(255,87,34,.08); color:var(--c-brand); border:1px solid rgba(255,87,34,.2)">{{'flow.designer.badge1' | i18n}}</span>
+                <span class="tag"
+                      style="font-size:12px; padding:5px 12px; background:rgba(255,87,34,.08); color:var(--c-brand); border:1px solid rgba(255,87,34,.2)">{{'flow.designer.badge2' | i18n}}</span>
+                <span class="tag"
+                      style="font-size:12px; padding:5px 12px; background:rgba(255,87,34,.08); color:var(--c-brand); border:1px solid rgba(255,87,34,.2)">{{'flow.designer.badge3' | i18n}}</span>
+            </div>
+        </div>
+        <div class="c"
+             style="padding:32px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.02)">
+            <div style="width:100%; border:1px solid var(--c-border); border-radius:6px; overflow:hidden; background:#fff; font-size:12px">
+                <div style="display:flex; align-items:center; gap:8px; padding:9px 14px; border-bottom:1px solid #ececec; background:#fafaf9">
+                    <span style="font-size:11px; font-weight:600; color:#333">表单设计器</span>
+                    <span style="margin-left:auto; font-family:monospace; font-size:10px; color:#aaa">erupt-designer</span>
+                </div>
+                <div style="display:grid; grid-template-columns:100px 1fr; min-height:220px">
+                    <div style="border-right:1px solid #ececec; padding:12px 8px; background:#fafaf9; display:flex; flex-direction:column; gap:5px">
+                        <div style="font-size:10px; color:#aaa; letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px; padding:0 4px">
+                            组件
+                        </div>
+                        <div style="padding:6px 8px; border-radius:4px; background:#fff; border:1px solid #e8e8e8; color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                            ⬜ 单行文本
+                        </div>
+                        <div style="padding:6px 8px; border-radius:4px; background:#fff; border:1px solid #e8e8e8; color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                            📅 日期选择
+                        </div>
+                        <div style="padding:6px 8px; border-radius:4px; background:rgba(255,87,34,.06); border:1.5px dashed var(--c-brand); color:var(--c-brand); font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                            ▾ 下拉选择
+                        </div>
+                        <div style="padding:6px 8px; border-radius:4px; background:#fff; border:1px solid #e8e8e8; color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                            📎 附件上传
+                        </div>
+                        <div style="padding:6px 8px; border-radius:4px; background:#fff; border:1px solid #e8e8e8; color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                            ⬛ 多行文本
+                        </div>
+                    </div>
+                    <div style="padding:16px; display:flex; flex-direction:column; gap:10px">
+                        <div style="border:1px solid #e8e8e8; border-radius:4px; padding:9px 10px; background:#fafafa">
+                            <div style="font-size:10.5px; color:#555; margin-bottom:5px; font-weight:500">申请人</div>
+                            <div style="height:22px; border:1px solid #ddd; border-radius:3px; background:#fff"></div>
+                        </div>
+                        <div style="border:1px solid #e8e8e8; border-radius:4px; padding:9px 10px; background:#fafafa">
+                            <div style="font-size:10.5px; color:#555; margin-bottom:5px; font-weight:500">申请日期</div>
+                            <div style="height:22px; border:1px solid #ddd; border-radius:3px; background:#fff; display:flex; align-items:center; padding:0 8px">
+                                <span style="color:#bbb; font-size:11px">选择日期</span></div>
+                        </div>
+                        <div style="border:2px dashed var(--c-brand); border-radius:4px; padding:9px 10px; background:rgba(255,87,34,.04)">
+                            <div style="font-size:10.5px; color:var(--c-brand); margin-bottom:5px; font-weight:500">报销类型
+                                ✦ 拖入
+                            </div>
+                            <div style="height:22px; border:1px solid rgba(255,87,34,.3); border-radius:3px; background:#fff; display:flex; align-items:center; padding:0 8px">
+                                <span style="color:#bbb; font-size:11px">请选择 ▾</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- §03 APPROVAL INBOX -->
     <div class="r g-bg ticks g2">
         <div class="c" style="padding:32px 40px">
