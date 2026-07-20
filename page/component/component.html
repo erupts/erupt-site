@@ -1,7 +1,7 @@
 <style>
     .component-item {
-        border-left: 1px solid rgba(0, 0, 0, .1);
-        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        border-left: 1px solid var(--c-border);
+        border-bottom: 1px solid var(--c-border);
         padding-left: 0;
         padding-right: 0;
         transition: all 500ms;
@@ -18,7 +18,7 @@
     }
 
     .component-item:last-child {
-        border-right: 1px solid rgba(0, 0, 0, .1);
+        border-right: 1px solid var(--c-border);
     }
 
     .component-item img {
@@ -65,7 +65,7 @@
                 <div class="text-center component-item" ng-repeat="type in types">
                     <div>
                         <img alt="" ng-src="images/component/{{type.image}}">
-                        <div style="width: 100%;border: 1px dashed rgba(0, 0, 0, .1)"></div>
+                        <div style="width: 100%;border: 1px dashed var(--c-border)"></div>
                         <p class="text">{{type.name}}</p>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                 <div class="text-center component-item" ng-repeat="type in viewTypes">
                     <div>
                         <img alt="" ng-src="images/view/{{type.image}}">
-                        <div style="width: 100%;border: 1px dashed rgba(0, 0, 0, .1)"></div>
+                        <div style="width: 100%;border: 1px dashed var(--c-border)"></div>
                         <p class="text">{{type.name}}</p>
                     </div>
                 </div>
