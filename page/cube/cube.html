@@ -6,7 +6,7 @@
 
     #header {
         background: #06080f;
-        border-bottom: 1px solid rgb(26 27 34);
+        border-bottom: 2px solid rgb(26 27 34);
         color: #fff;
     }
 
@@ -56,7 +56,7 @@
         --c-text2: rgba(255, 255, 255, .4);
         --c-border: rgba(255, 255, 255, .08);
         --c-grid: rgba(255, 255, 255, .025);
-        --c-brand: #FF5722;
+        --c-brand: #4FC8EC;
     }
 
     /* Blueprint .fr / .wbtn dark overrides */
@@ -75,12 +75,12 @@
     }
 
     .cube-page .wbtn-o {
-        color: #fff;
+        color: #06080f;
         background: var(--c-brand);
     }
 
     .cube-page .wbtn-o:hover {
-        color: #fff !important;
+        color: #06080f !important;
     }
 
     /* ── Hero ── */
@@ -679,7 +679,7 @@
     }
 
     .cml-code-block {
-        background: #0a0a0f;
+        background: #0A0A0F;
         border: 1px solid rgba(255, 255, 255, .07);
         overflow: hidden;
     }
@@ -701,6 +701,12 @@
         font-size: .84em;
         line-height: 1.75;
         overflow-x: auto;
+    }
+
+    /* Prism one-dark 会给内层 code 也加背景，去掉以免在卡片内浮出色块 */
+    .cube-page code[class*="language-"] {
+        background: transparent;
+        text-shadow: none;
     }
 
     /* ── Three-way code comparison ── */
@@ -756,7 +762,7 @@
         padding: 20px;
         font-size: .82em;
         line-height: 1.72;
-        background: #0a0a0f;
+        background: #0A0A0F;
         overflow-x: auto;
     }
 
@@ -777,7 +783,7 @@
         left: 0;
         right: 0;
         height: 80px;
-        background: linear-gradient(transparent, #0a0a0f);
+        background: linear-gradient(transparent, #0A0A0F);
         pointer-events: none;
         transition: opacity .25s;
     }
@@ -1049,7 +1055,7 @@
         --c-text: rgba(255, 255, 255, .65);
         --c-text2: rgba(255, 255, 255, .28);
         --c-border: rgba(255, 255, 255, .08);
-        --c-brand: #FF5722;
+        --c-brand: #4FC8EC;
         background: #06080f;
     }
 

@@ -6,7 +6,7 @@
 
     #header {
         background: #0c0c12;
-        border-bottom: 1px solid rgba(139, 92, 246, 0.14);
+        border-bottom: 2px solid rgba(139, 92, 246, 0.14);
         color: #fff;
     }
 
@@ -62,7 +62,7 @@
 
     /* ── Code window (dark) ── */
     .ai-code-win {
-        background: #0a0a0f;
+        background: #14120B;
         border: 1px solid var(--c-border);
         overflow: hidden;
     }
@@ -97,7 +97,7 @@
         font-size: .84em;
         line-height: 1.78;
         overflow-x: auto;
-        background: #0a0a0f;
+        background: #14120B;
     }
 
     .ai-code-win pre code {
@@ -160,9 +160,9 @@
     }
 
     .ai-arch-chip-hl {
-        border-color: rgba(255, 87, 34, .3);
+        border-color: rgba(79, 200, 236, .3);
         color: var(--c-brand);
-        background: rgba(255, 87, 34, .04);
+        background: rgba(79, 200, 236, .04);
     }
 
     /* ── MCP flow ── */
@@ -185,7 +185,7 @@
     }
 
     .ai-mcp-node-hl {
-        background: rgba(255, 87, 34, .03);
+        background: rgba(79, 200, 236, .03);
     }
 
     .ai-mcp-node h5 {
@@ -255,7 +255,7 @@
 
     /* ── Console window ── */
     .ai-console {
-        background: #0a0a0f;
+        background: #14120B;
         border: 1px solid var(--c-border);
         overflow: hidden;
     }
@@ -317,7 +317,7 @@
     }
 
     .ai-t-done {
-        background: rgba(255, 87, 34, .2);
+        background: rgba(79, 200, 236, .2);
         color: #ffab91;
     }
 
@@ -378,6 +378,15 @@
         .ai-dark .c { padding: 20px 24px !important; min-width: 0; }
         .ai-dark .ai-code-win { overflow: hidden; }
         .ai-dark .ai-code-win pre { overflow-x: auto; max-width: 100%; }
+    }
+
+    /* 紫色 brand 底上的主按钮用白字（全局墨字在紫底上对比不足） */
+    .ai-dark .wbtn-o {
+        color: #fff;
+    }
+
+    .ai-dark .wbtn-o:hover {
+        color: #fff !important;
     }
 
     /* ── AI Claw section: green accent ── */
