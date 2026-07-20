@@ -1,128 +1,55 @@
 <style>
-    /* ── Header override: green theme ── */
-    #header {
-        background: rgba(8, 18, 14, 0.96);
-        border-bottom: 1px solid rgba(0, 255, 136, 0.14);
-        color: #fff;
-    }
-
-    #header .hamburger-btn span {
-        background: rgba(255, 255, 255, .75);
-    }
-
-    #header > div {
-        border-left-color: rgba(0, 255, 136, 0.14);
-        border-right-color: rgba(0, 255, 136, 0.14);
-    }
-
-    #header a {
-        color: rgba(255, 255, 255, 0.55);
-    }
-
-    #header a:hover, #header a:focus {
-        color: #00ff88;
-    }
-
-    #header .active-link {
-        color: #00ff88 !important;
-    }
-
-    #header .mobile-nav {
-        background: rgba(8, 18, 14, 0.98);
-        border-top-color: rgba(0, 255, 136, 0.14);
-    }
-
-    #header .mobile-nav a {
-        color: rgba(255, 255, 255, 0.55);
-    }
-
-    #header .mobile-nav a:hover, #header .mobile-nav a:active {
-        color: #00ff88;
-        background: rgba(0, 255, 136, 0.06);
-    }
-
-    #header .mobile-nav .mobile-nav-group {
-        color: rgba(255, 255, 255, 0.28);
-    }
-
-    #header .mobile-nav .mobile-nav-footer {
-        border-top-color: rgba(0, 255, 136, 0.14);
-    }
-
-    /* ── AI Claw — Blueprint × Black-Green ── */
+    /* ── AI Claw — Playful-Brutalist × Green ── */
     .ac {
-        --ac: #00ff88;
-        --ac-dim: rgba(0, 255, 136, .09);
-        --ac-border: rgba(0, 255, 136, .16);
-        --ac-grid: rgba(0, 255, 136, .032);
-        --ac-bg0: #0d1117;
-        --ac-bg1: #0a0f1a;
-        --ac-bg2: #161b22;
-        --ac-bg3: #21262d;
-        --ac-t1: #ffffff;
+        --ac: #00FF88;
+        --ac-dim: rgba(0, 255, 136, .10);
+        /* 深色窗口（终端 / 文件面板）内的白系文字 */
         --ac-t2: rgba(255, 255, 255, .50);
-        --ac-t3: rgba(255, 255, 255, .28);
-        --ac-lb: #E5E7EB;
-        background: var(--ac-bg0);
+        --ac-t3: rgba(255, 255, 255, .30);
+        background: var(--c-bg);
+        color: var(--c-text);
         font-family: var(--c-sans);
     }
 
-    /* ── Bounded frame — dark ── */
+    /* ── Single continuous frame ── */
     .ac-fr {
         max-width: 1200px;
         margin: 0 auto;
-        border-left: 1px solid var(--ac-border);
-        border-right: 1px solid var(--ac-border);
+        border-left: 2px solid var(--c-border);
+        border-right: 2px solid var(--c-border);
+        position: relative;
+        background: var(--c-paper);
+    }
+
+    /* ── Rows — every divider is one continuous ink line ── */
+    .ac-r {
+        border-bottom: 1px solid var(--c-border);
         position: relative;
     }
 
-    /* ── Interior section dot ticks ── */
-    .ac-fr.mid::before, .ac-fr-light.mid::before,
-    .ac-fr.mid::after, .ac-fr-light.mid::after {
+    .ac-r:last-child {
+        border-bottom: none;
+    }
+
+    /* ── Section-start ticks — green squares sitting on the divider ── */
+    .ac-sec::before, .ac-sec::after {
         content: '';
         position: absolute;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
+        width: 9px;
+        height: 9px;
         background: var(--ac);
-        border: none;
-        outline: 1.5px solid rgba(0, 255, 136, .28);
-        outline-offset: 2px;
+        border: 2px solid var(--c-border);
+        top: -5px;
         z-index: 2;
         pointer-events: none;
     }
 
-    .ac-fr.mid::before, .ac-fr-light.mid::before {
-        top: -4px;
-        left: -4px;
+    .ac-sec::before {
+        left: -2px;
     }
 
-    .ac-fr.mid::after, .ac-fr-light.mid::after {
-        top: -4px;
-        right: -4px;
-    }
-
-    /* ── Bounded frame — light ── */
-    .ac-fr-light {
-        max-width: 1200px;
-        margin: 0 auto;
-        border-left: 1px solid var(--ac-lb);
-        border-right: 1px solid var(--ac-lb);
-        position: relative;
-        background: #fff;
-    }
-
-    /* ── Rows ── */
-    .ac-r {
-        border-bottom: 1px solid var(--ac-border);
-    }
-
-    .ac-rl {
-        border-bottom: 1px solid var(--ac-lb);
-    }
-
-    .ac-r:last-child, .ac-rl:last-child {
-        border-bottom: none;
+    .ac-sec::after {
+        right: -2px;
     }
 
     /* ── Grids ── */
@@ -138,16 +65,25 @@
         gap: 0;
     }
 
-    /* ── Dark cells ── */
-    .ac-c {
+    /* ── Cells — right/bottom ink dividers, row supplies the outer line ── */
+    .ac-c, .ac-cl {
         padding: 32px;
-        border-right: 1px solid var(--ac-border);
-        border-bottom: 1px solid var(--ac-border);
+        border-right: 1px solid var(--c-border);
         position: relative;
-        background: var(--ac-bg1);
+        background: var(--c-paper);
     }
 
-    .ac-g3 > .ac-c:nth-child(3n) {
+    .ac-cl {
+        border-bottom: 1px solid var(--c-border);
+        transition: background .12s, box-shadow .12s;
+    }
+
+    .ac-cl:hover {
+        box-shadow: inset 0 0 0 2px var(--c-border);
+        background: rgba(0, 255, 136, .05);
+    }
+
+    .ac-g3 > .ac-c:nth-child(3n), .ac-g3 > .ac-cl:nth-child(3n) {
         border-right: none;
     }
 
@@ -155,141 +91,82 @@
         border-right: none;
     }
 
-    /* ── Light cells ── */
-    .ac-cl {
-        padding: 32px;
-        border-right: 1px solid var(--ac-lb);
-        border-bottom: 1px solid var(--ac-lb);
-        position: relative;
-        background: #fff;
-        transition: background .15s;
-    }
-
-    .ac-cl:hover {
-        background: rgba(0, 255, 136, .018);
-    }
-
-    .ac-g3 > .ac-cl:nth-child(3n) {
-        border-right: none;
-    }
-
     .ac-g3 > .ac-cl:nth-child(n+4) {
         border-bottom: none;
     }
 
-    /* ── Title rows ── */
+    /* ── Title rows — graph paper ── */
     .ac-title {
         padding: 44px 40px;
         text-align: center;
-        background-image: linear-gradient(var(--ac-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--ac-grid) 1px, transparent 1px);
-        background-size: 24px 24px;
-        background-color: var(--ac-bg1);
-    }
-
-    .ac-title-light {
-        padding: 44px 40px;
-        text-align: center;
-        background-image: linear-gradient(rgba(0, 0, 0, .038) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, .038) 1px, transparent 1px);
-        background-size: 24px 24px;
-        background-color: #fff;
-        border-bottom: 1px solid var(--ac-lb);
-    }
-
-    /* ── Section boundary dot ticks (middle frames only) ── */
-    .ac-fr.mid::before, .ac-fr-light.mid::before,
-    .ac-fr.mid::after, .ac-fr-light.mid::after {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--ac);
-        border: none;
-        outline: 1.5px solid rgba(0, 255, 136, .28);
-        outline-offset: 2px;
-    }
-
-    .ac-fr.mid::before, .ac-fr-light.mid::before {
-        top: -4px;
-        left: -4px;
-    }
-
-    .ac-fr.mid::after, .ac-fr-light.mid::after {
-        top: -4px;
-        right: -4px;
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+        background-color: var(--c-paper);
     }
 
     /* ── Typography ── */
     .ac-eyebrow {
+        display: inline-block;
         font-family: var(--c-mono);
         font-size: 10.5px;
-        letter-spacing: .16em;
+        font-weight: 700;
+        letter-spacing: .14em;
         text-transform: uppercase;
-        color: var(--ac);
-        display: block;
-        margin-bottom: 12px;
+        color: #14120B;
+        background: var(--ac);
+        border: 2px solid var(--c-border);
+        box-shadow: 3px 3px 0 var(--c-text);
+        padding: 4px 10px;
+        transform: rotate(-1deg);
+        margin-bottom: 16px;
     }
 
     .ac-h1 {
         font-size: clamp(32px, 5vw, 56px);
-        font-weight: 700;
-        line-height: 1.1;
+        font-weight: 800;
+        line-height: 1.12;
         letter-spacing: -.025em;
-        color: #fff;
+        color: var(--c-text);
         margin: 0 0 14px;
     }
 
-    .ac-h2d {
+    .ac-h1-mark {
+        background: var(--ac);
+        padding: 0 10px;
+        box-shadow: 3px 3px 0 var(--c-text);
+    }
+
+    .ac-h2d, .ac-h2l {
         font-size: clamp(22px, 3.5vw, 36px);
-        font-weight: 600;
+        font-weight: 800;
         letter-spacing: -.02em;
-        color: #fff;
+        color: var(--c-text);
         margin: 0 0 10px;
     }
 
-    .ac-h2l {
-        font-size: clamp(22px, 3.5vw, 36px);
-        font-weight: 600;
-        letter-spacing: -.02em;
-        color: #0A0A0F;
-        margin: 0 0 10px;
-    }
-
-    .ac-h3d {
+    .ac-h3d, .ac-h3l {
         font-size: 15px;
-        font-weight: 600;
-        color: #fff;
+        font-weight: 700;
+        color: var(--c-text);
         margin: 0 0 6px;
     }
 
-    .ac-h3l {
-        font-size: 15px;
-        font-weight: 600;
-        color: #0A0A0F;
-        margin: 0 0 6px;
-    }
-
-    .ac-sub-d {
+    .ac-sub-d, .ac-sub-l {
         font-size: 14.5px;
         line-height: 1.65;
-        color: var(--ac-t2);
-        margin: 0;
-    }
-
-    .ac-sub-l {
-        font-size: 14.5px;
-        line-height: 1.65;
-        color: #6B7280;
+        color: var(--c-text2);
         margin: 0;
     }
 
     /* ── Cursor ── */
     .ac-cursor {
         display: inline-block;
-        width: 3px;
+        width: 4px;
         height: .82em;
         background: var(--ac);
-        margin-left: 4px;
+        border: 1px solid var(--c-border);
+        margin-left: 6px;
         vertical-align: middle;
         animation: ac-blink 1s step-end infinite;
     }
@@ -307,11 +184,12 @@
     .ac-badge {
         display: inline-block;
         background: var(--ac-dim);
-        border: 1px solid var(--ac-border);
-        color: var(--ac);
+        border: 1px solid var(--c-border);
+        color: var(--c-text);
         padding: 3px 9px;
         font-size: 10.5px;
         font-family: var(--c-mono);
+        font-weight: 700;
         letter-spacing: .10em;
         text-transform: uppercase;
         margin: 3px 2px;
@@ -320,119 +198,73 @@
     /* ── Tag (feature type label) ── */
     .ac-tag {
         display: inline-block;
-        background: rgba(0, 0, 0, .05);
-        border: 1px solid var(--ac-lb);
-        color: #6B7280;
+        background: rgba(20, 18, 11, .04);
+        border: 1px solid var(--c-border);
+        color: var(--c-text2);
         padding: 1px 7px;
         font-size: 9.5px;
         font-family: var(--c-mono);
         letter-spacing: .12em;
         text-transform: uppercase;
         vertical-align: middle;
-        margin-left: 4px;
+        margin-left: 6px;
     }
 
-    /* ── Buttons ── */
-    .ac-btn {
+    /* ── Buttons — brutalist ── */
+    .ac-btn, .ac-btn-ghost {
         display: inline-flex;
         align-items: center;
         gap: 7px;
-        padding: 9px 22px;
-        border: 1px solid var(--ac);
-        color: var(--ac) !important;
+        padding: 10px 22px;
+        border: 2px solid var(--c-border);
         font-size: 13px;
-        font-weight: 500;
-        background: transparent;
+        font-weight: 800;
         cursor: pointer;
         text-decoration: none !important;
-        transition: background .15s, color .15s;
+        box-shadow: 4px 4px 0 var(--c-text);
+        transition: transform .12s, box-shadow .12s;
         font-family: var(--c-sans);
         line-height: 1;
         white-space: nowrap;
-        margin: 4px;
+        margin: 4px 6px;
     }
 
-    .ac-btn:hover {
+    .ac-btn {
         background: var(--ac);
-        color: #0d1117 !important;
-        text-decoration: none !important;
+        color: #14120B !important;
     }
 
     .ac-btn-ghost {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        padding: 9px 22px;
-        border: 1px solid rgba(255, 255, 255, .20);
-        color: rgba(255, 255, 255, .65) !important;
-        font-size: 13px;
-        font-weight: 500;
-        background: transparent;
-        cursor: pointer;
-        text-decoration: none !important;
-        transition: border-color .15s, color .15s, background .15s;
-        font-family: var(--c-sans);
-        line-height: 1;
-        white-space: nowrap;
-        margin: 4px;
+        background: var(--c-bg);
+        color: var(--c-text) !important;
     }
 
-    .ac-btn-ghost:hover {
-        border-color: rgba(255, 255, 255, .45);
-        color: #fff !important;
-        background: rgba(255, 255, 255, .06);
+    .ac-btn:hover, .ac-btn-ghost:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--c-text);
         text-decoration: none !important;
     }
 
-    .ac-btn-l {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 9px 22px;
-        border: 1px solid var(--ac-lb);
-        color: #0A0A0F !important;
-        font-size: 13px;
-        font-weight: 500;
-        background: transparent;
-        cursor: pointer;
-        text-decoration: none !important;
-        transition: border-color .15s, color .15s;
-        font-family: var(--c-sans);
-        line-height: 1;
-        white-space: nowrap;
-        margin: 4px;
+    .ac-btn:active, .ac-btn-ghost:active {
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px 0 var(--c-text);
     }
 
-    .ac-btn-l:hover {
-        border-color: var(--ac);
-        color: var(--ac) !important;
-        text-decoration: none !important;
-    }
-
-    .ac-btn-l-o {
-        border-color: var(--ac);
-        color: var(--ac) !important;
-    }
-
-    .ac-btn-l-o:hover {
-        background: var(--ac);
-        color: #0d1117 !important;
-    }
-
-    /* ── Terminal ── */
+    /* ── Terminal — dark window ── */
     .ac-terminal {
-        background: var(--ac-bg0);
-        border: 1px solid var(--ac-border);
+        background: var(--c-code-bg);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
         overflow: hidden;
     }
 
     .ac-term-bar {
-        background: var(--ac-bg3);
+        background: rgba(240, 232, 214, .07);
         padding: 10px 16px;
         display: flex;
         align-items: center;
         gap: 7px;
-        border-bottom: 1px solid rgba(255, 255, 255, .06);
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
     }
 
     .ac-term-dot {
@@ -472,7 +304,7 @@
         color: var(--ac-t3);
         font-style: italic;
         padding-left: 14px;
-        border-left: 2px solid var(--ac-border);
+        border-left: 2px solid rgba(0, 255, 136, .25);
         margin: 4px 0;
     }
 
@@ -502,10 +334,10 @@
         top: 16px;
         right: 20px;
         font-size: 48px;
-        font-weight: 700;
+        font-weight: 800;
         font-family: var(--c-mono);
         color: var(--ac);
-        opacity: .045;
+        opacity: .3;
         line-height: 1;
         pointer-events: none;
         letter-spacing: -.04em;
@@ -520,22 +352,23 @@
     }
 
     .ac-sp-title {
-        color: #fff;
+        color: var(--c-text);
         font-weight: 700;
         font-size: 14px;
         margin-bottom: 5px;
     }
 
     .ac-sp-desc {
-        color: var(--ac-t2);
+        color: var(--c-text2);
         font-size: 12.5px;
         line-height: 1.6;
     }
 
-    /* ── File explorer ── */
+    /* ── File explorer — dark window ── */
     .ac-fe {
-        border: 1px solid var(--ac-border);
-        background: var(--ac-bg2);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-code-bg);
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -544,9 +377,9 @@
     }
 
     .ac-fe-bar {
-        background: var(--ac-bg3);
+        background: rgba(240, 232, 214, .07);
         padding: 8px 14px;
-        border-bottom: 1px solid rgba(255, 255, 255, .06);
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
         font-size: 10px;
         letter-spacing: 1.2px;
         color: var(--ac-t3);
@@ -576,7 +409,7 @@
     }
 
     .ac-fe-active {
-        background: rgba(0, 255, 136, .07) !important;
+        background: rgba(0, 255, 136, .09) !important;
         color: var(--ac) !important;
     }
 
@@ -601,21 +434,20 @@
 
     .ac-fe-active .ac-fe-dot {
         background: var(--ac);
-        box-shadow: 0 0 5px rgba(0, 255, 136, .5);
     }
 
     .ac-fe-preview {
-        border-top: 1px solid rgba(255, 255, 255, .06);
+        border-top: 1px solid rgba(240, 232, 214, .12);
         padding: 14px 16px;
         margin-top: auto;
-        background: var(--ac-dim);
+        background: rgba(0, 255, 136, .06);
     }
 
     .ac-fe-preview-name {
         font-family: var(--c-mono);
         font-size: 11px;
         color: var(--ac);
-        opacity: .8;
+        opacity: .85;
         margin-bottom: 6px;
     }
 
@@ -625,10 +457,11 @@
         line-height: 1.65;
     }
 
-    /* ── Skill invoke panel ── */
+    /* ── Skill invoke panel — dark window ── */
     .ac-si {
-        border: 1px solid var(--ac-border);
-        background: var(--ac-bg2);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-code-bg);
         padding: 24px;
         display: flex;
         flex-direction: column;
@@ -646,8 +479,8 @@
     }
 
     .ac-si-user {
-        background: rgba(99, 102, 241, .08);
-        border: 1px solid rgba(99, 102, 241, .2);
+        background: rgba(99, 102, 241, .10);
+        border: 1px solid rgba(99, 102, 241, .3);
         padding: 10px 14px;
         color: rgba(255, 255, 255, .75);
         font-size: 13px;
@@ -666,7 +499,7 @@
         height: 5px;
         border-radius: 50%;
         background: var(--ac);
-        opacity: .6;
+        opacity: .7;
         flex-shrink: 0;
     }
 
@@ -680,8 +513,8 @@
     }
 
     .ac-si-result {
-        background: var(--ac-dim);
-        border: 1px solid var(--ac-border);
+        background: rgba(0, 255, 136, .08);
+        border: 1px solid rgba(0, 255, 136, .3);
         padding: 12px 14px;
         font-family: var(--c-mono);
         font-size: 11.5px;
@@ -703,10 +536,14 @@
     }
 
     /* ── Responsive ── */
-    @media (max-width: 1000px) {
-        .ac-fr, .ac-fr-light {
+    @media (max-width: 1220px) {
+        .ac-fr {
             border-left: none;
             border-right: none;
+        }
+
+        .ac-sec::before, .ac-sec::after {
+            display: none;
         }
     }
 
@@ -719,15 +556,19 @@
             border-right: none;
         }
 
+        .ac-g3 > .ac-c:not(:last-child), .ac-g2 > .ac-c:not(:last-child) {
+            border-bottom: 1px solid var(--c-border);
+        }
+
         .ac-g3 > .ac-cl:nth-child(n+4) {
-            border-bottom: 1px solid var(--ac-lb);
+            border-bottom: 1px solid var(--c-border);
         }
 
         .ac-g3 > .ac-cl:last-child {
             border-bottom: none;
         }
 
-        .ac-title, .ac-title-light {
+        .ac-title {
             padding: 32px 20px;
         }
 
@@ -742,193 +583,177 @@
 </style>
 
 <div class="ac" ng-controller="aiClaw">
+    <div class="ac-fr">
 
-    <!-- ── HERO ── -->
-    <div style="background:var(--ac-bg0)">
-        <div class="ac-fr">
-            <div class="ac-r" style="padding:72px 40px 56px;text-align:center;position:relative;background:var(--ac-bg0);
-                background-image:linear-gradient(var(--ac-grid) 1px,transparent 1px),linear-gradient(90deg,var(--ac-grid) 1px,transparent 1px);
-                background-size:24px 24px">
-                <div style="position:relative;z-index:1">
-                    <span class="ac-eyebrow">Apache 2.0 · xyz.erupt</span>
-                    <h1 class="ac-h1">🦞 Erupt<span style="color:var(--ac)"> AI Claw</span><span
-                            class="ac-cursor"></span></h1>
-                    <p class="ac-sub-d" style="max-width:620px;margin:0 auto 24px">{{'claw.hero.subtitle'|i18n}}</p>
-                    <div style="margin-bottom:22px">
-                        <span class="ac-badge">{{'claw.badge.nlp'|i18n}}</span>
-                        <span class="ac-badge">{{'claw.badge.shell'|i18n}}</span>
-                        <span class="ac-badge">{{'claw.badge.file'|i18n}}</span>
-                        <span class="ac-badge">{{'claw.badge.data'|i18n}}</span>
-                        <span class="ac-badge">{{'claw.badge.skills'|i18n}}</span>
-                    </div>
-                    <div>
-                        <a class="ac-btn" href="https://docs.erupt.xyz/modules/erupt-ai-claw" target="_blank">{{'claw.hero.btn.doc'|i18n}}</a>
-                        <a class="ac-btn-ghost" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
-                    </div>
+        <!-- ── HERO ── -->
+        <div class="ac-r" style="padding:72px 40px 56px;text-align:center;
+            background-image:linear-gradient(var(--c-grid) 1px,transparent 1px),linear-gradient(90deg,var(--c-grid) 1px,transparent 1px);
+            background-size:32px 32px">
+            <div style="position:relative;z-index:1">
+                <span class="ac-eyebrow">Apache 2.0 · xyz.erupt</span>
+                <h1 class="ac-h1">🦞 Erupt<span class="ac-h1-mark"> AI Claw</span><span
+                        class="ac-cursor"></span></h1>
+                <p class="ac-sub-d" style="max-width:620px;margin:0 auto 24px">{{'claw.hero.subtitle'|i18n}}</p>
+                <div style="margin-bottom:26px">
+                    <span class="ac-badge">{{'claw.badge.nlp'|i18n}}</span>
+                    <span class="ac-badge">{{'claw.badge.shell'|i18n}}</span>
+                    <span class="ac-badge">{{'claw.badge.file'|i18n}}</span>
+                    <span class="ac-badge">{{'claw.badge.data'|i18n}}</span>
+                    <span class="ac-badge">{{'claw.badge.skills'|i18n}}</span>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── TERMINAL DEMO ── -->
-    <div style="background:var(--ac-bg1)">
-        <div class="ac-fr mid">
-            <div class="ac-title ac-r" style="background:rgba(0,255,136,0.14);background-image:none">
-                <span class="ac-eyebrow">Demo</span>
-                <h2 class="ac-h2d">{{'claw.demo.title'|i18n}}</h2>
-                <p class="ac-sub-d" style="max-width:540px;margin:8px auto 0">{{'claw.demo.subtitle'|i18n}}</p>
-            </div>
-            <div class="ac-r ac-reveal" style="padding:40px;background:var(--ac-bg1)">
-                <div class="ac-terminal">
-                    <div class="ac-term-bar">
-                        <div class="ac-term-dot" style="background:#ff5f56"></div>
-                        <div class="ac-term-dot" style="background:#ffbd2e"></div>
-                        <div class="ac-term-dot" style="background:#27c93f"></div>
-                        <span class="ac-term-title">erupt-ai-claw — natural language console</span>
-                    </div>
-                    <div class="ac-term-body">
-                        <div ng-repeat="msg in demoMessages">
-                            <div class="ac-msg-user" ng-if="msg.type==='user'">{{msg.text | i18n}}</div>
-                            <div class="ac-msg-think" ng-if="msg.type==='think'">💭 {{msg.text | i18n}}</div>
-                            <div class="ac-msg-action" ng-if="msg.type==='action'">⚡ {{msg.text}}</div>
-                            <div class="ac-msg-result" ng-if="msg.type==='result'">✓ {{msg.text | i18n}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── CORE FEATURES ── -->
-    <div style="background:#fff">
-        <div class="ac-fr-light mid">
-            <div class="ac-title-light">
-                <span class="ac-eyebrow">{{'claw.feat.title'|i18n}}</span>
-                <h2 class="ac-h2l" style="margin-top:4px">{{'claw.feat.subtitle'|i18n}}</h2>
-            </div>
-            <div class="ac-g3 ac-reveal">
-                <div class="ac-cl" ng-repeat="f in features">
-                    <span class="ac-ghost">0{{$index+1}}</span>
-                    <span class="ac-feat-icon">{{f.icon}}</span>
-                    <div style="display:flex;align-items:center;gap:0;margin-bottom:8px">
-                        <h3 class="ac-h3l" style="margin:0">{{f.title}}</h3>
-                        <span class="ac-tag">{{f.tag}}</span>
-                    </div>
-                    <p class="ac-sub-l">{{f.desc}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── SKILLS EXTENSION ── -->
-    <div style="background:var(--ac-bg1)">
-        <div class="ac-fr mid">
-            <div class="ac-title ac-r">
-                <span class="ac-eyebrow">Skills System</span>
-                <h2 class="ac-h2d">{{'claw.skills.title'|i18n}}</h2>
-                <p class="ac-sub-d" style="max-width:540px;margin:8px auto 0">{{'claw.skills.subtitle'|i18n}}</p>
-            </div>
-
-            <!-- 3 property cards -->
-            <div class="ac-g3 ac-r ac-reveal">
-                <div class="ac-c">
-                    <div style="display:flex;align-items:flex-start;gap:12px">
-                        <span class="ac-sp-icon">⚡</span>
-                        <div>
-                            <div class="ac-sp-title">{{'claw.skills.p1.title'|i18n}}</div>
-                            <div class="ac-sp-desc">{{'claw.skills.p1.desc'|i18n}}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ac-c">
-                    <div style="display:flex;align-items:flex-start;gap:12px">
-                        <span class="ac-sp-icon">🔄</span>
-                        <div>
-                            <div class="ac-sp-title">{{'claw.skills.p2.title'|i18n}}</div>
-                            <div class="ac-sp-desc">{{'claw.skills.p2.desc'|i18n}}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ac-c">
-                    <div style="display:flex;align-items:flex-start;gap:12px">
-                        <span class="ac-sp-icon">∞</span>
-                        <div>
-                            <div class="ac-sp-title">{{'claw.skills.p3.title'|i18n}}</div>
-                            <div class="ac-sp-desc">{{'claw.skills.p3.desc'|i18n}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- File explorer + invocation panel -->
-            <div class="ac-g2 ac-reveal">
-                <div class="ac-c" style="border-bottom:none">
-                    <div class="ac-fe">
-                        <div class="ac-fe-bar">Explorer — .erupt/skills</div>
-                        <div class="ac-fe-body">
-                            <div class="ac-fe-row ac-fe-dir">
-                                <span class="ac-fe-arrow">▾</span>.erupt/skills
-                            </div>
-                            <div class="ac-fe-row ac-fe-dir" style="padding-left:28px">
-                                <span class="ac-fe-arrow">▸</span>send-alert
-                            </div>
-                            <div class="ac-fe-row ac-fe-dir ac-fe-active" style="padding-left:28px">
-                                <span class="ac-fe-arrow">▾</span>check-service
-                            </div>
-                            <div class="ac-fe-row ac-fe-active" style="padding-left:52px">
-                                <span class="ac-fe-dot"></span>SKILL.md
-                            </div>
-                            <div class="ac-fe-row" style="padding-left:52px">
-                                <span class="ac-fe-dot"></span>references
-                            </div>
-                            <div class="ac-fe-row ac-fe-dir" style="padding-left:28px">
-                                <span class="ac-fe-arrow">▸</span>backup-db
-                            </div>
-                        </div>
-                        <div class="ac-fe-preview">
-                            <div class="ac-fe-preview-name">▸ check-service / SKILL.md</div>
-                            <div class="ac-fe-preview-content">Query the health status of the specified service, returning UP / DOWN and per-component state.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ac-c" style="border-bottom:none">
-                    <div class="ac-si">
-                        <div class="ac-si-label">{{'claw.skills.invoke.label'|i18n}}</div>
-                        <div class="ac-si-user">Check if the payment service is healthy</div>
-                        <div class="ac-si-step">
-                            <span class="ac-si-dot"></span>
-                            <span class="ac-si-step-label">{{'claw.skills.invoke.discover'|i18n}}</span>
-                            <code class="ac-si-step-val">check-service.md</code>
-                        </div>
-                        <div class="ac-si-step">
-                            <span class="ac-si-dot"></span>
-                            <span class="ac-si-step-label">{{'claw.skills.invoke.call'|i18n}}</span>
-                            <code class="ac-si-step-val">payment-service</code>
-                        </div>
-                        <div class="ac-si-result">
-                            <span style="color:var(--ac)">✓</span>&nbsp;{"status":"UP","db":"UP","cache":"UP"}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── CTA ── -->
-    <div style="background:#fff">
-        <div class="ac-fr-light mid">
-            <div class="ac-title-light" style="border-bottom:none;padding-bottom:56px">
-                <div style="font-size:2.4em;margin-bottom:12px">🦞</div>
-                <h2 class="ac-h2l">{{'claw.cta.title'|i18n}}</h2>
-                <p class="ac-sub-l" style="max-width:440px;margin:0 auto 24px">{{'claw.cta.subtitle'|i18n}}</p>
                 <div>
-                    <a class="ac-btn-l ac-btn-l-o" href="https://docs.erupt.xyz/modules/erupt-ai-claw" target="_blank">{{'claw.cta.doc'|i18n}}</a>
-                    <a class="ac-btn-l" href="#!/ai">{{'claw.cta.also_ai'|i18n}}</a>
+                    <a class="ac-btn" href="https://docs.erupt.xyz/modules/erupt-ai-claw" target="_blank">{{'claw.hero.btn.doc'|i18n}}</a>
+                    <a class="ac-btn-ghost" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- ── TERMINAL DEMO ── -->
+        <div class="ac-title ac-r ac-sec" style="background-color:rgba(0,255,136,0.12)">
+            <span class="ac-eyebrow">Demo</span>
+            <h2 class="ac-h2d">{{'claw.demo.title'|i18n}}</h2>
+            <p class="ac-sub-d" style="max-width:540px;margin:8px auto 0">{{'claw.demo.subtitle'|i18n}}</p>
+        </div>
+        <div class="ac-r ac-reveal" style="padding:40px">
+            <div class="ac-terminal">
+                <div class="ac-term-bar">
+                    <div class="ac-term-dot" style="background:#ff5f56"></div>
+                    <div class="ac-term-dot" style="background:#ffbd2e"></div>
+                    <div class="ac-term-dot" style="background:#27c93f"></div>
+                    <span class="ac-term-title">erupt-ai-claw — natural language console</span>
+                </div>
+                <div class="ac-term-body">
+                    <div ng-repeat="msg in demoMessages">
+                        <div class="ac-msg-user" ng-if="msg.type==='user'">{{msg.text | i18n}}</div>
+                        <div class="ac-msg-think" ng-if="msg.type==='think'">💭 {{msg.text | i18n}}</div>
+                        <div class="ac-msg-action" ng-if="msg.type==='action'">⚡ {{msg.text}}</div>
+                        <div class="ac-msg-result" ng-if="msg.type==='result'">✓ {{msg.text | i18n}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── CORE FEATURES ── -->
+        <div class="ac-title ac-r ac-sec">
+            <span class="ac-eyebrow">{{'claw.feat.title'|i18n}}</span>
+            <h2 class="ac-h2l" style="margin-top:10px">{{'claw.feat.subtitle'|i18n}}</h2>
+        </div>
+        <div class="ac-g3 ac-r ac-reveal">
+            <div class="ac-cl" ng-repeat="f in features">
+                <span class="ac-ghost">0{{$index+1}}</span>
+                <span class="ac-feat-icon">{{f.icon}}</span>
+                <div style="display:flex;align-items:center;gap:0;margin-bottom:8px">
+                    <h3 class="ac-h3l" style="margin:0">{{f.title}}</h3>
+                    <span class="ac-tag">{{f.tag}}</span>
+                </div>
+                <p class="ac-sub-l">{{f.desc}}</p>
+            </div>
+        </div>
+
+        <!-- ── SKILLS EXTENSION ── -->
+        <div class="ac-title ac-r ac-sec">
+            <span class="ac-eyebrow">Skills System</span>
+            <h2 class="ac-h2d">{{'claw.skills.title'|i18n}}</h2>
+            <p class="ac-sub-d" style="max-width:540px;margin:8px auto 0">{{'claw.skills.subtitle'|i18n}}</p>
+        </div>
+
+        <!-- 3 property cards -->
+        <div class="ac-g3 ac-r ac-reveal">
+            <div class="ac-c">
+                <div style="display:flex;align-items:flex-start;gap:12px">
+                    <span class="ac-sp-icon">⚡</span>
+                    <div>
+                        <div class="ac-sp-title">{{'claw.skills.p1.title'|i18n}}</div>
+                        <div class="ac-sp-desc">{{'claw.skills.p1.desc'|i18n}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ac-c">
+                <div style="display:flex;align-items:flex-start;gap:12px">
+                    <span class="ac-sp-icon">🔄</span>
+                    <div>
+                        <div class="ac-sp-title">{{'claw.skills.p2.title'|i18n}}</div>
+                        <div class="ac-sp-desc">{{'claw.skills.p2.desc'|i18n}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ac-c">
+                <div style="display:flex;align-items:flex-start;gap:12px">
+                    <span class="ac-sp-icon">∞</span>
+                    <div>
+                        <div class="ac-sp-title">{{'claw.skills.p3.title'|i18n}}</div>
+                        <div class="ac-sp-desc">{{'claw.skills.p3.desc'|i18n}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- File explorer + invocation panel -->
+        <div class="ac-g2 ac-r ac-reveal">
+            <div class="ac-c">
+                <div class="ac-fe">
+                    <div class="ac-fe-bar">Explorer — .erupt/skills</div>
+                    <div class="ac-fe-body">
+                        <div class="ac-fe-row ac-fe-dir">
+                            <span class="ac-fe-arrow">▾</span>.erupt/skills
+                        </div>
+                        <div class="ac-fe-row ac-fe-dir" style="padding-left:28px">
+                            <span class="ac-fe-arrow">▸</span>send-alert
+                        </div>
+                        <div class="ac-fe-row ac-fe-dir ac-fe-active" style="padding-left:28px">
+                            <span class="ac-fe-arrow">▾</span>check-service
+                        </div>
+                        <div class="ac-fe-row ac-fe-active" style="padding-left:52px">
+                            <span class="ac-fe-dot"></span>SKILL.md
+                        </div>
+                        <div class="ac-fe-row" style="padding-left:52px">
+                            <span class="ac-fe-dot"></span>references
+                        </div>
+                        <div class="ac-fe-row ac-fe-dir" style="padding-left:28px">
+                            <span class="ac-fe-arrow">▸</span>backup-db
+                        </div>
+                    </div>
+                    <div class="ac-fe-preview">
+                        <div class="ac-fe-preview-name">▸ check-service / SKILL.md</div>
+                        <div class="ac-fe-preview-content">Query the health status of the specified service, returning
+                            UP / DOWN and per-component state.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ac-c">
+                <div class="ac-si">
+                    <div class="ac-si-label">{{'claw.skills.invoke.label'|i18n}}</div>
+                    <div class="ac-si-user">Check if the payment service is healthy</div>
+                    <div class="ac-si-step">
+                        <span class="ac-si-dot"></span>
+                        <span class="ac-si-step-label">{{'claw.skills.invoke.discover'|i18n}}</span>
+                        <code class="ac-si-step-val">check-service.md</code>
+                    </div>
+                    <div class="ac-si-step">
+                        <span class="ac-si-dot"></span>
+                        <span class="ac-si-step-label">{{'claw.skills.invoke.call'|i18n}}</span>
+                        <code class="ac-si-step-val">payment-service</code>
+                    </div>
+                    <div class="ac-si-result">
+                        <span style="color:var(--ac)">✓</span>&nbsp;{"status":"UP","db":"UP","cache":"UP"}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── CTA ── -->
+        <div class="ac-title ac-r ac-sec" style="padding-bottom:56px">
+            <div style="font-size:2.4em;margin-bottom:12px">🦞</div>
+            <h2 class="ac-h2l">{{'claw.cta.title'|i18n}}</h2>
+            <p class="ac-sub-l" style="max-width:440px;margin:0 auto 24px">{{'claw.cta.subtitle'|i18n}}</p>
+            <div>
+                <a class="ac-btn" href="https://docs.erupt.xyz/modules/erupt-ai-claw" target="_blank">{{'claw.cta.doc'|i18n}}</a>
+                <a class="ac-btn-ghost" href="#!/ai">{{'claw.cta.also_ai'|i18n}}</a>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <script>
@@ -936,8 +761,8 @@
         var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
                 if (e.isIntersecting) {
-                    e.target.classList.add('is-visible');
                     io.unobserve(e.target);
+                    e.target.classList.add('is-visible');
                 }
             });
         }, {threshold: 0.05});

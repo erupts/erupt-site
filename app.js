@@ -18,8 +18,17 @@ var app = angular.module('app', [
     $rootScope.currentLang = i18n.getLang();
     updateTitle();
 
+    // 暗色主题页面：进入时同步 html/body 背景色，避免露出白底（overscroll、边缘缝隙）
+    var darkRouteBg = {
+        '/cube': '#06080f',
+        '/ai': '#0c0c12'
+    };
+
     $rootScope.$on('$routeChangeSuccess', function (eve, current, previous) {
         $rootScope.currRouter = current.$$route.originalPath;
+        var bg = darkRouteBg[$rootScope.currRouter] || '';
+        document.documentElement.style.background = bg;
+        document.body.style.background = bg;
     });
 }).config(function ($routeProvider) {
     $routeProvider.when('/', {
@@ -38,20 +47,10 @@ var app = angular.module('app', [
             toTemplate();
             return "page/cloud/cloud.html";
         }
-    }).when('/module', {
-        templateUrl: function (attr) {
-            toTemplate();
-            return "page/extra/extra.html";
-        }
     }).when('/contrast', {
         templateUrl: function (attr) {
             toTemplate();
             return "page/contrast/contrast.html";
-        }
-    }).when('/component', {
-        templateUrl: function (attr) {
-            toTemplate();
-            return "page/component/component.html";
         }
     }).when('/ai', {
         templateUrl: function (attr) {

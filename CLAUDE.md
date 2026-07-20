@@ -23,9 +23,7 @@ i18n.csv            # Translation data — source of truth (key, zh-CN, en-US)
 assets/             # Third-party libs (Bootstrap, Angular, Prism, fonts)
 page/
   home.html         # Home page
-  component/        # Component showcase page
   contrast/         # Code examples page
-  extra/            # Extensions/modules page
   doc/              # Documentation page
   flow/             # Workflow page
 ```
@@ -35,9 +33,7 @@ page/
 Routes are hash-based (`#!/path`) defined in `app.js`:
 
 - `/` → `page/home.html`
-- `/component` → `page/component/component.html`
 - `/contrast` → `page/contrast/contrast.html`
-- `/module` → `page/extra/extra.html`
 - `/doc` → `page/doc/doc.html`
 - `/flow` → `page/flow/flow.html`
 
@@ -55,26 +51,45 @@ that contain HTML. Language toggle is handled via `i18n.getLang()` / `i18n.setLa
 CSV escaping: fields containing commas or double-quotes must be quoted; literal `"` is escaped as `""`
 (standard RFC 4180).
 
-## Home Page Layout — Blueprint Grid
+## Design Language — Playful-Brutalist
 
-`page/home.html` uses a **Blueprint-style bordered grid** (工程制图风格有界网格布局), inspired by vite.dev.
+The whole site uses a **Playful-Brutalist** design language (玩趣新粗野, same family as the
+docs.erupt.xyz homepage): warm paper background, ink structural lines, hard offset shadows,
+a pastel multi-accent palette, zero border-radius, no gradients / blur / glow.
 
-Key design elements:
+Core rules (tokens live in `app.css` `:root`):
 
-- **`.fr`** — centered 1200px frame with `border: 1px solid var(--c-border)` on all four sides; orange L-shaped corner
-  brackets via `::before` / `::after` and a `<div class="fr-corners">` helper for the bottom two
+- **Paper & ink** — page background `--c-bg: #FFFFFF`; cards/windows sit on
+  `--c-paper: #FFFFFF`; ink is `--c-text` / `--c-border: #14120B`. Every divider is a visible ink
+  line: outer frames (`.fr`, header, footer, standalone cards) use `2px`, inner dividers use `1px`
+- **Hard shadows only** — `--c-shadow: 4px 4px 0 var(--c-text)`; never blurred `box-shadow`,
+  `text-shadow`, or `backdrop-filter`
+- **Pastel accents** — primary `--c-brand: #4FC8EC` (cyan, CTA fills with **ink text**, never white;
+  no pink — user vetoed it); supporting `--c-green: #93D655` (success/strings), `--c-purple: #BCA0F2`
+  (keywords). Status/data semantics inside product mockups may keep their own colors
+- **Dark code windows** — `--c-code-bg: #1A170F` with cream text `--c-code-text: #F0E8D6`;
+  syntax: annotations cyan, keywords purple, strings green
+- **Square corners** — `border-radius: 0` everywhere; `50%` allowed only for genuine small dots (≤12px)
+- **Typography** — headings `font-weight: 800`, tight letter-spacing; `.tag` labels are cyan stamp
+  chips (ink uppercase mono text on `--c-cyan`, 2px ink border + `3px 3px 0` shadow, rotated `-1deg`)
+
+Shared layout classes (all in `app.css`):
+
+- **`.fr`** — centered 1200px frame, `2px` black left/right borders
 - **`.r`** — horizontal row, separated by `border-bottom`; last child has no border
 - **`.g2/.g3/.g4/.g6`** — CSS grid column layouts inside a row; cells (`.c`) use `border-right` + `border-bottom` as
   dividers (no gap)
-- **`.g-bg`** — light dot-grid graph-paper background for section heading rows
-- **`.ticks`** — orange triangular tick marks (`::before` left, `::after` right) sitting on each row's top border, like
+- **`.g-bg`** — graph-paper grid background (32px) for section heading rows
+- **`.ticks`** — brand-cyan triangular tick marks (`::before` left, `::after` right) sitting on each row's top border,
+  like
   engineering drawing measurement indicators
-- **`.wbtn` / `.wbtn-o`** — blueprint-style buttons (not Bootstrap); use these inside `.fr` sections; Bootstrap `.btn-*`
-  is reserved for the hero
-- **`.clickable`** — adds hover tint `rgba(255,87,34,.018)` to `.c` cells; `.git-card` uses the same tint
+- **`.wbtn` / `.wbtn-o`** — brutalist buttons: `2px` ink border + `4px 4px 0` hard shadow; hover lifts
+  (`translate(-2px,-2px)`, shadow grows to `6px`), active presses down. `.wbtn-o` is the cyan filled primary
+  (ink text). `.nav-cta` is the compact header variant
+- **`.clickable`** — `.c` cell hover: `inset 0 0 0 2px` ink outline + faint brand tint; `.git-card` same
 - **`.bleed-lines`** — top & bottom 1px `var(--c-border)` lines that extend full viewport width (`width:100vw`) beyond the `.fr` container, creating a 井字 (hashtag-frame) effect; combine with `.r` on the same element
 
-Hero (§1 + §1b) lives inside `.fr` as the first two rows. All subsequent sections are numbered §2 onward.
+Hero (§1 + §1b) lives inside `.fr` as the first two rows of `page/home.html`. All subsequent sections are numbered §2 onward.
 
 ## Development
 

@@ -12,7 +12,7 @@
         align-items: center;
         gap: 10px;
         padding: 10px 16px;
-        border-bottom: 1px solid #e8e8e8;
+        border-bottom: 1px solid var(--c-border);
         background: #f5f5f5;
     }
 
@@ -35,7 +35,6 @@
     .cv-step .num {
         width: 18px;
         height: 18px;
-        border-radius: 50%;
         background: #e6e6e6;
         color: #888;
         display: grid;
@@ -51,7 +50,6 @@
         background: var(--c-brand);
         color: #fff;
         border: 0;
-        border-radius: 5px;
         font-size: 12px;
         font-weight: 600;
         cursor: pointer;
@@ -89,11 +87,10 @@
 
     .node {
         position: absolute;
-        border-radius: 8px;
         font-size: 12px;
-        border: 1px solid #ddd;
+        border: 1px solid var(--c-border);
         background: #fff;
-        box-shadow: 0 4px 12px rgba(0,0,0,.08);
+        box-shadow: 4px 4px 0 var(--c-text);
         overflow: hidden;
     }
 
@@ -121,7 +118,10 @@
     .node .nb .arr { color: #bbb; }
 
     .node.start .nh { background: #5a6473; }
-    .node.appr .nh { background: #FF5722; }
+
+    .node.appr .nh {
+        background: #4FC8EC;
+    }
     .node.cond .nh { background: #3b6ac4; }
     .node.delay .nh { background: #3a9e6e; }
     .node.end {
@@ -132,8 +132,7 @@
         background: #f0f0f0;
         color: #888;
         font-size: 12px;
-        border-radius: 8px;
-        border: 1px dashed #ccc;
+        border: 1px dashed var(--c-border);
     }
 
     .branch-pill {
@@ -144,7 +143,6 @@
         background: #fff;
         border: 1.5px dashed #3b6ac4;
         color: #3b6ac4;
-        border-radius: 18px;
         padding: 5px 12px;
         font-size: 12px;
         cursor: pointer;
@@ -157,8 +155,7 @@
         width: 22px;
         height: 22px;
         background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 50%;
+        border: 1px solid var(--c-border);
         cursor: pointer;
         z-index: 2;
     }
@@ -171,7 +168,6 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border-radius: 1px;
     }
 
     .plus::before {
@@ -192,8 +188,7 @@
         align-items: center;
         gap: 6px;
         background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 6px;
+        border: 1px solid var(--c-border);
         padding: 4px 8px;
         font-size: 12px;
     }
@@ -210,7 +205,6 @@
     }
 
     .pal {
-        border-radius: 5px;
         padding: 7px 9px;
         font-size: 11px;
         color: #fff;
@@ -218,11 +212,14 @@
         display: flex;
         align-items: center;
         gap: 5px;
-        border: 1px solid rgba(0,0,0,.1);
+        border: 1px solid var(--c-border);
     }
 
     .pal.start  { background: #5a6473; }
-    .pal.appr   { background: #FF5722; }
+
+    .pal.appr {
+        background: #4FC8EC;
+    }
     .pal.cc     { background: #7c5cbf; }
     .pal.cond   { background: #3b6ac4; color: #fff; }
     .pal.delay  { background: #3a9e6e; }
@@ -233,11 +230,10 @@
 
     /* ── Phone mockup ── */
     .phone {
-        border-radius: 32px;
         padding: 9px;
         background: linear-gradient(160deg, #2c2c3e, #111117);
         border: 1px solid #333;
-        box-shadow: 0 20px 50px -15px rgba(0,0,0,.5);
+        box-shadow: 4px 4px 0 var(--c-text);
         width: 300px;
         height: 600px;
         position: relative;
@@ -252,13 +248,11 @@
         width: 80px;
         height: 22px;
         background: #0d0d10;
-        border-radius: 12px;
     }
 
     .phone .screen {
         background: #fff;
         color: #1a1a1a;
-        border-radius: 24px;
         height: 100%;
         padding: 40px 16px 16px;
         overflow: hidden;
@@ -281,8 +275,7 @@
         display: block;
         width: 100%;
         padding: 8px 9px;
-        border: 1px solid #e3e3e3;
-        border-radius: 4px;
+        border: 1px solid var(--c-border);
         font-size: 12px;
         color: #222;
         background: #fff;
@@ -301,7 +294,6 @@
 
     .pv-field .slider {
         height: 4px;
-        border-radius: 2px;
         background: linear-gradient(90deg, var(--c-brand) 30%, #eee 30%);
         margin-top: 8px;
         position: relative;
@@ -347,9 +339,8 @@
 
     .pv-field .colorbar {
         height: 22px;
-        border-radius: 4px;
         background: linear-gradient(90deg, #f00, #ff8a00, #fff100, #00d8ff, #2255ff, #b400ff);
-        border: 1px solid #e3e3e3;
+        border: 1px solid var(--c-border);
     }
 
     /* ── Schema panel ── */
@@ -371,11 +362,10 @@
 
     .schema-panel h4 .pill {
         font-size: 10px;
-        background: rgba(255,87,34,.1);
+        background: rgba(79, 200, 236, .1);
         color: var(--c-brand);
-        border: 1px solid rgba(255,87,34,.3);
+        border: 1px solid rgba(79, 200, 236, .3);
         padding: 2px 7px;
-        border-radius: 3px;
         font-weight: 500;
     }
 
@@ -386,9 +376,8 @@
         justify-content: space-between;
         align-items: center;
         padding: 5px 8px;
-        border-radius: 3px;
         background: #fafafa;
-        border: 1px solid #f0f0f0;
+        border: 1px solid var(--c-border);
         font-family: "JetBrains Mono", monospace;
         font-size: 11.5px;
     }
@@ -398,7 +387,6 @@
     .field-row .t.req { color: var(--c-brand); }
 
     .schema-pre {
-        border-radius: 5px;
         font-size: 11.5px;
         line-height: 1.75;
         overflow: auto;
@@ -411,9 +399,8 @@
         color: #666;
         line-height: 1.6;
         padding: 10px 12px;
-        background: rgba(255,87,34,.04);
+        background: rgba(79, 200, 236, .04);
         border-left: 3px solid var(--c-brand);
-        border-radius: 0 4px 4px 0;
     }
 
     .schema-note b { color: #333; }
@@ -431,7 +418,7 @@
         align-items: center;
         gap: 12px;
         padding: 10px 16px;
-        border-bottom: 1px solid #ececec;
+        border-bottom: 1px solid var(--c-border);
         background: #fafaf9;
         font-size: 13px;
     }
@@ -449,7 +436,6 @@
     .ix-bar .icon {
         width: 28px;
         height: 28px;
-        border-radius: 50%;
         background: #f0f0f0;
         display: grid;
         place-items: center;
@@ -463,7 +449,7 @@
     }
 
     .ix-side {
-        border-right: 1px solid #ececec;
+        border-right: 1px solid var(--c-border);
         padding: 12px 0;
         background: #fafaf9;
     }
@@ -492,13 +478,16 @@
         color: #fff;
         font-size: 10px;
         padding: 1px 6px;
-        border-radius: 9px;
     }
 
-    .ix-side .it.on { background: rgba(255,87,34,.08); color: var(--c-brand); font-weight: 500; }
+    .ix-side .it.on {
+        background: rgba(79, 200, 236, .08);
+        color: var(--c-brand);
+        font-weight: 500;
+    }
 
     .ix-list {
-        border-right: 1px solid #ececec;
+        border-right: 1px solid var(--c-border);
         display: flex;
         flex-direction: column;
     }
@@ -508,7 +497,7 @@
         align-items: center;
         gap: 8px;
         padding: 10px 14px;
-        border-bottom: 1px solid #ececec;
+        border-bottom: 1px solid var(--c-border);
         background: #f8f8f8;
     }
 
@@ -516,8 +505,7 @@
         flex: 1;
         font-size: 12px;
         color: #bbb;
-        border: 1px solid #e8e8e8;
-        border-radius: 4px;
+        border: 1px solid var(--c-border);
         padding: 5px 8px;
         background: #fff;
     }
@@ -526,11 +514,14 @@
 
     .ix-row {
         padding: 10px 14px;
-        border-bottom: 1px solid #f0f0f0;
+        border-bottom: 1px solid var(--c-border);
         cursor: pointer;
     }
 
-    .ix-row.on { background: rgba(255,87,34,.04); border-left: 2px solid var(--c-brand); }
+    .ix-row.on {
+        background: rgba(79, 200, 236, .04);
+        border-left: 2px solid var(--c-brand);
+    }
 
     .ix-row .top {
         display: flex;
@@ -564,7 +555,6 @@
     .badge {
         font-size: 10px;
         padding: 2px 6px;
-        border-radius: 3px;
         font-weight: 600;
     }
 
@@ -605,7 +595,7 @@
     .ix-tabs {
         display: flex;
         gap: 16px;
-        border-bottom: 1px solid #ececec;
+        border-bottom: 1px solid var(--c-border);
         margin-bottom: 12px;
     }
 
@@ -638,8 +628,7 @@
 
     .ix-form .f input, .ix-form .f .pfx {
         width: 100%;
-        border: 1px solid #e8e8e8;
-        border-radius: 4px;
+        border: 1px solid var(--c-border);
         padding: 6px 8px;
         font-size: 11.5px;
         color: #333;
@@ -658,9 +647,8 @@
 
     .ix-form .colorbar {
         height: 22px;
-        border-radius: 4px;
         background: linear-gradient(90deg, #f00, #ff8a00, #fff100, #00d8ff, #2255ff, #b400ff);
-        border: 1px solid #e3e3e3;
+        border: 1px solid var(--c-border);
     }
 
     .ix-actions {
@@ -668,15 +656,14 @@
         gap: 8px;
         margin-top: 16px;
         padding-top: 12px;
-        border-top: 1px solid #ececec;
+        border-top: 1px solid var(--c-border);
         flex-wrap: wrap;
     }
 
     .ix-act {
         padding: 6px 12px;
         font-size: 11.5px;
-        border: 1px solid #e3e3e3;
-        border-radius: 5px;
+        border: 1px solid var(--c-border);
         background: #fff;
         color: #333;
         display: inline-flex;
@@ -701,7 +688,7 @@
         align-items: center;
         gap: 12px;
         padding: 9px 14px;
-        border-bottom: 1px solid #ececec;
+        border-bottom: 1px solid var(--c-border);
         background: #fafaf9;
     }
 
@@ -726,7 +713,6 @@
     .settings-card .s-steps .snum {
         width: 17px;
         height: 17px;
-        border-radius: 50%;
         background: #e6e6e6;
         color: #888;
         display: grid;
@@ -740,7 +726,6 @@
         padding: 5px 12px;
         background: var(--c-brand);
         color: #fff;
-        border-radius: 5px;
         font-size: 11.5px;
         font-weight: 600;
     }
@@ -761,8 +746,7 @@
 
     .selectbox {
         padding: 9px 11px;
-        border: 1px solid #e3e3e3;
-        border-radius: 4px;
+        border: 1px solid var(--c-border);
         color: #aaa;
         font-size: 12.5px;
         background: #fff;
@@ -816,7 +800,7 @@
     .archi-cell b { color: #333; font-weight: 600; display: block; }
 
     .archi-cell.accent {
-        background: rgba(255,87,34,.06);
+        background: rgba(79, 200, 236, .06);
     }
 
     .archi-cell.accent b { color: var(--c-brand); }
@@ -828,7 +812,6 @@
         width: 6px; height: 6px;
         border-radius: 50%;
         background: var(--c-brand);
-        box-shadow: 0 0 8px var(--c-brand);
         opacity: 0;
     }
     @media (max-width: 700px) {
@@ -873,9 +856,10 @@
                 <span style="font-family:monospace; font-size:12px; color:var(--c-text-muted); margin-left:4px">Spring Boot 3</span>
             </div>
         </div>
-        <div class="flow-hero-right" style="flex:0 0 42%; border-left:1px solid var(--c-border); padding:32px 36px; display:flex; flex-direction:column; gap:16px; justify-content:center; background:rgba(255,87,34,.018)">
+        <div class="flow-hero-right"
+             style="flex:0 0 42%; border-left:1px solid var(--c-border); padding:32px 36px; display:flex; flex-direction:column; gap:16px; justify-content:center; background:rgba(79,200,236,.018)">
             <div style="font-family:monospace; font-size:10.5px; color:var(--c-text-muted); letter-spacing:.12em; text-transform:uppercase; margin-bottom:4px; display:flex; align-items:center; gap:8px">
-                <span style="width:7px; height:7px; border-radius:50%; background:#4caf50; box-shadow:0 0 6px #4caf50; display:inline-block"></span>
+                <span style="width:7px; height:7px; border-radius:50%; background:#4caf50; display:inline-block"></span>
                 {{'flow.hero.live' | i18n}}
             </div>
             <div class="mini" style="font-size:12px; display:flex; flex-direction:column; gap:6px">
@@ -1036,25 +1020,25 @@
             <div class="h3" style="margin-bottom:10px" ng-bind-html="'flow.node.storage.title' | i18nHtml"></div>
             <div class="sub" style="font-size:13px; margin-bottom:16px">{{'flow.node.storage.desc' | i18n}}</div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px">
-                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(79,200,236,.05); border:1px solid rgba(79,200,236,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
                     e_flow
                 </div>
-                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(79,200,236,.05); border:1px solid rgba(79,200,236,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
                     flow_instance
                 </div>
-                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(79,200,236,.05); border:1px solid rgba(79,200,236,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
                     approval_task
                 </div>
-                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(79,200,236,.05); border:1px solid rgba(79,200,236,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
                     instance_record
                 </div>
-                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(79,200,236,.05); border:1px solid rgba(79,200,236,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
                     form_history
                 </div>
-                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(79,200,236,.05); border:1px solid rgba(79,200,236,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap">
                     comment
                 </div>
-                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(255,87,34,.05); border:1px solid rgba(255,87,34,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; grid-column:span 2">
+                <div style="font-family:monospace; font-size:10.5px; color:var(--c-brand); padding:5px 8px; background:rgba(79,200,236,.05); border:1px solid rgba(79,200,236,.12); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; grid-column:span 2">
                     flow_group
                 </div>
             </div>
@@ -1188,7 +1172,7 @@ private Integer rating;</code></pre>
 
     <!-- §02.5 DESIGNER -->
     <div class="r g2 reveal"
-         style="background:rgba(255,87,34,.025); border-top:1px solid rgba(255,87,34,.12); border-bottom:1px solid rgba(255,87,34,.12)">
+         style="background:rgba(79,200,236,.025); border-top:1px solid rgba(79,200,236,.12); border-bottom:1px solid rgba(79,200,236,.12)">
         <div class="c" style="padding:32px 40px; display:flex; flex-direction:column; justify-content:center; gap:16px">
             <div style="font-family:monospace; font-size:10px; color:var(--c-text-muted); letter-spacing:.12em; text-transform:uppercase">
                 {{'flow.designer.label' | i18n}}
@@ -1197,56 +1181,56 @@ private Integer rating;</code></pre>
             <div class="sub" style="font-size:13.5px; line-height:1.7">{{'flow.designer.desc' | i18n}}</div>
             <div style="display:flex; gap:8px; flex-wrap:wrap">
                 <span class="tag"
-                      style="font-size:12px; padding:5px 12px; background:rgba(255,87,34,.08); color:var(--c-brand); border:1px solid rgba(255,87,34,.2)">{{'flow.designer.badge1' | i18n}}</span>
+                      style="font-size:12px; padding:5px 12px; background:rgba(79,200,236,.08); color:var(--c-brand); border:1px solid rgba(79,200,236,.2)">{{'flow.designer.badge1' | i18n}}</span>
                 <span class="tag"
-                      style="font-size:12px; padding:5px 12px; background:rgba(255,87,34,.08); color:var(--c-brand); border:1px solid rgba(255,87,34,.2)">{{'flow.designer.badge2' | i18n}}</span>
+                      style="font-size:12px; padding:5px 12px; background:rgba(79,200,236,.08); color:var(--c-brand); border:1px solid rgba(79,200,236,.2)">{{'flow.designer.badge2' | i18n}}</span>
                 <span class="tag"
-                      style="font-size:12px; padding:5px 12px; background:rgba(255,87,34,.08); color:var(--c-brand); border:1px solid rgba(255,87,34,.2)">{{'flow.designer.badge3' | i18n}}</span>
+                      style="font-size:12px; padding:5px 12px; background:rgba(79,200,236,.08); color:var(--c-brand); border:1px solid rgba(79,200,236,.2)">{{'flow.designer.badge3' | i18n}}</span>
             </div>
         </div>
         <div class="c"
              style="padding:32px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.02)">
-            <div style="width:100%; border:1px solid var(--c-border); border-radius:6px; overflow:hidden; background:#fff; font-size:12px">
-                <div style="display:flex; align-items:center; gap:8px; padding:9px 14px; border-bottom:1px solid #ececec; background:#fafaf9">
+            <div style="width:100%; border:1px solid var(--c-border); overflow:hidden; background:#fff; font-size:12px">
+                <div style="display:flex; align-items:center; gap:8px; padding:9px 14px; border-bottom:1px solid var(--c-border); background:#fafaf9">
                     <span style="font-size:11px; font-weight:600; color:#333">表单设计器</span>
                     <span style="margin-left:auto; font-family:monospace; font-size:10px; color:#aaa">erupt-designer</span>
                 </div>
                 <div style="display:grid; grid-template-columns:100px 1fr; min-height:220px">
-                    <div style="border-right:1px solid #ececec; padding:12px 8px; background:#fafaf9; display:flex; flex-direction:column; gap:5px">
+                    <div style="border-right:1px solid var(--c-border); padding:12px 8px; background:#fafaf9; display:flex; flex-direction:column; gap:5px">
                         <div style="font-size:10px; color:#aaa; letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px; padding:0 4px">
                             组件
                         </div>
-                        <div style="padding:6px 8px; border-radius:4px; background:#fff; border:1px solid #e8e8e8; color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                        <div style="padding:6px 8px; background:#fff; border:1px solid var(--c-border); color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
                             ⬜ 单行文本
                         </div>
-                        <div style="padding:6px 8px; border-radius:4px; background:#fff; border:1px solid #e8e8e8; color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                        <div style="padding:6px 8px; background:#fff; border:1px solid var(--c-border); color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
                             📅 日期选择
                         </div>
-                        <div style="padding:6px 8px; border-radius:4px; background:rgba(255,87,34,.06); border:1.5px dashed var(--c-brand); color:var(--c-brand); font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                        <div style="padding:6px 8px; background:rgba(79,200,236,.06); border:1.5px dashed var(--c-brand); color:var(--c-brand); font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
                             ▾ 下拉选择
                         </div>
-                        <div style="padding:6px 8px; border-radius:4px; background:#fff; border:1px solid #e8e8e8; color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                        <div style="padding:6px 8px; background:#fff; border:1px solid var(--c-border); color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
                             📎 附件上传
                         </div>
-                        <div style="padding:6px 8px; border-radius:4px; background:#fff; border:1px solid #e8e8e8; color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
+                        <div style="padding:6px 8px; background:#fff; border:1px solid var(--c-border); color:#555; font-size:11px; cursor:grab; display:flex; align-items:center; gap:6px">
                             ⬛ 多行文本
                         </div>
                     </div>
                     <div style="padding:16px; display:flex; flex-direction:column; gap:10px">
-                        <div style="border:1px solid #e8e8e8; border-radius:4px; padding:9px 10px; background:#fafafa">
+                        <div style="border:1px solid var(--c-border); padding:9px 10px; background:#fafafa">
                             <div style="font-size:10.5px; color:#555; margin-bottom:5px; font-weight:500">申请人</div>
-                            <div style="height:22px; border:1px solid #ddd; border-radius:3px; background:#fff"></div>
+                            <div style="height:22px; border:1px solid var(--c-border); background:#fff"></div>
                         </div>
-                        <div style="border:1px solid #e8e8e8; border-radius:4px; padding:9px 10px; background:#fafafa">
+                        <div style="border:1px solid var(--c-border); padding:9px 10px; background:#fafafa">
                             <div style="font-size:10.5px; color:#555; margin-bottom:5px; font-weight:500">申请日期</div>
-                            <div style="height:22px; border:1px solid #ddd; border-radius:3px; background:#fff; display:flex; align-items:center; padding:0 8px">
+                            <div style="height:22px; border:1px solid var(--c-border); background:#fff; display:flex; align-items:center; padding:0 8px">
                                 <span style="color:#bbb; font-size:11px">选择日期</span></div>
                         </div>
-                        <div style="border:2px dashed var(--c-brand); border-radius:4px; padding:9px 10px; background:rgba(255,87,34,.04)">
+                        <div style="border:2px dashed var(--c-brand); padding:9px 10px; background:rgba(79,200,236,.04)">
                             <div style="font-size:10.5px; color:var(--c-brand); margin-bottom:5px; font-weight:500">报销类型
                                 ✦ 拖入
                             </div>
-                            <div style="height:22px; border:1px solid rgba(255,87,34,.3); border-radius:3px; background:#fff; display:flex; align-items:center; padding:0 8px">
+                            <div style="height:22px; border:1px solid rgba(79,200,236,.3); background:#fff; display:flex; align-items:center; padding:0 8px">
                                 <span style="color:#bbb; font-size:11px">请选择 ▾</span></div>
                         </div>
                     </div>
@@ -1332,7 +1316,7 @@ private Integer rating;</code></pre>
                         <div class="f"><label>Number Slider</label>
                             <div class="pfx" style="position:relative;padding:12px 8px">
                                 <span style="position:absolute;left:12%;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;background:#3b6ac4"></span>
-                                <span style="display:block;height:4px;border-radius:2px;background:#eee;width:100%"></span>
+                                <span style="display:block;height:4px;background:#eee;width:100%"></span>
                             </div>
                         </div>
                         <div class="f req"><label>Rating</label><div class="pfx" style="color:#f5a623;letter-spacing:2px">★★★☆☆☆☆☆☆☆</div></div>
@@ -1377,7 +1361,7 @@ private Integer rating;</code></pre>
                         <span><span class="snum">3</span>{{'flow.settings.design' | i18n}}</span>
                         <span class="on"><span class="snum">4</span>{{'flow.settings.more' | i18n}}</span>
                     </div>
-                    <span style="padding:5px 10px;border:1px solid #ddd;border-radius:4px;font-size:11.5px;color:#555">{{'flow.settings.copy' | i18n}}</span>
+                    <span style="padding:5px 10px;border:1px solid var(--c-border);font-size:11.5px;color:#555">{{'flow.settings.copy' | i18n}}</span>
                     <span class="s-pub">{{'flow.settings.publish' | i18n}}</span>
                 </div>
                 <div class="s-body">
