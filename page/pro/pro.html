@@ -112,24 +112,20 @@
         position: relative;
         width: 100%;
         aspect-ratio: 16 / 9;
-        background: rgba(0, 0, 0, .025);
+        background: #FFFFFF;
         border-bottom: 1px solid var(--c-border);
         overflow: hidden;
     }
 
-    .pro-page .pro-card-shot img {
+    .pro-page .pro-card-shot svg {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        object-position: top center;
         display: block;
-        transition: transform .4s ease, opacity .2s ease;
-        opacity: .88;
+        transition: transform .4s ease;
     }
 
-    .pro-page .pro-card.clickable:hover .pro-card-shot img {
+    .pro-page .pro-card.clickable:hover .pro-card-shot svg {
         transform: scale(1.02);
-        opacity: 1;
     }
 
     .pro-page .pro-card-body {
@@ -424,7 +420,56 @@
             <div class="c clickable pro-card">
                 <span class="pro-card-ghost">01</span>
                 <div class="pro-card-shot">
-                    <img src="images/pro/chart.png" alt="Erupt Chart">
+                    <svg aria-label="Erupt Chart" preserveAspectRatio="xMidYMid slice" role="img"
+                         viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern height="16" id="gp-chart" patternUnits="userSpaceOnUse" width="16">
+                                <path d="M16 0H0V16" fill="none" opacity="0.08" stroke="#14120B" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect fill="url(#gp-chart)" height="180" width="320"/>
+                        <rect fill="#14120B" height="34" width="80" x="20" y="24"/>
+                        <rect fill="#FFFFFF" height="34" stroke="#14120B" stroke-width="2" width="80" x="16" y="20"/>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="13" font-weight="700" x="24"
+                              y="38">86.4%
+                        </text>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="6.5" letter-spacing="0.14em" opacity="0.55"
+                              x="24" y="49">GROWTH
+                        </text>
+                        <rect fill="#14120B" height="34" width="80" x="118" y="24"/>
+                        <rect fill="#4FC8EC" height="34" stroke="#14120B" stroke-width="2" width="80" x="114" y="20"/>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="13" font-weight="700" x="122"
+                              y="38">↑24%
+                        </text>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="6.5" letter-spacing="0.14em"
+                              opacity="0.7" x="122" y="49">TREND
+                        </text>
+                        <rect fill="#14120B" height="34" width="80" x="216" y="24"/>
+                        <rect fill="#FFFFFF" height="34" stroke="#14120B" stroke-width="2" width="80" x="212" y="20"/>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="13" font-weight="700" x="220"
+                              y="38">1,240
+                        </text>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="6.5" letter-spacing="0.14em"
+                              opacity="0.55" x="220" y="49">USERS
+                        </text>
+                        <rect fill="#14120B" height="88" width="284" x="20" y="76"/>
+                        <rect fill="#FFFFFF" height="88" stroke="#14120B" stroke-width="2" width="284" x="16" y="72"/>
+                        <g opacity="0.15">
+                            <line stroke="#14120B" stroke-dasharray="3,3" x1="16" x2="300" y1="98" y2="98"/>
+                            <line stroke="#14120B" stroke-dasharray="3,3" x1="16" x2="300" y1="122" y2="122"/>
+                            <line stroke="#14120B" stroke-dasharray="3,3" x1="16" x2="300" y1="146" y2="146"/>
+                        </g>
+                        <g stroke="#14120B" stroke-width="2">
+                            <rect fill="#4FC8EC" height="28" width="22" x="34" y="130"/>
+                            <rect fill="#4FC8EC" height="46" width="22" x="66" y="112"/>
+                            <rect fill="#4FC8EC" height="60" width="22" x="98" y="98"/>
+                            <rect fill="#93D655" height="40" width="22" x="130" y="118"/>
+                            <rect fill="#93D655" height="58" width="22" x="162" y="100"/>
+                            <rect fill="#93D655" height="72" width="22" x="194" y="86"/>
+                            <rect fill="#BCA0F2" height="52" width="22" x="226" y="106"/>
+                            <rect fill="#BCA0F2" height="66" width="22" x="258" y="92"/>
+                        </g>
+                    </svg>
                 </div>
                 <div class="pro-card-body">
                     <span class="pro-card-name">erupt-chart</span>
@@ -452,7 +497,53 @@
             <div class="c clickable pro-card">
                 <span class="pro-card-ghost">02</span>
                 <div class="pro-card-shot">
-                    <img src="https://docs.erupt.xyz/flow/ui1.png" alt="Erupt Flow">
+                    <svg aria-label="Erupt Flow" preserveAspectRatio="xMidYMid slice" role="img"
+                         viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern height="16" id="gp-flow" patternUnits="userSpaceOnUse" width="16">
+                                <path d="M16 0H0V16" fill="none" opacity="0.08" stroke="#14120B" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect fill="url(#gp-flow)" height="180" width="320"/>
+                        <rect fill="#14120B" height="28" width="52" x="24" y="48"/>
+                        <rect fill="#93D655" height="28" stroke="#14120B" stroke-width="2" width="52" x="20" y="44"/>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="9" font-weight="700" text-anchor="middle"
+                              x="46" y="62">START
+                        </text>
+                        <line stroke="#14120B" stroke-width="2" x1="74" x2="102" y1="58" y2="58"/>
+                        <polygon fill="#14120B" points="102,58 96,54 96,62"/>
+                        <rect fill="#14120B" height="28" width="68" x="108" y="48"/>
+                        <rect fill="#4FC8EC" height="28" stroke="#14120B" stroke-width="2" width="68" x="104" y="44"/>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="9" font-weight="700" text-anchor="middle"
+                              x="138" y="62">APPROVE
+                        </text>
+                        <line stroke="#14120B" stroke-width="2" x1="174" x2="200" y1="58" y2="58"/>
+                        <polygon fill="#14120B" points="200,58 194,54 194,62"/>
+                        <path d="M 240 40 L 268 58 L 240 76 L 212 58 Z" fill="#14120B"/>
+                        <path d="M 236 36 L 264 54 L 236 72 L 208 54 Z" fill="#BCA0F2" stroke="#14120B"
+                              stroke-width="2"/>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle"
+                              x="236" y="58">?
+                        </text>
+                        <line stroke="#14120B" stroke-width="2" x1="236" x2="236" y1="72" y2="104"/>
+                        <polygon fill="#14120B" points="236,104 232,98 240,98"/>
+                        <rect fill="#14120B" height="28" width="52" x="212" y="112"/>
+                        <rect fill="#93D655" height="28" stroke="#14120B" stroke-width="2" width="52" x="208" y="108"/>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="9" font-weight="700" text-anchor="middle"
+                              x="234" y="126">END
+                        </text>
+                        <path d="M 208 54 L 60 54 L 60 128 L 98 128" fill="none" stroke="#14120B"
+                              stroke-dasharray="4,3" stroke-width="2"/>
+                        <polygon fill="#14120B" points="98,128 92,124 92,132"/>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="7" font-weight="700" opacity="0.55"
+                              x="66" y="118">REJECT
+                        </text>
+                        <rect fill="#14120B" height="22" width="56" x="106" y="118"/>
+                        <rect fill="#FFFFFF" height="22" stroke="#14120B" stroke-width="2" width="56" x="102" y="114"/>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="8" font-weight="700" text-anchor="middle"
+                              x="130" y="128">REWORK
+                        </text>
+                    </svg>
                 </div>
                 <div class="pro-card-body">
                     <span class="pro-card-name">erupt-flow</span>
@@ -480,7 +571,54 @@
             <div class="c clickable pro-card">
                 <span class="pro-card-ghost">03</span>
                 <div class="pro-card-shot">
-                    <img src="https://docs.erupt.xyz/tenant/login1.png" alt="Erupt Tenant">
+                    <svg aria-label="Erupt Tenant" preserveAspectRatio="xMidYMid slice" role="img"
+                         viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern height="16" id="gp-tenant" patternUnits="userSpaceOnUse" width="16">
+                                <path d="M16 0H0V16" fill="none" opacity="0.08" stroke="#14120B" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect fill="url(#gp-tenant)" height="180" width="320"/>
+                        <rect fill="#14120B" height="100" width="180" x="98" y="26"/>
+                        <rect fill="#BCA0F2" height="100" stroke="#14120B" stroke-width="2" width="180" x="94" y="22"/>
+                        <rect fill="#14120B" height="14" width="180" x="94" y="22"/>
+                        <circle cx="102" cy="29" fill="#93D655" r="2"/>
+                        <circle cx="110" cy="29" fill="#4FC8EC" r="2"/>
+                        <circle cx="118" cy="29" fill="#BCA0F2" r="2"/>
+                        <text fill="#F0E8D6" font-family="ui-monospace,monospace" font-size="7" font-weight="700" text-anchor="end"
+                              x="268" y="32">TENANT · C
+                        </text>
+                        <rect fill="#14120B" height="100" width="180" x="66" y="46"/>
+                        <rect fill="#93D655" height="100" stroke="#14120B" stroke-width="2" width="180" x="62" y="42"/>
+                        <rect fill="#14120B" height="14" width="180" x="62" y="42"/>
+                        <circle cx="70" cy="49" fill="#93D655" r="2"/>
+                        <circle cx="78" cy="49" fill="#4FC8EC" r="2"/>
+                        <circle cx="86" cy="49" fill="#BCA0F2" r="2"/>
+                        <text fill="#F0E8D6" font-family="ui-monospace,monospace" font-size="7" font-weight="700" text-anchor="end"
+                              x="236" y="52">TENANT · B
+                        </text>
+                        <rect fill="#14120B" height="94" width="200" x="34" y="66"/>
+                        <rect fill="#4FC8EC" height="94" stroke="#14120B" stroke-width="2" width="200" x="30" y="62"/>
+                        <rect fill="#14120B" height="16" width="200" x="30" y="62"/>
+                        <circle cx="38" cy="70" fill="#93D655" r="2.5"/>
+                        <circle cx="47" cy="70" fill="#4FC8EC" r="2.5"/>
+                        <circle cx="56" cy="70" fill="#BCA0F2" r="2.5"/>
+                        <text fill="#F0E8D6" font-family="ui-monospace,monospace" font-size="8" font-weight="700" text-anchor="end"
+                              x="224" y="74">TENANT · A
+                        </text>
+                        <rect fill="#14120B" height="8" width="60" x="40" y="88"/>
+                        <rect fill="#14120B" height="4" opacity="0.5" width="94" x="40" y="102"/>
+                        <rect fill="#14120B" height="4" opacity="0.5" width="76" x="40" y="112"/>
+                        <rect fill="#14120B" height="4" opacity="0.5" width="88" x="40" y="122"/>
+                        <rect fill="#14120B" height="4" opacity="0.5" width="68" x="40" y="132"/>
+                        <rect fill="#14120B" height="4" opacity="0.5" width="80" x="40" y="142"/>
+                        <rect fill="#FFFFFF" height="60" stroke="#14120B" stroke-width="2" width="70" x="150" y="88"/>
+                        <rect fill="#93D655" height="20" stroke="#14120B" stroke-width="1.5" width="8" x="158" y="120"/>
+                        <rect fill="#4FC8EC" height="30" stroke="#14120B" stroke-width="1.5" width="8" x="170" y="110"/>
+                        <rect fill="#BCA0F2" height="44" stroke="#14120B" stroke-width="1.5" width="8" x="182" y="96"/>
+                        <rect fill="#93D655" height="36" stroke="#14120B" stroke-width="1.5" width="8" x="194" y="104"/>
+                        <rect fill="#4FC8EC" height="26" stroke="#14120B" stroke-width="1.5" width="8" x="206" y="114"/>
+                    </svg>
                 </div>
                 <div class="pro-card-body">
                     <span class="pro-card-name">erupt-tenant</span>
@@ -508,7 +646,50 @@
             <div class="c clickable pro-card" style="border-right:none">
                 <span class="pro-card-ghost">04</span>
                 <div class="pro-card-shot">
-                    <img src="https://docs.erupt.xyz/cube/overview.png" alt="Erupt Cube">
+                    <svg aria-label="Erupt Cube" preserveAspectRatio="xMidYMid slice" role="img"
+                         viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern height="16" id="gp-cube" patternUnits="userSpaceOnUse" width="16">
+                                <path d="M16 0H0V16" fill="none" opacity="0.08" stroke="#14120B" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect fill="url(#gp-cube)" height="180" width="320"/>
+                        <g transform="translate(164, 96)">
+                            <polygon fill="#14120B" points="0,-50 52,-24 52,38 0,64 -52,38 -52,-24"/>
+                        </g>
+                        <g stroke="#14120B" stroke-linejoin="miter" stroke-width="2" transform="translate(160, 92)">
+                            <polygon fill="#93D655" points="0,-50 52,-24 0,2 -52,-24"/>
+                            <polygon fill="#BCA0F2" points="0,2 52,-24 52,38 0,64"/>
+                            <polygon fill="#4FC8EC" points="0,2 -52,-24 -52,38 0,64"/>
+                            <g stroke-width="1">
+                                <line x1="17.33" x2="-34.67" y1="-41.33" y2="-15.33"/>
+                                <line x1="34.67" x2="-17.33" y1="-32.67" y2="-6.67"/>
+                                <line x1="-17.33" x2="34.67" y1="-41.33" y2="-15.33"/>
+                                <line x1="-34.67" x2="17.33" y1="-32.67" y2="-6.67"/>
+                            </g>
+                            <g stroke-width="1">
+                                <line x1="0" x2="52" y1="22.67" y2="-3.33"/>
+                                <line x1="0" x2="52" y1="43.33" y2="17.33"/>
+                                <line x1="17.33" x2="17.33" y1="-6.67" y2="55.33"/>
+                                <line x1="34.67" x2="34.67" y1="-15.33" y2="46.67"/>
+                            </g>
+                            <g stroke-width="1">
+                                <line x1="0" x2="-52" y1="22.67" y2="-3.33"/>
+                                <line x1="0" x2="-52" y1="43.33" y2="17.33"/>
+                                <line x1="-17.33" x2="-17.33" y1="-6.67" y2="55.33"/>
+                                <line x1="-34.67" x2="-34.67" y1="-15.33" y2="46.67"/>
+                            </g>
+                        </g>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="8" font-weight="700" opacity="0.6"
+                              x="230" y="152">DIM · X
+                        </text>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="8" font-weight="700" opacity="0.6"
+                              x="60" y="152">DIM · Y
+                        </text>
+                        <text fill="#14120B" font-family="ui-monospace,monospace" font-size="8" font-weight="700" opacity="0.6"
+                              x="140" y="30">MEASURE · Z
+                        </text>
+                    </svg>
                 </div>
                 <div class="pro-card-body">
                     <span class="pro-card-name">erupt-cube</span>
@@ -544,17 +725,17 @@
         <!-- ── §2d Guarantee grid ── -->
         <div class="r g3 reveal">
             <div class="c" style="padding:32px 28px">
-                <span class="tag" style="color:var(--c-brand);font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">{{'pro.guarantee.s1.tag' | i18n}}</span>
+                <span class="tag" style="background:#F5D547">{{'pro.guarantee.s1.tag' | i18n}}</span>
                 <h3 class="h3" style="margin-top:10px">{{'pro.guarantee.s1.title' | i18n}}</h3>
                 <p class="sub">{{'pro.guarantee.s1.desc' | i18n}}</p>
             </div>
             <div class="c" style="padding:32px 28px">
-                <span class="tag" style="color:var(--c-brand);font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">{{'pro.guarantee.s2.tag' | i18n}}</span>
+                <span class="tag" style="background:#F5D547">{{'pro.guarantee.s2.tag' | i18n}}</span>
                 <h3 class="h3" style="margin-top:10px">{{'pro.guarantee.s2.title' | i18n}}</h3>
                 <p class="sub">{{'pro.guarantee.s2.desc' | i18n}}</p>
             </div>
             <div class="c" style="padding:32px 28px;border-right:none">
-                <span class="tag" style="color:var(--c-brand);font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">{{'pro.guarantee.s3.tag' | i18n}}</span>
+                <span class="tag" style="background:#F5D547">{{'pro.guarantee.s3.tag' | i18n}}</span>
                 <h3 class="h3" style="margin-top:10px">{{'pro.guarantee.s3.title' | i18n}}</h3>
                 <p class="sub">{{'pro.guarantee.s3.desc' | i18n}}</p>
             </div>
