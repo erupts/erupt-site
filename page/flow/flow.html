@@ -852,7 +852,9 @@
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
                 <a class="wbtn" href="http://demo.erupt.xyz" target="_blank">{{'flow.hero.demo' | i18n}}</a>
-                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/pro/erupt-flow" target="_blank">{{'flow.hero.docs' | i18n}}</a>
+                <a class="wbtn wbtn-o"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/pro/erupt-flow"
+                   target="_blank">{{'flow.hero.docs' | i18n}}</a>
                 <span style="font-family:monospace; font-size:12px; color:var(--c-text-muted); margin-left:4px">Spring Boot 3</span>
             </div>
         </div>
@@ -1442,7 +1444,8 @@ private Integer rating;</code></pre>
             <div class="sub" style="max-width:46ch; margin-bottom:28px">{{'flow.cta.desc' | i18n}}</div>
             <div style="display:flex; gap:10px; flex-wrap:wrap">
                 <a class="wbtn" href="http://demo.erupt.xyz" target="_blank">{{'flow.cta.demo' | i18n}}</a>
-                <a class="wbtn" href="https://docs.erupt.xyz/modules/pro/erupt-flow" target="_blank">{{'flow.cta.docs' | i18n}}</a>
+                <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/pro/erupt-flow"
+                   target="_blank">{{'flow.cta.docs' | i18n}}</a>
                 <a class="wbtn wbtn-o" href="#!/pro">{{'pro.btn.pricing' | i18n}}</a>
             </div>
         </div>

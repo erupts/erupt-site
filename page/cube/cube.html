@@ -1085,7 +1085,8 @@
                        target="_blank">{{'cube.hero.btn.demo' | i18n}}</a>
                     <span class="demo-tip" ng-bind-html="'cube.demo.tip' | i18nHtml"></span>
                 </span>
-                <a class="wbtn" href="https://docs.erupt.xyz/modules/pro/erupt-cube" style="margin-left:8px"
+                <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/pro/erupt-cube"
+                   style="margin-left:8px"
                    target="_blank">{{'cube.cta.doc' | i18n}}</a>
             </div>
         </div>
@@ -1564,7 +1565,8 @@ public class OrderCube {
                 <a class="wbtn" href="https://demo.erupt.xyz" target="_blank">{{'cube.cta.demo' | i18n}}</a>
                 <span class="demo-tip" ng-bind-html="'cube.demo.tip' | i18nHtml"></span>
             </span>
-            <a class="wbtn" href="https://docs.erupt.xyz/modules/pro/erupt-cube" style="margin-left:8px"
+            <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/pro/erupt-cube"
+               style="margin-left:8px"
                target="_blank">{{'cube.cta.doc' | i18n}}</a>
             <a class="wbtn wbtn-o" href="#!/pro"
                style="margin-left:8px">{{'pro.btn.pricing' | i18n}}</a>

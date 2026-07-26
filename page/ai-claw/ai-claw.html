@@ -602,7 +602,9 @@
                     <span class="ac-badge">{{'claw.badge.skills'|i18n}}</span>
                 </div>
                 <div>
-                    <a class="ac-btn" href="https://docs.erupt.xyz/modules/erupt-ai-claw" target="_blank">{{'claw.hero.btn.doc'|i18n}}</a>
+                    <a class="ac-btn"
+                       ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-claw"
+                       target="_blank">{{'claw.hero.btn.doc'|i18n}}</a>
                     <a class="ac-btn-ghost" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
                 </div>
             </div>
@@ -748,7 +750,8 @@
             <h2 class="ac-h2l">{{'claw.cta.title'|i18n}}</h2>
             <p class="ac-sub-l" style="max-width:440px;margin:0 auto 24px">{{'claw.cta.subtitle'|i18n}}</p>
             <div>
-                <a class="ac-btn" href="https://docs.erupt.xyz/modules/erupt-ai-claw" target="_blank">{{'claw.cta.doc'|i18n}}</a>
+                <a class="ac-btn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-claw"
+                   target="_blank">{{'claw.cta.doc'|i18n}}</a>
                 <a class="ac-btn-ghost" href="#!/ai">{{'claw.cta.also_ai'|i18n}}</a>
             </div>
         </div>

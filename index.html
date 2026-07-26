@@ -47,29 +47,16 @@
                         <a class="dropdown-item" href="#!/pro" style="color:#4FC8EC">{{'nav.pro' | i18n}}</a>
                     </div>
                 </span>
-                <span class="dropdown show">
-                    <a class="btn btn-sm align-self-center btn-link" href="https://docs.erupt.xyz/"
-                       style="padding-right: 0" target="_blank">
-                        {{'nav.doc' | i18n}}
-                    </a>
-                    <a aria-expanded="false" aria-haspopup="true" class="btn btn-sm align-self-center dropdown-toggle"
-                       data-toggle="dropdown" href="javascript:;" role="button" style="padding: 0 4px"></a>
-                    <div aria-labelledby="dropdownMenuLink" class="dropdown-menu" ng-init="docVersion='LATEST'">
-                        <a class="dropdown-item" href="https://docs.erupt.xyz/"
-                           ng-click="docVersion = 'LATEST'" target="_blank">LATEST</a>
-                        <a class="dropdown-item" href="https://www.yuque.com/erupts/1.13.x"
-                           ng-click="docVersion = '1.13.x'" target="_blank">v 1.13.x</a>
-                        <a class="dropdown-item" href="https://www.yuque.com/erupts/1.12.x"
-                           ng-click="docVersion = '1.12.x'" target="_blank">v 1.12.x</a>
-                        <a class="dropdown-item" href="https://www.yuque.com/erupts/1.11.x"
-                           ng-click="docVersion = '1.11.x'" target="_blank">v 1.11.x</a>
-                    </div>
-                </span>
+                <a class="btn btn-sm align-self-center btn-link"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">
+                    {{'nav.doc' | i18n}}
+                </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/contrast"
                    ng-class="currRouter=='/contrast'?'active-link':''">
                     {{'nav.contrast' | i18n}}
                 </a>
-                <a class="btn btn-sm align-self-center btn-link" href="https://docs.erupt.xyz/modules/" target="_blank">
+                <a class="btn btn-sm align-self-center btn-link"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/" target="_blank">
                     {{'nav.module' | i18n}}
                 </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/about"
@@ -115,12 +102,14 @@
                     class="pro-badge">PRO</span></a>
             <a class="mobile-nav-sub" href="#!/pro" ng-click="mobileMenuOpen=false" style="color:#4FC8EC">{{'nav.pro' |
                 i18n}}</a>
-            <a href="https://docs.erupt.xyz/" ng-click="mobileMenuOpen=false" target="_blank">
+            <a ng-click="mobileMenuOpen=false" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/"
+               target="_blank">
                 {{'nav.doc' | i18n}}
             </a>
             <a href="#!/contrast" ng-class="currRouter=='/contrast'?'active-link':''" ng-click="mobileMenuOpen=false">{{'nav.contrast'
                 | i18n}}</a>
-            <a href="https://docs.erupt.xyz/modules/" ng-click="mobileMenuOpen=false" target="_blank">{{'nav.module' |
+            <a ng-click="mobileMenuOpen=false" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
+               target="_blank">{{'nav.module' |
                 i18n}}</a>
             <a href="#!/about" ng-click="mobileMenuOpen=false">{{'nav.about' | i18n}}</a>
             <a href="https://demo.erupt.xyz" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.demo' | i18n}}</a>
@@ -170,7 +159,8 @@
                     <div class="footer-cell">
                     <div class="footer-link">
                         <h2>{{'footer.doc' | i18n}}</h2>
-                        <h4><a href="https://docs.erupt.xyz" target="_blank">docs.erupt.xyz</a></h4>
+                        <h4><a ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">docs.erupt.xyz</a>
+                        </h4>
                     </div>
                 </div>
                     <div class="footer-cell">

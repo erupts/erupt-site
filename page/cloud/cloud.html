@@ -14,7 +14,9 @@
                 {{'cloud.hero.tagline' | i18n}}
             </p>
             <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/erupt-cloud" target="_blank" style="padding:11px 28px;font-size:13px">{{'cloud.cta.docs' | i18n}}</a>
+                <a class="wbtn wbtn-o"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-cloud" style="padding:11px 28px;font-size:13px"
+                   target="_blank">{{'cloud.cta.docs' | i18n}}</a>
                 <a class="wbtn" href="https://github.com/erupts/erupt" target="_blank" style="padding:11px 28px;font-size:13px">GitHub</a>
             </div>
         </div>
@@ -163,7 +165,9 @@
 &lt;/dependency&gt;</div>
             <div style="margin-top:8px;font-family:var(--c-mono);font-size:10px;color:var(--c-text2);opacity:.6">{{'cloud.server.docker' | i18n}}</div>
             <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/cloud-server" target="_blank" style="font-size:12px;padding:7px 18px">{{'cloud.server.docs' | i18n}}</a>
+                <a class="wbtn wbtn-o"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/cloud-server" style="font-size:12px;padding:7px 18px"
+                   target="_blank">{{'cloud.server.docs' | i18n}}</a>
             </div>
         </div>
         <div class="c no-bb" style="padding:40px 48px">
@@ -176,7 +180,9 @@
     access-token: <span style="color:#059669">9y1pa7eHksHWBTQC</span>
     node-name: <span style="color:#2563eb">myService</span></div>
             <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/cloud-node" target="_blank" style="font-size:12px;padding:7px 18px">{{'cloud.node.docs' | i18n}}</a>
+                <a class="wbtn wbtn-o"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/cloud-node" style="font-size:12px;padding:7px 18px"
+                   target="_blank">{{'cloud.node.docs' | i18n}}</a>
             </div>
         </div>
     </div>
@@ -257,7 +263,8 @@
         <h2 class="h2" style="margin-top:14px">{{'cloud.cta.title2' | i18n}}</h2>
         <p class="sub" style="margin:14px auto 0;max-width:40ch">{{'cloud.cta.desc2' | i18n}}</p>
         <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-            <a class="wbtn wbtn-o" href="https://docs.erupt.xyz/modules/erupt-cloud" target="_blank" style="padding:12px 36px;font-size:14px">{{'cloud.cta.docs' | i18n}}</a>
+            <a class="wbtn wbtn-o" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-cloud"
+               style="padding:12px 36px;font-size:14px" target="_blank">{{'cloud.cta.docs' | i18n}}</a>
             <a class="wbtn" href="https://demo.erupt.xyz" style="padding:12px 36px;font-size:14px" target="_blank">{{'cloud.cta.demo' | i18n}}</a>
         </div>
     </div>

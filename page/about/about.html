@@ -521,7 +521,8 @@
                     <h3>{{'about.donate.card.title' | i18n}}</h3>
                     <p>{{'about.donate.card.desc' | i18n}}</p>
                     <div>
-                        <a class="wbtn-o" href="https://docs.erupt.xyz/guide/donate" target="_blank">
+                        <a class="wbtn-o" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/guide/donate"
+                           target="_blank">
                             {{'about.donate.btn' | i18n}} →
                         </a>
                     </div>
