@@ -1,66 +1,406 @@
+<style>
+    /* ── Cloud hero: admin console mockup ── */
+    .cloud-admin {
+        width: 100%;
+        max-width: 560px;
+        background: #FFFFFF;
+        border: 2px solid var(--c-border);
+        box-shadow: 6px 6px 0 var(--c-text);
+        font-family: var(--c-mono);
+        overflow: hidden;
+    }
+
+    .cloud-admin-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        background: var(--c-code-bg);
+        border-bottom: 2px solid var(--c-border);
+    }
+
+    .cloud-admin-bar .diamond {
+        width: 8px;
+        height: 8px;
+        background: var(--c-brand);
+        transform: rotate(45deg);
+        flex-shrink: 0;
+    }
+
+    .cloud-admin-title {
+        font-size: 11px;
+        letter-spacing: .05em;
+        color: var(--c-code-text);
+        flex: 1;
+    }
+
+    .cloud-admin-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 9px;
+        letter-spacing: .14em;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #93D655;
+        padding: 2px 7px;
+        border: 1px solid rgba(147, 214, 85, .45);
+    }
+
+    .cloud-admin-status .pulse-dot {
+        width: 5px;
+        height: 5px;
+        background: #93D655;
+        border-radius: 50%;
+        animation: cloud-pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes cloud-pulse {
+        50% {
+            opacity: .3
+        }
+    }
+
+    .cloud-admin-body {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        min-height: 310px;
+    }
+
+    /* Sidebar with node list */
+    .cloud-side {
+        border-right: 1px solid var(--c-border);
+        background: rgba(0, 0, 0, .015);
+    }
+
+    .cloud-side-hd {
+        padding: 10px 12px 8px;
+        font-size: 8.5px;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        font-weight: 800;
+        border-bottom: 1px solid var(--c-border);
+    }
+
+    .cloud-node {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 12px;
+        border-bottom: 1px solid rgba(20, 18, 11, .05);
+        border-left: 3px solid transparent;
+    }
+
+    .cloud-node.active {
+        background: var(--c-brand);
+        border-left-color: var(--c-text);
+    }
+
+    .cloud-node-dot {
+        width: 6px;
+        height: 6px;
+        background: #93D655;
+        border-radius: 50%;
+        flex-shrink: 0;
+        box-shadow: 0 0 0 2px rgba(147, 214, 85, .25);
+    }
+
+    .cloud-node.active .cloud-node-dot {
+        box-shadow: 0 0 0 2px rgba(20, 18, 11, .2);
+    }
+
+    .cloud-node-name {
+        font-size: 11.5px;
+        font-weight: 800;
+        color: var(--c-text);
+        letter-spacing: -.01em;
+        font-family: var(--c-sans);
+        line-height: 1.2;
+    }
+
+    .cloud-node-sub {
+        font-size: 9px;
+        color: var(--c-text2);
+        letter-spacing: .05em;
+        margin-top: 2px;
+    }
+
+    .cloud-node-add {
+        color: var(--c-text2);
+        border-bottom: none;
+    }
+
+    .cloud-node-add .cloud-node-name {
+        font-size: 10px;
+        letter-spacing: .12em;
+        color: var(--c-brand);
+        font-family: var(--c-mono);
+        text-transform: uppercase;
+    }
+
+    .cloud-node-add .cloud-node-dot {
+        background: transparent;
+        border: 1.5px dashed var(--c-brand);
+        box-shadow: none;
+    }
+
+    /* Main content */
+    .cloud-main {
+        padding: 12px 16px 14px;
+    }
+
+    .cloud-main-crumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 10.5px;
+        font-weight: 700;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(20, 18, 11, .1);
+    }
+
+    .cloud-main-crumb .lvl {
+        color: var(--c-text2);
+    }
+
+    .cloud-main-crumb .sep {
+        color: var(--c-text2);
+        opacity: .4;
+    }
+
+    .cloud-main-crumb .cur {
+        color: var(--c-text);
+    }
+
+    .cloud-main-crumb .cur::before {
+        content: '● ';
+        color: var(--c-brand);
+        font-size: .8em;
+    }
+
+    .cloud-main-actions {
+        display: flex;
+        gap: 6px;
+        padding: 10px 0 8px;
+        justify-content: flex-end;
+    }
+
+    .cloud-btn {
+        font-size: 9.5px;
+        letter-spacing: .1em;
+        font-weight: 800;
+        padding: 4px 10px 3px;
+        border: 1.5px solid var(--c-border);
+        background: #FFFFFF;
+        color: var(--c-text);
+        text-transform: uppercase;
+    }
+
+    .cloud-btn-y {
+        background: var(--c-yellow);
+        box-shadow: 2px 2px 0 var(--c-text);
+    }
+
+    .cloud-tbl {
+    }
+
+    .cloud-tbl-hd,
+    .cloud-tbl-row {
+        display: grid;
+        grid-template-columns: 24px 1fr 90px 62px;
+        gap: 10px;
+        align-items: center;
+        padding: 7px 4px;
+    }
+
+    .cloud-tbl-hd {
+        border-bottom: 1.5px solid var(--c-border);
+        font-size: 8.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        font-weight: 800;
+    }
+
+    .cloud-tbl-row {
+        border-bottom: 1px solid rgba(20, 18, 11, .06);
+        font-size: 11px;
+    }
+
+    .cloud-tbl-row:last-child {
+        border-bottom: none;
+    }
+
+    .cloud-tbl-row .id {
+        color: var(--c-text2);
+        font-size: 10px;
+        opacity: .6;
+    }
+
+    .cloud-tbl-row .name-cell {
+        color: var(--c-text);
+        font-weight: 600;
+        font-family: var(--c-sans);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .cloud-tbl-row .chan {
+        font-size: 9.5px;
+        color: var(--c-text2);
+        letter-spacing: .06em;
+    }
+
+    .cloud-chip {
+        padding: 1px 7px;
+        font-size: 8.5px;
+        font-weight: 800;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        border: 1px solid var(--c-border);
+        text-align: center;
+    }
+
+    .cloud-chip-g {
+        background: var(--c-green);
+        color: var(--c-text);
+    }
+
+    .cloud-chip-y {
+        background: var(--c-yellow);
+        color: var(--c-text);
+    }
+
+    .cloud-chip-off {
+        background: rgba(20, 18, 11, .06);
+        color: var(--c-text2);
+    }
+</style>
+
 <div ng-controller="cloud">
 <div class="fr">
 
     <!-- §1 HERO -->
-    <div class="r g-bg" style="display:flex;min-height:420px;overflow:hidden">
-        <!-- left -->
-        <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
-            <span class="tag">{{'cloud.hero.kicker' | i18n}}</span>
-            <h1 style="margin-top:16px;letter-spacing:-.03em;font-size:clamp(28px,4vw,52px);line-height:1.1">{{'cloud.hero.title' | i18n}}</h1>
-            <p class="sub" style="margin-top:14px;max-width:44ch">
+    <div class="r g-bg" style="display:flex;min-height:520px;overflow:hidden">
+        <!-- left: headline + CTA -->
+        <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;min-width:0">
+            <span class="tag tag-y">{{'cloud.hero.kicker' | i18n}}</span>
+            <h1 style="margin-top:18px;letter-spacing:-.03em;font-size:clamp(28px,4vw,52px);line-height:1.05;font-weight:800">
+                {{'cloud.hero.title' | i18n}}
+            </h1>
+            <p class="sub" style="margin-top:16px;max-width:44ch">
                 {{'cloud.hero.sub' | i18n}}
             </p>
-            <p style="margin-top:10px;font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);opacity:.75">
+            <p style="margin-top:14px;font-family:var(--c-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-brand);font-weight:700;display:inline-flex;align-items:center;gap:6px">
+                <span style="display:inline-block;width:6px;height:6px;background:var(--c-brand);border:1.5px solid var(--c-border)"></span>
                 {{'cloud.hero.tagline' | i18n}}
             </p>
             <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap">
                 <a class="wbtn wbtn-o"
-                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-cloud" style="padding:11px 28px;font-size:13px"
-                   target="_blank">{{'cloud.cta.docs' | i18n}}</a>
-                <a class="wbtn" href="https://github.com/erupts/erupt" target="_blank" style="padding:11px 28px;font-size:13px">GitHub</a>
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-cloud"
+                   style="padding:11px 28px;font-size:13px" target="_blank">{{'cloud.cta.docs' | i18n}}</a>
+                <a class="wbtn" href="https://github.com/erupts/erupt"
+                   style="padding:11px 28px;font-size:13px" target="_blank">GitHub</a>
             </div>
         </div>
-        <!-- right: CSS architecture diagram -->
-        <div class="d-none d-lg-flex" style="flex:0 0 46%;align-items:center;justify-content:center;padding:48px 40px">
-            <div style="width:100%;max-width:360px;font-family:var(--c-mono)">
-                <!-- Nodes -->
-                <div style="display:flex;align-items:stretch;gap:0">
-                    <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-                        <div style="padding:9px 14px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(79,200,236,.04)">
-                            <div style="font-size:10px;font-weight:600;color:var(--c-brand)">{{'cloud.diagram.notify' | i18n}}</div>
-                            <div style="font-size:9px;color:var(--c-text2);margin-top:2px;opacity:.7">erupt-cloud-node</div>
-                        </div>
-                        <div style="padding:9px 14px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(79,200,236,.04)">
-                            <div style="font-size:10px;font-weight:600;color:var(--c-brand)">{{'cloud.diagram.gateway' | i18n}}</div>
-                            <div style="font-size:9px;color:var(--c-text2);margin-top:2px;opacity:.7">erupt-cloud-node</div>
-                        </div>
-                        <div style="padding:9px 14px;border:1px solid var(--c-border);border-left:2px solid var(--c-brand);background:rgba(79,200,236,.04)">
-                            <div style="font-size:10px;font-weight:600;color:var(--c-brand)">{{'cloud.diagram.algo' | i18n}}</div>
-                            <div style="font-size:9px;color:var(--c-text2);margin-top:2px;opacity:.7">erupt-cloud-node</div>
-                        </div>
-                        <div style="padding:9px 14px;border:1px solid var(--c-border);border-left:2px dashed rgba(79,200,236,.35);background:rgba(79,200,236,.02)">
-                            <div style="font-size:9px;color:var(--c-text2);opacity:.55">{{'cloud.diagram.more' | i18n}}</div>
-                        </div>
-                    </div>
-                    <!-- arrow -->
-                    <div style="display:flex;align-items:center;padding:0 14px;color:var(--c-brand);font-size:18px;opacity:.45;flex-shrink:0">→</div>
-                    <!-- server -->
-                    <div style="flex:0 0 auto;display:flex;flex-direction:column;gap:8px;min-width:110px">
-                        <div style="padding:16px 14px;border:1px solid var(--c-brand);background:rgba(79,200,236,.06);text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
-                            <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-brand);opacity:.6">Cloud</div>
-                            <div style="font-size:15px;font-weight:700;color:var(--c-text);margin-top:2px">{{'cloud.diagram.server' | i18n}}</div>
-                            <div style="font-size:9px;color:var(--c-text2);margin-top:6px;line-height:1.5" ng-bind-html="'cloud.diagram.dispatch' | i18nHtml"></div>
-                        </div>
-                        <div style="text-align:center;color:var(--c-brand);opacity:.4;font-size:14px">↓</div>
-                        <div style="padding:10px 14px;border:1px solid var(--c-border);background:var(--c-bg);text-align:center">
-                            <div style="font-size:10px;font-weight:600;color:var(--c-text)">{{'cloud.diagram.console' | i18n}}</div>
-                            <div style="font-size:9px;color:var(--c-text2);margin-top:2px;opacity:.7">{{'cloud.diagram.unified' | i18n}}</div>
-                        </div>
-                    </div>
+        <!-- right: admin console mockup -->
+        <div class="d-none d-lg-flex"
+             style="flex:0 0 52%;align-items:center;justify-content:center;padding:40px 40px 40px 24px;border-left:2px solid var(--c-border)">
+            <div class="cloud-admin">
+                <div class="cloud-admin-bar">
+                    <span class="diamond"></span>
+                    <span class="cloud-admin-title">erupt-cloud-server · console</span>
+                    <span class="cloud-admin-status"><span class="pulse-dot"></span>12 Nodes</span>
                 </div>
-                <!-- heartbeat label -->
-                <div style="margin-top:10px;text-align:center;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2);opacity:.5">
-                    {{'cloud.diagram.heartbeat' | i18n}}
+                <div class="cloud-admin-body">
+                    <!-- Node sidebar -->
+                    <aside class="cloud-side">
+                        <div class="cloud-side-hd">Nodes</div>
+                        <div class="cloud-node active">
+                            <span class="cloud-node-dot"></span>
+                            <div>
+                                <div class="cloud-node-name">通知</div>
+                                <div class="cloud-node-sub">notify-svc</div>
+                            </div>
+                        </div>
+                        <div class="cloud-node">
+                            <span class="cloud-node-dot"></span>
+                            <div>
+                                <div class="cloud-node-name">网关</div>
+                                <div class="cloud-node-sub">gateway-svc</div>
+                            </div>
+                        </div>
+                        <div class="cloud-node">
+                            <span class="cloud-node-dot"></span>
+                            <div>
+                                <div class="cloud-node-name">算法</div>
+                                <div class="cloud-node-sub">algo-svc</div>
+                            </div>
+                        </div>
+                        <div class="cloud-node">
+                            <span class="cloud-node-dot"></span>
+                            <div>
+                                <div class="cloud-node-name">消息</div>
+                                <div class="cloud-node-sub">msg-svc</div>
+                            </div>
+                        </div>
+                        <div class="cloud-node cloud-node-add">
+                            <span class="cloud-node-dot"></span>
+                            <div class="cloud-node-name">+ Register</div>
+                        </div>
+                    </aside>
+                    <!-- Main config table -->
+                    <main class="cloud-main">
+                        <div class="cloud-main-crumb">
+                            <span class="lvl">通知</span>
+                            <span class="sep">/</span>
+                            <span class="cur">模板配置</span>
+                        </div>
+                        <div class="cloud-main-actions">
+                            <span class="cloud-btn">Filter</span>
+                            <span class="cloud-btn cloud-btn-y">+ New</span>
+                        </div>
+                        <div class="cloud-tbl">
+                            <div class="cloud-tbl-hd">
+                                <span>ID</span>
+                                <span>Template</span>
+                                <span>Channel</span>
+                                <span style="text-align:center">Status</span>
+                            </div>
+                            <div class="cloud-tbl-row">
+                                <span class="id">01</span>
+                                <span class="name-cell">Welcome</span>
+                                <span class="chan">SMS · EMAIL</span>
+                                <span class="cloud-chip cloud-chip-g">Live</span>
+                            </div>
+                            <div class="cloud-tbl-row">
+                                <span class="id">02</span>
+                                <span class="name-cell">Password Reset</span>
+                                <span class="chan">EMAIL</span>
+                                <span class="cloud-chip cloud-chip-g">Live</span>
+                            </div>
+                            <div class="cloud-tbl-row">
+                                <span class="id">03</span>
+                                <span class="name-cell">Alert Push</span>
+                                <span class="chan">APP · SMS</span>
+                                <span class="cloud-chip cloud-chip-y">Draft</span>
+                            </div>
+                            <div class="cloud-tbl-row">
+                                <span class="id">04</span>
+                                <span class="name-cell">Weekly Digest</span>
+                                <span class="chan">EMAIL</span>
+                                <span class="cloud-chip cloud-chip-g">Live</span>
+                            </div>
+                            <div class="cloud-tbl-row">
+                                <span class="id">05</span>
+                                <span class="name-cell">Trial Expire</span>
+                                <span class="chan">SMS</span>
+                                <span class="cloud-chip cloud-chip-off">Off</span>
+                            </div>
+                        </div>
+                    </main>
                 </div>
             </div>
         </div>

@@ -1,0 +1,163 @@
+/**
+ * Erupt Playful-Brutalist theme for prism.js
+ * 遵循 app.css :root token —
+ *   底色 #1A170F  奶油字 #F0E8D6
+ *   注解 #4FC8EC  关键字 #BCA0F2  字符串 #93D655
+ * 硬阴影、无圆角、无 text-shadow
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: #F0E8D6;
+    background: #1A170F;
+    font-family: 'JetBrains Mono', 'SFMono-Regular', 'Fira Code', Menlo, Consolas, monospace;
+    font-size: 13px;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    line-height: 1.65;
+    letter-spacing: 0;
+    text-shadow: none;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    hyphens: none;
+    direction: ltr;
+}
+
+pre[class*="language-"] {
+    padding: 20px 24px;
+    margin: 0;
+    overflow: auto;
+    border-radius: 0;
+}
+
+:not(pre) > code[class*="language-"] {
+    padding: .15em .4em;
+    background: rgba(79, 200, 236, .12);
+    color: #F0E8D6;
+    border-radius: 0;
+    white-space: normal;
+}
+
+code[class*="language-"]::selection,
+code[class*="language-"] *::selection,
+pre[class*="language-"] ::selection {
+    background: rgba(79, 200, 236, .32);
+    color: #FFFFFF;
+    text-shadow: none;
+}
+
+/* ── syntax tokens ─────────────────────────────── */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #6B6455;
+    font-style: italic;
+}
+
+.token.punctuation {
+    color: #A8A090;
+}
+
+.token.namespace {
+    opacity: .75;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #F0BA6A;
+}
+
+.token.boolean,
+.token.number {
+    color: #F0BA6A;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #93D655;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #F0E8D6;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #BCA0F2;
+}
+
+.token.function,
+.token.class-name {
+    color: #4FC8EC;
+}
+
+/* Java annotation (@Foo) — Prism marks token.annotation with punctuation alias */
+.token.annotation,
+.token.annotation.punctuation {
+    color: #4FC8EC;
+    font-weight: 600;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #F0BA6A;
+}
+
+.token.important,
+.token.bold {
+    font-weight: 700;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+/* ── scrollbar 与品牌一致 ─────────────────────── */
+pre[class*="language-"]::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-track {
+    background: #1A170F;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+    background: rgba(79, 200, 236, .28);
+    border: 2px solid #1A170F;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+    background: rgba(79, 200, 236, .55);
+}
+
+pre[class*="language-"] {
+    scrollbar-color: rgba(79, 200, 236, .28) #1A170F;
+}
+
+/* 兼容旧标记 <code class="prism ..."> — 保持奶油字 */
+code.prism {
+    color: #F0E8D6;
+    background: transparent;
+}
