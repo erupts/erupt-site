@@ -26,18 +26,18 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
     }, {
         name: i18nService.t('home.features.extend.name'),
         desc: i18nService.t('home.features.extend.desc'),
-        url: "https://docs.erupt.xyz/advanced/extend",
+        url: "https://docs.erupt.xyz/" + i18nService.getLang().substring(0, 2) + "/advanced/extend",
         icon: "extend.svg"
     }, {
         name: i18nService.t('home.features.attachment.name'),
         desc: i18nService.t('home.features.attachment.desc'),
         icon: "attachment.svg",
-        url: "https://docs.erupt.xyz/field-types/attachment"
+        url: "https://docs.erupt.xyz/" + i18nService.getLang().substring(0, 2) + "/field-types/attachment"
     }, {
         name: i18nService.t('home.features.template.name'),
         desc: i18nService.t('home.features.template.desc'),
         icon: "template.svg",
-        url: "https://docs.erupt.xyz/modules/erupt-tpl"
+        url: "https://docs.erupt.xyz/" + i18nService.getLang().substring(0, 2) + "/modules/erupt-tpl"
     }];
 
 

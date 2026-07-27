@@ -1,7 +1,7 @@
 <style>
     /* ── Hero styles ── */
     #DemoErupt, #DemoErupt code {
-        background: #1a1a1a !important;
+        background: #0d1117 !important;
     }
 
     .del-line {
@@ -57,7 +57,7 @@
         display: flex;
         align-items: center;
         height: 34px;
-        background: #1a1a1a;
+        background: #0d1117;
         border-bottom: 1px solid rgba(79, 200, 236, .3);
         padding: 0 14px;
         flex-shrink: 0;
@@ -119,7 +119,7 @@
     .eb-sidebar {
         width: 200px;
         flex-shrink: 0;
-        background: #1a1a1a;
+        background: #0d1117;
         color: #ccc;
         overflow: auto;
         border-right: 1px solid rgba(79, 200, 236, .2);
@@ -134,13 +134,13 @@
         letter-spacing: 1.2px;
         text-transform: uppercase;
         color: rgba(255, 255, 255, .38);
-        border-bottom: 1px solid rgb(72 38 28);
+        border-bottom: 1px solid rgb(33 72 87);
         margin-bottom: 6px;
     }
 
     .eb-tabs {
         display: flex;
-        background: #1a1a1a;
+        background: #0d1117;
         border-bottom: 1px solid rgba(79, 200, 236, .2);
         flex-shrink: 0;
     }
@@ -154,7 +154,7 @@
         font-size: .8em;
         color: rgba(255, 255, 255, .72);
         border-right: 1px solid rgba(79, 200, 236, .15);
-        background: #141414;
+        background: #010409;
         font-family: 'SFMono-Regular', monospace;
     }
 
@@ -165,40 +165,6 @@
         background: #007bff;
         opacity: .6;
     }
-
-    .eb-tips {
-        width: 220px;
-        flex-shrink: 0;
-        padding: 16px 14px;
-        overflow: auto;
-        background: #1a1a1a;
-        border-left: 1px solid rgba(79, 200, 236, .2);
-    }
-
-    .code-tip-card {
-        border-left: 2px solid;
-        padding: 8px 10px;
-        margin-bottom: 14px;
-        background: rgba(255, 255, 255, .04);
-    }
-
-    .code-tip-card:last-child {
-        margin-bottom: 0
-    }
-
-    .code-tip-card h5 {
-        font-size: .85em;
-        margin: 0 0 4px;
-        font-weight: 700
-    }
-
-    .code-tip-card p {
-        font-size: .82em;
-        color: rgba(255, 255, 255, .38);
-        margin: 0;
-        line-height: 1.5
-    }
-
 
     .bleed-lines { position: relative; }
     .bleed-lines::before, .bleed-lines::after {
@@ -375,16 +341,461 @@
         border-color: currentColor;
     }
 
-    @media (max-width: 768px) {
-        .hero-row {
-            flex-direction: column !important;
-            min-height: 0 !important;
+    /* ── §1 hero — headline + capability diagram ── */
+    .hero-lead {
+        flex: 1;
+        padding: 56px 40px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        min-width: 0;
+    }
+
+    .hero-lead h1 {
+        margin: 0;
+        font-size: clamp(36px, 4.5vw, 62px);
+        letter-spacing: -.03em;
+        line-height: 1.05;
+        font-weight: 800;
+        color: var(--c-text);
+    }
+
+    .hero-lead .lead-sub {
+        margin: 0;
+        max-width: 520px;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--c-text2);
+    }
+
+    .hero-lead .lead-btns {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 4px;
+    }
+
+    .hero-lead .lead-btns .wbtn {
+        padding: 11px 26px;
+        font-size: 14px;
+    }
+
+    /* ── shared hero-ui card styling (used in §1c) ── */
+    .hero-ui-label {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        margin-bottom: 14px;
+    }
+
+    .hero-ui-card {
+        flex: 1;
+        border: 2px solid var(--c-border);
+        box-shadow: 6px 6px 0 var(--c-text);
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        min-height: 0;
+    }
+
+    .ui-titlebar {
+        background: var(--c-text);
+        color: #F0E8D6;
+        padding: 11px 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .08em;
+    }
+
+    .ui-titlebar .diamond {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: var(--c-brand);
+        transform: rotate(45deg);
+    }
+
+    .ui-titlebar .btn-new {
+        background: var(--c-brand);
+        color: var(--c-text);
+        padding: 3px 8px;
+        font-size: 10px;
+        letter-spacing: .05em;
+    }
+
+    .ui-filter {
+        display: flex;
+        gap: 6px;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--c-border);
+        background: rgba(0, 0, 0, .02);
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+    }
+
+    .ui-filter span {
+        border: 1px solid var(--c-border);
+        padding: 3px 8px;
+        background: #FFFFFF;
+    }
+
+    .ui-thead {
+        display: grid;
+        grid-template-columns: 38px 1fr 62px 56px 44px;
+        padding: 8px 12px;
+        border-bottom: 1px solid var(--c-border);
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        letter-spacing: .08em;
+        color: var(--c-text2);
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .ui-rows {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        font-family: var(--c-mono);
+        font-size: 11px;
+    }
+
+    .ui-row {
+        display: grid;
+        grid-template-columns: 38px 1fr 62px 56px 44px;
+        padding: 9px 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, .08);
+        align-items: center;
+    }
+
+    .ui-row:last-child {
+        border-bottom: none;
+    }
+
+    .ui-row .id {
+        opacity: .4;
+    }
+
+    .ui-row .loc {
+        opacity: .55;
+    }
+
+    .ui-row .act {
+        text-align: right;
+        opacity: .4;
+    }
+
+    .ui-chip {
+        padding: 2px 6px;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: .05em;
+        color: #FFFFFF;
+        display: inline-block;
+    }
+
+    .ui-chip.mid {
+        color: #14120B;
+    }
+
+    .ui-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 9px 12px;
+        border-top: 1px solid var(--c-border);
+        font-family: var(--c-mono);
+        font-size: 10px;
+        color: var(--c-text2);
+        background: rgba(0, 0, 0, .02);
+    }
+
+    /* §1c PREVIEW — generated admin UI, single centered cell */
+    .hero-preview {
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-preview-cell {
+        flex: 1;
+        min-width: 0;
+        max-width: 960px;
+        padding: 44px 32px 52px;
+        display: flex;
+        flex-direction: column;
+        background: #FFFFFF;
+    }
+
+    /* Enriched admin body — sidebar + main + right stats */
+    .ui-body {
+        display: grid;
+        grid-template-columns: 132px 1fr 152px;
+        flex: 1;
+        min-height: 0;
+    }
+
+    .ui-side {
+        background: rgba(20, 18, 11, .025);
+        border-right: 1px solid var(--c-border);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ui-side-hd {
+        padding: 10px 12px 8px;
+        font-size: 8.5px;
+        font-weight: 800;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        border-bottom: 1px solid var(--c-border);
+        font-family: var(--c-mono);
+    }
+
+    .ui-menu-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-bottom: 1px solid rgba(20, 18, 11, .05);
+        border-left: 3px solid transparent;
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        color: var(--c-text);
+        font-weight: 600;
+    }
+
+    .ui-menu-item.active {
+        background: var(--c-brand);
+        border-left-color: var(--c-text);
+        font-weight: 800;
+    }
+
+    .ui-menu-item .ic {
+        width: 14px;
+        text-align: center;
+        flex-shrink: 0;
+        opacity: .72;
+        font-size: 11px;
+    }
+
+    .ui-menu-item .live {
+        margin-left: auto;
+        width: 6px;
+        height: 6px;
+        background: #93D655;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px rgba(147, 214, 85, .28);
+    }
+
+    .ui-main {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .ui-stats {
+        border-left: 1px solid var(--c-border);
+        background: rgba(20, 18, 11, .02);
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-family: var(--c-mono);
+    }
+
+    .ui-stat-block {
+        border: 1.5px solid var(--c-border);
+        padding: 10px 12px 12px;
+        background: #FFFFFF;
+        box-shadow: 2px 2px 0 var(--c-text);
+    }
+
+    .ui-stat-label {
+        font-size: 8.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        font-weight: 800;
+    }
+
+    .ui-stat-num {
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--c-text);
+        letter-spacing: -.02em;
+        font-family: var(--c-sans);
+        line-height: 1;
+        margin-top: 4px;
+    }
+
+    .ui-stat-delta {
+        display: inline-block;
+        margin-top: 3px;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        color: #14120B;
+        background: var(--c-green);
+        padding: 0 5px;
+        border: 1px solid var(--c-border);
+    }
+
+    .ui-spark {
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        height: 32px;
+        margin-top: 6px;
+    }
+
+    .ui-spark span {
+        flex: 1;
+        background: var(--c-brand);
+        border: 1px solid var(--c-border);
+        border-bottom: none;
+    }
+
+    .ui-pie {
+        width: 76px;
+        height: 76px;
+        margin: 8px auto 4px;
+        background: conic-gradient(
+                var(--c-brand) 0 40%,
+                var(--c-green) 40% 65%,
+                var(--c-purple) 65% 85%,
+                var(--c-yellow) 85% 100%
+        );
+        border: 2px solid var(--c-border);
+        border-radius: 50%;
+    }
+
+    .ui-pie-legend {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px 8px;
+        font-size: 8.5px;
+        color: var(--c-text2);
+        letter-spacing: .04em;
+        margin-top: 4px;
+    }
+
+    .ui-pie-legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .ui-pie-legend i {
+        width: 6px;
+        height: 6px;
+        flex-shrink: 0;
+    }
+
+    /* Capability list inside .hero-ui-card (§1c right) */
+    .cap-list {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cap-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 14px;
+        border-bottom: 1px solid rgba(0, 0, 0, .08);
+        font-family: var(--c-mono);
+    }
+
+    .cap-row:last-child {
+        border-bottom: none;
+    }
+
+    .cap-row > i {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        flex-shrink: 0;
+    }
+
+    .cap-row .cap-name {
+        font-weight: 700;
+        font-size: 11.5px;
+        color: var(--c-text);
+    }
+
+    .cap-row .cap-desc {
+        flex: 1;
+        text-align: right;
+        font-size: 9px;
+        color: var(--c-text2);
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    /* Highlighted AI Agent row */
+    .cap-row.cap-row-hero {
+        background: rgba(188, 160, 242, .22);
+        border-top: 2px solid var(--c-border);
+        border-left: 4px solid var(--c-purple);
+        padding: 13px 14px 13px 12px;
+    }
+
+    .cap-row.cap-row-hero > i {
+        width: 10px;
+        height: 10px;
+        border: 1.5px solid var(--c-border);
+    }
+
+    .cap-row.cap-row-hero .cap-name {
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: -.01em;
+        font-family: var(--c-sans);
+    }
+
+    .cap-row.cap-row-hero .cap-desc {
+        font-size: 9.5px;
+        color: var(--c-text);
+        font-weight: 700;
+    }
+
+    .cap-badge {
+        display: inline-block;
+        margin-left: 6px;
+        padding: 1px 6px 0;
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        font-weight: 800;
+        letter-spacing: .12em;
+        background: var(--c-yellow);
+        border: 1.5px solid var(--c-border);
+        color: var(--c-text);
+        box-shadow: 2px 2px 0 var(--c-text);
+        transform: translateY(-1px) rotate(-2deg);
+        vertical-align: middle;
+    }
+
+    @media (max-width: 991px) {
+        .hero-preview-cell {
+            padding: 32px 20px 40px;
         }
-        .hero-left {
-            padding: 40px 24px 28px !important;
-        }
-        .hero-diagram-panel {
-            display: none !important;
+
+        .hero-lead {
+            padding: 48px 24px 40px;
+            gap: 16px;
         }
     }
 
@@ -394,226 +805,170 @@
 
     <div class="fr">
 
-        <!-- §1 HERO -->
-        <div class="g-bg hero-row" style="display:flex;min-height:480px;overflow:hidden">
-            <!-- left: text -->
-            <div class="hero-left" style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
-                <span id="home-logo"><img alt="" src="assets/logo.svg" width="88px"></span>
-                <div style="margin-top:20px;display:flex;align-items:center;gap:10px;justify-content:center">
+        <!-- §1 HERO — headline + narrow capability diagram -->
+        <div class="r g-bg ticks hero-split-top" style="display:flex;min-height:520px;overflow:hidden">
+            <div class="hero-lead">
+                <span id="home-logo"><img alt="" src="assets/logo.svg" width="72px"></span>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
                     <span class="tag">Open Source · Apache 2.0</span>
+                    <span class="tag" style="background:#93D655;transform:rotate(1deg)">Spring Boot</span>
+                    <span class="tag" style="background:#BCA0F2;transform:rotate(-.8deg)">Zero Frontend</span>
                 </div>
-                <h1 style="margin-top:14px;letter-spacing:-.03em;font-size:clamp(28px,4vw,50px);line-height:1.1">Erupt
-                    Engine</h1>
-                <p style="margin-top:12px;font-size:15px;color:var(--c-text2)">
-                    <span style="color:var(--c-brand)">MDD</span>
-                    <span style="margin:0 8px;opacity:.2">·</span>
-                    <span style="color:var(--c-text);font-weight:700">{{'home.subtitle'|i18n}}</span>
-                    <span style="margin:0 10px;opacity:.2">×</span>
-                    {{'home.subtitle2'|i18n}}
+                <h1>Erupt Engine</h1>
+                <p class="lead-sub">
+                    <span style="background:#F5D547;color:var(--c-text);font-weight:800;padding:1px 8px;border:1.5px solid var(--c-border);box-shadow:2px 2px 0 var(--c-text)">MDD</span>
+                    <span style="color:var(--c-text);font-weight:700;margin-left:6px">{{'home.subtitle'|i18n}}</span>
+                    <span style="display:inline-block;margin:6px 0 0 4px;background:var(--c-purple);color:var(--c-text);font-weight:800;padding:2px 10px 1px;border:1.5px solid var(--c-border);box-shadow:2px 2px 0 var(--c-text);transform:rotate(-1.5deg);letter-spacing:.02em">{{'home.subtitle2'|i18n}}</span>
                 </p>
-                <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-                    <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank"
-                       style="padding:11px 28px;font-size:14px">{{'home.btn.start'|i18n}} ↗</a>
-                    <a class="wbtn" ng-click="go('https://demo.erupt.xyz',true)"
-                       style="cursor:pointer;padding:11px 28px;font-size:14px">{{'home.btn.demo'|i18n}}</a>
-                    <a class="wbtn" href="https://docs.erupt.xyz/" target="_blank"
-                       style="padding:11px 28px;font-size:14px">{{'home.btn.doc'|i18n}}</a>
+                <div class="lead-btns">
+                    <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank">{{'home.btn.start'|i18n}}
+                        ↗</a>
+                    <a class="wbtn" ng-click="go('https://demo.erupt.xyz',true)" style="cursor:pointer">{{'home.btn.demo'|i18n}}</a>
+                    <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">{{'home.btn.doc'|i18n}}</a>
                 </div>
-                <p style="margin-top:16px;font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text2);opacity:.45">
-                    Free · Spring Boot · Zero Frontend Code
-                </p>
             </div>
-            <!-- right: @Erupt capability diagram -->
+            <!-- Right: @Erupt capability diagram (narrow) -->
             <div class="d-none d-lg-flex hero-diagram-panel"
-                 style="flex:0 0 46%;border-left:2px solid var(--c-border);background:#FAFAFA;align-items:center;justify-content:center;padding:0 20px;position:relative;overflow:hidden">
-                <!-- tree layout: java class card + SVG connector + capability items -->
+                 style="flex:0 0 22%;border-left:2px solid var(--c-border);align-items:center;justify-content:center;padding:0 14px;position:relative;overflow:hidden">
                 <div class="hero-diagram-inner" style="display:flex;align-items:center;gap:0;width:100%;height:428px">
-
-                    <!-- Java class card (centered vertically) -->
-                    <div class="dia-card"
-                         style="width:96px;flex-shrink:0;align-self:center;background:white;border:2px solid var(--c-border);padding:14px 10px 12px;text-align:center;box-shadow:4px 4px 0 var(--c-brand)">
-                        <div style="font-size:7px;letter-spacing:.18em;color:#4FC8EC;font-family:'SFMono-Regular',monospace;margin-bottom:10px">
-                            @Erupt
-                        </div>
-                        <!-- Chip / processor icon -->
-                        <svg width="44" height="44" viewBox="0 0 44 44" style="display:block;margin:0 auto 10px"
-                             fill="none">
-                            <!-- pins top -->
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="13" x2="13" y1="0" y2="8"/>
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="22" x2="22" y1="0" y2="8"/>
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="31" x2="31" y1="0" y2="8"/>
-                            <!-- pins bottom -->
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="13" x2="13" y1="36" y2="44"/>
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="22" x2="22" y1="36" y2="44"/>
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="31" x2="31" y1="36" y2="44"/>
-                            <!-- pins left -->
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="0" x2="8" y1="13" y2="13"/>
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="0" x2="8" y1="22" y2="22"/>
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="0" x2="8" y1="31" y2="31"/>
-                            <!-- pins right -->
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="36" x2="44" y1="13" y2="13"/>
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="36" x2="44" y1="22" y2="22"/>
-                            <line opacity=".5" stroke="#4FC8EC" stroke-width="1.2" x1="36" x2="44" y1="31" y2="31"/>
-                            <!-- chip body -->
-                            <rect fill="rgba(79,200,236,.05)" height="28" stroke="#4FC8EC" width="28" x="8" y="8"
-                                  stroke-width="1.5"/>
-                            <!-- inner circuit lines -->
-                            <rect fill="none" height="16" stroke="rgba(79,200,236,.3)" width="16" x="14" y="14"
-                                  stroke-width="1"/>
-                            <!-- @ symbol -->
-                            <text fill="#4FC8EC" font-size="9" font-weight="700" text-anchor="middle" x="22" y="25"
-                                  font-family="'SFMono-Regular',monospace">@
-                            </text>
-                        </svg>
-                        <div style="font-size:7.5px;font-weight:700;color:rgba(0,0,0,.5);font-family:'SFMono-Regular',monospace;line-height:1.6">
-                            .class
-                        </div>
-                    </div>
-
-                    <!-- SVG connector: horizontal dash → vertical trunk → 9 colored branches -->
-                    <!-- 9 items × 44px + 8 gaps × 4px = 428px; centers at 22,70,118,166,214,262,310,358,406 -->
-                    <svg width="60" height="428" viewBox="0 0 60 428" style="flex-shrink:0">
-                        <line x1="0" y1="214" x2="20" y2="214" stroke="rgba(0,0,0,.18)" stroke-width="1.5"
-                              stroke-dasharray="3 3"/>
-                        <line x1="20" y1="22" x2="20" y2="406" stroke="rgba(0,0,0,.1)" stroke-width="1"/>
-                        <circle cx="20" cy="214" fill="#4FC8EC" opacity=".7" r="2.5"/>
-                        <circle cx="20" cy="22" r="2" fill="#ef4444"/>
-                        <line x1="20" y1="22" x2="60" y2="22" stroke="#ef4444" stroke-width="1.5"
+                    <svg height="428" style="flex-shrink:0" viewBox="0 0 44 428" width="44">
+                        <line stroke="rgba(0,0,0,.12)" stroke-width="1" x1="12" x2="12" y1="22" y2="406"/>
+                        <circle cx="12" cy="214" fill="#4FC8EC" opacity=".7" r="2.5"/>
+                        <circle cx="12" cy="22" fill="#4FC8EC" r="2"/>
+                        <line stroke="#4FC8EC" stroke-width="1.5" x1="12" x2="44" y1="22" y2="22"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:0s"/>
-                        <circle cx="20" cy="70" r="2" fill="#a855f7"/>
-                        <line x1="20" y1="70" x2="60" y2="70" stroke="#a855f7" stroke-width="1.5"
+                        <circle cx="12" cy="70" fill="#93D655" r="2"/>
+                        <line stroke="#93D655" stroke-width="1.5" x1="12" x2="44" y1="70" y2="70"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.15s"/>
-                        <circle cx="20" cy="118" fill="#3b82f6" r="2"/>
-                        <line stroke="#3b82f6" stroke-width="1.5" x1="20" x2="60" y1="118" y2="118"
+                        <circle cx="12" cy="118" fill="#BCA0F2" r="2"/>
+                        <line stroke="#BCA0F2" stroke-width="1.5" x1="12" x2="44" y1="118" y2="118"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.3s"/>
-                        <circle cx="20" cy="166" fill="#06b6d4" r="2"/>
-                        <line stroke="#06b6d4" stroke-width="1.5" x1="20" x2="60" y1="166" y2="166"
+                        <circle cx="12" cy="166" fill="#4FC8EC" r="2"/>
+                        <line stroke="#4FC8EC" stroke-width="1.5" x1="12" x2="44" y1="166" y2="166"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.45s"/>
-                        <circle cx="20" cy="214" fill="#22c55e" r="2"/>
-                        <line stroke="#22c55e" stroke-width="1.5" x1="20" x2="60" y1="214" y2="214"
+                        <circle cx="12" cy="214" fill="#93D655" r="2"/>
+                        <line stroke="#93D655" stroke-width="1.5" x1="12" x2="44" y1="214" y2="214"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.6s"/>
-                        <circle cx="20" cy="262" fill="#f59e0b" r="2"/>
-                        <line stroke="#f59e0b" stroke-width="1.5" x1="20" x2="60" y1="262" y2="262"
+                        <circle cx="12" cy="262" fill="#BCA0F2" r="2"/>
+                        <line stroke="#BCA0F2" stroke-width="1.5" x1="12" x2="44" y1="262" y2="262"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.75s"/>
-                        <circle cx="20" cy="310" r="2" fill="#6366f1"/>
-                        <line x1="20" y1="310" x2="60" y2="310" stroke="#6366f1" stroke-width="1.5"
+                        <circle cx="12" cy="310" fill="#4FC8EC" r="2"/>
+                        <line stroke="#4FC8EC" stroke-width="1.5" x1="12" x2="44" y1="310" y2="310"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.9s"/>
-                        <circle cx="20" cy="358" r="2" fill="#f97316"/>
-                        <line x1="20" y1="358" x2="60" y2="358" stroke="#f97316" stroke-width="1.5"
+                        <circle cx="12" cy="358" fill="#93D655" r="2"/>
+                        <line stroke="#93D655" stroke-width="1.5" x1="12" x2="44" y1="358" y2="358"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-1.05s"/>
-                        <circle cx="20" cy="406" r="2" fill="#ec4899"/>
-                        <line x1="20" y1="406" x2="60" y2="406" stroke="#ec4899" stroke-width="1.5"
+                        <circle cx="12" cy="406" fill="#BCA0F2" r="2"/>
+                        <line stroke="#BCA0F2" stroke-width="1.5" x1="12" x2="44" y1="406" y2="406"
                               style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-1.2s"/>
                     </svg>
-
-                    <!-- Capability items: 9 × flex:1, gap:4px → each 44px, centers match SVG branches -->
-                    <div class="dia-items" style="flex:1;display:flex;flex-direction:column;gap:4px;height:428px">
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#ef4444;border-radius:1px;flex-shrink:0"></div>
-                            <div>
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
+                    <div class="dia-items"
+                         style="flex:1;display:flex;flex-direction:column;gap:4px;height:428px;min-width:0">
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#4FC8EC;flex-shrink:0"></div>
+                            <div style="min-width:0;overflow:hidden">
+                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     Table / Form
                                 </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:'SFMono-Regular',monospace">
+                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     UI rendering
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#a855f7;border-radius:1px;flex-shrink:0"></div>
-                            <div>
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#93D655;flex-shrink:0"></div>
+                            <div style="min-width:0;overflow:hidden">
+                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     RBAC
                                 </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:'SFMono-Regular',monospace">
+                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     Permissions
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#3b82f6;border-radius:1px;flex-shrink:0"></div>
-                            <div>
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#BCA0F2;flex-shrink:0"></div>
+                            <div style="min-width:0;overflow:hidden">
+                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     REST API
                                 </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:'SFMono-Regular',monospace">
-                                    controller layer
+                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                                    Controller
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#06b6d4;border-radius:1px;flex-shrink:0"></div>
-                            <div>
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#4FC8EC;flex-shrink:0"></div>
+                            <div style="min-width:0;overflow:hidden">
+                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     DataProxy
                                 </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:'SFMono-Regular',monospace">
-                                    service layer
+                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                                    Service
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#22c55e;border-radius:1px;flex-shrink:0"></div>
-                            <div>
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#93D655;flex-shrink:0"></div>
+                            <div style="min-width:0;overflow:hidden">
+                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     Auto DDL
                                 </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:'SFMono-Regular',monospace">
-                                    database layer
+                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                                    Database
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#f59e0b;border-radius:1px;flex-shrink:0"></div>
-                            <div>
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#BCA0F2;flex-shrink:0"></div>
+                            <div style="min-width:0;overflow:hidden">
+                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     Flow Engine
                                 </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:'SFMono-Regular',monospace">
-                                    workflow support
+                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                                    Workflow
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#6366f1;border-radius:1px;flex-shrink:0"></div>
-                            <div>
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#4FC8EC;flex-shrink:0"></div>
+                            <div style="min-width:0;overflow:hidden">
+                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     i18n
                                 </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:'SFMono-Regular',monospace">
+                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     10 languages
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#f97316;border-radius:1px;flex-shrink:0"></div>
-                            <div>
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#93D655;flex-shrink:0"></div>
+                            <div style="min-width:0;overflow:hidden">
+                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     Charts
                                 </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:'SFMono-Regular',monospace">
-                                    data visualization
+                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                                    Data viz
                                 </div>
                             </div>
                         </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#ec4899;border-radius:1px;flex-shrink:0"></div>
-                            <div>
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:'SFMono-Regular',monospace">
+                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:var(--c-purple);border:2px solid var(--c-border);min-width:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)">
+                            <div style="width:2px;align-self:stretch;margin:8px 0;background:var(--c-text);flex-shrink:0"></div>
+                            <div style="min-width:0;overflow:hidden">
+                                <div style="font-size:10px;font-weight:800;color:var(--c-text);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     AI Agent
                                 </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:'SFMono-Regular',monospace">
+                                <div style="font-size:8px;color:var(--c-text);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                                     Multi-LLM · MCP
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
 
-        <!-- §1b HERO EDITOR -->
+        <!-- §1b HERO EDITOR — code only -->
         <div class="r bleed-lines">
             <div id="erupt-box">
                 <!-- titlebar -->
@@ -653,9 +1008,9 @@
                         </div>
                     </div>
                     <!-- editor -->
-                    <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;position:relative;background: #1a1a1a">
+                    <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;position:relative;background: #0d1117">
                             <pre id="DemoErupt"
-                                 style="margin:0;border-radius:0;flex:1;overflow:auto;background:#1a1a1a">
+                                 style="margin:0;border-radius:0;flex:1;overflow:auto;background:#0d1117">
 <code class="prism language-java animated bounce">/**
  * plug-and-play 🚀  1 class replaces:
  * html / js / css / controller / service / dao / mapper / ddl
@@ -714,54 +1069,146 @@ public class Task extends BaseModel {
                            style="position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:5px;padding:5px 12px;font-family:'SFMono-Regular',monospace;font-size:11px;color:var(--c-brand);background:rgba(79,200,236,.08);border:1px solid rgba(79,200,236,.3);text-decoration:none;transition:background .15s,border-color .15s"
                         >{{'home.code.more'|i18n}}</a>
                     </div>
-                    <!-- tips -->
-                    <div class="d-none d-lg-flex eb-tips"
-                         style="flex-direction:column;gap:0;padding:0;width:230px;background:#1a1a1a">
-                        <div style="padding:10px 14px 8px;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);border-bottom:1px solid rgb(72 38 28)">
-                            Why Erupt
-                        </div>
-                        <div style="flex:1;overflow:auto;padding:12px 0">
-                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
-                                <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;flex-shrink:0"></span>
-                                    <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip1.title'|i18n}}</span>
-                                </div>
-                                <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
-                                    {{'home.code.tip1.desc'|i18n}}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             §1c  PREVIEW — generated admin + wired modules
+             ════════════════════════════════════════ -->
+        <div class="r g-bg ticks" style="padding:56px 32px 40px;text-align:center">
+            <span class="tag">Preview</span>
+            <p class="h2" style="margin:10px 0 6px">One class · Full-stack admin</p>
+            <p class="sub" style="max-width:640px;margin:0 auto">
+                Every field annotation instantly renders in the admin table and wires up 9 backend modules — no frontend
+                code, no boilerplate.
+            </p>
+        </div>
+        <div class="r hero-preview">
+            <!-- Generated Admin UI -->
+            <div class="hero-preview-cell">
+                <div class="hero-ui-label">Generated Admin UI</div>
+                <div class="hero-ui-card">
+                    <div class="ui-titlebar">
+                        <span class="diamond"></span>
+                        <span>ERUPT ADMIN · Task Management</span>
+                        <span style="flex:1"></span>
+                        <span class="btn-new">+ NEW</span>
+                    </div>
+                    <div class="ui-body">
+                        <!-- Left: menu sidebar (auto-generated from @EruptMenu) -->
+                        <aside class="ui-side">
+                            <div class="ui-side-hd">Menu</div>
+                            <div class="ui-menu-item"><span class="ic">▤</span>Dashboard</div>
+                            <div class="ui-menu-item active"><span class="ic">✓</span>Tasks<span class="live"></span>
                             </div>
-                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
-                                <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span>
-                                    <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip2.title'|i18n}}</span>
-                                </div>
-                                <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
-                                    {{'home.code.tip2.desc'|i18n}}</p>
+                            <div class="ui-menu-item"><span class="ic">◉</span>Users</div>
+                            <div class="ui-menu-item"><span class="ic">⊞</span>Roles</div>
+                            <div class="ui-menu-item"><span class="ic">◈</span>Charts</div>
+                            <div class="ui-menu-item"><span class="ic">⚙</span>Settings</div>
+                            <div class="ui-menu-item" style="opacity:.5"><span class="ic">▽</span>Audit Log</div>
+                        </aside>
+                        <!-- Main: table + filter + pagination -->
+                        <main class="ui-main">
+                            <div class="ui-filter">
+                                <span>PRIORITY ▾</span>
+                                <span>LOCATION ▾</span>
+                                <span style="flex:1"></span>
+                                <span>🔍 SEARCH</span>
                             </div>
-                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
-                                <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0"></span>
-                                    <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip3.title'|i18n}}</span>
-                                </div>
-                                <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
-                                    {{'home.code.tip3.desc'|i18n}}</p>
+                            <div class="ui-thead">
+                                <span>ID</span>
+                                <span>TITLE</span>
+                                <span>PRIO</span>
+                                <span>LOC</span>
+                                <span style="text-align:right">···</span>
                             </div>
-                            <div style="padding:10px 16px;border-bottom:1px solid rgb(72 38 28)">
-                                <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span>
-                                    <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip4.title'|i18n}}</span>
+                            <div class="ui-rows">
+                                <div class="ui-row">
+                                    <span class="id">001</span>
+                                    <span>Deploy k8s</span>
+                                    <span><span class="ui-chip" style="background:#ef4444">HIGH</span></span>
+                                    <span class="loc">NYC</span>
+                                    <span class="act">✎ 🗑</span>
                                 </div>
-                                <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
-                                    {{'home.code.tip4.desc'|i18n}}</p>
-                            </div>
-                            <div style="padding:10px 16px">
-                                <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
-                                    <span style="width:6px;height:6px;border-radius:50%;background:#a855f7;flex-shrink:0"></span>
-                                    <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.75)">{{'home.code.tip5.title'|i18n}}</span>
+                                <div class="ui-row">
+                                    <span class="id">002</span>
+                                    <span>Refactor DB</span>
+                                    <span><span class="ui-chip mid" style="background:#f59e0b">MID</span></span>
+                                    <span class="loc">TYO</span>
+                                    <span class="act">✎ 🗑</span>
                                 </div>
-                                <p style="font-size:11px;color:rgba(255,255,255,.38);margin:0;line-height:1.55;padding-left:13px">
-                                    {{'home.code.tip5.desc'|i18n}}</p>
+                                <div class="ui-row">
+                                    <span class="id">003</span>
+                                    <span>Add e2e tests</span>
+                                    <span><span class="ui-chip" style="background:#22c55e">LOW</span></span>
+                                    <span class="loc">SFO</span>
+                                    <span class="act">✎ 🗑</span>
+                                </div>
+                                <div class="ui-row">
+                                    <span class="id">004</span>
+                                    <span>Sign contract</span>
+                                    <span><span class="ui-chip" style="background:#ef4444">HIGH</span></span>
+                                    <span class="loc">LON</span>
+                                    <span class="act">✎ 🗑</span>
+                                </div>
+                                <div class="ui-row">
+                                    <span class="id">005</span>
+                                    <span>Onboard hire</span>
+                                    <span><span class="ui-chip mid" style="background:#f59e0b">MID</span></span>
+                                    <span class="loc">PAR</span>
+                                    <span class="act">✎ 🗑</span>
+                                </div>
+                                <div class="ui-row">
+                                    <span class="id">006</span>
+                                    <span>Q3 QBR review</span>
+                                    <span><span class="ui-chip" style="background:#ef4444">HIGH</span></span>
+                                    <span class="loc">SF</span>
+                                    <span class="act">✎ 🗑</span>
+                                </div>
+                                <div class="ui-row">
+                                    <span class="id">007</span>
+                                    <span>Weekly digest</span>
+                                    <span><span class="ui-chip" style="background:#22c55e">LOW</span></span>
+                                    <span class="loc">NYC</span>
+                                    <span class="act">✎ 🗑</span>
+                                </div>
                             </div>
-                        </div>
+                            <div class="ui-foot">
+                                <span>PAGE 1 · 24 ROWS</span>
+                                <span>‹ 1 2 3 4 ›</span>
+                            </div>
+                        </main>
+                        <!-- Right: stat widgets (auto-rendered from @Erupt) -->
+                        <aside class="ui-stats">
+                            <div class="ui-stat-block">
+                                <div class="ui-stat-label">Total</div>
+                                <div class="ui-stat-num">24</div>
+                                <span class="ui-stat-delta">↑ 12%</span>
+                            </div>
+                            <div class="ui-stat-block">
+                                <div class="ui-stat-label">Trend · 7d</div>
+                                <div class="ui-spark">
+                                    <span style="height:32%"></span>
+                                    <span style="height:58%"></span>
+                                    <span style="height:44%"></span>
+                                    <span style="height:78%"></span>
+                                    <span style="height:64%"></span>
+                                    <span style="height:92%"></span>
+                                    <span style="height:70%"></span>
+                                </div>
+                            </div>
+                            <div class="ui-stat-block">
+                                <div class="ui-stat-label">By Priority</div>
+                                <div class="ui-pie"></div>
+                                <div class="ui-pie-legend">
+                                    <span><i style="background:#4FC8EC"></i>High</span>
+                                    <span><i style="background:#93D655"></i>Mid</span>
+                                    <span><i style="background:#BCA0F2"></i>Low</span>
+                                    <span><i style="background:#FCE566"></i>Idle</span>
+                                </div>
+                            </div>
+                        </aside>
                     </div>
                 </div>
             </div>
@@ -911,8 +1358,8 @@ public class Task extends BaseModel {
         <!-- ════════════════════════════════════════
              §6  ANNOTATION VOCABULARY — heading
              ════════════════════════════════════════ -->
-        <div class="r g-bg ticks" style="padding:48px;text-align:center">
-            <span class="tag">Annotation Vocabulary</span>
+        <div class="r g-bg g-bg-y ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-y">Annotation Vocabulary</span>
             <h2 class="h2">{{'home.v2.anno.title.pre'|i18n}}<b>{{'home.v2.anno.title.mid'|i18n}}</b></h2>
             <p class="sub" style="margin:0 auto;max-width:52ch">{{'home.v2.anno.lede'|i18n}}</p>
         </div>
@@ -1058,8 +1505,8 @@ public class Task extends BaseModel {
         <!-- ════════════════════════════════════════
              §10 AI NATIVE — heading
              ════════════════════════════════════════ -->
-        <div class="r g-bg ticks" style="padding:48px;text-align:center">
-            <span class="tag">AI Native</span>
+        <div class="r g-bg g-bg-p ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-p">AI Native</span>
             <h2 class="h2">{{'home.v2.ai.title'|i18n}}</h2>
             <p class="sub" style="margin:0 auto;max-width:56ch">{{'home.v2.ai.p'|i18n}}</p>
         </div>
@@ -1259,8 +1706,8 @@ public class Task extends BaseModel {
         <!-- ════════════════════════════════════════
              §14 PRODUCT FAMILY — heading
              ════════════════════════════════════════ -->
-        <div class="r g-bg ticks" style="padding:48px;text-align:center">
-            <span class="tag">Product Family</span>
+        <div class="r g-bg g-bg-y ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-y">Product Family</span>
             <h2 class="h2">{{'home.v2.fam.title.pre'|i18n}}<em style="font-style:normal;color:var(--c-brand)">{{'home.v2.fam.title.em'|i18n}}</em>
             </h2>
             <p class="sub" style="margin:0 auto;max-width:52ch">{{'home.v2.fam.lede'|i18n}}</p>
@@ -1323,8 +1770,8 @@ public class Task extends BaseModel {
         <!-- ════════════════════════════════════════
              §15.5 COMMERCIAL EXTENSIONS — heading
              ════════════════════════════════════════ -->
-        <div class="r g-bg ticks" style="padding:48px;text-align:center">
-            <span class="tag">Commercial Extensions</span>
+        <div class="r g-bg g-bg-p ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-p">Commercial Extensions</span>
             <h2 class="h2">{{'home.pro.h' | i18n}}</h2>
             <p class="sub" style="margin:0 auto;max-width:52ch">{{'home.pro.sub' | i18n}}</p>
         </div>
@@ -1441,7 +1888,7 @@ public class Task extends BaseModel {
                    style="padding:11px 28px;font-size:14px">{{'home.btn.start'|i18n}}</a>
                 <a class="wbtn" href="https://demo.erupt.xyz" target="_blank"
                    style="padding:11px 28px;font-size:14px">{{'home.v2.cta.demo'|i18n}}</a>
-                <a class="wbtn" href="https://docs.erupt.xyz/" target="_blank"
+                <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank"
                    style="padding:11px 28px;font-size:14px">{{'home.v2.cta.docs'|i18n}}</a>
             </div>
         </div>
