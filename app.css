@@ -16,6 +16,10 @@
     --c-cyan: #4FC8EC;
     --c-green: #93D655;
     --c-purple: #BCA0F2;
+    --c-yellow: #FCE566;
+    --c-yellow-rgb: 252, 229, 102;
+    --c-pink: #F7BFD2;
+    --c-pink-rgb: 247, 191, 210;
     --c-code-bg: #1A170F;
     --c-code-text: #F0E8D6;
     --c-grid: rgba(20, 18, 11, .05);
@@ -782,6 +786,19 @@ html, body {
     background-size: 32px 32px;
 }
 
+/* Accent-tinted grid backgrounds — 打破整站 cyan 单调, 黄/粉作 heading row 底色点缀 */
+.g-bg.g-bg-y {
+    background-color: #FFF4B8;
+    background-image: linear-gradient(rgba(20, 18, 11, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 18, 11, .08) 1px, transparent 1px);
+}
+
+.g-bg.g-bg-p {
+    background-color: #FDE1EA;
+    background-image: linear-gradient(rgba(20, 18, 11, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 18, 11, .08) 1px, transparent 1px);
+}
+
 .fr {
     max-width: 1200px;
     margin: 0 auto;
@@ -860,6 +877,25 @@ html, body {
     padding: 4px 10px 3px;
     margin-bottom: 12px;
     transform: rotate(-1deg);
+}
+
+.tag.tag-y {
+    background: var(--c-yellow);
+    transform: rotate(1deg);
+}
+
+.tag.tag-p {
+    background: var(--c-pink);
+    transform: rotate(-2deg);
+}
+
+.tag.tag-g {
+    background: var(--c-green);
+}
+
+.tag.tag-v {
+    background: var(--c-purple);
+    transform: rotate(1.5deg);
 }
 
 .h1 { font-size: clamp(38px,5vw,62px); font-weight: 800; line-height: 1.1; letter-spacing: -.03em; color: var(--c-text); margin: 0 0 20px; }
