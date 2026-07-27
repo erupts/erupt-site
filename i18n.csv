@@ -563,6 +563,7 @@ pro.modules.title,四个模块，覆盖企业级核心场景,Four modules for co
 pro.modules.sub,"每个模块独立销售，也可任意组合。所有模块均深度集成 Erupt UPMS 权限体系，无需重新对接用户/角色/数据权限。","Each module is sold separately or in any combination. All modules deeply integrate with Erupt UPMS — no need to rewire users, roles, or data permissions."
 pro.card.unit,一次买断,one-time
 pro.card.chart.title,报表图表,Reports & Charts
+pro.card.chart.opensource,8 月 23 日开源,Open source Aug 23
 pro.card.chart.sub,SQL 即图表 · 零前端代码 · 适合有 SQL 能力的开发者快速搭建固定报表。,SQL as charts · zero frontend code · ideal for SQL-savvy developers building fixed reports fast.
 pro.card.chart.f1,十几种图表组件 + 查询维度,Dozens of chart components + query dimensions
 pro.card.chart.f2,动态函数 / 钻取 / 联动,Dynamic functions / drill-down / linkage

@@ -1780,7 +1780,9 @@ public class Task extends BaseModel {
              §15.6 COMMERCIAL CELLS (4 cards · all → /pro)
              ════════════════════════════════════════ -->
         <div class="r g4 reveal">
-            <div class="c clickable" ng-click="go('#!/pro')">
+            <div class="c clickable" ng-click="go('#!/pro')" style="position:relative">
+                <span class="tag tag-g"
+                      style="position:absolute;top:10px;right:12px;margin-bottom:0;font-size:9px;padding:3px 8px 2px;box-shadow:2px 2px 0 var(--c-text)">{{'pro.card.chart.opensource' | i18n}}</span>
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">erupt-chart</span>
                 <div class="h3">{{'home.pro.chart.title' | i18n}}</div>
                 <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.pro.chart.sub' | i18n}}</p>
