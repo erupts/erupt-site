@@ -470,6 +470,33 @@ cube.ml.loop.title,循环  #foreach / #end,Loop  #foreach / #end
 cube.ml.fn.label,自定义函数 — CubeFunction,Custom Function — CubeFunction
 cube.ml.fn.reg.title,Java — 注册自定义函数,Java — Register Function
 cube.ml.fn.use.title,ML — 调用自定义函数,ML — Call Function
+cube.sql.title.pre,用 ,Query the Semantic Model in
+cube.sql.title.post, 直连语义模型,
+cube.sql.desc,"erupt-cube-sql 将语义模型以 PostgreSQL 协议对外暴露：每个 Cube 都是一张可直接 SELECT 的表，psql、DataGrip、Superset、Grafana 及任何 JDBC 客户端均可直连。","erupt-cube-sql exposes the semantic model over the PostgreSQL wire protocol: every Cube is a table you can SELECT from — psql, DataGrip, Superset, Grafana, and any JDBC client connect directly."
+cube.sql.cfg.title,YAML — 一段配置开启端口,YAML — One config block to enable
+cube.sql.f1.title,自动聚合,Auto Aggregation
+cube.sql.f1.desc,"指标列自带聚合语义，直接投影即按所选维度粒度聚合，无需手写 GROUP BY。","Measures carry aggregation semantics — project them and they roll up to the selected dimensions, no hand-written GROUP BY."
+cube.sql.f2.title,谓词下推,Predicate Pushdown
+cube.sql.f2.desc,"维度过滤下推至底层数据源，指标条件自动路由为对应粒度的 HAVING。",Dimension filters push down to the source; measure filters route to HAVING at the right grain automatically.
+cube.sql.f3.title,跨源关联,Cross-Source JOIN
+cube.sql.f3.desc,"不同 Cube 可直接 JOIN，即使数据来自不同数据库，由 Calcite 在内存完成关联。",JOIN across Cubes even when data lives in different databases — Calcite stitches the results in memory.
+cube.sql.f4.title,只读安全,Read-Only by Design
+cube.sql.f4.desc,"INSERT / UPDATE / DELETE / DDL 一律拒绝，行为与 PostgreSQL 只读从库一致。",INSERT / UPDATE / DELETE / DDL are all rejected — it behaves exactly like a PostgreSQL read-only replica.
+cube.sql.clients.label,兼容客户端,Works With
+cube.ai.title.pre,让 ,Let
+cube.ai.title.post, 直接问数, Query Your Data
+cube.ai.desc,"内置 MCP 工具集，AI Agent 可自主发现语义模型、读取维度指标、执行聚合查询——指标口径与数据权限由语义层统一保证，大模型不再""编数""。","Built-in MCP tools let AI agents discover semantic models, read dimensions & measures, and run aggregate queries — metric definitions and data permissions are enforced by the semantic layer, so LLMs stop making numbers up."
+cube.ai.chat.q,上季度各品类的营收 Top 3 是哪些？,What were the top 3 categories by revenue last quarter?
+cube.ai.chat.render,3 rows · 自动渲染 ECharts 柱状图,3 rows · rendered as an ECharts bar chart
+cube.ai.tool.list,发现全部可用的语义模型,Discover every available semantic model
+cube.ai.tool.meta,读取维度 / 指标 / 参数元数据,Read dimension / measure / parameter metadata
+cube.ai.tool.query,执行聚合查询 · 16+ 过滤算子 · 排序分页,Run aggregate queries · 16+ filter operators · sort & paging
+cube.ai.f1.title,MCP 原生工具集,MCP-Native Tools
+cube.ai.f1.desc,"@AiToolbox 内置 cubeList / cubeMetadata / cubeQuery，任何支持 MCP 或 Function Calling 的 Agent 即插即用。","@AiToolbox ships cubeList / cubeMetadata / cubeQuery — plug-and-play for any agent that speaks MCP or function calling."
+cube.ai.f2.title,口径与权限内建,Governed Answers
+cube.ai.f2.desc,"AI 查到的每个数字都出自语义层：聚合语义、GROUP BY 逻辑、行级数据权限统一收口，答案可信可复现。","Every number an agent sees comes through the semantic layer: aggregation semantics, GROUP BY logic, and row-level permissions — trustworthy, reproducible answers."
+cube.ai.f3.title,17+ 大模型接入,17+ LLM Providers
+cube.ai.f3.desc,"依托 erupt-ai 统一接入：OpenAI、Claude、Gemini、DeepSeek、Qwen、Ollama 本地模型等开箱即用。","Powered by erupt-ai: OpenAI, Claude, Gemini, DeepSeek, Qwen, local Ollama models and more, out of the box."
 lang.zh,中文,中文
 partners.eyebrow,ECOSYSTEM,ECOSYSTEM
 partners.hero.title,合作伙伴与集成生态,Partners & Integration Ecosystem

@@ -67,6 +67,35 @@
         position: relative;
     }
 
+    /* ── SQL Interface ── */
+    .cube-sql-stamp {
+        font-style: normal;
+        display: inline-block;
+        background: var(--c-brand);
+        color: var(--c-text);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        padding: 0 12px 2px;
+        transform: rotate(-1deg);
+    }
+
+    .csql-prompt {
+        color: #4FC8EC;
+    }
+
+    .csql-kw {
+        color: #BCA0F2;
+    }
+
+    .csql-res {
+        color: rgba(240, 232, 214, .5);
+    }
+
+    .csql-cmt {
+        color: rgba(240, 232, 214, .38);
+        font-style: italic;
+    }
+
     /* ── Stats row (g4 cells) ── */
     .cube-stat-num {
         display: inline-block;
@@ -649,6 +678,11 @@
         font-size: .84em;
         line-height: 1.75;
         overflow-x: auto;
+        color: var(--c-code-text);
+    }
+
+    .cml-code-block pre code {
+        color: inherit;
     }
 
     /* Prism one-dark 会给 pre/code 加自己的蓝灰背景，统一交给暖黑窗口底色 */
@@ -1051,6 +1085,67 @@
             </div>
         </div>
 
+        <!-- ── §1c AI Native ── -->
+        <div class="r g-bg g-bg-y ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-y">AI NATIVE</span>
+            <p class="h2">{{'cube.ai.title.pre' | i18n}}<em class="cube-sql-stamp">AI</em>{{'cube.ai.title.post' |
+                i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.ai.desc' | i18n}}</p>
+        </div>
+        <div class="r" style="padding:24px 32px">
+            <div class="cml-code-grid">
+                <div class="cml-code-block">
+                    <div class="cml-code-head">AI Agent — MCP session</div>
+                    <pre><code><span class="csql-prompt">user  ›</span> {{'cube.ai.chat.q' | i18n}}
+
+<span class="csql-prompt">agent ›</span> <span class="csql-kw">cubeMetadata</span>("SalesCube")
+<span class="csql-prompt">agent ›</span> <span class="csql-kw">cubeQuery</span>({
+          dimensions: ["category"],
+          measures:   ["revenue"],
+          filters: [{ code: "quarter", op: "EQ", value: "2025-Q2" }],
+          sorts:   [{ code: "revenue", desc: true }], limit: 3
+        })
+
+<span class="csql-res">  category   | revenue
+-------------+----------
+ Electronics | 1284300
+ Apparel     |  912400
+ Food        |  673100</span>
+
+<span class="csql-cmt">✓ {{'cube.ai.chat.render' | i18n}}</span></code></pre>
+                </div>
+                <div class="cml-code-block">
+                    <div class="cml-code-head">@AiToolbox — EruptCubeAiTools.java</div>
+                    <pre><code><span class="csql-kw">cubeList()</span>
+<span class="csql-cmt">// {{'cube.ai.tool.list' | i18n}}</span>
+
+<span class="csql-kw">cubeMetadata(cube)</span>
+<span class="csql-cmt">// {{'cube.ai.tool.meta' | i18n}}</span>
+
+<span class="csql-kw">cubeQuery(cube, query)</span>
+<span class="csql-cmt">// {{'cube.ai.tool.query' | i18n}}</span>
+
+<span class="csql-res">protocol :</span> MCP · Function Calling
+<span class="csql-res">models   :</span> OpenAI / Claude / Gemini
+<span class="csql-res">         </span> DeepSeek / Qwen / Ollama …</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="r g3">
+            <div class="c no-bb">
+                <div class="h3">{{'cube.ai.f1.title' | i18n}}</div>
+                <p class="sub">{{'cube.ai.f1.desc' | i18n}}</p>
+            </div>
+            <div class="c no-bb">
+                <div class="h3">{{'cube.ai.f2.title' | i18n}}</div>
+                <p class="sub">{{'cube.ai.f2.desc' | i18n}}</p>
+            </div>
+            <div class="c no-bb" style="border-right:none">
+                <div class="h3">{{'cube.ai.f3.title' | i18n}}</div>
+                <p class="sub">{{'cube.ai.f3.desc' | i18n}}</p>
+            </div>
+        </div>
+
         <!-- ── §2 Visualization ── -->
         <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">VISUALIZATION</span>
@@ -1178,7 +1273,9 @@
         </div>
         <!-- Viz feature grid -->
         <div class="r cviz-feat-row">
-            <div class="c no-bb" ng-repeat="f in vizFeatures">
+            <div class="c" ng-class="{'no-bb': $index > 2}"
+                 ng-repeat="f in vizFeatures"
+                 ng-style="$index % 3 === 2 ? {'border-right':'none'} : {}">
                 <span style="font-size:1.4em;line-height:1;display:block;margin-bottom:10px">{{f.icon}}</span>
                 <div class="h3">{{f.name}}</div>
                 <p class="sub">{{f.desc}}</p>
@@ -1238,8 +1335,8 @@
         </div>
 
         <!-- ── §5 Core Annotations ── -->
-        <div class="r g-bg g-bg-y ticks" style="padding:48px;text-align:center">
-            <span class="tag tag-y">CORE ANNOTATIONS</span>
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag">CORE ANNOTATIONS</span>
             <p class="h2">{{'cube.anno.title' | i18n}}</p>
             <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.anno.desc' | i18n}}</p>
         </div>
@@ -1333,6 +1430,82 @@ public class SqlFunctions {
 #end</code></pre>
                 </div>
             </div>
+        </div>
+
+        <!-- ── §6c SQL Interface ── -->
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag">SQL INTERFACE</span>
+            <p class="h2">{{'cube.sql.title.pre' | i18n}}<em class="cube-sql-stamp">SQL</em>{{'cube.sql.title.post' |
+                i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.sql.desc' | i18n}}</p>
+        </div>
+        <div class="r bleed-lines" style="padding:24px 32px">
+            <div class="cml-code-grid">
+                <div class="cml-code-block">
+                    <div class="cml-code-head">psql — postgres://erupt@127.0.0.1:5433</div>
+                    <pre><code><span class="csql-prompt">erupt=></span> <span class="csql-kw">select</span> category, sum(revenue) <span
+                            class="csql-kw">as</span> revenue
+<span class="csql-prompt">erupt-></span> <span class="csql-kw">from</span> SalesCube <span
+                                class="csql-kw">group by</span> category;
+
+<span class="csql-res">  category   | revenue
+-------------+----------
+ Electronics | 1284300
+ Apparel     |  912400
+ Food        |  673100
+(3 rows)</span>
+
+<span class="csql-cmt">-- measures aggregate automatically, no GROUP BY</span>
+<span class="csql-prompt">erupt=></span> <span class="csql-kw">select</span> region_code, revenue <span class="csql-kw">from</span> SalesCube;
+
+<span class="csql-cmt">-- join Cubes across data sources</span>
+<span class="csql-prompt">erupt=></span> <span class="csql-kw">select</span> r.continent, sum(s.revenue) <span
+                                class="csql-kw">as</span> revenue
+<span class="csql-prompt">erupt-></span> <span class="csql-kw">from</span> SalesCube s <span class="csql-kw">join</span> RegionCube r
+<span class="csql-prompt">erupt-></span>   <span class="csql-kw">on</span> s.region_code = r.region_code
+<span class="csql-prompt">erupt-></span> <span class="csql-kw">group by</span> r.continent;</code></pre>
+                </div>
+                <div class="cml-code-block">
+                    <div class="cml-code-head">{{'cube.sql.cfg.title' | i18n}}</div>
+                    <pre><code class="language-yaml">erupt:
+  cube:
+    sql:
+      enable: true
+      show-sql: true
+      bind: 127.0.0.1
+      port: 5433
+      username: erupt
+      password: ******</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="r g4">
+            <div class="c no-bb">
+                <div class="h3">{{'cube.sql.f1.title' | i18n}}</div>
+                <p class="sub">{{'cube.sql.f1.desc' | i18n}}</p>
+            </div>
+            <div class="c no-bb">
+                <div class="h3">{{'cube.sql.f2.title' | i18n}}</div>
+                <p class="sub">{{'cube.sql.f2.desc' | i18n}}</p>
+            </div>
+            <div class="c no-bb">
+                <div class="h3">{{'cube.sql.f3.title' | i18n}}</div>
+                <p class="sub">{{'cube.sql.f3.desc' | i18n}}</p>
+            </div>
+            <div class="c no-bb" style="border-right:none">
+                <div class="h3">{{'cube.sql.f4.title' | i18n}}</div>
+                <p class="sub">{{'cube.sql.f4.desc' | i18n}}</p>
+            </div>
+        </div>
+        <div class="r" style="padding:16px 32px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span style="font-family:var(--c-mono);font-size:.68em;letter-spacing:1.2px;text-transform:uppercase;color:var(--c-text2);margin-right:6px">{{'cube.sql.clients.label' | i18n}}</span>
+            <span class="cube-db-chip">psql</span>
+            <span class="cube-db-chip">DataGrip</span>
+            <span class="cube-db-chip">DBeaver</span>
+            <span class="cube-db-chip">Superset</span>
+            <span class="cube-db-chip">Metabase</span>
+            <span class="cube-db-chip">Grafana</span>
+            <span class="cube-db-chip">JDBC / AI Agent</span>
         </div>
 
         <!-- ── §7 Three-Way Comparison ── -->
