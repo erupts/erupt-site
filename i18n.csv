@@ -999,3 +999,24 @@ flow.designer.badge2,实时预览,Live preview
 flow.designer.badge3,业务人员可维护,Business-user-friendly
 home.v2.out.designer.h,可视化表单设计器,Visual Form Designer
 home.v2.out.designer.p,拖拽组件设计表单字段，无需编写 @EruptField 注解，实时预览，业务人员可独立维护。,Drag-and-drop form design — no @EruptField code needed, live preview, maintainable by business users.
+home.v2.hub.badge,ONE FILE,ONE FILE
+home.v2.stack.hl,注解声明,Annotations
+home.v2.stack.hc,引擎,The Engine
+home.v2.stack.hr,整座后台,Whole Admin
+home.v2.hub.ai,AI 原生,AI Native
+home.v2.hub.list,列表页,List
+home.v2.hub.form,表单,Form
+home.v2.hub.dash,Dashboard,Dashboard
+home.v2.hub.designer,表单设计器,Designer
+home.v2.hub.i18n,国际化,i18n · 12 langs
+home.v2.hub.db,数据管理,Data Mgmt
+home.v2.hub.tenant,多租户,Multi-tenant
+home.v2.hub.audit,审计日志,Audit Log
+home.v2.hub.perm,权限 · RBAC,RBAC
+home.v2.hub.flow,工作流,Workflow
+home.v2.hub.cloud,云配置,Cloud Config
+home.v2.hub.report,报表,Reports
+home.v2.hub.excel,导入导出,Excel I/O
+home.v2.hub.print,打印,Print
+home.v2.hub.job,定时任务,Cron Jobs
+home.v2.hub.monitor,系统监控,Monitoring

@@ -19,3 +19,5 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+.claude/settings.local.json
