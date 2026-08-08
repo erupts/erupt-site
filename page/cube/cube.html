@@ -69,13 +69,31 @@
 
     /* ── Stats row (g4 cells) ── */
     .cube-stat-num {
-        display: block;
+        display: inline-block;
         font-size: 1.05em;
         font-weight: 800;
         color: var(--c-text);
         font-family: var(--c-mono);
         letter-spacing: -.3px;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
+        padding-bottom: 3px;
+        border-bottom: 3px solid var(--c-brand);
+    }
+
+    .cube-stat-g .cube-stat-num {
+        border-bottom-color: var(--c-green);
+    }
+
+    .cube-stat-v .cube-stat-num {
+        border-bottom-color: var(--c-purple);
+    }
+
+    .cube-stat-y .cube-stat-num {
+        border-bottom-color: var(--c-yellow);
+    }
+
+    .cube-stat-label {
+        display: block;
     }
 
     .cube-stat-label {
@@ -1019,25 +1037,25 @@
                 <span class="cube-stat-num">@EruptCube</span>
                 <span class="cube-stat-label">{{'cube.stat.model' | i18n}}</span>
             </div>
-            <div class="c no-bb" style="text-align:center;padding:22px 16px">
+            <div class="c no-bb cube-stat-g" style="text-align:center;padding:22px 16px">
                 <span class="cube-stat-num">@Dimension</span>
                 <span class="cube-stat-label">{{'cube.stat.dim' | i18n}}</span>
             </div>
-            <div class="c no-bb" style="text-align:center;padding:22px 16px">
+            <div class="c no-bb cube-stat-v" style="text-align:center;padding:22px 16px">
                 <span class="cube-stat-num">@Measure</span>
                 <span class="cube-stat-label">{{'cube.stat.measure' | i18n}}</span>
             </div>
-            <div class="c no-bb" style="text-align:center;padding:22px 16px;border-right:none">
+            <div class="c no-bb cube-stat-y" style="text-align:center;padding:22px 16px;border-right:none">
                 <span class="cube-stat-num">Zero SQL</span>
                 <span class="cube-stat-label">{{'cube.stat.nosql' | i18n}}</span>
             </div>
         </div>
 
         <!-- ── §2 Visualization ── -->
-        <div class="r g-bg ticks" style="padding:40px 48px 32px">
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">VISUALIZATION</span>
             <p class="h2">{{'cube.viz.title' | i18n}}</p>
-            <p class="sub">{{'cube.viz.desc' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.viz.desc' | i18n}}</p>
         </div>
         <!-- Dashboard mockup -->
         <div class="r" style="padding:24px 32px">
@@ -1168,10 +1186,10 @@
         </div>
 
         <!-- ── §3 Why Semantic Layer ── -->
-        <div class="r g-bg ticks" style="padding:40px 48px 32px">
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">WHY SEMANTIC LAYER</span>
             <p class="h2">{{'cube.problem.title' | i18n}}</p>
-            <p class="sub">{{'cube.problem.desc' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.problem.desc' | i18n}}</p>
         </div>
         <div class="r" style="padding:24px 32px">
             <div style="overflow-x:auto">
@@ -1195,10 +1213,10 @@
         </div>
 
         <!-- ── §4 Role Separation ── -->
-        <div class="r g-bg ticks" style="padding:40px 48px 32px">
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">DIVISION OF LABOR</span>
             <p class="h2">{{'cube.roles.title' | i18n}}</p>
-            <p class="sub">{{'cube.roles.desc' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.roles.desc' | i18n}}</p>
         </div>
         <div class="r g2">
             <div class="c no-bb">
@@ -1220,10 +1238,10 @@
         </div>
 
         <!-- ── §5 Core Annotations ── -->
-        <div class="r g-bg ticks" style="padding:40px 48px 32px">
-            <span class="tag">CORE ANNOTATIONS</span>
+        <div class="r g-bg g-bg-y ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-y">CORE ANNOTATIONS</span>
             <p class="h2">{{'cube.anno.title' | i18n}}</p>
-            <p class="sub">{{'cube.anno.desc' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.anno.desc' | i18n}}</p>
         </div>
         <div class="r g2">
             <div class="c no-bb" ng-class="{'border-right-none': $last && annotations.length % 2 === 1}"
@@ -1236,10 +1254,10 @@
         </div>
 
         <!-- ── §6 Template Engine (Cube ML) ── -->
-        <div class="r g-bg ticks" style="padding:40px 48px 32px">
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">TEMPLATE ENGINE</span>
             <p class="h2">{{'cube.ml.title' | i18n}}</p>
-            <p class="sub">{{'cube.ml.desc' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.ml.desc' | i18n}}</p>
         </div>
         <div class="r" style="padding:24px 32px">
             <p class="sub"
@@ -1289,7 +1307,7 @@
                 </div>
             </div>
         </div>
-        <div class="r g-bg" style="padding:24px 48px">
+        <div class="r g-bg" style="padding:24px 48px;text-align:center">
             <span class="tag" style="margin-bottom:0">{{'cube.ml.fn.label' | i18n}}</span>
         </div>
         <div class="r" style="padding:24px 32px">
@@ -1318,10 +1336,10 @@ public class SqlFunctions {
         </div>
 
         <!-- ── §7 Three-Way Comparison ── -->
-        <div class="r g-bg ticks" style="padding:40px 48px 32px">
-            <span class="tag">SIDE-BY-SIDE</span>
+        <div class="r g-bg g-bg-p ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-p">SIDE-BY-SIDE</span>
             <p class="h2">{{'cube.cmp.title' | i18n}}</p>
-            <p class="sub">{{'cube.cmp.desc' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.cmp.desc' | i18n}}</p>
         </div>
         <div class="r" style="padding:24px 32px">
             <div class="cube-looker-grid">
@@ -1456,10 +1474,10 @@ public class OrderCube {
         </div>
 
         <!-- ── §8 Database Support ── -->
-        <div class="r g-bg ticks" style="padding:40px 48px 32px">
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">DATABASE SUPPORT</span>
             <p class="h2">{{'cube.db.title' | i18n}}</p>
-            <p class="sub">{{'cube.db.desc' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.db.desc' | i18n}}</p>
         </div>
         <div class="r" style="padding:24px 32px">
             <div class="cube-db-wrap">
@@ -1480,7 +1498,6 @@ public class OrderCube {
 
         <!-- ── §9 CTA ── -->
         <div class="r g-bg ticks only-before cube-cta-row">
-            <div style="font-size:2.4em;margin-bottom:14px">🔦</div>
             <p class="h2">{{'cube.cta.title' | i18n}}</p>
             <p class="sub" style="max-width:480px;margin:0 auto 28px">{{'cube.cta.desc' | i18n}}</p>
             <span class="demo-tip-wrap">
