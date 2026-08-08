@@ -1,79 +1,18 @@
 <style>
-    /* ── AI Page · Dark overrides ── */
-    body {
-        background: #0c0c12;
-    }
+    /* ── AI Page — Playful-Brutalist, purple accent ── */
 
-    #header {
-        background: #0c0c12;
-        border-bottom: 2px solid rgba(139, 92, 246, 0.14);
-        color: #fff;
-    }
-
-    #header .hamburger-btn span {
-        background: rgba(255, 255, 255, .75);
-    }
-
-    #header > div {
-        border-left-color: #1c1c24;
-        border-right-color: #1c1c24;
-    }
-
-    #header a {
-        color: #aaa;
-    }
-
-    #header .active-link {
-        color: #fff !important;
-    }
-
-    #header .mobile-nav {
-        background: rgba(12, 12, 18, 0.98);
-        border-top-color: #1c1c24;
-    }
-
-    #header .mobile-nav a {
-        color: #aaa;
-    }
-
-    #header .mobile-nav a:hover, #header .mobile-nav a:active {
-        color: #fff;
-        background: rgba(139, 92, 246, 0.08);
-    }
-
-    #header .mobile-nav .mobile-nav-group {
-        color: rgba(255, 255, 255, 0.28);
-    }
-
-    #header .mobile-nav .mobile-nav-footer {
-        border-top-color: #1c1c24;
-    }
-
-    #footer {
-        --c-bg: #0c0c12;
-        --c-text: rgba(255, 255, 255, .65);
-        --c-text2: rgba(255, 255, 255, .28);
-        --c-border: rgba(255, 255, 255, .08);
-        --c-brand: #8b5cf6;
-        background: #0c0c12;
-    }
-
-    /* ── AI Page · Blueprint style ── */
-
-    /* ── Code window (dark) ── */
+    /* ── Code window (dark mockup) ── */
     .ai-code-win {
-        background: #14120B;
-        border: 1px solid var(--c-border);
+        background: var(--c-code-bg);
         overflow: hidden;
     }
 
     .ai-code-bar {
-        background: #131318;
         padding: 10px 14px;
         display: flex;
         align-items: center;
         gap: 6px;
-        border-bottom: 1px solid rgba(255, 255, 255, .07);
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
     }
 
     .ai-code-dot {
@@ -97,7 +36,7 @@
         font-size: .84em;
         line-height: 1.78;
         overflow-x: auto;
-        background: #14120B;
+        background: var(--c-code-bg);
     }
 
     .ai-code-win pre code {
@@ -106,8 +45,10 @@
 
     /* ── Architecture diagram ── */
     .ai-arch {
-        border: 1px solid var(--c-border);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
         overflow: hidden;
+        background: var(--c-paper);
     }
 
     .ai-arch-row {
@@ -160,15 +101,17 @@
     }
 
     .ai-arch-chip-hl {
-        border-color: rgba(79, 200, 236, .3);
-        color: var(--c-brand);
-        background: rgba(79, 200, 236, .04);
+        border-color: var(--c-border);
+        color: var(--c-text);
+        background: rgba(188, 160, 242, .35);
     }
 
     /* ── MCP flow ── */
     .ai-mcp-flow {
         display: flex;
-        border: 1px solid var(--c-border);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-paper);
         overflow: hidden;
         margin-bottom: 0;
     }
@@ -185,7 +128,7 @@
     }
 
     .ai-mcp-node-hl {
-        background: rgba(79, 200, 236, .03);
+        background: rgba(188, 160, 242, .28);
     }
 
     .ai-mcp-node h5 {
@@ -197,7 +140,7 @@
     }
 
     .ai-mcp-node-hl h5 {
-        color: var(--c-brand);
+        color: var(--c-text);
     }
 
     .ai-mcp-node p {
@@ -253,20 +196,18 @@
         line-height: 1.6;
     }
 
-    /* ── Console window ── */
+    /* ── Console window (dark mockup) ── */
     .ai-console {
-        background: #14120B;
-        border: 1px solid var(--c-border);
+        background: var(--c-code-bg);
         overflow: hidden;
     }
 
     .ai-console-bar {
-        background: #131318;
         padding: 10px 14px;
         display: flex;
         align-items: center;
         gap: 6px;
-        border-bottom: 1px solid rgba(255, 255, 255, .07);
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
     }
 
     .ai-console-body {
@@ -374,79 +315,47 @@
         .ai-hero-right { display: none !important; }
         .ai-hero-row > div:first-child { padding: 36px 24px 28px !important; }
         .ai-llm-inner { grid-template-columns: 1fr !important; gap: 16px !important; }
-        .ai-dark .r-padded { padding: 0 20px 16px !important; }
-        .ai-dark .c { padding: 20px 24px !important; min-width: 0; }
-        .ai-dark .ai-code-win { overflow: hidden; }
-        .ai-dark .ai-code-win pre { overflow-x: auto; max-width: 100%; }
-    }
 
-    /* 紫色 brand 底上的主按钮用白字（全局墨字在紫底上对比不足） */
-    .ai-dark .wbtn-o {
-        color: #fff;
-    }
+        .ai-pg .r-padded {
+            padding: 0 20px 16px !important;
+        }
 
-    .ai-dark .wbtn-o:hover {
-        color: #fff !important;
+        .ai-pg .c {
+            padding: 20px 24px !important;
+            min-width: 0;
+        }
+
+        .ai-pg .ai-code-win {
+            overflow: hidden;
+        }
+
+        .ai-pg .ai-code-win pre {
+            overflow-x: auto;
+            max-width: 100%;
+        }
     }
 
     /* ── AI Claw section: green accent ── */
-    .ai-claw-sec {
-        --c-brand: #00ff88;
-    }
-
     .ai-claw-sec .wbtn-o {
-        background: #00ff88;
-        color: #0c0c12;
+        background: var(--c-green);
+        color: var(--c-text);
     }
 
     .ai-claw-sec .wbtn-o:hover {
-        background: #00ff88;
-        color: #0c0c12 !important;
+        background: var(--c-green);
+        color: var(--c-text) !important;
     }
 
     .ai-claw-sec .c.clickable:hover {
-        background: rgba(0, 255, 136, .04) !important;
-    }
-
-    /* ── Dark theme ── */
-    .ai-dark {
-        --c-bg: #0c0c12;
-        --c-border: rgba(255, 255, 255, .1);
-        --c-text: rgba(255, 255, 255, .88);
-        --c-text2: rgba(255, 255, 255, .42);
-        --c-grid: rgba(255, 255, 255, .05);
-        --c-brand: #8b5cf6;
-        background: #0c0c12;
-    }
-
-    .ai-dark .ai-step-num {
-        color: rgba(255, 255, 255, .07);
-    }
-
-    .ai-dark .ai-arch-label {
-        background: rgba(255, 255, 255, .03);
-    }
-
-    .ai-dark .ai-arch-chip-hl {
-        border-color: rgba(139, 92, 246, .35);
-        color: #8b5cf6;
-        background: rgba(139, 92, 246, .07);
-    }
-
-    .ai-dark .ai-mcp-node-hl {
-        background: rgba(139, 92, 246, .08);
-    }
-
-    .ai-dark .c.clickable:hover {
-        background: rgba(139, 92, 246, .05) !important;
+        background: rgba(147, 214, 85, .12) !important;
     }
 
     .ai-grad {
-        color: #8b5cf6;
+        color: var(--c-purple);
     }
 </style>
 
-<div class="ai-dark" ng-controller="ai">
+<div class="ai-pg" ng-controller="ai">
     <div class="fr">
 
         <!-- ── §0 HERO ── -->
@@ -458,7 +367,9 @@
                 </div>
                 <div class="h1"
                      style="font-size:clamp(42px,5.5vw,78px); line-height:.95; letter-spacing:-.03em; margin-bottom:22px">
-                    Erupt <span style="color:var(--c-brand)">AI</span></div>
+                    Erupt <span
+                        style="display:inline-block;background:var(--c-purple);color:var(--c-text);border:2px solid var(--c-border);box-shadow:4px 4px 0 var(--c-text);padding:0 14px 2px;transform:rotate(-1deg)">AI</span>
+                </div>
                 <div class="sub" style="max-width:54ch; font-size:15px; line-height:1.7; margin-bottom:28px">
                     {{'ai.hero.subtitle' | i18n}}
                 </div>
@@ -472,7 +383,8 @@
                 </div>
             </div>
             <!-- Erupt Harness architecture diagram -->
-            <div class="ai-hero-right" style="flex:0 0 44%; border-left:1px solid rgba(255,255,255,.08); background:#080d1c; display:flex; flex-direction:column; justify-content:center; padding:36px 40px; gap:20px;">
+            <div class="ai-hero-right"
+                 style="flex:0 0 44%; border-left:1px solid var(--c-border); background:var(--c-code-bg); display:flex; flex-direction:column; justify-content:center; padding:36px 40px; gap:20px;">
                 <!-- Harness headline -->
                 <div>
                     <div style="font-family:monospace; font-size:9px; letter-spacing:.2em; color:rgba(255,255,255,.22); text-transform:uppercase; margin-bottom:8px">
@@ -490,10 +402,10 @@
                 <div style="height:1px; background:rgba(255,255,255,.07);"></div>
                 <!-- Capabilities grid -->
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px;">
-                    <div style="border:1px solid rgba(139,92,246,.3); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(255,255,255,.7); background:rgba(139,92,246,.08)">
+                    <div style="border:1px solid rgba(188,160,242,.5); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(240,232,214,.85); background:rgba(188,160,242,.14)">
                         ReAct Agent
                     </div>
-                    <div style="border:1px solid rgba(139,92,246,.3); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(255,255,255,.7); background:rgba(139,92,246,.08)">
+                    <div style="border:1px solid rgba(188,160,242,.5); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(240,232,214,.85); background:rgba(188,160,242,.14)">
                         MCP Protocol
                     </div>
                     <div style="border:1px solid rgba(255,255,255,.07); padding:8px 12px; font-family:monospace; font-size:10.5px; color:rgba(255,255,255,.4)">
@@ -524,14 +436,14 @@
                         <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">Gemini</span>
                         <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">ERNIE</span>
                         <span style="border:1px solid rgba(255,255,255,.1); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(255,255,255,.4)">Ollama</span>
-                        <span style="border:1px dashed rgba(139,92,246,.4); padding:3px 9px; font-family:monospace; font-size:10px; color:rgba(139,92,246,.75)">OpenAI Compatible ···</span>
+                        <span style="border:1px dashed rgba(188,160,242,.55); padding:3px 9px; font-family:monospace; font-size:10px; color:var(--c-purple)">OpenAI Compatible ···</span>
                 </div>
                 </div>
             </div>
         </div>
 
         <!-- ── §01 CAPABILITIES ── -->
-        <div class="r ticks g2">
+        <div class="r g-bg ticks g2">
             <div class="c" style="padding:32px 40px">
                 <div style="font-family:monospace; font-size:11px; color:var(--c-text2); letter-spacing:.12em; margin-bottom:10px">
                     01 · CAPABILITIES
@@ -660,19 +572,19 @@
                     i18n}}
                 </div>
                 <div style="display:flex; flex-direction:column; gap:8px">
-                    <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(139,92,246,.06)">
+                    <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(188,160,242,.18)">
                         <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px">
                             {{'ai.tools.annotation.label' | i18n}}
                         </div>
                         <div style="font-size:12.5px; color:var(--c-text)" ng-bind-html="'ai.tools.annotation.desc' | i18nHtml"></div>
                 </div>
-                    <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(139,92,246,.06)">
+                    <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(188,160,242,.18)">
                         <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px">
                             {{'ai.tools.streaming.label' | i18n}}
                         </div>
                         <div style="font-size:12.5px; color:var(--c-text)">{{'ai.tools.streaming.desc' | i18n}}</div>
                     </div>
-                    <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(139,92,246,.06)">
+                    <div style="border:1px solid var(--c-border); padding:12px 14px; background:rgba(188,160,242,.18)">
                         <div style="font-family:monospace; font-size:10px; color:var(--c-text2); text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px">
                             {{'ai.tools.zeroconfig.label' | i18n}}
                         </div>
@@ -894,7 +806,7 @@
         <div class="ai-claw-sec">
             <div class="r g-bg ticks g2">
                 <div class="c" style="padding:32px 40px">
-                    <div style="font-family:monospace; font-size:11px; color:#00ff88; letter-spacing:.12em; margin-bottom:10px; opacity:.8">
+                    <div style="font-family:monospace; font-size:11px; color:var(--c-text2); letter-spacing:.12em; margin-bottom:10px">
                         06 · AI CLAW
                     </div>
                     <div class="h2">{{'claw.feat.title' | i18n}}</div>
@@ -930,7 +842,7 @@
         </div><!-- /.ai-claw-sec -->
 
         <!-- ── CTA ── -->
-        <div class="r g-bg ticks">
+        <div class="r g-bg ticks only-before">
             <div class="c no-bb" style="padding:56px 48px; border-right:0; text-align:center">
                 <div class="h2" style="margin-bottom:12px" ng-bind-html="'ai.cta.title' | i18nHtml"></div>
                 <div class="sub" style="max-width:46ch; margin:0 auto 28px">{{'ai.hero.subtitle' | i18n}}</div>
@@ -944,7 +856,7 @@
             </div>
         </div>
 
-        <div class="fr-corners"></div>
+        <div class="ticks"></div>
     </div>
 </div>
 

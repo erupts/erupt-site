@@ -18,17 +18,8 @@ var app = angular.module('app', [
     $rootScope.currentLang = i18n.getLang();
     updateTitle();
 
-    // 暗色主题页面：进入时同步 html/body 背景色，避免露出白底（overscroll、边缘缝隙）
-    var darkRouteBg = {
-        '/cube': '#06080f',
-        '/ai': '#0c0c12'
-    };
-
     $rootScope.$on('$routeChangeSuccess', function (eve, current, previous) {
         $rootScope.currRouter = current.$$route.originalPath;
-        var bg = darkRouteBg[$rootScope.currRouter] || '';
-        document.documentElement.style.background = bg;
-        document.body.style.background = bg;
     });
 }).config(function ($routeProvider) {
     $routeProvider.when('/', {

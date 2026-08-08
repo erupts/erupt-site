@@ -1020,3 +1020,14 @@ home.v2.hub.excel,导入导出,Excel I/O
 home.v2.hub.print,打印,Print
 home.v2.hub.job,定时任务,Cron Jobs
 home.v2.hub.monitor,系统监控,Monitoring
+cloud.stat.frontend,行前端代码,Lines of frontend code
+cloud.stat.dep,依赖接入 Node,Dependency per node
+cloud.stat.config,行 YML 配置,Lines of yml config
+cloud.stat.nodes,服务节点无上限,Unlimited nodes
+cloud.diag.hl,业务服务节点,Service Nodes
+cloud.diag.hc,调度中心,Dispatch Center
+cloud.diag.hr,统一控制台,Unified Console
+cloud.diag.n1,通知服务,Notify Service
+cloud.diag.n2,网关服务,Gateway Service
+cloud.diag.n3,算法服务,Algo Service
+cloud.diag.more,更多服务…,More services…
