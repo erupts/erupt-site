@@ -155,7 +155,7 @@ html, body {
 
 #main {
     min-height: calc(100vh - 190px);
-    margin-bottom: 204.5px;
+    margin-bottom: 205px;
     margin-top: 47px;
     z-index: 999;
 }

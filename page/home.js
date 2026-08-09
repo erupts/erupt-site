@@ -124,6 +124,13 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
                 "***_migration.sql": {file: true}
             }
         },
+        "i18n": {
+            sub: {
+                "zh_CN.properties": {file: true},
+                "en_US.properties": {file: true}
+            }
+        },
+        "***.bpmn": {file: true},
         "model": {
             active: true,
             sub: {

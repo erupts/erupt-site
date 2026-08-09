@@ -47,13 +47,13 @@
                         <a class="dropdown-item" href="#!/pro" style="color:#4FC8EC">{{'nav.pro' | i18n}}</a>
                     </div>
                 </span>
-                <a class="btn btn-sm align-self-center btn-link"
-                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">
-                    {{'nav.doc' | i18n}}
-                </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/contrast"
                    ng-class="currRouter=='/contrast'?'active-link':''">
                     {{'nav.contrast' | i18n}}
+                </a>
+                <a class="btn btn-sm align-self-center btn-link"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">
+                    {{'nav.doc' | i18n}}
                 </a>
                 <a class="btn btn-sm align-self-center btn-link"
                    ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/" target="_blank">
@@ -102,12 +102,12 @@
                     class="pro-badge">PRO</span></a>
             <a class="mobile-nav-sub" href="#!/pro" ng-click="mobileMenuOpen=false" style="color:#4FC8EC">{{'nav.pro' |
                 i18n}}</a>
+            <a href="#!/contrast" ng-class="currRouter=='/contrast'?'active-link':''" ng-click="mobileMenuOpen=false">{{'nav.contrast'
+                | i18n}}</a>
             <a ng-click="mobileMenuOpen=false" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/"
                target="_blank">
                 {{'nav.doc' | i18n}}
             </a>
-            <a href="#!/contrast" ng-class="currRouter=='/contrast'?'active-link':''" ng-click="mobileMenuOpen=false">{{'nav.contrast'
-                | i18n}}</a>
             <a ng-click="mobileMenuOpen=false" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
                target="_blank">{{'nav.module' |
                 i18n}}</a>

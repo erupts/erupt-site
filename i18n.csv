@@ -167,7 +167,7 @@ home.vs.time.left,需要生成大量代码复制到项目中，功能越多维�
 home.vs.time.right,仅需一个后端工程师，短时间就可以完成高质量后台管理系统,"1 engineer, fast delivery"
 home.vs.time.title,开发时间,Time
 home.vs.logic.left,Java 代码,Java code
-home.vs.logic.right,"按需 <a href=""https://docs.erupt.xyz/advanced/data-proxy"" style=""color: #ffc107"">@DataProxy</a> 实现","On-demand <a href=""https://docs.erupt.xyz/advanced/data-proxy"" style=""color: #ffc107"">@DataProxy</a>"
+home.vs.logic.right,"按需 <a href=""https://docs.erupt.xyz/advanced/data-proxy"" target=""_blank"" style=""color: var(--c-brand)"">@DataProxy</a> 实现","On-demand <a href=""https://docs.erupt.xyz/advanced/data-proxy"" target=""_blank"" style=""color: var(--c-brand)"">@DataProxy</a>"
 home.vs.logic.title,逻辑扩展,Logic
 home.vs.startup.left,表数量越多启动越慢,Slower with more tables
 home.vs.startup.right,百张表映射毫秒级初始化,"100+ tables, ms init"
@@ -176,6 +176,7 @@ home.sponsor.title,贡献者 & 赞助商,Contributors & Sponsors
 home.sponsor.author,Erupt 作者 & 发起人,Erupt Author & Founder
 home.sponsor.ide,宇宙最好用的IDE,The Best IDE in the Universe
 home.sponsor.thanks,感谢赞助,Thanks for Company
+home.sponsor.join,+ 成为贡献者,+ Become a Contributor
 home.db.title,数据源支持,Data Source Support
 home.btn.component,组件支持,Components
 home.btn.module,扩展模块,Extensions

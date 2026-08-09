@@ -33,7 +33,7 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        height: 600px;
+        height: 620px;
         opacity: 0;
         /*border-left: 1px solid var(--c-border);*/
         /*border-right: 1px solid var(--c-border);*/
@@ -280,59 +280,103 @@
     }
 
     .contrib-chip {
+        --chip-ac: var(--c-brand);
         display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 18px 8px 8px;
+        align-items: stretch;
         border: 2px solid var(--c-border);
         background: var(--c-bg);
         text-decoration: none;
+        box-shadow: 3px 3px 0 var(--chip-ac);
         transition: transform .12s, box-shadow .12s;
     }
 
     .contrib-chip:hover {
         transform: translate(-2px, -2px);
-        box-shadow: 3px 3px 0 var(--c-text);
+        box-shadow: 6px 6px 0 var(--chip-ac);
+        text-decoration: none;
+    }
+
+    .contrib-chip.ac-purple {
+        --chip-ac: var(--c-purple);
+    }
+
+    .contrib-chip.ac-green {
+        --chip-ac: var(--c-green);
+    }
+
+    .contrib-chip.ac-yellow {
+        --chip-ac: var(--c-yellow);
+    }
+
+    .contrib-chip.ac-pink {
+        --chip-ac: var(--c-pink);
     }
 
     .contrib-chip img {
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
         object-fit: cover;
         display: block;
+        border-right: 2px solid var(--c-border);
+        flex-shrink: 0;
     }
 
     .contrib-chip .chip-logo {
-        width: 40px;
-        height: 40px;
-        background: #f5f5f5;
+        width: 48px;
+        height: 48px;
+        background: var(--chip-ac);
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        border-right: 2px solid var(--c-border);
     }
 
     .contrib-chip .chip-logo img {
-        width: 26px;
-        height: 26px;
-        border-radius: 0;
+        width: 28px;
+        height: 28px;
+        border-right: 0;
+    }
+
+    .contrib-chip .chip-txt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 18px 0 12px;
+        text-align: left;
     }
 
     .contrib-chip .chip-name {
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 700;
         color: var(--c-text);
-    }
-
-    .contrib-chip.primary .chip-name {
-        color: var(--c-brand);
+        line-height: 1.2;
     }
 
     .contrib-chip .chip-role {
         font-family: var(--c-mono);
         font-size: 10px;
+        letter-spacing: .04em;
         color: var(--c-text2);
-        margin-top: 1px;
+        margin-top: 3px;
+    }
+
+    .contrib-chip.join {
+        border-style: dashed;
+        box-shadow: none;
+        align-items: center;
+        padding: 0 18px;
+        min-height: 52px;
+        font-family: var(--c-mono);
+        font-size: 12px;
+        color: var(--c-text2);
+    }
+
+    .contrib-chip.join:hover {
+        border-style: solid;
+        border-color: var(--c-brand);
+        color: var(--c-text);
+        box-shadow: 3px 3px 0 var(--c-brand);
     }
 
     .dia-items > div:hover {
@@ -1335,7 +1379,15 @@
                     <div class="eb-sidebar">
                         <div class="eb-sidebar-header" ng-bind-html="'home.code.title'|i18nHtml"></div>
                         <div ng-repeat="(key,val) in project" style="padding:0 6px;margin-top:2px">
-                            <div style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px">
+                            <div ng-if="val.file"
+                                 style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px">
+                                <span style="width:7px;flex-shrink:0"></span>
+                                <img alt="" src="images/file/file.svg" style="width:14px;opacity:0.7">
+                                <span class="del-line" ng-style="{animationDelay:($index*400)+'ms'}"
+                                      style="font-size:0.88em">{{key}}</span>
+                            </div>
+                            <div ng-if="!val.file"
+                                 style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px">
                                 <img alt="" ng-class="val.sub||'deg90'" src="images/file/below.svg" width="7px">
                                 <img alt="" src="images/file/finder.svg" style="width:15px;opacity:0.7">
                                 <span ng-class="val.active||'del-line'" ng-style="{animationDelay:($index*400)+'ms'}"
@@ -2246,6 +2298,61 @@ public class Task extends BaseModel {
                     </td>
                 </tr>
                 <tr>
+                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
+                        {{'home.vs.table.left'|i18n}}
+                    </td>
+                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
+                        {{'home.vs.table.title'|i18n}}
+                    </td>
+                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
+                        {{'home.vs.table.right'|i18n}}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
+                        {{'home.vs.component.left'|i18n}}
+                    </td>
+                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
+                        {{'home.vs.component.title'|i18n}}
+                    </td>
+                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
+                        {{'home.vs.component.right'|i18n}}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
+                        {{'home.vs.database.left'|i18n}}
+                    </td>
+                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
+                        {{'home.vs.database.title'|i18n}}
+                    </td>
+                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
+                        {{'home.vs.database.right'|i18n}}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
+                        {{'home.vs.logic.left'|i18n}}
+                    </td>
+                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
+                        {{'home.vs.logic.title'|i18n}}
+                    </td>
+                    <td ng-bind-html="'home.vs.logic.right'|i18nHtml"
+                        style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
+                        {{'home.vs.time.left'|i18n}}
+                    </td>
+                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
+                        {{'home.vs.time.title'|i18n}}
+                    </td>
+                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
+                        {{'home.vs.time.right'|i18n}}
+                    </td>
+                </tr>
+                <tr>
                     <td style="padding:10px 24px;text-align:right;color:var(--c-text2);font-size:13px">
                         {{'home.vs.startup.left'|i18n}}
                     </td>
@@ -2327,46 +2434,53 @@ public class Task extends BaseModel {
         </div>
 
         <!-- §19 CONTRIBUTORS -->
-        <div class="r ticks reveal" style="padding:24px 48px;text-align:center">
-            <div style="font-family:var(--c-mono);font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c-text);margin-bottom:18px">
-                {{'home.sponsor.title'|i18n}}
+        <div class="r ticks reveal" style="padding:40px 48px 44px;text-align:center">
+            <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:26px">
+                <span style="width:8px;height:8px;background:var(--c-brand);border:2px solid var(--c-border);flex-shrink:0"></span>
+                <span style="font-family:var(--c-mono);font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c-text)">
+                    {{'home.sponsor.title'|i18n}}
+                </span>
+                <span style="width:8px;height:8px;background:var(--c-yellow);border:2px solid var(--c-border);flex-shrink:0"></span>
             </div>
-            <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px">
-                <a class="contrib-chip primary" href="https://github.com/erupts" target="_blank">
+            <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px">
+                <a class="contrib-chip" href="https://github.com/erupts" target="_blank">
                     <img src="/images/sponsor/me.jpeg">
-                    <div>
+                    <div class="chip-txt">
                         <div class="chip-name">YuePeng</div>
                         <div class="chip-role">{{'home.sponsor.author'|i18n}}</div>
                     </div>
                 </a>
-                <a class="contrib-chip" ng-href="{{s.home}}" ng-repeat="s in sponsor" target="_blank">
+                <a class="contrib-chip" ng-class="$index % 2 ? 'ac-green' : 'ac-purple'" ng-href="{{s.home}}"
+                   ng-repeat="s in sponsor" target="_blank">
                     <img ng-src="/images/sponsor/{{s.headImg}}">
-                    <div>
+                    <div class="chip-txt">
                         <div class="chip-name">{{s.nickname}}</div>
                         <div class="chip-role">{{s.role}}</div>
                     </div>
                 </a>
-                <a class="contrib-chip" href="https://www.jetbrains.com" target="_blank">
+                <a class="contrib-chip ac-yellow" href="https://www.jetbrains.com" target="_blank">
                     <div class="chip-logo"><img src="/images/sponsor/idea.svg"></div>
-                    <div>
+                    <div class="chip-txt">
                         <div class="chip-name">JetBrains</div>
                         <div class="chip-role">{{'home.sponsor.ide'|i18n}}</div>
                     </div>
                 </a>
-                <a class="contrib-chip" href="https://www.ideamake.cn/" target="_blank">
+                <a class="contrib-chip ac-pink" href="https://www.ideamake.cn/" target="_blank">
                     <img src="/images/sponsor/sw.png">
-                    <div>
+                    <div class="chip-txt">
                         <div class="chip-name">{{'ideamake'|i18n}}</div>
                         <div class="chip-role">{{'home.sponsor.thanks'|i18n}}</div>
                     </div>
                 </a>
+                <a class="contrib-chip join" href="https://github.com/erupts/erupt/graphs/contributors"
+                   target="_blank">{{'home.sponsor.join'|i18n}}</a>
             </div>
         </div>
 
         <!-- ════════════════════════════════════════
              §18 LICENSE + FINAL CTA
              ════════════════════════════════════════ -->
-        <div class="r g-bg ticks only-before" style="padding:72px 48px;text-align:center">
+        <div class="g-bg ticks only-before" style="padding:72px 48px;text-align:center">
             <span class="tag">Get Started</span>
             <h2 class="h2" style="font-size:clamp(28px,4vw,44px)">{{'home.ready'|i18n}}</h2>
             <p class="sub" style="margin:0 auto 32px;max-width:44ch">
@@ -2374,15 +2488,7 @@ public class Task extends BaseModel {
                 <a href="http://www.apache.org/licenses/LICENSE-2.0" style="color:var(--c-brand);text-decoration:none">{{'home.license.link'|i18n}}</a>
                 {{'home.license.desc'|i18n}}
             </p>
-            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://start.erupt.xyz" style="padding:11px 28px;font-size:14px"
-                   target="_blank">{{'home.btn.start'|i18n}}</a>
-                <a class="wbtn" href="https://demo.erupt.xyz" style="padding:11px 28px;font-size:14px"
-                   target="_blank">{{'home.v2.cta.demo'|i18n}}</a>
-                <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" style="padding:11px 28px;font-size:14px"
-                   target="_blank">{{'home.v2.cta.docs'|i18n}}</a>
-            </div>
-            <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px">
+            <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
                 <a class="git-chip" href="https://gitee.com/erupt/erupt" target="_blank">
                     <img class="gc-logo" src="images/gitee.svg">Gitee
                     <img class="gc-badge" src="https://gitee.com/erupt/erupt/badge/star.svg?theme=dark">
