@@ -1123,6 +1123,38 @@
         }
     }
 
+
+    /* Git repo chips inside final CTA */
+    .git-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        background: var(--c-paper);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        color: var(--c-text);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        transition: transform .15s, box-shadow .15s;
+    }
+
+    .git-chip:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--c-text);
+        color: var(--c-text);
+    }
+
+    .git-chip .gc-logo {
+        width: 20px;
+        object-fit: contain;
+    }
+
+    .git-chip .gc-badge {
+        height: 18px;
+    }
+
 </style>
 
 <div ng-controller="home">
@@ -2253,7 +2285,8 @@ public class Task extends BaseModel {
             <div class="c clickable" ng-click="go('#!/ai-claw')">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">AI Claw</span>
                 <div class="h3">{{'home.fam.claw.title' | i18n}}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.promo.claw.desc'|i18n}}</p>
+                <p class="sub" ng-bind-html="'home.promo.claw.desc'|i18nHtml"
+                   style="font-size:12.5px;margin-top:6px"></p>
                 <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
                     {{'home.v2.fam.more'|i18n}} →
                 </div>
@@ -2277,7 +2310,8 @@ public class Task extends BaseModel {
             <div class="c clickable no-bb" ng-click="go('#!/cube')">
                 <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Erupt Cube</span>
                 <div class="h3">{{'home.fam.cube.title' | i18n}}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.promo.cube.desc'|i18n}}</p>
+                <p class="sub" ng-bind-html="'home.promo.cube.desc'|i18nHtml"
+                   style="font-size:12.5px;margin-top:6px"></p>
                 <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
                     {{'home.v2.fam.more'|i18n}} →
                 </div>
@@ -2292,88 +2326,9 @@ public class Task extends BaseModel {
             </div>
         </div>
 
-        <!-- ════════════════════════════════════════
-             §16 TESTIMONIALS — heading
-             ════════════════════════════════════════ -->
-        <div class="r g-bg ticks" style="padding:48px;text-align:center">
-            <span class="tag">In Production</span>
-            <h2 class="h2"><em style="font-style:normal;color:var(--c-brand)">{{'home.v2.quotes.title.em'|i18n}}</em>{{'home.v2.quotes.title.post'|i18n}}
-            </h2>
-            <p class="sub" style="margin:0 auto;max-width:44ch">{{'home.v2.quotes.lede'|i18n}}</p>
-        </div>
-
-        <!-- ════════════════════════════════════════
-             §17 QUOTE CELLS (3 col)
-             ════════════════════════════════════════ -->
-        <div class="r g3 reveal">
-            <div class="c no-bb" style="display:flex;flex-direction:column">
-                <div style="font-size:24px;line-height:.8;color:var(--c-brand);opacity:.35;margin-bottom:14px;font-family:Georgia">
-                    "
-                </div>
-                <blockquote
-                        style="font-size:13.5px;line-height:1.72;color:var(--c-text2);margin:0 0 auto;border:none;padding:0">
-                    {{'home.v2.q1.text'|i18n}}
-                </blockquote>
-                <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--c-border)">
-                    <div style="font-family:var(--c-mono);font-size:10px;font-weight:600;color:var(--c-text2)">
-                        {{'home.v2.q1.role'|i18n}}
-                    </div>
-                </div>
-            </div>
-            <div class="c no-bb" style="display:flex;flex-direction:column">
-                <div style="font-size:24px;line-height:.8;color:var(--c-brand);opacity:.35;margin-bottom:14px;font-family:Georgia">
-                    "
-                </div>
-                <blockquote
-                        style="font-size:13.5px;line-height:1.72;color:var(--c-text2);margin:0 0 auto;border:none;padding:0">
-                    {{'home.v2.q2.text'|i18n}}
-                </blockquote>
-                <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--c-border)">
-                    <div style="font-family:var(--c-mono);font-size:10px;font-weight:600;color:var(--c-text2)">
-                        {{'home.v2.q2.role'|i18n}}
-                    </div>
-                </div>
-            </div>
-            <div class="c no-bb" style="display:flex;flex-direction:column;border-right:none">
-                <div style="font-size:24px;line-height:.8;color:var(--c-brand);opacity:.35;margin-bottom:14px;font-family:Georgia">
-                    "
-                </div>
-                <blockquote
-                        style="font-size:13.5px;line-height:1.72;color:var(--c-text2);margin:0 0 auto;border:none;padding:0">
-                    {{'home.v2.q3.text'|i18n}}
-                </blockquote>
-                <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--c-border)">
-                    <div style="font-family:var(--c-mono);font-size:10px;font-weight:600;color:var(--c-text2)">
-                        {{'home.v2.q3.role'|i18n}}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ════════════════════════════════════════
-             §18 LICENSE + FINAL CTA
-             ════════════════════════════════════════ -->
-        <div class="r g-bg ticks only-before" style="padding:72px 48px;text-align:center">
-            <span class="tag">Get Started</span>
-            <h2 class="h2" style="font-size:clamp(28px,4vw,44px)">{{'home.ready'|i18n}}</h2>
-            <p class="sub" style="margin:0 auto 32px;max-width:44ch">
-                {{'home.license'|i18n}}
-                <a href="http://www.apache.org/licenses/LICENSE-2.0" style="color:var(--c-brand);text-decoration:none">{{'home.license.link'|i18n}}</a>
-                {{'home.license.desc'|i18n}}
-            </p>
-            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank"
-                   style="padding:11px 28px;font-size:14px">{{'home.btn.start'|i18n}}</a>
-                <a class="wbtn" href="https://demo.erupt.xyz" target="_blank"
-                   style="padding:11px 28px;font-size:14px">{{'home.v2.cta.demo'|i18n}}</a>
-                <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank"
-                   style="padding:11px 28px;font-size:14px">{{'home.v2.cta.docs'|i18n}}</a>
-            </div>
-        </div>
-
         <!-- §19 CONTRIBUTORS -->
         <div class="r ticks reveal" style="padding:24px 48px;text-align:center">
-            <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-text2);margin-bottom:16px">
+            <div style="font-family:var(--c-mono);font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c-text);margin-bottom:18px">
                 {{'home.sponsor.title'|i18n}}
             </div>
             <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px">
@@ -2408,37 +2363,38 @@ public class Task extends BaseModel {
             </div>
         </div>
 
-        <!-- §20 COMMUNITY (3 col git) -->
-        <div class="r g3 reveal">
-            <div class="c no-bb git-card" ng-click="go('https://gitee.com/erupt/erupt',true)"
-                 style="text-align:center;cursor:pointer;padding:40px 32px">
-                <div style="position:absolute;top:12px;right:12px">
-                    <img src="https://gitee.com/erupt/erupt/badge/star.svg?theme=dark" style="height:18px">
-                </div>
-                <div style="width:46px;height:46px;border:2px solid var(--c-border);display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
-                    <img src="images/gitee.svg" style="width:24px;object-fit:contain;opacity:.65">
-                </div>
-                <div style="font-size:14px;font-weight:600">Gitee</div>
+        <!-- ════════════════════════════════════════
+             §18 LICENSE + FINAL CTA
+             ════════════════════════════════════════ -->
+        <div class="r g-bg ticks only-before" style="padding:72px 48px;text-align:center">
+            <span class="tag">Get Started</span>
+            <h2 class="h2" style="font-size:clamp(28px,4vw,44px)">{{'home.ready'|i18n}}</h2>
+            <p class="sub" style="margin:0 auto 32px;max-width:44ch">
+                {{'home.license'|i18n}}
+                <a href="http://www.apache.org/licenses/LICENSE-2.0" style="color:var(--c-brand);text-decoration:none">{{'home.license.link'|i18n}}</a>
+                {{'home.license.desc'|i18n}}
+            </p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o" href="https://start.erupt.xyz" style="padding:11px 28px;font-size:14px"
+                   target="_blank">{{'home.btn.start'|i18n}}</a>
+                <a class="wbtn" href="https://demo.erupt.xyz" style="padding:11px 28px;font-size:14px"
+                   target="_blank">{{'home.v2.cta.demo'|i18n}}</a>
+                <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" style="padding:11px 28px;font-size:14px"
+                   target="_blank">{{'home.v2.cta.docs'|i18n}}</a>
             </div>
-            <div class="c no-bb git-card" ng-click="go('https://github.com/erupts/erupt',true)"
-                 style="text-align:center;cursor:pointer;padding:40px 32px">
-                <div style="position:absolute;top:12px;right:12px">
-                    <img src="https://img.shields.io/github/stars/erupts/erupt?style=social" style="height:18px">
-                </div>
-                <div style="width:46px;height:46px;border:2px solid var(--c-border);display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
-                    <img src="images/github.svg" style="width:24px;object-fit:contain;opacity:.65">
-                </div>
-                <div style="font-size:14px;font-weight:600">GitHub</div>
-            </div>
-            <div class="c no-bb git-card" ng-click="go('https://gitcode.com/erupts/erupt',true)"
-                 style="text-align:center;cursor:pointer;padding:40px 32px;border-right:none">
-                <div style="position:absolute;top:12px;right:12px">
-                    <img src="https://gitcode.com/erupts/erupt/star/badge.svg" style="height:18px">
-                </div>
-                <div style="width:46px;height:46px;border:2px solid var(--c-border);display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
-                    <img src="images/gitcode.svg" style="width:24px;object-fit:contain;opacity:.65">
-                </div>
-                <div style="font-size:14px;font-weight:600">GitCode</div>
+            <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px">
+                <a class="git-chip" href="https://gitee.com/erupt/erupt" target="_blank">
+                    <img class="gc-logo" src="images/gitee.svg">Gitee
+                    <img class="gc-badge" src="https://gitee.com/erupt/erupt/badge/star.svg?theme=dark">
+                </a>
+                <a class="git-chip" href="https://github.com/erupts/erupt" target="_blank">
+                    <img class="gc-logo" src="images/github.svg">GitHub
+                    <img class="gc-badge" src="https://img.shields.io/github/stars/erupts/erupt?style=social">
+                </a>
+                <a class="git-chip" href="https://gitcode.com/erupts/erupt" target="_blank">
+                    <img class="gc-logo" src="images/gitcode.svg">GitCode
+                    <img class="gc-badge" src="https://gitcode.com/erupts/erupt/star/badge.svg">
+                </a>
             </div>
         </div>
 

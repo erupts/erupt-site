@@ -791,15 +791,6 @@ home.v2.fam.ai.p,大模型深度集成。字段级调用、@AiToolbox Bean 暴�
 home.v2.fam.chart.p,低代码数据可视化。拖拽配置图表与看板，零前端代码。,Low-code data viz — drag-and-drop charts and dashboards with zero frontend code.
 home.v2.fam.job.p,"定时任务管理。Cron 表达式配置，执行日志，在线启停。","Scheduled job management — Cron config, execution logs, start/stop at runtime."
 home.v2.fam.monitor.p,"服务监控。JVM 指标、缓存状态、在线用户，开箱即用。","Service monitoring — JVM metrics, cache status, online users, zero config."
-home.v2.quotes.title.em,在生产环境中，,In production —
-home.v2.quotes.title.post,它是什么样子,this is what it feels like
-home.v2.quotes.lede,300+ 团队的真实反馈。,Real feedback from 300+ teams.
-home.v2.q1.text,过去三个人排期两周的后台模块，现在一个后端半天就能上线，还自带权限和审计。,"A back-office module that took three people two weeks now goes live in an afternoon — with perms and audit built in."
-home.v2.q1.role,金融科技 SaaS,FinTech SaaS
-home.v2.q2.text,"我们把 OA、CRM、ERP 的管理端全部迁到 Erupt，代码量从 10 万行缩到 8 千行。","We moved OA, CRM and ERP admin onto Erupt. Codebase dropped from 100k to 8k lines."
-home.v2.q2.role,大型制造业集团,Large Manufacturing Group
-home.v2.q3.text,AI Claw 让业务同事可以直接用自然语言操作我们的系统——这是之前任何低代码做不到的。,"AI Claw lets business colleagues drive our system in plain language. No low-code product I've used could do this before."
-home.v2.q3.role,连锁医疗集团,Healthcare Group
 home.ready,准备好了吗？,Ready to get started?
 flow.hero.kicker,通用工作流引擎 · 流程引擎,General Workflow Engine · workflow engine
 flow.hero.desc,"覆盖全链路的<strong>通用工作流引擎解决方案</strong>：<span style=""background:rgba(79,200,236,.1); color:var(--c-brand); padding:1px 5px; border-radius:3px; font-size:13.5px; white-space:nowrap"">配置 · 发起 · 审批 · 通知</span>。零前端代码定义节点——在可视化画布上设计流程，<strong>10 分钟</strong>内搭建企业级工作流系统。","A <strong>general-purpose workflow engine solution</strong> covering the full chain: <span style=""background:rgba(79,200,236,.1); color:var(--c-brand); padding:1px 5px; border-radius:3px; font-size:13.5px; white-space:nowrap"">Config · Initiate · Approve · Notify</span>. Zero frontend code to define nodes — design flows on a visual canvas and build enterprise-grade workflow systems in <strong>10 minutes</strong>."
