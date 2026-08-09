@@ -1038,6 +1038,330 @@
             padding: 56px 24px 0;
         }
     }
+
+    /* ── §9 Admin Stack — brutalist 3-column input → engine → output ── */
+    .stack-wrap {
+        padding: 0;
+        position: relative;
+    }
+
+    .stack-stage {
+        position: relative;
+    }
+
+    .stack-shell {
+        position: relative;
+    }
+
+    /* Frameless — the row's own borders act as the drawing frame */
+    .stack-card {
+        background: var(--c-paper);
+    }
+
+    /* Inner engineering-grid panel */
+    .stack-panel {
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+        padding: 44px 44px 40px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Flow lines — soft cyan pipes + flowing rounded dashes (Doris-style) */
+    .stack-flows {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        overflow: visible;
+    }
+
+    .stack-flow-pipe {
+        fill: none;
+        stroke: rgba(var(--c-brand-rgb), .2);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 10;
+    }
+
+    .stack-flow-stream {
+        fill: none;
+        stroke: var(--c-brand);
+        stroke-dasharray: 18 26;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5;
+        animation: stack-flow-dash 1.6s linear infinite;
+    }
+
+    @keyframes stack-flow-dash {
+        to {
+            stroke-dashoffset: -44;
+        }
+    }
+
+    /* 3-col grid inside panel */
+    .stack-grid {
+        grid-template-columns: minmax(220px, 1fr) minmax(168px, 1.05fr) minmax(220px, 1fr);
+        align-items: stretch;
+        gap: 0;
+        min-height: 508px;
+        display: grid;
+        position: relative;
+    }
+
+    .stack-col {
+        z-index: 2;
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+        padding-top: 36px;
+        display: flex;
+        position: relative;
+    }
+
+    .stack-col.-center {
+        align-items: center;
+    }
+
+    .stack-col-head {
+        color: rgba(20, 18, 11, .55);
+        font-family: var(--c-mono);
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.25;
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .stack-col-head.-center {
+        white-space: nowrap;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .stack-col-head.-right {
+        text-align: right;
+        justify-content: flex-end;
+        left: auto;
+        right: 0;
+    }
+
+    .stack-col-num {
+        background: var(--c-cyan);
+        width: 20px;
+        height: 20px;
+        color: var(--c-text);
+        font-family: var(--c-mono);
+        letter-spacing: .04em;
+        border: 1.5px solid var(--c-border);
+        box-shadow: 2px 2px 0 var(--c-text);
+        flex: 0 0 20px;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        font-weight: 800;
+        line-height: 1.2;
+        display: inline-flex;
+    }
+
+    /* Category block */
+    .stack-block {
+        z-index: 3;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        box-shadow: 3px 3px 0 var(--c-text);
+        padding: 12px 14px 14px;
+        transition: transform .15s, box-shadow .15s;
+        position: relative;
+    }
+
+    .stack-block:hover {
+        box-shadow: 5px 5px 0 var(--c-text);
+        transform: translate(-2px, -2px);
+    }
+
+    .stack-block-label {
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        display: flex;
+    }
+
+    .stack-block-title {
+        color: var(--c-text);
+        font-family: var(--c-mono);
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 800;
+        line-height: 1.2;
+    }
+
+    .stack-block-tag {
+        color: var(--c-text2);
+        font-family: var(--c-mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        text-align: right;
+        white-space: nowrap;
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    /* Logo pills inside a block */
+    .stack-logos {
+        flex-wrap: wrap;
+        gap: 8px;
+        display: flex;
+    }
+
+    .stack-logo {
+        border: 1px solid var(--c-border);
+        background: var(--c-paper);
+        color: var(--c-text);
+        font-family: var(--c-mono);
+        white-space: nowrap;
+        flex: 1 1 42%;
+        min-width: 0;
+        align-items: center;
+        gap: 9px;
+        padding: 8px 10px;
+        font-size: 11.5px;
+        font-weight: 700;
+        line-height: 1.2;
+        display: flex;
+        transition: background .15s;
+    }
+
+    .stack-logo:hover {
+        background: rgba(var(--c-brand-rgb), .1);
+    }
+
+    .stack-logo-mark {
+        background: var(--c-paper);
+        color: var(--c-text);
+        border: 1px solid var(--c-border);
+        flex: 0 0 24px;
+        justify-content: center;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        overflow: hidden;
+        font-family: var(--c-mono);
+        font-weight: 800;
+        font-size: 13px;
+    }
+
+    .stack-logo-mark svg {
+        width: 13px;
+        height: 13px;
+        stroke: var(--c-text);
+        stroke-width: 2;
+        stroke-linecap: square;
+        stroke-linejoin: miter;
+        fill: none;
+    }
+
+    .stack-logo-mark.-c {
+        background: var(--c-cyan);
+    }
+
+    .stack-logo-mark.-p {
+        background: var(--c-purple);
+    }
+
+    .stack-logo-mark.-y {
+        background: var(--c-yellow);
+    }
+
+    .stack-logo-mark.-g {
+        background: var(--c-green);
+    }
+
+    .stack-logo-mark.-pk {
+        background: var(--c-pink);
+    }
+
+    .stack-logo-name {
+        text-overflow: ellipsis;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    /* Center engine — bare icon.svg */
+    .stack-engine {
+        z-index: 4;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        position: relative;
+    }
+
+    .stack-engine-logo {
+        width: 60px;
+        height: 60px;
+        display: block;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    @media (max-width: 900px) {
+        .stack-wrap {
+            padding: 0;
+        }
+
+        .stack-panel {
+            padding: 28px 20px;
+        }
+
+        .stack-flows {
+            display: none;
+        }
+
+        .stack-grid {
+            grid-template-columns: 1fr;
+            min-height: auto;
+            gap: 24px;
+        }
+
+        .stack-col {
+            padding-top: 32px;
+        }
+
+        .stack-col-head {
+            position: relative;
+            top: auto;
+            left: auto;
+        }
+
+        .stack-col-head.-center {
+            transform: none;
+            left: auto;
+        }
+
+        .stack-col-head.-right {
+            text-align: left;
+            justify-content: flex-start;
+            right: auto;
+        }
+
+        .stack-engine {
+            margin: 0 auto 32px;
+        }
+    }
 </style>
 
 <div ng-controller="cube" class="cube-page">
@@ -1439,43 +1763,135 @@ public class SqlFunctions {
                 i18n}}</p>
             <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.sql.desc' | i18n}}</p>
         </div>
-        <div class="r bleed-lines" style="padding:24px 32px">
-            <div class="cml-code-grid">
-                <div class="cml-code-block">
-                    <div class="cml-code-head">psql — postgres://erupt@127.0.0.1:5433</div>
-                    <pre><code><span class="csql-prompt">erupt=></span> <span class="csql-kw">select</span> category, sum(revenue) <span
-                            class="csql-kw">as</span> revenue
-<span class="csql-prompt">erupt-></span> <span class="csql-kw">from</span> SalesCube <span
-                                class="csql-kw">group by</span> category;
+        <div class="r bleed-lines">
+            <div class="stack-wrap">
+                <div class="stack-card">
+                    <div class="stack-panel">
+                        <svg aria-hidden="true" class="stack-flows" preserveAspectRatio="none"
+                             viewBox="0 0 1000 420">
+                            <!-- Clients → engine -->
+                            <path class="stack-flow-pipe"
+                                  d="M344 159 H 396 Q 408 159 408 171 V 209 Q 408 221 420 221 H 472"></path>
+                            <path class="stack-flow-pipe" d="M344 221 H 472"></path>
+                            <path class="stack-flow-pipe"
+                                  d="M344 283 H 396 Q 408 283 408 271 V 233 Q 408 221 420 221 H 472"></path>
+                            <!-- Engine → semantic models → sources -->
+                            <path class="stack-flow-pipe"
+                                  d="M528 221 H 580 Q 592 221 592 209 V 158 Q 592 146 604 146 H 656"></path>
+                            <path class="stack-flow-pipe"
+                                  d="M528 221 H 580 Q 592 221 592 233 V 284 Q 592 296 604 296 H 656"></path>
+                            <path class="stack-flow-stream"
+                                  d="M344 159 H 396 Q 408 159 408 171 V 209 Q 408 221 420 221 H 472"></path>
+                            <path class="stack-flow-stream" d="M344 221 H 472"></path>
+                            <path class="stack-flow-stream"
+                                  d="M344 283 H 396 Q 408 283 408 271 V 233 Q 408 221 420 221 H 472"></path>
+                            <path class="stack-flow-stream"
+                                  d="M528 221 H 580 Q 592 221 592 209 V 158 Q 592 146 604 146 H 656"></path>
+                            <path class="stack-flow-stream"
+                                  d="M528 221 H 580 Q 592 221 592 233 V 284 Q 592 296 604 296 H 656"></path>
+                        </svg>
 
-<span class="csql-res">  category   | revenue
--------------+----------
- Electronics | 1284300
- Apparel     |  912400
- Food        |  673100
-(3 rows)</span>
+                        <div class="stack-grid">
+                            <!-- ── LEFT · 01 Clients ── -->
+                            <div class="stack-col">
+                                <div class="stack-col-head">
+                                    <span class="stack-col-num">01</span>{{'cube.sqlstack.hl' | i18n}}
+                                </div>
+                                <article class="stack-block">
+                                    <div class="stack-block-label">
+                                        <span class="stack-block-title">SQL CLI · IDE</span>
+                                        <span class="stack-block-tag">Standard PG</span>
+                                    </div>
+                                    <div class="stack-logos">
+                                        <div class="stack-logo"><span class="stack-logo-mark -c">›</span><span
+                                                class="stack-logo-name">psql</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -c">D</span><span
+                                                class="stack-logo-name">DataGrip</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -c">B</span><span
+                                                class="stack-logo-name">DBeaver</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -c">J</span><span
+                                                class="stack-logo-name">JDBC</span></div>
+                                    </div>
+                                </article>
+                                <article class="stack-block">
+                                    <div class="stack-block-label">
+                                        <span class="stack-block-title">BI Tools</span>
+                                        <span class="stack-block-tag">Dashboards</span>
+                                    </div>
+                                    <div class="stack-logos">
+                                        <div class="stack-logo"><span class="stack-logo-mark -y">S</span><span
+                                                class="stack-logo-name">Superset</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -y">M</span><span
+                                                class="stack-logo-name">Metabase</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -y">G</span><span
+                                                class="stack-logo-name">Grafana</span></div>
+                                    </div>
+                                </article>
+                                <article class="stack-block">
+                                    <div class="stack-block-label">
+                                        <span class="stack-block-title">AI Agent</span>
+                                        <span class="stack-block-tag">MCP · NL2SQL</span>
+                                    </div>
+                                    <div class="stack-logos">
+                                        <div class="stack-logo"><span class="stack-logo-mark -g">A</span><span
+                                                class="stack-logo-name">AI Agent</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -g">M</span><span
+                                                class="stack-logo-name">MCP</span></div>
+                                    </div>
+                                </article>
+                            </div>
 
-<span class="csql-cmt">-- measures aggregate automatically, no GROUP BY</span>
-<span class="csql-prompt">erupt=></span> <span class="csql-kw">select</span> region_code, revenue <span class="csql-kw">from</span> SalesCube;
+                            <!-- ── CENTER · 02 PG Wire Engine ── -->
+                            <div class="stack-col -center">
+                                <div class="stack-col-head -center">
+                                    <span class="stack-col-num">02</span>{{'cube.sqlstack.hc' | i18n}}
+                                </div>
+                                <div class="stack-engine">
+                                    <img alt="Erupt Cube" class="stack-engine-logo" draggable="false"
+                                         src="icon.svg">
+                                </div>
+                            </div>
 
-<span class="csql-cmt">-- join Cubes across data sources</span>
-<span class="csql-prompt">erupt=></span> <span class="csql-kw">select</span> r.continent, sum(s.revenue) <span
-                                class="csql-kw">as</span> revenue
-<span class="csql-prompt">erupt-></span> <span class="csql-kw">from</span> SalesCube s <span class="csql-kw">join</span> RegionCube r
-<span class="csql-prompt">erupt-></span>   <span class="csql-kw">on</span> s.region_code = r.region_code
-<span class="csql-prompt">erupt-></span> <span class="csql-kw">group by</span> r.continent;</code></pre>
-                </div>
-                <div class="cml-code-block">
-                    <div class="cml-code-head">{{'cube.sql.cfg.title' | i18n}}</div>
-                    <pre><code class="language-yaml">erupt:
-  cube:
-    sql:
-      enable: true
-      show-sql: true
-      bind: 127.0.0.1
-      port: 5433
-      username: erupt
-      password: ******</code></pre>
+                            <!-- ── RIGHT · 03 Semantic Models & Sources ── -->
+                            <div class="stack-col">
+                                <div class="stack-col-head -right">
+                                    <span class="stack-col-num">03</span>{{'cube.sqlstack.hr' | i18n}}
+                                </div>
+                                <article class="stack-block">
+                                    <div class="stack-block-label">
+                                        <span class="stack-block-title">Semantic Models</span>
+                                        <span class="stack-block-tag">Cubes as Tables</span>
+                                    </div>
+                                    <div class="stack-logos">
+                                        <div class="stack-logo"><span class="stack-logo-mark -c">◈</span><span
+                                                class="stack-logo-name">SalesCube</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -c">◈</span><span
+                                                class="stack-logo-name">RegionCube</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -c">◈</span><span
+                                                class="stack-logo-name">OrderCube</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -c">◈</span><span
+                                                class="stack-logo-name">UserCube</span></div>
+                                    </div>
+                                </article>
+                                <article class="stack-block">
+                                    <div class="stack-block-label">
+                                        <span class="stack-block-title">Data Sources</span>
+                                        <span class="stack-block-tag">OLAP · OLTP</span>
+                                    </div>
+                                    <div class="stack-logos">
+                                        <div class="stack-logo"><span class="stack-logo-mark -g">M</span><span
+                                                class="stack-logo-name">MySQL</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -g">P</span><span
+                                                class="stack-logo-name">PostgreSQL</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -g">D</span><span
+                                                class="stack-logo-name">Doris</span></div>
+                                        <div class="stack-logo"><span class="stack-logo-mark -g">C</span><span
+                                                class="stack-logo-name">ClickHouse</span></div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1496,16 +1912,6 @@ public class SqlFunctions {
                 <div class="h3">{{'cube.sql.f4.title' | i18n}}</div>
                 <p class="sub">{{'cube.sql.f4.desc' | i18n}}</p>
             </div>
-        </div>
-        <div class="r" style="padding:16px 32px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-            <span style="font-family:var(--c-mono);font-size:.68em;letter-spacing:1.2px;text-transform:uppercase;color:var(--c-text2);margin-right:6px">{{'cube.sql.clients.label' | i18n}}</span>
-            <span class="cube-db-chip">psql</span>
-            <span class="cube-db-chip">DataGrip</span>
-            <span class="cube-db-chip">DBeaver</span>
-            <span class="cube-db-chip">Superset</span>
-            <span class="cube-db-chip">Metabase</span>
-            <span class="cube-db-chip">Grafana</span>
-            <span class="cube-db-chip">JDBC / AI Agent</span>
         </div>
 
         <!-- ── §7 Three-Way Comparison ── -->

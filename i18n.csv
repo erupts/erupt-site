@@ -473,7 +473,9 @@ cube.ml.fn.use.title,ML — 调用自定义函数,ML — Call Function
 cube.sql.title.pre,用 ,Query the Semantic Model in
 cube.sql.title.post, 直连语义模型,
 cube.sql.desc,"erupt-cube-sql 将语义模型以 PostgreSQL 协议对外暴露：每个 Cube 都是一张可直接 SELECT 的表，psql、DataGrip、Superset、Grafana 及任何 JDBC 客户端均可直连。","erupt-cube-sql exposes the semantic model over the PostgreSQL wire protocol: every Cube is a table you can SELECT from — psql, DataGrip, Superset, Grafana, and any JDBC client connect directly."
-cube.sql.cfg.title,YAML — 一段配置开启端口,YAML — One config block to enable
+cube.sqlstack.hl,SQL / BI / AI 客户端,SQL / BI / AI Clients
+cube.sqlstack.hc,PostgreSQL 协议 :5433,PG Wire Protocol :5433
+cube.sqlstack.hr,语义模型 → 数据源,Semantic Models → Sources
 cube.sql.f1.title,自动聚合,Auto Aggregation
 cube.sql.f1.desc,"指标列自带聚合语义，直接投影即按所选维度粒度聚合，无需手写 GROUP BY。","Measures carry aggregation semantics — project them and they roll up to the selected dimensions, no hand-written GROUP BY."
 cube.sql.f2.title,谓词下推,Predicate Pushdown
@@ -482,8 +484,7 @@ cube.sql.f3.title,跨源关联,Cross-Source JOIN
 cube.sql.f3.desc,"不同 Cube 可直接 JOIN，即使数据来自不同数据库，由 Calcite 在内存完成关联。",JOIN across Cubes even when data lives in different databases — Calcite stitches the results in memory.
 cube.sql.f4.title,只读安全,Read-Only by Design
 cube.sql.f4.desc,"INSERT / UPDATE / DELETE / DDL 一律拒绝，行为与 PostgreSQL 只读从库一致。",INSERT / UPDATE / DELETE / DDL are all rejected — it behaves exactly like a PostgreSQL read-only replica.
-cube.sql.clients.label,兼容客户端,Works With
-cube.ai.title.pre,让 ,Let
+cube.ai.title.pre,让 ,"Let "
 cube.ai.title.post, 直接问数, Query Your Data
 cube.ai.desc,"内置 MCP 工具集，AI Agent 可自主发现语义模型、读取维度指标、执行聚合查询——指标口径与数据权限由语义层统一保证，大模型不再""编数""。","Built-in MCP tools let AI agents discover semantic models, read dimensions & measures, and run aggregate queries — metric definitions and data permissions are enforced by the semantic layer, so LLMs stop making numbers up."
 cube.ai.chat.q,上季度各品类的营收 Top 3 是哪些？,What were the top 3 categories by revenue last quarter?
