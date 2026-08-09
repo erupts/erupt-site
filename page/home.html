@@ -1199,6 +1199,215 @@
         height: 18px;
     }
 
+    /* §15 product family cells */
+    .fam-c {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 218px;
+    }
+
+    .fam-idx {
+        position: absolute;
+        top: 20px;
+        right: 22px;
+        font-family: var(--c-mono);
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -.05em;
+        color: rgba(0, 0, 0, .05);
+        pointer-events: none;
+    }
+
+    .fam-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+    }
+
+    .fam-glyph {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 19px;
+        font-weight: 800;
+        line-height: 1;
+        color: var(--c-text);
+        background: var(--c-brand);
+        border: 2px solid var(--c-border);
+        box-shadow: 3px 3px 0 var(--c-border);
+        flex-shrink: 0;
+        transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .fam-glyph.fg-g {
+        background: var(--c-green);
+    }
+
+    .fam-glyph.fg-p {
+        background: var(--c-purple);
+    }
+
+    .fam-glyph.fg-y {
+        background: var(--c-yellow);
+    }
+
+    .fam-glyph.fg-pk {
+        background: var(--c-pink);
+    }
+
+    .c.clickable:hover .fam-glyph {
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 var(--c-border);
+    }
+
+    .fam-name {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        margin-bottom: 3px;
+    }
+
+    .fam-title {
+        font-weight: 800;
+        font-size: 16px;
+        letter-spacing: -.01em;
+        color: var(--c-text);
+    }
+
+    .fam-more {
+        margin-top: auto;
+        padding-top: 18px;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        color: var(--c-brand);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .fam-more .fam-arrow {
+        transition: transform .15s ease;
+    }
+
+    .c.clickable:hover .fam-arrow {
+        transform: translateX(5px);
+    }
+
+
+    /* §13 vs table */
+    .vs-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .vs-table th {
+        padding: 16px 24px;
+        border-bottom: 2px solid var(--c-border);
+        font-size: 13.5px;
+    }
+
+    .vs-th-l {
+        text-align: right;
+        font-weight: 600;
+        color: var(--c-text2);
+    }
+
+    .vs-th-m {
+        text-align: center;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        color: var(--c-brand);
+        border-left: 1px solid var(--c-border);
+        border-right: 1px solid var(--c-border);
+    }
+
+    .vs-th-r {
+        text-align: left;
+        font-weight: 800;
+        color: var(--c-text);
+        background: rgba(79, 200, 236, .07);
+    }
+
+    .vs-dot {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        background: var(--c-brand);
+        border: 2px solid var(--c-border);
+        margin-right: 10px;
+        vertical-align: 1px;
+    }
+
+    .vs-dot-old {
+        background: transparent;
+        margin-right: 0;
+        margin-left: 10px;
+    }
+
+    .vs-table td {
+        padding: 12px 24px;
+        border-bottom: 1px solid var(--c-border);
+        font-size: 13.5px;
+    }
+
+    .vs-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .vs-l {
+        text-align: right;
+        color: var(--c-text2);
+    }
+
+    .vs-l::after {
+        content: "\2715";
+        margin-left: 12px;
+        font-size: 11px;
+        color: rgba(20, 18, 11, .28);
+    }
+
+    .vs-m {
+        text-align: center;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        border-left: 1px solid var(--c-border);
+        border-right: 1px solid var(--c-border);
+    }
+
+    .vs-r {
+        color: var(--c-text);
+        font-weight: 600;
+        background: rgba(79, 200, 236, .05);
+    }
+
+    .vs-r::before {
+        content: "\2713";
+        margin-right: 12px;
+        font-weight: 800;
+        color: var(--c-green);
+    }
+
+    .vs-table tbody tr:hover td {
+        background: rgba(79, 200, 236, .04);
+    }
+
+    .vs-table tbody tr:hover td.vs-r {
+        background: rgba(79, 200, 236, .1);
+    }
+
 </style>
 
 <div ng-controller="home">
@@ -2222,7 +2431,7 @@ public class Task extends BaseModel {
              §13 VS TABLE (full width)
              ════════════════════════════════════════ -->
         <div class="r reveal">
-            <table style="width:100%;border-collapse:collapse">
+            <table class="vs-table">
                 <colgroup>
                     <col style="width:42%">
                     <col style="width:16%">
@@ -2230,138 +2439,66 @@ public class Task extends BaseModel {
                 </colgroup>
                 <thead>
                 <tr>
-                    <th style="padding:11px 24px;text-align:right;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-weight:400">
-                        {{'home.vs.title'|i18n}}
-                    </th>
-                    <th style="padding:11px 24px;text-align:center;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-brand);border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-weight:600">
-                        VS
-                    </th>
-                    <th style="padding:11px 24px;text-align:left;font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-brand);border-bottom:1px solid var(--c-border);font-weight:600">
-                        {{'home.vs.erupt'|i18n}}
-                    </th>
+                    <th class="vs-th-l">{{'home.vs.title'|i18n}}<span class="vs-dot vs-dot-old"></span></th>
+                    <th class="vs-th-m">VS</th>
+                    <th class="vs-th-r"><span class="vs-dot"></span>{{'home.vs.erupt'|i18n}}</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.files.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.files.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.files.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.files.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.files.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.files.right'|i18n}}</td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.modify.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.modify.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.modify.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.modify.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.modify.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.modify.right'|i18n}}</td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.frontend.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.frontend.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.frontend.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.frontend.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.frontend.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.frontend.right'|i18n}}</td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.dev.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.dev.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.dev.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.dev.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.dev.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.dev.right'|i18n}}</td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.upgrade.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.upgrade.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.upgrade.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.upgrade.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.upgrade.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.upgrade.right'|i18n}}</td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.table.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.table.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.table.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.table.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.table.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.table.right'|i18n}}</td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.component.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.component.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.component.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.component.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.component.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.component.right'|i18n}}</td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.database.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.database.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.database.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.database.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.database.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.database.right'|i18n}}</td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.logic.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.logic.title'|i18n}}
-                    </td>
-                    <td ng-bind-html="'home.vs.logic.right'|i18nHtml"
-                        style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                    </td>
+                    <td class="vs-l">{{'home.vs.logic.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.logic.title'|i18n}}</td>
+                    <td class="vs-r" ng-bind-html="'home.vs.logic.right'|i18nHtml"></td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.time.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-bottom:1px solid var(--c-border);border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.time.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;border-bottom:1px solid var(--c-border);font-size:13px">
-                        {{'home.vs.time.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.time.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.time.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.time.right'|i18n}}</td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 24px;text-align:right;color:var(--c-text2);font-size:13px">
-                        {{'home.vs.startup.left'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;text-align:center;border-left:1px solid var(--c-border);border-right:1px solid var(--c-border);font-family:var(--c-mono);font-size:10px;color:var(--c-text2)">
-                        {{'home.vs.startup.title'|i18n}}
-                    </td>
-                    <td style="padding:10px 24px;color:var(--c-text);font-weight:500;font-size:13px">
-                        {{'home.vs.startup.right'|i18n}}
-                    </td>
+                    <td class="vs-l">{{'home.vs.startup.left'|i18n}}</td>
+                    <td class="vs-m">{{'home.vs.startup.title'|i18n}}</td>
+                    <td class="vs-r">{{'home.vs.startup.right'|i18n}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -2381,55 +2518,77 @@ public class Task extends BaseModel {
              §15 PRODUCT CELLS (3 × 2)
              ════════════════════════════════════════ -->
         <div class="r g3 reveal">
-            <div class="c clickable" ng-click="go('#!/ai')">
-                <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Erupt AI</span>
-                <div class="h3">{{'home.fam.ai.title' | i18n}}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.v2.fam.ai.p'|i18n}}</p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
-                    {{'home.v2.fam.more'|i18n}} →
+            <div class="c clickable fam-c" ng-click="go('#!/ai')">
+                <span class="fam-idx">01</span>
+                <div class="fam-head">
+                    <span class="fam-glyph">✳</span>
+                    <div>
+                        <div class="fam-name">Erupt AI</div>
+                        <div class="fam-title">{{'home.fam.ai.title' | i18n}}</div>
+                    </div>
                 </div>
+                <p class="sub" style="font-size:12.5px;margin:0">{{'home.v2.fam.ai.p'|i18n}}</p>
+                <div class="fam-more">{{'home.v2.fam.more'|i18n}}<span class="fam-arrow">→</span></div>
             </div>
-            <div class="c clickable" ng-click="go('#!/ai-claw')">
-                <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">AI Claw</span>
-                <div class="h3">{{'home.fam.claw.title' | i18n}}</div>
-                <p class="sub" ng-bind-html="'home.promo.claw.desc'|i18nHtml"
-                   style="font-size:12.5px;margin-top:6px"></p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
-                    {{'home.v2.fam.more'|i18n}} →
+            <div class="c clickable fam-c" ng-click="go('#!/ai-claw')">
+                <span class="fam-idx">02</span>
+                <div class="fam-head">
+                    <span class="fam-glyph fg-g">⌖</span>
+                    <div>
+                        <div class="fam-name">AI Claw</div>
+                        <div class="fam-title">{{'home.fam.claw.title' | i18n}}</div>
+                    </div>
                 </div>
+                <p class="sub" ng-bind-html="'home.promo.claw.desc'|i18nHtml" style="font-size:12.5px;margin:0"></p>
+                <div class="fam-more">{{'home.v2.fam.more'|i18n}}<span class="fam-arrow">→</span></div>
             </div>
-            <div class="c clickable" ng-click="go('#!/flow')" style="border-right:none">
-                <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Erupt Flow</span>
-                <div class="h3">{{'home.fam.flow.title' | i18n}}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.v2.fam.flow.p'|i18n}}</p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
-                    {{'home.v2.fam.more'|i18n}} →
+            <div class="c clickable fam-c" ng-click="go('#!/flow')" style="border-right:none">
+                <span class="fam-idx">03</span>
+                <div class="fam-head">
+                    <span class="fam-glyph fg-p">⇶</span>
+                    <div>
+                        <div class="fam-name">Erupt Flow<span class="pro-badge">PRO</span></div>
+                        <div class="fam-title">{{'home.fam.flow.title' | i18n}}</div>
+                    </div>
                 </div>
+                <p class="sub" style="font-size:12.5px;margin:0">{{'home.v2.fam.flow.p'|i18n}}</p>
+                <div class="fam-more">{{'home.v2.fam.more'|i18n}}<span class="fam-arrow">→</span></div>
             </div>
-            <div class="c clickable no-bb" ng-click="go('#!/cloud')">
-                <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Erupt Cloud</span>
-                <div class="h3">{{'home.fam.cloud.title' | i18n}}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.v2.fam.cloud.p'|i18n}}</p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
-                    {{'home.v2.fam.more'|i18n}} →
+            <div class="c clickable no-bb fam-c" ng-click="go('#!/cloud')">
+                <span class="fam-idx">04</span>
+                <div class="fam-head">
+                    <span class="fam-glyph fg-y">⬡</span>
+                    <div>
+                        <div class="fam-name">Erupt Cloud</div>
+                        <div class="fam-title">{{'home.fam.cloud.title' | i18n}}</div>
+                    </div>
                 </div>
+                <p class="sub" style="font-size:12.5px;margin:0">{{'home.v2.fam.cloud.p'|i18n}}</p>
+                <div class="fam-more">{{'home.v2.fam.more'|i18n}}<span class="fam-arrow">→</span></div>
             </div>
-            <div class="c clickable no-bb" ng-click="go('#!/cube')">
-                <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Erupt Cube</span>
-                <div class="h3">{{'home.fam.cube.title' | i18n}}</div>
-                <p class="sub" ng-bind-html="'home.promo.cube.desc'|i18nHtml"
-                   style="font-size:12.5px;margin-top:6px"></p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
-                    {{'home.v2.fam.more'|i18n}} →
+            <div class="c clickable no-bb fam-c" ng-click="go('#!/cube')">
+                <span class="fam-idx">05</span>
+                <div class="fam-head">
+                    <span class="fam-glyph fg-pk">◧</span>
+                    <div>
+                        <div class="fam-name">Erupt Cube<span class="pro-badge">PRO</span></div>
+                        <div class="fam-title">{{'home.fam.cube.title' | i18n}}</div>
+                    </div>
                 </div>
+                <p class="sub" ng-bind-html="'home.promo.cube.desc'|i18nHtml" style="font-size:12.5px;margin:0"></p>
+                <div class="fam-more">{{'home.v2.fam.more'|i18n}}<span class="fam-arrow">→</span></div>
             </div>
-            <div class="c clickable no-bb" ng-click="go('https://linq.erupt.xyz',true)" style="border-right:none">
-                <span style="font-family:var(--c-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-brand);display:block;margin-bottom:12px">Linq.J</span>
-                <div class="h3">{{'home.fam.linq.title' | i18n}}</div>
-                <p class="sub" style="font-size:12.5px;margin-top:6px">{{'home.v2.fam.linq.p'|i18n}}</p>
-                <div style="margin-top:16px;font-family:var(--c-mono);font-size:11px;color:var(--c-brand)">
-                    {{'home.v2.fam.more'|i18n}} →
+            <div class="c clickable no-bb fam-c" ng-click="go('https://linq.erupt.xyz',true)" style="border-right:none">
+                <span class="fam-idx">06</span>
+                <div class="fam-head">
+                    <span class="fam-glyph">λ</span>
+                    <div>
+                        <div class="fam-name">Linq.J</div>
+                        <div class="fam-title">{{'home.fam.linq.title' | i18n}}</div>
+                    </div>
                 </div>
+                <p class="sub" style="font-size:12.5px;margin:0">{{'home.v2.fam.linq.p'|i18n}}</p>
+                <div class="fam-more">{{'home.v2.fam.more'|i18n}}<span class="fam-arrow">→</span></div>
             </div>
         </div>
 
