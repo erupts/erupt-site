@@ -1,11 +1,11 @@
 key,zh-CN,en-US
 nav.home,首页,Home
 nav.flow,🔀 Erupt Flow,🔀 Erupt Flow
-nav.contrast,代码示例,Code Examples
-nav.module,扩展模块,Extensions
+nav.contrast,代码示例,Examples
+nav.module,更多模块,More Modules
 nav.donate,捐赠指南,Donate
-nav.doc,使用文档,Documentation
-nav.demo,演示DEMO,Demo
+nav.doc,使用文档,Docs
+nav.demo,演示 DEMO,Demo
 nav.cloud,☁️ Erupt Cloud,☁️ Erupt Cloud
 cloud.hero.kicker,DISTRIBUTED CONFIG,DISTRIBUTED CONFIG
 cloud.hero.title,Erupt Cloud,Erupt Cloud
@@ -1051,3 +1051,124 @@ cloud.diag.n1,通知服务,Notify Service
 cloud.diag.n2,网关服务,Gateway Service
 cloud.diag.n3,算法服务,Algo Service
 cloud.diag.more,更多服务…,More services…
+nav.data,数据连接,Connectors
+data.hero.t1,任何数据源，,"Any Data Source, "
+data.hero.t2,同一套后台,One Admin
+data.hero.sub,erupt-data 将数据库、文件、NoSQL 与 SaaS API 抽象为统一的数据源接口，同一套注解模型即可对任意数据完成增删改查、分页与检索。,"erupt-data abstracts databases, files, NoSQL and SaaS APIs into one unified data-source interface — the same annotated model gives you CRUD, pagination and search over any data."
+data.hero.btn.doc,模块文档,Module Docs
+data.stat.1,数据源模块,Data Modules
+data.stat.2,关系型数据库,Relational DBs
+data.stat.3,文件格式,File Formats
+data.stat.4,自定义扩展,Custom Adapters
+data.topo.title,数据源拓扑,Data Source Topology
+data.topo.sub,六路数据汇入同一个引擎：关系型数据库、NoSQL、文件、服务 API、云端 SaaS 乃至内存实现，全部即插即用。,"Six lanes feed one engine: relational databases, NoSQL stores, files, service APIs, cloud SaaS and even in-memory implementations — all plug and play."
+data.topo.jpa,关系型数据库 · ORM,Relational databases · ORM
+data.topo.file,文件即数据表,Files as tables
+data.topo.nosql,NoSQL 存储,NoSQL stores
+data.topo.api,服务接口直连,Direct service APIs
+data.topo.saas,云端与 SaaS 平台,Cloud & SaaS platforms
+data.topo.runtime,内存与自定义实现,In-memory & custom impls
+data.topo.core,统一数据接口,Unified data interface
+data.chip.dm,达梦 DM,DM
+data.chip.kingbase,人大金仓,KingbaseES
+data.chip.feishu,飞书多维表格,Feishu Bitable
+data.chip.more,+ 更多,+ more
+data.chip.custom,+ 自定义,+ your own
+data.mod.title,13+ 开箱即用的数据模块,13+ Ready-to-use Data Modules
+data.mod.sub,每个模块都是一个独立的 Maven 依赖，引入即生效，互不干扰，可在同一项目中混用多个数据源。,"Each module is a standalone Maven dependency — drop it in and it works. Mix multiple data sources freely within one project."
+data.m.jpa,关系型数据库 ORM：MySQL、PostgreSQL、Oracle、SQL Server、MariaDB、TiDB、达梦、人大金仓、OceanBase、H2 等。,"Relational ORM: MySQL, PostgreSQL, Oracle, SQL Server, MariaDB, TiDB, DM, KingbaseES, OceanBase, H2 and more."
+data.m.jdbc,原生 JDBC 直连，手写 SQL 也能驱动完整后台。,Raw JDBC access — hand-written SQL can drive a full admin.
+data.m.file,文件即数据表：CSV / JSON / JSONL / XML / YAML / TSV / INI / Properties / Markdown。,Files as tables: CSV / JSON / JSONL / XML / YAML / TSV / INI / Properties / Markdown.
+data.m.mongodb,MongoDB 文档数据库的增删改查与分页检索。,CRUD and paginated search over MongoDB documents.
+data.m.redis,Redis 键值数据的可视化管理。,Visual management of Redis key-value data.
+data.m.es,Elasticsearch 索引数据的检索与管理。,Search and manage Elasticsearch indices.
+data.m.http,将远程 HTTP / REST API 映射为可管理的数据源。,Map remote HTTP / REST APIs into manageable data sources.
+data.m.ldap,LDAP 目录服务条目的后台化管理。,Admin UI over LDAP directory entries.
+data.m.k8s,Kubernetes 集群资源的可视化管理。,Visual management of Kubernetes cluster resources.
+data.m.s3,S3 协议对象存储的浏览与管理。,Browse and manage S3-compatible object storage.
+data.m.feishu,飞书多维表格（Bitable）数据读写。,Read and write Feishu Bitable data.
+data.m.notion,Notion Database 数据读写。,Read and write Notion databases.
+data.m.memory,内存数据源，零依赖快速原型验证。,In-memory source for zero-dependency prototyping.
+data.m.custom.name,你的数据源,your-source
+data.m.custom.desc,实现 IEruptDataService 接口并注册，任何存储、任何协议都能成为 Erupt 数据源。,Implement IEruptDataService and register it — any storage or protocol becomes an Erupt data source.
+data.ext.title,三步扩展一个新数据源,Extend a New Data Source in 3 Steps
+data.ext.sub,数据源不是枚举出来的，而是接口定义出来的——内置的 13 个模块也是用同样的方式实现的。,"Data sources aren't a hard-coded list — they're defined by an interface. The 13 built-in modules are implemented exactly the same way."
+data.ext.p1.title,实现接口,Implement
+data.ext.p1.desc,补齐查询、新增、编辑、删除等方法，批量操作与能力声明均有默认实现。,"Fill in query, add, edit and delete; batch operations and capability declaration have default implementations."
+data.ext.p2.title,注册到,Register with
+data.ext.p2.desc,为实现类注册一个数据源名称，注册后即可被任意模型引用。,"Register the implementation under a data-source name, then any model can reference it."
+data.ext.p3.title,模型声明,Annotate with
+data.ext.p3.desc,在 @Erupt 模型上加一行注解，即可把该模型切换到你的数据源。,One extra annotation on your @Erupt model switches it to your data source.
+data.cta.title,把你的数据接入 Erupt,Bring Your Data to Erupt
+data.cta.sub,无论数据在哪里——数据库、文件、云端还是内部服务，一套注解即可生成完整后台。,"Wherever your data lives — database, file, cloud or internal service — one set of annotations builds the full admin."
+data.cta.doc,查看模块文档,View Module Docs
+nav.aicanvas,🎨 AI Canvas,🎨 AI Canvas
+canvas.hero.t1,一句话，,One sentence.
+canvas.hero.t2,生成一个页面。,One living page.
+canvas.hero.sub,用自然语言描述你的需求，AI Canvas 生成完整页面，数据实时来自 Erupt 后端。无需前端，无需部署。,"Describe what you need in plain language. AI Canvas generates a complete page, wired live to your Erupt backend. No frontend. No deploy."
+canvas.hero.cta1,了解工作原理,See how it works
+canvas.hero.cta2,阅读文档,Read the docs
+canvas.mock.prompt,做一个销售看板：本月订单趋势 + Top 10 客户表格,Build a sales dashboard: monthly order trend + top-10 customers
+canvas.mock.gen,正在生成页面…,Generating page…
+canvas.mock.done,已生成 · 版本 v7,Generated · version v7
+canvas.state.1,描述。,Describe.
+canvas.state.2,生成。,Generate.
+canvas.state.3,发布。,Publish.
+canvas.state.sub,从一句话到上线页面，只隔一次对话。,From a sentence to a shipped page — one conversation away.
+canvas.b1.t,流式生成,Streaming generation
+canvas.b1.p,SSE 逐字输出生成过程，页面在你眼前长出来。,"SSE streams every token, and the page grows in front of you."
+canvas.b2.t,版本随时回退,"Versions, always"
+canvas.b2.p,每次生成都是一个版本，一键切换、激活任意历史页面。,Every generation is a version. Switch back or re-activate any of them in one click.
+canvas.b3.t,元素拾取修改,Point to change
+canvas.b3.p,悬停选中页面元素，告诉 AI 改哪里，精确到 CSS 路径。,Hover to pick any element and tell the AI what to change — precise to the CSS path.
+canvas.b4.t,三种设备预览,Three viewports
+canvas.b4.p,桌面、平板、手机视口即时切换。,"Desktop, tablet and phone, switched instantly."
+canvas.b5.t,数据实时直连,"Live data, built in"
+canvas.b5.p,生成的页面通过 Erupt REST API 读取真实数据，Vue 3 实时渲染。,"Generated pages read real data through the Erupt REST API, rendered live with Vue 3."
+canvas.b6.t,一键挂到菜单,Straight to the menu
+canvas.b6.p,发布即成为后台菜单页面，权限体系原生生效。,"Publish and it becomes a menu page, secured by Erupt's native permissions."
+canvas.how.tag,工作原理,How it works
+canvas.how.title,三步，从想法到页面,"Idea to page, in three steps"
+canvas.s1.t,描述需求,Describe it
+canvas.s1.p,选择数据模型与页面风格，用一句自然语言说明你要什么。,"Pick a data model and a style, then say what you want in plain words."
+canvas.s2.t,AI 生成,Watch it build
+canvas.s2.p,LLM 生成自包含 HTML，SSE 实时流式预览，不满意继续对话微调。,"The LLM writes a self-contained HTML page, streamed live over SSE. Keep chatting to refine it."
+canvas.s3.t,发布上线,Ship it
+canvas.s3.p,激活版本并挂载到菜单，页面即刻对授权用户可见。,Activate the version and mount it on a menu — instantly visible to authorized users.
+canvas.spec1.k,模块,Module
+canvas.spec2.k,生成协议,Streaming
+canvas.spec3.k,前端运行时,Runtime
+canvas.spec4.k,数据通道,Data
+canvas.cta.t,让页面自己长出来。,Let pages grow themselves.
+canvas.cta.sub,erupt-ai-canvas 已随 Erupt AI 模块提供。,Ships with the Erupt AI module.
+canvas.cta.b1,快速开始,Get started
+canvas.cta.b2,了解 Erupt AI,Explore Erupt AI
+canvas.feat.title,一块会思考的画布,A canvas that thinks
+canvas.feat.lede,从流式生成到版本回滚，页面设计的每个环节都被重新想象。,"From streaming generation to version rollback, every step of page design is reimagined."
+canvas.pick.prompt,把第二张统计卡换成环形图,Turn the second stat card into a ring chart
+canvas.pick.locate,定位元素,Locate
+canvas.pick.patch,增量修改,Patch
+staff.hero.t2,数字员工,Digital Employee
+staff.state.1,入职。,Onboard.
+staff.state.2,上岗。,Work.
+staff.state.3,汇报。,Report.
+staff.state.sub,看看数字员工「小析」的一天：9 点被 Cron 叫醒，查数、分析、写日报，准时推送到群里。,"A day with Ana the data analyst: woken by Cron at 9:00, she queries data, writes the daily report, and posts it to the team channel — right on time."
+staff.b1.t,身份绑定,Identity Binding
+staff.b1.p,每位数字员工绑定一个真实系统账户，LLM 以该账户身份登录上岗、执行任务。,The LLM works under a real system account bound to each digital employee.
+staff.b2.t,权限继承,Permission Inherit
+staff.b2.p,能看什么数据、用什么工具，由绑定账户的角色权限决定，复用 erupt UPMS，无需二次授权。,What it sees and which tools it may call are decided by the bound account's roles — straight from erupt UPMS.
+staff.b3.t,Cron 排班,Cron Scheduling
+staff.b3.p,任务用 Cron 表达式排班，独立调度线程池准点触发，也支持一键立即执行。,Tasks run on Cron expressions with a dedicated scheduler — or execute instantly with one click.
+staff.b4.t,工具调用,Tool Calling
+staff.b4.p,基于 LLM Tool Calling 自动调用系统能力：查数据、改记录、跑流程，全程无需人工介入。,"Powered by LLM tool calling: query data, update records, run flows — no human in the loop."
+staff.b5.t,多渠道汇报,IM Reports
+staff.b5.p,任务完成自动生成 Markdown 工作报告，推送到钉钉、企业微信、飞书或 Slack。,"On completion a Markdown work report is pushed to DingTalk, WeCom, Feishu or Slack."
+staff.b6.t,执行留痕,Audit Trail
+staff.b6.p,每次执行的过程与报告全量落库，数字员工的每一分绩效都可回看。,Every run and every report is persisted — review your digital employee's performance any time.
+staff.feat.title,一支不下班的团队,A team that never clocks out
+staff.feat.lede,从身份、权限到排班、汇报，数字员工像真实员工一样被管理。,"Identity, permissions, schedules, reports — digital employees are managed just like real ones."
+staff.m1,小析 · 数据分析员,Ana · Data Analyst
+staff.m2,小巡 · 系统巡检员,Scout · System Inspector
+staff.m3,小客 · 客服助理,Momo · Support Assistant
+staff.mock.think,正在分析昨日订单与转化数据…,Analysing yesterday's orders and conversions…
+staff.mock.done,报告已推送 → 钉钉 · 数据日报群,Report pushed → DingTalk · #daily-data

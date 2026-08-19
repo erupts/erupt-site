@@ -34,19 +34,27 @@
                        class="btn btn-sm align-self-center btn-link dropdown-toggle"
                        data-toggle="dropdown"
                        href="javascript:;"
-                       ng-class="['/ai','/ai-claw','/cube','/flow','/cloud','/pro'].indexOf(currRouter)>=0?'active-link':''"
+                       ng-class="['/ai','/ai-canvas','/ai-claw','/cube','/flow','/cloud','/pro'].indexOf(currRouter)>=0?'active-link':''"
                        role="button">
                         {{'nav.products' | i18n}}
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#!/ai">{{'nav.ai' | i18n}}</a>
+                        <a class="dropdown-item" href="#!/ai-canvas">{{'nav.aicanvas' | i18n}}</a>
                         <a class="dropdown-item" href="#!/ai-claw">{{'nav.aiclaw' | i18n}}</a>
                         <a class="dropdown-item" href="#!/cloud">{{'nav.cloud' | i18n}}</a>
                         <a class="dropdown-item" href="#!/flow">{{'nav.flow' | i18n}}<span class="pro-badge">PRO</span></a>
                         <a class="dropdown-item" href="#!/cube">{{'nav.cube' | i18n}}<span class="pro-badge">PRO</span></a>
+                        <a class="dropdown-item"
+                           ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
+                           target="_blank">{{'nav.module' | i18n}}</a>
                         <a class="dropdown-item" href="#!/pro" style="color:#4FC8EC">{{'nav.pro' | i18n}}</a>
                     </div>
                 </span>
+                <a class="btn btn-sm align-self-center btn-link" href="#!/data"
+                   ng-class="currRouter=='/data'?'active-link':''">
+                    {{'nav.data' | i18n}}
+                </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/contrast"
                    ng-class="currRouter=='/contrast'?'active-link':''">
                     {{'nav.contrast' | i18n}}
@@ -54,10 +62,6 @@
                 <a class="btn btn-sm align-self-center btn-link"
                    ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">
                     {{'nav.doc' | i18n}}
-                </a>
-                <a class="btn btn-sm align-self-center btn-link"
-                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/" target="_blank">
-                    {{'nav.module' | i18n}}
                 </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/about"
                    ng-class="currRouter=='/about'?'active-link':''">
@@ -94,23 +98,26 @@
             </a>
             <div class="mobile-nav-group">{{'nav.products' | i18n}}</div>
             <a class="mobile-nav-sub" href="#!/ai" ng-click="mobileMenuOpen=false">{{'nav.ai' | i18n}}</a>
+            <a class="mobile-nav-sub" href="#!/ai-canvas" ng-click="mobileMenuOpen=false">{{'nav.aicanvas' | i18n}}</a>
             <a class="mobile-nav-sub" href="#!/ai-claw" ng-click="mobileMenuOpen=false">{{'nav.aiclaw' | i18n}}</a>
             <a class="mobile-nav-sub" href="#!/cloud" ng-click="mobileMenuOpen=false">{{'nav.cloud' | i18n}}</a>
             <a class="mobile-nav-sub" href="#!/flow" ng-click="mobileMenuOpen=false">{{'nav.flow' | i18n}}<span
                     class="pro-badge">PRO</span></a>
             <a class="mobile-nav-sub" href="#!/cube" ng-click="mobileMenuOpen=false">{{'nav.cube' | i18n}}<span
                     class="pro-badge">PRO</span></a>
+            <a class="mobile-nav-sub" ng-click="mobileMenuOpen=false"
+               ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
+               target="_blank">{{'nav.module' | i18n}}</a>
             <a class="mobile-nav-sub" href="#!/pro" ng-click="mobileMenuOpen=false" style="color:#4FC8EC">{{'nav.pro' |
                 i18n}}</a>
+            <a href="#!/data" ng-class="currRouter=='/data'?'active-link':''" ng-click="mobileMenuOpen=false">{{'nav.data'
+                | i18n}}</a>
             <a href="#!/contrast" ng-class="currRouter=='/contrast'?'active-link':''" ng-click="mobileMenuOpen=false">{{'nav.contrast'
                 | i18n}}</a>
             <a ng-click="mobileMenuOpen=false" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/"
                target="_blank">
                 {{'nav.doc' | i18n}}
             </a>
-            <a ng-click="mobileMenuOpen=false" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
-               target="_blank">{{'nav.module' |
-                i18n}}</a>
             <a href="#!/about" ng-click="mobileMenuOpen=false">{{'nav.about' | i18n}}</a>
             <a href="https://demo.erupt.xyz" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.demo' | i18n}}</a>
             <div class="mobile-nav-footer">

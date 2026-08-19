@@ -1,0 +1,1583 @@
+<style>
+    /* ── AI Canvas — Playful-Brutalist, black-pink designer identity ── */
+    .acv {
+        --acv: #FF7DAF;
+        --acv-dim: rgba(255, 125, 175, .12);
+        --acv-border: rgba(255, 125, 175, .3);
+        --acv-grid: rgba(255, 125, 175, .05);
+        --acv-t2: rgba(240, 232, 214, .55);
+        --acv-t3: rgba(240, 232, 214, .3);
+    }
+
+    /* ── Hero: dark artboard ── */
+    .acv-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 84px 40px 64px;
+        text-align: center;
+        background-color: var(--c-code-bg);
+        background-image: linear-gradient(var(--acv-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--acv-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+
+    .acv-hero-ruler-x {
+        position: absolute;
+        top: 0;
+        left: 18px;
+        right: 0;
+        height: 16px;
+        border-bottom: 1px solid rgba(240, 232, 214, .18);
+        background-image: repeating-linear-gradient(90deg, rgba(240, 232, 214, .14) 0 1px, transparent 1px 8px),
+        repeating-linear-gradient(90deg, rgba(240, 232, 214, .3) 0 1px, transparent 1px 32px);
+        background-size: 100% 4px, 100% 9px;
+        background-position: bottom left, bottom left;
+        background-repeat: no-repeat, no-repeat;
+    }
+
+    .acv-hero-ruler-y {
+        position: absolute;
+        top: 16px;
+        left: 0;
+        bottom: 0;
+        width: 16px;
+        border-right: 1px solid rgba(240, 232, 214, .18);
+        background-image: repeating-linear-gradient(0deg, rgba(240, 232, 214, .14) 0 1px, transparent 1px 8px),
+        repeating-linear-gradient(0deg, rgba(240, 232, 214, .3) 0 1px, transparent 1px 32px);
+        background-size: 4px 100%, 9px 100%;
+        background-position: top right, top right;
+        background-repeat: no-repeat, no-repeat;
+    }
+
+    .acv-hero-ruler-c {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 16px;
+        height: 16px;
+        border-right: 1px solid rgba(240, 232, 214, .18);
+        border-bottom: 1px solid rgba(240, 232, 214, .18);
+        font-family: var(--c-mono);
+        font-size: 9px;
+        color: rgba(240, 232, 214, .35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* floating wireframe fragments — AI is sketching UI around the title */
+    .acv-frag {
+        position: absolute;
+        pointer-events: none;
+        border: 1.5px solid rgba(240, 232, 214, .22);
+        background: rgba(26, 23, 15, .72);
+        animation: acvFragFloat 7s ease-in-out infinite;
+        text-align: left;
+    }
+
+    @keyframes acvFragFloat {
+        0%, 100% {
+            transform: translateY(0) rotate(var(--rot, 0deg));
+        }
+        50% {
+            transform: translateY(-9px) rotate(var(--rot, 0deg));
+        }
+    }
+
+    .acv-frag1 {
+        left: 5%;
+        top: 29%;
+        width: 152px;
+        padding: 13px 15px;
+        border-color: var(--acv);
+    }
+
+    .acv-frag1 em {
+        display: block;
+        font-style: normal;
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--acv-t3);
+        margin-bottom: 6px;
+    }
+
+    .acv-frag1 strong {
+        display: block;
+        font-size: 23px;
+        font-weight: 800;
+        letter-spacing: -.02em;
+        color: var(--c-code-text);
+    }
+
+    .acv-frag1 u {
+        display: block;
+        width: 40px;
+        height: 3px;
+        background: var(--acv);
+        margin-top: 9px;
+    }
+
+    .acv-frag2 {
+        right: 4%;
+        top: 24%;
+        width: 196px;
+        padding: 11px 13px;
+        border-style: dashed;
+        border-color: rgba(79, 200, 236, .55);
+    }
+
+    .acv-frag2 em {
+        display: block;
+        font-style: normal;
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: rgba(79, 200, 236, .6);
+        margin-bottom: 7px;
+    }
+
+    .acv-frag2 svg {
+        display: block;
+        width: 100%;
+    }
+
+    .acv-frag2 polyline {
+        fill: none;
+        stroke: var(--c-brand);
+        stroke-width: 2.5;
+        stroke-linecap: square;
+    }
+
+    .acv-frag3 {
+        left: 4%;
+        bottom: 6%;
+        width: 128px;
+        padding: 13px 14px;
+    }
+
+    .acv-frag3 i {
+        display: block;
+        height: 11px;
+        border: 1px solid rgba(240, 232, 214, .28);
+        margin-bottom: 7px;
+    }
+
+    .acv-frag3 u {
+        display: block;
+        width: 54px;
+        height: 14px;
+        background: var(--c-green);
+        border: 1px solid var(--c-border);
+        margin-top: 9px;
+    }
+
+    .acv-frag4 {
+        right: 5%;
+        bottom: 7%;
+        width: 96px;
+        padding: 12px;
+    }
+
+    .acv-frag4 svg {
+        display: block;
+        width: 100%;
+    }
+
+    .acv-frag4 em {
+        display: block;
+        font-style: normal;
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: rgba(188, 160, 242, .65);
+        margin-bottom: 7px;
+    }
+
+    .acv-cursor2 {
+        position: absolute;
+        left: 21%;
+        top: 22%;
+        pointer-events: none;
+        line-height: 1;
+        animation: acvFloat 4.4s ease-in-out infinite reverse;
+    }
+
+    .acv-cursor2 svg {
+        width: 14px;
+        height: 14px;
+        display: block;
+    }
+
+    .acv-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--acv);
+        display: block;
+        margin-bottom: 38px;
+    }
+
+    .acv-h1 {
+        font-size: clamp(34px, 5.5vw, 64px);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -.03em;
+        color: var(--c-code-text);
+        margin: 0 0 14px;
+    }
+
+    .acv-tagline {
+        font-size: clamp(17px, 2.2vw, 24px);
+        font-weight: 700;
+        color: var(--c-code-text);
+        margin: 0 0 14px;
+        letter-spacing: -.01em;
+    }
+
+    .acv-tagline b {
+        color: var(--acv);
+        font-weight: 700;
+    }
+
+    .acv-caret {
+        display: inline-block;
+        width: 4px;
+        height: .78em;
+        background: var(--acv);
+        margin-left: 6px;
+        vertical-align: baseline;
+        animation: acv-blink 1s step-end infinite;
+    }
+
+    @keyframes acv-blink {
+        0%, 100% {
+            opacity: 1
+        }
+        50% {
+            opacity: 0
+        }
+    }
+
+    .acv-sub-d {
+        font-size: 14.5px;
+        line-height: 1.65;
+        color: var(--acv-t2);
+        margin: 0;
+    }
+
+    /* ── Figma-style selection frame & handles ── */
+    .acv-sel {
+        position: relative;
+        display: inline-block;
+        padding: 2px 14px;
+        margin-left: 12px;
+    }
+
+    .acv-sel-frame {
+        position: absolute;
+        inset: 0;
+        border: 1.5px solid var(--acv);
+        pointer-events: none;
+    }
+
+    .acv-hd {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: var(--c-code-bg);
+        border: 1.5px solid var(--acv);
+    }
+
+    .acv-hd-tl {
+        top: -5px;
+        left: -5px;
+    }
+
+    .acv-hd-tr {
+        top: -5px;
+        right: -5px;
+    }
+
+    .acv-hd-bl {
+        bottom: -5px;
+        left: -5px;
+    }
+
+    .acv-hd-br {
+        bottom: -5px;
+        right: -5px;
+    }
+
+    .acv-sel-name {
+        position: absolute;
+        top: -24px;
+        left: -1.5px;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: .08em;
+        color: var(--acv);
+        white-space: nowrap;
+    }
+
+    .acv-ai-cursor {
+        position: absolute;
+        right: -14px;
+        bottom: -34px;
+        pointer-events: none;
+        animation: acvFloat 3.2s ease-in-out infinite;
+        line-height: 1;
+    }
+
+    .acv-ai-cursor svg {
+        width: 15px;
+        height: 15px;
+        display: block;
+    }
+
+    .acv-ai-chip {
+        display: inline-block;
+        font-family: var(--c-mono);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        color: #14120B;
+        background: var(--acv);
+        padding: 2px 7px;
+        margin: 1px 0 0 11px;
+        white-space: nowrap;
+    }
+
+    @keyframes acvFloat {
+        0%, 100% {
+            transform: translate(0, 0);
+        }
+        50% {
+            transform: translate(-6px, -5px);
+        }
+    }
+
+    .acv-badge {
+        display: inline-block;
+        background: var(--acv-dim);
+        border: 1px solid var(--acv-border);
+        color: var(--acv);
+        padding: 4px 10px 3px;
+        font-size: 10.5px;
+        font-weight: 700;
+        font-family: var(--c-mono);
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        margin: 3px 2px;
+    }
+
+    /* ── Brutalist buttons on dark ── */
+    .acv-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 20px;
+        border: 2px solid var(--c-border);
+        font-size: 13px;
+        font-weight: 800;
+        color: #14120B !important;
+        background: var(--c-brand);
+        cursor: pointer;
+        text-decoration: none !important;
+        box-shadow: 4px 4px 0 rgba(79, 200, 236, .3);
+        transition: transform .15s, box-shadow .15s;
+        font-family: var(--c-sans);
+        line-height: 1;
+        white-space: nowrap;
+        margin: 4px;
+    }
+
+    .acv-btn:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 rgba(79, 200, 236, .3);
+    }
+
+    .acv-btn:active {
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px 0 rgba(79, 200, 236, .3);
+    }
+
+    .acv-btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 20px;
+        border: 2px solid rgba(240, 232, 214, .35);
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--c-code-text) !important;
+        background: transparent;
+        cursor: pointer;
+        text-decoration: none !important;
+        box-shadow: 4px 4px 0 rgba(240, 232, 214, .18);
+        transition: transform .15s, box-shadow .15s, border-color .15s;
+        font-family: var(--c-sans);
+        line-height: 1;
+        white-space: nowrap;
+        margin: 4px;
+    }
+
+    .acv-btn-ghost:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 rgba(240, 232, 214, .18);
+        border-color: rgba(240, 232, 214, .6);
+    }
+
+    /* ── Designer mockup: dark chat / light preview ── */
+    .acv-mock {
+        background: var(--c-code-bg);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .acv-mock-bar {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 16px;
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
+    }
+
+    .acv-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .acv-mock-title {
+        flex: 1;
+        text-align: center;
+        font-size: 11px;
+        font-family: var(--c-mono);
+        color: rgba(240, 232, 214, .35);
+    }
+
+    .acv-devices {
+        display: flex;
+        gap: 5px;
+    }
+
+    .acv-dev {
+        width: 20px;
+        height: 14px;
+        border: 1.5px solid rgba(240, 232, 214, .25);
+    }
+
+    .acv-dev.on {
+        border-color: var(--acv);
+    }
+
+    .acv-dev.tab {
+        width: 14px;
+    }
+
+    .acv-dev.ph {
+        width: 9px;
+    }
+
+    .acv-mock-body {
+        display: flex;
+        min-height: 380px;
+    }
+
+    /* chat pane (dark) */
+    .acv-chat {
+        width: 330px;
+        flex-shrink: 0;
+        border-right: 1px solid rgba(240, 232, 214, .12);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .acv-chat-label {
+        font-size: 10px;
+        color: var(--acv-t3);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-family: var(--c-mono);
+    }
+
+    .acv-bubble-u {
+        background: var(--acv-dim);
+        border: 1px solid var(--acv-border);
+        padding: 10px 14px;
+        color: rgba(240, 232, 214, .85);
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .acv-bubble-u::before {
+        content: '$ ';
+        color: var(--acv);
+        font-weight: 700;
+        font-family: var(--c-mono);
+    }
+
+    .acv-gen-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        color: var(--acv-t2);
+    }
+
+    .acv-spin {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 125, 175, .25);
+        border-top-color: var(--acv);
+        animation: acvSpin 1s linear infinite;
+        flex-shrink: 0;
+    }
+
+    @keyframes acvSpin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .acv-prog {
+        height: 6px;
+        border: 1px solid rgba(240, 232, 214, .2);
+        background: transparent;
+    }
+
+    .acv-prog i {
+        display: block;
+        height: 100%;
+        background: var(--acv);
+        animation: acvProg 7s cubic-bezier(.3, 0, .2, 1) infinite;
+    }
+
+    @keyframes acvProg {
+        0% {
+            width: 0;
+            opacity: 1;
+        }
+        70% {
+            width: 100%;
+            opacity: 1;
+        }
+        88% {
+            width: 100%;
+            opacity: 1;
+        }
+        94% {
+            opacity: 0;
+        }
+        100% {
+            width: 0;
+            opacity: 0;
+        }
+    }
+
+    .acv-stream {
+        font-family: var(--c-mono);
+        font-size: 11px;
+        line-height: 1.8;
+        color: var(--acv-t2);
+    }
+
+    .acv-stream span {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: acvLine 7s infinite both;
+    }
+
+    .acv-stream span::before {
+        content: '+ ';
+        color: var(--acv);
+    }
+
+    .acv-stream span:nth-child(1) {
+        animation-delay: .4s;
+    }
+
+    .acv-stream span:nth-child(2) {
+        animation-delay: 1.4s;
+    }
+
+    .acv-stream span:nth-child(3) {
+        animation-delay: 2.4s;
+    }
+
+    .acv-stream span:nth-child(4) {
+        animation-delay: 3.4s;
+    }
+
+    @keyframes acvLine {
+        0% {
+            opacity: 0;
+            transform: translateY(5px);
+        }
+        4% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        90% {
+            opacity: 1;
+        }
+        96%, 100% {
+            opacity: 0;
+        }
+    }
+
+    .acv-chat-done {
+        margin-top: auto;
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        color: var(--acv);
+        border: 1px solid var(--acv-border);
+        background: var(--acv-dim);
+        padding: 9px 12px;
+        animation: acvBuild 7s cubic-bezier(.16, 1, .3, 1) infinite both;
+        animation-delay: 5.2s;
+    }
+
+    /* preview pane — artboard with rulers, generated page builds itself */
+    .acv-prev {
+        flex: 1;
+        position: relative;
+        background-color: var(--c-paper);
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px), linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 16px 16px;
+        padding: 32px 20px 20px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+        cursor: crosshair;
+    }
+
+    .acv-ruler-x {
+        position: absolute;
+        top: 0;
+        left: 18px;
+        right: 0;
+        height: 18px;
+        border-bottom: 1px solid rgba(20, 18, 11, .35);
+        background-image: repeating-linear-gradient(90deg, rgba(20, 18, 11, .25) 0 1px, transparent 1px 8px),
+        repeating-linear-gradient(90deg, rgba(20, 18, 11, .45) 0 1px, transparent 1px 32px);
+        background-size: 100% 5px, 100% 10px;
+        background-position: bottom left, bottom left;
+        background-repeat: no-repeat, no-repeat;
+    }
+
+    .acv-ruler-y {
+        position: absolute;
+        top: 18px;
+        left: 0;
+        bottom: 0;
+        width: 18px;
+        border-right: 1px solid rgba(20, 18, 11, .35);
+        background-image: repeating-linear-gradient(0deg, rgba(20, 18, 11, .25) 0 1px, transparent 1px 8px),
+        repeating-linear-gradient(0deg, rgba(20, 18, 11, .45) 0 1px, transparent 1px 32px);
+        background-size: 5px 100%, 10px 100%;
+        background-position: top right, top right;
+        background-repeat: no-repeat, no-repeat;
+    }
+
+    .acv-ruler-c {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        border-right: 1px solid rgba(20, 18, 11, .35);
+        border-bottom: 1px solid rgba(20, 18, 11, .35);
+        font-family: var(--c-mono);
+        font-size: 10px;
+        color: rgba(20, 18, 11, .4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* AI cursor roams the artboard, synced with build delays */
+    .acv-prev-cursor {
+        position: absolute;
+        z-index: 6;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        line-height: 1;
+        animation: acvCur 7s ease-in-out infinite both;
+    }
+
+    .acv-prev-cursor svg {
+        width: 14px;
+        height: 14px;
+        display: block;
+    }
+
+    @keyframes acvCur {
+        0% {
+            left: 14%;
+            top: 16%;
+            opacity: 0;
+        }
+        8% {
+            left: 32%;
+            top: 13%;
+            opacity: 1;
+        }
+        20% {
+            left: 16%;
+            top: 32%;
+        }
+        29% {
+            left: 66%;
+            top: 30%;
+        }
+        42% {
+            left: 32%;
+            top: 56%;
+        }
+        54% {
+            left: 72%;
+            top: 50%;
+        }
+        68% {
+            left: 76%;
+            top: 74%;
+            opacity: 1;
+        }
+        80% {
+            left: 58%;
+            top: 84%;
+            opacity: 1;
+        }
+        90%, 100% {
+            left: 58%;
+            top: 84%;
+            opacity: 0;
+        }
+    }
+
+    /* selection box snaps onto the chart while it draws */
+    .acv-selbox {
+        position: absolute;
+        inset: 28px 9px 7px;
+        border: 1.5px dashed var(--acv);
+        pointer-events: none;
+        opacity: 0;
+        animation: acvSel 7s infinite both;
+    }
+
+    .acv-selbox .acv-hd {
+        background: var(--c-paper);
+        width: 7px;
+        height: 7px;
+    }
+
+    .acv-selbox-tag {
+        position: absolute;
+        top: -17px;
+        left: -1.5px;
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        font-weight: 700;
+        letter-spacing: .05em;
+        color: #14120B;
+        background: var(--acv);
+        padding: 1px 6px;
+        white-space: nowrap;
+    }
+
+    @keyframes acvSel {
+        0%, 42% {
+            opacity: 0;
+        }
+        46%, 86% {
+            opacity: 1;
+        }
+        92%, 100% {
+            opacity: 0;
+        }
+    }
+
+    .acv-b {
+        animation: acvBuild 7s cubic-bezier(.16, 1, .3, 1) infinite both;
+    }
+
+    @keyframes acvBuild {
+        0% {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+        6% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        90% {
+            opacity: 1;
+        }
+        96%, 100% {
+            opacity: 0;
+        }
+    }
+
+    .acv-p-card {
+        background: var(--c-paper);
+        border: 1.5px solid var(--c-border);
+        box-shadow: 2px 2px 0 var(--c-text);
+    }
+
+    .acv-p-head {
+        height: 34px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        gap: 8px;
+        animation-delay: .8s;
+    }
+
+    .acv-p-head b {
+        font-size: 11.5px;
+        font-weight: 800;
+        color: var(--c-text);
+        font-family: var(--c-sans);
+    }
+
+    .acv-p-head i {
+        width: 44px;
+        height: 7px;
+        background: rgba(20, 18, 11, .1);
+    }
+
+    .acv-p-stats {
+        display: flex;
+        gap: 11px;
+    }
+
+    .acv-p-stat {
+        flex: 1;
+        padding: 10px 13px;
+    }
+
+    .acv-p-stat:nth-child(1) {
+        animation-delay: 1.5s;
+    }
+
+    .acv-p-stat:nth-child(2) {
+        animation-delay: 1.75s;
+    }
+
+    .acv-p-stat:nth-child(3) {
+        animation-delay: 2s;
+    }
+
+    .acv-p-stat em {
+        display: block;
+        font-style: normal;
+        font-family: var(--c-mono);
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: var(--c-text2);
+        margin-bottom: 4px;
+    }
+
+    .acv-p-stat b {
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--c-text);
+        letter-spacing: -.02em;
+    }
+
+    .acv-p-stat b.up {
+        color: #4a9e1e;
+    }
+
+    .acv-p-main {
+        display: flex;
+        gap: 11px;
+        flex: 1;
+    }
+
+    .acv-p-chart {
+        flex: 1.35;
+        padding: 11px 13px;
+        animation-delay: 2.8s;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .acv-p-chart em, .acv-p-table em {
+        display: block;
+        font-style: normal;
+        font-family: var(--c-mono);
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: var(--c-text2);
+        margin-bottom: 6px;
+    }
+
+    .acv-p-chart svg {
+        flex: 1;
+        width: 100%;
+    }
+
+    .acv-p-chart polyline {
+        fill: none;
+        stroke: var(--c-brand);
+        stroke-width: 3;
+        stroke-linecap: square;
+        stroke-dasharray: 420;
+        stroke-dashoffset: 420;
+        animation: acvDraw 7s cubic-bezier(.3, 0, .2, 1) infinite both;
+        animation-delay: 3.1s;
+    }
+
+    @keyframes acvDraw {
+        0% {
+            stroke-dashoffset: 420;
+            opacity: 1;
+        }
+        22% {
+            stroke-dashoffset: 0;
+            opacity: 1;
+        }
+        86% {
+            stroke-dashoffset: 0;
+            opacity: 1;
+        }
+        92%, 100% {
+            opacity: 0;
+        }
+    }
+
+    .acv-p-table {
+        flex: 1;
+        padding: 11px 13px;
+        animation-delay: 3.4s;
+    }
+
+    .acv-p-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(20, 18, 11, .12);
+        font-size: 10px;
+        color: var(--c-text2);
+        animation: acvBuild 7s cubic-bezier(.16, 1, .3, 1) infinite both;
+    }
+
+    .acv-p-row:nth-child(2) {
+        animation-delay: 3.9s;
+    }
+
+    .acv-p-row:nth-child(3) {
+        animation-delay: 4.15s;
+    }
+
+    .acv-p-row:nth-child(4) {
+        animation-delay: 4.4s;
+    }
+
+    .acv-p-row:nth-child(5) {
+        animation-delay: 4.65s;
+        border-bottom: none;
+    }
+
+    .acv-p-row b {
+        font-weight: 700;
+        color: var(--c-text);
+    }
+
+    /* ── Feature cells ── */
+    .acv-feat-icon {
+        font-size: 1.5em;
+        line-height: 1;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    .acv-ghost {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 48px;
+        font-weight: 800;
+        font-family: var(--c-mono);
+        color: var(--c-text);
+        opacity: .05;
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -.04em;
+    }
+
+    .acv-tag {
+        display: inline-block;
+        border: 1px solid var(--c-border);
+        color: var(--c-text2);
+        padding: 1px 7px;
+        font-size: 9.5px;
+        font-family: var(--c-mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        vertical-align: middle;
+        margin-left: 6px;
+    }
+
+    /* ── Versions panel (dark mockup) ── */
+    .acv-vp {
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-code-bg);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 280px;
+    }
+
+    .acv-vp-bar {
+        padding: 8px 14px;
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
+        font-size: 10px;
+        letter-spacing: 1.2px;
+        color: var(--acv-t3);
+        font-family: var(--c-mono);
+        text-transform: uppercase;
+    }
+
+    .acv-vp-body {
+        padding: 8px 0;
+    }
+
+    .acv-vp-row {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 6px 16px;
+        font-family: var(--c-mono);
+        font-size: 12px;
+        color: var(--acv-t2);
+        cursor: pointer;
+        transition: background .12s;
+        user-select: none;
+    }
+
+    .acv-vp-row:hover {
+        background: rgba(240, 232, 214, .05);
+    }
+
+    .acv-vp-active {
+        background: var(--acv-dim) !important;
+        color: var(--acv) !important;
+    }
+
+    .acv-vp-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(240, 232, 214, .25);
+        flex-shrink: 0;
+    }
+
+    .acv-vp-active .acv-vp-dot {
+        background: var(--acv);
+    }
+
+    .acv-vp-date {
+        margin-left: auto;
+        font-size: 10.5px;
+        color: var(--acv-t3);
+    }
+
+    .acv-vp-chip {
+        margin-left: auto;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--acv);
+        border: 1px solid var(--acv-border);
+        padding: 1px 7px;
+    }
+
+    .acv-vp-preview {
+        border-top: 1px solid rgba(240, 232, 214, .12);
+        padding: 14px 16px;
+        margin-top: auto;
+        background: var(--acv-dim);
+    }
+
+    .acv-vp-preview-name {
+        font-family: var(--c-mono);
+        font-size: 11px;
+        color: var(--acv);
+        opacity: .85;
+        margin-bottom: 6px;
+    }
+
+    .acv-vp-preview-content {
+        font-size: 12.5px;
+        color: var(--acv-t2);
+        line-height: 1.65;
+    }
+
+    /* ── Element pick panel (dark mockup) ── */
+    .acv-pk {
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-code-bg);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        height: 100%;
+        min-height: 280px;
+    }
+
+    .acv-pk-label {
+        font-size: 10px;
+        color: var(--acv-t3);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-family: var(--c-mono);
+    }
+
+    .acv-pk-user {
+        background: rgba(188, 160, 242, .14);
+        border: 1px solid rgba(188, 160, 242, .4);
+        padding: 10px 14px;
+        color: rgba(240, 232, 214, .8);
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    /* mini canvas: the picked element, Figma-style */
+    .acv-pk-canvas {
+        display: flex;
+        gap: 12px;
+        padding: 18px 14px 14px;
+        border: 1px dashed rgba(240, 232, 214, .22);
+        background-image: linear-gradient(var(--acv-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--acv-grid) 1px, transparent 1px);
+        background-size: 16px 16px;
+    }
+
+    .acv-pk-el {
+        flex: 1;
+        height: 46px;
+        border: 1.5px solid rgba(240, 232, 214, .22);
+    }
+
+    .acv-pk-el-sel {
+        position: relative;
+        border-color: var(--acv);
+    }
+
+    .acv-pk-step {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 12px;
+    }
+
+    .acv-pk-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--acv);
+        opacity: .6;
+        flex-shrink: 0;
+    }
+
+    .acv-pk-step-label {
+        color: var(--acv-t3);
+        font-family: var(--c-sans);
+        white-space: nowrap;
+    }
+
+    .acv-pk-step-val {
+        color: var(--acv);
+        font-family: var(--c-mono);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .acv-pk-result {
+        background: var(--acv-dim);
+        border: 1px solid var(--acv-border);
+        padding: 12px 14px;
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        color: var(--acv-t2);
+        line-height: 1.7;
+        margin-top: auto;
+    }
+
+    /* ── Step ghost numbers ── */
+    .acv-step-num {
+        font-family: var(--c-mono);
+        font-size: 3em;
+        font-weight: 800;
+        color: rgba(20, 18, 11, .07);
+        line-height: 1;
+        margin-bottom: 14px;
+    }
+
+    /* ── Reveal ── */
+    .acv-reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .acv-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+        .acv-frag, .acv-cursor2, .acv-hero-ruler-x, .acv-hero-ruler-y, .acv-hero-ruler-c {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .acv-hero {
+            padding: 48px 20px 40px;
+        }
+
+        .acv-mock-body {
+            flex-direction: column;
+        }
+
+        .acv-chat {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid rgba(240, 232, 214, .12);
+        }
+
+        .acv-p-main {
+            flex-direction: column;
+        }
+
+        .acv-ai-cursor, .acv-sel-name {
+            display: none;
+        }
+
+        .acv-sel {
+            padding: 2px 8px;
+        }
+    }
+</style>
+
+<div class="acv">
+    <div class="fr">
+
+        <!-- §1 HERO — dark designer block -->
+        <div class="r acv-hero">
+            <span class="acv-hero-ruler-x"></span><span class="acv-hero-ruler-y"></span><span
+                class="acv-hero-ruler-c">+</span>
+            <div class="acv-frag acv-frag1" style="--rot:-3deg">
+                <i class="acv-hd acv-hd-tl"></i><i class="acv-hd acv-hd-tr"></i><i
+                    class="acv-hd acv-hd-bl"></i><i class="acv-hd acv-hd-br"></i>
+                <b class="acv-selbox-tag">.stat-card</b>
+                <em>Orders</em><strong>1,284</strong><u></u>
+            </div>
+            <div class="acv-frag acv-frag2" style="--rot:2.5deg">
+                <em>trend.svg</em>
+                <svg preserveAspectRatio="none" viewBox="0 0 170 56">
+                    <polyline points="4,46 32,34 60,39 88,22 116,28 144,12 166,17"/>
+                </svg>
+            </div>
+            <div class="acv-frag acv-frag3" style="--rot:2deg">
+                <i></i><i style="width:74%"></i><u></u>
+            </div>
+            <div class="acv-frag acv-frag4" style="--rot:-2.5deg">
+                <em>ring</em>
+                <svg viewBox="0 0 64 64">
+                    <circle cx="32" cy="32" fill="none" r="24" stroke="rgba(240,232,214,.15)" stroke-width="8"/>
+                    <circle cx="32" cy="32" fill="none" r="24" stroke="#BCA0F2" stroke-dasharray="94 151"
+                            stroke-width="8" transform="rotate(-90 32 32)"/>
+                </svg>
+            </div>
+            <span class="acv-cursor2"><svg viewBox="0 0 24 24"><path d="M4 2 L20 12 L12 13.5 L8 21 Z"
+                                                                     fill="#4FC8EC" stroke="#14120B"
+                                                                     stroke-width="1.5"/></svg><span class="acv-ai-chip"
+                                                                                                     style="background:#4FC8EC;margin-left:10px">You</span></span>
+            <span class="acv-eyebrow">Apache 2.0 · xyz.erupt.ai_canvas</span>
+            <h1 class="acv-h1" style="margin-bottom:22px">🎨 Erupt<span class="acv-sel"><span
+                    style="color:var(--acv)">AI Canvas</span><span class="acv-sel-frame"><i
+                    class="acv-hd acv-hd-tl"></i><i class="acv-hd acv-hd-tr"></i><i
+                    class="acv-hd acv-hd-bl"></i><i class="acv-hd acv-hd-br"></i></span><span
+                    class="acv-sel-name">◇ frame / hero</span><span class="acv-ai-cursor"><svg viewBox="0 0 24 24"><path
+                    d="M4 2 L20 12 L12 13.5 L8 21 Z" fill="#FF7DAF" stroke="#14120B"
+                    stroke-width="1.5"/></svg><span class="acv-ai-chip">Erupt AI</span></span></span></h1>
+            <p class="acv-tagline">{{'canvas.hero.t1'|i18n}}<b>{{'canvas.hero.t2'|i18n}}</b><span
+                    class="acv-caret"></span></p>
+            <p class="acv-sub-d" style="max-width:620px;margin:0 auto 24px">{{'canvas.hero.sub'|i18n}}</p>
+            <div style="margin-bottom:22px">
+                <span class="acv-badge">{{'canvas.b1.t'|i18n}}</span>
+                <span class="acv-badge">{{'canvas.b2.t'|i18n}}</span>
+                <span class="acv-badge">{{'canvas.b3.t'|i18n}}</span>
+                <span class="acv-badge">{{'canvas.b4.t'|i18n}}</span>
+                <span class="acv-badge">{{'canvas.b6.t'|i18n}}</span>
+            </div>
+            <div>
+                <a class="acv-btn"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">{{'canvas.cta.b1'|i18n}}</a>
+                <a class="acv-btn-ghost" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <!-- §2 DESIGNER DEMO -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-p">Live Demo</span>
+            <h2 class="h2">{{'canvas.state.1'|i18n}}{{'canvas.state.2'|i18n}}{{'canvas.state.3'|i18n}}</h2>
+            <p class="sub" style="max-width:540px;margin:0 auto">{{'canvas.state.sub'|i18n}}</p>
+        </div>
+        <div class="r acv-reveal" style="padding:40px">
+            <div class="acv-mock">
+                <div class="acv-mock-bar">
+                    <div class="acv-dot" style="background:#ff5f56"></div>
+                    <div class="acv-dot" style="background:#ffbd2e"></div>
+                    <div class="acv-dot" style="background:#27c93f"></div>
+                    <span class="acv-mock-title">erupt-ai-canvas — sales_dashboard</span>
+                    <span class="acv-devices">
+                        <span class="acv-dev on"></span><span class="acv-dev tab"></span><span
+                            class="acv-dev ph"></span>
+                    </span>
+                </div>
+                <div class="acv-mock-body">
+                    <div class="acv-chat">
+                        <span class="acv-chat-label">Prompt</span>
+                        <div class="acv-bubble-u">{{'canvas.mock.prompt'|i18n}}</div>
+                        <div class="acv-gen-label"><span class="acv-spin"></span>{{'canvas.mock.gen'|i18n}}</div>
+                        <div class="acv-prog"><i></i></div>
+                        <div class="acv-stream">
+                            <span>&lt;div class="stat-cards"&gt;…</span>
+                            <span>&lt;table v-for="c in topCustomers"&gt;</span>
+                            <span>fetch(`${base}/erupt-api/data`)</span>
+                            <span>chart.setOption(trendOption)</span>
+                        </div>
+                        <div class="acv-chat-done">✓ {{'canvas.mock.done'|i18n}}</div>
+                    </div>
+                    <div class="acv-prev">
+                        <span class="acv-ruler-x"></span><span class="acv-ruler-y"></span><span
+                            class="acv-ruler-c">+</span>
+                        <span class="acv-prev-cursor"><svg viewBox="0 0 24 24"><path
+                                d="M4 2 L20 12 L12 13.5 L8 21 Z" fill="#FF7DAF" stroke="#14120B"
+                                stroke-width="1.5"/></svg><span class="acv-ai-chip">Erupt AI</span></span>
+                        <div class="acv-p-card acv-p-head acv-b"><b>Sales Dashboard</b><i></i><i style="width:28px"></i>
+                        </div>
+                        <div class="acv-p-stats">
+                            <div class="acv-p-card acv-p-stat acv-b"><em>Orders</em><b>1,284</b></div>
+                            <div class="acv-p-card acv-p-stat acv-b"><em>Revenue</em><b>¥86.2w</b></div>
+                            <div class="acv-p-card acv-p-stat acv-b"><em>MoM</em><b class="up">+18.4%</b></div>
+                        </div>
+                        <div class="acv-p-main">
+                            <div class="acv-p-card acv-p-chart acv-b">
+                                <em>Monthly Trend</em>
+                                <svg preserveAspectRatio="none" viewBox="0 0 300 110">
+                                    <polyline points="6,92 48,74 90,80 132,52 174,60 216,34 258,40 294,14"/>
+                                </svg>
+                                <span class="acv-selbox"><i class="acv-hd acv-hd-tl"></i><i
+                                        class="acv-hd acv-hd-tr"></i><i class="acv-hd acv-hd-bl"></i><i
+                                        class="acv-hd acv-hd-br"></i><b class="acv-selbox-tag">.trend-chart</b></span>
+                            </div>
+                            <div class="acv-p-card acv-p-table acv-b">
+                                <em>Top Customers</em>
+                                <div class="acv-p-row"><b>Acme Ltd.</b><span>¥12.4w</span></div>
+                                <div class="acv-p-row"><b>Globex</b><span>¥9.8w</span></div>
+                                <div class="acv-p-row"><b>Initech</b><span>¥7.1w</span></div>
+                                <div class="acv-p-row"><b>Umbrella</b><span>¥5.6w</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §3 FEATURES -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-p">Features</span>
+            <h2 class="h2">{{'canvas.feat.title'|i18n}}</h2>
+            <p class="sub" style="max-width:540px;margin:0 auto">{{'canvas.feat.lede'|i18n}}</p>
+        </div>
+        <div class="g3 r acv-reveal">
+            <div class="c">
+                <span class="acv-ghost">01</span>
+                <span class="acv-feat-icon">⚡</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'canvas.b1.t'|i18n}}</h3>
+                    <span class="acv-tag">SSE</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'canvas.b1.p'|i18n}}</p>
+            </div>
+            <div class="c">
+                <span class="acv-ghost">02</span>
+                <span class="acv-feat-icon">🕰️</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'canvas.b2.t'|i18n}}</h3>
+                    <span class="acv-tag">Version</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'canvas.b2.p'|i18n}}</p>
+            </div>
+            <div class="c" style="border-right:0">
+                <span class="acv-ghost">03</span>
+                <span class="acv-feat-icon">🎯</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'canvas.b3.t'|i18n}}</h3>
+                    <span class="acv-tag">Pick</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'canvas.b3.p'|i18n}}</p>
+            </div>
+        </div>
+        <div class="g3 r acv-reveal">
+            <div class="c no-bb">
+                <span class="acv-ghost">04</span>
+                <span class="acv-feat-icon">📱</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'canvas.b4.t'|i18n}}</h3>
+                    <span class="acv-tag">Viewport</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'canvas.b4.p'|i18n}}</p>
+            </div>
+            <div class="c no-bb">
+                <span class="acv-ghost">05</span>
+                <span class="acv-feat-icon">🔌</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'canvas.b5.t'|i18n}}</h3>
+                    <span class="acv-tag">REST API</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'canvas.b5.p'|i18n}}</p>
+            </div>
+            <div class="c no-bb" style="border-right:0">
+                <span class="acv-ghost">06</span>
+                <span class="acv-feat-icon">🧭</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'canvas.b6.t'|i18n}}</h3>
+                    <span class="acv-tag">Menu</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'canvas.b6.p'|i18n}}</p>
+            </div>
+        </div>
+
+        <!-- §4 HOW IT WORKS -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">{{'canvas.how.tag'|i18n}}</span>
+            <h2 class="h2" style="margin-bottom:0">{{'canvas.how.title'|i18n}}</h2>
+        </div>
+        <div class="g3 r acv-reveal">
+            <div class="c">
+                <div class="acv-step-num">01</div>
+                <h3 class="h3" style="margin:0 0 8px">{{'canvas.s1.t'|i18n}}</h3>
+                <p class="sub" style="font-size:13px">{{'canvas.s1.p'|i18n}}</p>
+            </div>
+            <div class="c">
+                <div class="acv-step-num">02</div>
+                <h3 class="h3" style="margin:0 0 8px">{{'canvas.s2.t'|i18n}}</h3>
+                <p class="sub" style="font-size:13px">{{'canvas.s2.p'|i18n}}</p>
+            </div>
+            <div class="c" style="border-right:0">
+                <div class="acv-step-num">03</div>
+                <h3 class="h3" style="margin:0 0 8px">{{'canvas.s3.t'|i18n}}</h3>
+                <p class="sub" style="font-size:13px">{{'canvas.s3.p'|i18n}}</p>
+            </div>
+        </div>
+        <div class="g2 r acv-reveal">
+            <div class="c">
+                <div class="acv-vp">
+                    <div class="acv-vp-bar">Versions — sales_dashboard</div>
+                    <div class="acv-vp-body">
+                        <div class="acv-vp-row">
+                            <span class="acv-vp-dot"></span>v5 · line chart<span class="acv-vp-date">08-02</span>
+                        </div>
+                        <div class="acv-vp-row">
+                            <span class="acv-vp-dot"></span>v6 · dark style<span class="acv-vp-date">08-11</span>
+                        </div>
+                        <div class="acv-vp-row acv-vp-active">
+                            <span class="acv-vp-dot"></span>v7 · top10 table<span class="acv-vp-chip">Active</span>
+                        </div>
+                    </div>
+                    <div class="acv-vp-preview">
+                        <div class="acv-vp-preview-name">▸ v7 · sales_dashboard</div>
+                        <div class="acv-vp-preview-content">{{'canvas.b2.p'|i18n}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="c">
+                <div class="acv-pk">
+                    <div class="acv-pk-label">Element Pick</div>
+                    <div class="acv-pk-user">{{'canvas.pick.prompt'|i18n}}</div>
+                    <div class="acv-pk-canvas">
+                        <span class="acv-pk-el"></span>
+                        <span class="acv-pk-el acv-pk-el-sel"><i class="acv-hd acv-hd-tl"></i><i
+                                class="acv-hd acv-hd-tr"></i><i class="acv-hd acv-hd-bl"></i><i
+                                class="acv-hd acv-hd-br"></i><b class="acv-selbox-tag">.card:nth(2)</b></span>
+                        <span class="acv-pk-el"></span>
+                    </div>
+                    <div class="acv-pk-step">
+                        <span class="acv-pk-dot"></span>
+                        <span class="acv-pk-step-label">{{'canvas.pick.locate'|i18n}}</span>
+                        <code class="acv-pk-step-val">div.stat-cards &gt; .card:nth(2)</code>
+                    </div>
+                    <div class="acv-pk-step">
+                        <span class="acv-pk-dot"></span>
+                        <span class="acv-pk-step-label">{{'canvas.pick.patch'|i18n}}</span>
+                        <code class="acv-pk-step-val">chart.type: bar → ring</code>
+                    </div>
+                    <div class="acv-pk-result">
+                        <span style="color:var(--acv)">✓</span>&nbsp;v8 created · +12 lines · preview updated
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §5 CTA -->
+        <div class="r g-bg ticks only-before" style="padding:56px 40px;text-align:center">
+            <div style="font-size:2.4em;margin-bottom:12px">🎨</div>
+            <h2 class="h2">{{'canvas.cta.t'|i18n}}</h2>
+            <p class="sub" style="max-width:440px;margin:0 auto 24px">{{'canvas.cta.sub'|i18n}}</p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">{{'canvas.cta.b1'|i18n}}</a>
+                <a class="wbtn" href="#!/ai">{{'canvas.cta.b2'|i18n}}</a>
+            </div>
+        </div>
+
+        <div class="ticks"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.acv-reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    })();
+</script>

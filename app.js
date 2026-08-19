@@ -38,6 +38,11 @@ var app = angular.module('app', [
             toTemplate();
             return "page/cloud/cloud.html";
         }
+    }).when('/data', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/data/data.html";
+        }
     }).when('/contrast', {
         templateUrl: function (attr) {
             toTemplate();
@@ -47,6 +52,11 @@ var app = angular.module('app', [
         templateUrl: function (attr) {
             toTemplate();
             return "page/ai/ai.html";
+        }
+    }).when('/ai-canvas', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/ai-canvas/ai-canvas.html";
         }
     }).when('/ai-claw', {
         templateUrl: function (attr) {

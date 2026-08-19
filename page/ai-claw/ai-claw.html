@@ -431,6 +431,325 @@
         margin-top: auto;
     }
 
+    /* ── AI Staff: light roster / dark task run ── */
+    .ac-st-cron {
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        color: var(--ac);
+        border: 1px solid var(--ac-border);
+        padding: 2px 8px;
+        letter-spacing: .06em;
+        white-space: nowrap;
+    }
+
+    .ac-st-body {
+        display: flex;
+        min-height: 380px;
+    }
+
+    .ac-st-roster {
+        width: 300px;
+        flex-shrink: 0;
+        border-right: 1px solid rgba(240, 232, 214, .12);
+        background-color: var(--c-paper);
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 16px 16px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .ac-st-roster-label {
+        font-size: 10px;
+        color: var(--c-text2);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-family: var(--c-mono);
+    }
+
+    .ac-st-mem {
+        background: var(--c-paper);
+        border: 1.5px solid var(--c-border);
+        box-shadow: 2px 2px 0 var(--c-text);
+        padding: 11px 12px;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+
+    .ac-st-mem-active {
+        border-width: 2px;
+        box-shadow: 3px 3px 0 var(--c-text);
+        background: #EDFBF2;
+    }
+
+    .ac-st-ava {
+        width: 40px;
+        height: 40px;
+        border: 1.5px solid var(--c-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 21px;
+        flex-shrink: 0;
+    }
+
+    .ac-st-mem-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .ac-st-mem-info b {
+        display: block;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--c-text);
+        line-height: 1.3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .ac-st-mem-info i {
+        display: block;
+        font-style: normal;
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        color: var(--c-text2);
+        margin-top: 3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .ac-st-on {
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        color: var(--c-text);
+        background: var(--ac);
+        border: 1.5px solid var(--c-border);
+        padding: 2px 6px;
+        flex-shrink: 0;
+        animation: acStPulse 8s infinite both;
+    }
+
+    @keyframes acStPulse {
+        0%, 4% {
+            opacity: .35;
+        }
+        8%, 88% {
+            opacity: 1;
+        }
+        96%, 100% {
+            opacity: .35;
+        }
+    }
+
+    .ac-st-idle {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(20, 18, 11, .18);
+        flex-shrink: 0;
+    }
+
+    .ac-st-roster-foot {
+        margin-top: auto;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        color: var(--c-text2);
+        line-height: 1.7;
+    }
+
+    .ac-st-run {
+        flex: 1;
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-width: 0;
+    }
+
+    .ac-st-line {
+        font-family: var(--c-mono);
+        font-size: 12px;
+        color: var(--ac-t2);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        animation: acStLine 8s infinite both;
+    }
+
+    .ac-st-line b {
+        color: var(--ac);
+        font-weight: 700;
+    }
+
+    .ac-st-l1 {
+        animation-delay: .3s;
+    }
+
+    .ac-st-think {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        color: var(--ac-t2);
+        animation: acStLine 8s infinite both;
+        animation-delay: 1s;
+    }
+
+    .ac-st-spin {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        border: 2px solid rgba(0, 255, 136, .25);
+        border-top-color: var(--ac);
+        animation: acStSpin 1s linear infinite;
+        flex-shrink: 0;
+    }
+
+    @keyframes acStSpin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .ac-st-tool {
+        font-family: var(--c-mono);
+        font-size: 11px;
+        color: var(--ac-t2);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        animation: acStLine 8s infinite both;
+    }
+
+    .ac-st-tool::before {
+        content: '→ ';
+        color: var(--ac);
+    }
+
+    .ac-st-t1 {
+        animation-delay: 1.8s;
+    }
+
+    .ac-st-t2 {
+        animation-delay: 2.6s;
+    }
+
+    .ac-st-t3 {
+        animation-delay: 3.4s;
+    }
+
+    @keyframes acStLine {
+        0% {
+            opacity: 0;
+            transform: translateY(5px);
+        }
+        5% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        88% {
+            opacity: 1;
+        }
+        96%, 100% {
+            opacity: 0;
+        }
+    }
+
+    .ac-st-prog {
+        height: 6px;
+        border: 1px solid rgba(240, 232, 214, .2);
+        background: transparent;
+    }
+
+    .ac-st-prog i {
+        display: block;
+        height: 100%;
+        background: var(--ac);
+        animation: acStProg 8s cubic-bezier(.3, 0, .2, 1) infinite;
+    }
+
+    @keyframes acStProg {
+        0% {
+            width: 0;
+            opacity: 1;
+        }
+        62% {
+            width: 100%;
+            opacity: 1;
+        }
+        88% {
+            width: 100%;
+            opacity: 1;
+        }
+        94% {
+            opacity: 0;
+        }
+        100% {
+            width: 0;
+            opacity: 0;
+        }
+    }
+
+    .ac-st-report {
+        border: 1px solid var(--ac-border);
+        background: var(--ac-dim);
+        padding: 12px 14px;
+        animation: acStLine 8s infinite both;
+        animation-delay: 4.8s;
+    }
+
+    .ac-st-report em {
+        display: block;
+        font-style: normal;
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        font-weight: 700;
+        color: var(--ac);
+        margin-bottom: 6px;
+    }
+
+    .ac-st-report span {
+        display: block;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        line-height: 1.8;
+        color: var(--ac-t2);
+        animation: acStLine 8s infinite both;
+    }
+
+    .ac-st-report span:nth-of-type(1) {
+        animation-delay: 5.2s;
+    }
+
+    .ac-st-report span:nth-of-type(2) {
+        animation-delay: 5.5s;
+    }
+
+    .ac-st-report span:nth-of-type(3) {
+        animation-delay: 5.8s;
+    }
+
+    .ac-st-done {
+        margin-top: auto;
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        color: var(--ac);
+        border: 1px solid var(--ac-border);
+        background: var(--ac-dim);
+        padding: 9px 12px;
+        animation: acStLine 8s infinite both;
+        animation-delay: 6.6s;
+    }
+
     /* ── Reveal ── */
     .ac-reveal {
         opacity: 0;
@@ -446,6 +765,20 @@
     @media (max-width: 768px) {
         .ac-hero {
             padding: 48px 20px 40px;
+        }
+
+        .ac-st-body {
+            flex-direction: column;
+        }
+
+        .ac-st-roster {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid rgba(240, 232, 214, .12);
+        }
+
+        .ac-st-cron {
+            display: none;
         }
     }
 </style>
@@ -603,7 +936,125 @@
             </div>
         </div>
 
-        <!-- §5 CTA -->
+        <!-- §5 AI STAFF — digital employees -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">👔 AI Staff</span>
+            <h2 class="h2">{{'staff.state.1'|i18n}}{{'staff.state.2'|i18n}}{{'staff.state.3'|i18n}}</h2>
+            <p class="sub" style="max-width:540px;margin:0 auto">{{'staff.state.sub'|i18n}}</p>
+        </div>
+        <div class="r ac-reveal" style="padding:40px">
+            <div class="ac-terminal">
+                <div class="ac-term-bar">
+                    <div class="ac-term-dot" style="background:#ff5f56"></div>
+                    <div class="ac-term-dot" style="background:#ffbd2e"></div>
+                    <div class="ac-term-dot" style="background:#27c93f"></div>
+                    <span class="ac-term-title">erupt-ai-staff — daily_data_report</span>
+                    <span class="ac-st-cron">CRON 0 0 9 * * MON-FRI</span>
+                </div>
+                <div class="ac-st-body">
+                    <div class="ac-st-roster">
+                        <span class="ac-st-roster-label">Staff Roster</span>
+                        <div class="ac-st-mem ac-st-mem-active">
+                            <span class="ac-st-ava" style="background:rgba(79,200,236,.28)">🤖</span>
+                            <span class="ac-st-mem-info"><b>{{'staff.m1'|i18n}}</b><i>0 0 9 * * MON-FRI</i></span>
+                            <span class="ac-st-on">ON DUTY</span>
+                        </div>
+                        <div class="ac-st-mem">
+                            <span class="ac-st-ava" style="background:rgba(147,214,85,.3)">🦉</span>
+                            <span class="ac-st-mem-info"><b>{{'staff.m2'|i18n}}</b><i>0 0 */2 * * *</i></span>
+                            <span class="ac-st-idle"></span>
+                        </div>
+                        <div class="ac-st-mem">
+                            <span class="ac-st-ava" style="background:rgba(247,191,210,.45)">🐱</span>
+                            <span class="ac-st-mem-info"><b>{{'staff.m3'|i18n}}</b><i>0 30 18 * * *</i></span>
+                            <span class="ac-st-idle"></span>
+                        </div>
+                        <div class="ac-st-roster-foot">3 staff · 3 accounts<br>permissions via erupt UPMS</div>
+                    </div>
+                    <div class="ac-st-run">
+                        <span class="ac-si-label">Task Run — 09:00:00</span>
+                        <div class="ac-st-line ac-st-l1">⏰ <b>cron fired</b> · 0 0 9 * * MON-FRI · as @analyst01</div>
+                        <div class="ac-st-think"><span class="ac-st-spin"></span>{{'staff.mock.think'|i18n}}</div>
+                        <div class="ac-st-tool ac-st-t1">tool: sql_query(orders_yesterday)</div>
+                        <div class="ac-st-tool ac-st-t2">tool: erupt_data(conversion_rate)</div>
+                        <div class="ac-st-tool ac-st-t3">write: daily_report.md</div>
+                        <div class="ac-st-prog"><i></i></div>
+                        <div class="ac-st-report">
+                            <em># Daily Report · 08-19</em>
+                            <span>- Orders 1,284 (+6.2%)</span>
+                            <span>- GMV ¥86.2w (+4.1%)</span>
+                            <span>- ⚠ Refund rate +1.1pt</span>
+                        </div>
+                        <div class="ac-st-done">✓ {{'staff.mock.done'|i18n}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">{{'staff.hero.t2'|i18n}}</span>
+            <h2 class="h2">{{'staff.feat.title'|i18n}}</h2>
+            <p class="sub" style="max-width:540px;margin:0 auto">{{'staff.feat.lede'|i18n}}</p>
+        </div>
+        <div class="g3 r ac-reveal">
+            <div class="c">
+                <span class="ac-ghost">01</span>
+                <span class="ac-feat-icon">🪪</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'staff.b1.t'|i18n}}</h3>
+                    <span class="ac-tag">Account</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'staff.b1.p'|i18n}}</p>
+            </div>
+            <div class="c">
+                <span class="ac-ghost">02</span>
+                <span class="ac-feat-icon">🛡️</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'staff.b2.t'|i18n}}</h3>
+                    <span class="ac-tag">UPMS</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'staff.b2.p'|i18n}}</p>
+            </div>
+            <div class="c" style="border-right:0">
+                <span class="ac-ghost">03</span>
+                <span class="ac-feat-icon">⏰</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'staff.b3.t'|i18n}}</h3>
+                    <span class="ac-tag">Cron</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'staff.b3.p'|i18n}}</p>
+            </div>
+        </div>
+        <div class="g3 r ac-reveal">
+            <div class="c no-bb">
+                <span class="ac-ghost">04</span>
+                <span class="ac-feat-icon">🔧</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'staff.b4.t'|i18n}}</h3>
+                    <span class="ac-tag">Tool Call</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'staff.b4.p'|i18n}}</p>
+            </div>
+            <div class="c no-bb">
+                <span class="ac-ghost">05</span>
+                <span class="ac-feat-icon">📮</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'staff.b5.t'|i18n}}</h3>
+                    <span class="ac-tag">IM</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'staff.b5.p'|i18n}}</p>
+            </div>
+            <div class="c no-bb" style="border-right:0">
+                <span class="ac-ghost">06</span>
+                <span class="ac-feat-icon">📒</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{'staff.b6.t'|i18n}}</h3>
+                    <span class="ac-tag">Log</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{'staff.b6.p'|i18n}}</p>
+            </div>
+        </div>
+
+        <!-- §6 CTA -->
         <div class="r g-bg ticks only-before" style="padding:56px 40px;text-align:center">
             <div style="font-size:2.4em;margin-bottom:12px">🦞</div>
             <h2 class="h2">{{'claw.cta.title'|i18n}}</h2>

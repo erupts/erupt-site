@@ -1,0 +1,751 @@
+<style>
+    /* ── Data Sources — Playful-Brutalist ── */
+
+    /* Hero */
+    .ds-hero {
+        padding: 72px 40px 56px;
+        text-align: center;
+    }
+
+    .ds-h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        font-weight: 800;
+        line-height: 1.12;
+        letter-spacing: -.03em;
+        color: var(--c-text);
+        margin: 0 0 16px;
+    }
+
+    /* Stat strip */
+    .ds-stat-num {
+        font-family: var(--c-mono);
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -.04em;
+        color: var(--c-text);
+        display: inline-block;
+        padding-bottom: 4px;
+        border-bottom: 3px solid var(--c-brand);
+        margin-bottom: 8px;
+    }
+
+    .ds-stat-num.-g {
+        border-bottom-color: var(--c-green);
+    }
+
+    .ds-stat-num.-p {
+        border-bottom-color: var(--c-purple);
+    }
+
+    .ds-stat-num.-y {
+        border-bottom-color: var(--c-yellow);
+    }
+
+    .ds-stat-label {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+    }
+
+    /* Topology — engineering-grid panel, Doris-style flow lines */
+    .ds-topo-panel {
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+        padding: 44px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ds-flows {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .ds-flow-pipe {
+        fill: none;
+        stroke: rgba(var(--c-brand-rgb), .2);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 10;
+    }
+
+    .ds-flow-stream {
+        fill: none;
+        stroke: var(--c-brand);
+        stroke-dasharray: 18 26;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5;
+        animation: ds-flow-dash 1.6s linear infinite;
+    }
+
+    @keyframes ds-flow-dash {
+        to {
+            stroke-dashoffset: -44;
+        }
+    }
+
+    .ds-topo-grid {
+        display: grid;
+        grid-template-columns: minmax(230px, 1fr) minmax(170px, .9fr) minmax(230px, 1fr);
+        gap: 0;
+        align-items: stretch;
+        position: relative;
+        min-height: 560px;
+    }
+
+    .ds-topo-col {
+        z-index: 2;
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        align-items: center;
+        position: relative;
+    }
+
+    .ds-topo-col.-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ds-topo-col.-center .ds-core-caption {
+        position: absolute;
+        top: calc(50% + 42px);
+        left: 0;
+        right: 0;
+    }
+
+    .ds-core-caption {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        text-align: center;
+    }
+
+    /* Source block card */
+    .ds-block {
+        background: var(--c-paper);
+        border: 2px solid var(--c-border);
+        box-shadow: 3px 3px 0 var(--c-text);
+        padding: 14px 16px 16px;
+    }
+
+    .ds-block-head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .ds-block-dot {
+        width: 10px;
+        height: 10px;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-brand);
+        flex-shrink: 0;
+    }
+
+    .ds-block-dot.-g {
+        background: var(--c-green);
+    }
+
+    .ds-block-dot.-p {
+        background: var(--c-purple);
+    }
+
+    .ds-block-dot.-y {
+        background: var(--c-yellow);
+    }
+
+    .ds-block-title {
+        font-family: var(--c-mono);
+        font-size: 12.5px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        color: var(--c-text);
+    }
+
+    .ds-block-sub {
+        font-size: 11px;
+        color: var(--c-text2);
+        margin-bottom: 10px;
+    }
+
+    .ds-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .ds-chip {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .04em;
+        color: var(--c-text);
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        padding: 2px 7px 1px;
+        white-space: nowrap;
+    }
+
+    .ds-chip.-more {
+        border-style: dashed;
+        color: var(--c-text2);
+    }
+
+    /* Module matrix */
+    .ds-mod-name {
+        font-family: var(--c-mono);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: -.01em;
+        color: var(--c-text);
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .ds-mod-desc {
+        font-size: 12.5px;
+        line-height: 1.6;
+        color: var(--c-text2);
+        margin: 0;
+    }
+
+    .ds-ghost {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        font-size: 44px;
+        font-weight: 800;
+        font-family: var(--c-mono);
+        color: var(--c-text);
+        opacity: .05;
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -.04em;
+    }
+
+    .ds-mod-custom {
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+
+    .ds-mod-custom .ds-mod-name {
+        color: var(--c-text);
+    }
+
+    .ds-mod-custom .ds-mod-name::before {
+        content: '+ ';
+        color: var(--c-brand);
+    }
+
+    /* Extend section */
+    .ds-step-num {
+        font-family: var(--c-mono);
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: -.04em;
+        color: var(--c-text);
+        opacity: .07;
+        line-height: 1;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .ds-step-title {
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--c-text);
+        margin-bottom: 6px;
+    }
+
+    .ds-step-title code {
+        font-family: var(--c-mono);
+        font-size: 12px;
+        background: rgba(var(--c-brand-rgb), .14);
+        border: 1px solid var(--c-border);
+        padding: 1px 5px;
+        color: var(--c-text);
+    }
+
+    .ds-step-desc {
+        font-size: 12.5px;
+        line-height: 1.65;
+        color: var(--c-text2);
+        margin: 0;
+    }
+
+    /* Dark code window */
+    .ds-code {
+        background: var(--c-code-bg);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        overflow: hidden;
+        text-align: left;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ds-code-bar {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 16px;
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
+    }
+
+    .ds-code-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .ds-code-title {
+        flex: 1;
+        text-align: center;
+        font-size: 11px;
+        font-family: var(--c-mono);
+        color: rgba(240, 232, 214, .35);
+    }
+
+    .ds-code-body {
+        padding: 20px 24px;
+        font-family: var(--c-mono);
+        font-size: 12px;
+        line-height: 1.8;
+        color: var(--c-code-text);
+        overflow-x: auto;
+        margin: 0;
+        white-space: pre;
+    }
+
+    .ds-code-body .an {
+        color: var(--c-brand);
+    }
+
+    .ds-code-body .kw {
+        color: var(--c-purple);
+    }
+
+    .ds-code-body .st {
+        color: var(--c-green);
+    }
+
+    .ds-code-body .cm {
+        color: rgba(240, 232, 214, .38);
+        font-style: italic;
+    }
+
+    /* Reveal */
+    .ds-reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .ds-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+        .ds-topo-grid {
+            grid-template-columns: 1fr;
+            min-height: 0;
+            gap: 20px;
+        }
+
+        .ds-flows {
+            display: none;
+        }
+
+        .ds-topo-col {
+            grid-template-rows: none;
+            gap: 20px;
+        }
+
+        .ds-topo-col.-center {
+            order: -1;
+            gap: 12px;
+        }
+
+        .ds-topo-col.-center .ds-core-caption {
+            position: static;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .ds-hero {
+            padding: 48px 20px 40px;
+        }
+
+        .ds-topo-panel {
+            padding: 24px;
+        }
+
+        .ds-mod-custom {
+            grid-column: auto !important;
+        }
+    }
+</style>
+
+<div class="ds">
+    <div class="fr">
+
+        <!-- §1 HERO -->
+        <div class="r ds-hero">
+            <span class="tag" style="margin-bottom:18px">erupt-data · Apache 2.0</span>
+            <h1 class="ds-h1">{{'data.hero.t1'|i18n}}<em
+                    style="font-style:normal;color:var(--c-brand)">{{'data.hero.t2'|i18n}}</em></h1>
+            <p class="sub" style="max-width:58ch;margin:0 auto 28px">{{'data.hero.sub'|i18n}}</p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
+                   target="_blank">{{'data.hero.btn.doc'|i18n}}</a>
+                <a class="wbtn" href="https://github.com/erupts/erupt/tree/master/erupt-data"
+                   target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <!-- §1b STATS -->
+        <div class="g4 r" style="text-align:center">
+            <div class="c">
+                <span class="ds-stat-num">13+</span>
+                <div class="ds-stat-label">{{'data.stat.1'|i18n}}</div>
+            </div>
+            <div class="c">
+                <span class="ds-stat-num -g">10+</span>
+                <div class="ds-stat-label">{{'data.stat.2'|i18n}}</div>
+            </div>
+            <div class="c">
+                <span class="ds-stat-num -p">9</span>
+                <div class="ds-stat-label">{{'data.stat.3'|i18n}}</div>
+            </div>
+            <div class="c">
+                <span class="ds-stat-num -y">∞</span>
+                <div class="ds-stat-label">{{'data.stat.4'|i18n}}</div>
+            </div>
+        </div>
+
+        <!-- §2 TOPOLOGY — heading -->
+        <div class="r g-bg g-bg-y ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-y">Topology</span>
+            <h2 class="h2">{{'data.topo.title'|i18n}}</h2>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'data.topo.sub'|i18n}}</p>
+        </div>
+
+        <!-- §2b TOPOLOGY — diagram -->
+        <div class="r ds-reveal" style="padding:0">
+            <div class="ds-topo-panel">
+                <svg aria-hidden="true" class="ds-flows" preserveAspectRatio="none" viewBox="0 0 1000 648">
+                    <!-- left sources → engine -->
+                    <path class="ds-flow-pipe"
+                          d="M356 137 H 408 Q 420 137 420 149 V 312 Q 420 324 432 324 H 475"></path>
+                    <path class="ds-flow-pipe" d="M356 324 H 475"></path>
+                    <path class="ds-flow-pipe"
+                          d="M356 511 H 408 Q 420 511 420 499 V 336 Q 420 324 432 324 H 475"></path>
+                    <!-- right sources → engine -->
+                    <path class="ds-flow-pipe"
+                          d="M644 137 H 592 Q 580 137 580 149 V 312 Q 580 324 568 324 H 525"></path>
+                    <path class="ds-flow-pipe" d="M644 324 H 525"></path>
+                    <path class="ds-flow-pipe"
+                          d="M644 511 H 592 Q 580 511 580 499 V 336 Q 580 324 568 324 H 525"></path>
+                    <!-- animated streams -->
+                    <path class="ds-flow-stream"
+                          d="M356 137 H 408 Q 420 137 420 149 V 312 Q 420 324 432 324 H 475"></path>
+                    <path class="ds-flow-stream" d="M356 324 H 475"></path>
+                    <path class="ds-flow-stream"
+                          d="M356 511 H 408 Q 420 511 420 499 V 336 Q 420 324 432 324 H 475"></path>
+                    <path class="ds-flow-stream"
+                          d="M644 137 H 592 Q 580 137 580 149 V 312 Q 580 324 568 324 H 525"></path>
+                    <path class="ds-flow-stream" d="M644 324 H 525"></path>
+                    <path class="ds-flow-stream"
+                          d="M644 511 H 592 Q 580 511 580 499 V 336 Q 580 324 568 324 H 525"></path>
+                </svg>
+
+                <div class="ds-topo-grid">
+                    <!-- left column -->
+                    <div class="ds-topo-col">
+                        <div class="ds-block">
+                            <div class="ds-block-head">
+                                <span class="ds-block-dot"></span>
+                                <span class="ds-block-title">erupt-data-jpa</span>
+                            </div>
+                            <div class="ds-block-sub">{{'data.topo.jpa'|i18n}}</div>
+                            <div class="ds-chips">
+                                <span class="ds-chip">MySQL</span>
+                                <span class="ds-chip">PostgreSQL</span>
+                                <span class="ds-chip">Oracle</span>
+                                <span class="ds-chip">SQL Server</span>
+                                <span class="ds-chip">MariaDB</span>
+                                <span class="ds-chip">TiDB</span>
+                                <span class="ds-chip">{{'data.chip.dm'|i18n}}</span>
+                                <span class="ds-chip">{{'data.chip.kingbase'|i18n}}</span>
+                                <span class="ds-chip">OceanBase</span>
+                                <span class="ds-chip">H2</span>
+                                <span class="ds-chip -more">{{'data.chip.more'|i18n}}</span>
+                            </div>
+                        </div>
+                        <div class="ds-block">
+                            <div class="ds-block-head">
+                                <span class="ds-block-dot -p"></span>
+                                <span class="ds-block-title">NoSQL</span>
+                            </div>
+                            <div class="ds-block-sub">{{'data.topo.nosql'|i18n}}</div>
+                            <div class="ds-chips">
+                                <span class="ds-chip">MongoDB</span>
+                                <span class="ds-chip">Redis</span>
+                                <span class="ds-chip">Elasticsearch</span>
+                            </div>
+                        </div>
+                        <div class="ds-block">
+                            <div class="ds-block-head">
+                                <span class="ds-block-dot -g"></span>
+                                <span class="ds-block-title">erupt-data-file</span>
+                            </div>
+                            <div class="ds-block-sub">{{'data.topo.file'|i18n}}</div>
+                            <div class="ds-chips">
+                                <span class="ds-chip">CSV</span>
+                                <span class="ds-chip">JSON</span>
+                                <span class="ds-chip">JSONL</span>
+                                <span class="ds-chip">XML</span>
+                                <span class="ds-chip">YAML</span>
+                                <span class="ds-chip">TSV</span>
+                                <span class="ds-chip">INI</span>
+                                <span class="ds-chip">Properties</span>
+                                <span class="ds-chip">Markdown</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- center engine -->
+                    <div class="ds-topo-col -center">
+                        <img alt="erupt" src="icon.svg" style="width:60px;height:60px">
+                        <div class="ds-core-caption">IEruptDataService<br>{{'data.topo.core'|i18n}}</div>
+                    </div>
+
+                    <!-- right column -->
+                    <div class="ds-topo-col">
+                        <div class="ds-block">
+                            <div class="ds-block-head">
+                                <span class="ds-block-dot -y"></span>
+                                <span class="ds-block-title">Service / API</span>
+                            </div>
+                            <div class="ds-block-sub">{{'data.topo.api'|i18n}}</div>
+                            <div class="ds-chips">
+                                <span class="ds-chip">HTTP</span>
+                                <span class="ds-chip">LDAP</span>
+                                <span class="ds-chip">Kubernetes</span>
+                                <span class="ds-chip -more">{{'data.chip.more'|i18n}}</span>
+                            </div>
+                        </div>
+                        <div class="ds-block">
+                            <div class="ds-block-head">
+                                <span class="ds-block-dot"></span>
+                                <span class="ds-block-title">Cloud / SaaS</span>
+                            </div>
+                            <div class="ds-block-sub">{{'data.topo.saas'|i18n}}</div>
+                            <div class="ds-chips">
+                                <span class="ds-chip">S3</span>
+                                <span class="ds-chip">{{'data.chip.feishu'|i18n}}</span>
+                                <span class="ds-chip">Notion</span>
+                            </div>
+                        </div>
+                        <div class="ds-block">
+                            <div class="ds-block-head">
+                                <span class="ds-block-dot -p"></span>
+                                <span class="ds-block-title">Memory / Custom</span>
+                            </div>
+                            <div class="ds-block-sub">{{'data.topo.runtime'|i18n}}</div>
+                            <div class="ds-chips">
+                                <span class="ds-chip">Memory</span>
+                                <span class="ds-chip">Mock</span>
+                                <span class="ds-chip -more">{{'data.chip.custom'|i18n}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §3 MODULES — heading -->
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag">Modules</span>
+            <h2 class="h2">{{'data.mod.title'|i18n}}</h2>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'data.mod.sub'|i18n}}</p>
+        </div>
+
+        <!-- §3b MODULES — matrix -->
+        <div class="g4 r ds-reveal">
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">01</span>
+                <span class="ds-mod-name">erupt-data-jpa</span>
+                <p class="ds-mod-desc">{{'data.m.jpa'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">02</span>
+                <span class="ds-mod-name">erupt-data-jdbc</span>
+                <p class="ds-mod-desc">{{'data.m.jdbc'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">03</span>
+                <span class="ds-mod-name">erupt-data-file</span>
+                <p class="ds-mod-desc">{{'data.m.file'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">04</span>
+                <span class="ds-mod-name">erupt-data-mongodb</span>
+                <p class="ds-mod-desc">{{'data.m.mongodb'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">05</span>
+                <span class="ds-mod-name">erupt-data-redis</span>
+                <p class="ds-mod-desc">{{'data.m.redis'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">06</span>
+                <span class="ds-mod-name">erupt-data-es</span>
+                <p class="ds-mod-desc">{{'data.m.es'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">07</span>
+                <span class="ds-mod-name">erupt-data-http</span>
+                <p class="ds-mod-desc">{{'data.m.http'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">08</span>
+                <span class="ds-mod-name">erupt-data-ldap</span>
+                <p class="ds-mod-desc">{{'data.m.ldap'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">09</span>
+                <span class="ds-mod-name">erupt-data-k8s</span>
+                <p class="ds-mod-desc">{{'data.m.k8s'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">10</span>
+                <span class="ds-mod-name">erupt-data-s3</span>
+                <p class="ds-mod-desc">{{'data.m.s3'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">11</span>
+                <span class="ds-mod-name">erupt-data-feishu</span>
+                <p class="ds-mod-desc">{{'data.m.feishu'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">12</span>
+                <span class="ds-mod-name">erupt-data-notion</span>
+                <p class="ds-mod-desc">{{'data.m.notion'|i18n}}</p>
+            </div>
+            <div class="c" style="position:relative">
+                <span class="ds-ghost">13</span>
+                <span class="ds-mod-name">erupt-data-memory</span>
+                <p class="ds-mod-desc">{{'data.m.memory'|i18n}}</p>
+            </div>
+            <div class="c ds-mod-custom" style="position:relative;grid-column:span 3;border-right:none">
+                <span class="ds-ghost">∞</span>
+                <span class="ds-mod-name">erupt-data-{{'data.m.custom.name'|i18n}}</span>
+                <p class="ds-mod-desc">{{'data.m.custom.desc'|i18n}}</p>
+            </div>
+        </div>
+
+        <!-- §4 EXTEND — heading -->
+        <div class="r g-bg g-bg-p ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-p">Extend</span>
+            <h2 class="h2">{{'data.ext.title'|i18n}}</h2>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'data.ext.sub'|i18n}}</p>
+        </div>
+
+        <!-- §4b EXTEND — steps + code -->
+        <div class="g2 r ds-reveal">
+            <div class="c" style="display:flex;flex-direction:column;justify-content:center;gap:28px">
+                <div>
+                    <span class="ds-step-num">01</span>
+                    <div class="ds-step-title">{{'data.ext.p1.title'|i18n}} <code>IEruptDataService</code></div>
+                    <p class="ds-step-desc">{{'data.ext.p1.desc'|i18n}}</p>
+                </div>
+                <div>
+                    <span class="ds-step-num">02</span>
+                    <div class="ds-step-title">{{'data.ext.p2.title'|i18n}} <code>DataProcessorManager</code></div>
+                    <p class="ds-step-desc">{{'data.ext.p2.desc'|i18n}}</p>
+                </div>
+                <div>
+                    <span class="ds-step-num">03</span>
+                    <div class="ds-step-title">{{'data.ext.p3.title'|i18n}} <code>@EruptDataProcessor</code></div>
+                    <p class="ds-step-desc">{{'data.ext.p3.desc'|i18n}}</p>
+                </div>
+            </div>
+            <div class="c" style="padding:32px">
+                <div class="ds-code">
+                    <div class="ds-code-bar">
+                        <div class="ds-code-dot" style="background:#ff5f56"></div>
+                        <div class="ds-code-dot" style="background:#ffbd2e"></div>
+                        <div class="ds-code-dot" style="background:#27c93f"></div>
+                        <span class="ds-code-title">GraphQLDataService.java</span>
+                    </div>
+                    <pre class="ds-code-body"><span class="an">@Service</span>
+<span class="kw">public class</span> GraphQLDataService <span class="kw">implements</span> IEruptDataService {
+
+    <span class="kw">static</span> {
+        DataProcessorManager.register(<span class="st">"GraphQL"</span>, GraphQLDataService.<span
+                                class="kw">class</span>);
+    }
+
+    <span class="kw">public</span> Page queryList(EruptModel model, Page page, EruptQuery query) {
+        <span class="kw">return</span> graphql.fetch(model, page, query); <span class="cm">// any storage works</span>
+    }
+
+    <span class="kw">public void</span> addData(EruptModel model, Object data) { <span class="cm">/* ... */</span> }
+}
+
+<span class="cm">// model side — one annotation switches the data source</span>
+<span class="an">@Erupt</span>(name = <span class="st">"Order"</span>)
+<span class="an">@EruptDataProcessor</span>(<span class="st">"GraphQL"</span>)
+<span class="kw">public class</span> Order { <span class="cm">/* ... */</span> }</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- §5 CTA -->
+        <div class="r g-bg ticks only-before" style="padding:56px 40px;text-align:center">
+            <h2 class="h2">{{'data.cta.title'|i18n}}</h2>
+            <p class="sub" style="max-width:48ch;margin:0 auto 24px">{{'data.cta.sub'|i18n}}</p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
+                   target="_blank">{{'data.cta.doc'|i18n}}</a>
+                <a class="wbtn" href="https://github.com/erupts/erupt/tree/master/erupt-data"
+                   target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <div class="ticks"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.ds-reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    })();
+</script>
