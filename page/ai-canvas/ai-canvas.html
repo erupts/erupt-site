@@ -13,8 +13,7 @@
     .acv-hero {
         position: relative;
         overflow: hidden;
-        padding: 84px 40px 64px;
-        text-align: center;
+        padding: 72px 48px 64px;
         background-color: var(--c-code-bg);
         background-image: linear-gradient(var(--acv-grid) 1px, transparent 1px),
         linear-gradient(90deg, var(--acv-grid) 1px, transparent 1px);
@@ -65,151 +64,216 @@
         justify-content: center;
     }
 
-    /* floating wireframe fragments — AI is sketching UI around the title */
-    .acv-frag {
-        position: absolute;
-        pointer-events: none;
-        border: 1.5px solid rgba(240, 232, 214, .22);
-        background: rgba(26, 23, 15, .72);
-        animation: acvFragFloat 7s ease-in-out infinite;
+    /* ── Hero split: pitch left, live canvas right ── */
+    .acv-hero-grid {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 60px;
         text-align: left;
+        max-width: 1080px;
+        margin: 0 auto;
     }
 
-    @keyframes acvFragFloat {
-        0%, 100% {
-            transform: translateY(0) rotate(var(--rot, 0deg));
-        }
-        50% {
-            transform: translateY(-9px) rotate(var(--rot, 0deg));
-        }
+    .acv-hero-l {
+        flex: 1.08;
+        min-width: 0;
     }
 
-    .acv-frag1 {
-        left: 5%;
-        top: 29%;
-        width: 152px;
-        padding: 13px 15px;
-        border-color: var(--acv);
+    .acv-hero-r {
+        flex: 1;
+        min-width: 0;
+        padding: 4px 10px 36px 0;
     }
 
-    .acv-frag1 em {
-        display: block;
-        font-style: normal;
+    .acv-hero-l .acv-sel {
+        margin: 20px 0 0;
+    }
+
+    /* prompt bubble */
+    .acv-hp {
+        background: var(--acv-dim);
+        border: 1px solid var(--acv-border);
+        padding: 12px 16px;
         font-family: var(--c-mono);
-        font-size: 8.5px;
-        letter-spacing: .14em;
+        font-size: 12.5px;
+        line-height: 1.6;
+        color: rgba(240, 232, 214, .85);
+    }
+
+    .acv-hp::before {
+        content: '$ ';
+        color: var(--acv);
+        font-weight: 700;
+    }
+
+    .acv-hflow {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 10px 2px;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .12em;
         text-transform: uppercase;
         color: var(--acv-t3);
-        margin-bottom: 6px;
     }
 
-    .acv-frag1 strong {
-        display: block;
-        font-size: 23px;
-        font-weight: 800;
-        letter-spacing: -.02em;
-        color: var(--c-code-text);
+    /* the generated page, selected as a design object */
+    .acv-hpw {
+        position: relative;
+        margin-top: 32px;
     }
 
-    .acv-frag1 u {
-        display: block;
-        width: 40px;
-        height: 3px;
+    .acv-hpw > .acv-sel-frame {
+        inset: -9px;
+    }
+
+    .acv-hpw > .acv-selbox-tag {
+        top: -26px;
+        left: -9px;
+        font-size: 9px;
+        padding: 2px 7px;
+    }
+
+    .acv-hsize {
+        position: absolute;
+        bottom: -27px;
+        left: -9px;
+        font-family: var(--c-mono);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: .05em;
+        color: #14120B;
         background: var(--acv);
-        margin-top: 9px;
+        padding: 2px 7px;
     }
 
-    .acv-frag2 {
-        right: 4%;
-        top: 24%;
-        width: 196px;
-        padding: 11px 13px;
-        border-style: dashed;
-        border-color: rgba(79, 200, 236, .55);
+    .acv-hpw .acv-ai-cursor {
+        right: -24px;
+        bottom: -48px;
     }
 
-    .acv-frag2 em {
+    .acv-hpage {
+        background-color: var(--c-paper);
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 14px 14px;
+        border: 2px solid var(--c-border);
+        box-shadow: 6px 6px 0 var(--acv);
+        padding: 13px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .acv-hpage-head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--c-paper);
+        border: 1.5px solid var(--c-border);
+        box-shadow: 2px 2px 0 var(--c-text);
+        padding: 7px 11px;
+    }
+
+    .acv-hpage-head b {
+        font-size: 11.5px;
+        font-weight: 800;
+        color: var(--c-text);
+    }
+
+    .acv-hpage-head i {
+        width: 38px;
+        height: 6px;
+        background: rgba(20, 18, 11, .1);
+    }
+
+    .acv-hpage-stats {
+        display: flex;
+        gap: 9px;
+    }
+
+    .acv-hpage-stat {
+        flex: 1;
+        background: var(--c-paper);
+        border: 1.5px solid var(--c-border);
+        box-shadow: 2px 2px 0 var(--c-text);
+        padding: 8px 11px;
+        min-width: 0;
+    }
+
+    .acv-hpage-stat em {
         display: block;
         font-style: normal;
         font-family: var(--c-mono);
-        font-size: 8.5px;
-        letter-spacing: .14em;
+        font-size: 8px;
         text-transform: uppercase;
-        color: rgba(79, 200, 236, .6);
-        margin-bottom: 7px;
+        letter-spacing: .1em;
+        color: var(--c-text2);
+        margin-bottom: 3px;
+        white-space: nowrap;
     }
 
-    .acv-frag2 svg {
+    .acv-hpage-stat b {
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--c-text);
+        letter-spacing: -.02em;
+        white-space: nowrap;
+    }
+
+    .acv-hpage-stat b.up {
+        color: #4a9e1e;
+    }
+
+    .acv-hpage-chart {
+        background: var(--c-paper);
+        border: 1.5px solid var(--c-border);
+        box-shadow: 2px 2px 0 var(--c-text);
+        padding: 8px 11px 6px;
+    }
+
+    .acv-hpage-chart em {
+        display: block;
+        font-style: normal;
+        font-family: var(--c-mono);
+        font-size: 8px;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        color: var(--c-text2);
+        margin-bottom: 4px;
+    }
+
+    .acv-hpage-chart svg {
         display: block;
         width: 100%;
+        height: 62px;
     }
 
-    .acv-frag2 polyline {
+    .acv-hpage-chart polyline {
         fill: none;
         stroke: var(--c-brand);
-        stroke-width: 2.5;
+        stroke-width: 3;
         stroke-linecap: square;
+        stroke-dasharray: 420;
+        stroke-dashoffset: 420;
+        animation: acvHDraw 6s cubic-bezier(.3, 0, .2, 1) infinite;
     }
 
-    .acv-frag3 {
-        left: 4%;
-        bottom: 6%;
-        width: 128px;
-        padding: 13px 14px;
-    }
-
-    .acv-frag3 i {
-        display: block;
-        height: 11px;
-        border: 1px solid rgba(240, 232, 214, .28);
-        margin-bottom: 7px;
-    }
-
-    .acv-frag3 u {
-        display: block;
-        width: 54px;
-        height: 14px;
-        background: var(--c-green);
-        border: 1px solid var(--c-border);
-        margin-top: 9px;
-    }
-
-    .acv-frag4 {
-        right: 5%;
-        bottom: 7%;
-        width: 96px;
-        padding: 12px;
-    }
-
-    .acv-frag4 svg {
-        display: block;
-        width: 100%;
-    }
-
-    .acv-frag4 em {
-        display: block;
-        font-style: normal;
-        font-family: var(--c-mono);
-        font-size: 8.5px;
-        letter-spacing: .14em;
-        text-transform: uppercase;
-        color: rgba(188, 160, 242, .65);
-        margin-bottom: 7px;
-    }
-
-    .acv-cursor2 {
-        position: absolute;
-        left: 21%;
-        top: 22%;
-        pointer-events: none;
-        line-height: 1;
-        animation: acvFloat 4.4s ease-in-out infinite reverse;
-    }
-
-    .acv-cursor2 svg {
-        width: 14px;
-        height: 14px;
-        display: block;
+    @keyframes acvHDraw {
+        0% {
+            stroke-dashoffset: 420;
+        }
+        38% {
+            stroke-dashoffset: 0;
+        }
+        90% {
+            stroke-dashoffset: 0;
+        }
+        100% {
+            stroke-dashoffset: 420;
+        }
     }
 
     .acv-eyebrow {
@@ -219,11 +283,11 @@
         text-transform: uppercase;
         color: var(--acv);
         display: block;
-        margin-bottom: 38px;
+        margin-bottom: 16px;
     }
 
     .acv-h1 {
-        font-size: clamp(34px, 5.5vw, 64px);
+        font-size: clamp(32px, 4vw, 54px);
         font-weight: 800;
         line-height: 1.1;
         letter-spacing: -.03em;
@@ -1252,9 +1316,15 @@
         transform: translateY(0);
     }
 
-    @media (max-width: 1100px) {
-        .acv-frag, .acv-cursor2, .acv-hero-ruler-x, .acv-hero-ruler-y, .acv-hero-ruler-c {
-            display: none;
+    @media (max-width: 900px) {
+        .acv-hero-grid {
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .acv-hero-l, .acv-hero-r {
+            width: 100%;
+            flex: none;
         }
     }
 
@@ -1290,59 +1360,62 @@
 <div class="acv">
     <div class="fr">
 
-        <!-- §1 HERO — dark designer block -->
+        <!-- §1 HERO — dark artboard, pitch left / live canvas right -->
         <div class="r acv-hero">
             <span class="acv-hero-ruler-x"></span><span class="acv-hero-ruler-y"></span><span
                 class="acv-hero-ruler-c">+</span>
-            <div class="acv-frag acv-frag1" style="--rot:-3deg">
-                <i class="acv-hd acv-hd-tl"></i><i class="acv-hd acv-hd-tr"></i><i
-                    class="acv-hd acv-hd-bl"></i><i class="acv-hd acv-hd-br"></i>
-                <b class="acv-selbox-tag">.stat-card</b>
-                <em>Orders</em><strong>1,284</strong><u></u>
-            </div>
-            <div class="acv-frag acv-frag2" style="--rot:2.5deg">
-                <em>trend.svg</em>
-                <svg preserveAspectRatio="none" viewBox="0 0 170 56">
-                    <polyline points="4,46 32,34 60,39 88,22 116,28 144,12 166,17"/>
-                </svg>
-            </div>
-            <div class="acv-frag acv-frag3" style="--rot:2deg">
-                <i></i><i style="width:74%"></i><u></u>
-            </div>
-            <div class="acv-frag acv-frag4" style="--rot:-2.5deg">
-                <em>ring</em>
-                <svg viewBox="0 0 64 64">
-                    <circle cx="32" cy="32" fill="none" r="24" stroke="rgba(240,232,214,.15)" stroke-width="8"/>
-                    <circle cx="32" cy="32" fill="none" r="24" stroke="#BCA0F2" stroke-dasharray="94 151"
-                            stroke-width="8" transform="rotate(-90 32 32)"/>
-                </svg>
-            </div>
-            <span class="acv-cursor2"><svg viewBox="0 0 24 24"><path d="M4 2 L20 12 L12 13.5 L8 21 Z"
-                                                                     fill="#4FC8EC" stroke="#14120B"
-                                                                     stroke-width="1.5"/></svg><span class="acv-ai-chip"
-                                                                                                     style="background:#4FC8EC;margin-left:10px">You</span></span>
-            <span class="acv-eyebrow">Apache 2.0 · xyz.erupt.ai_canvas</span>
-            <h1 class="acv-h1" style="margin-bottom:22px">🎨 Erupt<span class="acv-sel"><span
-                    style="color:var(--acv)">AI Canvas</span><span class="acv-sel-frame"><i
-                    class="acv-hd acv-hd-tl"></i><i class="acv-hd acv-hd-tr"></i><i
-                    class="acv-hd acv-hd-bl"></i><i class="acv-hd acv-hd-br"></i></span><span
-                    class="acv-sel-name">◇ frame / hero</span><span class="acv-ai-cursor"><svg viewBox="0 0 24 24"><path
-                    d="M4 2 L20 12 L12 13.5 L8 21 Z" fill="#FF7DAF" stroke="#14120B"
-                    stroke-width="1.5"/></svg><span class="acv-ai-chip">Erupt AI</span></span></span></h1>
-            <p class="acv-tagline">{{'canvas.hero.t1'|i18n}}<b>{{'canvas.hero.t2'|i18n}}</b><span
-                    class="acv-caret"></span></p>
-            <p class="acv-sub-d" style="max-width:620px;margin:0 auto 24px">{{'canvas.hero.sub'|i18n}}</p>
-            <div style="margin-bottom:22px">
-                <span class="acv-badge">{{'canvas.b1.t'|i18n}}</span>
-                <span class="acv-badge">{{'canvas.b2.t'|i18n}}</span>
-                <span class="acv-badge">{{'canvas.b3.t'|i18n}}</span>
-                <span class="acv-badge">{{'canvas.b4.t'|i18n}}</span>
-                <span class="acv-badge">{{'canvas.b6.t'|i18n}}</span>
-            </div>
-            <div>
-                <a class="acv-btn"
-                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">{{'canvas.cta.b1'|i18n}}</a>
-                <a class="acv-btn-ghost" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
+            <div class="acv-hero-grid">
+                <div class="acv-hero-l">
+                    <span class="acv-eyebrow">Apache 2.0 · xyz.erupt.ai_canvas</span>
+                    <h1 class="acv-h1" style="margin-bottom:24px">🎨 Erupt<br><span class="acv-sel"><span
+                            style="color:var(--acv)">AI Canvas</span><span class="acv-sel-frame"><i
+                            class="acv-hd acv-hd-tl"></i><i class="acv-hd acv-hd-tr"></i><i
+                            class="acv-hd acv-hd-bl"></i><i class="acv-hd acv-hd-br"></i></span><span
+                            class="acv-sel-name">◇ frame / hero</span></span></h1>
+                    <p class="acv-tagline">{{'canvas.hero.t1'|i18n}}<b>{{'canvas.hero.t2'|i18n}}</b></p>
+                    <p class="acv-sub-d" style="margin:0 0 22px">{{'canvas.hero.sub'|i18n}}</p>
+                    <div style="margin:0 -2px 20px">
+                        <span class="acv-badge">{{'canvas.b1.t'|i18n}}</span>
+                        <span class="acv-badge">{{'canvas.b2.t'|i18n}}</span>
+                        <span class="acv-badge">{{'canvas.b3.t'|i18n}}</span>
+                        <span class="acv-badge">{{'canvas.b4.t'|i18n}}</span>
+                        <span class="acv-badge">{{'canvas.b6.t'|i18n}}</span>
+                    </div>
+                    <div style="margin:0 -4px">
+                        <a class="acv-btn"
+                           ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/"
+                           target="_blank">{{'canvas.cta.b1'|i18n}}</a>
+                        <a class="acv-btn-ghost" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <div class="acv-hero-r">
+                    <div class="acv-hp">{{'canvas.mock.prompt'|i18n}}<span class="acv-caret"></span></div>
+                    <div class="acv-hflow"><span class="acv-spin"></span>{{'canvas.mock.gen'|i18n}}</div>
+                    <div class="acv-hpw">
+                        <span class="acv-sel-frame"><i class="acv-hd acv-hd-tl"></i><i
+                                class="acv-hd acv-hd-tr"></i><i class="acv-hd acv-hd-bl"></i><i
+                                class="acv-hd acv-hd-br"></i></span>
+                        <b class="acv-selbox-tag">.sales-dashboard</b>
+                        <span class="acv-hsize">v7 · 375 × auto</span>
+                        <span class="acv-ai-cursor"><svg viewBox="0 0 24 24"><path
+                                d="M4 2 L20 12 L12 13.5 L8 21 Z" fill="#FF7DAF" stroke="#14120B"
+                                stroke-width="1.5"/></svg><span class="acv-ai-chip">Erupt AI</span></span>
+                        <div class="acv-hpage">
+                            <div class="acv-hpage-head"><b>Sales Dashboard</b><i></i><i style="width:24px"></i></div>
+                            <div class="acv-hpage-stats">
+                                <div class="acv-hpage-stat"><em>Orders</em><b>1,284</b></div>
+                                <div class="acv-hpage-stat"><em>Revenue</em><b>¥86.2w</b></div>
+                                <div class="acv-hpage-stat"><em>MoM</em><b class="up">+18.4%</b></div>
+                            </div>
+                            <div class="acv-hpage-chart">
+                                <em>Monthly Trend</em>
+                                <svg preserveAspectRatio="none" viewBox="0 0 300 80">
+                                    <polyline points="6,66 48,52 90,58 132,36 174,42 216,22 258,28 294,10"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
