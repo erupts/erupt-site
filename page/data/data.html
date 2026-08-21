@@ -1,19 +1,156 @@
 <style>
     /* ── Data Sources — Playful-Brutalist ── */
 
-    /* Hero */
-    .ds-hero {
-        padding: 72px 40px 56px;
-        text-align: center;
+    /* Hero — split: copy left, live code window right */
+    .ds-hero-row {
+        display: flex;
+        min-height: 420px;
+        overflow: visible;
+    }
+
+    .ds-hero-left {
+        flex: 1;
+        padding: 56px 48px 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .ds-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        margin-bottom: 24px;
+    }
+
+    .ds-eyebrow::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: var(--c-brand);
+        border: 1.5px solid var(--c-border);
+        flex-shrink: 0;
     }
 
     .ds-h1 {
-        font-size: clamp(32px, 5vw, 56px);
+        font-size: clamp(36px, 4.2vw, 56px);
         font-weight: 800;
-        line-height: 1.12;
+        line-height: 1.22;
         letter-spacing: -.03em;
         color: var(--c-text);
-        margin: 0 0 16px;
+        margin: 0 0 24px;
+    }
+
+    .ds-h1 .ds-ul {
+        box-shadow: inset 0 -.32em 0 0 var(--c-green);
+    }
+
+    .ds-h1 .ds-hl {
+        font-style: normal;
+        display: inline-block;
+        background: var(--c-brand);
+        color: var(--c-text);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        padding: 0 12px 3px;
+        transform: rotate(-1.5deg);
+        line-height: 1.15;
+    }
+
+    .ds-hero-right {
+        flex: 0 0 44%;
+        border-left: 1px solid var(--c-border);
+        background: var(--c-code-bg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 36px 40px;
+        gap: 18px;
+    }
+
+    .ds-hero-code {
+        font-family: var(--c-mono);
+        font-size: 13px;
+        line-height: 1.9;
+        color: var(--c-code-text);
+        margin: 0;
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .ds-hero-code .an {
+        color: var(--c-brand);
+    }
+
+    .ds-hero-code .kw {
+        color: var(--c-purple);
+    }
+
+    .ds-hero-code .st {
+        color: var(--c-green);
+    }
+
+    .ds-hero-code .cm {
+        color: rgba(240, 232, 214, .38);
+        font-style: italic;
+    }
+
+    .ds-cycle::after {
+        content: '';
+        display: inline-block;
+        width: 7px;
+        height: 14px;
+        margin-left: 2px;
+        vertical-align: -2px;
+        background: var(--c-green);
+        animation: ds-caret 1s steps(1) infinite;
+    }
+
+    @keyframes ds-caret {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .ds-hero-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, .07);
+    }
+
+    .ds-hero-caption {
+        font-family: var(--c-mono);
+        font-size: 9px;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, .22);
+        margin-bottom: 9px;
+    }
+
+    .ds-hchips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .ds-hchip {
+        border: 1px solid rgba(255, 255, 255, .1);
+        padding: 3px 9px;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        color: rgba(255, 255, 255, .4);
+        transition: color .25s, border-color .25s, background .25s;
+    }
+
+    .ds-hchip.is-on {
+        border-color: var(--c-brand);
+        color: var(--c-code-text);
+        background: rgba(var(--c-brand-rgb), .16);
     }
 
     /* Stat strip */
@@ -362,6 +499,19 @@
     }
 
     @media (max-width: 900px) {
+        .ds-hero-row {
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .ds-hero-right {
+            display: none;
+        }
+
+        .ds-hero-left {
+            padding: 40px 24px 32px;
+        }
+
         .ds-topo-grid {
             grid-template-columns: 1fr;
             min-height: 0;
@@ -388,10 +538,6 @@
     }
 
     @media (max-width: 768px) {
-        .ds-hero {
-            padding: 48px 20px 40px;
-        }
-
         .ds-topo-panel {
             padding: 24px;
         }
@@ -406,16 +552,53 @@
     <div class="fr">
 
         <!-- §1 HERO -->
-        <div class="r ds-hero">
-            <span class="tag" style="margin-bottom:18px">erupt-data · Apache 2.0</span>
-            <h1 class="ds-h1">{{'data.hero.t1'|i18n}}<em
-                    style="font-style:normal;color:var(--c-brand)">{{'data.hero.t2'|i18n}}</em></h1>
-            <p class="sub" style="max-width:58ch;margin:0 auto 28px">{{'data.hero.sub'|i18n}}</p>
-            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-                <a class="wbtn wbtn-o" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
-                   target="_blank">{{'data.hero.btn.doc'|i18n}}</a>
-                <a class="wbtn" href="https://github.com/erupts/erupt/tree/master/erupt-data"
-                   target="_blank">GitHub</a>
+        <div class="r g-bg ds-hero-row">
+            <div class="ds-hero-left">
+                <div class="ds-eyebrow">erupt-data · Data Source Framework · Apache 2.0</div>
+                <h1 class="ds-h1" ng-bind-html="'data.hero.title'|i18nHtml"></h1>
+                <p class="sub" style="max-width:54ch;font-size:15px;line-height:1.7;margin:0 0 28px">
+                    {{'data.hero.sub'|i18n}}</p>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+                    <a class="wbtn wbtn-o" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
+                       target="_blank">{{'data.hero.btn.doc'|i18n}}</a>
+                    <a class="wbtn" href="https://github.com/erupts/erupt/tree/master/erupt-data"
+                       target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="ds-hero-right">
+                <div style="display:flex;align-items:center;gap:7px">
+                    <div class="ds-code-dot" style="background:#ff5f56"></div>
+                    <div class="ds-code-dot" style="background:#ffbd2e"></div>
+                    <div class="ds-code-dot" style="background:#27c93f"></div>
+                    <span style="flex:1;text-align:center;font-size:11px;font-family:var(--c-mono);color:rgba(240,232,214,.35)">Order.java</span>
+                </div>
+                <pre class="ds-hero-code"><span class="an">@Erupt</span>(name = <span class="st">"Order"</span>)
+<span class="an">@EruptDataProcessor</span>(<span class="st">"<span class="ds-cycle" id="dsCycle">MongoDB</span>"</span>)
+<span class="kw">public class</span> Order {
+
+    <span class="an">@EruptField</span>(views = <span class="an">@View</span>(title = <span class="st">"Order No"</span>))
+    <span class="kw">private</span> String orderNo;
+
+    <span class="cm">// one annotation → any data source</span>
+}</pre>
+                <div class="ds-hero-divider"></div>
+                <div>
+                    <div class="ds-hero-caption">Data Source · 13+</div>
+                    <div class="ds-hchips" id="dsChips">
+                        <span class="ds-hchip" data-k="JPA">JPA</span>
+                        <span class="ds-hchip" data-k="JDBC">JDBC</span>
+                        <span class="ds-hchip" data-k="MongoDB">MongoDB</span>
+                        <span class="ds-hchip" data-k="Redis">Redis</span>
+                        <span class="ds-hchip" data-k="Elasticsearch">Elasticsearch</span>
+                        <span class="ds-hchip" data-k="File">File</span>
+                        <span class="ds-hchip" data-k="HTTP">HTTP</span>
+                        <span class="ds-hchip" data-k="S3">S3</span>
+                        <span class="ds-hchip" data-k="Feishu">Feishu</span>
+                        <span class="ds-hchip" data-k="Notion">Notion</span>
+                        <span class="ds-hchip"
+                              style="border-style:dashed;border-color:rgba(var(--c-brand-rgb),.55);color:var(--c-brand)">Yours ···</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -747,5 +930,23 @@
         document.querySelectorAll('.ds-reveal').forEach(function (n) {
             io.observe(n);
         });
+
+        var cycleEl = document.getElementById('dsCycle');
+        var chips = document.querySelectorAll('#dsChips .ds-hchip[data-k]');
+        if (cycleEl && chips.length) {
+            var keys = Array.prototype.map.call(chips, function (c) {
+                return c.getAttribute('data-k');
+            });
+            var idx = keys.indexOf(cycleEl.textContent);
+            var tick = function () {
+                idx = (idx + 1) % keys.length;
+                cycleEl.textContent = keys[idx];
+                chips.forEach(function (c, i) {
+                    c.classList.toggle('is-on', i === idx);
+                });
+            };
+            chips[idx >= 0 ? idx : 0].classList.add('is-on');
+            setInterval(tick, 1800);
+        }
     })();
 </script>

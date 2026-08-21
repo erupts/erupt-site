@@ -1052,8 +1052,7 @@ cloud.diag.n2,网关服务,Gateway Service
 cloud.diag.n3,算法服务,Algo Service
 cloud.diag.more,更多服务…,More services…
 nav.data,数据连接,Connectors
-data.hero.t1,任何数据源，,"Any Data Source, "
-data.hero.t2,同一套后台,One Admin
+data.hero.title,<span class='ds-ul'>数据</span>在哪，<br><em class='ds-hl'>后台</em>就在哪,"Where <span class='ds-ul'>data</span> lives,<br><em class='ds-hl'>admin</em> follows"
 data.hero.sub,erupt-data 将数据库、文件、NoSQL 与 SaaS API 抽象为统一的数据源接口，同一套注解模型即可对任意数据完成增删改查、分页与检索。,"erupt-data abstracts databases, files, NoSQL and SaaS APIs into one unified data-source interface — the same annotated model gives you CRUD, pagination and search over any data."
 data.hero.btn.doc,模块文档,Module Docs
 data.stat.1,数据源模块,Data Modules
