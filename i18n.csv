@@ -362,6 +362,7 @@ ai.react.example.thought2,思考：需要对数据进行统计分析，生成报
 ai.react.example.action2,执行：调用数据分析工具 → 生成销售趋势、客户分布等图表,"Action: Call data analysis tool → Generate sales trends, customer distribution charts"
 ai.react.example.result,结果：生成完整的分析报告，包含数据汇总、趋势图表和建议,"Result: Generated complete analysis report with data summary, trend charts and recommendations"
 nav.aiclaw,🦞 AI Claw,🦞 AI Claw
+nav.skill,零代码,No-Code
 claw.hero.subtitle,通过自然语言直接驱动服务器，操作注解驱动的数据与业务——像与同事对话一样简单,"Drive your server with natural language — query, write and operate annotation-driven data as if chatting with a colleague"
 claw.badge.nlp,自然语言交互,Natural Language
 claw.badge.shell,Shell 执行,Shell Execution
