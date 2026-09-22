@@ -1172,3 +1172,33 @@ staff.m2,小巡 · 系统巡检员,Scout · System Inspector
 staff.m3,小客 · 客服助理,Momo · Support Assistant
 staff.mock.think,正在分析昨日订单与转化数据…,Analysing yesterday's orders and conversions…
 staff.mock.done,报告已推送 → 钉钉 · 数据日报群,Report pushed → DingTalk · #daily-data
+nav.arch,全景架构,Architecture
+arch.hero.title,"从任意数据源，<br>到<em>任意界面</em>","From any data source,<br>to <em>any UI</em>"
+arch.hero.sub,九层可插拔架构：底层接任意数据源，DataProxy 任意拦截，AI 内嵌为内核能力，上层视图与组件由注解自动生成。,"Nine pluggable layers: any data source at the bottom, DataProxy interception in the middle, AI built into the kernel, views and components generated from annotations on top."
+arch.hero.doc,查看架构文档,Read the architecture docs
+arch.stack.hd,分层索引,Layer Index
+arch.l9,接入层,Access
+arch.l8,UI 体验层,UI
+arch.l7,视图层,View
+arch.l6,组件层,Component
+arch.l5,模型层,Model
+arch.l4,智能层,Intelligence
+arch.l3,代理与安全,Proxy & Security
+arch.l2,数据源层,Data Source
+arch.l1,运行与运维,Runtime & Ops
+arch.stat.1,可插拔分层,Pluggable layers
+arch.stat.2,官方模块,Official modules
+arch.stat.3,编辑组件,Edit components
+arch.stat.4,行前端代码,Lines of frontend code
+arch.win.open,新窗口打开,Open
+arch.cta.title,这套架构，5 分钟跑起来,Run this architecture in 5 minutes
+arch.cta.sub,一个 Java 类声明模型，整套后台自动生成。,"Declare the model in one Java class, get the whole admin."
+arch.more.1.title,功能导图,Feature Map
+arch.more.1.sub,一张图看全 Erupt 的能力分布。,Every Erupt capability on one map.
+arch.more.1.anchor,#功能导图,#feature-map
+arch.more.2.title,分层架构,Layered Architecture
+arch.more.2.sub,各层职责与依赖，按需引入。,"Layer responsibilities and dependencies, opt-in per module."
+arch.more.2.anchor,#分层架构,#layered-architecture
+arch.more.3.title,请求生命周期,Request Lifecycle
+arch.more.3.sub,一次请求从入口到数据源的完整路径。,The full path of a request from entry to data source.
+arch.more.3.anchor,#请求生命周期,#request-lifecycle

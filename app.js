@@ -43,6 +43,11 @@ var app = angular.module('app', [
             toTemplate();
             return "page/data/data.html";
         }
+    }).when('/architecture', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/architecture/architecture.html";
+        }
     }).when('/contrast', {
         templateUrl: function (attr) {
             toTemplate();
