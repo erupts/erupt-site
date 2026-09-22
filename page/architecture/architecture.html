@@ -1,0 +1,498 @@
+<style>
+    /* ── Architecture · 全景架构（图表 iframe 自 docs.erupt.xyz，页面骨架在此） ── */
+
+    /* §1 hero — copy 左 · 层叠架构块右 */
+    .ar-hero {
+        display: flex;
+        min-height: 480px;
+        overflow: hidden;
+    }
+
+    .ar-hero-left {
+        flex: 1;
+        padding: 56px 48px 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .ar-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        margin-bottom: 22px;
+    }
+
+    .ar-eyebrow::before {
+        content: '';
+        width: 22px;
+        height: 2px;
+        background: var(--c-brand);
+    }
+
+    .ar-h1 {
+        font-size: clamp(30px, 4vw, 46px);
+        font-weight: 800;
+        letter-spacing: -.02em;
+        line-height: 1.16;
+        margin: 0 0 18px;
+    }
+
+    .ar-h1 em {
+        font-style: normal;
+        background: var(--c-brand);
+        border: 2px solid var(--c-border);
+        box-shadow: 3px 3px 0 var(--c-text);
+        padding: 0 10px;
+        display: inline-block;
+        transform: rotate(-1deg);
+    }
+
+    /* 右栏：9 块层叠，像手工摆出来的一叠架构砖 */
+    .ar-cake-panel {
+        flex: 0 0 420px;
+        border-left: 2px solid var(--c-border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 36px 32px;
+        position: relative;
+        background:
+            linear-gradient(var(--c-grid) 1px, transparent 1px),
+            linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 16px 16px;
+    }
+
+    .ar-cake {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        width: 100%;
+        max-width: 300px;
+        position: relative;
+    }
+
+    /* 背后一条虚线脊柱，暗示自上而下的数据流 */
+    .ar-cake::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: -22px;
+        bottom: -22px;
+        border-left: 2px dashed rgba(20, 18, 11, .25);
+        z-index: 0;
+    }
+
+    .ar-brick {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 36px;
+        padding: 0 12px;
+        border: 2px solid var(--c-border);
+        box-shadow: 3px 3px 0 var(--c-text);
+        background: var(--c-paper);
+        font-size: 12.5px;
+        font-weight: 700;
+        transition: transform .15s;
+    }
+
+    .ar-brick:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 var(--c-text);
+    }
+
+    .ar-brick:nth-child(odd) { margin-left: 14px; margin-right: 0; }
+    .ar-brick:nth-child(even) { margin-right: 14px; margin-left: 0; }
+
+    .ar-brick-num {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .06em;
+        background: var(--c-text);
+        color: var(--c-code-text);
+        padding: 2px 6px;
+    }
+
+    .ar-brick-ink {
+        background: var(--c-text);
+        color: var(--c-code-text);
+    }
+
+    .ar-brick-ink .ar-brick-num {
+        background: var(--c-code-text);
+        color: var(--c-text);
+    }
+
+    .ar-brick-hint {
+        margin-left: auto;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: .04em;
+        opacity: .6;
+    }
+
+    .ar-cake-cap {
+        margin-top: 28px;
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .ar-cake-cap::before,
+    .ar-cake-cap::after {
+        content: '';
+        width: 18px;
+        height: 2px;
+        background: var(--c-border);
+    }
+
+    /* §2 数据条 */
+    .ar-stat {
+        padding: 26px 24px 22px;
+        text-align: center;
+    }
+
+    .ar-stat-num {
+        display: inline-block;
+        font-family: var(--c-mono);
+        font-size: 32px;
+        font-weight: 800;
+        letter-spacing: -.03em;
+        line-height: 1;
+        padding: 0 4px 4px;
+        margin-bottom: 10px;
+        border-bottom: 5px solid var(--c-brand);
+    }
+
+    .ar-stat-label {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+    }
+
+    /* §3 嵌入窗口：深色标题条 + 白色内容区 */
+    .ar-win-row {
+        padding: 40px 36px;
+    }
+
+    .ar-win {
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-paper);
+    }
+
+    .ar-win-bar {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 16px;
+        background: var(--c-code-bg);
+        color: var(--c-code-text);
+        border-bottom: 2px solid var(--c-border);
+    }
+
+    .ar-live {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        font-weight: 800;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text);
+        background: var(--c-brand);
+        padding: 3px 9px 2px;
+        border: 2px solid var(--c-border);
+    }
+
+    .ar-live::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--c-text);
+        animation: ar-blink 1.4s ease-in-out infinite;
+    }
+
+    @keyframes ar-blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .25; }
+    }
+
+    .ar-win-path {
+        flex: 1;
+        text-align: center;
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        letter-spacing: .04em;
+        color: rgba(240, 232, 214, .5);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .ar-win-open {
+        font-family: var(--c-mono);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--c-code-text);
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .ar-win-open:hover {
+        color: var(--c-brand);
+        text-decoration: none;
+    }
+
+    .ar-win-body {
+        padding: 28px;
+        background: var(--c-paper);
+    }
+
+    .ar-frame {
+        display: block;
+        width: 100%;
+        height: 2900px;
+        border: 0;
+        background: var(--c-paper);
+        overflow: hidden;
+    }
+
+    /* §4 更多架构图：三张可点击卡 */
+    .ar-more {
+        display: block;
+        color: var(--c-text);
+        text-decoration: none;
+        padding: 28px 32px;
+    }
+
+    .ar-more:hover {
+        color: var(--c-text);
+        text-decoration: none;
+    }
+
+    .ar-more-idx {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: .16em;
+        color: var(--c-text2);
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .ar-more-idx span:last-child {
+        color: var(--c-text);
+        transition: transform .15s;
+    }
+
+    .ar-more:hover .ar-more-idx span:last-child {
+        transform: translate(3px, -3px);
+    }
+
+    .ar-more-title {
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: -.01em;
+        margin: 0 0 6px;
+    }
+
+    @media (max-width: 1000px) {
+        .ar-hero {
+            flex-direction: column;
+        }
+
+        .ar-cake-panel {
+            flex: none;
+            border-left: 0;
+            border-top: 2px solid var(--c-border);
+        }
+    }
+
+    @media (max-width: 700px) {
+        .ar-hero-left {
+            padding: 40px 24px 32px;
+        }
+
+        .ar-win-row {
+            padding: 24px 20px;
+        }
+
+        .ar-win-body {
+            padding: 14px;
+        }
+
+        .ar-win-path {
+            display: none;
+        }
+
+        .ar-more {
+            padding: 22px 24px;
+        }
+    }
+</style>
+
+<div class="ar">
+    <div class="fr">
+
+        <!-- §1 HERO -->
+        <div class="r g-bg ar-hero">
+            <div class="ar-hero-left">
+                <div class="ar-eyebrow">Architecture · 9 Layers · Pluggable</div>
+                <h1 class="ar-h1" ng-bind-html="'arch.hero.title'|i18nHtml"></h1>
+                <p class="sub" style="max-width:46ch;font-size:15px;line-height:1.7;margin:0 0 28px">
+                    {{'arch.hero.sub'|i18n}}</p>
+                <div style="display:flex;gap:14px;flex-wrap:wrap">
+                    <a class="wbtn wbtn-o"
+                       ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/guide/architecture"
+                       target="_blank">{{'arch.hero.doc'|i18n}} ↗</a>
+                    <a class="wbtn" href="#!/data">{{'nav.data'|i18n}}</a>
+                </div>
+            </div>
+
+            <div class="ar-cake-panel d-none d-md-flex">
+                <div class="ar-cake">
+                    <div class="ar-brick" style="background:var(--c-green)"><span class="ar-brick-num">L9</span>{{'arch.l9'|i18n}}<span class="ar-brick-hint">Web · API · AI</span></div>
+                    <div class="ar-brick" style="background:var(--c-purple)"><span class="ar-brick-num">L8</span>{{'arch.l8'|i18n}}<span class="ar-brick-hint">Angular</span></div>
+                    <div class="ar-brick" style="background:var(--c-brand)"><span class="ar-brick-num">L7</span>{{'arch.l7'|i18n}}<span class="ar-brick-hint">@View</span></div>
+                    <div class="ar-brick" style="background:var(--c-yellow)"><span class="ar-brick-num">L6</span>{{'arch.l6'|i18n}}<span class="ar-brick-hint">35 Edit</span></div>
+                    <div class="ar-brick" style="background:var(--c-green)"><span class="ar-brick-num">L5</span>{{'arch.l5'|i18n}}<span class="ar-brick-hint">@Erupt</span></div>
+                    <div class="ar-brick" style="background:var(--c-purple)"><span class="ar-brick-num">L4</span>{{'arch.l4'|i18n}}<span class="ar-brick-hint">LLM · MCP</span></div>
+                    <div class="ar-brick" style="background:var(--c-brand)"><span class="ar-brick-num">L3</span>{{'arch.l3'|i18n}}<span class="ar-brick-hint">DataProxy</span></div>
+                    <div class="ar-brick ar-brick-ink"><span class="ar-brick-num">L2</span>{{'arch.l2'|i18n}}<span class="ar-brick-hint">13 Sources</span></div>
+                    <div class="ar-brick"><span class="ar-brick-num">L1</span>{{'arch.l1'|i18n}}<span class="ar-brick-hint">Spring Boot</span></div>
+                </div>
+                <div class="ar-cake-cap">Any Source → Any UI</div>
+            </div>
+        </div>
+
+        <!-- §2 STATS -->
+        <div class="g4 r">
+            <div class="c ar-stat">
+                <span class="ar-stat-num">9</span>
+                <div class="ar-stat-label">{{'arch.stat.1'|i18n}}</div>
+            </div>
+            <div class="c ar-stat">
+                <span class="ar-stat-num" style="border-color:var(--c-green)">45+</span>
+                <div class="ar-stat-label">{{'arch.stat.2'|i18n}}</div>
+            </div>
+            <div class="c ar-stat">
+                <span class="ar-stat-num" style="border-color:var(--c-purple)">35</span>
+                <div class="ar-stat-label">{{'arch.stat.3'|i18n}}</div>
+            </div>
+            <div class="c ar-stat">
+                <span class="ar-stat-num" style="border-color:var(--c-yellow)">0</span>
+                <div class="ar-stat-label">{{'arch.stat.4'|i18n}}</div>
+            </div>
+        </div>
+
+        <!-- §3 EMBED — 图表单一来源于 erupt-docs -->
+        <div class="r ar-win-row">
+            <div class="ar-win">
+                <div class="ar-win-bar">
+                    <span class="ar-live">Live</span>
+                    <span class="ar-win-path">docs.erupt.xyz/{{currentLang.substring(0,2)}}/guide/architecture</span>
+                    <a class="ar-win-open"
+                       ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/guide/architecture"
+                       target="_blank">{{'arch.win.open'|i18n}} ↗</a>
+                </div>
+                <div class="ar-win-body">
+                    <iframe class="ar-frame" id="archFrame" loading="lazy" scrolling="no" title="Erupt Architecture"
+                            ng-src="{{('https://docs.erupt.xyz/' + currentLang.substring(0,2) + '/embed/architecture') | trustAsResourceUrl}}"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- §4 MORE DIAGRAMS — 文档里其余架构图的入口 -->
+        <div class="g3 r">
+            <a class="c clickable ar-more"
+               ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/guide/architecture{{'arch.more.1.anchor'|i18n}}"
+               target="_blank">
+                <div class="ar-more-idx"><span>01 · Diagram</span><span>↗</span></div>
+                <h3 class="ar-more-title">{{'arch.more.1.title'|i18n}}</h3>
+                <p class="sub">{{'arch.more.1.sub'|i18n}}</p>
+            </a>
+            <a class="c clickable ar-more"
+               ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/guide/architecture{{'arch.more.2.anchor'|i18n}}"
+               target="_blank">
+                <div class="ar-more-idx"><span>02 · Diagram</span><span>↗</span></div>
+                <h3 class="ar-more-title">{{'arch.more.2.title'|i18n}}</h3>
+                <p class="sub">{{'arch.more.2.sub'|i18n}}</p>
+            </a>
+            <a class="c clickable ar-more"
+               ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/guide/architecture{{'arch.more.3.anchor'|i18n}}"
+               target="_blank">
+                <div class="ar-more-idx"><span>03 · Diagram</span><span>↗</span></div>
+                <h3 class="ar-more-title">{{'arch.more.3.title'|i18n}}</h3>
+                <p class="sub">{{'arch.more.3.sub'|i18n}}</p>
+            </a>
+        </div>
+
+        <!-- §5 CTA -->
+        <div class="r g-bg ticks only-before" style="padding:56px 40px;text-align:center">
+            <h2 class="h2">{{'arch.cta.title'|i18n}}</h2>
+            <p class="sub" style="max-width:48ch;margin:0 auto 24px">{{'arch.cta.sub'|i18n}}</p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank">{{'home.btn.start'|i18n}} ↗</a>
+                <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/"
+                   target="_blank">{{'nav.module'|i18n}}</a>
+                <a class="wbtn" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <div class="ticks"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var DOCS_ORIGIN = 'https://docs.erupt.xyz';
+        var frame = document.getElementById('archFrame');
+        if (!frame) return;
+
+        function onMessage(e) {
+            if (e.origin !== DOCS_ORIGIN) return;
+            var data = e.data;
+            if (!data || data.type !== 'erupt-arch-height') return;
+            var h = Number(data.height);
+            if (!isFinite(h) || h < 400 || h > 20000) return;
+            frame.style.height = Math.round(h) + 'px';
+        }
+
+        window.addEventListener('message', onMessage);
+        // 模板被 ngRoute 换出后解绑，避免监听器堆积
+        var mo = new MutationObserver(function () {
+            if (!document.body.contains(frame)) {
+                window.removeEventListener('message', onMessage);
+                mo.disconnect();
+            }
+        });
+        mo.observe(document.body, {childList: true, subtree: true});
+    })();
+</script>
