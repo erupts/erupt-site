@@ -682,9 +682,38 @@ html, body {
 /* 产品下拉 — 三列分组 */
 #header .dropdown-menu.menu-grid {
     display: none;
-    grid-auto-flow: column;
+    grid-template-columns: repeat(3, minmax(190px, max-content));
     min-width: 0;
     width: max-content;
+}
+
+.menu-foot {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid var(--c-border);
+    background: rgba(var(--c-brand-rgb), .06);
+}
+
+#header .menu-foot .dropdown-item {
+    width: auto;
+    flex: 0 0 auto;
+    border-bottom: none;
+}
+
+.doc-badge {
+    font-family: var(--c-mono);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    line-height: 1;
+    color: var(--c-text2);
+    border: 1px solid var(--c-text2);
+    padding: 1px 3px;
+    margin-left: 5px;
+    vertical-align: 2px;
+    display: inline-block;
+    opacity: .7;
 }
 
 .more-dropdown:hover .dropdown-menu.menu-grid {
@@ -693,7 +722,10 @@ html, body {
 
 .menu-col {
     border-right: 1px solid var(--c-border);
-    min-width: 190px;
+}
+
+.menu-col .dropdown-item:last-child {
+    border-bottom: none;
 }
 
 .menu-grid .dropdown-item {
