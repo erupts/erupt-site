@@ -363,6 +363,7 @@ ai.react.example.action2,执行：调用数据分析工具 → 生成销售趋�
 ai.react.example.result,结果：生成完整的分析报告，包含数据汇总、趋势图表和建议,"Result: Generated complete analysis report with data summary, trend charts and recommendations"
 nav.aiclaw,🦞 AI Claw,🦞 AI Claw
 nav.skill,零代码,No-Code
+nav.discord,Discord 社区,Discord
 claw.hero.subtitle,通过自然语言直接驱动服务器，操作注解驱动的数据与业务——像与同事对话一样简单,"Drive your server with natural language — query, write and operate annotation-driven data as if chatting with a colleague"
 claw.badge.nlp,自然语言交互,Natural Language
 claw.badge.shell,Shell 执行,Shell Execution
@@ -1052,7 +1053,7 @@ cloud.diag.n1,通知服务,Notify Service
 cloud.diag.n2,网关服务,Gateway Service
 cloud.diag.n3,算法服务,Algo Service
 cloud.diag.more,更多服务…,More services…
-nav.data,数据连接,Connectors
+nav.data,🔌 数据连接,🔌 Connectors
 data.hero.title,<span class='ds-ul'>数据</span>在哪，<br><em class='ds-hl'>后台</em>就在哪,"Where <span class='ds-ul'>data</span> lives,<br><em class='ds-hl'>admin</em> follows"
 data.hero.sub,erupt-data 将数据库、文件、NoSQL 与 SaaS API 抽象为统一的数据源接口，同一套注解模型即可对任意数据完成增删改查、分页与检索。,"erupt-data abstracts databases, files, NoSQL and SaaS APIs into one unified data-source interface — the same annotated model gives you CRUD, pagination and search over any data."
 data.hero.btn.doc,模块文档,Module Docs
@@ -1172,6 +1173,10 @@ staff.m2,小巡 · 系统巡检员,Scout · System Inspector
 staff.m3,小客 · 客服助理,Momo · Support Assistant
 staff.mock.think,正在分析昨日订单与转化数据…,Analysing yesterday's orders and conversions…
 staff.mock.done,报告已推送 → 钉钉 · 数据日报群,Report pushed → DingTalk · #daily-data
+nav.resources,资源,Resources
+nav.grp.ai,AI 系列,AI
+nav.grp.platform,平台,Platform
+nav.grp.biz,商业,Business
 nav.arch,全景架构,Architecture
 arch.hero.title,"从任意数据源，<br>到<em>任意界面</em>","From any data source,<br>to <em>any UI</em>"
 arch.hero.sub,九层可插拔架构：底层接任意数据源，DataProxy 任意拦截，AI 内嵌为内核能力，上层视图与组件由注解自动生成。,"Nine pluggable layers: any data source at the bottom, DataProxy interception in the middle, AI built into the kernel, views and components generated from annotations on top."
@@ -1202,3 +1207,12 @@ arch.more.2.anchor,#分层架构,#layered-architecture
 arch.more.3.title,请求生命周期,Request Lifecycle
 arch.more.3.sub,一次请求从入口到数据源的完整路径。,The full path of a request from entry to data source.
 arch.more.3.anchor,#请求生命周期,#request-lifecycle
+nav.sub.ai,大模型深度集成,Deep LLM integration
+nav.sub.aicanvas,自然语言生成页面,Pages from plain language
+nav.sub.aiclaw,自然语言驱动服务器,Drive your server by chat
+nav.sub.cloud,微服务多维表配置,Multi-table config for clusters
+nav.sub.flow,通用工作流引擎,General workflow engine
+nav.sub.cube,拖拽即分析的语义层,Drag-and-drop semantic analytics
+nav.sub.data,任意数据源统一接入,Any data source · one interface
+nav.sub.pro,源码交付 · 一次买断,Source delivered · buy once
+nav.sub.module,官方扩展模块清单,All official extension modules

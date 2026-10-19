@@ -289,6 +289,24 @@ html, body {
     color: var(--c-brand);
 }
 
+.discord-ico {
+    width: 20px;
+    height: 20px;
+    vertical-align: -5px;
+}
+
+.header-nav-desktop .nav-github {
+    margin: 0 4px 0 10px;
+}
+
+.header-nav-desktop .nav-discord {
+    margin: 0 10px 0 4px;
+}
+
+.mobile-nav .nav-discord .discord-ico {
+    margin-right: 4px;
+}
+
 
 .ng-cloak {
     display: none;
@@ -634,7 +652,8 @@ html, body {
 
 #header .dropdown-item {
     font-size: 11.5px;
-    padding: 5px 14px;
+    line-height: 2;
+    padding: 6px 14px;
     color: var(--c-text2);
     font-family: var(--c-mono);
     border-radius: 0;
@@ -658,6 +677,54 @@ html, body {
 .lang-dropdown .dropdown-toggle,
 .more-dropdown .dropdown-toggle {
     cursor: pointer;
+}
+
+/* 产品下拉 — 三列分组 */
+#header .dropdown-menu.menu-grid {
+    display: none;
+    grid-auto-flow: column;
+    min-width: 0;
+    width: max-content;
+}
+
+.more-dropdown:hover .dropdown-menu.menu-grid {
+    display: grid !important;
+}
+
+.menu-col {
+    border-right: 1px solid var(--c-border);
+    min-width: 190px;
+}
+
+.menu-grid .dropdown-item {
+    line-height: 1.5;
+    padding: 9px 14px;
+    color: var(--c-text);
+}
+
+.menu-sub {
+    display: block;
+    font-size: 9.5px;
+    line-height: 1.4;
+    margin-top: 2px;
+    color: var(--c-text2);
+    letter-spacing: 0;
+}
+
+.menu-col:last-child {
+    border-right: none;
+}
+
+.menu-col-title {
+    padding: 6px 14px 4px;
+    line-height: 1.6;
+    font-family: var(--c-mono);
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--c-text2);
+    background: rgba(var(--c-brand-rgb), .06);
+    border-bottom: 1px solid var(--c-border);
 }
 
 /* 右下角广告位 */
