@@ -1408,6 +1408,167 @@
         background: rgba(79, 200, 236, .1);
     }
 
+
+    /* ── §11b AI ARCHITECTURE — layered stack ── */
+    .aa-layer {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        border-bottom: 1px solid var(--c-border);
+    }
+
+    .aa-layer:last-child { border-bottom: 0; }
+
+    .aa-lab {
+        border-right: 1px solid var(--c-border);
+        padding: 22px 18px;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        justify-content: center;
+    }
+
+    .aa-lab i {
+        font-style: normal;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: .08em;
+        color: var(--c-text2);
+        opacity: .7;
+    }
+
+    .aa-cells {
+        display: grid;
+        gap: 18px;
+        padding: 22px 24px;
+    }
+
+    .aa-card {
+        background: var(--c-paper);
+        border: 2px solid var(--c-border);
+        box-shadow: 3px 3px 0 var(--c-text);
+        padding: 14px 16px;
+        cursor: pointer;
+        transition: transform .15s, box-shadow .15s;
+        text-decoration: none !important;
+        color: var(--c-text);
+        display: block;
+    }
+
+    .aa-card:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 var(--c-text);
+    }
+
+    .aa-card b {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13.5px;
+        font-weight: 800;
+        margin-bottom: 6px;
+    }
+
+    .aa-card b em {
+        font-style: normal;
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        font-weight: 700;
+        letter-spacing: .1em;
+        padding: 1px 6px;
+        border: 1.5px solid var(--c-border);
+        margin-left: auto;
+    }
+
+    .aa-card p {
+        font-size: 12px;
+        line-height: 1.55;
+        color: var(--c-text2);
+        margin: 0;
+    }
+
+    .aa-card.v { background: #F1EAFD; }
+    .aa-card.c { background: #E3F6FC; }
+    .aa-card.g { background: #EEF9DF; }
+    .aa-card.y { background: #FFF8D6; }
+
+    .aa-core {
+        background: var(--c-code-bg);
+        color: var(--c-code-text);
+        padding: 22px 24px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 10px;
+    }
+
+    .aa-core .aa-chip {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .06em;
+        color: var(--c-code-text);
+        border: 1px solid rgba(240, 232, 214, .3);
+        padding: 4px 10px;
+        white-space: nowrap;
+    }
+
+    .aa-core .aa-chip.hi {
+        color: #14120B;
+        background: var(--c-purple);
+        border-color: var(--c-purple);
+        font-weight: 700;
+    }
+
+    .aa-core-d, .aa-base-d {
+        flex-basis: 100%;
+        font-size: 12px;
+        line-height: 1.6;
+        margin: 4px 0 0;
+    }
+
+    .aa-core-d { color: rgba(240, 232, 214, .55); }
+
+    .aa-base {
+        padding: 22px 24px;
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 16px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 10px;
+    }
+
+    .aa-base .aa-chip {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .06em;
+        color: var(--c-text);
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        padding: 4px 10px;
+        white-space: nowrap;
+    }
+
+    .aa-base-d { color: var(--c-text2); }
+
+    .aa-core-lab { background: var(--c-code-bg); color: rgba(240, 232, 214, .6); border-right-color: rgba(240, 232, 214, .2); }
+    .aa-core-lab i { color: rgba(240, 232, 214, .6); }
+
+    @media (max-width: 1000px) {
+        .aa-cells.g4 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 700px) {
+        .aa-layer { grid-template-columns: 1fr; }
+        .aa-lab { border-right: 0; border-bottom: 1px dashed var(--c-border); padding: 12px 18px; flex-direction: row; align-items: center; }
+        .aa-cells.g4, .aa-cells.g3 { grid-template-columns: 1fr; }
+    }
 </style>
 
 <div ng-controller="home">
@@ -2413,6 +2574,57 @@ public class Task extends BaseModel {
                     <div style="padding:20px 24px;border-top:1px solid var(--c-border);display:flex;gap:10px">
                         <a class="wbtn wbtn-o" ng-click="go('#!/ai')">{{'home.ai.learnmore' | i18n}}</a>
                         <a class="wbtn" ng-click="go('#!/ai-claw')">{{'home.ai.claw.btn' | i18n}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             §11b AI ARCHITECTURE — one harness, a family of agents
+             ════════════════════════════════════════ -->
+        <div class="r reveal" style="padding:40px 48px 12px;text-align:center">
+            <h3 class="h2" style="font-size:clamp(20px,2.6vw,28px)">{{'home.arch.title'|i18n}}</h3>
+            <p class="sub" style="margin:0 auto;max-width:60ch;font-size:13.5px">{{'home.arch.p'|i18n}}</p>
+        </div>
+        <div class="r reveal" style="padding:28px 48px 44px">
+            <div style="border:2px solid var(--c-border);box-shadow:var(--c-shadow);background:var(--c-paper)">
+                <div class="aa-layer">
+                    <div class="aa-lab">{{'home.arch.l.agents'|i18n}}<i>erupt-ai-*</i></div>
+                    <div class="aa-cells g4">
+                        <a class="aa-card v" href="#!/ai"><b>🤖 {{'home.arch.ag.ai.t'|i18n}}</b><p>{{'home.arch.ag.ai.d'|i18n}}</p></a>
+                        <a class="aa-card c" href="#!/ai-canvas"><b>🎨 {{'home.arch.ag.canvas.t'|i18n}}</b><p>{{'home.arch.ag.canvas.d'|i18n}}</p></a>
+                        <a class="aa-card v" href="#!/ai-dev"><b>🧑‍💻 {{'home.arch.ag.dev.t'|i18n}}<em>NEW</em></b><p>{{'home.arch.ag.dev.d'|i18n}}</p></a>
+                        <a class="aa-card y" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-staff" target="_blank"><b>👔 {{'home.arch.ag.staff.t'|i18n}}<em>DOCS</em></b><p>{{'home.arch.ag.staff.d'|i18n}}</p></a>
+                    </div>
+                </div>
+                <div class="aa-layer">
+                    <div class="aa-lab">{{'home.arch.l.plug'|i18n}}<i>plug &amp; play</i></div>
+                    <div class="aa-cells g3">
+                        <a class="aa-card g" href="#!/ai-claw"><b>🦞 {{'home.arch.pl.claw.t'|i18n}}</b><p>{{'home.arch.pl.claw.d'|i18n}}</p></a>
+                        <a class="aa-card" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-rag" target="_blank"><b>📖 {{'home.arch.pl.rag.t'|i18n}}<em>DOCS</em></b><p>{{'home.arch.pl.rag.d'|i18n}}</p></a>
+                        <a class="aa-card" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-decision" target="_blank"><b>🎯 {{'home.arch.pl.decision.t'|i18n}}<em>DOCS</em></b><p>{{'home.arch.pl.decision.d'|i18n}}</p></a>
+                    </div>
+                </div>
+                <div class="aa-layer">
+                    <div class="aa-lab aa-core-lab">{{'home.arch.l.core'|i18n}}<i>erupt-ai</i></div>
+                    <div class="aa-core">
+                        <span class="aa-chip hi">17 LLM adapters</span>
+                        <span class="aa-chip">MCP client / server</span>
+                        <span class="aa-chip">A2A</span>
+                        <span class="aa-chip">@AiToolbox</span>
+                        <span class="aa-chip">AI Roles</span>
+                        <span class="aa-chip">Sessions &amp; Memory</span>
+                        <p class="aa-core-d">{{'home.arch.core.d'|i18n}}</p>
+                    </div>
+                </div>
+                <div class="aa-layer">
+                    <div class="aa-lab">{{'home.arch.l.base'|i18n}}<i>erupt-core</i></div>
+                    <div class="aa-base">
+                        <span class="aa-chip">@Erupt</span>
+                        <span class="aa-chip">UPMS</span>
+                        <span class="aa-chip">@DataProxy</span>
+                        <span class="aa-chip">Operation Log</span>
+                        <p class="aa-base-d">{{'home.arch.base.d'|i18n}}</p>
                     </div>
                 </div>
             </div>

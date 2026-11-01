@@ -293,7 +293,7 @@ db.api,API 数据源,API Data Source
 db.spanner,Google Spanner,Google Spanner
 db.mongodb,MongoDB,MongoDB
 db.custom,自定义数据源,Custom Data Source
-nav.ai,🤖 AI,🤖 AI
+nav.ai,🤖 AI Agent,🤖 AI Agent
 ai.hero.title,Erupt AI 大模型深度集成,Erupt AI Deep LLM Integration
 ai.hero.subtitle,将大模型能力无缝融入低代码开发，让 AI 赋能每一个业务场景,"Seamlessly integrate LLM capabilities into low-code development, empowering every business scenario with AI"
 ai.hero.btn.doc,查看文档,Documentation
@@ -765,7 +765,7 @@ home.v2.out.flow.p,审批流程可视化配置，与实体无缝集成。,Visual
 home.v2.out.cloud.h,分布式配置管理,Distributed config management
 home.v2.out.cloud.p,"用表格而非 yml 维护微服务配置，支持多行数据、权限隔离、审计追踪，与 Nacos/Apollo 各司其职。","Manage microservice config as table rows instead of yml — multi-row data, permission isolation and audit trail, coexists with Nacos/Apollo."
 home.v2.ai.title,AI 原生，15+ 大模型开箱即用,AI-native — 15+ LLMs out of the box
-home.v2.ai.p,"Erupt AI 分两层：Harness 负责接入大模型（ChatGPT / Claude / DeepSeek / Qwen …）；Claw 把每个 @Erupt 实体变成模型可调用的工具，自然语言即可操纵业务数据。","Two layers: Harness wires in the LLM (ChatGPT / Claude / DeepSeek / Qwen …); Claw turns every @Erupt entity into a model-callable tool — plain language, real business data."
+home.v2.ai.p,"Erupt AI 分三层：Harness 统一接入 17 家大模型与 MCP / A2A；Claw、RAG、Decision 等可插拔能力把 @Erupt 实体、知识库、业务判断变成模型工具；其上长出 AI Agent、Canvas Agent、Dev Agent、Staff Agent 一族 Agent。","Three layers: Harness unifies 17 LLM providers plus MCP / A2A; pluggable capabilities (Claw, RAG, Decision) turn @Erupt entities, knowledge and business judgement into model tools; on top grow AI Agent, Canvas Agent, Dev Agent and Staff Agent."
 home.v2.ai.mcp.t,MCP 协议接入,MCP protocol ready
 home.v2.ai.mcp.d,"SSE + STDIO 双传输，自动重连健康检查，兼容任何 MCP 工具服务器。","SSE + STDIO transports, auto-reconnect health checks, works with any MCP tool server."
 home.v2.ai.bean.t,Spring Bean = AI 工具,Spring Bean = AI tool
@@ -1103,7 +1103,7 @@ data.ext.p3.desc,在 @Erupt 模型上加一行注解，即可把该模型切换�
 data.cta.title,把你的数据接入 Erupt,Bring Your Data to Erupt
 data.cta.sub,无论数据在哪里——数据库、文件、云端还是内部服务，一套注解即可生成完整后台。,"Wherever your data lives — database, file, cloud or internal service — one set of annotations builds the full admin."
 data.cta.doc,查看模块文档,View Module Docs
-nav.aicanvas,🎨 AI Canvas,🎨 AI Canvas
+nav.aicanvas,🎨 Canvas Agent,🎨 Canvas Agent
 canvas.hero.t1,一句话，,One sentence.
 canvas.hero.t2,生成一个页面。,One living page.
 canvas.hero.sub,用自然语言描述你的需求，AI Canvas 生成完整页面，数据实时来自 Erupt 后端。无需前端，无需部署。,"Describe what you need in plain language. AI Canvas generates a complete page, wired live to your Erupt backend. No frontend. No deploy."
@@ -1236,3 +1236,194 @@ nav.sub.sso,OIDC / OAuth2 外部登录,OIDC / OAuth2 identity providers
 nav.sub.terminal,浏览器里直接操作服务器,Server shell in the browser
 nav.atlas,🕸️ 模型图谱 Atlas,🕸️ Atlas Model Graph
 nav.sub.atlas,运行时模型关系一张图看全,All runtime model relations on one graph
+nav.aidev,🧑‍💻 Dev Agent,🧑‍💻 Dev Agent
+nav.sub.aidev,需求池里的编码 Agent,Coding agents in a requirement pool
+dev.hero.subtitle,把编码 Agent 放进团队流程：需求池管需求，评审人批准开工，Agent 在多仓库 worktree 里开发，QA 复核，人工验收后 rebase 推送交付——每一步都走 Erupt 自己的权限与操作日志,"Put coding agents into your team process: a requirement pool, reviewer approval, agents working in multi-repo worktrees, QA review, then human acceptance and a rebase-and-push delivery — every step on Erupt's own permissions and operation log"
+dev.badge.pool,需求池,Requirement Pool
+dev.badge.repos,多仓库项目,Multi-repo Projects
+dev.badge.clis,7 种编码 CLI,7 Coding CLIs
+dev.badge.mcp,MCP 进度汇报,MCP Progress
+dev.badge.accept,人工验收,Human Acceptance
+dev.hero.btn.doc,查看文档,Documentation
+dev.pool.title,一张需求单的实时画面,"One requirement, watched live"
+dev.pool.subtitle,左侧按阶段筛选需求，右侧实时跟随 Agent 日志、进度、每个仓库的 diff 与 QA 结论,"Filter requirements by stage on the left; follow the agent log, progress, per-repo diff and QA verdict live on the right"
+dev.mock.list,需求列表,Requirements
+dev.mock.detail,详情,Detail
+dev.mock.r42,订单导出支持筛选条件,Order export with filters
+dev.mock.r41,订单支持部分退款,Partial refund for orders
+dev.mock.r40,商品列表加库存预警列,Stock-alert column on products
+dev.mock.r39,会员积分过期任务,Member points expiry job
+dev.mock.think,读取 AGENTS.md，定位订单模型与退款入口……,"Reading AGENTS.md, locating the order model and refund entry…"
+dev.mock.phase1,退款接口完成，补测试中,"refund API done, adding tests"
+dev.mock.qa1,- 退款金额边界与幂等校验已覆盖,- Refund amount bounds and idempotency covered
+dev.mock.qa2,- api 单测 48 通过 · web 构建通过,- api tests 48 passed · web build passed
+dev.mock.done,等待评审人验收并推送,waiting for a reviewer to accept and push
+dev.life.title,从草稿到交付，九个阶段都有人负责,"Nine stages from draft to delivery, each with an owner"
+dev.life.subtitle,表格行操作驱动整个生命周期：成员提交、重试、停止；评审人与维护者批准、驳回、要求修改、验收。排队、运行与已交付的需求定义被冻结,"Row actions drive the lifecycle: members submit, retry and stop; reviewers and maintainers approve, reject, request changes and accept. A requirement is frozen while queued, running or delivered"
+dev.stage.draft,草稿,Draft
+dev.stage.review,待评审,In review
+dev.stage.queued,排队中,Queued
+dev.stage.running,Agent 开发中,Agent working
+dev.stage.verifying,QA 复核,QA review
+dev.stage.acceptance,人工验收,Human acceptance
+dev.stage.delivered,已交付,Delivered
+dev.act.submit,submit,submit
+dev.act.approve,approve,approve
+dev.act.accept,accept & push,accept & push
+dev.branch.reject,REVIEW <b>─reject→</b> DRAFT,REVIEW <b>─reject→</b> DRAFT
+dev.branch.changes,ACCEPTANCE <b>─request changes→</b> QUEUED,ACCEPTANCE <b>─request changes→</b> QUEUED
+dev.branch.fail,RUNNING <b>─stop / error→</b> FAILED <b>─retry→</b> QUEUED,RUNNING <b>─stop / error→</b> FAILED <b>─retry→</b> QUEUED
+dev.branch.frozen,QUEUED / RUNNING / DELIVERED：<b>定义冻结</b>,QUEUED / RUNNING / DELIVERED: <b>definition frozen</b>
+dev.exec.title,执行由服务端托管,Execution is server-managed
+dev.exec.subtitle,从领取需求到推送交付六步走完，git 全部由 erupt-git 代劳，任意 git 托管都能接,"Six steps from claiming a requirement to pushing the delivery; every git operation goes through erupt-git, so any git host works"
+dev.exec.s1.t,领取需求,Claim
+dev.exec.s1.p,执行器轮询队列，用条件更新领取需求，多实例部署也不会重复领取同一张单,"The executor polls the queue and claims with a conditional update, so two instances never take the same requirement"
+dev.exec.s2.t,准备工作区,Workspace
+dev.exec.s2.p,每个仓库拉取后从 origin/<base> 检出 req/req-n 的 worktree；项目的 AGENTS.md 写入根目录，CLAUDE.md 引用它,Each repository is fetched and a worktree on req/req-n is checked out from origin/<base>; the project AGENTS.md lands at the root with a CLAUDE.md that imports it
+dev.exec.s3.t,开发 Agent,Developer agent
+dev.exec.s3.p,创建需求时选定的编码 CLI 在工作区运行，提示词走 stdin；每条消息实时存为 Agent Event，进度通过 MCP 汇报；重试与改需求会 --resume 上一次会话,"The CLI picked when the requirement was created runs in the workspace with the prompt on stdin; every message is stored as an Agent Event as it arrives, progress is reported over MCP, and a retry resumes the previous session"
+dev.exec.s4.t,自动提交,Commit
+dev.exec.s4.p,Agent 留下的未提交改动以它的名义提交，工作区里不会有遗漏,"Anything the agent left uncommitted is committed in its name, so nothing is left behind in the workspace"
+dev.exec.s5.t,QA 复核,QA review
+dev.exec.s5.p,按需开启：同一执行器再跑一轮检查改动，通过 MCP devReportVerdict 给出结论；无 MCP 的 CLI 用 VERDICT 标记行,Optional per requirement: a second run of the same executor checks the change and reports a verdict over MCP; CLIs without MCP print a VERDICT marker line
+dev.exec.s6.t,验收并推送,Accept & push
+dev.exec.s6.p,人工验收后，有目标分支的仓库 rebase 到目标并 fast-forward 推送，否则推送 req/req-n；所有仓库先 rebase 再推送，冲突时任何仓库都不被触碰，每次推送记一条 Delivery,"After human acceptance, a repository with a target branch is rebased and pushed fast-forward only, otherwise req/req-n is pushed; all repositories rebase before the first push, so a conflict leaves every one untouched, and each push is a Delivery record"
+dev.cli.title,服务器上装了哪个，就能选哪个,Pick any coding CLI installed on the server
+dev.cli.subtitle,选择器只列出服务器 PATH 上找得到的 CLI，新装的半分钟内出现；Claude Code、Cursor、Qwen 共用同一个 stream-json 解析器,"The picker lists only CLIs found on the server PATH, and a new install shows up within half a minute; Claude Code, Cursor and Qwen share one stream-json parser"
+dev.cli.resume,会话续跑,session resume
+dev.cli.marker,标记行,marker lines
+dev.cli.any.t,任意普通 CLI,Any plain CLI
+dev.cli.any.p,提示词走 stdin 或末位参数，文本输出；在 yaml 里加一个键即可接入，无需写代码,"Prompt on stdin or as the last argument, text out; one key in yaml adds it, no code"
+dev.cli.custom.t,自定义 Runner,Custom runner
+dev.cli.custom.p,需要真正解析输出的 CLI，实现 CodingAgentRunner 并注册为 Spring Bean,"For a CLI that needs real parsing, implement CodingAgentRunner as a Spring bean"
+dev.safe.title,Agent 拿的是一次性工牌，不是 root,"The agent holds a one-run badge, not root"
+dev.safe.subtitle,一个能执行命令的进程该拿什么权限？答案是：只属于这一次运行、只指向这一张需求单的令牌，数据权限继承需求创建者在 AI 对话里本来就有的那一份,"What should a process that runs commands be allowed to do? A token minted for this one run and this one requirement, with data access inherited from what its creator may already do in AI chat"
+dev.safe.b1.t,一次性 MCP 令牌,One-run MCP token
+dev.safe.b1.p,每次运行签发随机 bearer 令牌，结束即作废；只能触达自己的需求单，只能调用自己角色的工具：开发者 devReportProgress，QA devReportVerdict,"A random bearer token is minted per run and revoked when it ends; it reaches only its own requirement and calls only its role's tools: devReportProgress for the developer, devReportVerdict for QA"
+dev.safe.b2.t,干净的进程环境,Clean environment
+dev.safe.b2.p,Agent 进程只拿到 PATH、HOME、LANG 等基础变量与 executor.env 里显式配置的内容；数据库密码等服务器机密永远不会进入它,"The agent process gets PATH, HOME, LANG and what executor.env explicitly lists; server secrets such as database passwords never reach it"
+dev.safe.b3.t,Git 凭据不出 Erupt,Git credentials stay in Erupt
+dev.safe.b3.p,拉取与推送全部由 erupt 自己完成；凭据只用于 credentials.<key>.hosts 列出的主机，项目里填的仓库地址带不走它,"Erupt does every fetch and push itself; a credential goes only to the hosts listed under credentials.<key>.hosts, so a repository URL typed into a project cannot carry it elsewhere"
+dev.safe.b4.t,与账号配置隔离,Isolated from the account
+dev.safe.b4.p,--strict-mcp-config 把账号下其他 MCP 服务器挡在运行之外；MCP 配置文件以 0600 写入 run/ 目录，运行结束即删除；CLAUDE_CONFIG_DIR 可指向专用目录,--strict-mcp-config keeps the account's other MCP servers out; the MCP config file is written to run/ with mode 0600 and deleted afterwards; CLAUDE_CONFIG_DIR can point at a dedicated directory
+dev.safe.b5.t,数据权限跟着创建者,Access follows the creator
+dev.safe.b5.p,运行附带 erupt 自己的 @AiToolbox 工具，以需求创建者的身份在其租户下执行，上限是该创建者 AI 角色允许的范围——它读不到创建者读不到的东西,"The run carries erupt's own @AiToolbox tools, executed as the requirement's creator in their tenant and limited to what that creator's AI roles allow — it reads nothing the creator could not"
+dev.safe.b6.t,工具白名单,Tool allowlist
+dev.safe.b6.p,executor.clis.<code>.args 决定无头运行能用哪些工具；建议只在一台专用容器或虚拟机上安装 CLI，Agent 以服务器账号读写文件、执行命令,"executor.clis.<code>.args grants the tools a headless run may use; install the CLI on one dedicated container or VM, since the agent edits files and runs commands with the server's account"
+dev.conf.title,一段 yaml，一个菜单,"One yaml block, one menu"
+dev.conf.subtitle,机密只放配置（环境变量或密钥管理器注入），从不进数据库；项目、仓库、成员都是普通 Erupt 模型，用注解生成的后台管理,"Secrets live only in configuration, injected through environment variables or a secret manager, never in the database; projects, repositories and members are ordinary Erupt models managed by annotation-generated pages"
+dev.conf.p1.t,Dev Project,Dev Project
+dev.conf.p1.p,租户内唯一的 code 同时是磁盘目录名；一个项目挂多个仓库与成员，内置 AGENTS.md、活跃工作区清理与自评开关,"A code unique per tenant that is also the directory name; a project holds several repositories and members, with AGENTS.md, leftover-workspace cleanup and a self-review switch"
+dev.conf.p2.t,成员与角色,Members & roles
+dev.conf.p2.p,非成员看不到也选不到项目，超级管理员例外；创建者即 OWNER，所有者与维护者改设置、仓库和成员，项目至少保留一位,"Non-members never list, open or pick a project; super admins see all. The creator becomes OWNER; owners and maintainers change settings, repositories and members, and a project keeps at least one"
+dev.conf.p3.t,项目范围 @EruptScope,Project scope
+dev.conf.p3.p,页头选一次项目，列表、详情、写入全部跟随；选项每次请求重新校验，手改 erupt-scope 请求头也到不了无权项目,"Pick a project once in the page header and every list, detail and write follows; options are re-checked on every request, so a hand-edited erupt-scope header reaches no project the user is not in"
+dev.conf.p4.t,磁盘布局,On disk
+dev.conf.p4.p,{root}/repos/{tenant}/{project}/{alias}.git 裸仓库后台同步；{root}/worktrees/{tenant}/{project}/{req-n}/{alias} 是 Agent 的工作目录；每个实体带 @TenantId，每段路径都经校验,{root}/repos/{tenant}/{project}/{alias}.git is a bare clone synced in the background; {root}/worktrees/{tenant}/{project}/{req-n}/{alias} is the agent's working directory; every entity carries @TenantId and every path segment is validated
+dev.cta.title,把下一张需求单交给 Agent,Hand the next requirement to an agent
+dev.cta.subtitle,引入 erupt-ai-dev，装一个编码 CLI，在需求池里提交第一张 REQ,"Add erupt-ai-dev, install a coding CLI, and submit your first REQ in the pool"
+dev.cta.doc,阅读专题文章,Read the deep dive
+dev.cta.also_claw,也看看 AI Claw →,See AI Claw too →
+home.arch.title,一个 Harness，长出一族 Agent,"One harness, a family of agents"
+home.arch.p,Agent 不是各写一套：它们共用同一个大模型接入层、同一组可插拔能力、同一套 UPMS 权限。再加一个 Agent，只是多一个模块。,"Agents are not built one by one: they share one LLM layer, one set of pluggable capabilities and one UPMS permission model. Another agent is just another module."
+home.arch.l.agents,Agent 层,Agents
+home.arch.l.plug,可插拔能力,Pluggable
+home.arch.l.core,AI Harness,AI Harness
+home.arch.l.base,Erupt 内核,Erupt Engine
+home.arch.ag.ai.t,AI Agent,AI Agent
+home.arch.ag.ai.d,后台对话框里的通用 Agent，字段级调用，会话与记忆自动管理,"The general agent in the admin chat panel: field-level calls, sessions and memory managed for you"
+home.arch.ag.canvas.t,Canvas Agent,Canvas Agent
+home.arch.ag.canvas.d,自然语言生成可读写数据的 HTML 页面，存库即上线,"Describe a page, get a data-bound HTML view stored and served without a build"
+home.arch.ag.dev.t,Dev Agent,Dev Agent
+home.arch.ag.dev.d,需求池驱动的编码 Agent：多仓库 worktree、QA 复核、人工验收后推送,"Requirement-pool coding agent: multi-repo worktrees, QA review, push after human acceptance"
+home.arch.ag.staff.t,Staff Agent,Staff Agent
+home.arch.ag.staff.d,数字员工：绑定账号、按 cron 执行任务、提交工作报告到 IM,"Digital employees: bound accounts, cron-driven tasks, work reports pushed to IM"
+home.arch.pl.claw.t,Claw,Claw
+home.arch.pl.claw.d,每个 @Erupt 实体变成模型工具 · Shell · 文件 · Skills,Every @Erupt entity as a model tool · shell · files · skills
+home.arch.pl.rag.t,RAG,RAG
+home.arch.pl.rag.d,文档转知识库，Agentic 检索,"Documents to knowledge base, agentic retrieval"
+home.arch.pl.decision.t,Decision,Decision
+home.arch.pl.decision.d,给业务代码可直接分支的类型化 AI 判断,Typed AI answers your code can branch on
+home.arch.core.d,17 家大模型适配 · MCP 客户端 / 服务端 · A2A · @AiToolbox · AI 角色权限 · 会话与记忆,17 LLM adapters · MCP client / server · A2A · @AiToolbox · AI roles · sessions & memory
+home.arch.base.d,@Erupt 注解模型 · UPMS 权限 · 数据代理 · 操作日志——Agent 读到的、改到的，都和登录用户一样多,@Erupt models · UPMS permissions · data proxies · operation log — an agent reads and writes exactly what the signed-in user may
+nav.staff,👔 Staff Agent,👔 Staff Agent
+nav.sub.staff,数字员工 · 定时执行并汇报,Digital employees on a schedule
+atlas.hero.h1.pre,运行时的每个模型，,"Every runtime model, "
+atlas.hero.h1.em,都在一张图上,all on one map
+atlas.hero.subtitle,谁引用了谁、模块之间耦合到什么程度、改一个模型会波及哪些地方。不落库、不配置，每次打开都从 EruptCoreService 现场重建，运行时注册的模型也自动出现。,"Who references whom, how tightly modules are coupled, what a change will touch. No storage, no configuration: rebuilt from EruptCoreService on every open, so runtime-registered models appear by themselves."
+atlas.badge.views,7 种视图,7 views
+atlas.badge.live,零配置 · 不落库,zero config · no tables
+atlas.badge.audit,结构体检,structure audit
+atlas.badge.usage,使用方追溯,usage tracing
+atlas.hero.btn.doc,查看文档,Documentation
+atlas.hero.usedby,菜单 · 用户维护,Menu · User maintenance
+atlas.stat.views,种视图,views
+atlas.stat.nodes,类节点,node types
+atlas.stat.edges,类边,edge types
+atlas.stat.config,行配置 · 零落库,config lines · no tables
+atlas.views.title,同一张图，七个角度,"One graph, seven angles"
+atlas.views.subtitle,顶部的域筛选条决定关注范围：只看一个模块，或保持 All 看全局。表格类视图铺满屏幕宽度。,The domain filter sets the scope: one module or All. Table views span the full screen width.
+atlas.view.v1.t,血缘,Lineage
+atlas.view.v1.p,选中一个模型，按 1~5 跳深度追溯：谁引用了它、它又引用了谁,"Pick a model and trace 1 to 5 hops: who references it, what it references"
+atlas.view.v2.t,层级,Layers
+atlas.view.v2.p,依赖深度报表：层数、地基模型数、最长依赖链；L0…Ln 逐层展开，地基按「有多少模型站在它上面」排序,"Dependency depth report: levels, foundation models, longest chain; L0…Ln expand level by level, foundations ranked by how many models stand on them"
+atlas.view.v3.t,总览,Overview
+atlas.view.v3.p,全部模型按模块分组铺开，选中后底部面板列出 RELATIONS / FIELDS / CONFIG,All models grouped by module; select one and the bottom panel lists RELATIONS / FIELDS / CONFIG
+atlas.view.v4.t,矩阵,Matrix
+atlas.view.v4.p,模块之间的耦合热力图：对角线是模块内部耦合，其余格子是跨模块依赖,"Module coupling heat map: the diagonal is intra-module coupling, every other cell a cross-module dependency"
+atlas.view.v5.t,权限对账,Power
+atlas.view.v5.p,@Power 声明与菜单树上实际存在的功能按钮并排，排查「注解开了按钮没配」或反过来,"@Power declarations beside the buttons that actually exist on the menu tree, to catch annotation-on-button-missing and the reverse"
+atlas.view.v6.t,影响面,Impact
+atlas.view.v6.p,以选中模型为中心，按距离列出改动会波及的模型,"Centred on the selected model, lists what a change would touch, ordered by distance"
+atlas.view.v7.t,体检,Audit
+atlas.view.v7.p,图能看出、但图上说不清楚的结构问题：循环引用、共享表、孤岛、未发布,"Structural problems the graph hints at but cannot spell out: cycles, shared tables, orphans, unpublished"
+atlas.mock.title,系统站在哪些地基上,What the system stands on
+atlas.mock.subtitle,层级视图回答「改这张表会波及多远」，矩阵视图回答「哪两个模块粘得最紧」。,Layers answer how far a column change travels; the matrix answers which two modules are glued tightest.
+atlas.mock.foundation,Foundation · L0 · 25 · 点击任意模型跳到它的血缘,Foundation · L0 · 25 · click any model to open its lineage
+atlas.mock.matrix.note,对角线为模块内部引用数，格子越黄跨模块依赖越多。upms 是几乎所有模块的公共地基。,"Diagonal cells count intra-module references; the yellower a cell, the more cross-module dependencies. upms is the shared foundation of almost everything."
+atlas.audit.title,图上说不清的，体检替你说,"What the graph cannot say, the audit does"
+atlas.audit.subtitle,四类结构问题，每一项都能点进对应的模型。,"Four kinds of structural problems, each one a click away from its models."
+atlas.audit.a1.t,循环引用,Cycles
+atlas.audit.a1.p,模型之间形成的引用环，通常意味着需要拆分或反转依赖,"Reference loops between models, usually a sign to split or invert a dependency"
+atlas.audit.a1.ex,Order → Customer → <b>Order</b>,Order → Customer → <b>Order</b>
+atlas.audit.a2.t,共享表,Shared tables
+atlas.audit.a2.p,多个 @Erupt 模型映射到同一张物理表,Several @Erupt models mapped to one physical table
+atlas.audit.a2.ex,"e_upms_user ← User, <b>UserVo</b>, UserPower","e_upms_user ← User, <b>UserVo</b>, UserPower"
+atlas.audit.a3.t,孤岛模型,Orphans
+atlas.audit.a3.p,没有任何模型引用它，它也不引用任何模型,"Nothing references it, and it references nothing"
+atlas.audit.a3.ex,<b>LegacyImportLog</b> · 0 in · 0 out,<b>LegacyImportLog</b> · 0 in · 0 out
+atlas.audit.a4.t,未发布,Unpublished
+atlas.audit.a4.p,已注册但未挂到任何菜单上的模型，可在类注册表中一键发布,Registered but hung on no menu; publish it in one click from the class registry
+atlas.audit.a4.ex,<b>DesignModel</b> → Publish to Menu,<b>DesignModel</b> → Publish to Menu
+atlas.usage.title,另一半关系，不在注解里,The other half of the relations is not in annotations
+atlas.usage.subtitle,引用、子表、内嵌写在模型上，扫一遍注解就能画出来。但流程绑定了哪个表单、菜单打开了哪张表、看板读了哪个 Cube，存在配置表里。2.3.0 起各模块通过 EruptUsageProvider 自己上报，图谱反向汇总成「被谁用」。,"References, tabs and embeds live on the model and fall out of an annotation scan. But which form a flow binds, which table a menu opens, which Cube a dashboard reads, lives in config tables. Since 2.3.0 each module reports these through EruptUsageProvider and the graph sums them up as Used by."
+atlas.usage.c1,被使用的模型名,the model being used
+atlas.usage.c2,用作什么,used as what
+atlas.usage.c3,哪条配置在用,which config uses it
+atlas.usage.c4,打开该配置的路由,route to open that config
+atlas.usage.lede,内置上报的模块：,Modules that report out of the box:
+atlas.usage.p.flow,流程绑定的表单模型、自定义节点的配置模型,"Form models bound to flows, config models of custom nodes"
+atlas.usage.p.upms,以该模型为类型值的菜单,Menus whose type value is the model
+atlas.usage.p.cube,读取该 Cube 的看板,Dashboards reading the Cube
+atlas.usage.p.print,挂在该模型上的打印模板,Print templates hung on the model
+atlas.usage.p.core,@RowOperation 弹出表单所用的模型,Models used by @RowOperation pop-up forms
+atlas.usage.note,图谱每次请求都会询问所有 Provider，实现应当轻量；无内容可报时返回空列表，不要抛异常——一个沉默的模块不应拖垮整个页面。,"The graph asks every provider on each request, so keep it light; return an empty list when there is nothing to report and never throw. A silent module must not take the page down."
+atlas.graph.title,三类节点，八类边，一张注册表,"Three node types, eight edge types, one registry"
+atlas.graph.subtitle,图谱看关系，注册表做查找——同一份运行时注册表的两种视图。,"The graph is for relations, the registry for lookup: two views of the same runtime registry."
+atlas.graph.nodes,节点,Nodes
+atlas.graph.edges,边,Edges
+atlas.graph.focus,未与任何模型产生结构关系的模型会单独标注，不参与分层。Cube 节点需引入 erupt-cube，remote 节点来自 erupt-cloud。,Models with no structural relation are flagged separately and left out of levelling. Cube nodes need erupt-cube; remote nodes come from erupt-cloud.
+atlas.reg.r1.t,Erupt 类注册表,Erupt class registry
+atlas.reg.r1.p,当前进程中所有已加载的 @Erupt 模型：来源 jar、类名 / 显示名、多语言、字段数、数据处理器、是否运行时注册、是否已发布,"Every loaded @Erupt model in the process: source jar, class / display name, i18n, field count, data handler, runtime-registered, published"
+atlas.reg.r2.t,字段下钻,Field drill-down
+atlas.reg.r2.p,查看全部 @EruptField 明细：字段名、标题、类型、编辑组件、是否必填 / 可搜索，每一行都带「在图谱中查看」,"All @EruptField details: name, title, type, edit component, required / searchable, each row with Show in atlas"
+atlas.reg.r3.t,在图谱中查看,Show in atlas
+atlas.reg.r3.p,从注册表任意一行跳转到模型关系图并定位到该模型,"Jump from any registry row to the graph, centred on that model"
+atlas.reg.r4.t,发布到菜单,Publish to menu
+atlas.reg.r4.p,未发布的模型直接发布为 TABLE 菜单，自动生成全套功能按钮权限并刷新菜单缓存,"Publish an unpublished model as a TABLE menu, with the full set of button permissions generated and the menu cache refreshed"
+atlas.reg.r5.t,模型 JSON,Model JSON
+atlas.reg.r5.p,查看详情时展示类级注解解析后的完整 JSON 结构,The detail view shows the full JSON structure parsed from class-level annotations
+atlas.cta.title,先看清，再动手,See the whole map before you touch a model
+atlas.cta.subtitle,加一个依赖，菜单里多出「模型图谱」，不用改任何配置。,"Add one dependency and a Model Atlas menu appears, no configuration to change."
+atlas.cta.doc,查看文档,Documentation
+atlas.cta.arch,全景架构 →,Architecture →
