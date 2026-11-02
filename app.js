@@ -68,6 +68,16 @@ var app = angular.module('app', [
             toTemplate();
             return "page/ai-claw/ai-claw.html";
         }
+    }).when('/ai-dev', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/ai-dev/ai-dev.html";
+        }
+    }).when('/atlas', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/atlas/atlas.html";
+        }
     }).when('/cube', {
         templateUrl: function (attr) {
             toTemplate();
