@@ -16,105 +16,250 @@
         justify-content: center;
     }
 
-    .ar-eyebrow {
+    .ar-kicker {
         display: flex;
         align-items: center;
-        gap: 9px;
-        font-family: var(--c-mono);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-        color: var(--c-text2);
-        margin-bottom: 22px;
+        gap: 12px;
+        margin-bottom: 24px;
     }
 
-    .ar-eyebrow::before {
-        content: '';
-        width: 22px;
-        height: 2px;
+    .ar-kicker .tag {
+        margin-bottom: 0;
+        transform: rotate(-1deg);
+    }
+
+    .ar-kicker-txt {
+        font-family: var(--c-mono);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+    }
+
+    /* 三行分层台账：颜色与右侧剖面图的 tier 一一对应 */
+    .ar-ledger {
+        max-width: 540px;
+        border-top: 2px solid var(--c-border);
+        margin: 0 0 30px;
+    }
+
+    .ar-ledger-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 2px;
+        border-bottom: 1px solid var(--c-border);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    .ar-ledger-row:last-child {
+        border-bottom: 2px solid var(--c-border);
+    }
+
+    .ar-ledger-sw {
+        width: 11px;
+        height: 11px;
+        background: var(--t);
+        border: 1.5px solid var(--c-border);
+        flex-shrink: 0;
+    }
+
+    .ar-ledger-t {
+        flex: 0 0 64px;
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+    }
+
+    .ar-ledger-d {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .ar-ledger-d code {
+        font-family: var(--c-mono);
+        font-size: 12px;
+        font-weight: 700;
+        background: rgba(var(--c-brand-rgb), .18);
+        padding: 1px 5px;
+        color: var(--c-text);
+    }
+
+    /* 语言条：erupt-sdk 九种语言，任意语言建节点 */
+    .ar-langs {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 22px;
+    }
+
+    .ar-langs-l {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--c-text);
+        background: var(--c-yellow);
+        border: 1.5px solid var(--c-border);
+        padding: 2px 7px 1px;
+        margin-right: 3px;
+        text-decoration: none;
+    }
+
+    .ar-langs-l:hover {
         background: var(--c-brand);
+        color: var(--c-text);
+    }
+
+    .ar-lang {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: .04em;
+        color: var(--c-text2);
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        padding: 2px 6px 1px;
     }
 
     .ar-h1 {
-        font-size: clamp(30px, 4vw, 46px);
+        font-size: clamp(32px, 3.2vw, 44px);
         font-weight: 800;
-        letter-spacing: -.02em;
-        line-height: 1.16;
-        margin: 0 0 18px;
+        letter-spacing: -.03em;
+        line-height: 1.2;
+        margin: 0 0 26px;
     }
 
     .ar-h1 em {
         font-style: normal;
-        background: var(--c-brand);
-        border: 2px solid var(--c-border);
-        box-shadow: 3px 3px 0 var(--c-text);
-        padding: 0 10px;
-        display: inline-block;
-        transform: rotate(-1deg);
+        box-shadow: inset 0 -.36em 0 0 var(--c-brand);
+        padding: 0 2px;
     }
 
-    /* 右栏：9 块层叠，像手工摆出来的一叠架构砖 */
-    .ar-cake-panel {
-        flex: 0 0 420px;
+    /* 右栏：一张分层剖面图 —— 单一机壳 + 三个分组 tier，请求自上而下穿过 */
+    .ar-stack-panel {
+        flex: 0 0 42%;
         border-left: 2px solid var(--c-border);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 40px 36px 32px;
-        position: relative;
+        padding: 36px 40px 32px;
         background:
             linear-gradient(var(--c-grid) 1px, transparent 1px),
             linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
         background-size: 16px 16px;
     }
 
-    .ar-cake {
+    .ar-port {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text2);
         display: flex;
         flex-direction: column;
-        gap: 7px;
-        width: 100%;
-        max-width: 300px;
-        position: relative;
+        align-items: center;
+        gap: 4px;
     }
 
-    /* 背后一条虚线脊柱，暗示自上而下的数据流 */
-    .ar-cake::before {
+    .ar-port::after {
         content: '';
-        position: absolute;
-        left: 50%;
-        top: -22px;
-        bottom: -22px;
-        border-left: 2px dashed rgba(20, 18, 11, .25);
-        z-index: 0;
+        width: 2px;
+        height: 16px;
+        background: var(--c-border);
     }
 
-    .ar-brick {
-        position: relative;
-        z-index: 1;
+    .ar-stack {
+        width: 100%;
+        max-width: 380px;
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-paper);
+    }
+
+    .ar-stack-hd {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 12px;
+        background: var(--c-code-bg);
+        color: var(--c-code-text);
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--c-border);
+    }
+
+    .ar-stack-hd b {
+        color: var(--c-brand);
+    }
+
+    .ar-tier {
+        display: flex;
+        border-bottom: 2px solid var(--c-border);
+    }
+
+    .ar-tier:last-child {
+        border-bottom: 0;
+    }
+
+    .ar-tier-tag {
+        flex: 0 0 30px;
+        background: var(--t);
+        border-right: 2px solid var(--c-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ar-tier-tag span {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        font-weight: 800;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+    }
+
+    .ar-tier-rows {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .ar-layer {
         display: flex;
         align-items: center;
         gap: 10px;
-        height: 36px;
+        height: 40px;
         padding: 0 12px;
-        border: 2px solid var(--c-border);
-        box-shadow: 3px 3px 0 var(--c-text);
-        background: var(--c-paper);
+        border-bottom: 1px solid var(--c-border);
         font-size: 12.5px;
         font-weight: 700;
-        transition: transform .15s;
+        transition: background .12s;
     }
 
-    .ar-brick:hover {
-        transform: translate(-2px, -2px);
-        box-shadow: 5px 5px 0 var(--c-text);
+    .ar-layer:last-child {
+        border-bottom: 0;
     }
 
-    .ar-brick:nth-child(odd) { margin-left: 14px; margin-right: 0; }
-    .ar-brick:nth-child(even) { margin-right: 14px; margin-left: 0; }
+    .ar-layer:hover {
+        background: rgba(var(--c-brand-rgb), .12);
+    }
 
-    .ar-brick-num {
+    .ar-ln {
         font-family: var(--c-mono);
         font-size: 10px;
         font-weight: 800;
@@ -122,29 +267,21 @@
         background: var(--c-text);
         color: var(--c-code-text);
         padding: 2px 6px;
+        flex-shrink: 0;
     }
 
-    .ar-brick-ink {
-        background: var(--c-text);
-        color: var(--c-code-text);
-    }
-
-    .ar-brick-ink .ar-brick-num {
-        background: var(--c-code-text);
-        color: var(--c-text);
-    }
-
-    .ar-brick-hint {
+    .ar-lhint {
         margin-left: auto;
         font-family: var(--c-mono);
         font-size: 10px;
         font-weight: 600;
         letter-spacing: .04em;
-        opacity: .6;
+        color: var(--c-text2);
+        white-space: nowrap;
     }
 
-    .ar-cake-cap {
-        margin-top: 28px;
+    .ar-stack-cap {
+        margin-top: 22px;
         font-family: var(--c-mono);
         font-size: 10.5px;
         font-weight: 700;
@@ -156,8 +293,8 @@
         gap: 10px;
     }
 
-    .ar-cake-cap::before,
-    .ar-cake-cap::after {
+    .ar-stack-cap::before,
+    .ar-stack-cap::after {
         content: '';
         width: 18px;
         height: 2px;
@@ -328,7 +465,7 @@
             flex-direction: column;
         }
 
-        .ar-cake-panel {
+        .ar-stack-panel {
             flex: none;
             border-left: 0;
             border-top: 2px solid var(--c-border);
@@ -364,31 +501,67 @@
         <!-- §1 HERO -->
         <div class="r g-bg ar-hero">
             <div class="ar-hero-left">
-                <div class="ar-eyebrow">Architecture · 9 Layers · Pluggable</div>
+                <div class="ar-kicker">
+                    <span class="tag">Architecture</span>
+                    <span class="ar-kicker-txt">9 Layers · 9 Languages · Apache 2.0</span>
+                </div>
                 <h1 class="ar-h1" ng-bind-html="'arch.hero.title'|i18nHtml"></h1>
-                <p class="sub" style="max-width:46ch;font-size:15px;line-height:1.7;margin:0 0 28px">
-                    {{'arch.hero.sub'|i18n}}</p>
-                <div style="display:flex;gap:14px;flex-wrap:wrap">
+                <div class="ar-ledger">
+                    <div class="ar-ledger-row" style="--t:var(--c-purple)">
+                        <span class="ar-ledger-sw"></span><span class="ar-ledger-t">{{'arch.hero.t1'|i18n}}</span>
+                        <span class="ar-ledger-d" ng-bind-html="'arch.hero.d1'|i18nHtml"></span>
+                    </div>
+                    <div class="ar-ledger-row" style="--t:var(--c-brand)">
+                        <span class="ar-ledger-sw"></span><span class="ar-ledger-t">{{'arch.hero.t2'|i18n}}</span>
+                        <span class="ar-ledger-d" ng-bind-html="'arch.hero.d2'|i18nHtml"></span>
+                    </div>
+                    <div class="ar-ledger-row" style="--t:var(--c-green)">
+                        <span class="ar-ledger-sw"></span><span class="ar-ledger-t">{{'arch.hero.t3'|i18n}}</span>
+                        <span class="ar-ledger-d" ng-bind-html="'arch.hero.d3'|i18nHtml"></span>
+                    </div>
+                </div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
                     <a class="wbtn wbtn-o"
                        ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/guide/architecture"
                        target="_blank">{{'arch.hero.doc'|i18n}} ↗</a>
                     <a class="wbtn" href="#!/data">{{'nav.data'|i18n}}</a>
                 </div>
+                <div class="ar-langs">
+                    <a class="ar-langs-l" href="https://github.com/erupt-io/erupt-sdk" target="_blank" title="erupt-sdk">SDK ↗</a>
+                    <span class="ar-lang">Java</span><span class="ar-lang">Python</span><span class="ar-lang">Go</span><span class="ar-lang">TypeScript</span><span class="ar-lang">PHP</span><span class="ar-lang">C#</span><span class="ar-lang">Rust</span><span class="ar-lang">Ruby</span><span class="ar-lang">Swift</span>
+                </div>
             </div>
 
-            <div class="ar-cake-panel d-none d-md-flex">
-                <div class="ar-cake">
-                    <div class="ar-brick" style="background:var(--c-green)"><span class="ar-brick-num">L9</span>{{'arch.l9'|i18n}}<span class="ar-brick-hint">Web · API · AI</span></div>
-                    <div class="ar-brick" style="background:var(--c-purple)"><span class="ar-brick-num">L8</span>{{'arch.l8'|i18n}}<span class="ar-brick-hint">Angular</span></div>
-                    <div class="ar-brick" style="background:var(--c-brand)"><span class="ar-brick-num">L7</span>{{'arch.l7'|i18n}}<span class="ar-brick-hint">@View</span></div>
-                    <div class="ar-brick" style="background:var(--c-yellow)"><span class="ar-brick-num">L6</span>{{'arch.l6'|i18n}}<span class="ar-brick-hint">35 Edit</span></div>
-                    <div class="ar-brick" style="background:var(--c-green)"><span class="ar-brick-num">L5</span>{{'arch.l5'|i18n}}<span class="ar-brick-hint">@Erupt</span></div>
-                    <div class="ar-brick" style="background:var(--c-purple)"><span class="ar-brick-num">L4</span>{{'arch.l4'|i18n}}<span class="ar-brick-hint">LLM · MCP</span></div>
-                    <div class="ar-brick" style="background:var(--c-brand)"><span class="ar-brick-num">L3</span>{{'arch.l3'|i18n}}<span class="ar-brick-hint">DataProxy</span></div>
-                    <div class="ar-brick ar-brick-ink"><span class="ar-brick-num">L2</span>{{'arch.l2'|i18n}}<span class="ar-brick-hint">13 Sources</span></div>
-                    <div class="ar-brick"><span class="ar-brick-num">L1</span>{{'arch.l1'|i18n}}<span class="ar-brick-hint">Spring Boot</span></div>
+            <div class="ar-stack-panel d-none d-md-flex">
+                <div class="ar-port">Request · Web / API / Agent</div>
+                <div class="ar-stack">
+                    <div class="ar-stack-hd"><span>Erupt Stack</span><span><b>9</b> Layers</span></div>
+                    <div class="ar-tier" style="--t:var(--c-purple)">
+                        <div class="ar-tier-tag"><span>UI</span></div>
+                        <div class="ar-tier-rows">
+                            <div class="ar-layer"><span class="ar-ln">L9</span>{{'arch.l9'|i18n}}<span class="ar-lhint">Web · API · AI</span></div>
+                            <div class="ar-layer"><span class="ar-ln">L8</span>{{'arch.l8'|i18n}}<span class="ar-lhint">Angular</span></div>
+                            <div class="ar-layer"><span class="ar-ln">L7</span>{{'arch.l7'|i18n}}<span class="ar-lhint">@View</span></div>
+                        </div>
+                    </div>
+                    <div class="ar-tier" style="--t:var(--c-brand)">
+                        <div class="ar-tier-tag"><span>Kernel</span></div>
+                        <div class="ar-tier-rows">
+                            <div class="ar-layer"><span class="ar-ln">L6</span>{{'arch.l6'|i18n}}<span class="ar-lhint">35 Edit</span></div>
+                            <div class="ar-layer"><span class="ar-ln">L5</span>{{'arch.l5'|i18n}}<span class="ar-lhint">@Erupt · SDK</span></div>
+                            <div class="ar-layer"><span class="ar-ln">L4</span>{{'arch.l4'|i18n}}<span class="ar-lhint">LLM · MCP</span></div>
+                            <div class="ar-layer"><span class="ar-ln">L3</span>{{'arch.l3'|i18n}}<span class="ar-lhint">DataProxy</span></div>
+                        </div>
+                    </div>
+                    <div class="ar-tier" style="--t:var(--c-green)">
+                        <div class="ar-tier-tag"><span>Base</span></div>
+                        <div class="ar-tier-rows">
+                            <div class="ar-layer"><span class="ar-ln">L2</span>{{'arch.l2'|i18n}}<span class="ar-lhint">13 Sources</span></div>
+                            <div class="ar-layer"><span class="ar-ln">L1</span>{{'arch.l1'|i18n}}<span class="ar-lhint">Spring Boot</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="ar-cake-cap">Any Source → Any UI</div>
+                <div class="ar-stack-cap">Any Source → Any UI</div>
             </div>
         </div>
 

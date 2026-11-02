@@ -1177,8 +1177,13 @@ nav.resources,资源,Resources
 nav.grp.ai,AI 系列,AI
 nav.grp.biz,商业模块,Commercial
 nav.arch,全景架构,Architecture
-arch.hero.title,"从任意数据源，<br>到<em>任意界面</em>","From any data source,<br>to <em>any UI</em>"
-arch.hero.sub,九层可插拔架构：底层接任意数据源，DataProxy 任意拦截，AI 内嵌为内核能力，上层视图与组件由注解自动生成。,"Nine pluggable layers: any data source at the bottom, DataProxy interception in the middle, AI built into the kernel, views and components generated from annotations on top."
+arch.hero.title,"任意语言，任意数据源，<br><em>一套管理后台</em>","Any language.<br>Any data source.<br><em>One admin.</em>"
+arch.hero.t1,表现,UI
+arch.hero.d1,注解即界面，<code>0</code> 行前端代码,"Annotations become UI, <code>0</code> lines of frontend"
+arch.hero.t2,内核,Kernel
+arch.hero.d2,<code>DataProxy</code> 任意拦截，AI 内嵌为内核能力,"<code>DataProxy</code> intercepts anything, AI in the kernel"
+arch.hero.t3,基座,Base
+arch.hero.d3,<code>13+</code> 数据源，<code>9</code> 种语言 SDK 建节点,"<code>13+</code> data sources, node SDKs in <code>9</code> languages"
 arch.hero.doc,查看架构文档,Read the architecture docs
 arch.stack.hd,分层索引,Layer Index
 arch.l9,接入层,Access
