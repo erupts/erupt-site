@@ -1427,3 +1427,182 @@ atlas.cta.title,先看清，再动手,See the whole map before you touch a model
 atlas.cta.subtitle,加一个依赖，菜单里多出「模型图谱」，不用改任何配置。,"Add one dependency and a Model Atlas menu appears, no configuration to change."
 atlas.cta.doc,查看文档,Documentation
 atlas.cta.arch,全景架构 →,Architecture →
+staff.hero.sub,给 AI 一个系统账号、一份职责说明和一张排班表：它按 Cron 准点上岗，用账号权限内的工具干活，把工作报告推送到 IM，同事在群里 @ 它也能直接问。,"Give an AI a system account, a job description and a schedule: it clocks in on Cron, works with the tools its account allows, pushes reports to IM — and answers when colleagues @-mention it."
+staff.badge.account,绑定真实账户,Bound account
+staff.badge.cron,Cron 排班,Cron schedule
+staff.badge.tools,权限内工具调用,Permitted tools
+staff.badge.im,钉钉 · 企微 · 飞书 · Slack,DingTalk · WeCom · Feishu · Slack
+staff.badge.log,工作日志,Work logs
+staff.hero.btn.doc,查看文档 →,Documentation →
+staff.model.title,四张表，管好一支数字团队,"Four tables, one digital team"
+staff.model.subtitle,引入依赖后菜单里多出「AI 员工」与「渠道集成」：员工领任务，任务产出日志，日志经渠道汇报。,"Two menus appear — AI Staff and Channel Integration: employees take tasks, tasks produce logs, logs are reported through channels."
+staff.model.e1.t,员工,Employee
+staff.model.e1.p,一个绑定了系统账户的 AI 角色。,An AI role bound to a system account.
+staff.model.e1.f.account,员工账户,Account
+staff.model.e1.f.account.h,EruptUser · 角色决定可用工具,EruptUser · roles decide tools
+staff.model.e1.f.model,模型,Model
+staff.model.e1.f.model.h,可选 · 留空用默认模型,Optional · default if empty
+staff.model.e1.f.duty,职责,Duty
+staff.model.e1.f.duty.h,Markdown · 拼入系统提示词,Markdown · appended to prompt
+staff.model.e1.f.status,状态,Status
+staff.model.e1.f.status.h,在岗 / 离岗,On / off duty
+staff.model.e2.t,员工任务,Task
+staff.model.e2.p,员工要做的一件具体工作。,One concrete job for an employee.
+staff.model.e2.f.instruction,任务指令,Instruction
+staff.model.e2.f.instruction.h,Markdown 工作说明,Markdown work brief
+staff.model.e2.f.cron,Cron 表达式,Cron
+staff.model.e2.f.cron.h,留空则仅「立即执行」,Empty = run now only
+staff.model.e2.f.channel,汇报渠道,Report channel
+staff.model.e2.f.channel.h,执行完推送报告,Receives the report
+staff.model.e3.t,工作日志,Work Log
+staff.model.e3.p,每次执行自动生成一条。,Created on every run.
+staff.model.e3.f.process,执行过程,Process
+staff.model.e3.f.process.h,思考与工具调用全程,Reasoning and tool calls
+staff.model.e3.f.result,执行结果,Result
+staff.model.e3.f.result.h,Markdown 工作报告,Markdown report
+staff.model.e4.t,渠道集成,Channel
+staff.model.e4.p,员工与 IM 之间的双向通道。,A two-way link between staff and IM.
+staff.model.e4.f.type,类型,Type
+staff.model.e4.f.type.h,钉钉 / 企微 / 飞书 / Slack,DingTalk / WeCom / Feishu / Slack
+staff.model.e4.f.responder,应答员工,Responder
+staff.model.e4.f.responder.h,留空则只推送,Empty = push only
+staff.model.e4.f.callback,回调地址,Callback
+staff.model.e4.f.callback.h,填入 IM 机器人设置,Set in the IM bot
+staff.im.title,在群里汇报，也在群里答疑,"Reports in the channel, answers in the channel"
+staff.im.subtitle,出站：任务报告推到群里；入站：设置了应答员工的渠道，群里 @ 机器人的消息会交给该员工处理。,"Outbound: task reports land in the channel. Inbound: with a responder set, bot mentions are routed to that employee."
+staff.im.push,"昨日数据日报已生成：订单 1,284（+6.2%），GMV ¥86.2w（+4.1%），退款率上升 1.1pt。","Yesterday's report is ready: 1,284 orders (+6.2%), GMV ¥862k (+4.1%), refund rate up 1.1pt."
+staff.im.who,运营 · 阿青,Ops · Kim
+staff.im.ask,退款率为什么涨了？按品类拆一下,Why did refunds go up? Break it down by category
+staff.im.ans,查了昨天的退款单，主要集中在两个品类：,"I checked yesterday's refunds — mostly two categories:"
+staff.im.ans1,数码配件 +3.4pt，「尺寸不符」占 62%,"Accessories +3.4pt, 62% ""wrong size"""
+staff.im.ans2,家居 +1.8pt，集中在同一批次发货,"Home +1.8pt, all from one shipment batch"
+staff.ch.dingtalk,钉钉,DingTalk
+staff.ch.wecom,企业微信,WeCom
+staff.ch.feishu,飞书,Feishu
+staff.im.p1.t,出站推送,Outbound
+staff.im.p1.p,任务执行完成后，Markdown 报告自动推送到任务绑定的渠道。,"When a task finishes, its Markdown report is pushed to the task's channel."
+staff.im.p2.t,入站应答,Inbound
+staff.im.p2.p,为渠道指定应答员工后，群里的机器人消息交给该员工，以它的账户权限回答。,"Set a responder and bot messages go to that employee, answered within its account's permissions."
+staff.im.p3.t,回调地址,Callback URL
+staff.im.p3.p,把 {domain}/erupt-api/ai-staff/channel/{code} 填进 IM 平台的机器人回调设置即可。,Put {domain}/erupt-api/ai-staff/channel/{code} into the IM platform's bot callback settings.
+staff.im.p4.t,测试连接 / 测试推送,Test connection / push
+staff.im.p4.p,渠道配置页内置两个按钮，保存前就能验证凭据与消息投递。,Two built-in buttons verify credentials and delivery before you rely on it.
+staff.conf.title,加一个依赖，招第一位员工,"One dependency, your first hire"
+staff.conf.subtitle,erupt-ai-staff 是 erupt-ai 的扩展模块，v2.1.0 起可用。,"erupt-ai-staff extends erupt-ai, available since v2.1.0."
+staff.conf.p1.t,引入依赖,Add the dependency
+staff.conf.p1.p,在 erupt-ai 之外加上 erupt-ai-staff，启动后出现「AI 员工」与「渠道集成」两个菜单。,"Add erupt-ai-staff next to erupt-ai; AI Staff and Channel Integration menus appear on startup."
+staff.conf.p2.t,创建员工,Create an employee
+staff.conf.p2.p,选一个系统账户，写好 Markdown 职责，可选指定专属模型，状态设为在岗。,"Pick a system account, write a Markdown duty, optionally pick a model, set it on duty."
+staff.conf.p3.t,安排任务,Assign a task
+staff.conf.p3.p,写任务指令、填 Cron；不填 Cron 就通过行按钮「立即执行」手动触发。,Write the instruction and a Cron; without Cron trigger it with the Run now row action.
+staff.conf.p4.t,接入渠道,Connect a channel
+staff.conf.p4.p,在渠道集成里配置钉钉 / 企微 / 飞书 / Slack，测试推送通过后绑定到任务。,"Configure DingTalk / WeCom / Feishu / Slack, pass the test push, then bind it to the task."
+staff.cta.title,招一位不下班的同事,Hire a colleague who never clocks out
+staff.cta.subtitle,引入 erupt-ai-staff，给它一个账号和一条 Cron，明早 9 点看日报。,"Add erupt-ai-staff, give it an account and a Cron, and read the report at 9 tomorrow."
+staff.cta.doc,查看文档 →,Documentation →
+staff.cta.also_dev,也看看 Dev Agent →,See Dev Agent too →
+tenant.hero.tagline,写一套后台，开给一千家企业,"Build one back office, open it to a thousand companies"
+tenant.hero.sub,所有租户共用同一套页面和表，数据按租户自动隔离；开租户、配套餐、绑域名、管订阅，超管后台点几下就好。,"Every tenant shares the same pages and tables while data stays isolated per tenant; onboarding, packages, domains and subscriptions are a few clicks in the super-admin console."
+tenant.hero.app.order,订单,Orders
+tenant.hero.app.customer,客户,Customers
+tenant.hero.app.user,用户,Users
+tenant.hero.app.role,角色,Roles
+tenant.badge.pkg,套餐 · 菜单,Packages · menus
+tenant.badge.domain,独立域名 · JS/CSS,Domains · JS/CSS
+tenant.badge.sub,订阅 · 试用 · 宽限,Subscription · trial · grace
+tenant.hero.btn.doc,查看文档 →,Documentation →
+tenant.hero.btn.demo,在线体验,Live demo
+tenant.con.title,超管一张表，管住所有租户,One table for every tenant
+tenant.con.subtitle,创建租户、分配套餐、设置域名与专属 JS/CSS、重置租户管理员密码，一键跳进租户应用。,"Create tenants, assign packages, set domains and custom JS/CSS, reset the tenant admin password, and jump into any tenant's app."
+tenant.con.menu,租户管理,Tenants
+tenant.con.pkg,套餐管理,Packages
+tenant.con.new,新建租户,New tenant
+tenant.con.col.code,企业 ID,Tenant ID
+tenant.con.col.name,名称,Name
+tenant.con.col.pkg,套餐,Package
+tenant.con.col.domain,域名,Domain
+tenant.con.col.expire,到期日,Expires
+tenant.con.col.status,状态,Status
+tenant.con.enter,进入,Enter
+tenant.con.reset,重置密码,Reset password
+tenant.mock.t1,极光科技,Acme Tech
+tenant.mock.t2,新星零售,Nova Retail
+tenant.mock.t3,轨道物流,Orbit Logistics
+tenant.mock.t4,风筝教育,Kite Education
+tenant.mock.t5,余烬工作室,Ember Studio
+tenant.iso.title,模型写一次，每家只看到自己的数据,"Write the model once, each tenant sees only its own rows"
+tenant.iso.subtitle,表级隔离：所有租户共享同一套表，按租户标识过滤行数据；用户、角色、组织直接复用 erupt-upms 的表。,"Table-level isolation: tenants share the same tables and rows are filtered by tenant ID; users, roles and orgs reuse the erupt-upms tables."
+tenant.iso.code.c1,业务模型照常写，租户上下文自动注入,"Write models as usual, the tenant context is injected"
+tenant.iso.code.c2,UPMS 表通过 Hibernate 按 tenant_id 过滤,UPMS tables are filtered by tenant_id via Hibernate
+tenant.iso.empty,暂无数据,No rows yet
+tenant.feat.title,不止数据隔离,More than data isolation
+tenant.feat.subtitle,数据、业务、请求、配置、权限一起隔离，SaaS 需要的后台能力开箱即用。,"Data, business, requests, config and permissions isolated together — the SaaS back office comes built in."
+tenant.feat.b1.t,表级数据隔离,Table-level isolation
+tenant.feat.b1.p,共享表结构，按 tenant_id 过滤行；不分库不分 schema，运维成本与单租户一致。,"Shared tables filtered by tenant_id — no extra databases or schemas, operations stay single-tenant simple."
+tenant.feat.b2.t,套餐与菜单,Packages & menus
+tenant.feat.b2.p,超管从平台菜单中挑选组成套餐授予租户，租户会话（含租户管理员）只看到已开通套餐内的菜单。,"Super admins compose packages from platform menus; tenant sessions, admins included, only see menus in enabled packages."
+tenant.feat.b3.t,租户后台,Tenant console
+tenant.feat.b3.p,管理租户信息、绑定独立域名、注入租户专属 JS/CSS、重置管理员密码、一键进入租户应用。,"Manage tenant info, bind domains, inject tenant JS/CSS, reset admin passwords and jump into the tenant's app."
+tenant.feat.b4.t,租户登录与 SSO,Tenant login & SSO
+tenant.feat.b4.p,配合 erupt-sso，租户登录页展示该租户配置的 SSO 提供方；已锁定或已过期的租户直接拒绝登录。,"With erupt-sso the tenant login page lists that tenant's SSO providers; locked or expired tenants are refused."
+tenant.feat.b5.t,租户内权限,Tenant-aware UPMS
+tenant.feat.b5.p,用户、角色、组织管理页沿用 UPMS，按租户隔离，各租户独立授权，互不可见。,"User, role and org pages reuse UPMS, scoped per tenant — each tenant grants its own permissions, invisible to others."
+tenant.feat.b6.t,订阅与续费,Subscriptions
+tenant.feat.b6.p,每个租户一个到期日，套餐自带试用天数，支持宽限期与锁定开关；续费接入你自己的支付逻辑。,"One expiry per tenant, trial days from packages, a grace period and a lock switch — renewals plug into your own payments."
+tenant.sub.title,到期、宽限、锁定，读取时实时推导,"Active, grace, expired — derived on read"
+tenant.sub.subtitle,状态不落库，按到期日与宽限天数实时计算；过期或锁定的租户，在线会话下一次请求即被踢出。,"Status is never stored — it is computed from expiry and grace days; sessions of expired or locked tenants end on their next request."
+tenant.sub.s1,在有效期内 · 到期日为空即永不过期,Within term · empty expiry never expires
+tenant.sub.s2,已过期但在宽限期内，仍可使用,"Past expiry, still usable during grace"
+tenant.sub.s3,宽限期结束，拒绝登录,"Grace over, login refused"
+tenant.sub.n1,新租户取已开通套餐中最长的试用期,New tenants get the longest trial among enabled packages
+tenant.sub.n2,宽限天数，默认 0,"Grace days, default 0"
+tenant.sub.n3,独立于到期日，随时停用租户,"Independent of expiry, disable a tenant anytime"
+tenant.sub.n4,过期或锁定后会话返回 401,Expired or locked sessions get 401
+tenant.sub.code.c1,支付成功后由你的代码调用续期,Your payment callback extends the term
+tenant.sub.code.c2,当前租户 ID、名称、订阅状态、到期日与套餐,"Current tenant ID, name, status, expiry and packages"
+tenant.cmp.title,同样是多租户，差在哪,What sets it apart
+tenant.cmp.subtitle,常见方案只解决数据层，erupt-tenant 把数据、业务、路由、配置、权限一起做完。,"Most options stop at the data layer; erupt-tenant covers data, business, routing, config and permissions together."
+tenant.cmp.self,自研,In-house
+tenant.cmp.data,数据隔离,Data isolation
+tenant.cmp.data.1,数据库层隔离，能力强,"Strong, at the database layer"
+tenant.cmp.data.2,注入 SQL 字段过滤,Injected SQL field filter
+tenant.cmp.data.3,看实现,Depends on the build
+tenant.cmp.data.4,表级 + 业务级隔离,Table + business level
+tenant.cmp.biz,业务隔离,Business isolation
+tenant.cmp.biz.1,不涉及,Not covered
+tenant.cmp.biz.2,不涉及,Not covered
+tenant.cmp.biz.3,需自行开发,Build it yourself
+tenant.cmp.biz.4,自动注入租户上下文,Tenant context auto-injected
+tenant.cmp.route,请求路由,Request routing
+tenant.cmp.route.1,不涉及,Not covered
+tenant.cmp.route.2,不涉及,Not covered
+tenant.cmp.route.3,需自行开发,Build it yourself
+tenant.cmp.route.4,配置即可,Configure and go
+tenant.cmp.conf,按租户配置,Per-tenant config
+tenant.cmp.conf.1,不涉及,Not covered
+tenant.cmp.conf.2,不涉及,Not covered
+tenant.cmp.conf.3,需自行开发,Build it yourself
+tenant.cmp.conf.4,支持,Supported
+tenant.cmp.perm,权限隔离,Permission isolation
+tenant.cmp.perm.1,不涉及,Not covered
+tenant.cmp.perm.2,不涉及,Not covered
+tenant.cmp.perm.3,需重做权限体系,Rebuild permissions
+tenant.cmp.perm.4,复用 UPMS · 菜单 / 套餐 / 主题独立,Reuses UPMS · own menus / packages / themes
+tenant.cmp.learn,学习成本,Learning curve
+tenant.cmp.learn.1,高,Steep
+tenant.cmp.learn.2,低,Gentle
+tenant.cmp.learn.3,—,—
+tenant.cmp.learn.4,低 · 注解驱动,Gentle · annotation-driven
+tenant.cmp.time,上线周期,Time to launch
+tenant.cmp.time.1,2–4 周,2–4 weeks
+tenant.cmp.time.2,1–2 周 + 业务层改造,1–2 weeks + business layer
+tenant.cmp.time.3,1–3 个月,1–3 months
+tenant.cmp.time.4,1–2 天,1–2 days
+tenant.cta.title,一次买断，源码交付,"One-time purchase, full source"
+tenant.cta.buy,查看 Pro 方案 →,See Pro plans →
+tenant.cta.p1.t,源码私有仓库,Private source repo
+tenant.cta.p1.p,付款后将你的 GitHub 账号加为私有仓库 erupts/erupt-tenant 的协作者。,"After payment your GitHub account is added as a collaborator on the private repo erupts/erupt-tenant."
+tenant.cta.p2.t,含后续版本,Future versions included
+tenant.cta.p2.p,一次购买持续更新，不限项目数量，可用于商业项目。,"One purchase, ongoing updates, unlimited projects, commercial use allowed."
+tenant.cta.p3.t,禁止二次分发,No redistribution
+tenant.cta.p3.p,源码不得转售或开源；仓库权限开通后不支持退款。,Source may not be resold or open-sourced; no refunds once access is granted.
