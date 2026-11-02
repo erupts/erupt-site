@@ -1,0 +1,708 @@
+<style>
+    /* ── Erupt Config — Playful-Brutalist, paper admin + green "profile layer" accent ── */
+    .cf {
+        --cf: #93D655;
+        --cf-soft: #EEF9DF;
+        --cf-mute: #5C5647;
+    }
+
+    /* ── Hero: split ── */
+    .cf-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+        min-height: 520px;
+    }
+
+    .cf-hero-l {
+        padding: 64px 48px 56px;
+        border-right: 1px solid var(--c-border);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cf-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--cf-mute);
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .cf-h1 {
+        font-size: clamp(34px, 4.4vw, 54px);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -.03em;
+        color: var(--c-text);
+        margin: 0 0 16px;
+    }
+
+    .cf-h1 em {
+        font-style: normal;
+        display: inline-block;
+        color: var(--c-text);
+        background: var(--cf);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        padding: 0 14px 4px;
+        transform: rotate(-1deg);
+    }
+
+    .cf-tagline {
+        font-size: clamp(17px, 1.8vw, 22px);
+        font-weight: 700;
+        letter-spacing: -.01em;
+        color: var(--c-text);
+        margin: 0 0 14px;
+    }
+
+    .cf-badge {
+        display: inline-block;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        color: var(--c-text);
+        padding: 4px 10px 3px;
+        font-size: 10.5px;
+        font-weight: 700;
+        font-family: var(--c-mono);
+        letter-spacing: .10em;
+        text-transform: uppercase;
+        margin: 3px 4px 3px 0;
+    }
+
+    .cf-wbtn-g { background: var(--cf); }
+    .cf-wbtn-g:hover { background: var(--cf); color: var(--c-text) !important; }
+
+    .cf-hero-r {
+        min-width: 0;
+        padding: 32px;
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* ── Admin page mockup ── */
+    .cf-win {
+        background: var(--c-paper);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .cf-win-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-bottom: 1px solid var(--c-border);
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        color: var(--cf-mute);
+    }
+
+    .cf-win-bar b { color: var(--c-text); font-weight: 800; white-space: nowrap; }
+    .cf-win-bar > span { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .cf-win-btn {
+        font-family: var(--c-mono);
+        font-size: 9px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border: 1.5px solid var(--c-border);
+        color: var(--c-text);
+        background: var(--c-paper);
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .cf-win-btn.on { background: var(--cf); font-weight: 700; }
+
+    .cf-win-body { display: grid; grid-template-columns: 132px 1fr; min-height: 300px; }
+
+    .cf-tree {
+        border-right: 1px solid var(--c-border);
+        padding: 12px 0;
+        background: rgba(20, 18, 11, .025);
+    }
+
+    .cf-tree-lab {
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--cf-mute);
+        padding: 0 14px 8px;
+    }
+
+    .cf-tree-it {
+        padding: 6px 14px;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        color: var(--c-text);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .cf-tree-it i {
+        width: 7px;
+        height: 7px;
+        border: 1.5px solid var(--c-border);
+        display: inline-block;
+        background: var(--c-paper);
+        flex-shrink: 0;
+    }
+
+    .cf-tree-it.on { background: var(--cf); font-weight: 700; }
+    .cf-tree-it.on i { background: var(--c-text); }
+
+    .cf-tree-it em {
+        font-style: normal;
+        margin-left: auto;
+        font-size: 8.5px;
+        color: var(--cf-mute);
+    }
+
+    .cf-tree-it.on em { color: var(--c-text); }
+
+    .cf-tbl {
+        display: grid;
+        grid-template-columns: 1.4fr 70px 1.6fr 36px;
+        font-size: 11px;
+        align-content: start;
+    }
+
+    .cf-tbl > span {
+        padding: 7px 12px;
+        border-bottom: 1px solid rgba(20, 18, 11, .12);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 32px;
+    }
+
+    .cf-tbl .hd {
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--cf-mute);
+        background: rgba(20, 18, 11, .04);
+        min-height: 26px;
+    }
+
+    .cf-tbl .k { font-family: var(--c-mono); font-weight: 700; color: var(--c-text); }
+
+    .cf-tbl .t {
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        letter-spacing: .08em;
+        color: var(--cf-mute);
+        text-transform: uppercase;
+    }
+
+    .cf-tbl .v { color: var(--c-text); font-family: var(--c-mono); font-size: 10.5px; }
+    .cf-tbl .v .sw { width: 12px; height: 12px; border: 1.5px solid var(--c-border); display: inline-block; }
+    .cf-tbl .v .tg { border: 1px solid var(--c-border); padding: 0 5px; font-size: 9px; }
+    .cf-tbl .v .img { width: 26px; height: 16px; border: 1.5px solid var(--c-border); background: linear-gradient(135deg, var(--cf) 50%, var(--c-cyan) 50%); display: inline-block; }
+    .cf-tbl .v .sec { letter-spacing: .1em; color: var(--cf-mute); }
+
+    .cf-tbl .sw-on, .cf-tbl .sw-off {
+        width: 22px;
+        height: 12px;
+        border: 1.5px solid var(--c-border);
+        position: relative;
+        display: inline-block;
+        background: var(--cf);
+    }
+
+    .cf-tbl .sw-off { background: var(--c-paper); }
+
+    .cf-tbl .sw-on::after, .cf-tbl .sw-off::after {
+        content: '';
+        position: absolute;
+        top: 1px;
+        width: 7px;
+        height: 7px;
+        background: var(--c-text);
+    }
+
+    .cf-tbl .sw-on::after { right: 1px; }
+    .cf-tbl .sw-off::after { left: 1px; }
+
+    .cf-tbl .off > * { opacity: .45; }
+
+    .cf-win-foot {
+        border-top: 1px solid var(--c-border);
+        padding: 7px 14px;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        color: var(--cf-mute);
+        display: flex;
+        gap: 14px;
+        align-items: center;
+    }
+
+    .cf-win-foot b { color: var(--c-text); }
+    .cf-win-foot .pulse { width: 7px; height: 7px; background: var(--cf); border: 1.5px solid var(--c-border); animation: cfPulse 2.4s infinite; }
+
+    @keyframes cfPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .25; }
+    }
+
+    /* ── Stat strip ── */
+    .cf-stat { text-align: center; padding: 28px 24px; }
+
+    .cf-stat b {
+        display: block;
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: -.04em;
+        color: var(--c-text);
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    .cf-stat span {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--cf-mute);
+    }
+
+    /* ── Step cells ── */
+    .cf-ghost {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 48px;
+        font-weight: 800;
+        font-family: var(--c-mono);
+        color: var(--c-text);
+        opacity: .05;
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -.04em;
+    }
+
+    .cf-icon { font-size: 1.5em; line-height: 1; margin-bottom: 12px; display: block; }
+
+    .cf-tag {
+        display: inline-block;
+        border: 1px solid var(--c-border);
+        color: var(--cf-mute);
+        padding: 1px 7px;
+        font-size: 9.5px;
+        font-family: var(--c-mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        vertical-align: middle;
+        margin-left: 6px;
+    }
+
+    .cf-code-mini {
+        display: block;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        background: rgba(20, 18, 11, .04);
+        border: 1px solid var(--c-border);
+        padding: 8px 10px;
+        color: var(--c-text);
+        margin-top: 12px;
+        line-height: 1.6;
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    /* ── Precedence stack ── */
+    .cf-stack { display: flex; flex-direction: column; gap: 0; margin-top: 6px; }
+
+    .cf-layer {
+        border: 2px solid var(--c-border);
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--c-paper);
+        margin-bottom: -2px;
+    }
+
+    .cf-layer.top { background: var(--cf); box-shadow: 4px 4px 0 var(--c-text); position: relative; z-index: 2; }
+    .cf-layer.mid { background: var(--cf-soft); position: relative; z-index: 1; margin-left: 10px; }
+    .cf-layer.base { margin-left: 20px; background: rgba(20, 18, 11, .03); }
+
+    .cf-layer b { font-family: var(--c-mono); font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .cf-layer span { font-size: 12px; color: var(--cf-mute); line-height: 1.5; }
+    .cf-layer em { font-style: normal; margin-left: auto; font-family: var(--c-mono); font-size: 9px; letter-spacing: .1em; color: var(--cf-mute); white-space: nowrap; }
+
+    .cf-arrow {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--cf-mute);
+        padding: 8px 0 6px 4px;
+    }
+
+    /* ── Dark code window ── */
+    .cf-code {
+        background: var(--c-code-bg);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .cf-code-bar {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 16px;
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
+    }
+
+    .cf-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .cf-code-title { flex: 1; text-align: center; font-size: 11px; font-family: var(--c-mono); color: rgba(240, 232, 214, .35); }
+
+    .cf-code pre {
+        margin: 0;
+        padding: 18px 22px;
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        line-height: 1.75;
+        color: var(--c-code-text);
+        overflow-x: auto;
+    }
+
+    .cf-code .a { color: var(--c-cyan); }
+    .cf-code .k { color: var(--c-purple); }
+    .cf-code .s { color: var(--c-green); }
+    .cf-code .c { color: rgba(240, 232, 214, .35); font-style: italic; }
+
+    /* ── Value types ── */
+    .cf-types { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+    .cf-type {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .06em;
+        border: 1.5px solid var(--c-border);
+        padding: 4px 9px;
+        background: var(--c-paper);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--c-text);
+    }
+
+    .cf-type i { font-style: normal; font-size: 11px; line-height: 1; }
+    .cf-type.flat { background: var(--cf-soft); }
+
+    /* ── Comparison table ── */
+    .cf-cmp {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr 1.4fr 1.6fr;
+        font-size: 12.5px;
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-paper);
+    }
+
+    .cf-cmp > span {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--c-border);
+        border-right: 1px solid var(--c-border);
+        line-height: 1.55;
+        color: var(--cf-mute);
+    }
+
+    .cf-cmp > span:nth-child(4n) { border-right: 0; }
+    .cf-cmp > span:nth-last-child(-n+4) { border-bottom: 0; }
+    .cf-cmp > span:nth-child(4n+1) { font-weight: 700; color: var(--c-text); background: rgba(20, 18, 11, .03); }
+    .cf-cmp > span:nth-child(4n) { background: var(--cf-soft); color: var(--c-text); }
+
+    .cf-cmp .hd {
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--c-text) !important;
+        font-weight: 800;
+        background: rgba(20, 18, 11, .06) !important;
+    }
+
+    .cf-cmp .hd:nth-child(4) { background: var(--cf) !important; }
+
+    /* ── Cost cells ── */
+    .cf-cost-k {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .08em;
+        color: #B42318;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* ── Reveal ── */
+    .cf-reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .cf-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1280px) {
+        .cf-win-bar > span { display: none; }
+    }
+
+    @media (max-width: 1000px) {
+        .cf-hero { grid-template-columns: 1fr; }
+        .cf-hero-l { border-right: 0; border-bottom: 1px solid var(--c-border); padding: 48px 32px; }
+        .cf .g4 { grid-template-columns: 1fr 1fr; }
+        .cf .g4 > .c:nth-child(4n) { border-right: 1px solid var(--c-border); }
+        .cf .g4 > .c:nth-child(2n) { border-right: none; }
+        .cf-cmp { grid-template-columns: 1fr 1fr; }
+        .cf-cmp > span:nth-child(4n) { border-right: 1px solid var(--c-border); }
+        .cf-cmp > span:nth-child(2n) { border-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+        .cf .g2, .cf .g3, .cf .g4 { grid-template-columns: 1fr; }
+        .cf .c { border-right: none !important; }
+        .cf-hero-l { padding: 40px 20px; }
+        .cf-hero-r { padding: 20px; }
+        .cf-win-body { grid-template-columns: 1fr; }
+        .cf-tree { border-right: 0; border-bottom: 1px solid var(--c-border); display: flex; flex-wrap: wrap; padding: 8px; }
+        .cf-tree-lab { display: none; }
+        .cf-tbl { grid-template-columns: 1.2fr 1.4fr 32px; }
+        .cf-tbl > span:nth-child(4n+2) { display: none; }
+    }
+</style>
+
+<div class="cf" ng-controller="config">
+    <div class="fr">
+
+        <!-- §1 HERO -->
+        <div class="r cf-hero">
+            <div class="cf-hero-l">
+                <span class="cf-eyebrow">Apache 2.0 · erupt-plugin / erupt-config</span>
+                <h1 class="cf-h1">Erupt <em>Config</em></h1>
+                <p class="cf-tagline">{{'cfg.hero.tagline'|i18n}}</p>
+                <p class="sub" style="max-width:46ch;margin-bottom:22px">{{'cfg.hero.subtitle'|i18n}}</p>
+                <div style="margin-bottom:24px">
+                    <span class="cf-badge">{{'cfg.badge.value'|i18n}}</span>
+                    <span class="cf-badge">{{'cfg.badge.profile'|i18n}}</span>
+                    <span class="cf-badge">{{'cfg.badge.live'|i18n}}</span>
+                    <span class="cf-badge">{{'cfg.badge.types'|i18n}}</span>
+                </div>
+                <div style="display:flex;gap:14px;flex-wrap:wrap">
+                    <a class="wbtn cf-wbtn-g"
+                       ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/topics/runtime-config-property-source"
+                       target="_blank">{{'cfg.hero.btn.doc'|i18n}}</a>
+                    <a class="wbtn" href="https://github.com/erupts/erupt/tree/master/erupt-plugin/erupt-config"
+                       target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="cf-hero-r">
+                <div class="cf-win">
+                    <div class="cf-win-bar">
+                        <b>Config</b>
+                        <span>profile: prod · 9 items · spring.profiles.active=prod</span>
+                        <span class="cf-win-btn">{{'cfg.mock.copy'|i18n}}</span>
+                        <span class="cf-win-btn">{{'cfg.mock.effective'|i18n}}</span>
+                        <span class="cf-win-btn on">{{'cfg.mock.refresh'|i18n}}</span>
+                    </div>
+                    <div class="cf-win-body">
+                        <div class="cf-tree">
+                            <div class="cf-tree-lab">Profiles</div>
+                            <div class="cf-tree-it"><i></i>default<em>14</em></div>
+                            <div class="cf-tree-it"><i></i>dev<em>3</em></div>
+                            <div class="cf-tree-it on"><i></i>prod<em>9</em></div>
+                            <div class="cf-tree-it"><i></i>staging<em>2</em></div>
+                        </div>
+                        <div class="cf-tbl">
+                            <span class="hd">key</span><span class="hd">type</span><span class="hd">value</span><span class="hd">on</span>
+                            <span class="k">app.mail.host</span><span class="t">string</span><span class="v">smtp.example.com</span><span><i class="sw-on"></i></span>
+                            <span class="k">app.mail.password</span><span class="t">password</span><span class="v"><i class="sec">••••••••</i></span><span><i class="sw-on"></i></span>
+                            <span class="k">app.order.timeout</span><span class="t">number</span><span class="v">1800</span><span><i class="sw-on"></i></span>
+                            <span class="k">app.feature.beta</span><span class="t">boolean</span><span class="v">true</span><span><i class="sw-on"></i></span>
+                            <span class="k">app.banner.color</span><span class="t">color</span><span class="v"><i class="sw" style="background:#93D655"></i>#93D655</span><span><i class="sw-on"></i></span>
+                            <span class="k">app.banner.image</span><span class="t">image</span><span class="v"><i class="img"></i>banner-1103.png</span><span><i class="sw-on"></i></span>
+                            <span class="k">app.pay.channels</span><span class="t">list</span><span class="v"><i class="tg">alipay</i><i class="tg">wechat</i><i class="tg">stripe</i></span><span><i class="sw-on"></i></span>
+                            <span class="k">app.rate.limit</span><span class="t">yaml</span><span class="v">{ qps: 200, burst: 50 }</span><span><i class="sw-on"></i></span>
+                            <span class="k off"><i>app.legacy.sync</i></span><span class="t off"><i>boolean</i></span><span class="v off"><i>{{'cfg.mock.fallback'|i18n}}</i></span><span><i class="sw-off"></i></span>
+                        </div>
+                    </div>
+                    <div class="cf-win-foot">
+                        <span class="pulse"></span>
+                        <span><b>{{'cfg.mock.saved'|i18n}}</b> app.order.timeout · 1 key · 3 nodes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §2 STAT STRIP -->
+        <div class="g4 r cf-reveal">
+            <div class="c no-bb cf-stat"><b>17</b><span>{{'cfg.stat.types'|i18n}}</span></div>
+            <div class="c no-bb cf-stat"><b>0</b><span>{{'cfg.stat.api'|i18n}}</span></div>
+            <div class="c no-bb cf-stat"><b>0</b><span>{{'cfg.stat.service'|i18n}}</span></div>
+            <div class="c no-bb cf-stat"><b>3</b><span>{{'cfg.stat.layers'|i18n}}</span></div>
+        </div>
+
+        <!-- §3 HOW VALUES REACH THE APP -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-g">PropertySource</span>
+            <h2 class="h2">{{'cfg.flow.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'cfg.flow.subtitle'|i18n}}</p>
+        </div>
+        <div class="g3 r cf-reveal">
+            <div class="c no-bb" ng-repeat="s in steps">
+                <span class="cf-ghost">0{{$index+1}}</span>
+                <span class="cf-icon">{{s.icon}}</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{s.title}}</h3>
+                    <span class="cf-tag">{{s.tag}}</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{s.desc}}</p>
+                <code class="cf-code-mini">{{s.code}}</code>
+            </div>
+        </div>
+
+        <!-- §4 CODE + PRECEDENCE -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-g">@Value</span>
+            <h2 class="h2">{{'cfg.read.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'cfg.read.subtitle'|i18n}}</p>
+        </div>
+        <div class="g2 r cf-reveal">
+            <div class="c">
+                <div class="cf-code">
+                    <div class="cf-code-bar">
+                        <div class="cf-dot" style="background:#ff5f56"></div>
+                        <div class="cf-dot" style="background:#ffbd2e"></div>
+                        <div class="cf-dot" style="background:#27c93f"></div>
+                        <span class="cf-code-title">MailService.java</span>
+                    </div>
+<pre><span class="a">@Value</span>(<span class="s">"${app.mail.host:localhost}"</span>)   <span class="c">// {{'cfg.code.c1'|i18n}}</span>
+<span class="k">private</span> String mailHost;
+
+<span class="a">@Resource</span>
+<span class="k">private</span> EruptConfig config;
+
+<span class="k">int</span> port = config.get(Keys.MAIL_PORT, Integer.<span class="k">class</span>, <span class="s">25</span>);
+<span class="c">// {{'cfg.code.c2'|i18n}}</span>
+
+<span class="a">@EventListener</span>
+<span class="k">void</span> on(EruptConfigRefreshedEvent event) {
+    <span class="k">if</span> (event.getKeys().contains(<span class="s">"app.mail.host"</span>)) {
+        mailClient.reconnect();           <span class="c">// {{'cfg.code.c3'|i18n}}</span>
+    }
+}</pre>
+                </div>
+            </div>
+            <div class="c">
+                <h3 class="h3">{{'cfg.prec.title'|i18n}}</h3>
+                <p class="sub" style="font-size:12.5px;margin-bottom:16px">{{'cfg.prec.lede'|i18n}}</p>
+                <div class="cf-stack">
+                    <div class="cf-layer top"><b>prod</b><span>{{'cfg.prec.l1'|i18n}}</span><em>spring.profiles.active</em></div>
+                    <div class="cf-layer mid"><b>default</b><span>{{'cfg.prec.l2'|i18n}}</span><em>e_config_item</em></div>
+                    <div class="cf-layer base"><b>application*.yml</b><span>{{'cfg.prec.l3'|i18n}}</span><em>files</em></div>
+                </div>
+                <div class="cf-arrow">▲ {{'cfg.prec.note'|i18n}}</div>
+                <code class="cf-code-mini">spring:
+  profiles:
+    active: prod        # {{'cfg.yaml.c1'|i18n}}
+erupt:
+  config:
+    refresh-seconds: 0  # {{'cfg.yaml.c2'|i18n}}</code>
+            </div>
+        </div>
+
+        <!-- §5 VALUE TYPES -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-g">17 Types</span>
+            <h2 class="h2">{{'cfg.types.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'cfg.types.subtitle'|i18n}}</p>
+        </div>
+        <div class="g4 r cf-reveal">
+            <div class="c no-bb" ng-repeat="g in typeGroups">
+                <h3 class="h3">{{g.title}}</h3>
+                <p class="sub" style="font-size:12.5px">{{g.desc}}</p>
+                <div class="cf-types">
+                    <span class="cf-type" ng-class="{flat: t.flat}" ng-repeat="t in g.items"><i>{{t.icon}}</i>{{t.name}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- §6 COMPARISON -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-g">Comparison</span>
+            <h2 class="h2">{{'cfg.cmp.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'cfg.cmp.subtitle'|i18n}}</p>
+        </div>
+        <div class="r cf-reveal" style="padding:40px">
+            <div class="cf-cmp">
+                <span class="hd"></span>
+                <span class="hd">{{'cfg.cmp.h1'|i18n}}</span>
+                <span class="hd">{{'cfg.cmp.h2'|i18n}}</span>
+                <span class="hd">erupt-config</span>
+                <span ng-repeat-start="r in cmpRows">{{r.k}}</span>
+                <span>{{r.a}}</span>
+                <span>{{r.b}}</span>
+                <span ng-repeat-end>{{r.c}}</span>
+            </div>
+        </div>
+
+        <!-- §7 COSTS -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-g">{{'cfg.cost.tag'|i18n}}</span>
+            <h2 class="h2">{{'cfg.cost.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'cfg.cost.subtitle'|i18n}}</p>
+        </div>
+        <div class="g4 r cf-reveal">
+            <div class="c no-bb" ng-repeat="c in costs">
+                <span class="cf-cost-k">{{c.key}}</span>
+                <h3 class="h3">{{c.title}}</h3>
+                <p class="sub" style="font-size:13px">{{c.desc}}</p>
+            </div>
+        </div>
+
+        <!-- §8 CTA -->
+        <div class="r g-bg ticks only-before" style="padding:56px 40px;text-align:center">
+            <div style="font-size:2.4em;margin-bottom:12px">⚙️</div>
+            <h2 class="h2">{{'cfg.cta.title'|i18n}}</h2>
+            <p class="sub" style="max-width:480px;margin:0 auto 24px">{{'cfg.cta.subtitle'|i18n}}</p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn cf-wbtn-g"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/topics/runtime-config-property-source"
+                   target="_blank">{{'cfg.cta.doc'|i18n}}</a>
+                <a class="wbtn" href="#!/cloud">{{'cfg.cta.cloud'|i18n}}</a>
+            </div>
+        </div>
+        <div class="ticks"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.cf-reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    })();
+</script>

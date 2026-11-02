@@ -1,0 +1,367 @@
+<style>
+    /* ── AI Decision — Playful-Brutalist, dark probability panel + yellow accent ── */
+    .dc {
+        --dc: #FCE566;
+        --dc-dim: rgba(252, 229, 102, .12);
+        --dc-border: rgba(252, 229, 102, .3);
+        --dc-grid: rgba(252, 229, 102, .05);
+        --dc-t2: rgba(240, 232, 214, .55);
+        --dc-t3: rgba(240, 232, 214, .30);
+        --dc-line: rgba(240, 232, 214, .12);
+    }
+
+    .dc-hero {
+        padding: 72px 40px 56px;
+        text-align: center;
+        background-color: var(--c-code-bg);
+        background-image: linear-gradient(var(--dc-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--dc-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+
+    .dc-eyebrow { font-family: var(--c-mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--dc); display: block; margin-bottom: 14px; }
+    .dc-h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -.03em; color: var(--c-code-text); margin: 0 0 16px; }
+    .dc-sub-d { font-size: 14.5px; line-height: 1.65; color: var(--dc-t2); margin: 0; }
+    .dc-cursor { display: inline-block; width: 4px; height: .78em; background: var(--dc); margin-left: 6px; vertical-align: baseline; animation: dc-blink 1s step-end infinite; }
+
+    @keyframes dc-blink { 0%, 100% { opacity: 1 } 50% { opacity: 0 } }
+
+    .dc-badge { display: inline-block; background: var(--dc-dim); border: 1px solid var(--dc-border); color: var(--dc); padding: 4px 10px 3px; font-size: 10.5px; font-weight: 700; font-family: var(--c-mono); letter-spacing: .10em; text-transform: uppercase; margin: 3px 2px; }
+
+    .dc-btn, .dc-btn-ghost { display: inline-flex; align-items: center; gap: 7px; padding: 9px 20px; border: 2px solid var(--c-border); font-size: 13px; font-weight: 800; cursor: pointer; text-decoration: none !important; transition: transform .15s, box-shadow .15s, border-color .15s; font-family: var(--c-sans); line-height: 1; white-space: nowrap; margin: 4px; }
+    .dc-btn { color: #14120B !important; background: var(--dc); box-shadow: 4px 4px 0 rgba(252, 229, 102, .3); }
+    .dc-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 rgba(252, 229, 102, .3); }
+    .dc-btn-ghost { border-color: rgba(240, 232, 214, .35); color: var(--c-code-text) !important; background: transparent; box-shadow: 4px 4px 0 rgba(240, 232, 214, .18); }
+    .dc-btn-ghost:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 rgba(240, 232, 214, .18); border-color: rgba(240, 232, 214, .6); }
+    .dc-wbtn-y { background: var(--dc); }
+    .dc-wbtn-y:hover { background: var(--dc); color: var(--c-text) !important; }
+
+    /* ── Dark windows ── */
+    .dc-win { background: var(--c-code-bg); border: 2px solid var(--c-border); box-shadow: var(--c-shadow); overflow: hidden; text-align: left; height: 100%; }
+    .dc-win-bar { display: flex; align-items: center; gap: 7px; padding: 9px 16px; border-bottom: 1px solid var(--dc-line); }
+    .dc-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .dc-win-title { flex: 1; text-align: center; font-size: 11px; font-family: var(--c-mono); color: var(--dc-t3); }
+    .dc-chip { font-family: var(--c-mono); font-size: 9.5px; color: var(--dc); border: 1px solid var(--dc-border); padding: 2px 8px; letter-spacing: .06em; white-space: nowrap; }
+    .dc-win pre { margin: 0; padding: 18px 22px; font-family: var(--c-mono); font-size: 11.5px; line-height: 1.75; color: var(--c-code-text); overflow-x: auto; }
+    .dc-win .a { color: var(--c-cyan); }
+    .dc-win .k { color: var(--c-purple); }
+    .dc-win .s { color: var(--c-green); }
+    .dc-win .y { color: var(--dc); }
+    .dc-win .c { color: rgba(240, 232, 214, .35); font-style: italic; }
+
+    /* ── Answer panel ── */
+    .dc-ans { padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; }
+    .dc-label { font-size: 10px; color: var(--dc-t3); letter-spacing: 1.5px; text-transform: uppercase; font-family: var(--c-mono); }
+    .dc-state { border: 1px solid var(--dc-line); padding: 10px 12px; font-size: 12px; color: var(--c-code-text); line-height: 1.55; }
+    .dc-state::before { content: 'state · '; font-family: var(--c-mono); font-size: 9.5px; color: var(--dc-t3); letter-spacing: .1em; text-transform: uppercase; }
+
+    .dc-a { border: 1px solid var(--dc-line); padding: 10px 12px; animation: dcLine 8s infinite both; }
+    .dc-a-h { display: flex; align-items: center; gap: 8px; font-family: var(--c-mono); font-size: 10.5px; color: var(--dc-t2); margin-bottom: 8px; }
+    .dc-a-h b { color: var(--c-code-text); font-weight: 700; }
+    .dc-a-h i { font-style: normal; font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; border: 1px solid var(--dc-border); color: var(--dc); padding: 1px 6px; }
+    .dc-a-h em { font-style: normal; margin-left: auto; color: var(--dc); font-weight: 700; }
+
+    .dc-bar { display: grid; grid-template-columns: 90px 1fr 42px; align-items: center; gap: 8px; font-family: var(--c-mono); font-size: 10.5px; color: var(--dc-t2); margin: 3px 0; }
+    .dc-bar i { height: 7px; background: var(--dc-line); position: relative; }
+    .dc-bar i::after { content: ''; position: absolute; inset: 0; width: var(--w); background: var(--dc); animation: dcGrow 8s infinite both; }
+    .dc-bar.win { color: var(--c-code-text); font-weight: 700; }
+    .dc-bar.win i::after { background: var(--c-green); }
+    .dc-bar span:last-child { text-align: right; }
+
+    .dc-branch { font-family: var(--c-mono); font-size: 11px; color: var(--c-green); border: 1px solid rgba(147, 214, 85, .35); background: rgba(147, 214, 85, .12); padding: 8px 12px; animation: dcLine 8s infinite both; animation-delay: 2.4s; }
+    .dc-branch::before { content: '→ '; }
+    .dc-usage { font-family: var(--c-mono); font-size: 10px; color: var(--dc-t3); margin-top: auto; }
+
+    .dc-d1 { animation-delay: .4s; } .dc-d2 { animation-delay: 1s; } .dc-d3 { animation-delay: 1.6s; }
+
+    @keyframes dcLine { 0% { opacity: 0; transform: translateY(5px); } 6% { opacity: 1; transform: translateY(0); } 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    @keyframes dcGrow { 0%, 8% { width: 0; } 20%, 100% { width: var(--w); } }
+
+    /* ── Paper cells ── */
+    .dc-ghost { position: absolute; top: 16px; right: 20px; font-size: 48px; font-weight: 800; font-family: var(--c-mono); color: var(--c-text); opacity: .05; line-height: 1; pointer-events: none; letter-spacing: -.04em; }
+    .dc-icon { font-size: 1.5em; line-height: 1; margin-bottom: 12px; display: block; }
+    .dc-tag { display: inline-block; border: 1px solid var(--c-border); color: var(--c-text2); padding: 1px 7px; font-size: 9.5px; font-family: var(--c-mono); letter-spacing: .12em; text-transform: uppercase; vertical-align: middle; margin-left: 6px; }
+    .dc-stat { text-align: center; padding: 28px 24px; }
+    .dc-stat b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -.04em; color: var(--c-text); line-height: 1; margin-bottom: 8px; }
+    .dc-stat span { font-family: var(--c-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--c-text2); }
+    .dc-mini { display: block; font-family: var(--c-mono); font-size: 11px; background: rgba(20, 18, 11, .04); border: 1px solid var(--c-border); padding: 8px 10px; color: var(--c-text); margin-top: 12px; line-height: 1.6; white-space: pre; overflow-x: auto; }
+
+    .dc-type-k { font-family: var(--c-mono); font-size: 22px; font-weight: 800; letter-spacing: -.02em; color: var(--c-text); display: inline-block; background: var(--dc); border: 2px solid var(--c-border); box-shadow: 3px 3px 0 var(--c-text); padding: 2px 12px; margin-bottom: 14px; }
+    .dc-type-row { display: grid; grid-template-columns: 64px 1fr; gap: 6px 10px; font-size: 12.5px; margin-top: 10px; }
+    .dc-type-row em { font-style: normal; font-family: var(--c-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--c-text2); padding-top: 3px; }
+    .dc-type-row span { color: var(--c-text); line-height: 1.5; }
+
+    .dc-pt { display: flex; gap: 12px; padding: 13px 0; border-bottom: 1px dashed var(--c-border); }
+    .dc-pt:last-child { border-bottom: 0; padding-bottom: 0; }
+    .dc-pt:first-child { padding-top: 0; }
+    .dc-pt-ic { font-size: 1.2em; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+    .dc-pt-t { font-weight: 700; font-size: 13.5px; color: var(--c-text); margin-bottom: 3px; }
+    .dc-pt-d { font-size: 12.5px; line-height: 1.6; color: var(--c-text2); }
+
+    /* ── Decision form mockup (paper) ── */
+    .dc-form { border: 2px solid var(--c-border); box-shadow: var(--c-shadow); background: var(--c-paper); }
+    .dc-form-bar { padding: 8px 14px; border-bottom: 1px solid var(--c-border); font-family: var(--c-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--c-text2); display: flex; justify-content: space-between; }
+    .dc-form-bar b { color: var(--c-text); }
+    .dc-form-body { padding: 14px 16px; }
+    .dc-f { display: grid; grid-template-columns: 90px 1fr; gap: 6px 10px; font-size: 11.5px; margin-bottom: 12px; }
+    .dc-f em { font-style: normal; color: var(--c-text2); font-family: var(--c-mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; padding-top: 3px; }
+    .dc-f span { border: 1.5px solid var(--c-border); padding: 3px 8px; font-family: var(--c-mono); font-size: 11px; color: var(--c-text); }
+    .dc-f span.on { background: #FFF8D6; }
+    .dc-qt { display: grid; grid-template-columns: 1fr 64px 2fr; font-family: var(--c-mono); font-size: 10.5px; border: 1.5px solid var(--c-border); }
+    .dc-qt span { padding: 6px 9px; border-bottom: 1px solid rgba(20, 18, 11, .15); border-right: 1px solid rgba(20, 18, 11, .15); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dc-qt span:nth-child(3n) { border-right: 0; color: var(--c-text2); }
+    .dc-qt span:nth-last-child(-n+3) { border-bottom: 0; }
+    .dc-qt .hd { font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--c-text2); background: rgba(20, 18, 11, .04); }
+    .dc-qt .t { font-weight: 800; color: var(--c-text); }
+
+    /* ── Provider cards ── */
+    .dc-prov { border: 2px solid var(--c-border); box-shadow: 3px 3px 0 var(--c-text); padding: 16px 18px; background: var(--c-paper); margin-bottom: 18px; }
+    .dc-prov:last-child { margin-bottom: 0; }
+    .dc-prov-h { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .dc-prov-h b { font-size: 15px; font-weight: 800; color: var(--c-text); }
+    .dc-prov-h i { font-style: normal; font-family: var(--c-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; border: 1.5px solid var(--c-border); padding: 1px 7px; }
+    .dc-prov-h i.y { background: var(--dc); }
+    .dc-prov p { font-size: 12.5px; color: var(--c-text2); line-height: 1.6; margin: 0 0 8px; }
+    .dc-prov code { font-family: var(--c-mono); font-size: 10.5px; color: var(--c-text); background: rgba(20, 18, 11, .05); border: 1px solid var(--c-border); padding: 2px 6px; margin-right: 4px; white-space: nowrap; display: inline-block; margin-top: 4px; }
+
+    .dc-reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .dc-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1000px) {
+        .dc .g4 { grid-template-columns: 1fr 1fr; }
+        .dc .g4 > .c:nth-child(4n) { border-right: 1px solid var(--c-border); }
+        .dc .g4 > .c:nth-child(2n) { border-right: none; }
+    }
+
+    @media (max-width: 768px) {
+        .dc-hero { padding: 48px 20px 40px; }
+        .dc .g2, .dc .g3, .dc .g4 { grid-template-columns: 1fr; }
+        .dc .c { border-right: none !important; }
+        .dc-chip { display: none; }
+        .dc-qt { grid-template-columns: 1fr 64px; }
+        .dc-qt span:nth-child(3n) { display: none; }
+    }
+</style>
+
+<div class="dc" ng-controller="aiDecision">
+    <div class="fr">
+
+        <!-- §1 HERO -->
+        <div class="r dc-hero">
+            <span class="dc-eyebrow">Apache 2.0 · xyz.erupt.decision · ≥ 2.3.0</span>
+            <h1 class="dc-h1">🎯 Erupt<span style="color:var(--dc)"> AI Decision</span><span class="dc-cursor"></span></h1>
+            <p class="dc-sub-d" style="max-width:640px;margin:0 auto 24px">{{'dcs.hero.subtitle'|i18n}}</p>
+            <div style="margin-bottom:22px">
+                <span class="dc-badge">{{'dcs.badge.typed'|i18n}}</span>
+                <span class="dc-badge">{{'dcs.badge.prob'|i18n}}</span>
+                <span class="dc-badge">{{'dcs.badge.noprompt'|i18n}}</span>
+                <span class="dc-badge">{{'dcs.badge.standalone'|i18n}}</span>
+            </div>
+            <div>
+                <a class="dc-btn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-decision" target="_blank">{{'dcs.hero.btn.doc'|i18n}}</a>
+                <a class="dc-btn-ghost" href="https://github.com/erupts/erupt/tree/master/erupt-ai/erupt-ai-decision" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <!-- §2 DEMO: code + answers -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">Demo</span>
+            <h2 class="h2">{{'dcs.demo.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'dcs.demo.subtitle'|i18n}}</p>
+        </div>
+        <div class="g2 r dc-reveal">
+            <div class="c">
+                <div class="dc-win">
+                    <div class="dc-win-bar">
+                        <div class="dc-dot" style="background:#ff5f56"></div>
+                        <div class="dc-dot" style="background:#ffbd2e"></div>
+                        <div class="dc-dot" style="background:#27c93f"></div>
+                        <span class="dc-win-title">TicketService.java</span>
+                    </div>
+<pre><span class="c">// {{'dcs.demo.c1'|i18n}}</span>
+<span class="k">static final</span> Noul URGENT = Noul.of(<span class="s">"Does this convey urgency?"</span>);
+<span class="k">static final</span> Choice&lt;Dept&gt; DEPT = Choice.of(<span class="s">"Which team should handle this?"</span>, Dept.<span class="k">class</span>);
+<span class="k">static final</span> Score MOOD = Score.of(<span class="s">"How frustrated is the customer?"</span>,
+        <span class="s">"Calm"</span>, <span class="s">"Frustrated"</span>, <span class="s">"Very angry"</span>);
+
+<span class="c">// {{'dcs.demo.c2'|i18n}}</span>
+<span class="k">if</span> (Decisions.of(ticket).ask(URGENT).<span class="y">yes(0.9)</span>) escalate(ticket);
+
+<span class="c">// {{'dcs.demo.c3'|i18n}}</span>
+Decision d = Decisions.of(ticket).ask(URGENT, DEPT, MOOD);
+d.get(DEPT).<span class="y">above(0.8)</span>
+   .ifPresentOrElse(<span class="k">this</span>::route, () -&gt; queueForHuman(ticket));
+
+<span class="c">// {{'dcs.demo.c4'|i18n}}</span>
+<span class="k">enum</span> Dept <span class="k">implements</span> Criteria {
+    BILLING(<span class="s">"Invoices, refunds, payment failures"</span>),
+    TECH(<span class="s">"Bugs, errors, integration problems"</span>),
+    SALES(<span class="s">"Pricing, upgrades, new licenses"</span>);
+}</pre>
+                </div>
+            </div>
+            <div class="c">
+                <div class="dc-win">
+                    <div class="dc-win-bar">
+                        <div class="dc-dot" style="background:#ff5f56"></div>
+                        <div class="dc-dot" style="background:#ffbd2e"></div>
+                        <div class="dc-dot" style="background:#27c93f"></div>
+                        <span class="dc-win-title">Decision · jev-2026-06-01</span>
+                        <span class="dc-chip">1 round trip · 84 tokens</span>
+                    </div>
+                    <div class="dc-ans">
+                        <div class="dc-state">{{'dcs.demo.state'|i18n}}</div>
+                        <div class="dc-a dc-d1">
+                            <div class="dc-a-h"><i>noul</i><b>URGENT</b><em>0.93</em></div>
+                            <div class="dc-bar win"><span>yes</span><i style="--w:93%"></i><span>0.93</span></div>
+                        </div>
+                        <div class="dc-a dc-d2">
+                            <div class="dc-a-h"><i>choice</i><b>DEPT</b><span>confidence</span><em>0.88</em></div>
+                            <div class="dc-bar win"><span>BILLING</span><i style="--w:91%"></i><span>0.91</span></div>
+                            <div class="dc-bar"><span>TECH</span><i style="--w:6%"></i><span>0.06</span></div>
+                            <div class="dc-bar"><span>SALES</span><i style="--w:3%"></i><span>0.03</span></div>
+                        </div>
+                        <div class="dc-a dc-d3">
+                            <div class="dc-a-h"><i>score</i><b>MOOD</b><span>confidence 0.71</span><em>1.05</em></div>
+                            <div class="dc-bar"><span>0 Calm</span><i style="--w:12%"></i><span>0.12</span></div>
+                            <div class="dc-bar win"><span>1 Frustrated</span><i style="--w:71%"></i><span>0.71</span></div>
+                            <div class="dc-bar"><span>2 Very angry</span><i style="--w:17%"></i><span>0.17</span></div>
+                        </div>
+                        <div class="dc-branch">escalate(ticket) · route(BILLING)</div>
+                        <div class="dc-usage">usage · input_tokens 84 · output_tokens 0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §3 STATS -->
+        <div class="g4 r dc-reveal">
+            <div class="c no-bb dc-stat"><b>3</b><span>{{'dcs.stat.types'|i18n}}</span></div>
+            <div class="c no-bb dc-stat"><b>1</b><span>{{'dcs.stat.trip'|i18n}}</span></div>
+            <div class="c no-bb dc-stat"><b>0</b><span>{{'dcs.stat.parse'|i18n}}</span></div>
+            <div class="c no-bb dc-stat"><b>2</b><span>{{'dcs.stat.providers'|i18n}}</span></div>
+        </div>
+
+        <!-- §4 THREE TYPES -->
+        <div class="r g-bg g-bg-y ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">PrimitiveType</span>
+            <h2 class="h2">{{'dcs.type.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'dcs.type.subtitle'|i18n}}</p>
+        </div>
+        <div class="g3 r dc-reveal">
+            <div class="c no-bb" ng-repeat="x in types">
+                <span class="dc-ghost">0{{$index+1}}</span>
+                <span class="dc-type-k">{{x.k}}</span>
+                <div class="dc-type-row">
+                    <em>{{'dcs.type.ask'|i18n}}</em><span>{{x.ask}}</span>
+                    <em>{{'dcs.type.get'|i18n}}</em><span>{{x.get}}</span>
+                    <em>{{'dcs.type.use'|i18n}}</em><span>{{x.use}}</span>
+                </div>
+                <code class="dc-mini">{{x.code}}</code>
+            </div>
+        </div>
+
+        <!-- §5 DEFINE IN ADMIN -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">Admin-defined</span>
+            <h2 class="h2">{{'dcs.adm.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'dcs.adm.subtitle'|i18n}}</p>
+        </div>
+        <div class="g2 r dc-reveal">
+            <div class="c">
+                <div class="dc-form">
+                    <div class="dc-form-bar"><b>{{'dcs.adm.menu'|i18n}}</b><span>ticket_triage</span></div>
+                    <div class="dc-form-body">
+                        <div class="dc-f">
+                            <em>{{'dcs.adm.f.code'|i18n}}</em><span class="on">ticket_triage</span>
+                            <em>{{'dcs.adm.f.model'|i18n}}</em><span>{{'dcs.adm.f.default'|i18n}}</span>
+                            <em>{{'dcs.adm.f.status'|i18n}}</em><span>{{'dcs.adm.f.active'|i18n}}</span>
+                        </div>
+                        <div class="dc-qt">
+                            <span class="hd">{{'dcs.adm.q.code'|i18n}}</span><span class="hd">{{'dcs.adm.q.type'|i18n}}</span><span class="hd">{{'dcs.adm.q.criteria'|i18n}}</span>
+                            <span>urgent</span><span class="t">NOUL</span><span>Does this convey urgency?</span>
+                            <span>refund_requested</span><span class="t">NOUL</span><span>{{'dcs.adm.q.r2'|i18n}}</span>
+                            <span>dept</span><span class="t">CHOICE</span><span>BILLING / TECH / SALES</span>
+                            <span>mood</span><span class="t">SCORE</span><span>Calm → Frustrated → Very angry</span>
+                        </div>
+                    </div>
+                </div>
+                <code class="dc-mini">Decision d = Decisions.run("ticket_triage", ticket);
+d.noul("refund_requested").yes();
+d.choice("dept").value();      // "BILLING"
+d.score("mood").level();       // 1</code>
+            </div>
+            <div class="c">
+                <div class="dc-pt" ng-repeat="p in admin">
+                    <span class="dc-pt-ic">{{p.icon}}</span>
+                    <div>
+                        <div class="dc-pt-t">{{p.title}}</div>
+                        <div class="dc-pt-d">{{p.desc}}</div>
+                    </div>
+                </div>
+                <code class="dc-mini">POST /erupt-api/decision/ticket_triage?model=jev
+{ "state": "Hi, I was charged twice this month…" }
+
+→ { "answers": { "urgent": { "noul": 0.93 }, "dept": { "choice": "BILLING", … } } }</code>
+            </div>
+        </div>
+
+        <!-- §6 PROVIDERS -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">System One</span>
+            <h2 class="h2">{{'dcs.prov.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'dcs.prov.subtitle'|i18n}}</p>
+        </div>
+        <div class="g2 r dc-reveal">
+            <div class="c">
+                <div class="dc-prov">
+                    <div class="dc-prov-h"><b>TypeSafe Jev</b><i class="y">hosted</i><i>api key</i></div>
+                    <p>{{'dcs.prov.jev'|i18n}}</p>
+                    <code>https://api.typesafe.ai</code><code>jev-latest</code><code>CHOICE ≤ 255</code>
+                </div>
+                <div class="dc-prov">
+                    <div class="dc-prov-h"><b>Laya</b><i class="y">Apache 2.0</i><i>self-hosted</i></div>
+                    <p>{{'dcs.prov.laya'|i18n}}</p>
+                    <code>http://127.0.0.1:8000</code><code>auto · english · multilingual · typed-decisions</code><code>FastAPI sidecar + Dockerfile</code>
+                </div>
+            </div>
+            <div class="c">
+                <div class="dc-pt" ng-repeat="p in rules">
+                    <span class="dc-pt-ic">{{p.icon}}</span>
+                    <div>
+                        <div class="dc-pt-t">{{p.title}}</div>
+                        <div class="dc-pt-d">{{p.desc}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §7 CTA -->
+        <div class="r g-bg g-bg-y ticks only-before" style="padding:56px 40px;text-align:center">
+            <div style="font-size:2.4em;margin-bottom:12px">🎯</div>
+            <h2 class="h2">{{'dcs.cta.title'|i18n}}</h2>
+            <p class="sub" style="max-width:460px;margin:0 auto 24px">{{'dcs.cta.subtitle'|i18n}}</p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-decision" target="_blank">{{'dcs.cta.doc'|i18n}}</a>
+                <a class="wbtn" href="#!/flow">{{'dcs.cta.flow'|i18n}}</a>
+            </div>
+        </div>
+        <div class="ticks"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.dc-reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    })();
+</script>

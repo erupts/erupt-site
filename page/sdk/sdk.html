@@ -1,0 +1,507 @@
+<style>
+    /* ── Erupt SDK — Playful-Brutalist, polyglot nodes + brand cyan accent ── */
+    .sk {
+        --sk: #4FC8EC;
+        --sk-soft: #E3F6FC;
+        --sk-mute: #5C5647;
+    }
+
+    .sk-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+        min-height: 520px;
+    }
+
+    .sk-hero-l {
+        padding: 64px 48px 56px;
+        border-right: 1px solid var(--c-border);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .sk-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--sk-mute);
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .sk-h1 {
+        font-size: clamp(34px, 4.4vw, 54px);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -.03em;
+        color: var(--c-text);
+        margin: 0 0 16px;
+    }
+
+    .sk-h1 em {
+        font-style: normal;
+        display: inline-block;
+        color: var(--c-text);
+        background: var(--sk);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        padding: 0 14px 4px;
+        transform: rotate(-1deg);
+    }
+
+    .sk-tagline {
+        font-size: clamp(17px, 1.8vw, 22px);
+        font-weight: 700;
+        letter-spacing: -.01em;
+        color: var(--c-text);
+        margin: 0 0 14px;
+    }
+
+    .sk-badge {
+        display: inline-block;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        color: var(--c-text);
+        padding: 4px 10px 3px;
+        font-size: 10.5px;
+        font-weight: 700;
+        font-family: var(--c-mono);
+        letter-spacing: .10em;
+        text-transform: uppercase;
+        margin: 3px 4px 3px 0;
+    }
+
+    .sk-hero-r {
+        min-width: 0;
+        padding: 32px;
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* ── Code window with language tabs ── */
+    .sk-code {
+        background: var(--c-code-bg);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .sk-code-bar {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 14px;
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
+    }
+
+    .sk-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    .sk-tabs { margin-left: auto; display: flex; gap: 2px; }
+
+    .sk-tab {
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        padding: 3px 9px;
+        border: 1px solid rgba(240, 232, 214, .2);
+        color: rgba(240, 232, 214, .5);
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .sk-tab:hover { color: var(--c-code-text); }
+    .sk-tab.on { background: var(--sk); color: #14120B; border-color: var(--sk); font-weight: 700; }
+
+    .sk-code pre {
+        margin: 0;
+        padding: 18px 22px;
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        line-height: 1.75;
+        color: var(--c-code-text);
+        overflow-x: auto;
+        min-height: 300px;
+    }
+
+    .sk-code .a { color: var(--c-cyan); }
+    .sk-code .k { color: var(--c-purple); }
+    .sk-code .s { color: var(--c-green); }
+    .sk-code .c { color: rgba(240, 232, 214, .35); font-style: italic; }
+
+    .sk-code-foot {
+        border-top: 1px solid rgba(240, 232, 214, .12);
+        padding: 8px 14px;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        color: rgba(240, 232, 214, .5);
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .sk-code-foot b { color: var(--sk); font-weight: 700; }
+
+    /* ── Stats ── */
+    .sk-stat { text-align: center; padding: 28px 24px; }
+    .sk-stat b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -.04em; color: var(--c-text); line-height: 1; margin-bottom: 8px; }
+    .sk-stat span { font-family: var(--c-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--sk-mute); }
+
+    /* ── Language cards ── */
+    .sk-lang-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+
+    .sk-lang-ava {
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--c-border);
+        box-shadow: 2px 2px 0 var(--c-text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--c-mono);
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--c-text);
+        flex-shrink: 0;
+    }
+
+    .sk-lang-name { font-size: 15px; font-weight: 800; color: var(--c-text); line-height: 1.2; }
+    .sk-lang-req { font-family: var(--c-mono); font-size: 10px; color: var(--sk-mute); margin-top: 2px; }
+
+    .sk-lang-pkg {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        color: var(--c-code-text);
+        background: var(--c-code-bg);
+        border: 1px solid var(--c-border);
+        padding: 6px 10px;
+        margin: 8px 0 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .sk-lang-pkg i { font-style: normal; color: rgba(240, 232, 214, .4); }
+
+    .sk-lang-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .sk-lang-meta span {
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        letter-spacing: .06em;
+        color: var(--sk-mute);
+        border: 1px solid var(--c-border);
+        padding: 2px 7px;
+    }
+
+    .sk-lang-meta span.on { color: var(--c-text); background: var(--sk-soft); }
+
+    /* ── Contract split ── */
+    .sk-ghost {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 48px;
+        font-weight: 800;
+        font-family: var(--c-mono);
+        color: var(--c-text);
+        opacity: .05;
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -.04em;
+    }
+
+    .sk-icon { font-size: 1.5em; line-height: 1; margin-bottom: 12px; display: block; }
+
+    .sk-tag {
+        display: inline-block;
+        border: 1px solid var(--c-border);
+        color: var(--sk-mute);
+        padding: 1px 7px;
+        font-size: 9.5px;
+        font-family: var(--c-mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        vertical-align: middle;
+        margin-left: 6px;
+    }
+
+    .sk-side {
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-paper);
+        height: 100%;
+    }
+
+    .sk-side-bar {
+        padding: 9px 14px;
+        border-bottom: 1px solid var(--c-border);
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--c-text);
+        font-weight: 800;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sk-side-bar.srv { background: var(--sk); }
+    .sk-side-bar.node { background: var(--c-code-bg); color: var(--c-code-text); }
+    .sk-side-bar em { font-style: normal; font-weight: 400; font-size: 9px; opacity: .7; }
+
+    .sk-side-body { padding: 14px 16px; }
+
+    .sk-li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 7px 0;
+        border-bottom: 1px dashed rgba(20, 18, 11, .2);
+        font-size: 12.5px;
+        color: var(--c-text);
+        line-height: 1.5;
+    }
+
+    .sk-li:last-child { border-bottom: 0; }
+    .sk-li i { font-style: normal; flex-shrink: 0; width: 16px; text-align: center; }
+    .sk-li.off { color: var(--sk-mute); }
+    .sk-li.off i { color: #B42318; }
+
+    .sk-ep {
+        display: grid;
+        grid-template-columns: 56px 1.3fr 1fr;
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        border: 1.5px solid var(--c-border);
+    }
+
+    .sk-ep span { padding: 6px 10px; border-bottom: 1px solid rgba(20, 18, 11, .15); border-right: 1px solid rgba(20, 18, 11, .15); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sk-ep span:nth-child(3n) { border-right: 0; color: var(--sk-mute); font-family: var(--c-sans); font-size: 11.5px; }
+    .sk-ep span:nth-last-child(-n+3) { border-bottom: 0; }
+    .sk-ep .m { font-weight: 800; }
+    .sk-ep .hd { font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--sk-mute); background: rgba(20, 18, 11, .04); font-family: var(--c-mono); }
+
+    .sk-mini {
+        display: block;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        background: rgba(20, 18, 11, .04);
+        border: 1px solid var(--c-border);
+        padding: 8px 10px;
+        color: var(--c-text);
+        margin-top: 12px;
+        line-height: 1.6;
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    /* ── Pipeline (keep in step) ── */
+    .sk-pipe-code {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        color: var(--c-text);
+        border: 1.5px solid var(--c-border);
+        padding: 6px 10px;
+        margin-top: 12px;
+        display: inline-block;
+        background: var(--sk-soft);
+    }
+
+    /* ── Reveal ── */
+    .sk-reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .sk-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1000px) {
+        .sk-hero { grid-template-columns: 1fr; }
+        .sk-hero-l { border-right: 0; border-bottom: 1px solid var(--c-border); padding: 48px 32px; }
+        .sk .g4 { grid-template-columns: 1fr 1fr; }
+        .sk .g4 > .c:nth-child(4n) { border-right: 1px solid var(--c-border); }
+        .sk .g4 > .c:nth-child(2n) { border-right: none; }
+    }
+
+    @media (max-width: 768px) {
+        .sk .g2, .sk .g3, .sk .g4 { grid-template-columns: 1fr; }
+        .sk .c { border-right: none !important; }
+        .sk-hero-l { padding: 40px 20px; }
+        .sk-hero-r { padding: 20px; }
+        .sk-ep { grid-template-columns: 56px 1fr; }
+        .sk-ep span:nth-child(3n) { display: none; }
+    }
+</style>
+
+<div class="sk" ng-controller="sdk">
+    <div class="fr">
+
+        <!-- §1 HERO -->
+        <div class="r sk-hero">
+            <div class="sk-hero-l">
+                <span class="sk-eyebrow">Apache 2.0 · erupt-sdk · 9 languages · 1 protocol</span>
+                <h1 class="sk-h1">Erupt <em>SDK</em></h1>
+                <p class="sk-tagline">{{'sdk.hero.tagline'|i18n}}</p>
+                <p class="sub" style="max-width:46ch;margin-bottom:22px">{{'sdk.hero.subtitle'|i18n}}</p>
+                <div style="margin-bottom:24px">
+                    <span class="sk-badge">{{'sdk.badge.langs'|i18n}}</span>
+                    <span class="sk-badge">{{'sdk.badge.deps'|i18n}}</span>
+                    <span class="sk-badge">{{'sdk.badge.protocol'|i18n}}</span>
+                    <span class="sk-badge">{{'sdk.badge.conformance'|i18n}}</span>
+                </div>
+                <div style="display:flex;gap:14px;flex-wrap:wrap">
+                    <a class="wbtn wbtn-o"
+                       ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/topics/cloud-node-protocol"
+                       target="_blank">{{'sdk.hero.btn.doc'|i18n}}</a>
+                    <a class="wbtn" href="https://github.com/erupt-io/erupt-sdk" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="sk-hero-r">
+                <div class="sk-code">
+                    <div class="sk-code-bar">
+                        <div class="sk-dot" style="background:#ff5f56"></div>
+                        <div class="sk-dot" style="background:#ffbd2e"></div>
+                        <div class="sk-dot" style="background:#27c93f"></div>
+                        <div class="sk-tabs">
+                            <span class="sk-tab" ng-repeat="s in samples" ng-class="{on: s === sample}" ng-click="sample = s">{{s.name}}</span>
+                        </div>
+                    </div>
+                    <pre ng-bind-html="sample.code"></pre>
+                    <div class="sk-code-foot">
+                        <span><b>1</b> {{'sdk.mock.step1'|i18n}}</span>
+                        <span><b>2</b> {{'sdk.mock.step2'|i18n}}</span>
+                        <span><b>3</b> {{'sdk.mock.step3'|i18n}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §2 STATS -->
+        <div class="g4 r sk-reveal">
+            <div class="c no-bb sk-stat"><b>9</b><span>{{'sdk.stat.langs'|i18n}}</span></div>
+            <div class="c no-bb sk-stat"><b>7</b><span>{{'sdk.stat.endpoints'|i18n}}</span></div>
+            <div class="c no-bb sk-stat"><b>0</b><span>{{'sdk.stat.deps'|i18n}}</span></div>
+            <div class="c no-bb sk-stat"><b>1</b><span>{{'sdk.stat.schema'|i18n}}</span></div>
+        </div>
+
+        <!-- §3 LANGUAGES -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag">9 Languages</span>
+            <h2 class="h2">{{'sdk.lang.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'sdk.lang.subtitle'|i18n}}</p>
+        </div>
+        <div class="g3 r sk-reveal">
+            <div class="c" ng-repeat="l in langs" ng-class="{'no-bb': $index > 5}">
+                <div class="sk-lang-head">
+                    <span class="sk-lang-ava" ng-style="{background: l.bg}">{{l.ini}}</span>
+                    <div>
+                        <div class="sk-lang-name">{{l.name}}</div>
+                        <div class="sk-lang-req">{{l.req}}</div>
+                    </div>
+                </div>
+                <div class="sk-lang-pkg"><i>{{l.reg}} · </i>{{l.pkg}}</div>
+                <div class="sk-lang-meta">
+                    <span ng-class="{on: l.zero}">{{l.zero ? ('sdk.lang.zero'|i18n) : l.deps}}</span>
+                    <span ng-if="l.note">{{l.note}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- §4 CONTRACT: server does / node does -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag">Protocol</span>
+            <h2 class="h2">{{'sdk.proto.title'|i18n}}</h2>
+            <p class="sub" style="max-width:600px;margin:0 auto">{{'sdk.proto.subtitle'|i18n}}</p>
+        </div>
+        <div class="g2 r sk-reveal">
+            <div class="c">
+                <div class="sk-side">
+                    <div class="sk-side-bar srv">{{'sdk.proto.server'|i18n}}<em>erupt-cloud</em></div>
+                    <div class="sk-side-body">
+                        <div class="sk-li" ng-repeat="x in serverDoes"><i>✓</i><span>{{x}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="c">
+                <div class="sk-side">
+                    <div class="sk-side-bar node">{{'sdk.proto.node'|i18n}}<em>Level 0 · 7 endpoints</em></div>
+                    <div class="sk-side-body">
+                        <div class="sk-ep">
+                            <span class="hd">method</span><span class="hd">path</span><span class="hd">{{'sdk.proto.ep.role'|i18n}}</span>
+                            <span class="m" ng-repeat-start="e in endpoints">{{e.m}}</span>
+                            <span>{{e.p}}</span>
+                            <span ng-repeat-end>{{e.d}}</span>
+                        </div>
+                        <p class="sub" style="font-size:12px;margin-top:12px">{{'sdk.proto.levels'|i18n}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §5 WHAT EVERY SDK SERVES -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag">Every SDK</span>
+            <h2 class="h2">{{'sdk.feat.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'sdk.feat.subtitle'|i18n}}</p>
+        </div>
+        <div class="g3 r sk-reveal">
+            <div class="c" ng-repeat="f in features" ng-class="{'no-bb': $index > 2}">
+                <span class="sk-ghost">0{{$index+1}}</span>
+                <span class="sk-icon">{{f.icon}}</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{f.title}}</h3>
+                    <span class="sk-tag">{{f.tag}}</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{f.desc}}</p>
+                <code class="sk-mini" ng-if="f.code">{{f.code}}</code>
+            </div>
+        </div>
+
+        <!-- §6 KEEPING IN STEP -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag">schema/</span>
+            <h2 class="h2">{{'sdk.sync.title'|i18n}}</h2>
+            <p class="sub" style="max-width:600px;margin:0 auto">{{'sdk.sync.subtitle'|i18n}}</p>
+        </div>
+        <div class="g4 r sk-reveal">
+            <div class="c no-bb" ng-repeat="s in sync">
+                <span class="sk-ghost">0{{$index+1}}</span>
+                <span class="sk-icon">{{s.icon}}</span>
+                <h3 class="h3">{{s.title}}</h3>
+                <p class="sub" style="font-size:13px">{{s.desc}}</p>
+                <span class="sk-pipe-code">{{s.code}}</span>
+            </div>
+        </div>
+
+        <!-- §7 CTA -->
+        <div class="r g-bg ticks only-before" style="padding:56px 40px;text-align:center">
+            <div style="font-size:2.4em;margin-bottom:12px">🧰</div>
+            <h2 class="h2">{{'sdk.cta.title'|i18n}}</h2>
+            <p class="sub" style="max-width:480px;margin:0 auto 24px">{{'sdk.cta.subtitle'|i18n}}</p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o" href="https://github.com/erupt-io/erupt-sdk" target="_blank">{{'sdk.cta.github'|i18n}}</a>
+                <a class="wbtn" href="#!/cloud">{{'sdk.cta.cloud'|i18n}}</a>
+            </div>
+        </div>
+        <div class="ticks"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.sk-reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    })();
+</script>

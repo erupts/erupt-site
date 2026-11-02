@@ -1,0 +1,662 @@
+<style>
+    /* ── Form Designer — Playful-Brutalist, paper canvas + purple "drag" accent ── */
+    .dg {
+        --dg: #BCA0F2;
+        --dg-soft: #F1EAFD;
+        --dg-mute: #5C5647;
+    }
+
+    .dg-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        min-height: 520px;
+    }
+
+    .dg-hero-l {
+        padding: 64px 48px 56px;
+        border-right: 1px solid var(--c-border);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .dg-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--dg-mute);
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .dg-h1 {
+        font-size: clamp(34px, 4.4vw, 54px);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -.03em;
+        color: var(--c-text);
+        margin: 0 0 16px;
+    }
+
+    .dg-h1 em {
+        font-style: normal;
+        display: inline-block;
+        color: var(--c-text);
+        background: var(--dg);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        padding: 0 14px 4px;
+        transform: rotate(-1deg);
+    }
+
+    .dg-tagline {
+        font-size: clamp(17px, 1.8vw, 22px);
+        font-weight: 700;
+        letter-spacing: -.01em;
+        color: var(--c-text);
+        margin: 0 0 14px;
+    }
+
+    .dg-badge {
+        display: inline-block;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        color: var(--c-text);
+        padding: 4px 10px 3px;
+        font-size: 10.5px;
+        font-weight: 700;
+        font-family: var(--c-mono);
+        letter-spacing: .10em;
+        text-transform: uppercase;
+        margin: 3px 4px 3px 0;
+    }
+
+    .dg-wbtn-v { background: var(--dg); }
+    .dg-wbtn-v:hover { background: var(--dg); color: var(--c-text) !important; }
+
+    .dg-hero-r {
+        min-width: 0;
+        padding: 32px;
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* ── Designer mockup ── */
+    .dg-win {
+        background: var(--c-paper);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .dg-win-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-bottom: 1px solid var(--c-border);
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        color: var(--dg-mute);
+    }
+
+    .dg-win-bar b { color: var(--c-text); font-weight: 800; white-space: nowrap; }
+    .dg-win-bar .warn { color: #B45309; white-space: nowrap; }
+    .dg-win-bar > .sp { flex: 1; }
+
+    .dg-win-btn {
+        font-family: var(--c-mono);
+        font-size: 9px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border: 1.5px solid var(--c-border);
+        color: var(--c-text);
+        background: var(--c-paper);
+        white-space: nowrap;
+    }
+
+    .dg-win-btn.pub { background: var(--c-green); font-weight: 700; box-shadow: 2px 2px 0 var(--c-text); }
+
+    .dg-win-body { display: grid; grid-template-columns: 118px 1fr 136px; min-height: 320px; }
+
+    .dg-pal {
+        border-right: 1px solid var(--c-border);
+        padding: 10px;
+        background: rgba(20, 18, 11, .025);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .dg-pal-lab {
+        font-family: var(--c-mono);
+        font-size: 8px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--dg-mute);
+        margin: 4px 0 1px;
+    }
+
+    .dg-pal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+
+    .dg-pal-it {
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        font-size: 8.5px;
+        padding: 3px 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: var(--c-text);
+        cursor: grab;
+    }
+
+    .dg-pal-it.drag { background: var(--dg); box-shadow: 2px 2px 0 var(--c-text); transform: rotate(-3deg); }
+
+    .dg-canvas {
+        padding: 14px;
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 16px 16px;
+    }
+
+    .dg-form {
+        background: var(--c-paper);
+        border: 1.5px solid var(--c-border);
+        padding: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+
+    .dg-fld { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .dg-fld.w3 { grid-column: 1 / -1; }
+    .dg-fld label { font-size: 9.5px; color: var(--c-text); font-weight: 600; }
+
+    .dg-fld .in {
+        height: 20px;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        color: var(--dg-mute);
+        padding: 0 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .dg-fld .sw { width: 24px; height: 13px; border: 1.5px solid var(--c-border); background: var(--c-green); position: relative; }
+    .dg-fld .sw::after { content: ''; position: absolute; top: 1px; right: 1px; width: 8px; height: 8px; background: var(--c-text); }
+
+    .dg-fld.sel { outline: 2px solid var(--c-border); outline-offset: 4px; background: var(--dg-soft); position: relative; }
+    .dg-fld.sel .in { height: 34px; border-style: dashed; justify-content: center; letter-spacing: .1em; }
+    .dg-fld.sel::after {
+        content: 'field7 · SIGNATURE';
+        position: absolute;
+        right: 2px;
+        bottom: -1px;
+        font-family: var(--c-mono);
+        font-size: 7.5px;
+        color: var(--dg-mute);
+    }
+
+    .dg-fld .ops {
+        position: absolute;
+        top: -14px;
+        right: -2px;
+        display: flex;
+        gap: 2px;
+    }
+
+    .dg-fld .ops i {
+        width: 14px;
+        height: 14px;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        font-size: 8px;
+        font-style: normal;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dg-drop {
+        grid-column: 1 / -1;
+        border: 1.5px dashed var(--dg);
+        background: rgba(188, 160, 242, .12);
+        height: 26px;
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        color: var(--dg-mute);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: .1em;
+        animation: dgDrop 2.2s ease-in-out infinite;
+    }
+
+    @keyframes dgDrop {
+        0%, 100% { opacity: .55; }
+        50% { opacity: 1; }
+    }
+
+    .dg-prop {
+        border-left: 1px solid var(--c-border);
+        padding: 10px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        background: rgba(20, 18, 11, .025);
+    }
+
+    .dg-prop-t { font-size: 10px; font-weight: 800; color: var(--c-text); margin-bottom: 2px; }
+    .dg-prop label { font-size: 8.5px; color: var(--dg-mute); display: block; margin-bottom: 2px; }
+    .dg-prop label.req::before { content: '* '; color: #B42318; }
+
+    .dg-prop .in {
+        height: 18px;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        padding: 0 5px;
+        display: flex;
+        align-items: center;
+        color: var(--c-text);
+    }
+
+    .dg-prop .tg { display: flex; align-items: center; justify-content: space-between; font-size: 8.5px; color: var(--c-text); }
+    .dg-prop .tg i { width: 20px; height: 11px; border: 1.5px solid var(--c-border); background: var(--c-paper); position: relative; }
+    .dg-prop .tg i::after { content: ''; position: absolute; top: 1px; left: 1px; width: 6px; height: 6px; background: var(--c-text); }
+    .dg-prop .tg i.on { background: var(--dg); }
+    .dg-prop .tg i.on::after { left: auto; right: 1px; }
+
+    /* ── Stats ── */
+    .dg-stat { text-align: center; padding: 28px 24px; }
+    .dg-stat b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -.04em; color: var(--c-text); line-height: 1; margin-bottom: 8px; }
+    .dg-stat span { font-family: var(--c-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--dg-mute); }
+
+    /* ── Steps ── */
+    .dg-ghost {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 48px;
+        font-weight: 800;
+        font-family: var(--c-mono);
+        color: var(--c-text);
+        opacity: .05;
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -.04em;
+    }
+
+    .dg-icon { font-size: 1.5em; line-height: 1; margin-bottom: 12px; display: block; }
+
+    .dg-tag {
+        display: inline-block;
+        border: 1px solid var(--c-border);
+        color: var(--dg-mute);
+        padding: 1px 7px;
+        font-size: 9.5px;
+        font-family: var(--c-mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        vertical-align: middle;
+        margin-left: 6px;
+    }
+
+    .dg-mini {
+        display: block;
+        font-family: var(--c-mono);
+        font-size: 11px;
+        background: rgba(20, 18, 11, .04);
+        border: 1px solid var(--c-border);
+        padding: 8px 10px;
+        color: var(--c-text);
+        margin-top: 12px;
+        line-height: 1.6;
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    /* ── Dark code ── */
+    .dg-code {
+        background: var(--c-code-bg);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .dg-code-bar { display: flex; align-items: center; gap: 7px; padding: 9px 16px; border-bottom: 1px solid rgba(240, 232, 214, .12); }
+    .dg-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dg-code-title { flex: 1; text-align: center; font-size: 11px; font-family: var(--c-mono); color: rgba(240, 232, 214, .35); }
+    .dg-code pre { margin: 0; padding: 18px 22px; font-family: var(--c-mono); font-size: 11.5px; line-height: 1.75; color: var(--c-code-text); overflow-x: auto; }
+    .dg-code .a { color: var(--c-cyan); }
+    .dg-code .k { color: var(--c-purple); }
+    .dg-code .s { color: var(--c-green); }
+    .dg-code .c { color: rgba(240, 232, 214, .35); font-style: italic; }
+
+    .dg-pt { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px dashed var(--c-border); }
+    .dg-pt:last-child { border-bottom: 0; padding-bottom: 0; }
+    .dg-pt:first-child { padding-top: 0; }
+    .dg-pt-ic { font-size: 1.2em; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+    .dg-pt-t { font-weight: 700; font-size: 13.5px; color: var(--c-text); margin-bottom: 3px; }
+    .dg-pt-d { font-size: 12.5px; line-height: 1.6; color: var(--dg-mute); }
+
+    /* ── Component chips ── */
+    .dg-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+    .dg-chip {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .04em;
+        border: 1.5px solid var(--c-border);
+        padding: 4px 9px;
+        background: var(--c-paper);
+        color: var(--c-text);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .dg-chip i { font-style: normal; font-size: 11px; line-height: 1; }
+    .dg-chip.ref { background: var(--dg-soft); }
+
+    /* ── Storage: table mockup ── */
+    .dg-tbl {
+        border: 1.5px solid var(--c-border);
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1.3fr;
+    }
+
+    .dg-tbl span { padding: 6px 10px; border-bottom: 1px solid rgba(20, 18, 11, .15); border-right: 1px solid rgba(20, 18, 11, .15); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dg-tbl span:nth-child(3n) { border-right: 0; }
+    .dg-tbl span:nth-last-child(-n+3) { border-bottom: 0; }
+    .dg-tbl .hd { font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--dg-mute); background: rgba(20, 18, 11, .04); }
+    .dg-tbl .j { color: var(--dg-mute); }
+    .dg-tbl .new { background: var(--dg-soft); }
+
+    /* ── Reveal ── */
+    .dg-reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .dg-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1000px) {
+        .dg-hero { grid-template-columns: 1fr; }
+        .dg-hero-l { border-right: 0; border-bottom: 1px solid var(--c-border); padding: 48px 32px; }
+        .dg .g4 { grid-template-columns: 1fr 1fr; }
+        .dg .g4 > .c:nth-child(4n) { border-right: 1px solid var(--c-border); }
+        .dg .g4 > .c:nth-child(2n) { border-right: none; }
+        .dg-win-body { grid-template-columns: 1fr; }
+        .dg-pal, .dg-prop { display: none; }
+    }
+
+    @media (max-width: 768px) {
+        .dg .g2, .dg .g3, .dg .g4 { grid-template-columns: 1fr; }
+        .dg .c { border-right: none !important; }
+        .dg-hero-l { padding: 40px 20px; }
+        .dg-hero-r { padding: 20px; }
+        .dg-form { grid-template-columns: 1fr 1fr; }
+        .dg-win-bar .warn, .dg-win-bar .dg-win-btn:not(.pub) { display: none; }
+    }
+</style>
+
+<div class="dg" ng-controller="designer">
+    <div class="fr">
+
+        <!-- §1 HERO -->
+        <div class="r dg-hero">
+            <div class="dg-hero-l">
+                <span class="dg-eyebrow">Apache 2.0 · erupt-designer · ≥ 2.0.0</span>
+                <h1 class="dg-h1">Form <em>Designer</em></h1>
+                <p class="dg-tagline">{{'dsn.hero.tagline'|i18n}}</p>
+                <p class="sub" style="max-width:46ch;margin-bottom:22px">{{'dsn.hero.subtitle'|i18n}}</p>
+                <div style="margin-bottom:24px">
+                    <span class="dg-badge">{{'dsn.badge.drag'|i18n}}</span>
+                    <span class="dg-badge">{{'dsn.badge.publish'|i18n}}</span>
+                    <span class="dg-badge">{{'dsn.badge.export'|i18n}}</span>
+                    <span class="dg-badge">{{'dsn.badge.restart'|i18n}}</span>
+                </div>
+                <div style="display:flex;gap:14px;flex-wrap:wrap">
+                    <a class="wbtn dg-wbtn-v"
+                       ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-designer"
+                       target="_blank">{{'dsn.hero.btn.doc'|i18n}}</a>
+                    <a class="wbtn" href="https://github.com/erupts/erupt/tree/master/erupt-plugin/erupt-designer"
+                       target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="dg-hero-r">
+                <div class="dg-win">
+                    <div class="dg-win-bar">
+                        <b>◫ Article</b><span class="warn">{{'dsn.mock.unpublished'|i18n}}</span>
+                        <span class="sp"></span>
+                        <span>7 fields</span>
+                        <span class="dg-win-btn">Form</span>
+                        <span class="dg-win-btn">Views</span>
+                        <span class="dg-win-btn">{{'dsn.mock.preview'|i18n}}</span>
+                        <span class="dg-win-btn pub">⇡ {{'dsn.mock.publish'|i18n}}</span>
+                    </div>
+                    <div class="dg-win-body">
+                        <div class="dg-pal">
+                            <div class="dg-pal-lab">Basic</div>
+                            <div class="dg-pal-grid">
+                                <span class="dg-pal-it">Input</span><span class="dg-pal-it">Textarea</span>
+                                <span class="dg-pal-it">Number</span><span class="dg-pal-it">Switch</span>
+                                <span class="dg-pal-it">Date</span><span class="dg-pal-it drag">Rate</span>
+                            </div>
+                            <div class="dg-pal-lab">Choice</div>
+                            <div class="dg-pal-grid">
+                                <span class="dg-pal-it">Choice</span><span class="dg-pal-it">Tags</span>
+                            </div>
+                            <div class="dg-pal-lab">Advanced</div>
+                            <div class="dg-pal-grid">
+                                <span class="dg-pal-it">Image</span><span class="dg-pal-it">Rich Text</span>
+                                <span class="dg-pal-it">Map</span><span class="dg-pal-it">Signature</span>
+                            </div>
+                            <div class="dg-pal-lab">Layout</div>
+                            <div class="dg-pal-grid">
+                                <span class="dg-pal-it">Divider</span><span class="dg-pal-it">Group</span>
+                            </div>
+                        </div>
+                        <div class="dg-canvas">
+                            <div class="dg-form">
+                                <div class="dg-fld"><label>{{'dsn.mock.f.title'|i18n}}</label><span class="in"></span></div>
+                                <div class="dg-fld"><label>{{'dsn.mock.f.views'|i18n}}</label><span class="in"><span></span><span>№</span></span></div>
+                                <div class="dg-fld"><label>{{'dsn.mock.f.featured'|i18n}}</label><span class="sw"></span></div>
+                                <div class="dg-fld"><label>{{'dsn.mock.f.status'|i18n}}</label><span class="in"><span>Draft</span><span>▾</span></span></div>
+                                <div class="dg-fld"><label>{{'dsn.mock.f.category'|i18n}}</label><span class="in"><span></span><span>⌕</span></span></div>
+                                <div class="dg-fld"><label>{{'dsn.mock.f.date'|i18n}}</label><span class="in"><span>2026-11-03</span><span>▦</span></span></div>
+                                <div class="dg-fld w3 sel">
+                                    <span class="ops"><i>⧉</i><i style="color:#B42318">✕</i></span>
+                                    <label>{{'dsn.mock.f.sign'|i18n}}</label><span class="in">✎ SIGNATURE</span>
+                                </div>
+                                <div class="dg-drop">+ {{'dsn.mock.drop'|i18n}}</div>
+                            </div>
+                        </div>
+                        <div class="dg-prop">
+                            <div class="dg-prop-t">{{'dsn.mock.p.title'|i18n}}</div>
+                            <div><label class="req">{{'dsn.mock.p.name'|i18n}}</label><span class="in">field7</span></div>
+                            <div><label class="req">{{'dsn.mock.p.label'|i18n}}</label><span class="in">{{'dsn.mock.f.sign'|i18n}}</span></div>
+                            <div><label>{{'dsn.mock.p.ph'|i18n}}</label><span class="in"></span></div>
+                            <div class="tg">{{'dsn.mock.p.req'|i18n}}<i class="on"></i></div>
+                            <div class="tg">{{'dsn.mock.p.search'|i18n}}<i></i></div>
+                            <div class="tg">{{'dsn.mock.p.sort'|i18n}}<i></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §2 STATS -->
+        <div class="g4 r dg-reveal">
+            <div class="c no-bb dg-stat"><b>27</b><span>{{'dsn.stat.comp'|i18n}}</span></div>
+            <div class="c no-bb dg-stat"><b>0</b><span>{{'dsn.stat.restart'|i18n}}</span></div>
+            <div class="c no-bb dg-stat"><b>1</b><span>{{'dsn.stat.export'|i18n}}</span></div>
+            <div class="c no-bb dg-stat"><b>1</b><span>{{'dsn.stat.db'|i18n}}</span></div>
+        </div>
+
+        <!-- §3 WORKFLOW -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-v">Workflow</span>
+            <h2 class="h2">{{'dsn.flow.title'|i18n}}</h2>
+            <p class="sub" style="max-width:560px;margin:0 auto">{{'dsn.flow.subtitle'|i18n}}</p>
+        </div>
+        <div class="g3 r dg-reveal">
+            <div class="c" ng-repeat="s in steps" ng-class="{'no-bb': $index > 2}">
+                <span class="dg-ghost">0{{$index+1}}</span>
+                <span class="dg-icon">{{s.icon}}</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{s.title}}</h3>
+                    <span class="dg-tag">{{s.tag}}</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{s.desc}}</p>
+            </div>
+        </div>
+
+        <!-- §4 EXPORT CODE -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-v">Export Code</span>
+            <h2 class="h2">{{'dsn.code.title'|i18n}}</h2>
+            <p class="sub" style="max-width:560px;margin:0 auto">{{'dsn.code.subtitle'|i18n}}</p>
+        </div>
+        <div class="g2 r dg-reveal">
+            <div class="c">
+                <div class="dg-code">
+                    <div class="dg-code-bar">
+                        <div class="dg-dot" style="background:#ff5f56"></div>
+                        <div class="dg-dot" style="background:#ffbd2e"></div>
+                        <div class="dg-dot" style="background:#27c93f"></div>
+                        <span class="dg-code-title">Article.java · {{'dsn.code.generated'|i18n}}</span>
+                    </div>
+<pre><span class="a">@Erupt</span>(name = <span class="s">"{{'dsn.mock.model'|i18n}}"</span>, orderBy = <span class="s">"id desc"</span>)
+<span class="k">public class</span> Article <span class="k">extends</span> BaseModel {
+
+    <span class="a">@EruptField</span>(
+        views = <span class="a">@View</span>(title = <span class="s">"{{'dsn.mock.f.title'|i18n}}"</span>),
+        edit  = <span class="a">@Edit</span>(title = <span class="s">"{{'dsn.mock.f.title'|i18n}}"</span>, notNull = <span class="k">true</span>, search = <span class="a">@Search</span>)
+    )
+    <span class="k">private</span> String title;
+
+    <span class="a">@EruptField</span>(
+        views = <span class="a">@View</span>(title = <span class="s">"{{'dsn.mock.f.status'|i18n}}"</span>),
+        edit  = <span class="a">@Edit</span>(title = <span class="s">"{{'dsn.mock.f.status'|i18n}}"</span>, type = EditType.CHOICE,
+                choiceType = <span class="a">@ChoiceType</span>(vl = {
+                    <span class="a">@VL</span>(value = <span class="s">"draft"</span>, label = <span class="s">"Draft"</span>),
+                    <span class="a">@VL</span>(value = <span class="s">"published"</span>, label = <span class="s">"Published"</span>)}))
+    )
+    <span class="k">private</span> String status;
+
+    <span class="a">@EruptField</span>(
+        views = <span class="a">@View</span>(title = <span class="s">"{{'dsn.mock.f.category'|i18n}}"</span>, column = <span class="s">"name"</span>),
+        edit  = <span class="a">@Edit</span>(title = <span class="s">"{{'dsn.mock.f.category'|i18n}}"</span>, type = EditType.REFERENCE_TABLE)
+    )
+    <span class="a">@ManyToOne</span>
+    <span class="k">private</span> Category category;
+    <span class="c">// …</span>
+}</pre>
+                </div>
+            </div>
+            <div class="c">
+                <div class="dg-pt" ng-repeat="p in codePoints">
+                    <span class="dg-pt-ic">{{p.icon}}</span>
+                    <div>
+                        <div class="dg-pt-t">{{p.title}}</div>
+                        <div class="dg-pt-d">{{p.desc}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §5 COMPONENTS -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-v">Components</span>
+            <h2 class="h2">{{'dsn.comp.title'|i18n}}</h2>
+            <p class="sub" style="max-width:560px;margin:0 auto">{{'dsn.comp.subtitle'|i18n}}</p>
+        </div>
+        <div class="g4 r dg-reveal">
+            <div class="c no-bb" ng-repeat="g in groups">
+                <h3 class="h3">{{g.title}}</h3>
+                <p class="sub" style="font-size:12.5px">{{g.desc}}</p>
+                <div class="dg-chips">
+                    <span class="dg-chip" ng-class="{ref: it.ref}" ng-repeat="it in g.items"><i>{{it.icon}}</i>{{it.name}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- §6 STORAGE -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-v">Storage · v2.2.0+</span>
+            <h2 class="h2">{{'dsn.store.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'dsn.store.subtitle'|i18n}}</p>
+        </div>
+        <div class="g2 r dg-reveal">
+            <div class="c">
+                <h3 class="h3">d_article</h3>
+                <p class="sub" style="font-size:12.5px;margin-bottom:12px">{{'dsn.store.tbl.lede'|i18n}}</p>
+                <div class="dg-tbl">
+                    <span class="hd">column</span><span class="hd">type</span><span class="hd">{{'dsn.store.tbl.from'|i18n}}</span>
+                    <span>id</span><span>INTEGER PK</span><span>—</span>
+                    <span>title</span><span>TEXT</span><span>INPUT</span>
+                    <span>views</span><span>INTEGER</span><span>NUMBER</span>
+                    <span>featured</span><span>INTEGER</span><span>BOOLEAN</span>
+                    <span>category</span><span class="j">TEXT · json</span><span>REFERENCE_TABLE</span>
+                    <span>tags</span><span class="j">TEXT · json</span><span>TAGS</span>
+                    <span class="new">signature</span><span class="new">TEXT</span><span class="new">+ {{'dsn.store.tbl.added'|i18n}}</span>
+                </div>
+                <code class="dg-mini">erupt:
+  designer:
+    db-path: data/designer.db   # {{'dsn.store.yaml.c1'|i18n}}
+    max-pool-size: 4            # {{'dsn.store.yaml.c2'|i18n}}</code>
+            </div>
+            <div class="c">
+                <div class="dg-pt" ng-repeat="p in storePoints">
+                    <span class="dg-pt-ic">{{p.icon}}</span>
+                    <div>
+                        <div class="dg-pt-t">{{p.title}}</div>
+                        <div class="dg-pt-d">{{p.desc}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §7 CTA -->
+        <div class="r g-bg ticks only-before" style="padding:56px 40px;text-align:center">
+            <div style="font-size:2.4em;margin-bottom:12px">🧩</div>
+            <h2 class="h2">{{'dsn.cta.title'|i18n}}</h2>
+            <p class="sub" style="max-width:480px;margin:0 auto 24px">{{'dsn.cta.subtitle'|i18n}}</p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn dg-wbtn-v"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-designer"
+                   target="_blank">{{'dsn.cta.doc'|i18n}}</a>
+                <a class="wbtn" href="#!/ai-canvas">{{'dsn.cta.canvas'|i18n}}</a>
+            </div>
+        </div>
+        <div class="ticks"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.dg-reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    })();
+</script>

@@ -88,6 +88,36 @@ var app = angular.module('app', [
             toTemplate();
             return "page/atlas/atlas.html";
         }
+    }).when('/config', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/config/config.html";
+        }
+    }).when('/designer', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/designer/designer.html";
+        }
+    }).when('/sdk', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/sdk/sdk.html";
+        }
+    }).when('/sso', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/sso/sso.html";
+        }
+    }).when('/ai-rag', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/ai-rag/ai-rag.html";
+        }
+    }).when('/ai-decision', {
+        templateUrl: function (attr) {
+            toTemplate();
+            return "page/ai-decision/ai-decision.html";
+        }
     }).when('/cube', {
         templateUrl: function (attr) {
             toTemplate();

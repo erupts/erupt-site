@@ -1,0 +1,578 @@
+<style>
+    /* ── Erupt SSO — Playful-Brutalist, paper login card + yellow "key" accent ── */
+    .so {
+        --so: #FCE566;
+        --so-soft: #FFF8D6;
+        --so-mute: #5C5647;
+    }
+
+    .so-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+        min-height: 520px;
+    }
+
+    .so-hero-l {
+        padding: 64px 48px 56px;
+        border-right: 1px solid var(--c-border);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .so-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--so-mute);
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .so-h1 {
+        font-size: clamp(34px, 4.4vw, 54px);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -.03em;
+        color: var(--c-text);
+        margin: 0 0 16px;
+    }
+
+    .so-h1 em {
+        font-style: normal;
+        display: inline-block;
+        color: var(--c-text);
+        background: var(--so);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        padding: 0 14px 4px;
+        transform: rotate(-1deg);
+    }
+
+    .so-tagline {
+        font-size: clamp(17px, 1.8vw, 22px);
+        font-weight: 700;
+        letter-spacing: -.01em;
+        color: var(--c-text);
+        margin: 0 0 14px;
+    }
+
+    .so-badge {
+        display: inline-block;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        color: var(--c-text);
+        padding: 4px 10px 3px;
+        font-size: 10.5px;
+        font-weight: 700;
+        font-family: var(--c-mono);
+        letter-spacing: .10em;
+        text-transform: uppercase;
+        margin: 3px 4px 3px 0;
+    }
+
+    .so-wbtn-y { background: var(--so); }
+    .so-wbtn-y:hover { background: var(--so); color: var(--c-text) !important; }
+
+    .so-hero-r {
+        min-width: 0;
+        padding: 32px;
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ── Login card mockup ── */
+    .so-card {
+        background: var(--c-paper);
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        width: 100%;
+        max-width: 360px;
+        padding: 26px 26px 20px;
+    }
+
+    .so-card-logo {
+        font-family: var(--c-mono);
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        color: var(--c-text);
+        margin-bottom: 4px;
+    }
+
+    .so-card-sub { font-size: 11px; color: var(--so-mute); margin-bottom: 18px; }
+
+    .so-card label { font-size: 10px; color: var(--so-mute); display: block; margin-bottom: 4px; }
+
+    .so-card .in {
+        height: 30px;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        font-family: var(--c-mono);
+        font-size: 11px;
+        color: var(--c-text);
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .so-card .in i { font-style: normal; color: var(--so-mute); letter-spacing: .15em; }
+
+    .so-card .btn-p {
+        height: 32px;
+        border: 2px solid var(--c-border);
+        background: var(--c-cyan);
+        box-shadow: 3px 3px 0 var(--c-text);
+        font-size: 12px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--c-text);
+        margin: 4px 0 18px;
+    }
+
+    .so-or {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--c-mono);
+        font-size: 9px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--so-mute);
+        margin-bottom: 12px;
+    }
+
+    .so-or::before, .so-or::after { content: ''; flex: 1; height: 1px; background: var(--c-border); }
+
+    .so-prov { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+
+    .so-prov span {
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        box-shadow: 2px 2px 0 var(--c-text);
+        padding: 7px 4px;
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--c-text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        transition: transform .15s, box-shadow .15s;
+    }
+
+    .so-prov span:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--c-text); }
+    .so-prov span i { font-style: normal; font-size: 16px; line-height: 1; }
+    .so-prov span.hi { background: var(--so); animation: soPulse 3s infinite; }
+
+    @keyframes soPulse {
+        0%, 100% { transform: translate(0, 0); box-shadow: 2px 2px 0 var(--c-text); }
+        50% { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--c-text); }
+    }
+
+    .so-redirect {
+        margin-top: 16px;
+        border: 1px dashed var(--c-border);
+        background: var(--so-soft);
+        padding: 8px 10px;
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        line-height: 1.6;
+        color: var(--c-text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .so-redirect b { color: var(--c-text); }
+
+    /* ── Stats ── */
+    .so-stat { text-align: center; padding: 28px 24px; }
+    .so-stat b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -.04em; color: var(--c-text); line-height: 1; margin-bottom: 8px; }
+    .so-stat span { font-family: var(--c-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--so-mute); }
+
+    /* ── Steps ── */
+    .so-ghost {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 48px;
+        font-weight: 800;
+        font-family: var(--c-mono);
+        color: var(--c-text);
+        opacity: .05;
+        line-height: 1;
+        pointer-events: none;
+        letter-spacing: -.04em;
+    }
+
+    .so-icon { font-size: 1.5em; line-height: 1; margin-bottom: 12px; display: block; }
+
+    .so-tag {
+        display: inline-block;
+        border: 1px solid var(--c-border);
+        color: var(--so-mute);
+        padding: 1px 7px;
+        font-size: 9.5px;
+        font-family: var(--c-mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        vertical-align: middle;
+        margin-left: 6px;
+    }
+
+    .so-mini {
+        display: block;
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        background: rgba(20, 18, 11, .04);
+        border: 1px solid var(--c-border);
+        padding: 8px 10px;
+        color: var(--c-text);
+        margin-top: 12px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+
+    /* ── Security points ── */
+    .so-pt { display: flex; gap: 12px; padding: 13px 0; border-bottom: 1px dashed var(--c-border); }
+    .so-pt:last-child { border-bottom: 0; padding-bottom: 0; }
+    .so-pt:first-child { padding-top: 0; }
+    .so-pt-ic { font-size: 1.2em; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+    .so-pt-t { font-weight: 700; font-size: 13.5px; color: var(--c-text); margin-bottom: 3px; }
+    .so-pt-d { font-size: 12.5px; line-height: 1.6; color: var(--so-mute); }
+
+    .so-ep {
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        border: 1.5px solid var(--c-border);
+    }
+
+    .so-ep span { padding: 7px 10px; border-bottom: 1px solid rgba(20, 18, 11, .15); border-right: 1px solid rgba(20, 18, 11, .15); }
+    .so-ep span:nth-child(2n) { border-right: 0; }
+    .so-ep span:nth-last-child(-n+2) { border-bottom: 0; }
+    .so-ep .m { font-weight: 800; }
+    .so-ep em { display: block; font-style: normal; font-family: var(--c-sans); font-size: 11.5px; color: var(--so-mute); margin-top: 2px; }
+
+    /* ── Provider chips ── */
+    .so-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+    .so-chip {
+        font-family: var(--c-mono);
+        font-size: 10px;
+        letter-spacing: .04em;
+        border: 1.5px solid var(--c-border);
+        padding: 4px 9px;
+        background: var(--c-paper);
+        color: var(--c-text);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .so-chip i { width: 8px; height: 8px; border: 1.5px solid var(--c-border); display: inline-block; }
+
+    /* ── Binding flow strip ── */
+    .so-flow { display: flex; align-items: stretch; flex-wrap: wrap; padding: 32px 40px 40px; gap: 0; }
+
+    .so-node {
+        flex: 1 1 180px;
+        border: 2px solid var(--c-border);
+        background: var(--c-paper);
+        box-shadow: 3px 3px 0 var(--c-text);
+        padding: 14px 16px;
+        margin: 0 14px 14px 0;
+        position: relative;
+    }
+
+    .so-node::after {
+        content: '→';
+        position: absolute;
+        right: -14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 800;
+        color: var(--c-text);
+        background: var(--c-bg);
+        line-height: 1;
+    }
+
+    .so-node:last-child::after { display: none; }
+    .so-node.hit { background: var(--so-soft); }
+    .so-node.stop { background: #FDE8E8; }
+
+    .so-node b { display: block; font-size: 13px; font-weight: 800; color: var(--c-text); margin-bottom: 4px; }
+    .so-node em { display: block; font-style: normal; font-family: var(--c-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--so-mute); margin-bottom: 6px; }
+    .so-node span { font-size: 12px; line-height: 1.55; color: var(--so-mute); }
+
+    /* ── Dark code ── */
+    .so-code { background: var(--c-code-bg); border: 2px solid var(--c-border); box-shadow: var(--c-shadow); overflow: hidden; }
+    .so-code-bar { display: flex; align-items: center; gap: 7px; padding: 9px 16px; border-bottom: 1px solid rgba(240, 232, 214, .12); }
+    .so-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .so-code-title { flex: 1; text-align: center; font-size: 11px; font-family: var(--c-mono); color: rgba(240, 232, 214, .35); }
+    .so-code pre { margin: 0; padding: 18px 22px; font-family: var(--c-mono); font-size: 11.5px; line-height: 1.75; color: var(--c-code-text); overflow-x: auto; }
+    .so-code .a { color: var(--c-cyan); }
+    .so-code .k { color: var(--c-purple); }
+    .so-code .s { color: var(--c-green); }
+    .so-code .c { color: rgba(240, 232, 214, .35); font-style: italic; }
+
+    /* ── SAML reject list ── */
+    .so-rej { border: 1.5px solid var(--c-border); margin-top: 12px; }
+
+    .so-rej div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-bottom: 1px solid rgba(20, 18, 11, .15);
+        font-size: 12.5px;
+        color: var(--c-text);
+    }
+
+    .so-rej div:last-child { border-bottom: 0; }
+    .so-rej i { font-style: normal; font-family: var(--c-mono); font-size: 9px; font-weight: 800; color: #fff; background: #B42318; padding: 2px 6px; flex-shrink: 0; }
+    .so-rej code { font-family: var(--c-mono); font-size: 10.5px; color: var(--so-mute); margin-left: auto; white-space: nowrap; }
+
+    /* ── Reveal ── */
+    .so-reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .so-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1000px) {
+        .so-hero { grid-template-columns: 1fr; }
+        .so-hero-l { border-right: 0; border-bottom: 1px solid var(--c-border); padding: 48px 32px; }
+        .so .g4 { grid-template-columns: 1fr 1fr; }
+        .so .g4 > .c:nth-child(4n) { border-right: 1px solid var(--c-border); }
+        .so .g4 > .c:nth-child(2n) { border-right: none; }
+    }
+
+    @media (max-width: 768px) {
+        .so .g2, .so .g3, .so .g4 { grid-template-columns: 1fr; }
+        .so .c { border-right: none !important; }
+        .so-hero-l { padding: 40px 20px; }
+        .so-hero-r { padding: 20px; }
+        .so-flow { padding: 24px 16px; }
+        .so-node { flex-basis: 100%; margin-right: 0; }
+        .so-node::after { display: none; }
+        .so-rej code { display: none; }
+    }
+</style>
+
+<div class="so" ng-controller="sso">
+    <div class="fr">
+
+        <!-- §1 HERO -->
+        <div class="r so-hero">
+            <div class="so-hero-l">
+                <span class="so-eyebrow">Apache 2.0 · erupt-sso · ≥ 2.3.0</span>
+                <h1 class="so-h1">Erupt <em>SSO</em></h1>
+                <p class="so-tagline">{{'sso.hero.tagline'|i18n}}</p>
+                <p class="sub" style="max-width:50ch;margin-bottom:22px">{{'sso.hero.subtitle'|i18n}}</p>
+                <div style="margin-bottom:24px">
+                    <span class="so-badge">{{'sso.badge.presets'|i18n}}</span>
+                    <span class="so-badge">OAuth 2.0 + PKCE</span>
+                    <span class="so-badge">{{'sso.badge.nocode'|i18n}}</span>
+                    <span class="so-badge">{{'sso.badge.nojwt'|i18n}}</span>
+                </div>
+                <div style="display:flex;gap:14px;flex-wrap:wrap">
+                    <a class="wbtn so-wbtn-y"
+                       ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-sso"
+                       target="_blank">{{'sso.hero.btn.doc'|i18n}}</a>
+                    <a class="wbtn" href="https://github.com/erupts/erupt/tree/master/erupt-plugin/erupt-sso"
+                       target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="so-hero-r">
+                <div class="so-card">
+                    <div class="so-card-logo">ERUPT</div>
+                    <div class="so-card-sub">{{'sso.mock.sub'|i18n}}</div>
+                    <label>{{'sso.mock.account'|i18n}}</label>
+                    <span class="in">admin</span>
+                    <label>{{'sso.mock.password'|i18n}}</label>
+                    <span class="in"><i>••••••••</i></span>
+                    <div class="btn-p">{{'sso.mock.login'|i18n}}</div>
+                    <div class="so-or">{{'sso.mock.or'|i18n}}</div>
+                    <div class="so-prov">
+                        <span><i>🔐</i>Keycloak</span>
+                        <span class="hi"><i>🐙</i>GitHub</span>
+                        <span><i>🪶</i>{{'sso.mock.feishu'|i18n}}</span>
+                    </div>
+                    <div class="so-redirect">
+                        <b>302 →</b> github.com/login/oauth/authorize<br>
+                        ?client_id=…&amp;state=<b>k7f…</b>&amp;code_challenge=<b>S256</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- §2 STATS -->
+        <div class="g4 r so-reveal">
+            <div class="c no-bb so-stat"><b>18</b><span>{{'sso.stat.presets'|i18n}}</span></div>
+            <div class="c no-bb so-stat"><b>4</b><span>{{'sso.stat.flows'|i18n}}</span></div>
+            <div class="c no-bb so-stat"><b>0</b><span>{{'sso.stat.jwt'|i18n}}</span></div>
+            <div class="c no-bb so-stat"><b>60s</b><span>{{'sso.stat.ticket'|i18n}}</span></div>
+        </div>
+
+        <!-- §3 HOW IT WORKS -->
+        <div class="r g-bg g-bg-y ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">Authorization Code + PKCE</span>
+            <h2 class="h2">{{'sso.flow.title'|i18n}}</h2>
+            <p class="sub" style="max-width:600px;margin:0 auto">{{'sso.flow.subtitle'|i18n}}</p>
+        </div>
+        <div class="g3 r so-reveal">
+            <div class="c" ng-repeat="s in steps" ng-class="{'no-bb': $index > 2}">
+                <span class="so-ghost">0{{$index+1}}</span>
+                <span class="so-icon">{{s.icon}}</span>
+                <div style="display:flex;align-items:center;margin-bottom:8px">
+                    <h3 class="h3" style="margin:0">{{s.title}}</h3>
+                    <span class="so-tag">{{s.tag}}</span>
+                </div>
+                <p class="sub" style="font-size:13px">{{s.desc}}</p>
+                <code class="so-mini">{{s.code}}</code>
+            </div>
+        </div>
+
+        <!-- §4 SECURITY POINTS + ENDPOINTS -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">Design</span>
+            <h2 class="h2">{{'sso.sec.title'|i18n}}</h2>
+            <p class="sub" style="max-width:580px;margin:0 auto">{{'sso.sec.subtitle'|i18n}}</p>
+        </div>
+        <div class="g2 r so-reveal">
+            <div class="c">
+                <div class="so-pt" ng-repeat="p in security">
+                    <span class="so-pt-ic">{{p.icon}}</span>
+                    <div>
+                        <div class="so-pt-t">{{p.title}}</div>
+                        <div class="so-pt-d">{{p.desc}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="c">
+                <h3 class="h3">{{'sso.ep.title'|i18n}}</h3>
+                <p class="sub" style="font-size:12.5px;margin-bottom:12px">{{'sso.ep.lede'|i18n}}</p>
+                <div class="so-ep">
+                    <span class="m" ng-repeat-start="e in endpoints">{{e.m}}</span>
+                    <span ng-repeat-end>{{e.p}}<em>{{e.d}}</em></span>
+                </div>
+                <code class="so-mini">erupt-app:
+  login-page-path: https://admin.example.com/#/passport/login   # {{'sso.ep.yaml'|i18n}}</code>
+            </div>
+        </div>
+
+        <!-- §5 PROVIDERS -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">18 Presets</span>
+            <h2 class="h2">{{'sso.prov.title'|i18n}}</h2>
+            <p class="sub" style="max-width:600px;margin:0 auto">{{'sso.prov.subtitle'|i18n}}</p>
+        </div>
+        <div class="g4 r so-reveal">
+            <div class="c no-bb" ng-repeat="g in providers">
+                <h3 class="h3">{{g.title}}</h3>
+                <p class="sub" style="font-size:12.5px">{{g.desc}}</p>
+                <div class="so-chips">
+                    <span class="so-chip" ng-repeat="p in g.items"><i ng-style="{background: g.color}"></i>{{p}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- §6 BINDING -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">Binding</span>
+            <h2 class="h2">{{'sso.bind.title'|i18n}}</h2>
+            <p class="sub" style="max-width:600px;margin:0 auto">{{'sso.bind.subtitle'|i18n}}</p>
+        </div>
+        <div class="r so-reveal">
+            <div class="so-flow">
+                <div class="so-node" ng-repeat="n in binding" ng-class="n.cls">
+                    <em>{{n.k}}</em><b>{{n.t}}</b><span>{{n.d}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- §7 BIND SERVICE + SAML -->
+        <div class="r g-bg ticks" style="padding:48px 40px;text-align:center">
+            <span class="tag tag-y">Beyond login</span>
+            <h2 class="h2">{{'sso.more.title'|i18n}}</h2>
+            <p class="sub" style="max-width:600px;margin:0 auto">{{'sso.more.subtitle'|i18n}}</p>
+        </div>
+        <div class="g2 r so-reveal">
+            <div class="c">
+                <h3 class="h3">{{'sso.more.bind.t'|i18n}}</h3>
+                <p class="sub" style="font-size:12.5px;margin-bottom:14px">{{'sso.more.bind.p'|i18n}}</p>
+                <div class="so-code">
+                    <div class="so-code-bar">
+                        <div class="so-dot" style="background:#ff5f56"></div>
+                        <div class="so-dot" style="background:#ffbd2e"></div>
+                        <div class="so-dot" style="background:#27c93f"></div>
+                        <span class="so-code-title">EruptSsoBindService</span>
+                    </div>
+<pre><span class="a">@Resource</span>
+<span class="k">private</span> EruptSsoBindService bind;
+
+<span class="c">// {{'sso.more.code.c1'|i18n}}</span>
+bind.openId(userId, <span class="s">"feishu"</span>).ifPresent(openId -&gt; {
+    feishu.sendCard(openId, card);
+});
+
+<span class="c">// {{'sso.more.code.c2'|i18n}}</span>
+bind.claim(userId, <span class="s">"wecom"</span>, <span class="s">"department"</span>);
+
+<span class="c">// {{'sso.more.code.c3'|i18n}}</span>
+ssoProviderApi.appAccessToken(provider);</pre>
+                </div>
+            </div>
+            <div class="c">
+                <h3 class="h3">{{'sso.more.saml.t'|i18n}}</h3>
+                <p class="sub" style="font-size:12.5px">{{'sso.more.saml.p'|i18n}}</p>
+                <div class="so-rej">
+                    <div ng-repeat="r in saml"><i>REJECT</i>{{r.t}}<code>{{r.c}}</code></div>
+                </div>
+                <p class="sub" style="font-size:12px;margin-top:14px">
+                    <a ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/topics/saml-sso-jdk-only" target="_blank" style="color:var(--c-text);text-decoration:underline">{{'sso.more.saml.link'|i18n}}</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- §8 CTA -->
+        <div class="r g-bg g-bg-y ticks only-before" style="padding:56px 40px;text-align:center">
+            <div style="font-size:2.4em;margin-bottom:12px">🔑</div>
+            <h2 class="h2">{{'sso.cta.title'|i18n}}</h2>
+            <p class="sub" style="max-width:480px;margin:0 auto 24px">{{'sso.cta.subtitle'|i18n}}</p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o"
+                   ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-sso"
+                   target="_blank">{{'sso.cta.doc'|i18n}}</a>
+                <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/topics/identity-without-security-stack" target="_blank">{{'sso.cta.topic'|i18n}}</a>
+            </div>
+        </div>
+        <div class="ticks"></div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.05});
+        document.querySelectorAll('.so-reveal').forEach(function (n) {
+            io.observe(n);
+        });
+    })();
+</script>
