@@ -1227,13 +1227,11 @@ nav.decision,🎯 AI Decision,🎯 AI Decision
 nav.tenant,🏢 SaaS 多租户,🏢 SaaS Multi-tenant
 nav.designer,🧩 表单设计器,🧩 Form Designer
 nav.sso,🔑 单点登录 SSO,🔑 SSO Login
-nav.terminal,🖥️ 服务终端,🖥️ Web Terminal
 nav.sub.rag,文档转知识库 · Agentic RAG,Docs → knowledge base · Agentic RAG
 nav.sub.decision,给业务代码可直接分支的 AI 判断,Typed AI answers your code can branch on
 nav.sub.tenant,页面复用 · 数据完全隔离,Shared pages · isolated data
 nav.sub.designer,拖拽建模 · 导出注解代码,Drag to model · export annotations
 nav.sub.sso,OIDC / OAuth2 外部登录,OIDC / OAuth2 identity providers
-nav.sub.terminal,浏览器里直接操作服务器,Server shell in the browser
 nav.atlas,🕸️ 模型图谱 Atlas,🕸️ Atlas Model Graph
 nav.sub.atlas,运行时模型关系一张图看全,All runtime model relations on one graph
 nav.aidev,🧑‍💻 Dev Agent,🧑‍💻 Dev Agent
@@ -1606,3 +1604,476 @@ tenant.cta.p2.t,含后续版本,Future versions included
 tenant.cta.p2.p,一次购买持续更新，不限项目数量，可用于商业项目。,"One purchase, ongoing updates, unlimited projects, commercial use allowed."
 tenant.cta.p3.t,禁止二次分发,No redistribution
 tenant.cta.p3.p,源码不得转售或开源；仓库权限开通后不支持退款。,Source may not be resold or open-sourced; no refunds once access is granted.
+nav.config,⚙️ 配置中心 Config,⚙️ Config Center
+nav.sub.config,后台里的 Spring PropertySource,A Spring PropertySource inside the admin
+cfg.hero.tagline,配置中心不必是另一个服务,A config center need not be another service
+cfg.hero.subtitle,后台里的配置项就是 Spring 环境里最前面的那一层 PropertySource：@Value、Environment、@ConfigurationProperties 照常读，按 profile 分层，保存之后不重启就生效。,"Items in the admin become the first PropertySource in the Spring environment: @Value, Environment and @ConfigurationProperties read them as usual, layered per profile, and a saved change reaches running beans without a restart."
+cfg.badge.value,@Value 原样读,@Value as usual
+cfg.badge.profile,profile 分层,profile layers
+cfg.badge.live,保存即生效,live on save
+cfg.badge.types,17 种值类型,17 value types
+cfg.hero.btn.doc,查看文档,Documentation
+cfg.mock.copy,复制到 profile,Copy to profile
+cfg.mock.effective,生效值,Effective values
+cfg.mock.refresh,立即刷新,Refresh now
+cfg.mock.fallback,已关闭 · 回落到文件值,off · falls back to files
+cfg.mock.saved,已保存并刷新,saved and refreshed
+cfg.stat.types,种值类型,value types
+cfg.stat.api,个新读取 API,new read APIs
+cfg.stat.service,个额外服务,extra services
+cfg.stat.layers,层优先级,precedence layers
+cfg.flow.title,值是怎么到达应用的,How a value reaches the application
+cfg.flow.subtitle,启动前用纯 JDBC 读库放到所有文件之前；运行时保存一项，三步刷新本节点；多节点靠 Redis 广播或轮询。,"Before the context starts, plain JDBC reads the database and puts it in front of every file; at runtime a save refreshes this node in three steps; other nodes hear it over Redis or by polling."
+cfg.flow.s1.t,启动前,Before the context starts
+cfg.flow.s1.p,EruptConfigEnvironmentPostProcessor 在任何 Bean 创建之前，用 spring.datasource.* 直连数据库读出分层后的 profile，合并结果 addFirst 放在所有文件之前。库里还没有表时只打一行 warn，首次启动照用文件里的值。,EruptConfigEnvironmentPostProcessor runs before any bean exists: it reads the layered profiles over spring.datasource.* with plain JDBC and addFirst's the merged map ahead of every file. No tables yet means one warn line and the first boot runs on the files.
+cfg.flow.s2.t,保存一项,Saving an item
+cfg.flow.s2.p,DataProxy 的 afterAdd / afterUpdate / afterDelete 只做一件事：refresh。整体替换 PropertySource，让每个单例上的 @Value 字段重新取值，再发 EruptConfigRefreshedEvent 带上变化的 key。,"The DataProxy's afterAdd / afterUpdate / afterDelete do one thing: refresh. The PropertySource is replaced whole, every singleton's @Value field is resolved again, and EruptConfigRefreshedEvent carries the keys that changed."
+cfg.flow.s3.t,其他节点,Other nodes
+cfg.flow.s3.p,开了 erupt.redis-session 就在变更提交后通过 Redis 广播，其他实例立即刷新；没有 Redis 的集群设 refresh-seconds 轮询，安静的一次轮询只有两条聚合查询，不读任何值。单实例什么都不用设。,"With erupt.redis-session on, the change is broadcast over Redis once it commits and the others refresh at once; a cluster without Redis sets refresh-seconds to poll, and a quiet poll is two aggregate queries that read no values. A single instance needs neither."
+cfg.read.title,没有新的读取 API,No new read API
+cfg.read.subtitle,配置中心最大的成本不是存储，是让所有已有代码改用新的读法。所以干脆不要有新读法。,"The real cost of a config center is not storage, it is making every existing line of code read a new way. So there is no new way."
+cfg.code.c1,保存后字段自动跟着变,follows a change after save
+cfg.code.c2,带类型和默认值，key 可以是枚举,"typed, with a default; the key may be an enum"
+cfg.code.c3,需要重建连接的地方监听事件,listen where a connection must be rebuilt
+cfg.prec.title,优先级,Precedence
+cfg.prec.lede,活动 profile 盖在 default 上，default 盖在文件上，和 application-{profile}.yml 叠 application.yml 一模一样。库里没有的 key 自动落回文件。,"The active profile layers over default, default over the files, exactly as application-{profile}.yml layers over application.yml. A key missing from the database falls through to the files."
+cfg.prec.l1,只放和 default 不同的那几项,holds only what differs from default
+cfg.prec.l2,每个实例都读的那一层,read by every instance
+cfg.prec.l3,兜底：库里没有的 key 在这里,the floor: keys the database lacks
+cfg.prec.note,越上面优先级越高,higher wins
+cfg.yaml.c1,沿用 Spring 的，没有 erupt 专属项,"plain Spring, nothing erupt-specific"
+cfg.yaml.c2,多节点且无 Redis 会话时才需要,only for a cluster without Redis sessions
+cfg.types.title,一列 config_value，十七种编辑器,"One config_value column, seventeen editors"
+cfg.types.subtitle,表单用 @Dynamic 按类型切换编辑器；表格里按类型绘制：色块、图标、图片缩略、附件链接、标签列表。密文项显示 ••••••，应用仍能读到。,"The form switches editors by type with @Dynamic; the table draws each value by type: a swatch, the icon, a thumbnail, an attachment link, tags. A secret shows ••••••, the application still reads it."
+cfg.types.g1.t,文本,Text
+cfg.types.g1.p,password 强制为密文；html 用富文本编辑器,password is always a secret; html gets a rich editor
+cfg.types.g2.t,结构,Structured
+cfg.types.g2.p,展平成 key.path 和 key[i] 属性，和 Spring 读 yml 一致，Map / List / @ConfigurationProperties 直接绑定,"Flattened into key.path and key[i] properties, the way Spring reads yml, so a Map, a List or a @ConfigurationProperties bean binds directly"
+cfg.types.g3.t,标量与时间,Scalars & time
+cfg.types.g3.p,number 绑定到数值类型，boolean 绑定到开关，日期时间按 Spring 的转换规则,"number binds to numeric types, boolean to a switch, date and time through Spring's converters"
+cfg.types.g4.t,视觉与文件,Visual & files
+cfg.types.g4.p,上传类型的属性值是它在 erupt.upload-path 下的路径,An upload's property value is its path under erupt.upload-path
+cfg.cmp.title,和「系统参数表」、Nacos / Apollo 怎么比,Versus a system-param table and Nacos / Apollo
+cfg.cmp.subtitle,左列是选型时值得问的问题，不是对别家产品的结论。,"The left column lists the questions worth asking when choosing, not verdicts on other products."
+cfg.cmp.h1,系统参数表 + 工具方法,Param table + util method
+cfg.cmp.h2,Nacos / Apollo,Nacos / Apollo
+cfg.cmp.read.k,读取方式,Read API
+cfg.cmp.read.a,ConfigUtil.get(key)，只有自己的代码认识,"ConfigUtil.get(key), known only to your own code"
+cfg.cmp.read.b,客户端 SDK 或 @NacosValue 等专用注解,A client SDK or dedicated annotations such as @NacosValue
+cfg.cmp.read.c,@Value / Environment / @ConfigurationProperties，另有带类型的 EruptConfig#get,"@Value / Environment / @ConfigurationProperties, plus a typed EruptConfig#get"
+cfg.cmp.profile.k,环境分层,Profiles
+cfg.cmp.profile.a,靠 key 前缀或每个环境一个库,"Key prefixes, or one database per environment"
+cfg.cmp.profile.b,namespace / cluster / group,namespace / cluster / group
+cfg.cmp.profile.c,沿用 spring.profiles.active，default 之上叠加活动 profile,Reuses spring.profiles.active: the active profile over default
+cfg.cmp.files.k,与文件的关系,Relation to files
+cfg.cmp.files.a,互不相识，同名 key 看代码怎么写,Strangers: which wins depends on the code
+cfg.cmp.files.b,远端优先，本地文件做回退,"Remote first, local files as fallback"
+cfg.cmp.files.c,活动 profile > default > 文件；缺的 key 自动落回文件,active profile > default > files; a missing key falls through
+cfg.cmp.service.k,独立服务,Separate service
+cfg.cmp.service.a,不需要,None
+cfg.cmp.service.b,多部署一套服务，运营够不着它的界面,"Another deployment, with a UI operations staff cannot reach"
+cfg.cmp.service.c,不需要：和后台同进程，用 spring.datasource.* 读库,"None: same process as the admin, reads the database over spring.datasource.*"
+cfg.cmp.govern.k,变更治理,Change governance
+cfg.cmp.govern.a,没有,None
+cfg.cmp.govern.b,历史版本、灰度、发布审批,"History, canary release, approval"
+cfg.cmp.govern.c,没有：保存就是覆盖，只有 enabled 开关,"None: a save overwrites, there is only an enabled switch"
+cfg.cmp.ui.k,配置界面,Config UI
+cfg.cmp.ui.a,自己写一个 CRUD,A CRUD you write yourself
+cfg.cmp.ui.b,产品自带控制台,The product's own console
+cfg.cmp.ui.c,三个 @Erupt 模型：17 种编辑器、密文遮罩、复制到 profile、生效值,"Three @Erupt models: 17 editors, secret masking, copy to profile, effective values"
+cfg.cost.tag,代价,Costs
+cfg.cost.title,它不做什么,What it does not do
+cfg.cost.subtitle,这几条都能在源码里对上；需要这些治理能力，应该用专门的配置中心。,"Each of these can be checked against the source; if you need that governance, use a dedicated config center."
+cfg.cost.c1.t,没有版本、灰度、审批,"No history, canary or approval"
+cfg.cost.c1.p,保存就是覆盖，ConfigItem 只有 enabled 开关，没有「上一版」，也没有「先发给一个节点」。,"A save overwrites. ConfigItem has an enabled switch, no previous version and no release to one node first."
+cfg.cost.c2.t,「安全」只做到遮罩,"Secrets are masked, not encrypted"
+cfg.cost.c2.p,密文项在表格和表单里显示 ••••••，库里仍是明文；PASSWORD 类型强制 secret，但不加密存储。,"A secret shows •••••• in the table and the form but is stored in clear; PASSWORD forces secret, without encryption."
+cfg.cost.c3.t,@Value 只刷新字段注入,Only field-injected @Value refreshes
+cfg.cost.c3.p,ConfigValueRefresher 跳过 #{...} SpEL，构造器和 setter 注入只在启动时解析一次。要对变更做出反应，监听 EruptConfigRefreshedEvent。,"ConfigValueRefresher skips #{...} SpEL; constructor and setter injection resolve once at startup. To react to a change, listen for EruptConfigRefreshedEvent."
+cfg.cost.c4.t,启动依赖数据库可达,Boot needs the database
+cfg.cost.c4.p,取不到库就退回文件的值，这是为首次启动设计的退路，不是高可用方案。它也不是数据字典：EruptDict 驱动下拉框，这个模块驱动代码。,"Unreachable database means the files' values, a first-boot fallback rather than high availability. Nor is it a data dictionary: EruptDict feeds dropdowns, this module feeds code."
+cfg.cta.title,引入依赖，菜单里多出 Config,"Add the dependency, a Config menu appears"
+cfg.cta.subtitle,"新建一个 app.mail.host，再用 @Value(""${app.mail.host:localhost}"") 读它。profile 沿用 spring.profiles.active，什么都不用再配。","Create app.mail.host, then read it with @Value(""${app.mail.host:localhost}""). Profiles follow spring.profiles.active, nothing else to set."
+cfg.cta.doc,阅读专题文章,Read the deep dive
+cfg.cta.cloud,集群配置看 Cloud →,Cluster config: see Cloud →
+nav.sdk,🧰 Erupt SDK,🧰 Erupt SDK
+nav.sub.sdk,任意语言接入 Erupt 后台,Serve admin pages from any language
+dsn.hero.tagline,拖出来的模型，和手写的一样,A dragged model is a hand-written model
+dsn.hero.subtitle,运行时拖拽设计 Erupt 实体模型，发布后自动注册为数据管理菜单，无需重启；设计结果一键导出为 Java 注解代码，平滑过渡到手写开发。,"Design Erupt entity models by drag and drop at runtime, publish them straight into the menu without a restart, and export the result as Java annotation code when you are ready to hand-write."
+dsn.badge.drag,拖拽建模,drag to model
+dsn.badge.publish,发布即菜单,publish = menu
+dsn.badge.export,导出注解代码,export annotations
+dsn.badge.restart,不重启,no restart
+dsn.hero.btn.doc,查看文档,Documentation
+dsn.mock.unpublished,未发布的改动,Unpublished changes
+dsn.mock.preview,实时预览,Live Preview
+dsn.mock.publish,发布,Publish
+dsn.mock.model,文章,Article
+dsn.mock.f.title,标题,Title
+dsn.mock.f.views,浏览量,Views
+dsn.mock.f.featured,推荐,Featured
+dsn.mock.f.status,状态,Status
+dsn.mock.f.category,分类,Category
+dsn.mock.f.date,发布日期,Publish Date
+dsn.mock.f.sign,签名,Signature
+dsn.mock.drop,拖到这里,drop here
+dsn.mock.p.title,字段,Field
+dsn.mock.p.name,字段名,Field Name
+dsn.mock.p.label,标题,Title
+dsn.mock.p.ph,占位提示,Placeholder
+dsn.mock.p.req,必填,Required
+dsn.mock.p.search,可搜索,Searchable
+dsn.mock.p.sort,可排序,Sortable
+dsn.stat.comp,种组件,components
+dsn.stat.restart,次重启,restarts
+dsn.stat.export,键导出 Java,click to Java
+dsn.stat.db,个 SQLite 文件,sqlite file
+dsn.flow.title,从一张空表单到一个菜单,From an empty form to a menu
+dsn.flow.subtitle,六步走完，中间不碰代码、不重启服务；想手写了，第六步把它导出来。,"Six steps, no code and no restart in between; when you want to hand-write, step six exports it."
+dsn.flow.s1.t,新建模型,Create a model
+dsn.flow.s1.p,进入 Form Designer 菜单，新建一条模型记录，填写类名（Class Name）和名称。,Open the Form Designer menu and add a record with a class name and a display name.
+dsn.flow.s2.t,拖拽设计,Drag and design
+dsn.flow.s2.p,点击行按钮 Design 进入设计器，从组件面板拖字段进画布，配置类型、标题、必填、搜索、排序等属性。,"Click the Design row button, drag fields from the palette onto the canvas and set type, title, required, searchable and sortable."
+dsn.flow.s3.t,实时预览,Live preview
+dsn.flow.s3.p,Preview 按真实表单渲染，所见即所得；Views 切换列表视图配置。,Preview renders the real form; Views switches to the table view settings.
+dsn.flow.s4.t,一键发布,Publish
+dsn.flow.s4.p,设计配置保存到 e_designer.config，并在内存中注册为运行时 EruptModel；每次服务启动自动重新注册。,The design is saved to e_designer.config and registered in memory as a runtime EruptModel; every start re-registers it.
+dsn.flow.s5.t,添加到菜单,Add to menu
+dsn.flow.s5.p,回到列表点击 Add to Menu，选好位置，菜单立即生效，不用重启。,"Back on the list, click Add to Menu, pick a position, and the menu is live without a restart."
+dsn.flow.s6.t,导出代码,Export code
+dsn.flow.s6.p,Export Code 生成标准 Java 注解类，放进项目源码替换掉运行时模型，设计到开发平滑过渡。,Export Code produces a standard annotated Java class; drop it into your source to replace the runtime model.
+dsn.code.title,设计的尽头是一段注解,A design ends as annotations
+dsn.code.subtitle,导出的就是手写时会写的那份 @Erupt / @EruptField，没有运行时专属的东西留在里面。,"What comes out is the @Erupt / @EruptField you would have typed, with nothing runtime-specific left inside."
+dsn.code.generated,导出,exported
+dsn.code.p1.t,设计 → 开发平滑过渡,"Design to code, smoothly"
+dsn.code.p1.p,导出后把代码放入项目源码，替换掉 designer 管理的运行时模型；菜单和权限配置原样保留。,Put the exported code in your project and it replaces the designer-managed runtime model; menus and permissions stay as they are.
+dsn.code.p2.t,真实类优先,Real classes win
+dsn.code.p2.p,若同名的真实 @Erupt 类已存在，设计器无法覆盖它，避免两份定义打架。,"If a real @Erupt class with the same name exists, the designer cannot override it, so two definitions never fight."
+dsn.code.p3.t,关联字段指向真实模型,References point at real models
+dsn.code.p3.p,REFERENCE_TABLE / REFERENCE_TREE 需要关联到已存在的 Erupt 模型，手写的和设计的可以互相引用。,REFERENCE_TABLE / REFERENCE_TREE must point at an existing Erupt model; hand-written and designed models can reference each other.
+dsn.comp.title,27 种组件，四个抽屉,27 components in four drawers
+dsn.comp.subtitle,和注解里的 EditType 一一对应，拖进来的每个组件都能导出成一行 @Edit。,"Each maps to an EditType in the annotations, so every dragged component exports as one @Edit line."
+dsn.comp.g1.t,基础,Basic
+dsn.comp.g1.p,文本、数字、开关、日期、滑块、评分、颜色、隐藏域,"Text, number, switch, date, slider, rate, colour, hidden"
+dsn.comp.g2.t,选择,Choice
+dsn.comp.g2.p,单选、多选、标签、自动补全；引用字段关联到已存在的 Erupt 模型,"Single, multi, tags, autocomplete; reference fields link to an existing Erupt model"
+dsn.comp.g3.t,高级,Advanced
+dsn.comp.g3.p,附件、图片、富文本、Markdown、代码、地图、签名、模板、按钮,"Attachment, image, rich text, Markdown, code, map, signature, template, button"
+dsn.comp.g4.t,布局,Layout
+dsn.comp.g4.p,分隔线、分组、提示框、占位，不落库只排版,"Divider, group, callout, empty: layout only, no column"
+dsn.store.title,业务数据落在一个 SQLite 文件里,Business data lives in one SQLite file
+dsn.store.subtitle,2.2.0 起每个已发布的设计对应一张真实表 d_<类名小写>，不受宿主项目用的是哪种数据库影响。,"Since 2.2.0 each published design owns a real table, d_<classname>, independent of whatever database the host project uses."
+dsn.store.tbl.lede,标量字段落成原生列，引用与多值字段以 JSON 文本存储：,Scalar fields become native columns; references and multi-value fields are stored as JSON text:
+dsn.store.tbl.from,来源组件,component
+dsn.store.tbl.added,本次发布新增,added this publish
+dsn.store.yaml.c1,相对路径相对 JVM 工作目录,relative to the JVM working directory
+dsn.store.yaml.c2,SQLite 单写者，WAL 下读可并发,one writer; reads concurrent under WAL
+dsn.store.p1.t,一个设计一张表,One table per design
+dsn.store.p1.p,过滤、排序、分页都下推为 SQL；引用和多值字段用 json_extract / json_each 检索。,"Filtering, sorting and paging push down to SQL; references and multi-value fields are queried with json_extract / json_each."
+dsn.store.p2.t,只增不减，幂等,"Add-only, idempotent"
+dsn.store.p2.p,表结构变更只新增列，不删除、不改类型；字段重命名按发布时分配的字段 id 移动原列，已有数据跟着新名字走。,"Schema changes only add columns, never drop or retype; a renamed field moves its column by the field id assigned at publish, so data follows the new name."
+dsn.store.p3.t,随设计一起发布,Published with the design
+dsn.store.p3.p,发布时建表、补列；旧版 2.1.x 的 e_designer_data 不自动迁移，重新发布即得到新表结构。,"Publishing creates or extends the table; 2.1.x data in e_designer_data is not migrated automatically, republish to get the new schema."
+dsn.store.p4.t,记得挂持久卷,Mount a persistent volume
+dsn.store.p4.p,designer.db 不在主数据库里，请挂到持久化卷并纳入备份，否则容器重建后设计器数据会丢失。,"designer.db is outside the main database: mount it on a persistent volume and back it up, or a rebuilt container loses the designer's data."
+dsn.cta.title,先拖出来，再决定要不要写,"Drag it first, decide later whether to write it"
+dsn.cta.subtitle,引入 erupt-designer，菜单里多出 Form Designer；设计满意了，Export Code 带走。,"Add erupt-designer and a Form Designer menu appears; when the design is right, Export Code takes it with you."
+dsn.cta.doc,查看文档,Documentation
+dsn.cta.canvas,不想拖？让 Canvas Agent 生成 →,Rather not drag? Let Canvas Agent generate →
+sdk.hero.tagline,任何语言，都能长出 Erupt 后台,Any language can grow an Erupt admin
+sdk.hero.subtitle,节点只交出两样东西：模型描述和数据读写。登录、菜单、权限、校验、Excel、附件全由 erupt 服务端代办，所以一个零依赖的 Python / Go / TypeScript 进程也能安全接入。,"A node hands over two things: the model description and data reads and writes. Login, menus, permissions, validation, Excel and attachments are handled by the erupt server, so a zero-dependency Python, Go or TypeScript process plugs in safely."
+sdk.badge.langs,9 种语言,9 languages
+sdk.badge.deps,零运行时依赖,zero runtime deps
+sdk.badge.protocol,同一份协议,one protocol
+sdk.badge.conformance,一致性测试,conformance suite
+sdk.hero.btn.doc,节点协议解读,Read the protocol
+sdk.mock.step1,服务端新建节点 blog，复制 access token,"create node blog on the server, copy its token"
+sdk.mock.step2,加一个 table 菜单，值为 blog.Article,add a table menu with value blog.Article
+sdk.mock.step3,启动节点，服务端能访问到它就行,run the node where the server can reach it
+sdk.code.c.serve,心跳注册 · 15 秒一次,registers with a heartbeat every 15s
+sdk.stat.langs,种语言,languages
+sdk.stat.endpoints,个必需端点,required endpoints
+sdk.stat.deps,运行时依赖,runtime deps
+sdk.stat.schema,份契约 schema/,contract: schema/
+sdk.lang.title,每种语言一个包，同一个后台,"One package per language, the same admin"
+sdk.lang.subtitle,同一份 blog 示例在九种语言里各实现一遍，服务端渲染出的页面逐一对照。,"The same blog example is implemented in nine languages, and the server renders them side by side."
+sdk.lang.zero,零依赖,zero deps
+sdk.lang.rust.note,驱动按 feature 开启,drivers behind features
+sdk.lang.swift.note,SQLite 走可选的 EruptSQLite,SQLite via optional EruptSQLite
+sdk.lang.jvm.note,随 erupt 主仓发布,released with erupt
+sdk.proto.title,节点不是 Spring 应用，是一份协议,"A node is not a Spring app, it is a protocol"
+sdk.proto.subtitle,契约定得足够窄，实现它的东西就可以是任何东西。Level 0 只有 7 个端点，实现了就有表格、搜索、详情和增删改。,"Keep the contract narrow enough and anything can implement it. Level 0 is seven endpoints; implement them and you have table, search, detail and CRUD."
+sdk.proto.server,服务端代办,The server does
+sdk.proto.node,节点只实现,The node implements
+sdk.proto.srv.login,登录、会话、用户：只在服务端，节点没有用户表,"Login, sessions, users: server only, the node has no user table"
+sdk.proto.srv.menu,菜单与按钮权限：服务端查好后用 Erupt-Enforced 签名告诉节点,"Menus and button permissions: checked on the server, signed to the node as Erupt-Enforced"
+sdk.proto.srv.power,每个用户的 power：节点按服务端给的结果执行,Per-user power: the node acts on what the server decided
+sdk.proto.srv.validate,表单校验：按 build JSON 在服务端先校一遍,Form validation: run on the server against the build JSON first
+sdk.proto.srv.excel,Excel 导入导出：用节点的 Level 0 接口代办,Excel import and export: done through the node's Level 0 endpoints
+sdk.proto.srv.file,附件上传、静态选项：节点不实现就回 404，服务端接手,Uploads and static options: a node that answers 404 is covered by the server
+sdk.proto.srv.render,界面：节点上报 build JSON，服务端渲染,"UI: the node reports build JSON, the server renders it"
+sdk.proto.srv.origin,浏览器不能直连节点：带 Origin 头的请求一律 403,Browsers never reach a node: any request with an Origin header is 403
+sdk.proto.ep.role,作用,role
+sdk.proto.ep.build,模型描述,model description
+sdk.proto.ep.table,分页查询,paged query
+sdk.proto.ep.detail,单条详情,one record
+sdk.proto.ep.init,表单默认值,form defaults
+sdk.proto.ep.add,新增,add
+sdk.proto.ep.update,编辑,update
+sdk.proto.ep.delete,删除,delete
+sdk.proto.levels,Level 1 按模型声明按需实现：树、行操作、引用选择器、联动；Level 2 可选。不实现的端点回 404，服务端隐去或代办。,"Level 1 is implemented on demand by what the model declares: tree, row operations, reference pickers, linkage; Level 2 is optional. An unimplemented endpoint answers 404 and the server hides or covers it."
+sdk.feat.title,每个 SDK 都交付同一组能力,Every SDK ships the same set
+sdk.feat.subtitle,不是「某种语言功能多一点」：九个包跑同一套一致性测试，对着同一份 fixture。,Not one language ahead of another: nine packages run one conformance suite against one fixture.
+sdk.feat.f1.t,增删改查,CRUD
+sdk.feat.f1.p,搜索、排序、分页；CHOICE、日期、布尔按语言类型自动推断 EditType,"Search, sort and paging; CHOICE, dates and booleans infer their EditType from the language's own types"
+sdk.feat.f2.t,引用字段,References
+sdk.feat.f2.p,表格选择器与树选择器，仓库只存被引用的主键，界面显示 label,"Table and tree pickers; the repository stores the referenced key, the UI shows the label"
+sdk.feat.f3.t,行操作,Row operations
+sdk.feat.f3.p,带表单、确认文案、ifExpr 和按用户显隐；返回的字符串在浏览器里当 JS 执行,"With forms, confirm text, ifExpr and per-user visibility; a returned string runs as JavaScript in the browser"
+sdk.feat.f4.t,DataProxy 钩子,DataProxy hooks
+sdk.feat.f4.p,和 Java 的 DataProxy 同名同义：before_fetch 追加 SQL 条件，validate 抛 Fail 给用户看到的提示,"Same names and meaning as the Java DataProxy: before_fetch ANDs a SQL condition, validate raises Fail with a message the user sees"
+sdk.feat.f5.t,服务端的 power,The server's power
+sdk.feat.f5.p,每个用户的增删改权限由服务端决定；模型可再收紧，比如关掉 delete,"Per-user add, edit and delete decided on the server; a model can tighten it further, say switch delete off"
+sdk.feat.f6.t,注解属性有类型、能校验,"Typed, validated raw attributes"
+sdk.feat.f6.p,原始 @Erupt / @Edit / @View 属性从 schema/ 生成类型，声明模型时就校验，拼错的 key 在启动时报错而不是在浏览器里静默,"Raw @Erupt / @Edit / @View attributes are typed from schema/ and checked when the model is declared: a misspelt key fails at startup, not silently in the browser"
+sdk.sync.title,和 erupt 主仓保持同步的方式,How it keeps in step with erupt
+sdk.sync.subtitle,schema/ 是两个仓库之间的全部契约。注解一变，九种语言的代码跟着重新生成，再跑一遍一致性测试。,"schema/ is the whole contract between the two repositories. When an annotation changes, nine languages regenerate and the conformance suite runs again."
+sdk.sync.s1.t,erupt 生成契约,erupt generates the contract
+sdk.sync.s1.p,注解改动后主仓重新生成 JSON Schema 与字段模板,After an annotation change the main repo regenerates the JSON Schema and field templates
+sdk.sync.s2.t,sync-schema 拉取,sync-schema pulls it
+sdk.sync.s2.p,每周或手动按主仓分支 / tag 拉取，重新生成每种语言的代码并开 PR,"Weekly, or by hand against a branch or tag, it pulls, regenerates every language and opens a pull request"
+sdk.sync.s3.t,一致性测试,Conformance suite
+sdk.sync.s3.p,生成文件与 schema/ 不一致即失败；每个 SDK 对着同一份 fixture 过协议检查,A generated file that drifts from schema/ fails; every SDK passes the protocol checks against one fixture
+sdk.sync.s4.t,真库跑仓库,Real databases
+sdk.sync.s4.p,databases 工作流把每个 SDK 的 SQL 仓库在真实 PostgreSQL 与 MySQL 上跑一遍,The databases workflow runs every SDK's SQL repository against real PostgreSQL and MySQL
+sdk.cta.title,用你顺手的语言，接一个节点试试,Plug in a node in the language you already use
+sdk.cta.subtitle,pip / go get / npm 装一个包，二十行代码，服务端多一个菜单。,"pip, go get or npm one package, twenty lines of code, one more menu on the server."
+sdk.cta.github,去 GitHub 看示例,Examples on GitHub
+sdk.cta.cloud,服务端这头：Erupt Cloud →,The server side: Erupt Cloud →
+sso.hero.tagline,登录交给别人，账号留在自己手里,"Delegate the login, keep the account"
+sso.hero.subtitle,把登录委托给 Keycloak、Okta、Entra ID 这类 OIDC 服务，或 GitHub、飞书、钉钉、企业微信这类 OAuth 平台。认证源在后台菜单里以数据行配置：选预设、粘凭据，不写代码、不改配置文件、不重启，保存后登录页立刻出现按钮。,"Hand the login to an OIDC service such as Keycloak, Okta or Entra ID, or to an OAuth platform such as GitHub, Feishu, DingTalk or WeCom. A provider is a row in an admin menu: pick a preset, paste the credentials, no code, no config file, no restart, and the button is on the login page as soon as you save."
+sso.badge.presets,18 种预设,18 presets
+sso.badge.nocode,不写代码 · 不重启,no code · no restart
+sso.badge.nojwt,0 个 JWT 库,0 JWT libraries
+sso.hero.btn.doc,查看文档,Documentation
+sso.mock.sub,登录到管理后台,Sign in to the admin
+sso.mock.account,账号,Account
+sso.mock.password,密码,Password
+sso.mock.login,登 录,Sign in
+sso.mock.or,或使用,or continue with
+sso.mock.feishu,飞书,Feishu
+sso.stat.presets,种供应商预设,provider presets
+sso.stat.flows,种交换方式,exchange flows
+sso.stat.jwt,个 JWT 库,jwt libraries
+sso.stat.ticket,一次性票据,one-time ticket
+sso.flow.title,一次登录的来回,"One login, round trip"
+sso.flow.subtitle,标准授权码流程并强制 PKCE；授权码在服务端换令牌，令牌只用来调一次用户信息接口，全程不解析 id_token。,"Standard authorization code with PKCE enforced; the code is exchanged on the server, the token is used for one userinfo call, and id_token is never parsed."
+sso.flow.s1.t,生成 state 与 PKCE,Mint state and PKCE
+sso.flow.s1.p,点击登录页按钮，服务端生成 state 和 code_verifier，把「认证源 + verifier」存成一条 10 分钟的服务端记录，再 302 到授权地址。,"The button hits the server, which mints a state and a code_verifier, stores provider + verifier server-side for 10 minutes, and 302s to the authorize URL."
+sso.flow.s2.t,在认证源登录,Log in at the provider
+sso.flow.s2.p,用户在 Keycloak / GitHub / 飞书那边登录并同意授权，认证源把浏览器送回回调地址，带 code 和 state。,"The user logs in and consents at Keycloak, GitHub or Feishu; the provider sends the browser back to the callback with code and state."
+sso.flow.s3.t,校验并销毁 state,Verify and burn the state
+sso.flow.s3.p,state 只是一个键：缺失、过期、已用过或不属于该认证源都拒绝；首次使用即销毁，拿到另一个认证源上重放也不行。,"The state is just a key: missing, expired, used or belonging to another provider is refused; it is burnt on first use, so it cannot be replayed elsewhere."
+sso.flow.s4.t,服务端换令牌,Exchange on the server
+sso.flow.s4.p,POST 令牌地址，带 code、code_verifier 和客户端凭据；默认 client_secret_post，发现文档只支持 client_secret_basic 时改用 HTTP Basic。,"POST the token URL with code, code_verifier and client credentials; client_secret_post by default, HTTP Basic only when the discovery document says so."
+sso.flow.s5.t,只调一次用户信息,One userinfo call
+sso.flow.s5.p,Bearer 令牌 GET 用户信息地址，得到 claims；subject 依次取 sub / id / open_id / unionId 等第一个非空值，不需要配置。,"GET userinfo with the bearer token and keep the claims; the subject is the first non-empty of sub, id, open_id, unionId and so on, nothing to configure."
+sso.flow.s6.t,一次性票据换 token,Ticket for a token
+sso.flow.s6.p,找绑定、匹配账号、必要时建号、检查状态；然后 302 回登录页只带一张 60 秒票据，前端 POST exchange 换成会话 token，token 不进地址栏。,"Find the binding, match the account, create it if allowed, check status; then 302 back to the login page with a 60-second ticket that the frontend POSTs for a session token, so the token never enters the address bar."
+sso.sec.title,浏览器不携带任何可信状态,The browser carries nothing trusted
+sso.sec.subtitle,没有 Spring Security、没有 JWT 库，登录链自己走完；几条规则写在源码里，读得完。,"No Spring Security, no JWT library, the login chain walks itself; the rules are in the source and short enough to read."
+sso.sec.p1.t,state 只是一个键,state is only a key
+sso.sec.p1.p,对应服务端一条短时记录（认证源 + PKCE verifier），首次使用即销毁；同一个 state 不能在另一个认证源上重放。,It points at a short-lived server record (provider + PKCE verifier) burnt on first use; one state cannot be replayed against another provider.
+sso.sec.p2.t,令牌不进 URL,Tokens stay out of URLs
+sso.sec.p2.p,回调后浏览器只带一张 60 秒一次性票据回登录页，token 由 POST exchange 换得，不会出现在地址栏、历史记录和 Referer 里。,"After the callback the browser carries a 60-second one-time ticket; the token comes from a POST, so it never appears in the address bar, history or Referer."
+sso.sec.p3.t,登录页地址不来自请求参数,Login page path is never a parameter
+sso.sec.p3.p,回调始终跳回 erupt-app.login-page-path（未配置时为 <host>/#/passport/login），不存在开放重定向。,"The callback always returns to erupt-app.login-page-path (default <host>/#/passport/login), so there is no open redirect."
+sso.sec.p4.t,客户端认证按发现文档,Client auth follows discovery
+sso.sec.p4.p,默认 client_secret_post；只有当 OIDC 发现文档声明仅支持 client_secret_basic 时才改用 HTTP Basic。客户端密钥只写不读，列表不显示、表单掩码回显。,"client_secret_post by default; HTTP Basic only when the OIDC discovery document says it is the only option. The client secret is write-only: hidden in the table, masked in the form."
+sso.sec.p5.t,与密码登录同一条链路,Same chain as password login
+sso.sec.p5.p,账号状态、有效期、IP 白名单检查以及 LoginProxy 的登录后处理对 SSO 登录同样生效；认证源放行不等于 erupt 放行。,"Account status, expiry, IP whitelist and the LoginProxy post-login hooks apply to SSO logins too; the provider saying yes is not erupt saying yes."
+sso.ep.title,四个接口，都不需要登录,"Four endpoints, none behind login"
+sso.ep.lede,它们服务的正是尚未登录的用户，各自以 state、票据或「没有可保护的内容」为凭。,"They serve users who are not logged in yet, each guarded by a state, a ticket, or by having nothing to protect."
+sso.ep.providers,启用中的认证源：编码、名称、图标，不含密钥；登录页渲染按钮用,"Enabled providers: code, name, icon, no secrets; the login page draws its buttons from it"
+sso.ep.authorize,生成 state 与 PKCE 后 302 到认证源授权地址,"Mints state and PKCE, then 302s to the provider's authorize URL"
+sso.ep.callback,认证源回调；成功 302 到登录页带 ssoTicket，失败带 ssoError,"Provider callback; on success 302 to the login page with ssoTicket, on failure with ssoError"
+sso.ep.exchange,{ ssoTicket } → 与密码登录相同的 LoginModel（含 token）；票据一次性、60 秒,"{ ssoTicket } → the same LoginModel as a password login, token included; ticket is one-time, 60 seconds"
+sso.ep.yaml,回调固定跳回这里，不看请求参数,"the callback always returns here, never to a parameter"
+sso.prov.title,18 种预设，留给你的只有凭据,18 presets; all that is left to you is the credentials
+sso.prov.subtitle,选中预设后自动填入签发者或三个地址、授权范围、账号 / 姓名 / 邮箱 / 手机 / 头像声明与 Open ID 字段；地址里的 <host>、<realm>、<agentid> 占位符不替换，保存就被拒绝。,"Picking a preset fills the issuer or the three URLs, scopes, the account / name / email / phone / avatar claims and the Open ID field; a leftover <host>, <realm> or <agentid> placeholder blocks the save."
+sso.prov.g1.t,OIDC 发现,OIDC discovery
+sso.prov.g1.p,只填签发者，三个地址从 /.well-known/openid-configuration 自动发现并缓存,Fill the issuer only; the three URLs come from /.well-known/openid-configuration and are cached
+sso.prov.g2.t,OAuth 2.0,OAuth 2.0
+sso.prov.g2.p,没有发现文档，预设填好授权、令牌、用户信息三个地址；飞书的信封式响应自动拆开,"No discovery document; the preset fills the authorize, token and userinfo URLs. Feishu's envelope response is unwrapped for you"
+sso.prov.g3.t,专有交换流程,Proprietary flows
+sso.prov.g3.p,钉钉 JSON 体换令牌、企业微信 CorpID + Secret 先换企业令牌再解析成员、微信开放平台 GET 带 openid，各走各的路,"DingTalk exchanges with a JSON body, WeCom swaps CorpID + Secret for a corp token then resolves the member, WeChat Open Platform GETs with openid: each its own path"
+sso.prov.g4.t,自定义,Custom
+sso.prov.g4.p,所有字段手填，按标准 OAuth 2.0 处理,"Every field by hand, treated as standard OAuth 2.0"
+sso.prov.dingtalk,钉钉,DingTalk
+sso.prov.wecom,企业微信,WeCom
+sso.prov.wechat,微信开放平台,WeChat Open Platform
+sso.prov.custom,自定义 Custom,Custom
+sso.bind.title,一次 SSO 登录怎么落到 erupt 用户上,How an SSO login lands on an erupt user
+sso.bind.subtitle,绑定只认 subject，从不用邮箱或账号名做后续匹配：这两者会被改名和复用，subject 不会。,"A binding trusts the subject only and never re-matches by email or account name: those get renamed and reused, a subject does not."
+sso.bind.n1.t,按绑定查找,Look up the binding
+sso.bind.n1.p,「认证源 + subject」命中绑定表即为该用户，之后改账号名也不影响。,provider + subject hits the binding table and that is the user; renaming the account later changes nothing.
+sso.bind.n2.t,首次按账号声明匹配,First login: match the account claim
+sso.bind.n2.p,没有绑定时，取账号声明（为空则邮箱声明）与 erupt 用户表的 account 比对，匹配到就建立绑定，一生只发生一次。,"Without a binding, the account claim (or the email claim) is compared with the erupt account; a match creates the binding, once in its lifetime."
+sso.bind.n3.t,自动建号或拒绝,Auto-create or refuse
+sso.bind.n3.p,开启则按认证源资料创建用户，赋默认角色，密码不可用、只能走认证源；关闭则提示「系统中不存在对应账号」并带上声明名与值。,On: create the user from the provider's profile with the default roles and an unusable password; off: refuse with the claim name and value so an admin can create it.
+sso.bind.n4.t,同步资料、补齐角色,"Sync profile, top up roles"
+sso.bind.n4.p,姓名、邮箱、手机、头像按「每次登录覆盖」或「仅补空」更新；登录时补齐默认角色只加不减。,"Name, email, phone and avatar update by overwrite-on-login or fill-empty-only; roles granted on login are added, never revoked."
+sso.bind.n5.t,可用性检查,Availability check
+sso.bind.n5.p,账号停用、过期、不在 IP 白名单内的用户即使认证源放行也被拒绝，与密码登录一致。,"A disabled, expired or off-whitelist account is refused even if the provider let it through, exactly as with a password."
+sso.more.title,登录之后，绑定还能干别的,"After login, the binding keeps working"
+sso.more.subtitle,绑定记录了用户在供应商侧的 Open ID 和资料快照；其他模块拿它找人，erupt-notice 的推送渠道正是这样发消息的。,"A binding records the user's Open ID on the provider side and a profile snapshot; other modules use it to reach the person, and erupt-notice's push channels send messages exactly this way."
+sso.more.bind.t,EruptSsoBindService,EruptSsoBindService
+sso.more.bind.p,只读库中的绑定记录，不向供应商发请求；没登录过就没有绑定，返回空。,"Reads the stored bindings only, never calls the provider; no login yet means no binding, so it returns empty."
+sso.more.code.c1,飞书侧的 open_id，推送卡片用,"the user's open_id on Feishu, for pushing a card"
+sso.more.code.c2,快照里任意顶层字段，不用为它加列,"any top-level claim from the snapshot, no column needed"
+sso.more.code.c3,以应用身份换令牌：飞书 / 钉钉 / 企业微信,app-level token: Feishu / DingTalk / WeCom only
+sso.more.saml.t,SAML 2.0：只用 JDK，难点是拒绝,"SAML 2.0: JDK only, the hard part is refusing"
+sso.more.saml.p,SsoSamlService 406 行，没有任何 SAML / XML 安全依赖，全部建立在 JDK 的 javax.xml.crypto.dsig 上；一份响应能不能登录，取决于这张拒绝清单的顺序。,"SsoSamlService is 406 lines with no SAML or XML security dependency, built entirely on the JDK's javax.xml.crypto.dsig; whether a response may log in depends on the order of this reject list."
+sso.saml.r1,签名验不过、或签的不是断言本身,"Signature fails, or signs something other than the assertion"
+sso.saml.r2,签名包装：签过的节点和读取的节点不是同一个,Signature wrapping: the signed node is not the node being read
+sso.saml.r3,重放：ID 用过、InResponseTo 对不上,"Replay: an ID seen before, an InResponseTo that does not match"
+sso.saml.r4,过期或尚未生效,Expired or not yet valid
+sso.saml.r5,受众或收件人不是这个 erupt,Audience or recipient is not this erupt
+sso.more.saml.link,阅读第 23 期：SAML 的难点是拒绝 →,Read topic 23: the hard part of SAML is refusing →
+sso.cta.title,选一个预设，粘上凭据，登录页就多一个按钮,"Pick a preset, paste the credentials, one more button on the login page"
+sso.cta.subtitle,erupt-spring-boot-starter-all 已包含本模块；系统管理 → 单点登录，新增一行即是一个认证源。,"Included in erupt-spring-boot-starter-all; System → SSO, and every new row is a provider."
+sso.cta.doc,查看文档,Documentation
+sso.cta.topic,不依赖 Spring Security 的登录链 →,A login chain without Spring Security →
+rag.hero.subtitle,把业务文档变成 AI 可检索的知识：上传 → 自动分块 → 向量嵌入 → 语义检索，全流程在后台可视化管理。AI 在对话中自主决定何时查哪个知识库，不用手动挂载。,"Turn business documents into knowledge the AI can search: upload, chunk, embed, retrieve, all managed in the admin. In a conversation the AI decides on its own when to query which knowledge base, nothing to mount."
+rag.badge.agentic,Agentic RAG,Agentic RAG
+rag.badge.embed,12 种嵌入模型,12 embedding providers
+rag.badge.store,5 种向量存储,5 vector stores
+rag.badge.role,角色级授权,role-level authorization
+rag.hero.btn.doc,查看文档,Documentation
+rag.pipe.title,从一份文档到一次召回,From a document to a hit
+rag.pipe.subtitle,上传 txt / md 或直接粘贴文本，系统自动分块、嵌入；状态流转 待嵌入 → 嵌入中 → 就绪，失败可重新嵌入。行操作「检索测试」直接验证召回与分数。,"Upload txt / md or paste text; chunking and embedding run on their own, status moves pending → embedding → ready, and a failure can be re-embedded. The Retrieval Test row action checks hits and scores."
+rag.mock.kb,售后政策,After-sales policy
+rag.mock.doc,退换货规则,Return rules
+rag.mock.remark,备注：退换货、运费、保修期限,"Remark: returns, shipping, warranty terms"
+rag.mock.status,就绪 · 3 chunks,ready · 3 chunks
+rag.mock.s1,上传,Upload
+rag.mock.s2,分块,Chunk
+rag.mock.s3,嵌入,Embed
+rag.mock.s4,检索,Retrieve
+rag.mock.c1,签收后 7 日内可无理由退货，需保持商品完好……,"Returns within 7 days of delivery, item intact…"
+rag.mock.c2,退货运费：质量问题由商家承担，非质量问题由买家承担……,"Return shipping: the seller pays for defects, the buyer otherwise…"
+rag.mock.c3,保修期自签收日起 12 个月，人为损坏不在保修范围……,Warranty 12 months from delivery; damage by misuse excluded…
+rag.mock.q,退货运费谁出？,Who pays return shipping?
+rag.mock.dropped,低于 minScore，丢弃,"below minScore, dropped"
+rag.stat.embed,种嵌入模型,embedding providers
+rag.stat.store,种向量存储,vector stores
+rag.stat.tools,个 AI Tool,ai tools
+rag.stat.mount,次手动挂载,manual mounts
+rag.ag.title,AI 自己决定查哪个知识库,The AI picks the knowledge base itself
+rag.ag.subtitle,检索以 AI Tool 的形式暴露：listKnowledgeBases 列出可用知识库，searchKnowledgeBase 对合适的那个发起语义检索，并优先采用召回内容作答。,"Retrieval is exposed as AI tools: listKnowledgeBases lists what is available, searchKnowledgeBase runs a semantic search on the right one, and the answer prefers what was retrieved."
+rag.ag.chat,对话,Conversation
+rag.ag.m.user,客户说收到的耳机坏了，退货运费怎么算？,"A customer's headphones arrived broken, who pays the return shipping?"
+rag.ag.m.think,先看有哪些知识库，再挑和售后相关的那个……,"List the knowledge bases first, then pick the one about after-sales…"
+rag.ag.m.kb2,产品手册,Product manuals
+rag.ag.m.kb3,内部流程,Internal processes
+rag.ag.m.q,退货运费 质量问题,return shipping defect
+rag.ag.m.ans,属于质量问题，退货运费由商家承担；签收 7 日内可无理由退货，保修期 12 个月。,"It is a defect, so the seller pays return shipping; returns within 7 days of delivery, warranty 12 months."
+rag.ag.m.cite,依据：售后政策 / 退换货规则 #2、#3,"source: After-sales policy / Return rules #2, #3"
+rag.ag.p1.t,不用手动挂载,Nothing to mount
+rag.ag.p1.p,模型在对话中自主决定何时查、查哪个；没有「先选知识库再提问」这一步。,The model decides in conversation when and where to look; there is no pick-a-knowledge-base-first step.
+rag.ag.p2.t,备注就是路由依据,The remark is the router
+rag.ag.p2.p,知识库的备注字段会被 AI 读取，用来判断它适不适合回答当前问题，所以请清晰描述内容范围。,"The AI reads each knowledge base's remark to judge whether it fits the question, so describe its scope clearly."
+rag.ag.p3.t,角色级 Tool 授权,Role-level tool authorization
+rag.ag.p3.p,两个工具同样受 erupt-ai 的角色级 Tool 授权管控，可精细控制哪些角色允许检索哪些知识。,"Both tools sit under erupt-ai's role-level tool authorization, so you control which roles may search which knowledge."
+rag.ag.p4.t,检索测试,Retrieval test
+rag.ag.p4.p,知识库行操作里的可视化界面，输入问题即可看到召回的分块与相似度分数，调参不用猜。,"A visual row action on the knowledge base: type a question and see the chunks and similarity scores, so tuning is not guesswork."
+rag.infra.title,嵌入模型在后台配，向量存储在文件里配,"Embedding models in the admin, the vector store in the config"
+rag.infra.subtitle,嵌入模型菜单由 erupt-ai 提供，12 家提供商开箱即用；向量存储属于部署基础设施，不配置时自动选 classpath 里唯一可用的持久化实现，否则用内存。,"The embedding model menu comes from erupt-ai with 12 providers built in; the vector store is infrastructure, and left unconfigured it picks the one persistent implementation on the classpath, else memory."
+rag.infra.embed.t,12 种嵌入模型,12 embedding providers
+rag.infra.embed.p,AI Manager → 嵌入模型，选提供商、填 Key，一个知识库绑定一个嵌入模型。,"AI Manager → Embedding Model: pick a provider, paste a key, one knowledge base binds one model."
+rag.infra.embed.warn,向量维度在首次嵌入后不可修改；更换知识库的嵌入模型后需重新嵌入全部文档。,The vector dimension is fixed after the first embedding; switching a knowledge base's model means re-embedding every document.
+rag.infra.store.t,5 种向量存储,5 vector stores
+rag.infra.store.p,通过 erupt.ai.rag.vector-store 指定类型与 uri，可选 api-key 鉴权。,"Set type and uri under erupt.ai.rag.vector-store, with an optional api-key."
+rag.infra.store.pg,留空复用应用数据源,blank reuses the app datasource
+rag.infra.store.mem,无需配置 · 适合开发调试,no config · for development
+rag.param.title,四个参数决定召回质量,Four parameters decide recall quality
+rag.param.subtitle,每个知识库单独配置，默认值适合大多数中文文档；改完用检索测试看效果。,"Set per knowledge base; the defaults suit most documents, and the retrieval test shows the effect of a change."
+rag.param.p1.t,分块大小,Chunk size
+rag.param.p1.p,每个分块的最大字符数；太大召回粗，太小丢上下文。,"Maximum characters per chunk; too large and recall is coarse, too small and context is lost."
+rag.param.p2.t,分块重叠,Chunk overlap
+rag.param.p2.p,相邻分块共享的字符数，让跨块的句子不被切断。,"Characters shared by neighbouring chunks, so a sentence across the boundary survives."
+rag.param.p3.t,Top K,Top K
+rag.param.p3.p,每次检索返回的分块数，连同相似度分数一起交给模型。,"Chunks returned per search, handed to the model with their scores."
+rag.param.p4.t,最低分数,Minimum score
+rag.param.p4.p,相似度阈值 0~1，低于它的结果直接丢弃，不进上下文。,Similarity threshold 0 to 1; anything below is dropped before it reaches the context.
+rag.cta.title,上传第一份文档，让 AI 自己去翻,Upload the first document and let the AI look it up
+rag.cta.subtitle,引入 erupt-ai-rag（需配合 erupt-ai），菜单里多出「知识库」。,Add erupt-ai-rag alongside erupt-ai and a Knowledge Base menu appears.
+rag.cta.doc,查看文档,Documentation
+rag.cta.ai,回到 AI Agent →,Back to AI Agent →
+dcs.hero.subtitle,不让大模型写一段话再由你去解析：向 System One 决策模型提出类型化的问题，拿回带概率分布的类型化答案。阈值放在代码里，模型只负责判断。,"Instead of having the model write a paragraph you then parse, ask a System One decision model a typed question and get back a typed answer with a probability distribution. Thresholds live in your code; the model only judges."
+dcs.badge.typed,类型化问题,typed questions
+dcs.badge.prob,概率分布答案,probability answers
+dcs.badge.noprompt,无提示词工程,no prompt engineering
+dcs.badge.standalone,不依赖 erupt-ai,no erupt-ai needed
+dcs.hero.btn.doc,查看文档,Documentation
+dcs.demo.title,一张工单，三个问题，一次往返,"One ticket, three questions, one round trip"
+dcs.demo.subtitle,问题是不可变的值对象，声明为常量到处复用；多个问题一次问完，状态只读一次、一次计费。,"Questions are immutable values declared once and reused; several questions go in one call, with the state read once and billed once."
+dcs.demo.c1,声明一次，到处复用,"declare once, reuse everywhere"
+dcs.demo.c2,一个问题，一行代码,"one question, one line"
+dcs.demo.c3,置信度不够就转人工,not confident enough: hand to a human
+dcs.demo.c4,模型读的是描述，不是常量名,"the model reads the description, not the constant name"
+dcs.demo.state,"Hi, I was charged twice this month and need this fixed today!","Hi, I was charged twice this month and need this fixed today!"
+dcs.stat.types,种问题类型,question types
+dcs.stat.trip,次往返问 N 个问题,round trip for n questions
+dcs.stat.parse,次正则 / JSON 解析,regex or json parsing
+dcs.stat.providers,种服务商 · 托管或自部署,providers · hosted or self-hosted
+dcs.type.title,问题自带类型，答案是概率,"Questions carry a type, answers are probabilities"
+dcs.type.subtitle,NOUL 的答案本身就是概率；CHOICE 与 SCORE 另带 0~1 的置信度，用来决定要不要采纳这个判断。,A NOUL answer is itself a probability; CHOICE and SCORE also carry a 0 to 1 confidence that decides whether to act on the judgement.
+dcs.type.ask,问什么,asks
+dcs.type.get,答什么,returns
+dcs.type.use,怎么用,used as
+dcs.type.t1.ask,是 / 否,Yes or no
+dcs.type.t1.get,「是」的概率 0~1,"The probability of yes, 0 to 1"
+dcs.type.t1.use,yes(0.9)：概率高于阈值才视为是,yes(0.9): only above the threshold counts as yes
+dcs.type.t2.ask,从封闭选项集中选一个,Pick one from a closed set
+dcs.type.t2.get,赢家 + 全部选项的概率分布；选项来自枚举时答案就是枚举常量,The winner plus the whole distribution; with an enum the answer is the constant itself
+dcs.type.t2.use,above(0.8)：置信度足够才路由，否则转人工,"above(0.8): route only when confident, else a human"
+dcs.type.t3.ask,在有序等级上处于哪个位置,Where on an ordered scale
+dcs.type.t3.get,概率加权的位置，可落在两级之间；2~10 个等级,A probability-weighted position that may fall between levels; 2 to 10 levels
+dcs.type.t3.use,情绪、风险、优先级打分,"Mood, risk and priority scoring"
+dcs.adm.title,判断标准放后台，改它不用发版,"Criteria live in the admin, changing them needs no release"
+dcs.adm.subtitle,AI 决策 → 决策：把一组问题存成一条决策，业务代码、工作流或外部系统按决策编码调用。保存即校验，不合法的判断标准不会拖到生产环境才暴露。,"AI Decision → Decisions: save a set of questions as one decision that code, workflows or external systems call by code. Validated on save, so a bad criterion never waits for production to surface."
+dcs.adm.menu,决策,Decision
+dcs.adm.f.code,编码,code
+dcs.adm.f.model,决策模型,model
+dcs.adm.f.default,默认,default
+dcs.adm.f.status,状态,status
+dcs.adm.f.active,激活,active
+dcs.adm.q.code,问题编码,question
+dcs.adm.q.type,类型,type
+dcs.adm.q.criteria,判断说明 / 选项 / 等级,instructions / options / levels
+dcs.adm.q.r2,客户是否要求退款？,Is the customer asking for a refund?
+dcs.adm.p1.t,按编码调用,Call by code
+dcs.adm.p1.p,"Decisions.run(""ticket_triage"", ticket) 或 HTTP POST /erupt-api/decision/{code}；答案按问题编码读取。","Decisions.run(""ticket_triage"", ticket) or HTTP POST /erupt-api/decision/{code}; answers are read by question code."
+dcs.adm.p2.t,Key 留在服务器,The key stays on the server
+dcs.adm.p2.p,两个 HTTP 接口都要求已登录；浏览器、脚本或下游服务不需要持有服务商的 API Key 就能拿到判断。,"Both HTTP endpoints require login; browsers, scripts and downstream services get judgements without ever holding the provider's API key."
+dcs.adm.p3.t,运行测试,Run a test
+dcs.adm.p3.p,行操作里粘一段状态，看实际应答的模型、token 用量和每个问题的答案与分布。,"Paste a state in the row action and see the responding model, token usage, and every answer with its distribution."
+dcs.adm.p4.t,自带问题的原生请求,Raw requests with inline questions
+dcs.adm.p4.p,POST /erupt-api/decision 直接带 questions 对象，type 为 noul / choice / score，不必先在后台建决策。,"POST /erupt-api/decision with a questions object, type noul / choice / score, no admin decision needed first."
+dcs.prov.title,两种服务商，一种应答格式,"Two providers, one answer format"
+dcs.prov.subtitle,AI 决策 → 决策模型，选服务商后自动填好 API 域名与模型名；表单里的「连接测试」发一个最便宜的 NOUL 问题验证地址与 Key。,AI Decision → Decision Models: pick a provider and the API host and model name fill in; Test Connection sends the cheapest NOUL question to verify host and key.
+dcs.prov.jev,TypeSafe 托管的 System One 模型，按量计费，需要 API Key；请求发往 {API 域名}/v1/systemone。,"TypeSafe's hosted System One model, pay as you go, API key required; requests go to {host}/v1/systemone."
+dcs.prov.laya,Convai Innovations 的 Apache 2.0 开源模型，在自己的机器上运行，应答格式与 Jev 一致；模块源码里附 FastAPI sidecar 与 Dockerfile。,"Convai Innovations' Apache 2.0 open model, runs on your own machine with the same answer format as Jev; the module ships a FastAPI sidecar and Dockerfile."
+dcs.rule.r1.t,解析顺序,Resolution order
+dcs.rule.r1.p,"显式指定的模型 → 决策自带的模型 → 默认模型；using(""名称"") 与 ?model= 都按名称寻址。","Explicit model → the decision's own model → the default; using(""name"") and ?model= both address by name."
+dcs.rule.r2.t,只有一条默认,Exactly one default
+dcs.rule.r2.p,新建的第一条自动成为默认，之后通过行操作切换；默认被锁定或删除时回退到任意一条已激活的。,"The first model created becomes the default, switched later by a row action; a locked or deleted default falls back to any active model."
+dcs.rule.r3.t,指名就不将就,Named means named
+dcs.rule.r3.p,按名称指定的模型必须处于激活状态，否则报 No such decision model，不会悄悄改用默认模型。,"A model named explicitly must be active, otherwise No such decision model; it never silently swaps to the default."
+dcs.rule.r4.t,超时与重试,Timeout and retry
+dcs.rule.r4.p,单次请求默认 15 秒；限流 429 或过载 529 时按退避重试，默认 2 次，优先遵循服务商的 retry-after。,"15 seconds per request by default; on 429 or 529 it backs off and retries, twice by default, honouring the provider's retry-after."
+dcs.cta.title,把 if 后面那句话交给模型，阈值留给自己,"Give the model the question, keep the threshold"
+dcs.cta.subtitle,erupt-spring-boot-starter-all 已包含本模块，只依赖 erupt-data-jpa，不需要 erupt-ai。,"Included in erupt-spring-boot-starter-all; depends on erupt-data-jpa only, no erupt-ai required."
+dcs.cta.doc,查看文档,Documentation
+dcs.cta.flow,在工作流里用它分支 →,Branch a workflow with it →

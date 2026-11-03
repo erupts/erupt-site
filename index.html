@@ -31,7 +31,7 @@
                     <a aria-expanded="false" aria-haspopup="true"
                        class="btn btn-sm align-self-center btn-link dropdown-toggle"
                        href="javascript:;" role="button"
-                       ng-class="['/ai','/ai-canvas','/ai-claw','/ai-dev','/ai-staff','/atlas','/cloud','/flow','/cube','/data','/tenant','/pro'].indexOf(currRouter)>=0?'active-link':''">
+                       ng-class="['/ai','/ai-canvas','/ai-claw','/ai-dev','/ai-staff','/ai-rag','/ai-decision','/atlas','/config','/designer','/sdk','/sso','/cloud','/flow','/cube','/data','/tenant','/pro'].indexOf(currRouter)>=0?'active-link':''">
                         {{'nav.products' | i18n}}
                     </a>
                     <div class="dropdown-menu menu-grid">
@@ -42,17 +42,18 @@
                             <a class="dropdown-item" href="#!/ai-dev">{{'nav.aidev' | i18n}}<small class="menu-sub">{{'nav.sub.aidev' | i18n}}</small></a>
                             <a class="dropdown-item" href="#!/ai-staff">{{'nav.staff' | i18n}}<small class="menu-sub">{{'nav.sub.staff' | i18n}}</small></a>
                             <a class="dropdown-item" href="#!/ai-claw">{{'nav.aiclaw' | i18n}}<small class="menu-sub">{{'nav.sub.aiclaw' | i18n}}</small></a>
-                            <a class="dropdown-item" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-rag" target="_blank">{{'nav.rag' | i18n}}<span class="doc-badge">DOCS</span><small class="menu-sub">{{'nav.sub.rag' | i18n}}</small></a>
-                            <a class="dropdown-item" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-decision" target="_blank">{{'nav.decision' | i18n}}<span class="doc-badge">DOCS</span><small class="menu-sub">{{'nav.sub.decision' | i18n}}</small></a>
+                            <a class="dropdown-item" href="#!/ai-rag">{{'nav.rag' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.rag' | i18n}}</small></a>
+                            <a class="dropdown-item" href="#!/ai-decision">{{'nav.decision' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.decision' | i18n}}</small></a>
                         </div>
                         <div class="menu-col">
                             <div class="menu-col-title">{{'nav.grp.core' | i18n}}</div>
                             <a class="dropdown-item" href="#!/cloud">{{'nav.cloud' | i18n}}<small class="menu-sub">{{'nav.sub.cloud' | i18n}}</small></a>
+                            <a class="dropdown-item" href="#!/config">{{'nav.config' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.config' | i18n}}</small></a>
                             <a class="dropdown-item" href="#!/data">{{'nav.data' | i18n}}<small class="menu-sub">{{'nav.sub.data' | i18n}}</small></a>
                             <a class="dropdown-item" href="#!/atlas">{{'nav.atlas' | i18n}}<small class="menu-sub">{{'nav.sub.atlas' | i18n}}</small></a>
-                            <a class="dropdown-item" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-designer" target="_blank">{{'nav.designer' | i18n}}<span class="doc-badge">DOCS</span><small class="menu-sub">{{'nav.sub.designer' | i18n}}</small></a>
-                            <a class="dropdown-item" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-sso" target="_blank">{{'nav.sso' | i18n}}<span class="doc-badge">DOCS</span><small class="menu-sub">{{'nav.sub.sso' | i18n}}</small></a>
-                            <a class="dropdown-item" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-terminal" target="_blank">{{'nav.terminal' | i18n}}<span class="doc-badge">DOCS</span><small class="menu-sub">{{'nav.sub.terminal' | i18n}}</small></a>
+                            <a class="dropdown-item" href="#!/designer">{{'nav.designer' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.designer' | i18n}}</small></a>
+                            <a class="dropdown-item" href="#!/sdk">{{'nav.sdk' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.sdk' | i18n}}</small></a>
+                            <a class="dropdown-item" href="#!/sso">{{'nav.sso' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.sso' | i18n}}</small></a>
                         </div>
                         <div class="menu-col">
                             <div class="menu-col-title">{{'nav.grp.biz' | i18n}}</div>
@@ -127,15 +128,16 @@
             <a class="mobile-nav-sub" href="#!/ai-dev" ng-click="mobileMenuOpen=false">{{'nav.aidev' | i18n}}</a>
             <a class="mobile-nav-sub" href="#!/ai-staff" ng-click="mobileMenuOpen=false">{{'nav.staff' | i18n}}</a>
             <a class="mobile-nav-sub" href="#!/ai-claw" ng-click="mobileMenuOpen=false">{{'nav.aiclaw' | i18n}}</a>
-            <a class="mobile-nav-sub" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-rag" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.rag' | i18n}}<span class="doc-badge">DOCS</span></a>
-            <a class="mobile-nav-sub" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-ai-decision" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.decision' | i18n}}<span class="doc-badge">DOCS</span></a>
+            <a class="mobile-nav-sub" href="#!/ai-rag" ng-click="mobileMenuOpen=false">{{'nav.rag' | i18n}}<span class="pro-badge">NEW</span></a>
+            <a class="mobile-nav-sub" href="#!/ai-decision" ng-click="mobileMenuOpen=false">{{'nav.decision' | i18n}}<span class="pro-badge">NEW</span></a>
             <div class="mobile-nav-group">{{'nav.products' | i18n}} · {{'nav.grp.core' | i18n}}</div>
             <a class="mobile-nav-sub" href="#!/cloud" ng-click="mobileMenuOpen=false">{{'nav.cloud' | i18n}}</a>
+            <a class="mobile-nav-sub" href="#!/config" ng-click="mobileMenuOpen=false">{{'nav.config' | i18n}}<span class="pro-badge">NEW</span></a>
             <a class="mobile-nav-sub" href="#!/data" ng-click="mobileMenuOpen=false">{{'nav.data' | i18n}}</a>
             <a class="mobile-nav-sub" href="#!/atlas" ng-click="mobileMenuOpen=false">{{'nav.atlas' | i18n}}</a>
-            <a class="mobile-nav-sub" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-designer" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.designer' | i18n}}<span class="doc-badge">DOCS</span></a>
-            <a class="mobile-nav-sub" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-sso" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.sso' | i18n}}<span class="doc-badge">DOCS</span></a>
-            <a class="mobile-nav-sub" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-terminal" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.terminal' | i18n}}<span class="doc-badge">DOCS</span></a>
+            <a class="mobile-nav-sub" href="#!/designer" ng-click="mobileMenuOpen=false">{{'nav.designer' | i18n}}<span class="pro-badge">NEW</span></a>
+            <a class="mobile-nav-sub" href="#!/sdk" ng-click="mobileMenuOpen=false">{{'nav.sdk' | i18n}}<span class="pro-badge">NEW</span></a>
+            <a class="mobile-nav-sub" href="#!/sso" ng-click="mobileMenuOpen=false">{{'nav.sso' | i18n}}<span class="pro-badge">NEW</span></a>
             <div class="mobile-nav-group">{{'nav.products' | i18n}} · {{'nav.grp.biz' | i18n}}</div>
             <a class="mobile-nav-sub" href="#!/flow" ng-click="mobileMenuOpen=false">{{'nav.flow' | i18n}}<span class="pro-badge">PRO</span></a>
             <a class="mobile-nav-sub" href="#!/cube" ng-click="mobileMenuOpen=false">{{'nav.cube' | i18n}}<span class="pro-badge">PRO</span></a>
@@ -268,6 +270,12 @@
 <script src="page/ai-staff/ai-staff.js"></script>
 <script src="page/tenant/tenant.js"></script>
 <script src="page/atlas/atlas.js"></script>
+<script src="page/config/config.js"></script>
+<script src="page/designer/designer.js"></script>
+<script src="page/sdk/sdk.js"></script>
+<script src="page/sso/sso.js"></script>
+<script src="page/ai-rag/ai-rag.js"></script>
+<script src="page/ai-decision/ai-decision.js"></script>
 <script src="page/cube/cube.js"></script>
 
 <script src="page/about/about.js"></script>
