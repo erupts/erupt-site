@@ -29,33 +29,7 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
         {
             aspect: zh ? '协作效率' : 'Team efficiency',
             without: zh ? '工程师、前端、产品多方协同，耗时数周' : 'Engineers, frontend, PM — weeks of coordination',
-            with: zh ? '注解建模 + 拖拽分析，无需多方协作' : 'Annotate + drag-and-drop, no cross-team sync'
-        }
-    ];
-
-    $scope.engineerPoints = i18nService.t('cube.roles.eng.points').split('|');
-    $scope.analystPoints = i18nService.t('cube.roles.ana.points').split('|');
-
-    $scope.annotations = [
-        {
-            name: '@EruptCube',
-            title: i18nService.t('cube.anno.a1.title'),
-            desc: i18nService.t('cube.anno.a1.desc')
-        },
-        {
-            name: '@Dimension',
-            title: i18nService.t('cube.anno.a2.title'),
-            desc: i18nService.t('cube.anno.a2.desc')
-        },
-        {
-            name: '@Measure',
-            title: i18nService.t('cube.anno.a3.title'),
-            desc: i18nService.t('cube.anno.a3.desc')
-        },
-        {
-            name: '@Parameter',
-            title: i18nService.t('cube.anno.a4.title'),
-            desc: i18nService.t('cube.anno.a4.desc')
+            with: zh ? '一份模型 + 拖拽分析，无需多方协作' : 'One model + drag-and-drop, no cross-team sync'
         }
     ];
 
@@ -68,52 +42,185 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
         { icon: '🔽', name: i18nService.t('cube.viz.f6.name'), desc: i18nService.t('cube.viz.f6.desc') }
     ];
 
-    $scope.chartTypes = i18nService.t('cube.viz.chart.types').split('|').map(function(s) {
-        var p = s.split(':');
-        return { icon: p[0], name: p[1] };
-    });
+    $scope.docBase = 'https://docs.erupt.xyz/' + (zh ? 'zh' : 'en') + '/modules/pro/erupt-cube';
+    $scope.openDoc = function (path) {
+        window.open('https://docs.erupt.xyz/' + (zh ? 'zh' : 'en') + '/modules/' + path, '_blank');
+    };
 
-    $scope.filterTypes = i18nService.t('cube.viz.filter.types').split('|').map(function(s) {
-        var p = s.split(':');
-        return { icon: p[0], name: p[1] };
-    });
+    // ── Modeling ──
+    $scope.modelWays = [
+        {
+            tag: 'YAML · JSON', cls: '',
+            title: zh ? '模型文件' : 'Model Files',
+            desc: zh ? '一个文件就是一个模型：放进 resources/cube/ 或任意外部目录，不写 Java、不用编译，随 git 版本管理与 Code Review。' : 'One file, one model: drop it into resources/cube/ or any external directory — no Java, no compiling, versioned and reviewed in git.'
+        },
+        {
+            tag: zh ? 'JAVA · 最灵活' : 'JAVA · MOST FLEXIBLE', cls: '-g',
+            title: zh ? 'Java 注解' : 'Java Annotations',
+            desc: zh ? '同样的结构写成 @EruptCube 类：IDE 跳转与重构、SQL 语法高亮、类继承复用，还能与 @Erupt 业务实体共用一个类。' : 'The same structure as an @EruptCube class: IDE navigation and refactoring, SQL highlighting, class inheritance — and it can share a class with an @Erupt entity.'
+        },
+        {
+            tag: 'VISUAL', cls: '-p',
+            title: zh ? '可视化建模' : 'Visual Modeling',
+            desc: zh ? '分析师在管理页面上配置 SQL、维度与指标，临时探索、快速试错；稳定后沉淀为文件。' : 'Analysts configure SQL, dimensions and measures in the UI for quick exploration; stable models graduate to files.'
+        }
+    ];
+
+    $scope.ui = {tab: 'yaml', cmp: 'java'};
+    $scope.modelTabs = [
+        {key: 'yaml', file: 'cube/OrderCube.yml'},
+        {key: 'json', file: 'cube/OrderCube.json'},
+        {key: 'java', file: 'OrderCube.java'}
+    ];
+
+    $scope.modelParts = [
+        {key: 'sql', desc: zh ? '底表 SQL 或表名，可用 Cube ML 动态生成' : 'Base SQL or table name, dynamic via Cube ML'},
+        {key: 'dimensions', desc: zh ? '可分组、可筛选的字段' : 'Fields to group and filter by'},
+        {key: 'measures', desc: zh ? '聚合指标，口径只定义一次' : 'Aggregations, defined exactly once'},
+        {key: 'parameters', desc: zh ? '运行时参数，注入 SQL 模板' : 'Runtime parameters injected into the SQL template'},
+        {key: 'explores', desc: zh ? '对外查询视图：固定过滤、字段白名单' : 'Query views: fixed filters, field whitelists'},
+        {key: 'joins', desc: zh ? '按 Cube 编码关联其它模型' : 'Join other models by cube code'},
+        {key: 'datasource', desc: zh ? '多数据源路由，留空用主数据源' : 'Multi-datasource routing, primary by default'}
+    ];
+
+    $scope.modelFeatures = [
+        {
+            title: zh ? 'IDE 补全' : 'IDE Completion',
+            desc: zh ? '官方 JSON Schema 由模型定义自动生成，VS Code / IntelliJ 提供属性补全、枚举提示与必填校验。' : 'An official JSON Schema generated from the model definition gives VS Code / IntelliJ attribute completion, enum hints and required checks.'
+        },
+        {
+            title: zh ? '启动即校验' : 'Validated at Startup',
+            desc: zh ? '未知属性、错误枚举、非法编码、拼错的关联目标，启动时直接失败并指出文件与原因。' : 'Unknown attributes, bad enums, invalid codes, misspelled join targets — startup fails and names the file and the reason.'
+        },
+        {
+            title: zh ? '外部目录加载' : 'External Directories',
+            desc: zh ? '加载路径可配置（classpath*: / file:），模型可放在应用包之外，改模型无需重新打包。' : 'Load paths are configurable (classpath*: / file:), so models can live outside the app package — change a model without rebuilding.'
+        },
+        {
+            title: zh ? '混用与互联' : 'Mix & Join',
+            desc: zh ? '文件模型与注解模型同处一个注册表，编码全局唯一，可以相互 join，查询管线完全一致。' : 'File and annotated models share one registry with globally unique codes, join each other, and run through the same query pipeline.'
+        }
+    ];
+
+    $scope.annoFeatures = [
+        {
+            title: zh ? '跳转与重构' : 'Navigate & Refactor',
+            desc: zh ? '模型就是 Java 类：Cmd+Click 跳到定义、Find Usages 查引用、重命名字段与类全工程安全联动。' : 'Models are Java classes: Cmd+Click to the definition, Find Usages, and project-wide safe rename of fields and classes.'
+        },
+        {
+            title: zh ? 'SQL 语法高亮' : 'SQL Highlighting',
+            desc: zh ? '借助 IDE 语言注入，注解里的 sql 字符串获得 SQL / VTL 高亮、补全与语法校验，不再是哑字符串。' : 'With IDE language injection, sql strings inside annotations get SQL / VTL highlighting, completion and syntax checks — no more dumb strings.'
+        },
+        {
+            title: zh ? '继承复用' : 'Inheritance',
+            desc: zh ? '基类声明公共维度与指标，子类 extends 即全部继承再追加，一套口径派生出多个模型。' : 'A base class declares shared dimensions and measures; subclasses extend and add more — one metric set, many derived models.'
+        },
+        {
+            title: zh ? 'Java 生态' : 'The Java Toolbox',
+            desc: zh ? '与 @Erupt 实体共用一个类；接 CubeProxy 行级权限、@CubeFunction 自定义函数、常量与 Spring Bean。' : 'Share a class with an @Erupt entity; plug in CubeProxy row-level rules, @CubeFunction helpers, constants and Spring beans.'
+        }
+    ];
+
+    // ── One model, every surface ──
+    $scope.useCases = [
+        {
+            num: '01', doc: 'pro/erupt-cube/visual-analysis',
+            title: zh ? '拖拽看板' : 'Drag & Drop Dashboards',
+            desc: zh ? '维度指标拖进画布即成图表：栅格布局、联动过滤、地图报表。' : 'Drag fields onto a canvas for instant charts — grid layout, linked filters, map reports.'
+        },
+        {
+            num: '02', doc: 'pro/erupt-cube/vis-view',
+            title: zh ? '模型视图图表' : 'Charts in Model Views',
+            desc: zh ? '在任意 Erupt 业务页面嵌入图表 Tab，列表搜索条件自动转为 Cube 过滤。' : 'Embed a chart tab in any Erupt page; the list search is forwarded as cube filters.'
+        },
+        {
+            num: '03', doc: 'pro/erupt-cube/ai',
+            title: zh ? 'AI 问数' : 'AI Q&A',
+            desc: zh ? 'MCP 工具集让 Agent 自主发现模型、执行聚合查询并渲染图表。' : 'MCP tools let agents discover models, run aggregate queries and render charts.'
+        },
+        {
+            num: '04', doc: 'pro/erupt-cube/ai-canvas',
+            title: zh ? 'AI 画布' : 'AI Canvas',
+            desc: zh ? '一句话把模型变成实时取数的大屏或分析页，多风格版本随时切换。' : 'One sentence turns a model into a live dashboard or analysis page, in any style.'
+        },
+        {
+            num: '05', doc: 'pro/erupt-cube/sql',
+            title: zh ? 'SQL 端口' : 'SQL Port',
+            desc: zh ? 'PostgreSQL 协议直连，psql、DataGrip、Superset、Grafana 把模型当表查。' : 'PostgreSQL wire protocol — psql, DataGrip, Superset and Grafana query models as tables.'
+        },
+        {
+            num: '06', doc: 'erupt-share',
+            title: zh ? '只读分享' : 'Read-only Sharing',
+            desc: zh ? '配合 erupt-share 把看板或画布分享出去，查询照常、写入全部关闭。' : 'Share a dashboard or canvas via erupt-share — reads work, every write stays closed.'
+        }
+    ];
+
+    // ── Governance ──
+    $scope.govFeatures = [
+        {
+            icon: '🔐',
+            title: zh ? '权限复用' : 'Reuse Permissions',
+            desc: zh ? '菜单权限复用 Erupt UPMS；CubeProxy 与 ${user} / ${tenantId} 模板变量实现行级与租户隔离。' : 'Menu access reuses Erupt UPMS; CubeProxy and the ${user} / ${tenantId} template variables give row-level and tenant isolation.'
+        },
+        {
+            icon: '🛰️',
+            title: zh ? '云端节点' : 'Cloud Nodes',
+            desc: zh ? '模型分散在各业务项目中定义，由 cube 服务端经 erupt-cloud 统一发现与查询，数据不出节点。' : 'Models live in each business project; the cube server discovers and queries them through erupt-cloud, and data never leaves the node.'
+        },
+        {
+            icon: '🧭',
+            title: zh ? '影响分析' : 'Impact Analysis',
+            desc: zh ? 'erupt-atlas 可查看哪些看板读取了某个 Cube，删维度之前先知道会波及哪些图表。' : 'erupt-atlas shows which dashboards read a cube, so you know which charts break before dropping a dimension.'
+        },
+        {
+            icon: '🗄️',
+            title: zh ? '多数据源' : 'Multi-Datasource',
+            desc: zh ? '每个模型独立路由数据源，OLAP 数仓与业务库并存，跨源 join 交给 SQL 端口。' : 'Each model routes to its own datasource; OLAP warehouses and business DBs coexist, and cross-source joins go through the SQL port.'
+        }
+    ];
 
     $scope.cmpRows = [
         {
-            feature: zh ? '模型格式' : 'Schema Format',
+            feature: zh ? '模型格式' : 'Model Format',
             looker: 'LookML DSL',
             cubedev: 'YAML / JS',
-            us: zh ? 'Java 注解，代码即模型' : 'Java Annotations'
+            us: zh ? 'Java 注解 · YAML / JSON · 可视化' : 'Java annotations · YAML / JSON · visual'
         },
         {
-            feature: zh ? 'IDE 支持' : 'IDE Support',
-            looker: zh ? '文本编辑器，无类型检查' : 'Text editor, no type check',
-            cubedev: zh ? '文本编辑器，无类型检查' : 'Text editor, no type check',
-            us: zh ? '全量自动补全、跳转、安全重命名' : 'Autocomplete, Cmd+Click, safe rename'
+            feature: zh ? '编辑与校验' : 'Editing & Validation',
+            looker: zh ? 'Looker 内置 IDE' : 'Built-in Looker IDE',
+            cubedev: zh ? '代码编辑 / Cube Cloud IDE' : 'Code editor / Cube Cloud IDE',
+            us: zh ? '注解：SQL 注入高亮 · 文件：Schema 补全；启动严格校验' : 'Annotations: injected SQL highlighting · files: schema completion; strict startup checks'
         },
         {
-            feature: zh ? '版本管理' : 'Version Control',
-            looker: zh ? '独立文件追踪，与业务代码割裂' : 'Separate file tracking, decoupled',
-            cubedev: zh ? '独立文件追踪，与业务代码割裂' : 'Separate file tracking, decoupled',
-            us: zh ? '与业务代码同一 commit，历史完整' : 'Same commit as business code'
+            feature: zh ? '导航与重构' : 'Navigation & Refactoring',
+            looker: zh ? '限 Looker 自带 IDE' : 'Looker IDE only',
+            cubedev: zh ? '取决于编辑器插件' : 'Depends on editor plugins',
+            us: zh ? 'IDE 原生：跳转、查引用、安全重命名' : 'Native IDE: go-to, find usages, safe rename'
         },
         {
-            feature: zh ? '类型安全' : 'Type Safety',
-            looker: zh ? '运行时报错' : 'Runtime errors',
-            cubedev: zh ? '运行时报错' : 'Runtime errors',
-            us: zh ? '编译期校验，错误即时可见' : 'Compile-time validation'
+            feature: zh ? '继承复用' : 'Inheritance',
+            looker: 'extends / refinements',
+            cubedev: 'extends',
+            us: zh ? 'Java 类继承，IDE 全程可导航' : 'Java class inheritance, fully navigable'
         },
         {
-            feature: zh ? '动态模型' : 'Dynamic Models',
-            looker: zh ? '不支持' : 'Not supported',
-            cubedev: zh ? 'Jinja 模板，表达能力有限' : 'Jinja templating, limited',
-            us: zh ? '纯 Java：条件、循环、运行时覆盖' : 'Pure Java: any condition or loop'
+            feature: zh ? '动态 SQL' : 'Dynamic SQL',
+            looker: zh ? 'Liquid 模板' : 'Liquid templating',
+            cubedev: 'Jinja / JS',
+            us: zh ? 'Velocity（Cube ML）+ Java 函数' : 'Velocity (Cube ML) + Java functions'
         },
         {
-            feature: zh ? '继承 & 派生' : 'Inheritance & Derivation',
-            looker: zh ? '不支持' : 'Not supported',
-            cubedev: zh ? '不支持' : 'Not supported',
-            us: zh ? '类继承复用 Cube，@Measure 派生组合' : 'Class inheritance + derived @Measure'
+            feature: zh ? 'SQL 接口' : 'SQL Interface',
+            looker: 'Open SQL Interface (JDBC)',
+            cubedev: zh ? 'SQL API（Postgres 协议）' : 'SQL API (Postgres protocol)',
+            us: zh ? 'PostgreSQL 协议，Calcite 下推' : 'PostgreSQL protocol, Calcite pushdown'
+        },
+        {
+            feature: zh ? '权限体系' : 'Permissions',
+            looker: zh ? 'Looker 自有用户体系' : "Looker's own user model",
+            cubedev: zh ? '安全上下文需自行对接' : 'Security context wired by you',
+            us: zh ? '复用 Erupt UPMS / 租户' : 'Reuses Erupt UPMS / tenants'
         },
         {
             feature: zh ? '部署方式' : 'Deployment',
@@ -123,26 +230,26 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
         }
     ];
 
-    $scope.annoAdvantages = [
+    $scope.advantages = [
         {
-            icon: '⌨️',
-            title: zh ? 'IDE 优先' : 'IDE First',
-            desc: zh ? 'IntelliJ / Eclipse 提供全量自动补全、Cmd+Click 跳转、跨文件安全重命名——语义模型开发体验与普通 Java 代码无异。' : 'IntelliJ / Eclipse give full autocomplete, Cmd+Click navigation and safe cross-file rename — same experience as any Java code.'
+            icon: '📄',
+            title: zh ? '没有新语言' : 'No New Language',
+            desc: zh ? '模型就是通用的 YAML / JSON，Schema 带补全；需要编程扩展时同样的结构写成 Java 注解。' : 'Models are plain YAML / JSON with schema completion; when you need code, the same structure works as Java annotations.'
         },
         {
-            icon: '🔀',
-            title: zh ? 'Git 原生' : 'Git Native',
-            desc: zh ? '语义模型与调用它的业务逻辑在同一次 commit 中，PR diff 清晰，历史可追溯，回滚原子化。' : 'Semantic model and the business logic using it live in the same commit. Clean diffs, traceable history, atomic rollbacks.'
+            icon: '🧩',
+            title: zh ? '嵌入业务工程' : 'Embedded',
+            desc: zh ? '作为 Spring Boot 模块随业务应用启动，不引入独立服务，也可通过云端节点分布部署。' : 'Starts with your app as a Spring Boot module — no extra service — or distributes across cloud nodes.'
         },
         {
-            icon: '⚡',
-            title: zh ? '高度动态' : 'Fully Dynamic',
-            desc: zh ? '用任意 Java 表达式控制模型行为：多租户过滤、特性开关、按权限动态暴露字段——静态 YAML 根本无法实现。' : 'Control model behavior with any Java expression: tenant filters, feature flags, permission-based exposure — impossible with static YAML.'
+            icon: '🔐',
+            title: zh ? '权限天然继承' : 'Permissions Inherited',
+            desc: zh ? '菜单、角色、租户沿用 Erupt 体系，看板、AI、SQL 端口走同一套鉴权。' : 'Menus, roles and tenants come from Erupt; dashboards, AI and the SQL port share one auth model.'
         },
         {
-            icon: '🧬',
-            title: zh ? '继承 & 派生' : 'Inherit & Derive',
-            desc: zh ? '通过类继承复用基础 Cube，子类覆盖或追加维度 / 指标；派生指标直接引用其他 @Measure 组合计算，零重复定义。' : 'Extend base cubes via class inheritance; override or add dimensions and measures. Derived metrics reference other @Measure fields — zero duplication.'
+            icon: '📦',
+            title: zh ? '源码交付' : 'Source Delivered',
+            desc: zh ? '一次买断，完整源码与后续版本，无厂商锁定、无项目数量限制。' : 'One-time purchase with full source and future versions — no lock-in, no project limits.'
         }
     ];
 
@@ -184,11 +291,6 @@ app.controller("cube", function ($scope, $timeout, i18nService) {
         { name: 'user',     desc: zh ? '当前登录用户上下文（uid、account、name）' : 'Current logged-in user context (uid, account, name)', example: '${user.name}' },
         { name: 'tenantId', desc: zh ? '多租户场景中使用，为当前租户 ID' : 'Current tenant ID for multi-tenant scenarios', example: '${tenantId}' }
     ];
-
-    $scope.flowSteps = i18nService.t('cube.flow.steps').split('|').map(function (s) {
-        var parts = s.split(':');
-        return { icon: parts[0], label: parts[1] };
-    });
 
     $timeout(function () {
         if (!Prism.languages.velocity) {

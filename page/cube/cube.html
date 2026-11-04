@@ -551,44 +551,6 @@
     }
 
     /* ── Role list cells ── */
-    .cube-role-list {
-        list-style: none;
-        padding: 0;
-        margin: 12px 0 0;
-    }
-
-    .cube-role-list li {
-        color: var(--c-text2);
-        padding: 8px 0;
-        border-bottom: 1px solid rgba(20, 18, 11, .12);
-        font-size: .9em;
-        line-height: 1.5;
-    }
-
-    .cube-role-list li:last-child {
-        border-bottom: none;
-    }
-
-    .cube-role-list li::before {
-        content: '— ';
-        color: var(--c-brand);
-    }
-
-    /* ── Annotation cards (cells) ── */
-    .cube-anno-name {
-        display: inline-block;
-        background: var(--c-code-bg);
-        color: var(--c-code-text);
-        padding: 3px 10px;
-        font-family: var(--c-mono);
-        font-size: .88em;
-        font-weight: 700;
-        margin-bottom: 12px;
-        letter-spacing: .3px;
-        border: 1px solid var(--c-border);
-        box-shadow: 2px 2px 0 rgba(20, 18, 11, .25);
-    }
-
     /* ── CML vars table ── */
     .cml-vars-table {
         width: 100%;
@@ -749,6 +711,10 @@
         line-height: 1.72;
         background: var(--c-code-bg);
         overflow-x: auto;
+    }
+
+    .cube-looker-card pre code {
+        color: var(--c-code-text);
     }
 
     .cmp-code-wrap {
@@ -1362,6 +1328,131 @@
             margin: 0 auto 32px;
         }
     }
+
+    /* ── Modeling: three ways + tabbed model file ── */
+    .cmod-way-tag {
+        display: inline-block;
+        font-family: var(--c-mono);
+        font-size: .72em;
+        font-weight: 700;
+        letter-spacing: .4px;
+        padding: 2px 10px;
+        margin-bottom: 12px;
+        border: 2px solid var(--c-border);
+        box-shadow: 2px 2px 0 var(--c-text);
+        background: var(--c-brand);
+        color: var(--c-text);
+    }
+
+    .cmod-way-tag.-g { background: var(--c-green); }
+    .cmod-way-tag.-p { background: var(--c-purple); }
+
+    .cmod-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+    }
+
+    @media (max-width: 900px) {
+        .cmod-grid { grid-template-columns: 1fr; }
+    }
+
+    .cmod-tabs {
+        display: flex;
+        border-bottom: 1px solid rgba(240, 232, 214, .12);
+        overflow-x: auto;
+    }
+
+    .cmod-tab {
+        padding: 10px 16px;
+        font-family: var(--c-mono);
+        font-size: .78em;
+        font-weight: 700;
+        color: rgba(240, 232, 214, .45);
+        border-right: 1px solid rgba(240, 232, 214, .12);
+        cursor: pointer;
+        white-space: nowrap;
+        user-select: none;
+    }
+
+    .cmod-tab:hover { color: var(--c-code-text); }
+
+    .cmod-tab.cmod-tab-on {
+        color: var(--c-text);
+        background: var(--c-brand);
+    }
+
+    .cmod-code pre { min-height: 470px; }
+
+    .cmod-k { color: #4FC8EC; }
+    .cmod-s { color: #93D655; }
+    .cmod-c { color: rgba(240, 232, 214, .38); font-style: italic; }
+
+    .cmod-anatomy {
+        border: 2px solid var(--c-border);
+        box-shadow: var(--c-shadow);
+        background: var(--c-paper);
+    }
+
+    .cmod-anatomy-head {
+        padding: 10px 16px;
+        font-family: var(--c-mono);
+        font-size: .78em;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--c-border);
+    }
+
+    .cmod-part {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--c-border);
+        font-size: .88em;
+        line-height: 1.6;
+    }
+
+    .cmod-part:last-child { border-bottom: none; }
+
+    .cmod-part-key {
+        display: inline-block;
+        min-width: 92px;
+        font-family: var(--c-mono);
+        font-weight: 700;
+        color: var(--c-text);
+        background: none;
+        padding: 0;
+    }
+
+    .cmod-part-desc { color: var(--c-text2); }
+
+    .cmp-switch {
+        float: right;
+        display: inline-flex;
+        border: 1px solid rgba(240, 232, 214, .25);
+    }
+
+    .cmp-switch span {
+        padding: 0 8px;
+        cursor: pointer;
+        color: rgba(240, 232, 214, .5);
+        user-select: none;
+    }
+
+    .cmp-switch span.on {
+        background: var(--c-brand);
+        color: var(--c-text);
+    }
+
+    .cmod-use-num {
+        display: block;
+        font-family: var(--c-mono);
+        font-size: 2.2em;
+        font-weight: 800;
+        line-height: 1;
+        color: rgba(20, 18, 11, .08);
+        margin-bottom: 8px;
+    }
 </style>
 
 <div ng-controller="cube" class="cube-page">
@@ -1372,8 +1463,10 @@
         <div class="r cube-hero-row">
             <div style="margin-bottom:16px;position:relative">
                 <span class="cube-badge">Semantic Layer</span>
-                <span class="cube-badge">Big Data Analytics</span>
+                <span class="cube-badge">YAML · JSON</span>
                 <span class="cube-badge">Java Annotations</span>
+                <span class="cube-badge">AI Native</span>
+                <span class="cube-badge">PG Wire</span>
             </div>
             <h1 class="cube-h1">Erupt <em>Cube</em></h1>
             <p class="cube-hero-sub">{{'cube.hero.sub' | i18n}}</p>
@@ -1383,7 +1476,7 @@
                        target="_blank">{{'cube.hero.btn.demo' | i18n}}</a>
                     <span class="demo-tip" ng-bind-html="'cube.demo.tip' | i18nHtml"></span>
                 </span>
-                <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/pro/erupt-cube"
+                <a class="wbtn" ng-href="{{docBase}}"
                    style="margin-left:8px"
                    target="_blank">{{'cube.cta.doc' | i18n}}</a>
             </div>
@@ -1392,85 +1485,255 @@
         <!-- ── §1b Stats ── -->
         <div class="r g4">
             <div class="c no-bb" style="text-align:center;padding:22px 16px">
-                <span class="cube-stat-num">@EruptCube</span>
+                <span class="cube-stat-num">YAML · @Java</span>
                 <span class="cube-stat-label">{{'cube.stat.model' | i18n}}</span>
             </div>
             <div class="c no-bb cube-stat-g" style="text-align:center;padding:22px 16px">
-                <span class="cube-stat-num">@Dimension</span>
-                <span class="cube-stat-label">{{'cube.stat.dim' | i18n}}</span>
+                <span class="cube-stat-num">Cube ML</span>
+                <span class="cube-stat-label">{{'cube.stat.ml' | i18n}}</span>
             </div>
             <div class="c no-bb cube-stat-v" style="text-align:center;padding:22px 16px">
-                <span class="cube-stat-num">@Measure</span>
-                <span class="cube-stat-label">{{'cube.stat.measure' | i18n}}</span>
+                <span class="cube-stat-num">MCP</span>
+                <span class="cube-stat-label">{{'cube.stat.ai' | i18n}}</span>
             </div>
-            <div class="c no-bb cube-stat-y" style="text-align:center;padding:22px 16px;border-right:none">
-                <span class="cube-stat-num">Zero SQL</span>
-                <span class="cube-stat-label">{{'cube.stat.nosql' | i18n}}</span>
+            <div class="c no-bb cube-stat-y" style="text-align:center;padding:22px 16px">
+                <span class="cube-stat-num">:5433</span>
+                <span class="cube-stat-label">{{'cube.stat.sql' | i18n}}</span>
             </div>
         </div>
 
-        <!-- ── §1c AI Native ── -->
-        <div class="r g-bg g-bg-y ticks" style="padding:48px;text-align:center">
-            <span class="tag tag-y">AI NATIVE</span>
-            <p class="h2">{{'cube.ai.title.pre' | i18n}}<em class="cube-sql-stamp">AI</em>{{'cube.ai.title.post' |
-                i18n}}</p>
-            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.ai.desc' | i18n}}</p>
+        <!-- ── §2 Why Semantic Layer ── -->
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag">WHY SEMANTIC LAYER</span>
+            <p class="h2">{{'cube.problem.title' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.problem.desc' | i18n}}</p>
+        </div>
+        <div class="r" style="padding:24px 32px">
+            <div style="overflow-x:auto">
+                <table class="cube-compare-table">
+                    <thead>
+                    <tr>
+                        <th>{{'cube.table.th.aspect' | i18n}}</th>
+                        <th>✗ &nbsp;{{'cube.table.th.without' | i18n}}</th>
+                        <th>✓ &nbsp;{{'cube.table.th.with' | i18n}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in compareRows">
+                        <td>{{row.aspect}}</td>
+                        <td>{{row.without}}</td>
+                        <td>{{row.with}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ── §3 Modeling ── -->
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag">MODELING</span>
+            <p class="h2">{{'cube.model.title' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.model.desc' | i18n}}</p>
+        </div>
+        <div class="r g3">
+            <div class="c no-bb" ng-repeat="w in modelWays">
+                <span class="cmod-way-tag" ng-class="w.cls">{{w.tag}}</span>
+                <div class="h3">{{w.title}}</div>
+                <p class="sub">{{w.desc}}</p>
+            </div>
+        </div>
+        <div class="r" style="padding:24px 32px">
+            <div class="cmod-grid">
+                <div class="cml-code-block cmod-code">
+                    <div class="cmod-tabs">
+                        <span class="cmod-tab" ng-repeat="t in modelTabs"
+                              ng-class="{'cmod-tab-on': ui.tab === t.key}"
+                              ng-click="ui.tab = t.key">{{t.file}}</span>
+                    </div>
+                    <pre ng-show="ui.tab === 'yaml'"><code><span class="cmod-c"># yaml-language-server: $schema=https://docs.erupt.xyz/schema/erupt-cube.schema.json</span>
+<span class="cmod-k">name</span>: <span class="cmod-s">Order Analysis</span>
+<span class="cmod-k">sql</span>: <span class="cmod-s">orders</span>
+<span class="cmod-k">sqlType</span>: <span class="cmod-s">TABLE_NAME</span>
+<span class="cmod-k">explores</span>:
+  - <span class="cmod-k">code</span>: <span class="cmod-s">overview</span>
+    <span class="cmod-k">name</span>: <span class="cmod-s">Overview</span>
+  - <span class="cmod-k">code</span>: <span class="cmod-s">paid</span>
+    <span class="cmod-k">name</span>: <span class="cmod-s">Paid Orders</span>
+    <span class="cmod-k">where</span>: <span class="cmod-s">status = 'PAID'</span>
+<span class="cmod-k">dimensions</span>:
+  <span class="cmod-k">channel</span>:    { <span class="cmod-k">title</span>: <span class="cmod-s">Channel</span> }
+  <span class="cmod-k">city</span>:       { <span class="cmod-k">title</span>: <span class="cmod-s">City</span> }
+  <span class="cmod-k">created_at</span>: { <span class="cmod-k">title</span>: <span class="cmod-s">Order Date</span>, <span class="cmod-k">type</span>: <span class="cmod-s">DATE</span> }
+<span class="cmod-k">measures</span>:
+  <span class="cmod-k">orders</span>:  { <span class="cmod-k">title</span>: <span class="cmod-s">Orders</span>,  <span class="cmod-k">sql</span>: <span class="cmod-s">count(*)</span> }
+  <span class="cmod-k">revenue</span>: { <span class="cmod-k">title</span>: <span class="cmod-s">Revenue</span>, <span class="cmod-k">sql</span>: <span class="cmod-s">sum(amount)</span> }</code></pre>
+                    <pre ng-show="ui.tab === 'json'"><code>{
+  <span class="cmod-k">"$schema"</span>: <span class="cmod-s">"https://docs.erupt.xyz/schema/erupt-cube.schema.json"</span>,
+  <span class="cmod-k">"name"</span>: <span class="cmod-s">"Order Analysis"</span>,
+  <span class="cmod-k">"sql"</span>: <span class="cmod-s">"orders"</span>,
+  <span class="cmod-k">"sqlType"</span>: <span class="cmod-s">"TABLE_NAME"</span>,
+  <span class="cmod-k">"explores"</span>: [
+    { <span class="cmod-k">"code"</span>: <span class="cmod-s">"overview"</span>, <span class="cmod-k">"name"</span>: <span class="cmod-s">"Overview"</span> },
+    { <span class="cmod-k">"code"</span>: <span class="cmod-s">"paid"</span>, <span class="cmod-k">"name"</span>: <span class="cmod-s">"Paid Orders"</span>, <span class="cmod-k">"where"</span>: <span class="cmod-s">"status = 'PAID'"</span> }
+  ],
+  <span class="cmod-k">"dimensions"</span>: {
+    <span class="cmod-k">"channel"</span>:    { <span class="cmod-k">"title"</span>: <span class="cmod-s">"Channel"</span> },
+    <span class="cmod-k">"city"</span>:       { <span class="cmod-k">"title"</span>: <span class="cmod-s">"City"</span> },
+    <span class="cmod-k">"created_at"</span>: { <span class="cmod-k">"title"</span>: <span class="cmod-s">"Order Date"</span>, <span class="cmod-k">"type"</span>: <span class="cmod-s">"DATE"</span> }
+  },
+  <span class="cmod-k">"measures"</span>: {
+    <span class="cmod-k">"orders"</span>:  { <span class="cmod-k">"title"</span>: <span class="cmod-s">"Orders"</span>,  <span class="cmod-k">"sql"</span>: <span class="cmod-s">"count(*)"</span> },
+    <span class="cmod-k">"revenue"</span>: { <span class="cmod-k">"title"</span>: <span class="cmod-s">"Revenue"</span>, <span class="cmod-k">"sql"</span>: <span class="cmod-s">"sum(amount)"</span> }
+  }
+}</code></pre>
+                    <pre ng-show="ui.tab === 'java'"><code class="language-java">@EruptCube(name = "Order Analysis", sql = "orders", sqlType = SqlType.TABLE_NAME,
+        explores = {
+            @Explore(code = "overview", name = "Overview"),
+            @Explore(code = "paid", name = "Paid Orders", where = "status = 'PAID'")
+        })
+public class OrderCube {
+
+    @Dimension(title = "Channel")
+    private String channel;
+
+    @Dimension(title = "City")
+    private String city;
+
+    @Dimension(title = "Order Date", sql = "created_at")
+    private LocalDate createdAt;
+
+    @Measure(title = "Orders", sql = "count(*)")
+    private Long orders;
+
+    @Measure(title = "Revenue", sql = "sum(amount)")
+    private BigDecimal revenue;
+}</code></pre>
+                </div>
+                <div class="cmod-anatomy">
+                    <div class="cmod-anatomy-head">{{'cube.model.anatomy' | i18n}}</div>
+                    <div class="cmod-part" ng-repeat="p in modelParts">
+                        <code class="cmod-part-key">{{p.key}}</code>
+                        <span class="cmod-part-desc">{{p.desc}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="r g4">
+            <div class="c no-bb" ng-repeat="f in modelFeatures">
+                <div class="h3">{{f.title}}</div>
+                <p class="sub">{{f.desc}}</p>
+            </div>
+        </div>
+
+        <!-- Annotation modeling: the most flexible way -->
+        <div class="r g-bg" style="padding:24px 48px;text-align:center">
+            <span class="tag tag-g" style="margin-bottom:8px">JAVA ANNOTATIONS</span>
+            <p class="sub" style="margin:0 auto;max-width:60ch">{{'cube.anno.desc' | i18n}}</p>
         </div>
         <div class="r" style="padding:24px 32px">
             <div class="cml-code-grid">
                 <div class="cml-code-block">
-                    <div class="cml-code-head">AI Agent — MCP session</div>
-                    <pre><code><span class="csql-prompt">user  ›</span> {{'cube.ai.chat.q' | i18n}}
+                    <div class="cml-code-head">BaseOrderCube.java — {{'cube.anno.base' | i18n}}</div>
+                    <pre><code class="language-java">public abstract class BaseOrderCube {
 
-<span class="csql-prompt">agent ›</span> <span class="csql-kw">cubeMetadata</span>("SalesCube")
-<span class="csql-prompt">agent ›</span> <span class="csql-kw">cubeQuery</span>({
-          dimensions: ["category"],
-          measures:   ["revenue"],
-          filters: [{ code: "quarter", op: "EQ", value: "2025-Q2" }],
-          sorts:   [{ code: "revenue", desc: true }], limit: 3
-        })
+    @Dimension(title = "Channel")
+    private String channel;
 
-<span class="csql-res">  category   | revenue
--------------+----------
- Electronics | 1284300
- Apparel     |  912400
- Food        |  673100</span>
+    @Dimension(title = "Order Date", sql = "created_at")
+    private LocalDate createdAt;
 
-<span class="csql-cmt">✓ {{'cube.ai.chat.render' | i18n}}</span></code></pre>
+    @Measure(title = "Revenue", sql = "sum(amount)")
+    private BigDecimal revenue;
+}</code></pre>
                 </div>
                 <div class="cml-code-block">
-                    <div class="cml-code-head">@AiToolbox — EruptCubeAiTools.java</div>
-                    <pre><code><span class="csql-kw">cubeList()</span>
-<span class="csql-cmt">// {{'cube.ai.tool.list' | i18n}}</span>
+                    <div class="cml-code-head">PaidOrderCube.java — {{'cube.anno.sub' | i18n}}</div>
+                    <pre><code class="language-java">@EruptCube(name = "Paid Orders", sql = """
+        select * from orders where status = 'PAID'
+        """) // SQL highlighted via IDE language injection
+public class PaidOrderCube extends BaseOrderCube {
 
-<span class="csql-kw">cubeMetadata(cube)</span>
-<span class="csql-cmt">// {{'cube.ai.tool.meta' | i18n}}</span>
-
-<span class="csql-kw">cubeQuery(cube, query)</span>
-<span class="csql-cmt">// {{'cube.ai.tool.query' | i18n}}</span>
-
-<span class="csql-res">protocol :</span> MCP · Function Calling
-<span class="csql-res">models   :</span> OpenAI / Claude / Gemini
-<span class="csql-res">         </span> DeepSeek / Qwen / Ollama …</code></pre>
+    @Measure(title = "Buyers", sql = "count(distinct user_id)")
+    private Long buyers;
+}</code></pre>
                 </div>
             </div>
         </div>
-        <div class="r g3">
-            <div class="c no-bb">
-                <div class="h3">{{'cube.ai.f1.title' | i18n}}</div>
-                <p class="sub">{{'cube.ai.f1.desc' | i18n}}</p>
-            </div>
-            <div class="c no-bb">
-                <div class="h3">{{'cube.ai.f2.title' | i18n}}</div>
-                <p class="sub">{{'cube.ai.f2.desc' | i18n}}</p>
-            </div>
-            <div class="c no-bb" style="border-right:none">
-                <div class="h3">{{'cube.ai.f3.title' | i18n}}</div>
-                <p class="sub">{{'cube.ai.f3.desc' | i18n}}</p>
+        <div class="r g4">
+            <div class="c no-bb" ng-repeat="f in annoFeatures">
+                <div class="h3">{{f.title}}</div>
+                <p class="sub">{{f.desc}}</p>
             </div>
         </div>
 
-        <!-- ── §2 Visualization ── -->
+        <!-- ── §4 Template Engine (Cube ML) ── -->
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag">TEMPLATE ENGINE</span>
+            <p class="h2">{{'cube.ml.title' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.ml.desc' | i18n}}</p>
+        </div>
+        <div class="r" style="padding:24px 32px">
+            <p class="sub"
+               style="font-size:.72em;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:12px;font-family:'SFMono-Regular',monospace">
+                {{'cube.ml.vars.label' | i18n}}</p>
+            <div style="overflow-x:auto;margin-bottom:24px">
+                <table class="cml-vars-table">
+                    <thead>
+                    <tr>
+                        <th>{{'cube.ml.col.var' | i18n}}</th>
+                        <th>{{'cube.ml.col.desc' | i18n}}</th>
+                        <th>{{'cube.ml.col.example' | i18n}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="v in mlVars">
+                        <td><code class="cml-kw">{{v.name}}</code></td>
+                        <td>{{v.desc}}</td>
+                        <td><code class="cml-ex">{{v.example}}</code></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cml-code-grid">
+                <div class="cml-code-block">
+                    <div class="cml-code-head">{{'cube.ml.cond.title' | i18n}}</div>
+                    <pre><code class="language-velocity">#if(${user.account} == "admin")
+    -- admin: full data
+    1 = 1
+#else
+    -- others: own rows only
+    owner = ${fn.quote(${user.account})}
+#end</code></pre>
+                </div>
+                <div class="cml-code-block">
+                    <div class="cml-code-head">{{'cube.ml.fn.reg.title' | i18n}}</div>
+                    <pre><code class="language-java">@Component
+@CubeFunction(space = "fn")
+public class SqlFunctions {
+    // ${fn.quote(v)} → 'v', quotes escaped
+    public String quote(String v) {
+        return "'" + v.replace("'", "''") + "'";
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── §5 One Model, Every Surface ── -->
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-p">ONE MODEL · EVERY SURFACE</span>
+            <p class="h2">{{'cube.use.title' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.use.desc' | i18n}}</p>
+        </div>
+        <div class="r g3">
+            <div class="c clickable" ng-class="{'no-bb': $index > 2}" ng-repeat="u in useCases" ng-click="openDoc(u.doc)">
+                <span class="cmod-use-num">{{u.num}}</span>
+                <div class="h3">{{u.title}}</div>
+                <p class="sub">{{u.desc}}</p>
+            </div>
+        </div>
+
+        <!-- ── §6 Visualization ── -->
         <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">VISUALIZATION</span>
             <p class="h2">{{'cube.viz.title' | i18n}}</p>
@@ -1578,14 +1841,6 @@
                                 class="cviz-card-type">Line Chart</span></div>
                         <div class="cviz-line-wrap">
                             <svg class="cviz-line-svg" viewBox="0 0 480 80" preserveAspectRatio="none">
-                                <defs>
-                                    <linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="#4FC8EC" stop-opacity="0.3"/>
-                                        <stop offset="100%" stop-color="#4FC8EC" stop-opacity="0"/>
-                                    </linearGradient>
-                                </defs>
-                                <path d="M0,60 L20,52 L48,55 L72,40 L96,44 L120,30 L144,35 L168,22 L192,28 L216,18 L240,25 L264,15 L288,20 L312,10 L336,16 L360,8 L384,14 L408,6 L432,11 L456,4 L480,8"
-                                      fill="url(#lg1)" stroke="none"/>
                                 <path d="M0,60 L20,52 L48,55 L72,40 L96,44 L120,30 L144,35 L168,22 L192,28 L216,18 L240,25 L264,15 L288,20 L312,10 L336,16 L360,8 L384,14 L408,6 L432,11 L456,4 L480,8"
                                       fill="none" stroke="#4FC8EC" stroke-linejoin="round" stroke-width="2"/>
                             </svg>
@@ -1606,157 +1861,71 @@
             </div>
         </div>
 
-        <!-- ── §3 Why Semantic Layer ── -->
-        <div class="r g-bg ticks" style="padding:48px;text-align:center">
-            <span class="tag">WHY SEMANTIC LAYER</span>
-            <p class="h2">{{'cube.problem.title' | i18n}}</p>
-            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.problem.desc' | i18n}}</p>
-        </div>
-        <div class="r" style="padding:24px 32px">
-            <div style="overflow-x:auto">
-                <table class="cube-compare-table">
-                    <thead>
-                    <tr>
-                        <th>{{'cube.table.th.aspect' | i18n}}</th>
-                        <th>✗ &nbsp;{{'cube.table.th.without' | i18n}}</th>
-                        <th>✓ &nbsp;{{'cube.table.th.with' | i18n}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="row in compareRows">
-                        <td>{{row.aspect}}</td>
-                        <td>{{row.without}}</td>
-                        <td>{{row.with}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- ── §4 Role Separation ── -->
-        <div class="r g-bg ticks" style="padding:48px;text-align:center">
-            <span class="tag">DIVISION OF LABOR</span>
-            <p class="h2">{{'cube.roles.title' | i18n}}</p>
-            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.roles.desc' | i18n}}</p>
-        </div>
-        <div class="r g2">
-            <div class="c no-bb">
-                <div class="h3">{{'cube.roles.eng.title' | i18n}}</div>
-                <p class="sub" style="margin-bottom:4px;font-size:.8em;font-family:'SFMono-Regular',monospace">Data
-                    Engineer</p>
-                <ul class="cube-role-list">
-                    <li ng-repeat="item in engineerPoints">{{item}}</li>
-                </ul>
-            </div>
-            <div class="c no-bb" style="border-right:none">
-                <div class="h3">{{'cube.roles.ana.title' | i18n}}</div>
-                <p class="sub" style="margin-bottom:4px;font-size:.8em;font-family:'SFMono-Regular',monospace">Data
-                    Analyst</p>
-                <ul class="cube-role-list">
-                    <li ng-repeat="item in analystPoints">{{item}}</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- ── §5 Core Annotations ── -->
-        <div class="r g-bg ticks" style="padding:48px;text-align:center">
-            <span class="tag">CORE ANNOTATIONS</span>
-            <p class="h2">{{'cube.anno.title' | i18n}}</p>
-            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.anno.desc' | i18n}}</p>
-        </div>
-        <div class="r g2">
-            <div class="c no-bb" ng-class="{'border-right-none': $last && annotations.length % 2 === 1}"
-                 ng-repeat="a in annotations"
-                 ng-style="$index % 2 === 1 ? {'border-right':'none'} : {}">
-                <div class="cube-anno-name">{{a.name}}</div>
-                <div class="h3">{{a.title}}</div>
-                <p class="sub">{{a.desc}}</p>
-            </div>
-        </div>
-
-        <!-- ── §6 Template Engine (Cube ML) ── -->
-        <div class="r g-bg ticks" style="padding:48px;text-align:center">
-            <span class="tag">TEMPLATE ENGINE</span>
-            <p class="h2">{{'cube.ml.title' | i18n}}</p>
-            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.ml.desc' | i18n}}</p>
-        </div>
-        <div class="r" style="padding:24px 32px">
-            <p class="sub"
-               style="font-size:.72em;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:12px;font-family:'SFMono-Regular',monospace">
-                {{'cube.ml.vars.label' | i18n}}</p>
-            <div style="overflow-x:auto;margin-bottom:24px">
-                <table class="cml-vars-table">
-                    <thead>
-                    <tr>
-                        <th>{{'cube.ml.col.var' | i18n}}</th>
-                        <th>{{'cube.ml.col.desc' | i18n}}</th>
-                        <th>{{'cube.ml.col.example' | i18n}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="v in mlVars">
-                        <td><code class="cml-kw">{{v.name}}</code></td>
-                        <td>{{v.desc}}</td>
-                        <td><code class="cml-ex">{{v.example}}</code></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="cml-code-grid" style="margin-bottom:16px">
-                <div class="cml-code-block">
-                    <div class="cml-code-head">{{'cube.ml.cond.title' | i18n}}</div>
-                    <pre><code class="language-velocity">#if(${query.parameter["role"]} == "admin")
-    -- admin: full data
-    1 = 1
-#elseif(${query.parameter["role"]} == "manager")
-    -- manager: filter by department
-    dept_id = ${filter["deptId"]}
-#else
-    -- user: filter by self
-    user_id = '${query.parameter["userId"]}'
-#end</code></pre>
-                </div>
-                <div class="cml-code-block">
-                    <div class="cml-code-head">{{'cube.ml.loop.title' | i18n}}</div>
-                    <pre><code class="language-velocity">#foreach($item in ${query.parameter["ids"]})
-    #if($foreach.index > 0) OR #end
-    id = '${item}'
-#end
-
--- Output (ids = ["001","002","003"]):
--- id = '001' OR id = '002' OR id = '003'</code></pre>
-                </div>
-            </div>
-        </div>
-        <div class="r g-bg" style="padding:24px 48px;text-align:center">
-            <span class="tag" style="margin-bottom:0">{{'cube.ml.fn.label' | i18n}}</span>
+        <!-- ── §7 AI Native ── -->
+        <div class="r g-bg g-bg-y ticks" style="padding:48px;text-align:center">
+            <span class="tag tag-y">AI NATIVE</span>
+            <p class="h2">{{'cube.ai.title.pre' | i18n}}<em class="cube-sql-stamp">AI</em>{{'cube.ai.title.post' |
+                i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.ai.desc' | i18n}}</p>
         </div>
         <div class="r" style="padding:24px 32px">
             <div class="cml-code-grid">
                 <div class="cml-code-block">
-                    <div class="cml-code-head">{{'cube.ml.fn.reg.title' | i18n}}</div>
-                    <pre><code class="language-java">@CubeFunction("fn")
-public class SqlFunctions {
-    // usage: ${fn.inClause(ids)} → 'a', 'b', 'c'
-    public String inClause(List&lt;String&gt; ids) {
-        return ids.stream()
-            .map(id -> "'" + id + "'")
-            .collect(Collectors.joining(", "));
-    }
-}</code></pre>
+                    <div class="cml-code-head">AI Agent — MCP session</div>
+                    <pre><code><span class="csql-prompt">user  ›</span> {{'cube.ai.chat.q' | i18n}}
+
+<span class="csql-prompt">agent ›</span> <span class="csql-kw">cubeMetadata</span>("SalesCube")
+<span class="csql-prompt">agent ›</span> <span class="csql-kw">cubeQuery</span>({
+          dimensions: ["category"],
+          measures:   ["revenue"],
+          filters: [{ code: "quarter", op: "EQ", value: "2025-Q2" }],
+          sorts:   [{ code: "revenue", desc: true }], limit: 3
+        })
+
+<span class="csql-res">  category   | revenue
+-------------+----------
+ Electronics | 1284300
+ Apparel     |  912400
+ Food        |  673100</span>
+
+<span class="csql-cmt">✓ {{'cube.ai.chat.render' | i18n}}</span></code></pre>
                 </div>
                 <div class="cml-code-block">
-                    <div class="cml-code-head">{{'cube.ml.fn.use.title' | i18n}}</div>
-                    <pre><code class="language-velocity">#if(!${query.parameter["ids"]}.isEmpty())
-    AND order_id IN (
-        ${fn.inClause(${query.parameter["ids"]})}
-    )
-#end</code></pre>
+                    <div class="cml-code-head">AI Canvas — {{'cube.ai.canvas.head' | i18n}}</div>
+                    <pre><code><span class="csql-prompt">cube  ›</span> SalesCube
+<span class="csql-prompt">user  ›</span> {{'cube.ai.canvas.q' | i18n}}
+
+<span class="csql-kw">cubeQuery</span>(…)   <span class="csql-cmt">// {{'cube.ai.canvas.verify' | i18n}}</span>
+<span class="csql-kw">render</span>(page)  <span class="csql-cmt">// {{'cube.ai.canvas.render' | i18n}}</span>
+
+<span class="csql-res">v1  dark · full-screen</span>
+<span class="csql-res">v2  neo-brutalism</span>
+<span class="csql-res">v3  business report   ← current</span>
+
+<span class="csql-cmt">✓ {{'cube.ai.canvas.publish' | i18n}}</span></code></pre>
                 </div>
             </div>
         </div>
+        <div class="r g4">
+            <div class="c no-bb">
+                <div class="h3">{{'cube.ai.f1.title' | i18n}}</div>
+                <p class="sub">{{'cube.ai.f1.desc' | i18n}}</p>
+            </div>
+            <div class="c no-bb">
+                <div class="h3">{{'cube.ai.f2.title' | i18n}}</div>
+                <p class="sub">{{'cube.ai.f2.desc' | i18n}}</p>
+            </div>
+            <div class="c no-bb">
+                <div class="h3">{{'cube.ai.f4.title' | i18n}}</div>
+                <p class="sub">{{'cube.ai.f4.desc' | i18n}}</p>
+            </div>
+            <div class="c no-bb">
+                <div class="h3">{{'cube.ai.f3.title' | i18n}}</div>
+                <p class="sub">{{'cube.ai.f3.desc' | i18n}}</p>
+            </div>
+        </div>
 
-        <!-- ── §6c SQL Interface ── -->
+        <!-- ── §8 SQL Interface ── -->
         <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">SQL INTERFACE</span>
             <p class="h2">{{'cube.sql.title.pre' | i18n}}<em class="cube-sql-stamp">SQL</em>{{'cube.sql.title.post' |
@@ -1908,13 +2077,27 @@ public class SqlFunctions {
                 <div class="h3">{{'cube.sql.f3.title' | i18n}}</div>
                 <p class="sub">{{'cube.sql.f3.desc' | i18n}}</p>
             </div>
-            <div class="c no-bb" style="border-right:none">
+            <div class="c no-bb">
                 <div class="h3">{{'cube.sql.f4.title' | i18n}}</div>
                 <p class="sub">{{'cube.sql.f4.desc' | i18n}}</p>
             </div>
         </div>
 
-        <!-- ── §7 Three-Way Comparison ── -->
+        <!-- ── §9 Governance & Deployment ── -->
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag">GOVERNANCE</span>
+            <p class="h2">{{'cube.gov.title' | i18n}}</p>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'cube.gov.desc' | i18n}}</p>
+        </div>
+        <div class="r g4">
+            <div class="c no-bb" ng-repeat="g in govFeatures">
+                <span style="font-size:1.4em;line-height:1;display:block;margin-bottom:10px">{{g.icon}}</span>
+                <div class="h3">{{g.title}}</div>
+                <p class="sub">{{g.desc}}</p>
+            </div>
+        </div>
+
+        <!-- ── §10 Three-Way Comparison ── -->
         <div class="r g-bg g-bg-p ticks" style="padding:48px;text-align:center">
             <span class="tag tag-p">SIDE-BY-SIDE</span>
             <p class="h2">{{'cube.cmp.title' | i18n}}</p>
@@ -1925,7 +2108,7 @@ public class SqlFunctions {
                 <div class="cube-looker-card">
                     <div class="cube-looker-card-head"><span>◈</span> LookML (Google Looker)</div>
                     <div class="cmp-code-wrap" ng-class="{'cmp-code-expanded': expanded.code}">
-                        <pre><code class="language-java">view: order_analysis {
+                        <pre><code>view: order_analysis {
   sql_table_name: orders ;;
 
   dimension: channel {
@@ -1957,7 +2140,7 @@ public class SqlFunctions {
                 <div class="cube-looker-card">
                     <div class="cube-looker-card-head"><span>◈</span> Cube.dev (YAML)</div>
                     <div class="cmp-code-wrap" ng-class="{'cmp-code-expanded': expanded.code}">
-                        <pre><code class="language-yaml">cubes:
+                        <pre><code>cubes:
   - name: OrderAnalysis
     sql_table: orders
 
@@ -1985,13 +2168,16 @@ public class SqlFunctions {
                     </div>
                 </div>
                 <div class="cube-looker-card">
-                    <div class="cube-looker-card-head ec"><span>◈</span> Erupt Cube (Java Annotations)</div>
+                    <div class="cube-looker-card-head ec"><span>◈</span> Erupt Cube
+                        <span class="cmp-switch">
+                            <span ng-class="{'on': ui.cmp === 'java'}" ng-click="ui.cmp = 'java'">Java</span><span
+                                ng-class="{'on': ui.cmp === 'yaml'}" ng-click="ui.cmp = 'yaml'">YAML</span>
+                        </span>
+                    </div>
                     <div class="cmp-code-wrap" ng-class="{'cmp-code-expanded': expanded.code}">
-                        <pre><code class="language-java">@EruptCube(
-  name = "Order Analysis",
-  sql = "orders",
-  sqlType = SqlType.TABLE_NAME
-)
+                        <pre ng-show="ui.cmp === 'java'"><code class="language-java">@EruptCube(name = "Order Analysis",
+           sql = "orders",
+           sqlType = SqlType.TABLE_NAME)
 public class OrderCube {
 
   @Dimension(title = "Channel")
@@ -2000,19 +2186,31 @@ public class OrderCube {
   @Dimension(title = "Status")
   private String status;
 
-  @Measure(
-    title = "Orders",
-    sql = "count(*)"
-  )
+  @Measure(title = "Orders",
+           sql = "count(*)")
   private Long orderCount;
 
-  @Measure(
-    title = "Revenue",
-    sql = "sum(amount)"
-  )
+  @Measure(title = "Revenue",
+           sql = "sum(amount)")
   private Double totalAmount;
-
 }</code></pre>
+                        <pre ng-show="ui.cmp === 'yaml'"><code><span class="cmod-k">name</span>: <span class="cmod-s">Order Analysis</span>
+<span class="cmod-k">sql</span>: <span class="cmod-s">orders</span>
+<span class="cmod-k">sqlType</span>: <span class="cmod-s">TABLE_NAME</span>
+
+<span class="cmod-k">dimensions</span>:
+  <span class="cmod-k">channel</span>:
+    <span class="cmod-k">title</span>: <span class="cmod-s">Channel</span>
+  <span class="cmod-k">status</span>:
+    <span class="cmod-k">title</span>: <span class="cmod-s">Status</span>
+
+<span class="cmod-k">measures</span>:
+  <span class="cmod-k">order_count</span>:
+    <span class="cmod-k">title</span>: <span class="cmod-s">Orders</span>
+    <span class="cmod-k">sql</span>: <span class="cmod-s">count(*)</span>
+  <span class="cmod-k">total_amount</span>:
+    <span class="cmod-k">title</span>: <span class="cmod-s">Revenue</span>
+    <span class="cmod-k">sql</span>: <span class="cmod-s">sum(amount)</span></code></pre>
                         <div class="cmp-code-fade"></div>
                     </div>
                 </div>
@@ -2021,7 +2219,7 @@ public class OrderCube {
                 <button class="cmp-code-btn"
                         style="display:inline-block;width:auto;padding:9px 28px;border:2px solid var(--c-border)"
                         ng-click="expanded.code = !expanded.code">
-                    {{expanded.code ? '↑ Collapse' : '↓ View full model'}}
+                    {{(expanded.code ? 'cube.cmp.collapse' : 'cube.cmp.expand') | i18n}}
                 </button>
             </div>
             <!-- Feature comparison table -->
@@ -2043,8 +2241,8 @@ public class OrderCube {
         <!-- Advantage cards as blueprint grid -->
         <div class="r">
             <div class="cmp-adv-grid">
-                <div class="c no-bb" ng-repeat="a in annoAdvantages"
-                     ng-style="$index === annoAdvantages.length-1 ? {'border-right':'none'} : {}">
+                <div class="c no-bb" ng-repeat="a in advantages"
+                     ng-style="$index === advantages.length-1 ? {'border-right':'none'} : {}">
                     <div class="cmp-adv-icon">{{a.icon}}</div>
                     <div class="cmp-adv-title">{{a.title}}</div>
                     <div class="cmp-adv-desc">{{a.desc}}</div>
@@ -2052,7 +2250,7 @@ public class OrderCube {
             </div>
         </div>
 
-        <!-- ── §8 Database Support ── -->
+        <!-- ── §11 Database Support ── -->
         <div class="r g-bg ticks" style="padding:48px;text-align:center">
             <span class="tag">DATABASE SUPPORT</span>
             <p class="h2">{{'cube.db.title' | i18n}}</p>
@@ -2075,7 +2273,7 @@ public class OrderCube {
             </div>
         </div>
 
-        <!-- ── §9 CTA ── -->
+        <!-- ── §12 CTA ── -->
         <div class="r g-bg ticks only-before cube-cta-row">
             <p class="h2">{{'cube.cta.title' | i18n}}</p>
             <p class="sub" style="max-width:480px;margin:0 auto 28px">{{'cube.cta.desc' | i18n}}</p>
@@ -2083,7 +2281,7 @@ public class OrderCube {
                 <a class="wbtn" href="https://demo.erupt.xyz" target="_blank">{{'cube.cta.demo' | i18n}}</a>
                 <span class="demo-tip" ng-bind-html="'cube.demo.tip' | i18nHtml"></span>
             </span>
-            <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/pro/erupt-cube"
+            <a class="wbtn" ng-href="{{docBase}}"
                style="margin-left:8px"
                target="_blank">{{'cube.cta.doc' | i18n}}</a>
             <a class="wbtn wbtn-o" href="#!/pro"

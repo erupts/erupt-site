@@ -406,40 +406,16 @@ claw.cta.subtitle,几行配置，让自然语言接管你的服务器,A few line
 claw.cta.doc,查看完整文档 →,Full Documentation →
 claw.cta.also_ai,← 查看 Erupt AI,← Erupt AI
 nav.cube,🧊 Erupt Cube,🧊 Cube Semantic
-cube.hero.sub,拖拽即分析，注解即模型。,"Inspired by Google Looker's semantic layer, Erupt Cube brings professional-grade big data analytics to the Java ecosystem — define models with annotations, analyze with drag-and-drop."
+cube.hero.sub,借鉴 Google Looker 的语义层理念：用 Java 注解或 YAML / JSON 把指标口径定义一次，拖拽看板、AI 问数、SQL 直连全部同源取数。,"Inspired by Google Looker's semantic layer: define metrics once in Java annotations or YAML / JSON, and dashboards, AI agents and SQL clients all read the same numbers."
 cube.hero.btn.demo,在线演示,Live Demo
-cube.stat.model,语义建模,Semantic Model
-cube.stat.dim,维度定义,Dimension
-cube.stat.measure,指标聚合,Measure
-cube.stat.nosql,分析师无需写 SQL,Analysts skip SQL
+cube.stat.model,注解 / 文件即模型,Annotations or files
 cube.problem.title,语义模型解决了什么问题,What Semantic Models Solve
 cube.problem.desc,没有语义层，每个人写自己的 SQL，口径不一致、逻辑到处复制、改一张表要改十个报表。语义模型把指标定义一次，全局复用。,"Without a semantic layer, every analyst writes their own SQL — inconsistent metrics, duplicated logic, fragile reports. A semantic model defines metrics once and shares them everywhere."
 cube.table.th.aspect,维度,Aspect
 cube.table.th.without,没有语义模型,Without Semantic Model
 cube.table.th.with,有语义模型,With Semantic Model
-cube.roles.title,各司其职，效率倍增,"Clear Roles, Maximum Efficiency"
-cube.roles.desc,数据工程师专注构建可复用的语义模型，数据分析师基于模型自助分析——两个角色分工明确，无需相互等待。,"Data engineers build reusable semantic models; analysts self-serve on top. Clear separation of concerns, no waiting for each other."
-cube.roles.eng.title,数据工程师,Data Engineer
-cube.roles.eng.points,用 @EruptCube 定义数据源与 SQL|用 @Dimension 声明可分组、可筛选的维度|用 @Measure 封装聚合指标逻辑|业务指标沉淀为标准化可复用资产|修改表结构只需改模型层，一处改处处生效,Define data source and SQL with @EruptCube|Declare groupable/filterable dimensions with @Dimension|Encapsulate aggregation logic with @Measure|Standardize business metrics as reusable assets|Schema changes only require updating the model layer
-cube.roles.ana.title,数据分析师,Data Analyst
-cube.roles.ana.points,基于语义层自助完成可视化分析|无需关心底层 SQL 实现细节|拖拽维度和指标即可生成图表|所有指标口径统一，不再争论数字|专注业务洞察，而非技术实现,"Self-serve visualization on top of the semantic layer|No need to understand underlying SQL|Drag dimensions and measures to build charts|Consistent metrics — no more arguing about numbers|Focus on business insights, not technical details"
-cube.anno.title,四个注解，构建完整分析体系,"Four Annotations, Complete Analytics Stack"
-cube.anno.desc,没有新语言，没有新 DSL，Java 开发者开箱即用。,"No new language, no new DSL. Works out of the box for any Java developer."
-cube.anno.a1.title,声明数据立方体,Declare a Data Cube
-cube.anno.a1.desc,绑定 SQL 数据源（支持子查询或直接引用表），声明对外暴露的查询视图。,Bind a SQL data source (subquery or table reference) and declare exposed query views.
-cube.anno.a2.title,定义分析维度,Define Analysis Dimensions
-cube.anno.a2.desc,声明可用于分组和筛选的字段，支持日期、字符串、数值类型自动推断。,"Declare fields for grouping and filtering. Type inference handles date, string, and number automatically."
-cube.anno.a3.title,封装聚合指标,Encapsulate Aggregation Measures
-cube.anno.a3.desc,将 count、sum、avg、复合表达式等聚合逻辑封装为可复用指标，一处定义全局生效。,"Encapsulate count, sum, avg, and compound expressions as reusable measures — define once, use everywhere."
-cube.anno.a4.title,运行时查询参数,Runtime Query Parameters
-cube.anno.a4.desc,声明运行时动态传入的查询条件，支持枚举选项，让语义模型更灵活。,"Declare runtime filter parameters with optional enum choices for flexible, parameterized queries."
-cube.code.title,一个完整的语义模型,A Complete Semantic Model
-cube.code.desc,多表 JOIN 查询、多个维度与指标，全部通过注解声明，无需编写任何 Controller 或 Service。,"Multi-table JOIN, dimensions and measures — all declared with annotations. Zero Controller or Service code required."
-cube.flow.title,从建模到洞察，全程无摩擦,"From Model to Insight, Zero Friction"
-cube.flow.desc,过去需要多方协同数周才能完成的 BI 链路，现在一个工程师一天内搞定。,What used to require weeks of cross-team coordination now takes a single engineer a day.
-cube.flow.steps,🗃️:分析 SQL 数据源|⬡:@EruptCube 声明模型|📐:@Dimension 定义维度|📊:@Measure 封装指标|🖱️:拖拽生成图表|💡:业务洞察,🗃️:Analyze SQL source|⬡:@EruptCube model|📐:@Dimension fields|📊:@Measure metrics|🖱️:Drag & drop charts|💡:Business insights
 cube.cmp.title,三方横向对比,Three-Way Comparison
-cube.cmp.desc,Google Looker、Cube.dev 与 Erupt Cube 都实现了语义层理念，但工程能力天差地别。注解方案在 IDE 支持、版本管理、动态性和继承上全面领先。,"Google Looker, Cube.dev, and Erupt Cube all implement the semantic layer concept — but their engineering capabilities differ dramatically. Annotations lead on IDE support, versioning, dynamic models, and inheritance."
+cube.cmp.desc,Google Looker、Cube.dev 与 Erupt Cube 都实现了语义层理念。把同一个模型放在一起看：注解写法拥有 IDE 原生的跳转、重构、SQL 高亮与继承，是三者中最灵活的；需要免编译时再切到 YAML。,"Google Looker, Cube.dev and Erupt Cube all implement the semantic layer. Side by side, the annotation form brings native IDE navigation, refactoring, SQL highlighting and inheritance — the most flexible of the three; switch to YAML when you want no compiling."
 cube.cmp.col.feature,能力对比,Capability
 cube.viz.title,强大的可视化能力,Powerful Visualization
 cube.viz.desc,从维度指标到可交互仪表盘，全程拖拽完成，无需前端代码。,"From dimensions and measures to interactive dashboards — all by drag-and-drop, no frontend code."
@@ -452,27 +428,24 @@ cube.viz.f3.desc,拖动卡片边角即可调整大小，按需分配各图表的
 cube.viz.f4.name,所见即所得,WYSIWYG
 cube.viz.f4.desc,编辑模式与预览模式实时同步，调整即见效果，无需刷新,Edit and preview are always in sync — what you build is what users see
 cube.viz.f5.name,多图表类型,Rich Chart Types
-cube.viz.f5.desc,柱状图、折线图、饼图、散点图等多种图表类型开箱即用,"Bar, line, pie, scatter and more — pick the right chart for any data shape"
+cube.viz.f5.desc,柱状图、折线图、饼图、散点图、KPI、地图等多种图表类型开箱即用,"Bar, line, pie, scatter, KPI, map and more — pick the right chart for any data shape"
 cube.viz.f6.name,多维过滤器,Multi-dim Filters
 cube.viz.f6.desc,下拉、日期范围、数值区间等多种过滤器，支持联动过滤,"Dropdown, date range, numeric range filters with cross-chart linkage"
 cube.db.title,广泛的数据库支持,Broad Database Support
 cube.db.desc,无论是 OLAP 大数据仓库、传统关系型数据库、国产数据库还是云原生数仓，Erupt Cube 均可直接接入，无需额外适配。,"Whether OLAP warehouses, traditional RDBMS, domestic databases, or cloud-native DWs — Erupt Cube connects directly with no extra adapters."
 cube.cta.title,准备好构建语义模型了吗？,Ready to Build Your Semantic Model?
-cube.cta.desc,演示地址已部署完整的 Cube 示例，直接体验拖拽分析。,The live demo includes complete Cube examples. try drag-and-drop analytics now.
+cube.cta.desc,演示地址已部署完整的 Cube 示例，直接体验拖拽分析与 AI 问数。,The live demo ships complete Cube examples — try drag-and-drop analytics and AI Q&A now.
 cube.cta.demo,立即体验 →,Try Live Demo →
 cube.cta.doc,阅读文档,Documentation
 cube.demo.tip,账号：cube<br>密码：cube,Username: cube<br>Password: cube
 cube.ml.title,Cube ML — 动态 SQL 模板引擎,Cube ML — Dynamic SQL Template Engine
-cube.ml.desc,"Cube ML 是 EruptCube 内置的模板表达式语言，基于 Velocity 语法，可在 dimension.sql()、measure.sql()、EruptCube.sql()、explore.where() 等任意 SQL 注解中动态生成查询逻辑。","Cube ML is EruptCube's built-in template expression language, based on Velocity syntax. It enables dynamic SQL generation inside any annotation: dimension.sql(), measure.sql(), EruptCube.sql(), explore.where(), and more."
+cube.ml.desc,Cube ML 是内置的模板表达式语言，基于 Velocity 语法，可在模型的任意 SQL 位置（底表 sql、维度 / 指标 sql、explore where 等）按用户、参数与过滤条件动态生成查询逻辑。,"Cube ML is the built-in template language, based on Velocity. Anywhere a model holds SQL — base sql, dimension / measure sql, explore where — it generates query logic from the user, parameters and filters."
 cube.ml.vars.label,可用变量,Available Variables
 cube.ml.col.var,关键字,Variable
 cube.ml.col.desc,说明,Description
 cube.ml.col.example,示例,Example
-cube.ml.cond.title,条件分支  #if / #elseif / #else / #end,Conditionals  #if / #elseif / #else / #end
-cube.ml.loop.title,循环  #foreach / #end,Loop  #foreach / #end
-cube.ml.fn.label,自定义函数 — CubeFunction,Custom Function — CubeFunction
-cube.ml.fn.reg.title,Java — 注册自定义函数,Java — Register Function
-cube.ml.fn.use.title,ML — 调用自定义函数,ML — Call Function
+cube.ml.cond.title,按用户裁剪数据  #if / #else / #end,Scope data by user  #if / #else / #end
+cube.ml.fn.reg.title,Java — 注册自定义函数 @CubeFunction,Java — register a function with @CubeFunction
 cube.sql.title.pre,用 ,Query the Semantic Model in
 cube.sql.title.post, 直连语义模型,
 cube.sql.desc,"erupt-cube-sql 将语义模型以 PostgreSQL 协议对外暴露：每个 Cube 都是一张可直接 SELECT 的表，psql、DataGrip、Superset、Grafana 及任何 JDBC 客户端均可直连。","erupt-cube-sql exposes the semantic model over the PostgreSQL wire protocol: every Cube is a table you can SELECT from — psql, DataGrip, Superset, Grafana, and any JDBC client connect directly."
@@ -489,7 +462,7 @@ cube.sql.f4.title,只读安全,Read-Only by Design
 cube.sql.f4.desc,"INSERT / UPDATE / DELETE / DDL 一律拒绝，行为与 PostgreSQL 只读从库一致。",INSERT / UPDATE / DELETE / DDL are all rejected — it behaves exactly like a PostgreSQL read-only replica.
 cube.ai.title.pre,让 ,"Let "
 cube.ai.title.post, 直接问数, Query Your Data
-cube.ai.desc,"内置 MCP 工具集，AI Agent 可自主发现语义模型、读取维度指标、执行聚合查询——指标口径与数据权限由语义层统一保证，大模型不再""编数""。","Built-in MCP tools let AI agents discover semantic models, read dimensions & measures, and run aggregate queries — metric definitions and data permissions are enforced by the semantic layer, so LLMs stop making numbers up."
+cube.ai.desc,"内置 MCP 工具集，AI Agent 可自主发现语义模型、读取维度指标、执行聚合查询；AI 画布一句话生成实时取数的页面。指标口径与数据权限由语义层统一保证，大模型不再""编数""。","Built-in MCP tools let AI agents discover models, read dimensions & measures and run aggregate queries; AI Canvas turns one sentence into a live page. Metrics and permissions are enforced by the semantic layer, so LLMs stop making numbers up."
 cube.ai.chat.q,上季度各品类的营收 Top 3 是哪些？,What were the top 3 categories by revenue last quarter?
 cube.ai.chat.render,3 rows · 自动渲染 ECharts 柱状图,3 rows · rendered as an ECharts bar chart
 cube.ai.tool.list,发现全部可用的语义模型,Discover every available semantic model
@@ -501,6 +474,28 @@ cube.ai.f2.title,口径与权限内建,Governed Answers
 cube.ai.f2.desc,"AI 查到的每个数字都出自语义层：聚合语义、GROUP BY 逻辑、行级数据权限统一收口，答案可信可复现。","Every number an agent sees comes through the semantic layer: aggregation semantics, GROUP BY logic, and row-level permissions — trustworthy, reproducible answers."
 cube.ai.f3.title,17+ 大模型接入,17+ LLM Providers
 cube.ai.f3.desc,"依托 erupt-ai 统一接入：OpenAI、Claude、Gemini、DeepSeek、Qwen、Ollama 本地模型等开箱即用。","Powered by erupt-ai: OpenAI, Claude, Gemini, DeepSeek, Qwen, local Ollama models and more, out of the box."
+cube.stat.ml,动态 SQL 模板,Dynamic SQL templates
+cube.stat.ai,AI 直接问数,AI queries the model
+cube.stat.sql,PostgreSQL 协议直连,PostgreSQL wire protocol
+cube.model.title,一个模型，三种写法,"One Model, Three Ways to Write It"
+cube.model.desc,维度、指标、参数与查询视图构成一个语义模型。写成 YAML / JSON 文件、Java 注解或在页面上配置，结构完全一致，可在同一项目中混用。,"Dimensions, measures, parameters and query views make a semantic model. Write it as a YAML / JSON file, a Java annotation or in the UI — the structure is identical, and all three mix in one project."
+cube.model.anatomy,模型结构,Model anatomy
+cube.use.title,一份口径，处处取数,"Define Once, Read Everywhere"
+cube.use.desc,看板、业务页面、AI、SQL 客户端查询的都是同一份模型——改一处指标定义，所有出口同时生效。,"Dashboards, business pages, AI and SQL clients all query the same model — change a metric once and every surface follows."
+cube.ai.canvas.head,一句话生成页面,"one sentence, one page"
+cube.ai.canvas.q,做一个深色全屏的销售大屏,Build a dark full-screen sales wall
+cube.ai.canvas.verify,先真实查询校验，跑不通的不落笔,queries run for real first — broken ones never land
+cube.ai.canvas.render,流式生成，实时预览,"streamed, previewed live"
+cube.ai.canvas.publish,发布为菜单，按访问者身份取数,"published as a menu, reads as the viewer"
+cube.ai.f4.title,AI 画布,AI Canvas
+cube.ai.f4.desc,选中一个 Cube，描述想要的页面，AI 生成实时取数的大屏或分析页；多风格版本随时切换，点选元素局部修改。,"Pick a cube, describe the page, and AI builds a live dashboard or analysis page; switch between style versions and edit any element in place."
+cube.gov.title,治理与部署,Governance & Deployment
+cube.gov.desc,权限、租户、血缘与部署形态沿用 Erupt 体系，语义层不是一座新的孤岛。,"Permissions, tenants, lineage and deployment come from Erupt — the semantic layer is not another island."
+cube.cmp.expand,↓ 查看完整模型,↓ View full model
+cube.cmp.collapse,↑ 收起,↑ Collapse
+cube.anno.desc,注解是最灵活的写法：模型就是 Java 类，享受 IDE 的跳转、重构、语法高亮，并能像普通代码一样继承复用。,"Annotations are the most flexible form: models are Java classes, with IDE navigation, refactoring and highlighting, and they inherit like any other code."
+cube.anno.base,基类：公共口径只写一次,"base: shared metrics, written once"
+cube.anno.sub,子类：继承并追加,subclass: inherit and extend
 lang.zh,中文,中文
 partners.eyebrow,ECOSYSTEM,ECOSYSTEM
 partners.hero.title,合作伙伴与集成生态,Partners & Integration Ecosystem
