@@ -679,28 +679,6 @@ html, body {
     cursor: pointer;
 }
 
-/* 产品下拉 — 三列分组 */
-#header .dropdown-menu.menu-grid {
-    display: none;
-    grid-template-columns: repeat(3, minmax(190px, max-content));
-    min-width: 0;
-    width: max-content;
-}
-
-.menu-foot {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
-    border-top: 2px solid var(--c-border);
-    background: rgba(var(--c-brand-rgb), .06);
-}
-
-#header .menu-foot .dropdown-item {
-    width: auto;
-    flex: 0 0 auto;
-    border-bottom: none;
-}
-
 .doc-badge {
     font-family: var(--c-mono);
     font-size: 8px;
@@ -716,48 +694,221 @@ html, body {
     opacity: .7;
 }
 
-.more-dropdown:hover .dropdown-menu.menu-grid {
-    display: grid !important;
+/* 产品切换条 — 产品页顶栏下方，同组切换 + 上一个/下一个 */
+#header > .prod-sub {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px 0 18px;
+    border-top: 1px solid var(--c-border);
+    font-family: var(--c-mono);
+    font-size: 11px;
+    line-height: normal;
 }
 
-.menu-col {
+.ps-crumb {
+    flex-shrink: 0;
+    padding-right: 12px;
+    border-right: 1px solid var(--c-border);
+    font-weight: 700;
+    color: var(--c-text);
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.ps-crumb:hover { color: var(--c-text); text-decoration: none; background: rgba(var(--c-brand-rgb), .1); }
+.ps-crumb i { font-style: normal; font-size: .85em; }
+
+.ps-list {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.ps-list::-webkit-scrollbar { display: none; }
+
+.ps-list a {
+    flex-shrink: 0;
+    padding: 3px 9px;
+    border: 1.5px solid transparent;
+    color: var(--c-text2);
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.ps-list a:hover { color: var(--c-text); text-decoration: none; border-color: rgba(20, 18, 11, .25); }
+
+.ps-list a.on {
+    background: var(--c-brand);
+    border-color: var(--c-border);
+    color: var(--c-text);
+    font-weight: 700;
+}
+
+.ps-nav { display: flex; gap: 4px; flex-shrink: 0; }
+
+.ps-nav a {
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--c-border);
+    color: var(--c-text);
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.ps-nav a:hover { background: var(--c-brand); color: var(--c-text); text-decoration: none; }
+
+#main.has-sub { margin-top: 84px; }
+
+/* 产品面板 — 顶栏下方整宽展开，所有产品一次看全 */
+.prod-trigger.open { color: var(--c-text); }
+.prod-caret {
+    display: inline-block;
+    margin-left: 4px;
+    font-style: normal;
+    font-size: .8em;
+    transition: transform .15s;
+}
+.prod-trigger.open .prod-caret { transform: rotate(180deg); }
+
+#header > .prod-panel {
+    max-width: none;
+    height: auto;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: 2px;
+    background: var(--c-paper);
+    border-bottom: 2px solid var(--c-border);
+    box-shadow: 0 6px 0 rgba(20, 18, 11, .08);
+    animation: headerDropdownIn 140ms ease both;
+}
+
+.prod-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr .9fr;
+    border-left: 2px solid var(--c-border);
+    border-right: 2px solid var(--c-border);
+}
+
+.prod-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: start;
     border-right: 1px solid var(--c-border);
 }
 
-.menu-col .dropdown-item:last-child {
-    border-bottom: none;
+.prod-group.biz {
+    grid-template-columns: 1fr;
+    border-right: none;
+    background: rgba(252, 229, 102, .14);
 }
 
-.menu-grid .dropdown-item {
-    line-height: 1.5;
-    padding: 9px 14px;
+.prod-gh {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 18px 10px;
+    border-bottom: 2px solid var(--c-border);
+    font-family: var(--c-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
     color: var(--c-text);
 }
 
-.menu-sub {
+.prod-gh span {
+    font-size: 16px;
+    letter-spacing: -.02em;
+    color: rgba(20, 18, 11, .2);
+}
+
+.prod-item {
     display: block;
-    font-size: 9.5px;
-    line-height: 1.4;
-    margin-top: 2px;
-    color: var(--c-text2);
-    letter-spacing: 0;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(20, 18, 11, .12);
+    color: var(--c-text);
+    text-decoration: none;
+    line-height: 1.35;
+    transition: background .12s, box-shadow .12s;
 }
 
-.menu-col:last-child {
-    border-right: none;
+.prod-group:not(.biz) .prod-item:nth-of-type(odd) {
+    border-right: 1px solid rgba(20, 18, 11, .12);
 }
 
-.menu-col-title {
-    padding: 6px 14px 4px;
-    line-height: 1.6;
+.prod-item:hover {
+    color: var(--c-text);
+    text-decoration: none;
+    background: rgba(var(--c-brand-rgb), .1);
+    box-shadow: inset 3px 0 0 var(--c-brand);
+}
+
+.prod-item.on {
+    background: var(--c-brand);
+    box-shadow: none;
+}
+
+.prod-item b {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.prod-item small {
+    display: block;
+    margin-top: 3px;
     font-family: var(--c-mono);
-    font-size: 9px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
+    font-size: 10.5px;
     color: var(--c-text2);
-    background: rgba(var(--c-brand-rgb), .06);
-    border-bottom: 1px solid var(--c-border);
 }
+
+.prod-item.on small { color: var(--c-text); }
+
+.prod-item.prod-pro b { color: var(--c-text); }
+.prod-item.prod-pro b::after { content: " →"; }
+
+.prod-foot {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 18px;
+    border: 2px solid var(--c-border);
+    border-bottom: none;
+    background: rgba(var(--c-brand-rgb), .06);
+    font-family: var(--c-mono);
+    font-size: 11px;
+    color: var(--c-text2);
+}
+
+.prod-foot a {
+    font-weight: 800;
+    color: var(--c-text);
+    text-decoration: none;
+}
+
+.prod-foot a:hover { color: var(--c-text); text-decoration: underline; }
 
 /* 右下角广告位 */
 #corner-ads {

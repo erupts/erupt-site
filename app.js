@@ -12,14 +12,61 @@ function toTemplate() {
 
 var app = angular.module('app', [
     'ngRoute'
-]).run(function ($rootScope) {
+]).run(function ($rootScope, $timeout) {
     $rootScope.year = new Date().getFullYear();
     $rootScope.showHeader = true;
     $rootScope.currentLang = i18n.getLang();
     updateTitle();
 
+    // header products: one list for the desktop panel and the mobile menu (label nav.<k>, line nav.sub.<k>)
+    $rootScope.productGroups = [{
+        t: 'nav.grp.ai', items: [
+            {k: 'ai', r: '/ai'}, {k: 'aiclaw', r: '/ai-claw'}, {k: 'staff', r: '/ai-staff'}, {k: 'aidev', r: '/ai-dev'},
+            {k: 'aicanvas', r: '/ai-canvas'}, {k: 'rag', r: '/ai-rag', b: 'NEW'}, {k: 'decision', r: '/ai-decision', b: 'NEW'}]
+    }, {
+        t: 'nav.grp.core', items: [
+            {k: 'data', r: '/data'}, {k: 'cloud', r: '/cloud'}, {k: 'sdk', r: '/sdk', b: 'NEW'}, {k: 'config', r: '/config', b: 'NEW'},
+            {k: 'atlas', r: '/atlas'}, {k: 'designer', r: '/designer', b: 'NEW'}, {k: 'sso', r: '/sso', b: 'NEW'}]
+    }, {
+        t: 'nav.grp.biz', items: [
+            {k: 'flow', r: '/flow', b: 'PRO'}, {k: 'cube', r: '/cube', b: 'PRO'}, {k: 'tenant', r: '/tenant', b: 'PRO'}]
+    }];
+    $rootScope.productRoutes = [].concat.apply(['/pro'], $rootScope.productGroups.map(function (g) {
+        return g.items.map(function (p) { return p.r; });
+    }));
+
+    // the panel opens on click, or after a short hover; it stays open while the pointer is over trigger or panel
+    var prodTimer;
+    $rootScope.prodOpen = false;
+    $rootScope.prodHover = function (open) {
+        $timeout.cancel(prodTimer);
+        prodTimer = $timeout(function () { $rootScope.prodOpen = open; }, open ? 90 : 220);
+    };
+    // a click right after hover-open must not close it again; clicking an already settled panel closes it
+    var openedAt = 0;
+    $rootScope.$watch('prodOpen', function (v) { if (v) openedAt = Date.now(); });
+    $rootScope.prodToggle = function () {
+        $timeout.cancel(prodTimer);
+        $rootScope.prodOpen = !$rootScope.prodOpen || Date.now() - openedAt < 600;
+    };
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && $rootScope.prodOpen) $rootScope.$apply(function () { $rootScope.prodOpen = false; });
+    });
+
+    // product sub-bar: the current page's group, plus previous / next across every product
+    var allProducts = [].concat.apply([], $rootScope.productGroups.map(function (g) {
+        return g.items.map(function (p) { return {p: p, g: g}; });
+    }));
+
     $rootScope.$on('$routeChangeSuccess', function (eve, current, previous) {
-        $rootScope.currRouter = current.$$route.originalPath;
+        var route = $rootScope.currRouter = current.$$route.originalPath;
+        $rootScope.prodOpen = false;
+        var i = allProducts.findIndex(function (x) { return x.p.r === route; }), n = allProducts.length;
+        $rootScope.prodCur = i < 0 ? null : {
+            g: allProducts[i].g,
+            prev: allProducts[(i + n - 1) % n].p,
+            next: allProducts[(i + 1) % n].p
+        };
     });
 }).config(function ($routeProvider) {
     $routeProvider.when('/', {

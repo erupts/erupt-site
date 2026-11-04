@@ -233,6 +233,7 @@ app.service('polyglot', function ($sce) {
     });
 
     this.langs = langs;
+    this.highlight = highlight;
 });
 
 // <div class="r g3" pg-grid></div> — the nine language cells, each linking to the SDK page

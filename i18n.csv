@@ -108,9 +108,16 @@ home.code.tip4.desc,"MySQL、Oracle、PostgreSQL、MongoDB、达梦等主流数�
 home.code.tip5.title,零 DDL 负担,Zero DDL
 home.code.tip5.desc,"注解即 Schema，自动同步建表结构，无需手写任何 SQL 建表语句","Annotations define your schema, tables sync automatically"
 home.code.more,更多示例 →,More Examples →
-home.poly.write,用你的语言写模型,Write the model in
-home.hero.rot.pre,写一个模型，得到,"Write one model, get"
-home.hero.rot.words,整套管理后台|行列级 RBAC|REST + OpenAPI|AI Agent 工具|审计日志|Excel 导入导出|九种语言的节点,a full admin|row-level RBAC|REST + OpenAPI|AI Agent tools|audit logs|Excel import / export|nodes in 9 languages
+home.hx.lead,让模型成为<mark>唯一的事实来源</mark>。,Make the model your <mark>single source of truth</mark>.
+home.hx.sub,面向企业级应用的模型驱动引擎。数据、界面、权限与智能体共享同一份定义，变更即时生效，始终一致。,"The model-driven engine for enterprise applications. Data, UI, access control and AI agents share one definition — every change is live, and consistent everywhere."
+home.hx.side.ui,界面,Interface
+home.hx.side.sys,系统,System
+home.hx.model.ft,你只写这一个,the only thing you write
+home.hx.model.live,✓ 已实时重建 · 无需重启,✓ rebuilt live · no restart
+home.hx.demo,在线体验,Live Demo
+home.hx.arch,查看全景架构,Explore the full architecture
+home.mods.title,一个内核，五十多个模块按需引入,"One core, fifty-odd modules to add as needed"
+home.mods.lede,AI、数据源、插件、平台能力与商业模块，每个都是一个依赖；共享同一套注解、权限与界面。悬停查看用途，带 ↗ 的有独立介绍页。,"AI, data sources, plugins, platform pieces and commercial modules — each one dependency, all sharing the same annotations, permissions and UI. Hover for what each does; ↗ opens its page."
 home.poly.title,不止 Java：九种语言，同一套后台,"Not just Java: nine languages, one admin"
 home.poly.lede,Java / Kotlin 不绑定 Spring：同一个 @Erupt 类可以跑在 Spring Boot、Solon、Quarkus、Micronaut、Vert.x、Ktor 或任意 Servlet 容器里；Python、Go、TypeScript、PHP、.NET、Rust、Ruby、Swift 服务则通过 erupt-sdk 接入。表格、表单、搜索、权限、Excel、附件全部由服务端代办。,"Java / Kotlin isn't tied to Spring: the same @Erupt class runs on Spring Boot, Solon, Quarkus, Micronaut, Vert.x, Ktor or any servlet container, while services in Python, Go, TypeScript, PHP, .NET, Rust, Ruby and Swift plug in through erupt-sdk. Tables, forms, search, permissions, Excel and attachments are all handled by the server."
 home.poly.sdk,多语言 SDK →,Language SDKs →

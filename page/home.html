@@ -121,11 +121,17 @@
         flex-shrink: 0;
         background: #0d1117;
         color: #ccc;
-        overflow: hidden;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(79, 200, 236, .35) transparent;
         border-right: 1px solid rgba(79, 200, 236, .2);
         font-family: 'SFMono-Regular', monospace;
         font-size: .82em;
     }
+
+    .eb-sidebar::-webkit-scrollbar { width: 6px; }
+    .eb-sidebar::-webkit-scrollbar-thumb { background: rgba(79, 200, 236, .35); }
 
     .eb-sidebar-header {
         padding: 8px 14px 7px;
@@ -423,50 +429,387 @@
         margin-top: 4px;
     }
 
-    /* hero · rotating "one model → X" line */
-    .hero-lead .lead-rot {
+    /* ═════ §1 HERO · the model is the system: one model card in the middle builds every part around it ═════ */
+    .hx {
+        display: grid;
+        grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
+        min-height: 520px;
+    }
+
+    .hx-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+        padding: 44px 32px 44px 52px;
+        min-width: 0;
+    }
+
+    /* the column is as wide as the title; everything else wraps or stretches to it */
+    .hx-col {
+        width: min-content;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .hx-col .hx-lead, .hx-col .hx-sub { text-wrap: balance; max-width: none; }
+
+    .hx-arch {
         display: flex;
         align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: -4px 0 2px;
-        font-size: clamp(16px, 1.6vw, 21px);
+        gap: 8px;
+        margin-top: -4px;
+        padding: 9px 12px;
+        border: 1.5px dashed rgba(20, 18, 11, .4);
+        font-family: var(--c-mono);
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: .04em;
+        color: var(--c-text);
+        text-decoration: none;
+        transition: background .15s, border-color .15s;
+    }
+
+    .hx-arch i {
+        font-style: normal;
+        color: var(--c-brand);
+    }
+
+    .hx-arch span {
+        margin-left: auto;
+        transition: transform .15s;
+    }
+
+    .hx-arch:hover {
+        color: var(--c-text);
+        text-decoration: none;
+        border-style: solid;
+        border-color: var(--c-border);
+        background: rgba(var(--c-brand-rgb), .1);
+    }
+
+    .hx-arch:hover span { transform: translateX(3px); }
+
+    .hx-col .hx-btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hx-col .hx-btns .wbtn { text-align: center; justify-content: center; display: flex; align-items: center; }
+
+    .hx-eyebrow {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        gap: 8px;
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: rgba(20, 18, 11, .55);
+    }
+
+    .hx-eyebrow b {
+        padding: 2px 8px 1px;
+        background: var(--c-purple);
+        border: 1.5px solid var(--c-border);
+        box-shadow: 2px 2px 0 var(--c-text);
+        color: var(--c-text);
         font-weight: 800;
-        letter-spacing: -.01em;
+        letter-spacing: .06em;
+    }
+
+    .hx h1 {
+        margin: 0;
+        font-size: clamp(38px, 4.2vw, 58px);
+        font-weight: 800;
+        white-space: nowrap;
+        letter-spacing: -.035em;
+        line-height: 1;
         color: var(--c-text);
     }
 
-    .hero-lead .rot-slot {
-        display: inline-block;
-        perspective: 400px;
-        min-width: 9em;
-        text-align: left;
+    .hx-lead {
+        margin: 0;
+        font-size: clamp(19px, 1.9vw, 25px);
+        font-weight: 800;
+        line-height: 1.35;
+        color: var(--c-text);
     }
 
-    .hero-lead .rot-chip {
-        display: inline-block;
-        padding: 3px 12px 2px;
-        background: var(--c-brand);
-        border: 2px solid var(--c-border);
-        box-shadow: 4px 4px 0 var(--c-text);
-        transform-origin: 50% 0;
-        animation: rot-in .45s cubic-bezier(.2, 1.4, .4, 1) both;
+    .hx-lead mark {
+        padding: 0 4px;
+        background: none;
+        color: inherit;
+        box-shadow: inset 0 -.42em 0 var(--c-brand);
+    }
+
+    .hx-sub {
+        margin: 0;
+        max-width: 40ch;
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--c-text2);
+    }
+
+    .hx-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 4px;
+    }
+
+    .hx-btns .wbtn {
+        padding: 11px 26px;
+        font-size: 14px;
         white-space: nowrap;
     }
 
-    .hero-lead .rot-chip::before {
-        content: "→ ";
-        font-family: var(--c-mono);
+    /* system map */
+    .hx-map {
+        position: relative;
+        margin: 40px 44px 40px 4px;
+        height: 440px;
     }
 
-    @keyframes rot-in {
-        from { opacity: 0; transform: rotateX(-90deg) translateY(-6px); }
-        to { opacity: 1; transform: none; }
+    .hx-map svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+
+    .hx-map path {
+        fill: none;
+        stroke: rgba(20, 18, 11, .28);
+        stroke-width: 1.5;
+        vector-effect: non-scaling-stroke;
+        stroke-dasharray: 5 4;
+        animation: hx-flow 1.1s linear infinite;
+        transition: stroke .25s;
+    }
+
+    .hx-map path.on {
+        stroke: var(--c-text);
+        stroke-width: 2.5;
+    }
+
+    .hx-map path.sp-r { animation-direction: normal; }
+    .hx-map path.sp-l { animation-direction: reverse; }
+
+    @keyframes hx-flow {
+        to { stroke-dashoffset: -18; }
+    }
+
+    .hx-side-hd {
+        position: absolute;
+        top: -22px;
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+    }
+
+    .hx-node {
+        position: absolute;
+        width: 26%;
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 12px;
+        background: var(--c-paper);
+        border: 2px solid var(--c-border);
+        box-shadow: 3px 3px 0 var(--c-text);
+        transform: translateY(-50%);
+        transition: background .25s, box-shadow .25s, transform .25s;
+    }
+
+    .hx-node.nl { left: 0; }
+    .hx-node.nr { right: 0; }
+
+    .hx-node b {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 13px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .hx-node b i {
+        width: 8px;
+        height: 8px;
+        border: 1.5px solid var(--c-border);
+        flex-shrink: 0;
+    }
+
+    .hx-node span {
+        margin-top: 3px;
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        color: var(--c-text2);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .hx-node.on {
+        background: var(--c-brand);
+        box-shadow: 5px 5px 0 var(--c-text);
+        transform: translate(-2px, calc(-50% - 2px));
+    }
+
+    .hx-node.on span { color: var(--c-text); }
+
+    /* the model: the one thing you write */
+    .hx-model {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 32%;
+        transform: translate(-50%, -50%);
+        background: var(--c-code-bg);
+        border: 2px solid var(--c-border);
+        box-shadow: 7px 7px 0 var(--c-brand), 7px 7px 0 2px var(--c-text);
+        color: var(--c-code-text);
+        z-index: 2;
+    }
+
+    .hx-model-hd {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 9px 12px;
+        border-bottom: 1px solid rgba(240, 232, 214, .14);
+    }
+
+    .hx-model-hd b {
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    .hx-model-hd b::before {
+        content: "◆ ";
+        color: var(--c-brand);
+    }
+
+    .hx-model-hd span {
+        padding: 0 7px;
+        background: var(--c-brand);
+        color: var(--c-text);
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        font-weight: 800;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+    }
+
+    .hx-model ul {
+        margin: 0;
+        padding: 8px 12px 10px;
+        list-style: none;
+        font-family: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        line-height: 1.95;
+    }
+
+    .hx-model li {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .hx-model li em {
+        font-style: normal;
+        color: var(--c-green);
+    }
+
+    .hx-model-ft {
+        padding: 7px 12px;
+        border-top: 1px dashed rgba(240, 232, 214, .2);
+        font-family: var(--c-mono);
+        font-size: 9.5px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: rgba(240, 232, 214, .5);
+    }
+
+    /* change the model → the whole system rebuilds: a pulse down every line, every part flashes in turn */
+    .hx-map path.pulse {
+        stroke: var(--c-text);
+        stroke-width: 2.5;
+        stroke-dasharray: 12 6;
+        animation-duration: .35s;
+    }
+
+    .hx-node.sync {
+        animation: hx-sync 1.1s ease both;
+    }
+
+    @keyframes hx-sync {
+        30% {
+            background: var(--c-brand);
+            box-shadow: 5px 5px 0 var(--c-text);
+            transform: translate(-2px, calc(-50% - 2px));
+        }
+    }
+
+    .hx-model li.new {
+        margin: 2px -12px 0;
+        padding: 0 12px;
+        border-top: 1px dashed rgba(240, 232, 214, .18);
+        color: rgba(240, 232, 214, .3);
+        transition: background .3s, color .3s;
+    }
+
+    .hx-model li.new.typing,
+    .hx-model li.new.added {
+        color: #F0E8D6;
+        background: rgba(79, 200, 236, .16);
+    }
+
+    .hx-model li.new.typing span::after {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 1.1em;
+        margin-left: 2px;
+        vertical-align: text-bottom;
+        background: var(--c-brand);
+        animation: hx-blink 1s steps(1) infinite;
+    }
+
+    @keyframes hx-blink {
+        50% { opacity: 0; }
+    }
+
+    .hx-model-ft.live {
+        color: var(--c-green);
     }
 
     @media (prefers-reduced-motion: reduce) {
-        .hero-lead .rot-chip { animation: none; }
+        .hx-map path { animation: none; }
+    }
+
+    @media (max-width: 1000px) {
+        .hx { grid-template-columns: 1fr; }
+        .hx-copy { padding: 44px 28px 8px; }
+        .hx-map { margin: 40px 28px 44px; }
+    }
+
+    @media (max-width: 640px) {
+        .hx-map { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .hx-map svg, .hx-side-hd { display: none; }
+        .hx-node, .hx-model { position: static; width: auto; transform: none; }
+        .hx-node.on { transform: translate(-2px, -2px); }
+        .hx-model { grid-column: 1 / -1; order: -1; margin-bottom: 8px; }
     }
 
     .hero-lead .lead-btns .wbtn {
@@ -980,6 +1323,88 @@
         width: 6px;
         height: 6px;
         flex-shrink: 0;
+    }
+
+    /* §16 module atlas — every erupt module, grouped */
+    .mods-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .mods-grid > .c:last-child { border-right: none; }
+
+    .mods-col {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .mods-hd {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--c-border);
+    }
+
+    .mods-hd b {
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    .mods-hd span {
+        font-family: var(--c-mono);
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -.04em;
+        color: rgba(20, 18, 11, .18);
+    }
+
+    .mods-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .mods-list a, .mods-list span {
+        padding: 3px 8px;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        color: var(--c-text);
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: default;
+    }
+
+    .mods-list a {
+        cursor: pointer;
+        box-shadow: 2px 2px 0 var(--c-text);
+        transition: transform .12s, box-shadow .12s;
+    }
+
+    .mods-list a::after {
+        content: " ↗";
+        color: var(--c-text2);
+    }
+
+    .mods-list a:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 3px 3px 0 var(--c-text);
+    }
+
+    .mods-col.pro .mods-list a, .mods-col.pro .mods-list span {
+        background: #FFF4B8;
+    }
+
+    @media (max-width: 1000px) {
+        .mods-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+        .mods-grid { grid-template-columns: 1fr; }
     }
 
     /* Capability list inside .hero-ui-card (§1c right) */
@@ -1810,166 +2235,47 @@
 
     <div class="fr">
 
-        <!-- §1 HERO — headline + narrow capability diagram -->
-        <div class="r g-bg ticks hero-split-top" style="display:flex;min-height:520px;overflow:hidden">
-            <div class="hero-lead">
-                <span id="home-logo"><img alt="" src="assets/logo.svg" width="72px"></span>
-                <span style="font-family:var(--c-mono);font-size:.72em;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,18,11,.55)">Open Source · Apache 2.0 · 9 Languages · Zero Frontend</span>
-                <h1>Erupt Engine</h1>
-                <div class="lead-rot">
-                    <span>{{'home.hero.rot.pre'|i18n}}</span>
-                    <span class="rot-slot"><span class="rot-chip" ng-if="$index === rotI"
-                                                 ng-repeat="w in rotWords track by $index">{{w}}</span></span>
-                </div>
-                <p class="lead-sub">
-                    <span style="background:#F5D547;color:var(--c-text);font-weight:800;padding:1px 8px;border:1.5px solid var(--c-border);box-shadow:2px 2px 0 var(--c-text)">Polyglot</span>
-                    <span style="color:var(--c-text);font-weight:700;margin-left:6px">{{'home.subtitle'|i18n}}</span>
-                    <span style="display:inline-block;margin:6px 0 0 4px;background:var(--c-purple);color:var(--c-text);font-weight:800;padding:2px 10px 1px;border:1.5px solid var(--c-border);box-shadow:2px 2px 0 var(--c-text);transform:rotate(-1.5deg);letter-spacing:.02em">{{'home.subtitle2'|i18n}}</span>
-                </p>
-                <div class="lead-btns">
-                    <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank">{{'home.btn.start'|i18n}}
-                        ↗</a>
-                    <a class="wbtn" ng-click="go('https://demo.erupt.xyz',true)" style="cursor:pointer">{{'home.btn.demo'|i18n}}</a>
-                    <a class="wbtn" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">{{'home.btn.doc'|i18n}}</a>
+        <!-- §1 HERO — the model is the system: one model in the middle, every part of the system built around it -->
+        <div class="r g-bg hx">
+            <div class="hx-copy">
+                <div class="hx-col">
+                    <div class="hx-eyebrow">
+                        <span>Open Source · Model-Driven</span>
+                        <b>AI-Harness</b>
+                    </div>
+                    <h1>Erupt Engine</h1>
+                    <p class="hx-lead" ng-bind-html="'home.hx.lead'|i18nHtml"></p>
+                    <p class="hx-sub">{{'home.hx.sub'|i18n}}</p>
+                    <div class="hx-btns">
+                        <a class="wbtn wbtn-o" href="https://start.erupt.xyz" target="_blank">{{'home.btn.start'|i18n}} ↗</a>
+                        <a class="wbtn" ng-click="go('https://demo.erupt.xyz',true)" style="cursor:pointer">{{'home.hx.demo'|i18n}}</a>
+                    </div>
+                    <a class="hx-arch" href="#!/architecture"><i>◆</i>{{'home.hx.arch'|i18n}}<span>→</span></a>
                 </div>
             </div>
-            <!-- Right: @Erupt capability diagram (narrow) -->
-            <div class="d-none d-lg-flex hero-diagram-panel"
-                 style="flex:0 0 22%;border-left:2px solid var(--c-border);align-items:center;justify-content:center;padding:0 14px;position:relative;overflow:hidden">
-                <div class="hero-diagram-inner" style="display:flex;align-items:center;gap:0;width:100%;height:428px">
-                    <svg height="428" style="flex-shrink:0" viewBox="0 0 44 428" width="44">
-                        <line stroke="rgba(0,0,0,.12)" stroke-width="1" x1="12" x2="12" y1="22" y2="406"/>
-                        <circle cx="12" cy="214" fill="#4FC8EC" opacity=".7" r="2.5"/>
-                        <circle cx="12" cy="22" fill="#4FC8EC" r="2"/>
-                        <line stroke="#4FC8EC" stroke-width="1.5" x1="12" x2="44" y1="22" y2="22"
-                              style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:0s"/>
-                        <circle cx="12" cy="70" fill="#93D655" r="2"/>
-                        <line stroke="#93D655" stroke-width="1.5" x1="12" x2="44" y1="70" y2="70"
-                              style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.15s"/>
-                        <circle cx="12" cy="118" fill="#BCA0F2" r="2"/>
-                        <line stroke="#BCA0F2" stroke-width="1.5" x1="12" x2="44" y1="118" y2="118"
-                              style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.3s"/>
-                        <circle cx="12" cy="166" fill="#4FC8EC" r="2"/>
-                        <line stroke="#4FC8EC" stroke-width="1.5" x1="12" x2="44" y1="166" y2="166"
-                              style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.45s"/>
-                        <circle cx="12" cy="214" fill="#93D655" r="2"/>
-                        <line stroke="#93D655" stroke-width="1.5" x1="12" x2="44" y1="214" y2="214"
-                              style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.6s"/>
-                        <circle cx="12" cy="262" fill="#BCA0F2" r="2"/>
-                        <line stroke="#BCA0F2" stroke-width="1.5" x1="12" x2="44" y1="262" y2="262"
-                              style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.75s"/>
-                        <circle cx="12" cy="310" fill="#4FC8EC" r="2"/>
-                        <line stroke="#4FC8EC" stroke-width="1.5" x1="12" x2="44" y1="310" y2="310"
-                              style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-.9s"/>
-                        <circle cx="12" cy="358" fill="#93D655" r="2"/>
-                        <line stroke="#93D655" stroke-width="1.5" x1="12" x2="44" y1="358" y2="358"
-                              style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-1.05s"/>
-                        <circle cx="12" cy="406" fill="#BCA0F2" r="2"/>
-                        <line stroke="#BCA0F2" stroke-width="1.5" x1="12" x2="44" y1="406" y2="406"
-                              style="stroke-dasharray:5 3;animation:wire-flow .9s linear infinite;animation-delay:-1.2s"/>
-                    </svg>
-                    <div class="dia-items"
-                         style="flex:1;display:flex;flex-direction:column;gap:4px;height:428px;min-width:0">
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#4FC8EC;flex-shrink:0"></div>
-                            <div style="min-width:0;overflow:hidden">
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Table / Form
-                                </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    UI rendering
-                                </div>
-                            </div>
-                        </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#93D655;flex-shrink:0"></div>
-                            <div style="min-width:0;overflow:hidden">
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    RBAC
-                                </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Permissions
-                                </div>
-                            </div>
-                        </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#BCA0F2;flex-shrink:0"></div>
-                            <div style="min-width:0;overflow:hidden">
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    REST API
-                                </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Controller
-                                </div>
-                            </div>
-                        </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#4FC8EC;flex-shrink:0"></div>
-                            <div style="min-width:0;overflow:hidden">
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    DataProxy
-                                </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Service
-                                </div>
-                            </div>
-                        </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#93D655;flex-shrink:0"></div>
-                            <div style="min-width:0;overflow:hidden">
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Auto DDL
-                                </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Database
-                                </div>
-                            </div>
-                        </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#BCA0F2;flex-shrink:0"></div>
-                            <div style="min-width:0;overflow:hidden">
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Flow Engine
-                                </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Workflow
-                                </div>
-                            </div>
-                        </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#4FC8EC;flex-shrink:0"></div>
-                            <div style="min-width:0;overflow:hidden">
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    i18n
-                                </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    10 languages
-                                </div>
-                            </div>
-                        </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:white;border:2px solid var(--c-border);min-width:0">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:#93D655;flex-shrink:0"></div>
-                            <div style="min-width:0;overflow:hidden">
-                                <div style="font-size:10px;font-weight:600;color:rgba(0,0,0,.78);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Charts
-                                </div>
-                                <div style="font-size:8px;color:rgba(0,0,0,.38);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Data viz
-                                </div>
-                            </div>
-                        </div>
-                        <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 10px;background:var(--c-purple);border:2px solid var(--c-border);min-width:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)">
-                            <div style="width:2px;align-self:stretch;margin:8px 0;background:var(--c-text);flex-shrink:0"></div>
-                            <div style="min-width:0;overflow:hidden">
-                                <div style="font-size:10px;font-weight:800;color:var(--c-text);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    AI Agent
-                                </div>
-                                <div style="font-size:8px;color:var(--c-text);font-family:var(--c-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                                    Multi-LLM · MCP
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div aria-hidden="true" class="hx-map">
+                <svg preserveAspectRatio="none" viewBox="0 0 600 440">
+                    <path class="sp-l" ng-attr-d="M156 {{n.y}} H186 V220 H210" ng-class="{pulse: rb.sync}" ng-repeat="n in sysL"></path>
+                    <path class="sp-r" ng-attr-d="M390 220 H414 V{{n.y}} H444" ng-class="{pulse: rb.sync}" ng-repeat="n in sysR"></path>
+                </svg>
+                <span class="hx-side-hd" style="left:0">{{'home.hx.side.ui'|i18n}}</span>
+                <span class="hx-side-hd" style="right:0">{{'home.hx.side.sys'|i18n}}</span>
+                <div class="hx-node nl" ng-class="{sync: rb.sync}" ng-repeat="n in sysL" ng-style="{top: (n.y / 4.4) + '%', 'animation-delay': ($index * 90) + 'ms'}">
+                    <b><i ng-style="{background: n.c}"></i>{{n.n}}</b><span>{{n.d}}</span>
+                </div>
+                <div class="hx-node nr" ng-class="{sync: rb.sync}" ng-repeat="n in sysR" ng-style="{top: (n.y / 4.4) + '%', 'animation-delay': ($index * 90 + 45) + 'ms'}">
+                    <b><i ng-style="{background: n.c}"></i>{{n.n}}</b><span>{{n.d}}</span>
+                </div>
+                <div class="hx-model">
+                    <div class="hx-model-hd"><b>Task</b><span>model</span></div>
+                    <ul>
+                        <li>title<em>text</em></li>
+                        <li>priority<em>choice</em></li>
+                        <li>due<em>date</em></li>
+                        <li>owner<em>→ User</em></li>
+                        <li class="new" ng-class="{typing: rb.phase === 1, added: rb.phase > 1}"><span>{{rb.f || '+ field'}}</span><em>{{rb.phase > 1 ? rb.t : ''}}</em></li>
+                    </ul>
+                    <div class="hx-model-ft" ng-class="{live: rb.phase > 2}">{{rb.phase > 2 ? ('home.hx.model.live'|i18n) : ('home.hx.model.ft'|i18n)}}</div>
                 </div>
             </div>
         </div>
@@ -1994,7 +2300,7 @@
                     <!-- sidebar -->
                     <div class="eb-sidebar">
                         <div class="eb-sidebar-header" ng-bind-html="'home.code.title'|i18nHtml"></div>
-                        <div ng-repeat="(key,val) in project" style="padding:0 6px;margin-top:0">
+                        <div ng-repeat="(key,val) in project" style="padding:0 6px;margin-top:2px">
                             <div ng-if="val.file"
                                  style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px">
                                 <span style="width:7px;flex-shrink:0"></span>
@@ -2010,7 +2316,7 @@
                                       style="font-size:0.9em">{{key}}</span>
                             </div>
                             <div ng-if="val.sub">
-                                <div ng-repeat="(key,val) in val.sub" style="padding-left:20px;margin-top:0">
+                                <div ng-repeat="(key,val) in val.sub" style="padding-left:20px;margin-top:2px">
                                     <div ng-if="val.file"
                                          style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px;background:rgba(0,123,255,0.14)">
                                         <img alt="" src="images/file/file.svg" style="width:14px;opacity:0.85">
@@ -2115,7 +2421,7 @@ public class Task extends BaseModel {
             <span class="tag">Preview</span>
             <p class="h2" style="margin:10px 0 6px">One class · Full-stack admin</p>
             <p class="sub" style="max-width:640px;margin:0 auto">
-                Every field annotation instantly renders in the admin table and wires up 9 backend modules — no frontend
+                Every field annotation instantly renders in the admin table and wires up the backend behind it — no frontend
                 code, no boilerplate.
             </p>
         </div>
@@ -3076,6 +3382,24 @@ public class Task extends BaseModel {
                 </div>
                 <p class="sub" style="font-size:12.5px;margin:0">{{'home.v2.fam.linq.p'|i18n}}</p>
                 <div class="fam-more">{{'home.v2.fam.more'|i18n}}<span class="fam-arrow">→</span></div>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             §16 MODULE ATLAS — every module, one dependency each
+             ════════════════════════════════════════ -->
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag">Modules · {{modsTotal}}</span>
+            <h2 class="h2">{{'home.mods.title'|i18n}}</h2>
+            <p class="sub" style="margin:0 auto;max-width:56ch">{{'home.mods.lede'|i18n}}</p>
+        </div>
+        <div class="r mods-grid reveal">
+            <div class="c mods-col no-bb" ng-class="{pro: g.pro}" ng-repeat="g in modGroups">
+                <div class="mods-hd"><b>{{g.t}}</b><span>{{g.m.length}}</span></div>
+                <div class="mods-list">
+                    <a ng-href="{{m.h}}" ng-if="m.h" ng-repeat-start="m in g.m" title="{{m.d}}">{{m.n}}</a>
+                    <span ng-if="!m.h" ng-repeat-end title="{{m.d}}">{{m.n}}</span>
+                </div>
             </div>
         </div>
 
