@@ -121,7 +121,7 @@
         flex-shrink: 0;
         background: #0d1117;
         color: #ccc;
-        overflow: auto;
+        overflow: hidden;
         border-right: 1px solid rgba(79, 200, 236, .2);
         font-family: 'SFMono-Regular', monospace;
         font-size: .82em;
@@ -423,9 +423,244 @@
         margin-top: 4px;
     }
 
+    /* hero · rotating "one model → X" line */
+    .hero-lead .lead-rot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: -4px 0 2px;
+        font-size: clamp(16px, 1.6vw, 21px);
+        font-weight: 800;
+        letter-spacing: -.01em;
+        color: var(--c-text);
+    }
+
+    .hero-lead .rot-slot {
+        display: inline-block;
+        perspective: 400px;
+        min-width: 9em;
+        text-align: left;
+    }
+
+    .hero-lead .rot-chip {
+        display: inline-block;
+        padding: 3px 12px 2px;
+        background: var(--c-brand);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        transform-origin: 50% 0;
+        animation: rot-in .45s cubic-bezier(.2, 1.4, .4, 1) both;
+        white-space: nowrap;
+    }
+
+    .hero-lead .rot-chip::before {
+        content: "→ ";
+        font-family: var(--c-mono);
+    }
+
+    @keyframes rot-in {
+        from { opacity: 0; transform: rotateX(-90deg) translateY(-6px); }
+        to { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-lead .rot-chip { animation: none; }
+    }
+
     .hero-lead .lead-btns .wbtn {
         padding: 11px 26px;
         font-size: 14px;
+    }
+
+    /* §1b IDE · activity bar = language switcher */
+    .eb-act {
+        width: 52px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 0;
+        background: #010409;
+        border-right: 1px solid rgba(79, 200, 236, .2);
+    }
+
+    .eb-act-hd {
+        font-family: var(--c-mono);
+        font-size: 8.5px;
+        letter-spacing: .14em;
+        color: rgba(240, 232, 214, .3);
+        margin-bottom: 4px;
+    }
+
+    .eb-act-i {
+        position: relative;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        font-weight: 800;
+        color: rgba(240, 232, 214, .45);
+        border: 1px solid rgba(240, 232, 214, .14);
+        cursor: pointer;
+        user-select: none;
+        transition: color .15s, border-color .15s, background .15s;
+    }
+
+    .eb-act-i:hover {
+        color: #F0E8D6;
+        border-color: rgba(240, 232, 214, .4);
+    }
+
+    .eb-act-i.on {
+        color: var(--c-text);
+        border: 2px solid var(--c-text);
+        box-shadow: 3px 3px 0 var(--c-brand);
+    }
+
+    .eb-act-i.on::before {
+        content: "";
+        position: absolute;
+        left: -10px;
+        top: 4px;
+        bottom: 4px;
+        width: 2px;
+        background: var(--c-brand);
+    }
+
+    /* tooltip: language name + runtime */
+    .eb-act-i::after {
+        content: attr(data-tip);
+        position: absolute;
+        left: calc(100% + 10px);
+        top: 50%;
+        transform: translate(-4px, -50%);
+        padding: 4px 9px;
+        background: #F0E8D6;
+        color: var(--c-text);
+        border: 1.5px solid var(--c-text);
+        box-shadow: 2px 2px 0 var(--c-brand);
+        font-size: 10.5px;
+        font-weight: 700;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .12s, transform .12s;
+        z-index: 5;
+    }
+
+    .eb-act-i:hover::after {
+        opacity: 1;
+        transform: translate(0, -50%);
+    }
+
+    #erupt-box .eb-tab {
+        border-top: 2px solid var(--c-brand);
+        color: #F0E8D6;
+        background: #0d1117;
+    }
+
+    #erupt-box .eb-tab-dot {
+        border-radius: 0;
+        opacity: 1;
+    }
+
+    #erupt-box .eb-tab-x {
+        margin-left: 6px;
+        color: rgba(240, 232, 214, .35);
+    }
+
+    #erupt-box .eb-tabs {
+        background: #010409;
+    }
+
+    /* §1b IDE · JVM hosts next to the open file */
+    .eb-runs {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 0 12px;
+        overflow: hidden;
+        font-family: var(--c-mono);
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+    .eb-runs i {
+        font-style: normal;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: rgba(240, 232, 214, .32);
+        margin-right: 4px;
+    }
+
+    .eb-runs span {
+        padding: 1px 7px;
+        color: rgba(240, 232, 214, .72);
+        border: 1px solid rgba(147, 214, 85, .45);
+    }
+
+    .eb-runs span:first-of-type {
+        background: var(--c-green);
+        border-color: var(--c-green);
+        color: var(--c-text);
+        font-weight: 800;
+    }
+
+    @media (max-width: 900px) {
+        .eb-runs { display: none; }
+    }
+
+    /* §1b IDE · status bar */
+    .eb-status {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        height: 24px;
+        padding: 0 12px;
+        flex-shrink: 0;
+        background: #010409;
+        border-top: 1px solid rgba(79, 200, 236, .2);
+        color: rgba(240, 232, 214, .5);
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .eb-status b {
+        font-weight: 700;
+        color: #F0E8D6;
+    }
+
+    .eb-status .em {
+        color: var(--c-brand);
+    }
+
+    .eb-status .sp {
+        flex: 1;
+    }
+
+    @media (max-width: 700px) {
+        .eb-status .opt { display: none; }
+    }
+
+    #erupt-box pre.poly {
+        margin: 0;
+        flex: 1;
+        overflow: auto;
+        background: #0d1117;
+        padding: 1em;
+        font-family: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+        font-size: 13px;
+        line-height: 1.6;
+        white-space: pre;
     }
 
     /* ── shared hero-ui card styling (used in §1c) ── */
@@ -1579,10 +1814,15 @@
         <div class="r g-bg ticks hero-split-top" style="display:flex;min-height:520px;overflow:hidden">
             <div class="hero-lead">
                 <span id="home-logo"><img alt="" src="assets/logo.svg" width="72px"></span>
-                <span style="font-family:var(--c-mono);font-size:.72em;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,18,11,.55)">Open Source · Apache 2.0 · Spring Boot · Zero Frontend</span>
+                <span style="font-family:var(--c-mono);font-size:.72em;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,18,11,.55)">Open Source · Apache 2.0 · 9 Languages · Zero Frontend</span>
                 <h1>Erupt Engine</h1>
+                <div class="lead-rot">
+                    <span>{{'home.hero.rot.pre'|i18n}}</span>
+                    <span class="rot-slot"><span class="rot-chip" ng-if="$index === rotI"
+                                                 ng-repeat="w in rotWords track by $index">{{w}}</span></span>
+                </div>
                 <p class="lead-sub">
-                    <span style="background:#F5D547;color:var(--c-text);font-weight:800;padding:1px 8px;border:1.5px solid var(--c-border);box-shadow:2px 2px 0 var(--c-text)">MDD</span>
+                    <span style="background:#F5D547;color:var(--c-text);font-weight:800;padding:1px 8px;border:1.5px solid var(--c-border);box-shadow:2px 2px 0 var(--c-text)">Polyglot</span>
                     <span style="color:var(--c-text);font-weight:700;margin-left:6px">{{'home.subtitle'|i18n}}</span>
                     <span style="display:inline-block;margin:6px 0 0 4px;background:var(--c-purple);color:var(--c-text);font-weight:800;padding:2px 10px 1px;border:1.5px solid var(--c-border);box-shadow:2px 2px 0 var(--c-text);transform:rotate(-1.5deg);letter-spacing:.02em">{{'home.subtitle2'|i18n}}</span>
                 </p>
@@ -1740,15 +1980,21 @@
                 <!-- titlebar -->
                 <div class="eb-titlebar">
                     <span style="display:inline-block;width:7px;height:7px;background:#4FC8EC;transform:rotate(45deg);flex-shrink:0"></span>
-                    <span class="eb-titlebar-name">Task.java — erupt-demo</span>
-                    <span class="eb-titlebar-badge">Erupt Engine</span>
+                    <span class="eb-titlebar-name">{{lang.file}} — erupt-demo</span>
+                    <span class="eb-titlebar-badge">{{lang.key === 'java' ? 'Erupt Engine' : 'erupt-sdk · Node'}}</span>
                 </div>
                 <!-- body -->
                 <div class="eb-content">
+                    <!-- activity bar: language switcher -->
+                    <div class="eb-act">
+                        <span class="eb-act-hd">LANG</span>
+                        <span class="eb-act-i" data-tip="{{l.name}} · {{l.req}}" ng-class="{on: l === lang}"
+                              ng-click="pick(l)" ng-repeat="l in langs" ng-style="{background: l === lang ? l.bg : ''}">{{l.ini}}</span>
+                    </div>
                     <!-- sidebar -->
                     <div class="eb-sidebar">
                         <div class="eb-sidebar-header" ng-bind-html="'home.code.title'|i18nHtml"></div>
-                        <div ng-repeat="(key,val) in project" style="padding:0 6px;margin-top:2px">
+                        <div ng-repeat="(key,val) in project" style="padding:0 6px;margin-top:0">
                             <div ng-if="val.file"
                                  style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px">
                                 <span style="width:7px;flex-shrink:0"></span>
@@ -1764,7 +2010,7 @@
                                       style="font-size:0.9em">{{key}}</span>
                             </div>
                             <div ng-if="val.sub">
-                                <div ng-repeat="(key,val) in val.sub" style="padding-left:20px;margin-top:2px">
+                                <div ng-repeat="(key,val) in val.sub" style="padding-left:20px;margin-top:0">
                                     <div ng-if="val.file"
                                          style="display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:3px;background:rgba(0,123,255,0.14)">
                                         <img alt="" src="images/file/file.svg" style="width:14px;opacity:0.85">
@@ -1783,7 +2029,14 @@
                     </div>
                     <!-- editor -->
                     <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;position:relative;background: #0d1117">
-                            <pre id="DemoErupt"
+                            <div class="eb-tabs">
+                                <div class="eb-tab"><span class="eb-tab-dot" ng-style="{background: lang.bg}"></span>{{lang.file}}<span class="eb-tab-x">×</span></div>
+                                <div class="eb-runs" ng-if="lang.tags">
+                                    <i>runs on</i><span ng-repeat="t in lang.tags">{{t}}</span>
+                                </div>
+                            </div>
+                            <pre class="poly" ng-bind-html="lang.html" ng-if="lang.key !== 'java'"></pre>
+                            <pre id="DemoErupt" ng-show="lang.key === 'java'"
                                  style="margin:0;border-radius:0;flex:1;overflow:auto;background:#0d1117">
 <code class="prism language-java animated bounce">/**
  * plug-and-play 🚀  1 class replaces:
@@ -1843,6 +2096,14 @@ public class Task extends BaseModel {
                            style="position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:5px;padding:5px 12px;font-family:'SFMono-Regular',monospace;font-size:11px;color:var(--c-brand);background:rgba(79,200,236,.08);border:1px solid rgba(79,200,236,.3);text-decoration:none;transition:background .15s,border-color .15s"
                         >{{'home.code.more'|i18n}}</a>
                     </div>
+                </div>
+                <!-- status bar -->
+                <div class="eb-status">
+                    <span><span class="em">◆</span> <b>erupt-demo</b></span>
+                    <span><b>{{lang.name}}</b> · {{lang.req}}</span>
+                    <span class="sp"></span>
+                    <span class="opt"><span class="em">$</span> {{lang.install}}</span>
+                    <span class="opt">UTF-8 · LF</span>
                 </div>
             </div>
         </div>
@@ -2025,12 +2286,12 @@ public class Task extends BaseModel {
                     Field Types
                 </div>
             </div>
-            <div class="c no-bb" style="text-align:center;padding:28px 16px">
-                <div style="font-size:26px;font-weight:700;letter-spacing:-.04em;color:var(--c-text);line-height:1;margin-bottom:6px">
-                    12
+            <div class="c no-bb clickable" onclick="location.hash='#!/sdk'" style="text-align:center;padding:28px 16px">
+                <div style="font-size:26px;font-weight:700;letter-spacing:-.04em;color:var(--c-brand);line-height:1;margin-bottom:6px">
+                    9
                 </div>
                 <div style="font-family:var(--c-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text2)">
-                    Languages
+                    Programming Languages
                 </div>
             </div>
             <div class="c no-bb" style="text-align:center;padding:28px 16px">
@@ -2066,6 +2327,20 @@ public class Task extends BaseModel {
                 </div>
             </div>
         </div>
+
+        <!-- ════════════════════════════════════════
+             §3b  POLYGLOT — Java engine + 8 language SDKs, one admin
+             ════════════════════════════════════════ -->
+        <div class="r g-bg ticks" style="padding:48px;text-align:center">
+            <span class="tag">Polyglot · 9 Languages</span>
+            <h2 class="h2">{{'home.poly.title'|i18n}}</h2>
+            <p class="sub" style="margin:0 auto;max-width:60ch">{{'home.poly.lede'|i18n}}</p>
+            <div style="margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+                <a class="wbtn wbtn-o" href="#!/sdk" style="padding:8px 22px;font-size:13px">{{'home.poly.sdk'|i18n}}</a>
+                <a class="wbtn" href="#!/cloud" style="padding:8px 22px;font-size:13px">{{'home.poly.cloud'|i18n}}</a>
+            </div>
+        </div>
+        <div class="r g3 reveal" pg-grid></div>
 
         <!-- ════════════════════════════════════════
              §4  HOW IT WORKS — section heading

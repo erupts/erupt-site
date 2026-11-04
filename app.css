@@ -1171,3 +1171,90 @@ html, body {
     .g2 > .c, .g3 > .c, .g4 > .c { border-right: none; }
     .c { padding: 24px; }
 }
+
+/* ── Polyglot (page/polyglot.js) · shared by home / cloud ── */
+.poly { color: var(--c-code-text); }
+.poly .token.annotation { color: var(--c-brand); font-weight: 700; }
+.poly .token.keyword, .poly .token.number { color: var(--c-purple); }
+.poly .token.string { color: var(--c-green); }
+.poly .token.comment { color: rgba(240, 232, 214, .32); font-style: italic; }
+
+.pg-tabs { display: flex; flex-wrap: wrap; gap: 2px; }
+.pg-tab {
+    font-family: var(--c-mono);
+    font-size: 9.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid rgba(240, 232, 214, .2);
+    color: rgba(240, 232, 214, .55);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+.pg-tab:hover { color: var(--c-code-text); border-color: rgba(240, 232, 214, .45); }
+.pg-tab.on { background: var(--c-brand); color: var(--c-text); border-color: var(--c-brand); font-weight: 800; }
+
+.pg-ava {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--c-border);
+    box-shadow: 2px 2px 0 var(--c-text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--c-mono);
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--c-text);
+    flex-shrink: 0;
+}
+.pg-cell, .pg-cell:hover { color: inherit; text-decoration: none; }
+.pg-cell { display: flex; flex-direction: column; gap: 10px; cursor: pointer; }
+.pg-head { display: flex; align-items: center; gap: 12px; }
+.pg-name { font-size: 15px; font-weight: 800; line-height: 1.2; }
+.pg-req { font-family: var(--c-mono); font-size: 10px; color: var(--c-text2); margin-top: 2px; }
+.pg-install {
+    font-family: var(--c-mono);
+    font-size: 11px;
+    background: var(--c-code-bg);
+    color: var(--c-code-text);
+    padding: 7px 10px;
+    border: 1px solid var(--c-border);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pg-install::before { content: "$ "; color: var(--c-brand); }
+.pg-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.pg-tags span {
+    font-family: var(--c-mono);
+    font-size: 9.5px;
+    padding: 1px 6px;
+    border: 1px solid var(--c-border);
+    background: var(--c-paper);
+    color: var(--c-text);
+}
+
+/* JVM framework switch under a code window's language tabs */
+.pg-fw {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    padding: 7px 16px;
+    border-bottom: 1px solid rgba(240, 232, 214, .12);
+    font-family: var(--c-mono);
+    font-size: 10px;
+    color: rgba(240, 232, 214, .4);
+    align-items: center;
+}
+.pg-fw > i { font-style: normal; margin-right: 6px; letter-spacing: .08em; text-transform: uppercase; }
+.pg-fw span {
+    padding: 2px 8px;
+    border: 1px solid rgba(240, 232, 214, .16);
+    color: rgba(240, 232, 214, .6);
+    cursor: pointer;
+    user-select: none;
+}
+.pg-fw span:hover { color: var(--c-code-text); border-color: rgba(240, 232, 214, .45); }
+.pg-fw span.on { background: var(--c-green); color: var(--c-text); border-color: var(--c-green); font-weight: 800; }

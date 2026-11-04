@@ -1,4 +1,4 @@
-app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
+app.controller("home", function ($scope, $rootScope, $timeout, $interval, i18nService, polyglot) {
     $scope.indicator = [{
         name: i18nService.t('home.features.fast.name'),
         desc: i18nService.t('home.features.fast.desc'),
@@ -205,6 +205,25 @@ app.controller("home", function ($scope, $rootScope, $timeout, i18nService) {
         {name: i18nService.t('db.mongodb'), image: "mongoDB.svg"},
         {name: i18nService.t('db.custom'), image: "custom.svg"}
     ];
+
+    // the hero editor shows the same Task model in every language; Java stays the Prism-highlighted entity
+    $scope.langs = polyglot.langs;
+    $scope.pick = function (l) {
+        $scope.lang = l;
+        $scope.project.model.sub = {};
+        $scope.project.model.sub[l.file] = {file: true, active: true};
+    };
+    $scope.pick($scope.langs[0]);
+
+    // hero: "write one model → <rotating payoff>"
+    $scope.rotWords = i18nService.t('home.hero.rot.words').split('|');
+    $scope.rotI = 0;
+    var rot = $interval(function () {
+        $scope.rotI = ($scope.rotI + 1) % $scope.rotWords.length;
+    }, 2200);
+    $scope.$on("$destroy", function () {
+        $interval.cancel(rot);
+    });
 
     Prism.highlightAllUnder(document.getElementById("DemoErupt"));
 
