@@ -1,6 +1,79 @@
 <style>
     /* ═══ Cloud page · Playful-Brutalist ═══ */
 
+    /* ── §1 Hero: split, product name stamp (same as Config / Data / SSO) ── */
+    .cl-hero {
+        display: flex;
+        min-height: 520px;
+        overflow: hidden;
+    }
+
+    .cl-hero-l {
+        flex: 1;
+        min-width: 0;
+        padding: 64px 48px 56px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cl-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .cl-h1 {
+        font-size: clamp(34px, 4.4vw, 54px);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -.03em;
+        color: var(--c-text);
+        margin: 0 0 16px;
+    }
+
+    .cl-h1 em {
+        font-style: normal;
+        display: inline-block;
+        color: var(--c-text);
+        background: var(--c-brand);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        padding: 0 14px 4px;
+        transform: rotate(-1deg);
+    }
+
+    .cl-tagline {
+        font-size: clamp(17px, 1.8vw, 22px);
+        font-weight: 700;
+        letter-spacing: -.01em;
+        color: var(--c-text);
+        margin: 0 0 14px;
+    }
+
+    .cl-badge {
+        display: inline-block;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        color: var(--c-text);
+        padding: 4px 10px 3px;
+        font-size: 10.5px;
+        font-weight: 700;
+        font-family: var(--c-mono);
+        letter-spacing: .10em;
+        text-transform: uppercase;
+        margin: 3px 4px 3px 0;
+    }
+
+    @media (max-width: 900px) {
+        .cl-hero { min-height: 0; }
+        .cl-hero-l { padding: 40px 24px 32px; }
+    }
+
     /* ── §1 Hero console mockup ── */
     .cl-win {
         width: 100%;
@@ -775,23 +848,24 @@
     <!-- ════════════════════════════════════════
          §1  HERO — copy + unified console mockup
          ════════════════════════════════════════ -->
-    <div class="r g-bg" style="display:flex;min-height:520px;overflow:hidden">
-        <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;min-width:0">
-            <div><span class="tag tag-y">{{'cloud.hero.kicker' | i18n}}</span></div>
-            <h1 style="margin-top:16px;letter-spacing:-.03em;font-size:clamp(28px,4vw,52px);line-height:1.05;font-weight:800">
-                {{'cloud.hero.title' | i18n}}
-            </h1>
-            <p class="sub" style="margin-top:16px;max-width:44ch">{{'cloud.hero.sub' | i18n}}</p>
-            <p style="margin-top:14px;font-family:var(--c-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-brand);font-weight:700;display:inline-flex;align-items:flex-start;gap:8px;line-height:1.8">
-                <span style="display:inline-block;width:6px;height:6px;background:var(--c-brand);border:1.5px solid var(--c-border);flex-shrink:0;margin-top:5px"></span>
-                {{'cloud.hero.tagline' | i18n}}
-            </p>
-            <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap">
+    <div class="r cl-hero">
+        <div class="cl-hero-l">
+            <span class="cl-eyebrow">Apache 2.0 · erupt-cloud</span>
+            <h1 class="cl-h1">Erupt <em>Cloud</em></h1>
+            <p class="cl-tagline">{{'cloud.hero.tagline' | i18n}}</p>
+            <p class="sub" style="max-width:46ch;margin:0 0 22px">{{'cloud.hero.sub' | i18n}}</p>
+            <div style="margin-bottom:24px">
+                <span class="cl-badge">{{'cloud.badge.rows' | i18n}}</span>
+                <span class="cl-badge">{{'cloud.badge.rbac' | i18n}}</span>
+                <span class="cl-badge">{{'cloud.badge.visual' | i18n}}</span>
+                <span class="cl-badge">{{'cloud.badge.audit' | i18n}}</span>
+            </div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
                 <a class="wbtn wbtn-o"
                    ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-cloud"
-                   style="padding:11px 28px;font-size:13px" target="_blank">{{'cloud.cta.docs' | i18n}}</a>
+                   target="_blank">{{'cloud.cta.docs' | i18n}}</a>
                 <a class="wbtn" href="https://github.com/erupts/erupt"
-                   style="padding:11px 28px;font-size:13px" target="_blank">GitHub</a>
+                   target="_blank">GitHub</a>
             </div>
         </div>
         <div class="d-none d-lg-flex"

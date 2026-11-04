@@ -7,13 +7,7 @@ nav.donate,捐赠指南,Donate
 nav.doc,使用文档,Docs
 nav.demo,演示 DEMO,Demo
 nav.cloud,☁️ Erupt Cloud,☁️ Erupt Cloud
-cloud.hero.kicker,DISTRIBUTED CONFIG,DISTRIBUTED CONFIG
-cloud.hero.title,Erupt Cloud,Erupt Cloud
 cloud.hero.sub,面向微服务与集群的「多维表」云配置能力：集中管理、轻量依赖，让集群内每个服务都能以注解方式获得一致的数据可视化管理体验。,"Cloud-native multidimensional table configuration for clusters: centralized management, light dependencies, and consistent annotation-driven admin across services."
-cloud.badge.config,多维配置中心,Multi-dim config
-cloud.badge.cluster,集群 / 多节点,Cluster & nodes
-cloud.badge.light,轻依赖,Lightweight
-cloud.badge.visual,服务可视化,Service visibility
 cloud.cta.doc,阅读文档,Read docs
 cloud.cta.github,GitHub 源码,GitHub
 cloud.diagram.console,多维管理台,Admin plane
@@ -790,8 +784,12 @@ home.v2.fam.chart.p,低代码数据可视化。拖拽配置图表与看板，零
 home.v2.fam.job.p,"定时任务管理。Cron 表达式配置，执行日志，在线启停。","Scheduled job management — Cron config, execution logs, start/stop at runtime."
 home.v2.fam.monitor.p,"服务监控。JVM 指标、缓存状态、在线用户，开箱即用。","Service monitoring — JVM metrics, cache status, online users, zero config."
 home.ready,准备好了吗？,Ready to get started?
-flow.hero.kicker,通用工作流引擎 · 流程引擎,General Workflow Engine · workflow engine
-flow.hero.desc,"覆盖全链路的<strong>通用工作流引擎解决方案</strong>：<span style=""background:rgba(79,200,236,.1); color:var(--c-brand); padding:1px 5px; border-radius:3px; font-size:13.5px; white-space:nowrap"">配置 · 发起 · 审批 · 通知</span>。零前端代码定义节点——在可视化画布上设计流程，<strong>10 分钟</strong>内搭建企业级工作流系统。","A <strong>general-purpose workflow engine solution</strong> covering the full chain: <span style=""background:rgba(79,200,236,.1); color:var(--c-brand); padding:1px 5px; border-radius:3px; font-size:13.5px; white-space:nowrap"">Config · Initiate · Approve · Notify</span>. Zero frontend code to define nodes — design flows on a visual canvas and build enterprise-grade workflow systems in <strong>10 minutes</strong>."
+flow.hero.tagline,10 分钟搭起企业级审批流,An enterprise approval flow in 10 minutes
+flow.badge.config,配置,Configure
+flow.badge.initiate,发起,Initiate
+flow.badge.approve,审批,Approve
+flow.badge.notify,通知,Notify
+flow.hero.desc,覆盖全链路的<strong>通用工作流引擎</strong>：零前端代码定义节点，在可视化画布上设计流程，发起、审批、通知开箱即用。,"A <strong>general-purpose workflow engine</strong> covering the full chain: define nodes with zero frontend code, design flows on a visual canvas, and get initiation, approval and notification out of the box."
 flow.hero.demo,试用在线演示 →,Try Live Demo →
 flow.hero.docs,查看文档,View Docs
 flow.hero.stat.nodes,节点类型,node types
@@ -998,7 +996,11 @@ flow.dag.amount.high,金额 > ¥5000,Amount > ¥5,000
 flow.dag.delay24h,延迟 24 小时,Delay 24h
 flow.inbox.header,Erupt · 工作流审批,Erupt · Workflow Approval
 flow.inbox.no,编号,No.
-cloud.hero.tagline,vs Nacos / Apollo → 多行数据 · 行/列 RBAC · 可视化编辑 · 审计追踪,vs Nacos / Apollo → Multi-row data · Row/column RBAC · Visual editing · Audit trail
+cloud.hero.tagline,集群里的每个服务，共用一个后台,"One admin for every service in the cluster"
+cloud.badge.rows,多行数据,Multi-row data
+cloud.badge.rbac,行/列 RBAC,Row/column RBAC
+cloud.badge.visual,可视化编辑,Visual editing
+cloud.badge.audit,审计追踪,Audit trail
 cloud.diagram.notify,Node · 通知服务,Node · Notification Service
 cloud.diagram.gateway,Node · 网关服务,Node · Gateway Service
 cloud.diagram.algo,Node · 算法服务,Node · Algorithm Service
@@ -1048,8 +1050,8 @@ cloud.diag.n1,通知服务,Notify Service
 cloud.diag.n2,网关服务,Gateway Service
 cloud.diag.n3,算法服务,Algo Service
 cloud.diag.more,更多服务…,More services…
-nav.data,🔌 数据连接,🔌 Connectors
-data.hero.title,<span class='ds-ul'>数据</span>在哪，<br><em class='ds-hl'>后台</em>就在哪,"Where <span class='ds-ul'>data</span> lives,<br><em class='ds-hl'>admin</em> follows"
+nav.data,🔌 Erupt Data,🔌 Erupt Data
+data.hero.tagline,数据在哪，后台就在哪,"Where data lives, admin follows"
 data.hero.sub,erupt-data 将数据库、文件、NoSQL 与 SaaS API 抽象为统一的数据源接口，同一套注解模型即可对任意数据完成增删改查、分页与检索。,"erupt-data abstracts databases, files, NoSQL and SaaS APIs into one unified data-source interface — the same annotated model gives you CRUD, pagination and search over any data."
 data.hero.btn.doc,模块文档,Module Docs
 data.stat.1,数据源模块,Data Modules
