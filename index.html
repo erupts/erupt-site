@@ -27,46 +27,12 @@
                    ng-class="currRouter=='/'?'active-link':''">
                     {{'nav.home' | i18n}}
                 </a>
-                <span class="dropdown show more-dropdown">
-                    <a aria-expanded="false" aria-haspopup="true"
-                       class="btn btn-sm align-self-center btn-link dropdown-toggle"
-                       href="javascript:;" role="button"
-                       ng-class="['/ai','/ai-canvas','/ai-claw','/ai-dev','/ai-staff','/ai-rag','/ai-decision','/atlas','/config','/designer','/sdk','/sso','/cloud','/flow','/cube','/data','/tenant','/pro'].indexOf(currRouter)>=0?'active-link':''">
-                        {{'nav.products' | i18n}}
-                    </a>
-                    <div class="dropdown-menu menu-grid">
-                        <div class="menu-col">
-                            <div class="menu-col-title">{{'nav.grp.ai' | i18n}}</div>
-                            <a class="dropdown-item" href="#!/ai">{{'nav.ai' | i18n}}<small class="menu-sub">{{'nav.sub.ai' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/ai-canvas">{{'nav.aicanvas' | i18n}}<small class="menu-sub">{{'nav.sub.aicanvas' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/ai-dev">{{'nav.aidev' | i18n}}<small class="menu-sub">{{'nav.sub.aidev' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/ai-staff">{{'nav.staff' | i18n}}<small class="menu-sub">{{'nav.sub.staff' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/ai-claw">{{'nav.aiclaw' | i18n}}<small class="menu-sub">{{'nav.sub.aiclaw' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/ai-rag">{{'nav.rag' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.rag' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/ai-decision">{{'nav.decision' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.decision' | i18n}}</small></a>
-                        </div>
-                        <div class="menu-col">
-                            <div class="menu-col-title">{{'nav.grp.core' | i18n}}</div>
-                            <a class="dropdown-item" href="#!/cloud">{{'nav.cloud' | i18n}}<small class="menu-sub">{{'nav.sub.cloud' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/config">{{'nav.config' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.config' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/data">{{'nav.data' | i18n}}<small class="menu-sub">{{'nav.sub.data' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/atlas">{{'nav.atlas' | i18n}}<small class="menu-sub">{{'nav.sub.atlas' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/designer">{{'nav.designer' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.designer' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/sdk">{{'nav.sdk' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.sdk' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/sso">{{'nav.sso' | i18n}}<span class="pro-badge">NEW</span><small class="menu-sub">{{'nav.sub.sso' | i18n}}</small></a>
-                        </div>
-                        <div class="menu-col">
-                            <div class="menu-col-title">{{'nav.grp.biz' | i18n}}</div>
-                            <a class="dropdown-item" href="#!/flow">{{'nav.flow' | i18n}}<span class="pro-badge">PRO</span><small class="menu-sub">{{'nav.sub.flow' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/cube">{{'nav.cube' | i18n}}<span class="pro-badge">PRO</span><small class="menu-sub">{{'nav.sub.cube' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/tenant">{{'nav.tenant' | i18n}}<span class="pro-badge">PRO</span><small class="menu-sub">{{'nav.sub.tenant' | i18n}}</small></a>
-                            <a class="dropdown-item" href="#!/pro" style="color:var(--c-brand)">{{'nav.pro' | i18n}}<small class="menu-sub">{{'nav.sub.pro' | i18n}}</small></a>
-                        </div>
-                        <div class="menu-foot">
-                            <a class="dropdown-item" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/" target="_blank">{{'nav.allmodules' | i18n}}<small class="menu-sub">{{'nav.sub.module' | i18n}}</small></a>
-                        </div>
-                    </div>
-                </span>
+                <a class="btn btn-sm align-self-center btn-link prod-trigger" href="javascript:;" role="button"
+                   aria-haspopup="true" aria-expanded="{{prodOpen}}"
+                   ng-class="{'active-link': productRoutes.indexOf(currRouter) >= 0, open: prodOpen}"
+                   ng-click="prodToggle()" ng-mouseenter="prodHover(true)" ng-mouseleave="prodHover(false)">
+                    {{'nav.products' | i18n}}<i class="prod-caret">▾</i>
+                </a>
                 <a class="btn btn-sm align-self-center btn-link" href="#!/architecture"
                    ng-class="currRouter=='/architecture'?'active-link':''">
                     {{'nav.arch' | i18n}}
@@ -116,32 +82,46 @@
                 <span ng-class="mobileMenuOpen?'hb-open':''"></span>
             </button>
         </div>
+        <!-- Product sub-bar: on product pages, switch within the group or step to the previous / next product -->
+        <div class="prod-sub" ng-if="prodCur">
+            <a class="ps-crumb" href="javascript:;" ng-click="prodToggle()">{{'nav.products' | i18n}} / {{prodCur.g.t | i18n}} <i>▾</i></a>
+            <div class="ps-list">
+                <a ng-class="{on: p.r === currRouter}" ng-href="#!{{p.r}}" ng-repeat="p in prodCur.g.items">{{'nav.' + p.k | i18n}}</a>
+            </div>
+            <div class="ps-nav">
+                <a ng-href="#!{{prodCur.prev.r}}" title="{{'nav.' + prodCur.prev.k | i18n}}">←</a>
+                <a ng-href="#!{{prodCur.next.r}}" title="{{'nav.' + prodCur.next.k | i18n}}">→</a>
+            </div>
+        </div>
+        <!-- Products panel: full width under the header, every product at once -->
+        <div class="prod-panel" ng-if="prodOpen" ng-mouseenter="prodHover(true)" ng-mouseleave="prodHover(false)">
+            <div class="prod-inner">
+                <div class="prod-group" ng-repeat="g in productGroups" ng-class="{biz: $last}">
+                    <div class="prod-gh">{{g.t | i18n}}<span>{{g.items.length}}</span></div>
+                    <a class="prod-item" ng-class="{on: currRouter === p.r}" ng-href="#!{{p.r}}" ng-repeat="p in g.items">
+                        <b>{{'nav.' + p.k | i18n}}<span class="pro-badge" ng-if="p.b">{{p.b}}</span></b>
+                        <small>{{'nav.sub.' + p.k | i18n}}</small>
+                    </a>
+                    <a class="prod-item prod-pro" ng-class="{on: currRouter === '/pro'}" href="#!/pro" ng-if="$last">
+                        <b>{{'nav.pro' | i18n}}</b><small>{{'nav.sub.pro' | i18n}}</small>
+                    </a>
+                </div>
+            </div>
+            <div class="prod-foot">
+                <a ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/" target="_blank">{{'nav.allmodules' | i18n}}</a>
+                <span>{{'nav.sub.module' | i18n}}</span>
+            </div>
+        </div>
         <!-- Mobile nav panel -->
         <nav class="mobile-nav" ng-show="mobileMenuOpen">
             <a href="#!/" ng-class="currRouter=='/'?'active-link':''" ng-click="mobileMenuOpen=false">{{'nav.home' | i18n}}</a>
             <a href="#!/architecture" ng-class="currRouter=='/architecture'?'active-link':''" ng-click="mobileMenuOpen=false">{{'nav.arch' | i18n}}</a>
             <a ng-click="mobileMenuOpen=false" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/" target="_blank">{{'nav.doc' | i18n}}</a>
             <a href="https://demo.erupt.xyz" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.demo' | i18n}}</a>
-            <div class="mobile-nav-group">{{'nav.products' | i18n}} · {{'nav.grp.ai' | i18n}}</div>
-            <a class="mobile-nav-sub" href="#!/ai" ng-click="mobileMenuOpen=false">{{'nav.ai' | i18n}}</a>
-            <a class="mobile-nav-sub" href="#!/ai-canvas" ng-click="mobileMenuOpen=false">{{'nav.aicanvas' | i18n}}</a>
-            <a class="mobile-nav-sub" href="#!/ai-dev" ng-click="mobileMenuOpen=false">{{'nav.aidev' | i18n}}</a>
-            <a class="mobile-nav-sub" href="#!/ai-staff" ng-click="mobileMenuOpen=false">{{'nav.staff' | i18n}}</a>
-            <a class="mobile-nav-sub" href="#!/ai-claw" ng-click="mobileMenuOpen=false">{{'nav.aiclaw' | i18n}}</a>
-            <a class="mobile-nav-sub" href="#!/ai-rag" ng-click="mobileMenuOpen=false">{{'nav.rag' | i18n}}<span class="pro-badge">NEW</span></a>
-            <a class="mobile-nav-sub" href="#!/ai-decision" ng-click="mobileMenuOpen=false">{{'nav.decision' | i18n}}<span class="pro-badge">NEW</span></a>
-            <div class="mobile-nav-group">{{'nav.products' | i18n}} · {{'nav.grp.core' | i18n}}</div>
-            <a class="mobile-nav-sub" href="#!/cloud" ng-click="mobileMenuOpen=false">{{'nav.cloud' | i18n}}</a>
-            <a class="mobile-nav-sub" href="#!/config" ng-click="mobileMenuOpen=false">{{'nav.config' | i18n}}<span class="pro-badge">NEW</span></a>
-            <a class="mobile-nav-sub" href="#!/data" ng-click="mobileMenuOpen=false">{{'nav.data' | i18n}}</a>
-            <a class="mobile-nav-sub" href="#!/atlas" ng-click="mobileMenuOpen=false">{{'nav.atlas' | i18n}}</a>
-            <a class="mobile-nav-sub" href="#!/designer" ng-click="mobileMenuOpen=false">{{'nav.designer' | i18n}}<span class="pro-badge">NEW</span></a>
-            <a class="mobile-nav-sub" href="#!/sdk" ng-click="mobileMenuOpen=false">{{'nav.sdk' | i18n}}<span class="pro-badge">NEW</span></a>
-            <a class="mobile-nav-sub" href="#!/sso" ng-click="mobileMenuOpen=false">{{'nav.sso' | i18n}}<span class="pro-badge">NEW</span></a>
-            <div class="mobile-nav-group">{{'nav.products' | i18n}} · {{'nav.grp.biz' | i18n}}</div>
-            <a class="mobile-nav-sub" href="#!/flow" ng-click="mobileMenuOpen=false">{{'nav.flow' | i18n}}<span class="pro-badge">PRO</span></a>
-            <a class="mobile-nav-sub" href="#!/cube" ng-click="mobileMenuOpen=false">{{'nav.cube' | i18n}}<span class="pro-badge">PRO</span></a>
-            <a class="mobile-nav-sub" href="#!/tenant" ng-click="mobileMenuOpen=false">{{'nav.tenant' | i18n}}<span class="pro-badge">PRO</span></a>
+            <div class="mobile-nav-grp" ng-repeat="g in productGroups">
+                <div class="mobile-nav-group">{{'nav.products' | i18n}} · {{g.t | i18n}}</div>
+                <a class="mobile-nav-sub" ng-click="closeMobile()" ng-href="#!{{p.r}}" ng-repeat="p in g.items">{{'nav.' + p.k | i18n}}<span class="pro-badge" ng-if="p.b">{{p.b}}</span></a>
+            </div>
             <a class="mobile-nav-sub" href="#!/pro" style="color:var(--c-brand)" ng-click="mobileMenuOpen=false">{{'nav.pro' | i18n}}</a>
             <a class="mobile-nav-sub" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.allmodules' | i18n}}</a>
             <div class="mobile-nav-group">{{'nav.resources' | i18n}}</div>
@@ -165,7 +145,7 @@
         </nav>
     </header>
     <div id="route-loader"></div>
-    <main id="main">
+    <main id="main" ng-class="{'has-sub': prodCur}">
         <div ng-view>
 
         </div>
@@ -260,6 +240,7 @@
 <script src="assets/angular-route.min.js"></script>
 <script src="i18n.js"></script>
 <script src="app.js"></script>
+<script src="page/polyglot.js"></script>
 <script src="page/home.js"></script>
 <script src="page/flow/flow.js"></script>
 <script src="page/cloud/cloud.js"></script>
@@ -302,6 +283,10 @@
     app.controller("index", function ($scope, $rootScope, i18nService) {
         $scope.currentLang = i18nService.getLang();
         $scope.year = $rootScope.year;
+
+        $scope.closeMobile = function () {
+            $scope.mobileMenuOpen = false;
+        };
 
         $scope.goHome = function () {
             location.href = "#";

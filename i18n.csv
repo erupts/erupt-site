@@ -7,6 +7,13 @@ nav.donate,捐赠指南,Donate
 nav.doc,使用文档,Docs
 nav.demo,演示 DEMO,Demo
 nav.cloud,☁️ Erupt Cloud,☁️ Erupt Cloud
+cloud.hero.kicker,POLYGLOT · DISTRIBUTED,POLYGLOT · DISTRIBUTED
+cloud.hero.title,Erupt Cloud,Erupt Cloud
+cloud.hero.sub,一个 Server，接入任意语言的服务节点：Java、Python、Go、TypeScript、PHP、.NET、Rust、Ruby、Swift 写的服务，都能以同一套 Erupt 后台被集中管理——登录、菜单、权限全由 Server 代办。,"One Server, service nodes in any language: services written in Java, Python, Go, TypeScript, PHP, .NET, Rust, Ruby or Swift are all managed through the same Erupt admin — login, menus and permissions are handled by the Server."
+cloud.badge.config,多维配置中心,Multi-dim config
+cloud.badge.cluster,集群 / 多节点,Cluster & nodes
+cloud.badge.light,轻依赖,Lightweight
+cloud.badge.visual,服务可视化,Service visibility
 cloud.hero.sub,面向微服务与集群的「多维表」云配置能力：集中管理、轻量依赖，让集群内每个服务都能以注解方式获得一致的数据可视化管理体验。,"Cloud-native multidimensional table configuration for clusters: centralized management, light dependencies, and consistent annotation-driven admin across services."
 cloud.cta.doc,阅读文档,Read docs
 cloud.cta.github,GitHub 源码,GitHub
@@ -84,12 +91,12 @@ cloud.demo.title,在线体验,Try the demo
 cloud.demo.desc,官方演示环境已集成 Erupt 能力，可在实际界面中感受注解生成的管理端。,The official demo showcases annotation-driven admin UIs—try it live.
 cloud.demo.btn,打开演示DEMO,Open demo
 home.subtitle,开源·低代码,Annotation·Low Code
-home.subtitle2,AI 大模型,AI LLM
+home.subtitle2,AI-Harness,AI-Harness
 home.btn.start,快速创建项目,Quick Start
 home.btn.code,代码示例,Codes
 home.btn.doc,使用文档,Docs
 home.btn.demo,演示DEMO,Demo
-home.code.title,"仅需一个<span style=""color: #ffc107;""> .class </span>文件","Only one<span style=""color: #ffc107;""> .class </span>file"
+home.code.title,"任意语言，仅需<span style=""color: #ffc107;""> 一个模型 </span>文件","Any language, only<span style=""color: #ffc107;""> one model </span>file"
 home.code.tip1.title,零前端代码,Zero Frontend
 home.code.tip1.desc,"纯 Java 注解驱动，无需编写任何 HTML / JS / CSS，专注业务逻辑本身","Pure annotations — no HTML, JS, or CSS ever"
 home.code.tip2.title,分钟级交付,Ship in Minutes
@@ -101,6 +108,20 @@ home.code.tip4.desc,"MySQL、Oracle、PostgreSQL、MongoDB、达梦等主流数�
 home.code.tip5.title,零 DDL 负担,Zero DDL
 home.code.tip5.desc,"注解即 Schema，自动同步建表结构，无需手写任何 SQL 建表语句","Annotations define your schema, tables sync automatically"
 home.code.more,更多示例 →,More Examples →
+home.hx.lead,让模型成为<mark>唯一的事实来源</mark>。,Make the model your <mark>single source of truth</mark>.
+home.hx.sub,面向企业级应用的模型驱动引擎。数据、界面、权限与智能体共享同一份定义，变更即时生效，始终一致。,"The model-driven engine for enterprise applications. Data, UI, access control and AI agents share one definition — every change is live, and consistent everywhere."
+home.hx.side.ui,界面,Interface
+home.hx.side.sys,系统,System
+home.hx.model.ft,你只写这一个,the only thing you write
+home.hx.model.live,✓ 已实时重建 · 无需重启,✓ rebuilt live · no restart
+home.hx.demo,在线体验,Live Demo
+home.hx.arch,查看全景架构,Explore the full architecture
+home.mods.title,一个内核，五十多个模块按需引入,"One core, fifty-odd modules to add as needed"
+home.mods.lede,AI、数据源、插件、平台能力与商业模块，每个都是一个依赖；共享同一套注解、权限与界面。悬停查看用途，带 ↗ 的有独立介绍页。,"AI, data sources, plugins, platform pieces and commercial modules — each one dependency, all sharing the same annotations, permissions and UI. Hover for what each does; ↗ opens its page."
+home.poly.title,不止 Java：九种语言，同一套后台,"Not just Java: nine languages, one admin"
+home.poly.lede,Java / Kotlin 不绑定 Spring：同一个 @Erupt 类可以跑在 Spring Boot、Solon、Quarkus、Micronaut、Vert.x、Ktor 或任意 Servlet 容器里；Python、Go、TypeScript、PHP、.NET、Rust、Ruby、Swift 服务则通过 erupt-sdk 接入。表格、表单、搜索、权限、Excel、附件全部由服务端代办。,"Java / Kotlin isn't tied to Spring: the same @Erupt class runs on Spring Boot, Solon, Quarkus, Micronaut, Vert.x, Ktor or any servlet container, while services in Python, Go, TypeScript, PHP, .NET, Rust, Ruby and Swift plug in through erupt-sdk. Tables, forms, search, permissions, Excel and attachments are all handled by the server."
+home.poly.sdk,多语言 SDK →,Language SDKs →
+home.poly.cloud,Cloud 多语言节点 →,Polyglot Cloud nodes →
 home.code.comment,极简开发，开箱即用 🚀,"Minimal dev, ready to use 🚀"
 home.arch.engine,元数据扫描 · 路由注册,Metadata Scan · Route Register
 home.using.eyebrow,TRUSTED BY,TRUSTED BY
@@ -773,7 +794,7 @@ home.v2.ai.chat.send,发送 ↵,Send ↵
 home.v2.fam.title.pre,一个内核，,One core —
 home.v2.fam.title.em,一族产品,a family of products
 home.v2.fam.lede,围绕 Engine 的子项目共享同一套注解与权限模型，按需组合。,"Sub-projects share the same annotation and permission model — compose as needed."
-home.v2.fam.cloud.p,"分布式架构中以表格管理微服务配置，无需 yml，行列权限隔离，与 Nacos / Apollo 各司其职。","Manage microservice config as table rows — no yml, row/column-level isolation, coexists with Nacos / Apollo."
+home.v2.fam.cloud.p,Java、Python、Go、TypeScript 等 9 种语言的服务都能作为节点接入，同一个控制台管理表格化配置与数据，行列权限隔离。,"Services in 9 languages — Java, Python, Go, TypeScript and more — plug in as nodes; one console manages table-shaped config and data with row/column isolation."
 home.v2.fam.flow.p,"通用流程引擎。表单、审批、分支、回退，可视化编排。","General-purpose workflow engine — forms, approvals, branches, rollbacks, visually orchestrated."
 home.v2.fam.linq.p,把 Java 集合查询写成 SQL 思维。JOIN/WHERE/GROUP BY 链式一行。,Query Java collections like SQL. JOIN / WHERE / GROUP BY in a single chain.
 home.v2.fam.sem.h,语义建模,Semantic Modeling
@@ -897,6 +918,10 @@ cloud.cmp.dim.frontend,前端工作量,Frontend effort
 cloud.cmp.dim.access,访问控制,Access control
 cloud.cmp.dim.infra,基础设施依赖,Infrastructure deps
 cloud.cmp.dim.users,目标用户,Target users
+cloud.cmp.dim.lang,接入语言,Languages
+cloud.cmp.nacos.lang,多语言客户端，只读写键值,"Multi-language clients, key-value only"
+cloud.cmp.admin.lang,按技术栈各自重写一套,Rebuilt per tech stack
+cloud.cmp.cloud.lang,9 种语言 SDK，同一套后台,"9 language SDKs, one shared admin"
 cloud.cmp.nacos.format,yml / properties 键值对,yml / properties key-value
 cloud.cmp.nacos.frontend,无（纯配置文件）,None (pure config files)
 cloud.cmp.nacos.access,用户/角色级别,User / role level
@@ -913,7 +938,7 @@ cloud.cmp.cloud.access,细粒度行、列和按钮级控制,Fine-grained row, co
 cloud.cmp.cloud.infra,复用现有数据库，无需额外中间件,Reuses existing database, no extra middleware
 cloud.cmp.cloud.users,"开发、运维和产品团队","Developers, operations, and product teams"
 cloud.arch.title2,Server + Node 双架构,Server + Node Dual Architecture
-cloud.arch.desc2,"Server 是调度中心；Node 是轻量微节点。接入即注册——无需 Nacos、无需 Eureka，部署极简。","Server is the dispatch center; Node is a lightweight micro-node. Connect and it registers instantly — no Nacos, no Eureka, minimal deployment."
+cloud.arch.desc2,Server 是调度中心；Node 是任意语言写成的轻量微节点。接入即注册——无需 Nacos、无需 Eureka，部署极简。,"Server is the dispatch center; a Node is a lightweight micro-node written in any language. Connect and it registers instantly — no Nacos, no Eureka, minimal deployment."
 cloud.server.label,erupt-cloud-server,erupt-cloud-server
 cloud.server.title,Cloud Server,Cloud Server
 cloud.server.desc,"调度中心——处理节点注册、请求路由、权限校验和统一管理控制台。提供官方 Docker 镜像，无需定制代码，直接拉取运行。","The dispatch center — handles node registration, request routing, permission validation, and the unified admin console. Official Docker image provided; no custom code needed, just pull and run."
@@ -921,18 +946,19 @@ cloud.server.docker,或 Docker 镜像：erupts/erupt-cloud-server:latest,or Dock
 cloud.server.docs,Server 文档 →,Server Docs →
 cloud.node.label,erupt-cloud-node,erupt-cloud-node
 cloud.node.title,Cloud Node,Cloud Node
-cloud.node.desc,"轻量微节点，可集成到任意 Spring Boot 服务。一个依赖加三行配置，即可注册到 Server 并在该服务中解锁完整 Erupt 注解能力。","A lightweight micro-node that integrates with any Spring Boot service. One dependency plus three lines of config is all it takes to register with the Server and unlock full Erupt annotation capabilities within that service."
+cloud.node.desc,轻量微节点：可以是 Spring Boot、Solon、Quarkus、Micronaut、Vert.x、Ktor 或任意 Servlet 容器里的 Java / Kotlin 服务，也可以是 Python、Go、Node.js 等任意语言的进程。同一个 @Erupt 类在这些框架间原样迁移，一个依赖加一个 access token 即可注册到 Server。,"A lightweight micro-node: a Java / Kotlin service on Spring Boot, Solon, Quarkus, Micronaut, Vert.x, Ktor or any servlet container, or a process in Python, Go, Node.js and more. The same @Erupt class moves between these frameworks unchanged; one dependency plus an access token registers it with the Server."
 cloud.node.docs,Node 文档 →,Node Docs →
+cloud.node.sdk,多语言 SDK →,Language SDKs →
 cloud.feat.title2,核心特性,Core Features
 cloud.feat.dbconfig.label,数据库驱动配置,DB-backed Config
 cloud.feat.dbconfig.title,数据库驱动的配置,Database-driven Config
 cloud.feat.dbconfig.desc,"用数据库表取代 yml。在管理界面可视化编辑；节点实时拉取变更——无需重启，无需维护配置文件。","Replace yml with database tables. Visually edit in the admin UI; nodes pull changes in real time — no restarts, no config files to maintain."
 cloud.feat.zerofrontend.label,零前端,Zero Frontend
 cloud.feat.zerofrontend.title,零前端集成,Zero Frontend Integration
-cloud.feat.zerofrontend.desc,"纯粹用 @Erupt / @EruptField 注解描述 UI——无需为每个服务单独搭建前端脚手架。","Describe the UI purely with @Erupt / @EruptField annotations — no separate frontend scaffolding needed for each service."
+cloud.feat.zerofrontend.desc,Java 注解、Python 装饰器、Go struct tag、TS 声明……用各语言的原生写法描述 UI，无需为每个服务单独搭建前端脚手架。,"Java annotations, Python decorators, Go struct tags, TS declarations — describe the UI in each language's native idiom, with no frontend scaffolding per service."
 cloud.feat.isolation.label,完全隔离,Full Isolation
 cloud.feat.isolation.title,完全资源隔离,Full Resource Isolation
-cloud.feat.isolation.desc,隔离的数据库连接池和代码逻辑——每个节点独立运行，天然适合大规模团队协作。,Isolated DB connection pools and code logic — each node runs independently, naturally suited for large-scale team collaboration.
+cloud.feat.isolation.desc,隔离的数据库连接池、代码逻辑乃至语言栈——每个节点独立运行，天然适合大规模团队协作。,"Isolated DB connection pools, code logic and even language stacks — each node runs independently, naturally suited for large-scale team collaboration."
 cloud.feat.rbac.label,行/列 RBAC,Row / Col RBAC
 cloud.feat.rbac.title,行/列 RBAC,Row/Column RBAC
 cloud.feat.rbac.desc,"继承完整的 Erupt 权限体系——权限可精细到表、行、列和按钮级别，满足企业数据安全要求。","Inherits the full Erupt permission system — permissions can be scoped down to table, row, column, and button level, meeting enterprise data security requirements."
@@ -949,25 +975,29 @@ cloud.scenario.notify.title,通知/消息服务,Notification / Message Service
 cloud.scenario.notify.desc,通知模板、投递渠道和推送策略由运营人员可视化管理——无需重复开发后端页面。,Notification templates, delivery channels, and push strategies are managed visually by operations — no more redundant backend page development.
 cloud.scenario.gateway.label,网关/算法,Gateway / Algorithm
 cloud.scenario.gateway.title,网关/算法服务,Gateway / Algorithm Service
-cloud.scenario.gateway.desc,"限流规则、GPT Prompt、超时配置等复杂多行数据，以表格行管理和审计，比 yml 更直观。","Rate-limiting rules, GPT prompts, timeout configs, and other complex multi-row data are easier to manage and audit as table rows than as yml."
+cloud.scenario.gateway.desc,算法团队用 Python、网关团队用 Go：限流规则、GPT Prompt、超时配置等多行数据，各自在节点里以表格行管理和审计。,"The algorithm team on Python, the gateway team on Go: rate limits, GPT prompts and timeouts are managed and audited as table rows, each in its own node."
 cloud.scenario.collab.label,多团队协作,Multi-team Collab
 cloud.scenario.collab.title,多团队协作,Multi-team Collaboration
 cloud.scenario.collab.desc,不同团队负责的不同微服务统一汇聚到 Cloud Server，通过数据库级隔离，团队间互不干扰。,Different microservices owned by different teams all funnel through Cloud Server, with database-level isolation so teams never interfere with each other.
 cloud.cta.title2,准备好了吗？,Ready to get started?
-cloud.cta.desc2,查阅完整文档快速上手，或在线演示体验注解驱动的分布式配置管理。,Check the full docs for a quick start, or try the online demo to experience annotation-driven distributed config management firsthand.
+cloud.cta.desc2,查阅完整文档快速上手，挑一门你熟悉的语言接入节点，或在线体验注解驱动的分布式管理。,"Check the full docs for a quick start, pick a language you know to plug in a node, or try the online demo."
 cloud.cta.docs,阅读文档 ↗,Read Docs ↗
 cloud.cta.demo,在线体验,Live Demo
+cloud.cta.sdk,多语言 SDK,Language SDKs
 cloud.why.kicker,为何选择 Erupt Cloud,Why Erupt Cloud
 cloud.arch.kicker,架构,Architecture
 cloud.feat.kicker,核心特性,Features
 cloud.scenario.kicker,典型场景,Scenarios
 cloud.cta.kicker,快速开始,Get Started
+cloud.poly.kicker,9 种语言,9 Languages
+cloud.poly.title,一个 Server，九种语言的 Node,"One Server, nodes in nine languages"
+cloud.poly.desc,每种语言一个包，遵循同一份节点协议并通过同一套一致性测试。团队用自己最熟悉的语言写服务，后台照样统一。,"One package per language, all following the same node protocol and passing the same conformance suite. Each team writes services in the language it knows best; the admin stays unified."
 ai.arch.layer.desc,三层架构清晰分离：应用层、引擎层和大模型适配层。切换模型对业务代码透明——每层独立扩展。,Three-layer architecture with clear separation: Application, Engine, and LLM Adapter layers. Swapping models is transparent to business code — each layer scales independently.
 ai.mcp.bridge.desc,"Model Context Protocol — Erupt 同时作为 MCP Server 和 MCP Client，在 AI 客户端与外部服务之间实现双向桥接。","Model Context Protocol — Erupt acts as both MCP Server and MCP Client, bridging AI clients with external services bidirectionally."
 home.fam.ai.title,深度大模型集成,Deep LLM Integration
 home.fam.claw.title,自然语言服务器控制,Natural Language Server Control
 home.fam.flow.title,通用工作流引擎,Universal Workflow Engine
-home.fam.cloud.title,分布式配置管理,Distributed Config Management
+home.fam.cloud.title,多语言分布式节点,Polyglot Distributed Nodes
 home.fam.cube.title,语义建模与分析,Semantic Modeling & Analytics
 home.fam.linq.title,SQL 风格 Java 集合操作,SQL-style Java Collection Operations
 home.ai.learnmore,了解 Erupt AI →,Learn Erupt AI →
@@ -1001,6 +1031,7 @@ cloud.badge.rows,多行数据,Multi-row data
 cloud.badge.rbac,行/列 RBAC,Row/column RBAC
 cloud.badge.visual,可视化编辑,Visual editing
 cloud.badge.audit,审计追踪,Audit trail
+cloud.hero.tagline,9 种语言 SDK → 同一个控制台 · 行/列 RBAC · 可视化编辑 · 审计追踪,9 language SDKs → one console · Row/column RBAC · Visual editing · Audit trail
 cloud.diagram.notify,Node · 通知服务,Node · Notification Service
 cloud.diagram.gateway,Node · 网关服务,Node · Gateway Service
 cloud.diagram.algo,Node · 算法服务,Node · Algorithm Service
@@ -1040,8 +1071,9 @@ home.v2.hub.print,打印,Print
 home.v2.hub.job,定时任务,Cron Jobs
 home.v2.hub.monitor,系统监控,Monitoring
 cloud.stat.frontend,行前端代码,Lines of frontend code
-cloud.stat.dep,依赖接入 Node,Dependency per node
+cloud.stat.dep,个依赖接入 Node,Dependency per node
 cloud.stat.config,行 YML 配置,Lines of yml config
+cloud.stat.langs,种语言接入 Node,Node languages
 cloud.stat.nodes,服务节点无上限,Unlimited nodes
 cloud.diag.hl,业务服务节点,Service Nodes
 cloud.diag.hc,调度中心,Dispatch Center
