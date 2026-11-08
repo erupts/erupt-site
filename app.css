@@ -284,9 +284,14 @@ html, body {
     font-family: var(--c-sans);
 }
 
+/* 产品面板条目是卡片，正文用墨色（否则会被上面的 #header a 灰色覆盖） */
+#header a.prod-item {
+    color: var(--c-text);
+}
+
 #header a:hover, #header a:focus, #header a:active {
     text-decoration: none;
-    color: var(--c-brand);
+    color: var(--c-text);
 }
 
 .discord-ico {
@@ -416,6 +421,15 @@ html, body {
     margin-top: 4px;
 }
 
+.mobile-nav .mobile-nav-cat {
+    padding: 6px 20px 2px 36px;
+    font-family: var(--c-mono);
+    font-size: 9.5px;
+    letter-spacing: .12em;
+    color: var(--c-text2);
+    text-transform: uppercase;
+}
+
 .mobile-nav .mobile-nav-footer {
     display: flex;
     align-items: center;
@@ -426,8 +440,12 @@ html, body {
 }
 
 .active-link {
-    color: var(--c-brand) !important;
-    font-weight: 600;
+    color: var(--c-text) !important;
+    font-weight: 800;
+    text-decoration: underline !important;
+    text-decoration-color: var(--c-brand) !important;
+    text-decoration-thickness: 3px !important;
+    text-underline-offset: 6px;
 }
 
 /* PRO 徽标 — 导航项角标 */
@@ -620,9 +638,9 @@ html, body {
 
 
 .dropdown-item.active, .dropdown-item:active {
-    background: rgba(var(--c-brand-rgb), .04);
-    color: var(--c-brand);
-    border-left-color: var(--c-brand);
+    background: var(--c-brand);
+    color: var(--c-text);
+    border-left-color: var(--c-border);
 }
 
 /* Header 下拉菜单 — Brutalist 风格 */
@@ -668,10 +686,16 @@ html, body {
     border-bottom: none;
 }
 
-#header .dropdown-item:hover {
-    background: rgba(var(--c-brand-rgb), .04);
-    color: var(--c-brand);
-    border-left-color: var(--c-brand);
+#header .dropdown-item:hover,
+#header .dropdown-item:focus,
+#header .dropdown-item:active {
+    background: var(--c-brand);
+    color: var(--c-text);
+    border-left-color: var(--c-border);
+}
+
+#header .dropdown-item:hover .menu-sub {
+    color: var(--c-text);
 }
 
 .lang-dropdown .dropdown-toggle,
@@ -742,6 +766,20 @@ html, body {
 
 .ps-list a:hover { color: var(--c-text); text-decoration: none; border-color: rgba(20, 18, 11, .25); }
 
+.ps-list a.cut {
+    margin-left: 8px;
+    position: relative;
+}
+
+.ps-list a.cut::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 4px;
+    bottom: 4px;
+    border-left: 1px solid var(--c-border);
+}
+
 .ps-list a.on {
     background: var(--c-brand);
     border-color: var(--c-border);
@@ -765,7 +803,7 @@ html, body {
 
 .ps-nav a:hover { background: var(--c-brand); color: var(--c-text); text-decoration: none; }
 
-#main.has-sub { margin-top: 84px; }
+#main.has-sub { margin-top: 83px; } /* 45 header + 36 product bar + 2 border */
 
 /* 产品面板 — 顶栏下方整宽展开，所有产品一次看全 */
 .prod-trigger.open { color: var(--c-text); }
@@ -849,8 +887,26 @@ html, body {
     transition: background .12s, box-shadow .12s;
 }
 
-.prod-group:not(.biz) .prod-item:nth-of-type(odd) {
+/* 两列格子：每格都画右边线，右列那条被 group 的 overflow 裁掉（不依赖奇偶序号，子分类标题插在中间也不错位） */
+.prod-group:not(.biz) { overflow: hidden; }
+
+.prod-group:not(.biz) .prod-item {
     border-right: 1px solid rgba(20, 18, 11, .12);
+    margin-right: -1px;
+}
+
+/* 组内子分类标题（AI：基建 / Agent） */
+.prod-sh {
+    grid-column: 1 / -1;
+    padding: 8px 18px 6px;
+    border-bottom: 1px solid var(--c-border);
+    background: rgba(20, 18, 11, .03);
+    font-family: var(--c-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--c-text2);
 }
 
 .prod-item:hover {
@@ -876,6 +932,9 @@ html, body {
 
 .prod-item small {
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     margin-top: 3px;
     font-family: var(--c-mono);
     font-size: 10.5px;

@@ -1,5 +1,10 @@
 <style>
     /* ── Data Sources — Playful-Brutalist ── */
+    /* page accent: purple, so Data / Cloud / SDK / Config each read differently */
+    .ds {
+        --ds: var(--c-purple);
+        --ds-rgb: 188, 160, 242;
+    }
 
     /* Hero — split: copy left, live code window right */
     .ds-hero-row {
@@ -39,7 +44,7 @@
         font-style: normal;
         display: inline-block;
         color: var(--c-text);
-        background: var(--c-brand);
+        background: var(--ds);
         border: 2px solid var(--c-border);
         box-shadow: 4px 4px 0 var(--c-text);
         padding: 0 14px 4px;
@@ -139,9 +144,9 @@
     }
 
     .ds-hchip.is-on {
-        border-color: var(--c-brand);
+        border-color: var(--ds);
         color: var(--c-code-text);
-        background: rgba(var(--c-brand-rgb), .16);
+        background: rgba(var(--ds-rgb), .16);
     }
 
     /* Stat strip */
@@ -153,7 +158,7 @@
         color: var(--c-text);
         display: inline-block;
         padding-bottom: 4px;
-        border-bottom: 3px solid var(--c-brand);
+        border-bottom: 3px solid var(--ds);
         margin-bottom: 8px;
     }
 
@@ -198,7 +203,7 @@
 
     .ds-flow-pipe {
         fill: none;
-        stroke: rgba(var(--c-brand-rgb), .2);
+        stroke: rgba(var(--ds-rgb), .2);
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 10;
@@ -206,7 +211,7 @@
 
     .ds-flow-stream {
         fill: none;
-        stroke: var(--c-brand);
+        stroke: var(--ds);
         stroke-dasharray: 18 26;
         stroke-linecap: round;
         stroke-linejoin: round;
@@ -279,7 +284,7 @@
         width: 10px;
         height: 10px;
         border: 1.5px solid var(--c-border);
-        background: var(--c-brand);
+        background: var(--ds);
         flex-shrink: 0;
     }
 
@@ -375,7 +380,7 @@
 
     .ds-mod-custom .ds-mod-name::before {
         content: '+ ';
-        color: var(--c-brand);
+        color: var(--ds);
     }
 
     /* Extend section */
@@ -401,7 +406,7 @@
     .ds-step-title code {
         font-family: var(--c-mono);
         font-size: 12px;
-        background: rgba(var(--c-brand-rgb), .14);
+        background: rgba(var(--ds-rgb), .14);
         border: 1px solid var(--c-border);
         padding: 1px 5px;
         color: var(--c-text);
@@ -587,7 +592,7 @@
                         <span class="ds-hchip" data-k="Feishu">Feishu</span>
                         <span class="ds-hchip" data-k="Notion">Notion</span>
                         <span class="ds-hchip"
-                              style="border-style:dashed;border-color:rgba(var(--c-brand-rgb),.55);color:var(--c-brand)">Yours ···</span>
+                              style="border-style:dashed;border-color:rgba(var(--ds-rgb),.55);color:var(--ds)">Yours ···</span>
                     </div>
                 </div>
             </div>
