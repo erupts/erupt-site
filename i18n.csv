@@ -1214,13 +1214,14 @@ arch.hero.t3,基座,Base
 arch.hero.d3,<code>13+</code> 数据源，<code>9</code> 种语言 SDK 建节点,"<code>13+</code> data sources, node SDKs in <code>9</code> languages"
 arch.hero.doc,查看架构文档,Read the architecture docs
 arch.stack.hd,分层索引,Layer Index
-arch.l9,接入层,Access
-arch.l8,UI 体验层,UI
-arch.l7,视图层,View
-arch.l6,组件层,Component
-arch.l5,模型层,Model
-arch.l4,智能层,Intelligence
-arch.l3,代理与安全,Proxy & Security
+arch.l10,接入层,Access
+arch.l9,UI 体验层,UI
+arch.l8,视图层,View
+arch.l7,组件层,Component
+arch.l6,模型层,Model
+arch.l5,智能层,Intelligence
+arch.l4,代理与安全,Proxy & Security
+arch.l3,多语言层,Polyglot
 arch.l2,数据源层,Data Source
 arch.l1,运行与运维,Runtime & Ops
 arch.stat.1,可插拔分层,Pluggable layers
