@@ -19,17 +19,22 @@ var app = angular.module('app', [
     updateTitle();
 
     // header products: one list for the desktop panel and the mobile menu (label nav.<k>, line nav.sub.<k>)
+    // c: sub-category inside a group, so all three panel columns line up to the same height
+    var AI_INFRA = 'nav.grp.ai.infra', AI_AGENT = 'nav.grp.ai.agent',
+        CORE = 'nav.grp.core.core', TOOL = 'nav.grp.core.tool', BIZ = 'nav.grp.biz.module';
     $rootScope.productGroups = [{
         t: 'nav.grp.ai', items: [
-            {k: 'ai', r: '/ai'}, {k: 'aiclaw', r: '/ai-claw'}, {k: 'staff', r: '/ai-staff'}, {k: 'aidev', r: '/ai-dev'},
-            {k: 'aicanvas', r: '/ai-canvas'}, {k: 'rag', r: '/ai-rag', b: 'NEW'}, {k: 'decision', r: '/ai-decision', b: 'NEW'}]
+            {k: 'ai', r: '/ai', c: AI_INFRA}, {k: 'rag', r: '/ai-rag', c: AI_INFRA}, {k: 'decision', r: '/ai-decision', c: AI_INFRA},
+            {k: 'aiclaw', r: '/ai-claw', c: AI_AGENT}, {k: 'staff', r: '/ai-staff', c: AI_AGENT},
+            {k: 'aidev', r: '/ai-dev', c: AI_AGENT}, {k: 'aicanvas', r: '/ai-canvas', c: AI_AGENT}]
     }, {
         t: 'nav.grp.core', items: [
-            {k: 'data', r: '/data'}, {k: 'cloud', r: '/cloud'}, {k: 'sdk', r: '/sdk', b: 'NEW'}, {k: 'config', r: '/config', b: 'NEW'},
-            {k: 'atlas', r: '/atlas'}, {k: 'designer', r: '/designer', b: 'NEW'}, {k: 'sso', r: '/sso', b: 'NEW'}]
+            {k: 'data', r: '/data', c: CORE}, {k: 'cloud', r: '/cloud', c: CORE},
+            {k: 'sdk', r: '/sdk', c: CORE}, {k: 'config', r: '/config', c: CORE},
+            {k: 'atlas', r: '/atlas', c: TOOL}, {k: 'designer', r: '/designer', c: TOOL}, {k: 'sso', r: '/sso', c: TOOL}]
     }, {
         t: 'nav.grp.biz', items: [
-            {k: 'flow', r: '/flow', b: 'PRO'}, {k: 'cube', r: '/cube', b: 'PRO'}, {k: 'tenant', r: '/tenant', b: 'PRO'}]
+            {k: 'flow', r: '/flow', b: 'PRO', c: BIZ}, {k: 'cube', r: '/cube', b: 'PRO', c: BIZ}, {k: 'tenant', r: '/tenant', b: 'PRO', c: BIZ}]
     }];
     $rootScope.productRoutes = [].concat.apply(['/pro'], $rootScope.productGroups.map(function (g) {
         return g.items.map(function (p) { return p.r; });

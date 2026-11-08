@@ -1,6 +1,95 @@
 <style>
     /* ═══ Cloud page · Playful-Brutalist ═══ */
 
+    /* ── §1 Hero — same skeleton & sizes as SDK / Config / Atlas ── */
+    .cl-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+        min-height: 520px;
+    }
+
+    .cl-hero-l {
+        padding: 64px 48px 56px;
+        border-right: 1px solid var(--c-border);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cl-eyebrow {
+        font-family: var(--c-mono);
+        font-size: 10.5px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--c-text2);
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .cl-h1 {
+        font-size: clamp(34px, 4.4vw, 54px);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -.03em;
+        color: var(--c-text);
+        margin: 0 0 16px;
+    }
+
+    .cl-h1 em {
+        font-style: normal;
+        display: inline-block;
+        background: var(--c-brand);
+        border: 2px solid var(--c-border);
+        box-shadow: 4px 4px 0 var(--c-text);
+        padding: 0 14px 4px;
+        transform: rotate(-1deg);
+    }
+
+    .cl-tagline {
+        font-size: clamp(17px, 1.8vw, 22px);
+        font-weight: 700;
+        letter-spacing: -.01em;
+        color: var(--c-text);
+        margin: 0 0 14px;
+    }
+
+    .cl-badge {
+        display: inline-block;
+        border: 1.5px solid var(--c-border);
+        background: var(--c-paper);
+        color: var(--c-text);
+        padding: 4px 10px 3px;
+        font-size: 10.5px;
+        font-weight: 700;
+        font-family: var(--c-mono);
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        margin: 3px 2px;
+    }
+
+    .cl-hero-r {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        min-width: 0;
+        background-image: linear-gradient(var(--c-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+
+    @media (max-width: 991px) {
+        .cl-hero { grid-template-columns: 1fr; }
+        .cl-hero-l { border-right: 0; border-bottom: 1px solid var(--c-border); padding: 48px 32px; }
+    }
+
+    @media (max-width: 768px) {
+        .cl-hero-l { padding: 40px 20px; }
+        .cl-hero-r { padding: 20px; }
+        .cl-win-body { grid-template-columns: 1fr; }
+        .cl-side { display: none; }
+    }
+
     /* ── §1 Hero console mockup ── */
     .cl-win {
         width: 100%;
@@ -775,28 +864,27 @@
     <!-- ════════════════════════════════════════
          §1  HERO — copy + unified console mockup
          ════════════════════════════════════════ -->
-    <div class="r g-bg" style="display:flex;min-height:520px;overflow:hidden">
-        <div style="flex:1;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;min-width:0">
-            <div><span class="tag tag-y">{{'cloud.hero.kicker' | i18n}}</span></div>
-            <h1 style="margin-top:16px;letter-spacing:-.03em;font-size:clamp(28px,4vw,52px);line-height:1.05;font-weight:800">
-                {{'cloud.hero.title' | i18n}}
-            </h1>
-            <p class="sub" style="margin-top:16px;max-width:44ch">{{'cloud.hero.sub' | i18n}}</p>
-            <p style="margin-top:14px;font-family:var(--c-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-brand);font-weight:700;display:inline-flex;align-items:flex-start;gap:8px;line-height:1.8">
-                <span style="display:inline-block;width:6px;height:6px;background:var(--c-brand);border:1.5px solid var(--c-border);flex-shrink:0;margin-top:5px"></span>
-                {{'cloud.hero.tagline' | i18n}}
-            </p>
-            <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap">
+    <div class="r cl-hero">
+        <div class="cl-hero-l">
+            <span class="cl-eyebrow">Open Source · erupt-cloud · Polyglot</span>
+            <h1 class="cl-h1">Erupt <em>Cloud</em></h1>
+            <p class="cl-tagline">{{'cloud.hero.tagline' | i18n}}</p>
+            <p class="sub" style="max-width:46ch;margin-bottom:22px">{{'cloud.hero.sub' | i18n}}</p>
+            <div style="margin-bottom:24px">
+                <span class="cl-badge">{{'cloud.badge.rows' | i18n}}</span>
+                <span class="cl-badge">{{'cloud.badge.rbac' | i18n}}</span>
+                <span class="cl-badge">{{'cloud.badge.visual' | i18n}}</span>
+                <span class="cl-badge">{{'cloud.badge.audit' | i18n}}</span>
+            </div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
                 <a class="wbtn wbtn-o"
                    ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/erupt-cloud"
-                   style="padding:11px 28px;font-size:13px" target="_blank">{{'cloud.cta.docs' | i18n}}</a>
-                <a class="wbtn" href="#!/sdk" style="padding:11px 28px;font-size:13px">{{'cloud.cta.sdk' | i18n}}</a>
-                <a class="wbtn" href="https://github.com/erupts/erupt"
-                   style="padding:11px 28px;font-size:13px" target="_blank">GitHub</a>
+                   target="_blank">{{'cloud.cta.docs' | i18n}}</a>
+                <a class="wbtn" href="#!/sdk">{{'cloud.cta.sdk' | i18n}}</a>
+                <a class="wbtn" href="https://github.com/erupts/erupt" target="_blank">GitHub</a>
             </div>
         </div>
-        <div class="d-none d-lg-flex"
-             style="flex:0 0 52%;align-items:center;justify-content:center;padding:44px 44px 44px 24px;border-left:2px solid var(--c-border)">
+        <div class="cl-hero-r">
             <div class="cl-win">
                 <div class="cl-win-bar">
                     <span class="cl-win-dot" style="background:#ff5f57"></span>

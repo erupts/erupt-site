@@ -7,14 +7,10 @@ nav.donate,捐赠指南,Donate
 nav.doc,使用文档,Docs
 nav.demo,演示 DEMO,Demo
 nav.cloud,☁️ Erupt Cloud,☁️ Erupt Cloud
-cloud.hero.kicker,POLYGLOT · DISTRIBUTED,POLYGLOT · DISTRIBUTED
-cloud.hero.title,Erupt Cloud,Erupt Cloud
 cloud.hero.sub,一个 Server，接入任意语言的服务节点：Java、Python、Go、TypeScript、PHP、.NET、Rust、Ruby、Swift 写的服务，都能以同一套 Erupt 后台被集中管理——登录、菜单、权限全由 Server 代办。,"One Server, service nodes in any language: services written in Java, Python, Go, TypeScript, PHP, .NET, Rust, Ruby or Swift are all managed through the same Erupt admin — login, menus and permissions are handled by the Server."
 cloud.badge.config,多维配置中心,Multi-dim config
 cloud.badge.cluster,集群 / 多节点,Cluster & nodes
 cloud.badge.light,轻依赖,Lightweight
-cloud.badge.visual,服务可视化,Service visibility
-cloud.hero.sub,面向微服务与集群的「多维表」云配置能力：集中管理、轻量依赖，让集群内每个服务都能以注解方式获得一致的数据可视化管理体验。,"Cloud-native multidimensional table configuration for clusters: centralized management, light dependencies, and consistent annotation-driven admin across services."
 cloud.cta.doc,阅读文档,Read docs
 cloud.cta.github,GitHub 源码,GitHub
 cloud.diagram.console,多维管理台,Admin plane
@@ -308,7 +304,7 @@ db.api,API 数据源,API Data Source
 db.spanner,Google Spanner,Google Spanner
 db.mongodb,MongoDB,MongoDB
 db.custom,自定义数据源,Custom Data Source
-nav.ai,🤖 AI Agent,🤖 AI Agent
+nav.ai,🤖 AI Harness,🤖 AI Harness
 ai.hero.title,Erupt AI 大模型深度集成,Erupt AI Deep LLM Integration
 ai.hero.subtitle,将大模型能力无缝融入低代码开发，让 AI 赋能每一个业务场景,"Seamlessly integrate LLM capabilities into low-code development, empowering every business scenario with AI"
 ai.hero.btn.doc,查看文档,Documentation
@@ -1031,7 +1027,6 @@ cloud.badge.rows,多行数据,Multi-row data
 cloud.badge.rbac,行/列 RBAC,Row/column RBAC
 cloud.badge.visual,可视化编辑,Visual editing
 cloud.badge.audit,审计追踪,Audit trail
-cloud.hero.tagline,9 种语言 SDK → 同一个控制台 · 行/列 RBAC · 可视化编辑 · 审计追踪,9 language SDKs → one console · Row/column RBAC · Visual editing · Audit trail
 cloud.diagram.notify,Node · 通知服务,Node · Notification Service
 cloud.diagram.gateway,Node · 网关服务,Node · Gateway Service
 cloud.diagram.algo,Node · 算法服务,Node · Algorithm Service
@@ -1204,7 +1199,11 @@ staff.mock.think,正在分析昨日订单与转化数据…,Analysing yesterday'
 staff.mock.done,报告已推送 → 钉钉 · 数据日报群,Report pushed → DingTalk · #daily-data
 nav.resources,资源,Resources
 nav.grp.ai,AI 系列,AI
+nav.grp.ai.infra,基建,Infrastructure
+nav.grp.ai.agent,Agent,Agents
 nav.grp.biz,商业模块,Commercial
+nav.grp.biz.module,PRO 模块,Pro modules
+nav.grp.biz.license,源码授权,Licensing
 nav.arch,全景架构,Architecture
 arch.hero.title,"任意语言，任意数据源，<br><em>一套管理后台</em>","Any language.<br>Any data source.<br><em>One admin.</em>"
 arch.hero.t1,表现,UI
@@ -1250,6 +1249,8 @@ nav.sub.data,任意数据源统一接入,Any data source · one interface
 nav.sub.pro,源码交付 · 一次买断,Source delivered · buy once
 nav.sub.module,官方扩展模块清单,All official extension modules
 nav.grp.core,核心与工具,Core & Tools
+nav.grp.core.core,核心,Core
+nav.grp.core.tool,工具,Tools
 nav.allmodules,全部模块 →,All Modules →
 nav.rag,📖 AI RAG,📖 AI RAG
 nav.decision,🎯 AI Decision,🎯 AI Decision
@@ -1634,7 +1635,7 @@ tenant.cta.p2.p,一次购买持续更新，不限项目数量，可用于商业�
 tenant.cta.p3.t,禁止二次分发,No redistribution
 tenant.cta.p3.p,源码不得转售或开源；仓库权限开通后不支持退款。,Source may not be resold or open-sourced; no refunds once access is granted.
 nav.config,⚙️ 配置中心 Config,⚙️ Config Center
-nav.sub.config,后台里的 Spring PropertySource,A Spring PropertySource inside the admin
+nav.sub.config,可视化管理 Spring 配置,"Spring config, managed visually"
 cfg.hero.tagline,配置中心不必是另一个服务,A config center need not be another service
 cfg.hero.subtitle,后台里的配置项就是 Spring 环境里最前面的那一层 PropertySource：@Value、Environment、@ConfigurationProperties 照常读，按 profile 分层，保存之后不重启就生效。,"Items in the admin become the first PropertySource in the Spring environment: @Value, Environment and @ConfigurationProperties read them as usual, layered per profile, and a saved change reaches running beans without a restart."
 cfg.badge.value,@Value 原样读,@Value as usual

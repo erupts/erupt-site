@@ -86,7 +86,7 @@
         <div class="prod-sub" ng-if="prodCur">
             <a class="ps-crumb" href="javascript:;" ng-click="prodToggle()">{{'nav.products' | i18n}} / {{prodCur.g.t | i18n}} <i>▾</i></a>
             <div class="ps-list">
-                <a ng-class="{on: p.r === currRouter}" ng-href="#!{{p.r}}" ng-repeat="p in prodCur.g.items">{{'nav.' + p.k | i18n}}</a>
+                <a ng-class="{on: p.r === currRouter, cut: $index && p.c !== prodCur.g.items[$index - 1].c}" ng-href="#!{{p.r}}" ng-repeat="p in prodCur.g.items">{{'nav.' + p.k | i18n}}</a>
             </div>
             <div class="ps-nav">
                 <a ng-href="#!{{prodCur.prev.r}}" title="{{'nav.' + prodCur.prev.k | i18n}}">←</a>
@@ -98,10 +98,12 @@
             <div class="prod-inner">
                 <div class="prod-group" ng-repeat="g in productGroups" ng-class="{biz: $last}">
                     <div class="prod-gh">{{g.t | i18n}}<span>{{g.items.length}}</span></div>
-                    <a class="prod-item" ng-class="{on: currRouter === p.r}" ng-href="#!{{p.r}}" ng-repeat="p in g.items">
+                    <div class="prod-sh" ng-repeat-start="p in g.items" ng-if="p.c && p.c !== g.items[$index - 1].c">{{p.c | i18n}}</div>
+                    <a class="prod-item" ng-class="{on: currRouter === p.r}" ng-href="#!{{p.r}}" ng-repeat-end>
                         <b>{{'nav.' + p.k | i18n}}<span class="pro-badge" ng-if="p.b">{{p.b}}</span></b>
                         <small>{{'nav.sub.' + p.k | i18n}}</small>
                     </a>
+                    <div class="prod-sh" ng-if="$last">{{'nav.grp.biz.license' | i18n}}</div>
                     <a class="prod-item prod-pro" ng-class="{on: currRouter === '/pro'}" href="#!/pro" ng-if="$last">
                         <b>{{'nav.pro' | i18n}}</b><small>{{'nav.sub.pro' | i18n}}</small>
                     </a>
@@ -120,7 +122,8 @@
             <a href="https://demo.erupt.xyz" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.demo' | i18n}}</a>
             <div class="mobile-nav-grp" ng-repeat="g in productGroups">
                 <div class="mobile-nav-group">{{'nav.products' | i18n}} · {{g.t | i18n}}</div>
-                <a class="mobile-nav-sub" ng-click="closeMobile()" ng-href="#!{{p.r}}" ng-repeat="p in g.items">{{'nav.' + p.k | i18n}}<span class="pro-badge" ng-if="p.b">{{p.b}}</span></a>
+                <div class="mobile-nav-cat" ng-repeat-start="p in g.items" ng-if="p.c && p.c !== g.items[$index - 1].c">{{p.c | i18n}}</div>
+                <a class="mobile-nav-sub" ng-click="closeMobile()" ng-href="#!{{p.r}}" ng-repeat-end>{{'nav.' + p.k | i18n}}<span class="pro-badge" ng-if="p.b">{{p.b}}</span></a>
             </div>
             <a class="mobile-nav-sub" href="#!/pro" style="color:var(--c-brand)" ng-click="mobileMenuOpen=false">{{'nav.pro' | i18n}}</a>
             <a class="mobile-nav-sub" ng-href="https://docs.erupt.xyz/{{currentLang.substring(0,2)}}/modules/" target="_blank" ng-click="mobileMenuOpen=false">{{'nav.allmodules' | i18n}}</a>
