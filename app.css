@@ -838,14 +838,14 @@ html, body {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr .9fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, .9fr);
     border-left: 2px solid var(--c-border);
     border-right: 2px solid var(--c-border);
 }
 
 .prod-group {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-content: start;
     border-right: 1px solid var(--c-border);
 }
@@ -932,9 +932,6 @@ html, body {
 
 .prod-item small {
     display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     margin-top: 3px;
     font-family: var(--c-mono);
     font-size: 10.5px;
