@@ -2,8 +2,15 @@ var host = "https://demo.erupt.xyz"
 
 // var host = "http://127.0.0.1:9999"
 
-function updateTitle() {
-    document.title = i18n.t('nav.home') + " - Erupt";
+// title and description follow the route; a nav label carries a leading emoji or a trailing star that a title drops
+var PAGE_KEYS = {'/architecture': 'arch', '/contrast': 'contrast', '/about': 'about', '/pro': 'pro'};
+
+function updateTitle(route, product) {
+    var k = product ? product.k : PAGE_KEYS[route];
+    var name = k && i18n.t('nav.' + k).replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '');
+    var sub = product && i18n.t('nav.sub.' + k);
+    document.title = name ? name + (sub ? ' – ' + sub : '') + ' | Erupt' : i18n.t('seo.title');
+    document.querySelector('meta[name="description"]').content = sub ? name + ': ' + sub : i18n.t('seo.desc');
 }
 
 function toTemplate() {
@@ -16,7 +23,6 @@ var app = angular.module('app', [
     $rootScope.year = new Date().getFullYear();
     $rootScope.showHeader = true;
     $rootScope.currentLang = i18n.getLang();
-    updateTitle();
 
     // header products: one list for the desktop panel and the mobile menu (label nav.<k>, line nav.sub.<k>)
     // c: sub-category inside a group, so all three panel columns line up to the same height
@@ -67,6 +73,7 @@ var app = angular.module('app', [
         var route = $rootScope.currRouter = current.$$route.originalPath;
         $rootScope.prodOpen = false;
         var i = allProducts.findIndex(function (x) { return x.p.r === route; }), n = allProducts.length;
+        updateTitle(route, i < 0 ? null : allProducts[i].p);
         $rootScope.prodCur = i < 0 ? null : {
             g: allProducts[i].g,
             prev: allProducts[(i + n - 1) % n].p,
