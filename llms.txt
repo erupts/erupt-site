@@ -1,0 +1,71 @@
+# Erupt
+
+> Erupt is an open-source low-code framework for Java. You describe a model once with annotations on a class, and Erupt serves the admin UI, the REST API and role-based access control for it at run time. It does not generate code.
+
+Erupt is released under the Apache License 2.0 and runs on Java 17 or later with Spring Boot 3. The source repository was created in 2018. Custom logic goes into lifecycle hooks (`DataProxy`: before and after add, update, delete and fetch) rather than into generated files.
+
+A model looks like this:
+
+```java
+@Erupt(name = "Simple example")
+@Table(name = "t_simple")
+@Entity
+public class Simple extends BaseModel {
+
+    @EruptField(
+        views = @View(title = "Text"),
+        edit = @Edit(title = "Text", notNull = true, search = @Search)
+    )
+    private String input;
+
+}
+```
+
+Erupt fits admin panels, back-office tools and internal systems built by Java teams. It fits badly where the front end is highly custom, since the UI is derived from the model.
+
+## Start here
+
+- [Documentation (English)](https://docs.erupt.xyz/en/): guides, annotation reference and module docs
+- [Documentation (Chinese)](https://docs.erupt.xyz/zh/): the same documentation in Chinese
+- [Source code](https://github.com/erupts/erupt): the framework repository, with the README and the OpenAPI description
+- [Live demo](https://demo.erupt.xyz): a running instance with a guest account, no signup
+- [Project starter](https://start.erupt.xyz): generates a runnable project
+
+## Core
+
+- [Erupt Data](https://www.erupt.xyz/#!/data): one interface over many data sources. JPA is the default for relational databases (MySQL, PostgreSQL, Oracle, SQL Server); connectors exist for MongoDB, Elasticsearch, Redis, LDAP, Kubernetes and S3
+- [Erupt Cloud](https://www.erupt.xyz/#!/cloud): one server manages service nodes; models live on the nodes, while login, menus and permissions are handled by the server
+- [Erupt SDK](https://www.erupt.xyz/#!/sdk): node SDKs for Python, Go, TypeScript, PHP, .NET, Rust, Ruby and Swift, so a service in any of these languages can serve admin pages through an Erupt server. Source: https://github.com/erupt-io/erupt-sdk
+- [Config Center](https://www.erupt.xyz/#!/config): Spring configuration managed at run time
+- [Architecture](https://www.erupt.xyz/#!/architecture): how annotations, the run-time engine and the modules fit together
+
+On the JVM a node is not tied to Spring: the same `@Erupt` class runs on Spring Boot, Solon, Quarkus, Micronaut, Vert.x, Ktor or a servlet container, in Java or Kotlin.
+
+## Tools
+
+- [Atlas](https://www.erupt.xyz/#!/atlas): a graph of the models registered at run time and the relations between them
+- [Form Designer](https://www.erupt.xyz/#!/designer): design a model visually and publish it without writing code
+- [SSO Login](https://www.erupt.xyz/#!/sso): sign-in through OIDC and OAuth2 identity providers
+
+## AI
+
+- [AI Harness](https://www.erupt.xyz/#!/ai): LLM integration; application methods can be exposed as tools a model calls
+- [AI RAG](https://www.erupt.xyz/#!/ai-rag): a knowledge base built from documents
+- [AI Decision](https://www.erupt.xyz/#!/ai-decision): typed answers (choice, score, yes or no) that a program can branch on
+- [AI Claw](https://www.erupt.xyz/#!/ai-claw): operate a server through chat
+- [Staff Agent](https://www.erupt.xyz/#!/ai-staff): agents that run on a schedule
+- [Dev Agent](https://www.erupt.xyz/#!/ai-dev): coding agents working from a requirement pool
+- [Canvas Agent](https://www.erupt.xyz/#!/ai-canvas): pages generated from a plain-language description
+
+## Commercial modules
+
+- [Erupt Flow](https://www.erupt.xyz/#!/flow): a workflow and approval engine
+- [Cube Semantic](https://www.erupt.xyz/#!/cube): semantic modelling and analytics
+- [SaaS Multi-tenant](https://www.erupt.xyz/#!/tenant): shared pages with data isolated per tenant
+- [Pro modules](https://www.erupt.xyz/#!/pro): licensing for the commercial modules
+
+## Optional
+
+- [Examples](https://www.erupt.xyz/#!/contrast): sample models next to the pages they produce
+- [About](https://www.erupt.xyz/#!/about): the author and the project
+- [Linq.J](https://github.com/erupts/linq.j): a library for querying Java collections with SQL-like syntax

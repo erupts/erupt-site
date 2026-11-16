@@ -32,7 +32,14 @@ page/
 wrangler.jsonc      # Cloudflare deployment: the repository root is served as static assets
 _headers            # Cache rules: html / js / css / csv / page/* are no-cache, assets/* is immutable for a year
 _redirects          # /demo -> https://demo.erupt.xyz
+robots.txt          # Allows everything, points at sitemap.xml
+sitemap.xml         # Only the root URL: hash routes cannot be listed
+llms.txt            # Plain-text summary of the site for LLM crawlers
 ```
+
+The app shell renders nothing without JavaScript, so `index.html` carries the facts a crawler needs in three places:
+the `<head>` (description, canonical, Open Graph, JSON-LD), a `<noscript>` summary at the top of `<body>`, and
+`llms.txt`. A new product page or a change to what Erupt supports goes into `llms.txt` and the `<noscript>` summary too.
 
 Because `assets/*` is cached as immutable, a changed vendor file needs a new file name.
 
