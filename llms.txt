@@ -1,6 +1,6 @@
 # Erupt
 
-> Erupt is an open-source low-code framework for Java. You describe a model once with annotations on a class, and Erupt serves the admin UI, the REST API and role-based access control for it at run time. It does not generate code.
+> Erupt is an open-source low-code Java framework with AI built in. You describe a model once with annotations on a class, and Erupt serves the admin UI, the REST API and role-based access control for it at run time. It does not generate code. Its AI modules add LLM integration with tool calling, a document knowledge base (RAG) and agents. Services in Python, Go, TypeScript, PHP, .NET, Rust, Ruby and Swift can serve admin pages through an Erupt server via SDKs.
 
 Erupt is released under the Apache License 2.0 and runs on Java 17 or later with Spring Boot 3. The source repository was created in 2018. Custom logic goes into lifecycle hooks (`DataProxy`: before and after add, update, delete and fetch) rather than into generated files.
 
