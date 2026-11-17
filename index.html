@@ -3,18 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <link href="icon.svg" rel="shortcut icon" type="image/svg+xml">
-    <meta content="Open source low-code framework, zero frontend code, pure annotation development admin system!" name="description">
-    <meta content="Erupt,Annotation,CURD,Low Code,DDD,Spring Boot,JPA,VORM,Admin"
-          name="keyword">
+    <meta content="Erupt is an open-source low-code framework for Java. Define a model once with annotations and get the admin UI, REST API and RBAC at run time, with no generated code." name="description">
+    <meta content="Erupt,Annotation,CRUD,Low Code,Java,Spring Boot,JPA,Admin Panel,RBAC"
+          name="keywords">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Erupt</title>
+    <title>Erupt – Open-source low-code framework for Java</title>
+    <link href="https://www.erupt.xyz/" rel="canonical">
+    <link href="/llms.txt" rel="alternate" title="llms.txt" type="text/plain">
+    <meta content="website" property="og:type">
+    <meta content="Erupt" property="og:site_name">
+    <meta content="https://www.erupt.xyz/" property="og:url">
+    <meta content="Erupt – Open-source low-code framework for Java" property="og:title">
+    <meta content="Define a model once with annotations and get the admin UI, REST API and RBAC at run time, with no generated code." property="og:description">
+    <meta content="summary" name="twitter:card">
+    <meta content="@lambdakit" name="twitter:site">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Erupt",
+        "url": "https://www.erupt.xyz/",
+        "description": "Open-source low-code framework for Java. A model is described once with annotations, and Erupt serves the admin UI, the REST API and role-based access control for it at run time, without generating code.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cross-platform",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "codeRepository": "https://github.com/erupts/erupt",
+        "programmingLanguage": "Java",
+        "softwareHelp": "https://docs.erupt.xyz/en/",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "sameAs": [
+            "https://github.com/erupts/erupt",
+            "https://www.producthunt.com/products/erupt",
+            "https://x.com/lambdakit"
+        ]
+    }
+    </script>
+    <!-- without JavaScript the app shell never boots: show the static summary instead of the cloaked body -->
+    <noscript>
+        <style>
+            body.ng-cloak { display: block; }
+            body.ng-cloak > :not(noscript) { display: none; }
+            .static-summary { max-width: 760px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
+        </style>
+    </noscript>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
     <link href="assets/prism/prism-one-dark.min.css" rel="stylesheet">
     <link href="assets/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
 </head>
 <body class="ng-cloak">
-<h1 class="d-none">erupt</h1>
+<h1 class="d-none">Erupt – open-source low-code framework for Java</h1>
+<!-- The same facts the app renders, for readers and crawlers that do not run JavaScript. Keep it in step with llms.txt. -->
+<noscript>
+    <main class="static-summary">
+        <h1>Erupt</h1>
+        <p>Erupt is an open-source low-code framework for Java. You describe a model once with annotations on a
+            class, and Erupt serves the admin UI, the REST API and role-based access control for it at run time.
+            It does not generate code.</p>
+        <p>Erupt is released under the Apache License 2.0 and runs on Java 17 or later with Spring Boot 3. Custom
+            logic goes into lifecycle hooks (<code>DataProxy</code>) rather than into generated files.</p>
+        <pre><code>@Erupt(name = "Simple example")
+@Table(name = "t_simple")
+@Entity
+public class Simple extends BaseModel {
+
+    @EruptField(
+        views = @View(title = "Text"),
+        edit = @Edit(title = "Text", notNull = true, search = @Search)
+    )
+    private String input;
+
+}</code></pre>
+        <h2>What it covers</h2>
+        <ul>
+            <li>Tables, forms, search, Excel import and export, and attachments, derived from the model.</li>
+            <li>Users, roles, menus and permissions.</li>
+            <li>Relational databases through JPA (MySQL, PostgreSQL, Oracle, SQL Server) and connectors for
+                MongoDB, Elasticsearch, Redis, LDAP, Kubernetes and S3.</li>
+            <li>On the JVM: Spring Boot, Solon, Quarkus, Micronaut, Vert.x, Ktor or a servlet container, in Java
+                or Kotlin.</li>
+            <li>Other languages through erupt-sdk: Python, Go, TypeScript, PHP, .NET, Rust, Ruby and Swift.</li>
+            <li>LLM integration, a workflow engine, semantic analytics and multi-tenancy as separate modules.</li>
+        </ul>
+        <h2>Links</h2>
+        <ul>
+            <li><a href="https://docs.erupt.xyz/en/">Documentation</a> ·
+                <a href="https://docs.erupt.xyz/zh/" hreflang="zh-CN" lang="zh-CN">中文文档</a></li>
+            <li><a href="https://github.com/erupts/erupt">Source code on GitHub</a></li>
+            <li><a href="https://github.com/erupt-io/erupt-sdk">erupt-sdk on GitHub</a></li>
+            <li><a href="https://demo.erupt.xyz">Live demo</a></li>
+            <li><a href="https://start.erupt.xyz">Project starter</a></li>
+            <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+        <p lang="zh-CN">Erupt 是一个开源的 Java 低代码框架：用注解描述一次模型，运行时即可得到后台管理界面、REST
+            接口和基于角色的权限控制，不生成代码。本页面需要启用 JavaScript 才能完整显示。</p>
+    </main>
+</noscript>
 <div ng-controller="index">
     <header id="header" ng-show="showHeader">
         <div class="d-flex">

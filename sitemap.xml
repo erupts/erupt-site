@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Product pages are hash routes (#!/path) and cannot be listed here: a sitemap entry is a URL without its fragment. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://www.erupt.xyz/</loc>
+    </url>
+    <url>
+        <loc>https://www.erupt.xyz/llms.txt</loc>
+    </url>
+</urlset>
