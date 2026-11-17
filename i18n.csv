@@ -2108,3 +2108,5 @@ dcs.cta.title,把 if 后面那句话交给模型，阈值留给自己,"Give the 
 dcs.cta.subtitle,erupt-spring-boot-starter-all 已包含本模块，只依赖 erupt-data-jpa，不需要 erupt-ai。,"Included in erupt-spring-boot-starter-all; depends on erupt-data-jpa only, no erupt-ai required."
 dcs.cta.doc,查看文档,Documentation
 dcs.cta.flow,在工作流里用它分支 →,Branch a workflow with it →
+seo.title,Erupt – 开源 Java 低代码框架,Erupt – Open-source low-code framework for Java
+seo.desc,Erupt 是开源的 Java 低代码框架：用注解定义一次模型，运行时即得到后台界面、REST API 与权限控制，不生成代码。,"Erupt is an open-source low-code framework for Java. Define a model once with annotations and get the admin UI, REST API and RBAC at run time, with no generated code."
